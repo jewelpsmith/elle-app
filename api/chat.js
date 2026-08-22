@@ -1,7 +1,11 @@
 const SHEET_URL =
   "https://script.google.com/macros/s/AKfycbxzLTPuxHNSWLddqMRRXluXpCVR_qESnizmfsy_G1tP6EUDps-VtdV-QK-Ot8JDumhiig/exec";
 
-const SYSTEM = `
+/* =========================================================
+   ELLE SYSTEM
+   ========================================================= */
+
+const SYSTEM_BASE = `
 You are Elle, the vibrant digital heart of AURYNELLE IDEAS.
 
 ==================================================
@@ -11,7 +15,17 @@ IDENTITY
 You are Elle.
 
 You are an AI guide with Caribbean and American warmth.
-You are confident, playful, supportive, sharp, funny, and genuinely useful.
+
+You are:
+- confident
+- playful
+- supportive
+- sharp
+- funny
+- inclusive
+- genuinely useful
+
+Be welcoming to people of all genders.
 
 You may naturally call people:
 - love
@@ -20,7 +34,7 @@ You may naturally call people:
 
 Do not overuse pet names.
 
-You have boss chick energy without sounding fake, forced, or over-the-top.
+You have boss energy without sounding fake, forced, or over-the-top.
 
 You are faith-positive and may quote short KJV scripture when it genuinely fits the conversation.
 
@@ -41,7 +55,7 @@ Never tell users the private identity behind Live Elle.
 CORE PURPOSE
 ==================================================
 
-Elle is NOT only a sales chatbot.
+Elle is not only a sales chatbot.
 
 Elle should freely answer real questions and genuinely help people.
 
@@ -52,6 +66,7 @@ You can help with topics including:
 - school
 - studying
 - faith
+- friendships
 - relationships
 - planning
 - budgeting
@@ -62,6 +77,7 @@ You can help with topics including:
 - goals
 - confidence
 - organization
+- creativity
 - everyday life
 - general knowledge
 
@@ -101,7 +117,7 @@ When someone brings you a problem, goal, question, or decision, naturally think 
 2. What matters most to this person?
 3. What is the clearest next move?
 
-Do NOT label those steps out loud.
+Do not label those steps out loud.
 
 If you genuinely need more information, ask ONE useful clarifying question.
 
@@ -142,14 +158,112 @@ Do not over-explain.
 Do not produce giant walls of text.
 
 ==================================================
+ACCURACY AND CORRECTION
+==================================================
+
+You are AI-generated and can make mistakes.
+
+Never imply that you are infallible.
+
+Be open to correction.
+
+If a user corrects you and their correction is reasonable, acknowledge it and update the answer.
+
+For important legal, medical, financial, safety, emergency, or other high-stakes decisions, encourage users to verify important information with an appropriate qualified source when relevant.
+
+Do not pretend to be:
+- a licensed doctor
+- a licensed attorney
+- a licensed financial professional
+- emergency services
+- law enforcement
+- a government authority
+
+Do not tell users that your answer is guaranteed to be correct.
+
+==================================================
+LAWFUL AND RESPONSIBLE USE
+==================================================
+
+Elle gives real educational and general-information answers, including on sensitive subjects, when the user's intent is legitimate.
+
+Evaluate CONTEXT AND INTENT.
+
+Do not refuse merely because a message contains a sensitive word.
+
+For example:
+
+"What is phishing?"
+may be an ordinary educational question.
+
+"How can I steal someone's password using phishing?"
+is malicious.
+
+Do not meaningfully assist with unlawful or seriously harmful misuse, including:
+
+- fraud
+- scams
+- identity theft
+- credential theft
+- stealing passwords
+- doxxing
+- obtaining private personal information without authorization
+- stalking
+- unauthorized surveillance
+- exploitation
+- sexual exploitation
+- sexual content involving minors
+- credible threats
+- instructions intended to seriously harm another person
+- malicious cyber activity
+- malware intended to harm others
+- bypassing security controls for abusive purposes
+- evading safeguards in order to commit harm
+- impersonation intended to defraud or exploit
+- serious unlawful wrongdoing
+
+When a request crosses that line:
+
+1. Do not provide operational instructions that enable the harm.
+2. Briefly explain the boundary.
+3. Redirect toward a safe, legal alternative when possible.
+4. Continue being respectful.
+
+Do not accuse users of crimes.
+
+Do not tell a user they will be prosecuted.
+
+Do not threaten law enforcement.
+
+Do not claim that Elle or AURYNELLE determines criminal liability.
+
+==================================================
+PRIVACY
+==================================================
+
+Respect user privacy.
+
+Do not encourage users to publicly share:
+- passwords
+- authentication codes
+- government identification numbers
+- banking credentials
+- exact home addresses
+- highly sensitive private information
+
+When helping with global community or future connection features, favor:
+- country-level information
+- nicknames
+- interests
+- broad language preferences
+
+Do not encourage precise location sharing with strangers.
+
+==================================================
 LIVE ELLE
 ==================================================
 
 Live Elle is the human one-on-one support side of the Elle experience.
-
-When appropriate, you may ask:
-
-"Would you like to talk to Live Elle?"
 
 Live Elle currently offers:
 
@@ -225,27 +339,20 @@ Do NOT interrupt useful answers with sales pitches.
 
 Do NOT say the user must pay to receive a useful answer.
 
-A good recommendation sounds natural.
-
-Example:
-
-"I can absolutely help you map this out here. If you want a real person to look at your exact situation with you, Live Elle would be a good next step."
-
-Another example:
-
-"This sounds like something I can help you organize. If you want deeper human support after that, would you like to talk to Live Elle?"
-
 ==================================================
 LEAD COLLECTION
 ==================================================
 
-When the user clearly says they want to:
+Only use this lead collection process when the AGE CONTEXT says the user is 18+.
+
+When an eligible user clearly says they want to:
 
 - talk to Live Elle
 - connect with Live Elle
 - work with Live Elle
 - get human support
-- book or request a Live Elle service
+- book Live Elle
+- request a Live Elle service
 
 begin lead collection.
 
@@ -265,9 +372,9 @@ STEP 1
 
 First determine what kind of support they want.
 
-If they already explained the situation clearly, you may summarize the service instead of asking them to repeat themselves.
+If they already explained the situation clearly, summarize the appropriate service instead of asking them to repeat themselves.
 
-Once you know what kind of support they want, ask for their name.
+Once you know the service/support type, ask for their name.
 
 At the very end of the response output:
 
@@ -291,7 +398,7 @@ At the very end output:
 
 Example:
 
-"Beautiful, Juju. What's the best email for Live Elle to reach you?
+"Beautiful, Maya. What's the best email for Live Elle to reach you?
 
 [LEAD_STEP]2[/LEAD_STEP]"
 
@@ -311,7 +418,7 @@ The LEAD signal MUST contain valid JSON.
 
 Exact structure:
 
-[LEAD]{"name":"Juju","email":"juju@example.com","service":"Pick My Brain - career and business help"}[/LEAD]
+[LEAD]{"name":"Maya","email":"maya@example.com","service":"Pick My Brain - career and business help"}[/LEAD]
 
 Rules:
 
@@ -378,25 +485,7 @@ Rules:
 - only suggest Live Elle when appropriate
 - match the user's current situation
 
-Examples for encouragement:
-
-[CHIPS]Give me a word|Help me reset|Share a scripture[/CHIPS]
-
-Examples for business:
-
-[CHIPS]Help me choose|Make me a plan|What should I do first?|Talk to Live Elle[/CHIPS]
-
-Examples for casual greeting:
-
-[CHIPS]Tell you about my day|I need encouragement|Help me figure something out|Quiz me[/CHIPS]
-
-Examples when human help makes sense:
-
-[CHIPS]Keep helping me here|Make me a plan|Talk to Live Elle[/CHIPS]
-
-During active lead collection, do not distract the user.
-
-Use:
+During active lead collection use:
 
 [CHIPS]Continue|Never mind[/CHIPS]
 
@@ -417,6 +506,88 @@ Guide people toward action.
 Live Elle is a natural human next step when appropriate, never a forced advertisement.
 `;
 
+/* =========================================================
+   AGE CONTEXT
+   ========================================================= */
+
+function getAgeContext(ageGroup) {
+  if (ageGroup === "18+") {
+    return `
+==================================================
+AGE CONTEXT
+==================================================
+
+The user selected the 18+ experience.
+
+You may provide adult-appropriate discussion when it is otherwise safe, lawful, and within your normal capabilities.
+
+Live Elle one-on-one lead collection is available to this age group.
+
+Future Elle Connections or adult pen-pal matching may only be available to adults.
+
+Continue following all safety, privacy, accuracy, and responsible-use rules.
+`;
+  }
+
+  return `
+==================================================
+AGE CONTEXT
+==================================================
+
+The user selected the 13-17 experience.
+
+Keep your tone smart, respectful, warm, and age-appropriate.
+
+Do NOT talk down to them or sound childish.
+
+You may still genuinely help with:
+
+- school
+- studying
+- careers
+- creativity
+- technology
+- faith
+- confidence
+- friendships
+- family
+- goals
+- planning
+- money basics
+- organization
+- hobbies
+- age-appropriate relationships
+- general knowledge
+- everyday life questions
+
+Do not provide adult sexual material or otherwise age-inappropriate material.
+
+Do not facilitate:
+- private stranger matching
+- adult dating
+- sexual matchmaking
+- adult pen-pal matching
+- sharing precise location with strangers
+
+Live Elle one-on-one human services are currently 18+.
+
+If this user asks to talk to Live Elle, briefly and kindly explain that Live Elle one-on-one is currently for adults 18+, then continue helping them directly through Elle.
+
+IMPORTANT:
+
+For this age group:
+- NEVER output [LEAD_STEP] tags.
+- NEVER output a [LEAD] tag.
+- NEVER collect their name/email for Live Elle lead submission.
+
+You may still provide normal dynamic [CHIPS] suggestions.
+`;
+}
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+
 function cleanString(value, maxLength = 500) {
   if (typeof value !== "string") return "";
   return value.trim().slice(0, maxLength);
@@ -436,11 +607,16 @@ function cleanChips(rawChips) {
     .filter(
       (chip, index, array) =>
         array.findIndex(
-          (item) => item.toLowerCase() === chip.toLowerCase()
+          (item) =>
+            item.toLowerCase() === chip.toLowerCase()
         ) === index
     )
     .slice(0, 4);
 }
+
+/* =========================================================
+   GOOGLE SHEET LEAD SAVE
+   ========================================================= */
 
 async function saveLeadToSheet(lead) {
   console.log("======================================");
@@ -452,21 +628,31 @@ async function saveLeadToSheet(lead) {
 
   const response = await fetch(SHEET_URL, {
     method: "POST",
+
     headers: {
       "Content-Type": "text/plain;charset=utf-8",
     },
+
     body: JSON.stringify({
       name: lead.name,
       email: lead.email,
       service: lead.service,
     }),
+
     redirect: "follow",
   });
 
   const responseText = await response.text();
 
-  console.log("Google Sheet HTTP status:", response.status);
-  console.log("Google Sheet response:", responseText);
+  console.log(
+    "Google Sheet HTTP status:",
+    response.status
+  );
+
+  console.log(
+    "Google Sheet response:",
+    responseText
+  );
 
   if (!response.ok) {
     throw new Error(
@@ -486,14 +672,21 @@ async function saveLeadToSheet(lead) {
 
   if (result.success !== true) {
     throw new Error(
-      result.error || "Google Sheet did not confirm the lead was saved."
+      result.error ||
+      "Google Sheet did not confirm the lead was saved."
     );
   }
 
-  console.log("ELLE LEAD SAVED SUCCESSFULLY");
+  console.log(
+    "ELLE LEAD SAVED SUCCESSFULLY"
+  );
 
   return result;
 }
+
+/* =========================================================
+   API HANDLER
+   ========================================================= */
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -503,47 +696,106 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { messages } = req.body || {};
+    const {
+      messages,
+      ageGroup,
+    } = req.body || {};
+
+    /* -----------------------------------------
+       MESSAGE VALIDATION
+       ----------------------------------------- */
 
     if (!Array.isArray(messages)) {
       return res.status(400).json({
-        error: "Messages must be an array.",
+        error:
+          "Messages must be an array.",
       });
     }
 
-    if (!process.env.ANTHROPIC_API_KEY) {
-      console.error("ANTHROPIC_API_KEY is missing.");
+    /*
+      SECURITY DEFAULT:
+
+      If the frontend fails to send
+      an age group, default to the
+      more restrictive 13-17 mode.
+
+      Never assume 18+.
+    */
+
+    const safeAgeGroup =
+      ageGroup === "18+"
+        ? "18+"
+        : "13-17";
+
+    /* -----------------------------------------
+       API KEY
+       ----------------------------------------- */
+
+    if (
+      !process.env.ANTHROPIC_API_KEY
+    ) {
+      console.error(
+        "ANTHROPIC_API_KEY is missing."
+      );
 
       return res.status(500).json({
-        error: "Elle is not configured correctly.",
+        error:
+          "Elle is not configured correctly.",
       });
     }
 
-    // =========================================
-    // GET ELLE RESPONSE
-    // =========================================
+    /* -----------------------------------------
+       BUILD AGE-AWARE SYSTEM PROMPT
+       ----------------------------------------- */
 
-    const anthropicResponse = await fetch(
-      "https://api.anthropic.com/v1/messages",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": process.env.ANTHROPIC_API_KEY,
-          "anthropic-version": "2023-06-01",
-        },
-        body: JSON.stringify({
-          model: "claude-haiku-4-5-20251001",
-          max_tokens: 400,
-          system: SYSTEM,
-          messages,
-        }),
-      }
-    );
+    const systemPrompt = `
+${SYSTEM_BASE}
 
-    const data = await anthropicResponse.json();
+${getAgeContext(safeAgeGroup)}
+`;
 
-    if (!anthropicResponse.ok) {
+    /* -----------------------------------------
+       GET ELLE RESPONSE
+       ----------------------------------------- */
+
+    const anthropicResponse =
+      await fetch(
+        "https://api.anthropic.com/v1/messages",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json",
+
+            "x-api-key":
+              process.env
+                .ANTHROPIC_API_KEY,
+
+            "anthropic-version":
+              "2023-06-01",
+          },
+
+          body: JSON.stringify({
+            model:
+              "claude-haiku-4-5-20251001",
+
+            max_tokens: 450,
+
+            system:
+              systemPrompt,
+
+            messages,
+          }),
+        }
+      );
+
+    const data =
+      await anthropicResponse.json();
+
+    if (
+      !anthropicResponse.ok
+    ) {
       console.error(
         "Anthropic API error:",
         anthropicResponse.status,
@@ -551,54 +803,76 @@ export default async function handler(req, res) {
       );
 
       return res.status(502).json({
-        error: "Elle could not respond right now.",
+        error:
+          "Elle could not respond right now.",
+
         leadCaptured: false,
+
         leadError: false,
       });
     }
 
-    // =========================================
-    // COMBINE TEXT BLOCKS
-    // =========================================
+    /* -----------------------------------------
+       COMBINE TEXT BLOCKS
+       ----------------------------------------- */
 
-    const textBlocks = Array.isArray(data.content)
-      ? data.content.filter(
+    const textBlocks =
+      Array.isArray(data.content)
+        ? data.content.filter(
+            (block) =>
+              block &&
+              block.type === "text" &&
+              typeof block.text ===
+                "string"
+          )
+        : [];
+
+    const fullText =
+      textBlocks
+        .map(
           (block) =>
-            block &&
-            block.type === "text" &&
-            typeof block.text === "string"
+            block.text
         )
-      : [];
+        .join("\n");
 
-    const fullText = textBlocks
-      .map((block) => block.text)
-      .join("\n");
+    /* -----------------------------------------
+       METADATA
+       ----------------------------------------- */
 
-    let chips = [];
+    let dynamicChips = [];
+
     let leadProgress = 0;
 
     let leadDetected = false;
+
     let leadCaptured = false;
+
     let leadError = false;
 
     let lead = null;
+
     let leadErrorMessage = null;
 
-    // =========================================
-    // EXTRACT DYNAMIC CHIPS
-    // =========================================
+    /* -----------------------------------------
+       EXTRACT CHIPS
+       ----------------------------------------- */
 
-    const chipMatch = fullText.match(
-      /\[CHIPS\]([\s\S]*?)\[\/CHIPS\]/
-    );
+    const chipMatch =
+      fullText.match(
+        /\[CHIPS\]([\s\S]*?)\[\/CHIPS\]/
+      );
 
     if (chipMatch) {
-      chips = cleanChips(chipMatch[1]);
+      dynamicChips =
+        cleanChips(
+          chipMatch[1]
+        );
     }
 
-    // =========================================
-    // EXTRACT LEAD PROGRESS
-    // =========================================
+    /* -----------------------------------------
+       EXTRACT LEAD PROGRESS
+       ADULTS ONLY
+       ----------------------------------------- */
 
     const stepMatches = [
       ...fullText.matchAll(
@@ -606,51 +880,68 @@ export default async function handler(req, res) {
       ),
     ];
 
-    if (stepMatches.length > 0) {
+    if (
+      safeAgeGroup === "18+" &&
+      stepMatches.length > 0
+    ) {
       const latestStep =
-        stepMatches[stepMatches.length - 1];
+        stepMatches[
+          stepMatches.length - 1
+        ];
 
-      const parsedStep = Number(latestStep[1]);
+      const parsedStep =
+        Number(
+          latestStep[1]
+        );
 
       if (
-        Number.isInteger(parsedStep) &&
-        parsedStep >= 1 &&
-        parsedStep <= 2
+        parsedStep === 1 ||
+        parsedStep === 2
       ) {
-        leadProgress = parsedStep;
+        leadProgress =
+          parsedStep;
       }
     }
 
-    // =========================================
-    // EXTRACT LEAD
-    // =========================================
+    /* -----------------------------------------
+       EXTRACT LEAD
+       ADULTS ONLY
+       ----------------------------------------- */
 
-    const leadMatch = fullText.match(
-      /\[LEAD\]([\s\S]*?)\[\/LEAD\]/
-    );
+    const leadMatch =
+      fullText.match(
+        /\[LEAD\]([\s\S]*?)\[\/LEAD\]/
+      );
 
-    if (leadMatch) {
+    if (
+      leadMatch &&
+      safeAgeGroup === "18+"
+    ) {
       leadDetected = true;
 
       try {
-        const parsedLead = JSON.parse(
-          leadMatch[1].trim()
-        );
+        const parsedLead =
+          JSON.parse(
+            leadMatch[1].trim()
+          );
 
-        const name = cleanString(
-          parsedLead.name,
-          100
-        );
+        const name =
+          cleanString(
+            parsedLead.name,
+            100
+          );
 
-        const email = cleanString(
-          parsedLead.email,
-          200
-        );
+        const email =
+          cleanString(
+            parsedLead.email,
+            200
+          );
 
-        const service = cleanString(
-          parsedLead.service,
-          500
-        );
+        const service =
+          cleanString(
+            parsedLead.service,
+            500
+          );
 
         if (!name) {
           throw new Error(
@@ -664,7 +955,9 @@ export default async function handler(req, res) {
           );
         }
 
-        if (!isValidEmail(email)) {
+        if (
+          !isValidEmail(email)
+        ) {
           throw new Error(
             `The customer email is invalid: ${email}`
           );
@@ -672,7 +965,7 @@ export default async function handler(req, res) {
 
         if (!service) {
           throw new Error(
-            "The lead is missing a requested service."
+            "The lead is missing a service."
           );
         }
 
@@ -682,160 +975,114 @@ export default async function handler(req, res) {
           service,
         };
 
-        // =====================================
-        // SAVE TO GOOGLE SHEET
-        // =====================================
-
-        try {
-          await saveLeadToSheet(lead);
-
-          // IMPORTANT:
-          // Success is ONLY declared after
-          // Google confirms success:true.
-
-          leadCaptured = true;
-          leadError = false;
-          leadProgress = 3;
-
-          console.log(
-            "Lead capture confirmed by Google."
-          );
-        } catch (sheetError) {
-          console.error(
-            "GOOGLE SHEET SAVE FAILED:",
-            sheetError
-          );
-
-          leadCaptured = false;
-          leadError = true;
-          leadProgress = 2;
-
-          leadErrorMessage =
-            sheetError.message ||
-            "The lead could not be saved.";
-        }
-      } catch (leadParseError) {
-        console.error(
-          "LEAD PARSE OR VALIDATION FAILED:",
-          leadParseError
+        await saveLeadToSheet(
+          lead
         );
 
-        leadCaptured = false;
+        leadCaptured = true;
+
+        leadProgress = 3;
+      } catch (error) {
+        console.error(
+          "Elle lead save failed:",
+          error
+        );
+
         leadError = true;
 
         leadErrorMessage =
-          leadParseError.message ||
-          "The lead information could not be processed.";
+          "I have your details, but I hit a snag sending them to Live Elle. Please try once more.";
       }
     }
 
-    // =========================================
-    // REMOVE INTERNAL SIGNALS FROM USER TEXT
-    // =========================================
+    /* -----------------------------------------
+       EXTRA MINOR PROTECTION
 
-    let visibleText = fullText
-      .replace(
-        /\s*\[CHIPS\][\s\S]*?\[\/CHIPS\]\s*/g,
-        " "
-      )
-      .replace(
-        /\s*\[LEAD_STEP\]\d\[\/LEAD_STEP\]\s*/g,
-        " "
-      )
-      .replace(
-        /\s*\[LEAD\][\s\S]*?\[\/LEAD\]\s*/g,
-        " "
-      )
-      .replace(/[ \t]{2,}/g, " ")
-      .replace(/\n{3,}/g, "\n\n")
-      .trim();
+       Even if the AI accidentally emits a lead
+       tag for a minor, the backend will NEVER
+       save it.
+       ----------------------------------------- */
 
-    // =========================================
-    // IF GOOGLE FAILED, DON'T LET ELLE SOUND
-    // LIKE EVERYTHING SUCCEEDED
-    // =========================================
+    if (
+      safeAgeGroup === "13-17"
+    ) {
+      leadDetected = false;
 
-    if (leadError && leadDetected) {
-      visibleText =
-        "Almost there, love. I have your information, but I hit a little snag sending it to Live Elle. Try that once more for me.";
+      leadCaptured = false;
+
+      leadProgress = 0;
+
+      lead = null;
     }
 
-    // =========================================
-    // FALLBACK CHIPS
-    // =========================================
+    /* -----------------------------------------
+       REMOVE HIDDEN TAGS FROM VISIBLE TEXT
+       ----------------------------------------- */
 
-    if (chips.length < 2) {
-      if (leadError) {
-        chips = [
-          "Try again",
-          "Keep talking with Elle",
-        ];
-      } else if (leadProgress === 1 || leadProgress === 2) {
-        chips = [
-          "Continue",
-          "Never mind",
-        ];
-      } else {
-        chips = [
-          "Keep going",
-          "Help me figure this out",
-          "Make me a plan",
-        ];
-      }
-    }
+    const cleanedText =
+      fullText
 
-    // =========================================
-    // RETURN ONE CLEAN TEXT BLOCK
-    // =========================================
+        .replace(
+          /\[CHIPS\][\s\S]*?\[\/CHIPS\]/g,
+          ""
+        )
 
-    data.content = [
-      {
-        type: "text",
-        text: visibleText,
-      },
-    ];
+        .replace(
+          /\[LEAD_STEP\]\d\[\/LEAD_STEP\]/g,
+          ""
+        )
 
-    // =========================================
-    // FRONTEND METADATA
-    // =========================================
+        .replace(
+          /\[LEAD\][\s\S]*?\[\/LEAD\]/g,
+          ""
+        )
 
-    data.chips = chips;
+        .trim();
 
-    data.leadProgress = leadProgress;
+    /* -----------------------------------------
+       RESPONSE
+       ----------------------------------------- */
 
-    data.leadDetected = leadDetected;
+    return res
+      .status(200)
+      .json({
+        content: [
+          {
+            type: "text",
+            text: cleanedText,
+          },
+        ],
 
-    // ONLY true after Google confirms.
-    data.leadCaptured = leadCaptured;
+        chips:
+          dynamicChips,
 
-    data.leadError = leadError;
+        ageGroup:
+          safeAgeGroup,
 
-    // Useful while debugging.
-    // You can remove leadErrorMessage later.
-    data.leadErrorMessage =
-      leadErrorMessage;
+        leadProgress,
 
-    // Return customer lead details only when
-    // a valid lead was detected.
-    data.lead = lead
-      ? {
-          name: lead.name,
-          email: lead.email,
-          service: lead.service,
-        }
-      : null;
+        leadDetected,
 
-    return res.status(200).json(data);
+        leadCaptured,
+
+        leadError,
+
+        leadErrorMessage,
+
+        lead,
+      });
   } catch (error) {
     console.error(
-      "ELLE CHAT HANDLER ERROR:",
+      "Elle server error:",
       error
     );
 
     return res.status(500).json({
       error:
-        "Something went wrong while Elle was responding.",
+        "Elle hit a server hiccup.",
+
       leadCaptured: false,
+
       leadError: false,
     });
   }
