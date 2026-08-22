@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>AURYNELLE∞ IDEAS · Talk to Elle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Figtree:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{min-height:100dvh;overflow-x:hidden;background:linear-gradient(180deg,#FEFEFE,#FFF9F9 40%,#FEFEFE);
+  font-family:'Figtree',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#333;}
+.confetti{position:fixed;border-radius:50%;pointer-events:none;animation:fd 15s ease-in-out infinite;}
+@keyframes fd{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-18px) scale(1.08);}}
+@keyframes dp{0%,60%,100%{opacity:.3;transform:translateY(0);}30%{opacity:1;transform:translateY(-4px);}}
+@keyframes br{0%,100%{box-shadow:0 14px 36px -14px rgba(255,107,157,.28);}50%{box-shadow:0 18px 44px -14px rgba(255,107,157,.42);}}
+
+.wrap{max-width:1100px;margin:0 auto;min-height:100dvh;display:grid;
+  grid-template-columns:280px 1fr;gap:24px;align-items:start;padding:28px 20px;}
+
+/* left column */
+.left{position:sticky;top:28px;}
+.frame{border-radius:20px;overflow:hidden;animation:br 5s ease-in-out infinite;position:relative;}
+.frame img{display:block;width:100%;height:auto;}
+.frame::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(30,15,40,.4),transparent 40%);pointer-events:none;}
+.nplate{position:absolute;left:14px;bottom:12px;color:#fff;z-index:2;text-shadow:0 2px 8px rgba(0,0,0,.4);}
+.nplate .n{font-family:'Bangers',cursive;font-size:26px;
+  background:linear-gradient(90deg,#FF6B9D,#FF8C42,#FFCC00,#4CD964,#5AC8FA,#9B6BFF);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;-webkit-text-stroke:1px rgba(0,0,0,.2);}
+.nplate .b{font-size:9px;letter-spacing:.11em;opacity:.8;margin-top:1px;}
+.nplate .b .inf{color:#F0C877;}
+
+/* jewel card */
+.jcard{margin-top:16px;background:#fff;border-radius:16px;padding:16px;
+  border:1.5px solid #5AC8FA30;box-shadow:0 4px 20px -8px rgba(90,200,250,.15);}
+.jcard .jt{font-weight:700;font-size:13px;color:#333;margin-bottom:4px;}
+.jcard .js{font-size:12px;color:#888;line-height:1.5;margin-bottom:12px;}
+.jcard .jbtns{display:flex;flex-direction:column;gap:6px;}
+.jcard .jb{display:block;text-align:center;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:600;
+  text-decoration:none;cursor:pointer;transition:all .15s;border:none;font-family:'Figtree',sans-serif;}
+.jb-primary{background:#5AC8FA;color:#fff;box-shadow:0 4px 14px -4px rgba(90,200,250,.5);}
+.jb-secondary{background:#5AC8FA0A;color:#5AC8FA;border:1.5px solid #5AC8FA30 !important;}
+.jb:hover{filter:brightness(1.08);}.jb:active{transform:scale(.97);}
+.jcard-mobile{display:none;}
+
+/* right column */
+.right{display:flex;flex-direction:column;min-height:min(92dvh,780px);}
+.head{text-align:center;margin-bottom:12px;}
+.logo{font-size:10px;letter-spacing:.14em;color:#ccc;}.logo span{color:#FF8C42;}
+.tw{position:relative;display:inline-block;padding:3px 12px;}
+.sp{position:absolute;border-radius:50%;filter:blur(5px);z-index:1;}
+.sp1{top:-5px;left:-2px;width:24px;height:24px;background:#FF6B9D;opacity:.35;}
+.sp2{top:1px;right:-4px;width:20px;height:20px;background:#5AC8FA;opacity:.35;}
+.sp3{bottom:-4px;left:34%;width:22px;height:12px;background:#FFCC00;opacity:.35;}
+h1{font-family:'Bangers',cursive;font-size:42px;font-weight:400;line-height:1;letter-spacing:.03em;
+  position:relative;z-index:2;
+  background:linear-gradient(90deg,#FF6B9D,#FF8C42,#FFCC00,#4CD964,#5AC8FA,#9B6BFF,#FF2D78);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  -webkit-text-stroke:1.5px #222;filter:drop-shadow(1px 2px 0 rgba(0,0,0,.18));}
+.sub{font-size:11.5px;color:#999;margin-top:2px;}
+
+/* service path cards */
+.paths{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;}
+.path{background:#fff;border:1.5px solid;border-radius:14px;padding:12px 10px;text-align:center;
+  cursor:pointer;transition:all .18s;position:relative;overflow:hidden;}
+.path:hover{transform:translateY(-2px);}.path:active{transform:scale(.97);}
+.path .pe{font-size:22px;margin-bottom:4px;}
+.path .pt{font-size:11.5px;font-weight:600;line-height:1.3;}
+.p1{border-color:#FF6B9D30;color:#FF6B9D;}.p1:hover{background:#FF6B9D08;box-shadow:0 6px 20px -8px #FF6B9D40;}
+.p2{border-color:#FF8C4230;color:#FF8C42;}.p2:hover{background:#FF8C4208;box-shadow:0 6px 20px -8px #FF8C4240;}
+.p3{border-color:#4CD96430;color:#4CD964;}.p3:hover{background:#4CD96408;box-shadow:0 6px 20px -8px #4CD96440;}
+.p4{border-color:#5AC8FA30;color:#5AC8FA;}.p4:hover{background:#5AC8FA08;box-shadow:0 6px 20px -8px #5AC8FA40;}
+
+/* chat card */
+.card{flex:1;display:flex;flex-direction:column;background:#fff;border-radius:20px;
+  padding:14px 14px 12px;box-shadow:0 4px 24px -8px rgba(0,0,0,.06);border-top:3px solid #FF6B9D;overflow:hidden;}
+.thread{flex:1;display:flex;flex-direction:column;gap:9px;overflow-y:auto;padding:4px 2px 6px;
+  scrollbar-width:thin;scrollbar-color:#eee transparent;}
+.thread::-webkit-scrollbar{width:4px;}.thread::-webkit-scrollbar-thumb{background:#eee;border-radius:6px;}
+.mw{display:flex;width:100%;}
+.bub{max-width:88%;padding:10px 14px;font-size:13.5px;line-height:1.6;white-space:pre-wrap;}
+.en{font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px;}
+.dt{display:flex;gap:5px;padding:3px 0;}
+.dt span{width:6px;height:6px;border-radius:50%;animation:dp 1.4s ease infinite;}
+
+/* lead progress */
+.lead-bar{display:none;padding:10px 14px;background:#F9FAFF;border-radius:12px;margin-top:8px;
+  border:1.5px solid #5AC8FA20;}
+.lead-bar.show{display:block;}
+.lb-title{font-size:11px;font-weight:700;color:#5AC8FA;letter-spacing:.06em;margin-bottom:8px;}
+.lb-steps{display:flex;gap:6px;align-items:center;}
+.lb-step{display:flex;align-items:center;gap:4px;font-size:11px;color:#bbb;font-weight:500;}
+.lb-step.done{color:#4CD964;}.lb-step.active{color:#5AC8FA;font-weight:700;}
+.lb-dot{width:18px;height:18px;border-radius:50%;border:2px solid #ddd;display:grid;place-items:center;font-size:9px;}
+.lb-step.done .lb-dot{background:#4CD964;border-color:#4CD964;color:#fff;}
+.lb-step.active .lb-dot{border-color:#5AC8FA;color:#5AC8FA;}
+.lb-line{width:16px;height:2px;background:#eee;border-radius:2px;}
+
+/* completion state */
+.complete{display:none;text-align:center;padding:20px 16px;background:linear-gradient(135deg,#F9FAFF,#FFF9F9);
+  border-radius:16px;margin-top:8px;border:1.5px solid #4CD96430;}
+.complete.show{display:block;}
+.complete .ck{font-size:32px;margin-bottom:6px;}
+.complete .ct{font-family:'Caveat',cursive;font-size:26px;color:#4CD964;}
+.complete .cm{font-size:13px;color:#888;margin-top:6px;line-height:1.5;}
+.complete .cb{display:flex;gap:8px;justify-content:center;margin-top:14px;}
+.complete .cbtn{padding:8px 16px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;
+  border:none;font-family:'Figtree',sans-serif;transition:all .15s;}
+.cbtn:active{transform:scale(.97);}
+.cbtn-elle{background:#FF6B9D;color:#fff;box-shadow:0 4px 14px -4px rgba(255,107,157,.5);}
+.cbtn-jewel{background:#5AC8FA12;color:#5AC8FA;border:1.5px solid #5AC8FA30 !important;}
+
+/* dynamic chips */
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;min-height:32px;}
+.chip{padding:7px 12px;border-radius:999px;font-size:11.5px;font-weight:500;
+  font-family:'Figtree',sans-serif;cursor:pointer;transition:all .15s;
+  border:1.5px solid #FF6B9D35;color:#e85a8a;background:#FF6B9D08;}
+.chip:hover{background:#FF6B9D18;}.chip:active{transform:scale(.97);}
+.chip.jewel{border-color:#5AC8FA35;color:#5AC8FA;background:#5AC8FA08;}
+.chip.jewel:hover{background:#5AC8FA18;}
+
+/* composer */
+.comp{display:flex;gap:7px;margin-top:8px;align-items:center;}
+.ib{flex:1;display:flex;background:#FAFAFA;border:1.5px solid #eee;border-radius:12px;padding:2px 4px 2px 12px;transition:border-color .2s;}
+.ib:focus-within{border-color:#FF6B9D35;}
+input.say{flex:1;border:none;outline:none;background:transparent;font-family:'Figtree',sans-serif;
+  font-size:13.5px;color:#333;padding:8px 0;}
+input.say::placeholder{color:#bbb;}
+.sbtn{width:38px;height:38px;flex-shrink:0;border:none;border-radius:50%;cursor:pointer;display:grid;place-items:center;
+  background:#FF6B9D;box-shadow:0 4px 14px -4px rgba(255,107,157,.5);color:#fff;transition:all .15s;}
+.sbtn:hover{filter:brightness(1.1);}.sbtn:active{transform:scale(.95);}
+.limit-msg{text-align:center;font-size:11px;color:#999;padding:8px;display:none;}
+.limit-msg.show{display:block;}
+
+.footer{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px;font-size:10px;color:#ccc;}
+.footer a{color:#ccc;text-decoration:none;}
+
+@media(max-width:900px){
+  .wrap{grid-template-columns:1fr;gap:14px;padding:14px 12px 28px;}
+  .left{position:static;display:flex;gap:12px;align-items:start;}
+  .frame{max-width:140px;flex-shrink:0;}
+  .jcard{display:none;}
+  .jcard-mobile{display:block;margin-top:10px;}
+  .paths{grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:10px;}
+  h1{font-size:34px;}
+  .right{min-height:auto;}
+}
+@media(max-width:480px){
+  .left{flex-direction:column;align-items:center;}
+  .frame{max-width:200px;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <!-- LEFT: portrait + jewel card -->
+  <div class="left">
+    <div class="frame">
+      <img src="elle.png" alt="Elle"/>
+      <div class="nplate"><div class="n">Elle</div>
+        <div class="b">&Lambda;URYNELLE<span class="inf">&infin;</span> IDE&Lambda;S</div></div>
+    </div>
+    <div class="jcard">
+      <div class="jt">Need deeper support?</div>
+      <div class="js">Get personal guidance from Jewel, the woman behind Elle.</div>
+      <div class="jbtns">
+        <button class="jb jb-primary" onclick="doSend('I want personal help from Jewel')">Talk to Jewel</button>
+        <button class="jb jb-secondary" onclick="doSend('What kind of sessions does Jewel offer?')">See options</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: everything else -->
+  <div class="right">
+    <div class="head">
+      <div class="logo">&Lambda;URYNELLE<span>&infin;</span> IDE&Lambda;S</div>
+      <div class="tw"><div class="sp sp1"></div><div class="sp sp2"></div><div class="sp sp3"></div>
+        <h1>Talk to Elle</h1></div>
+      <p class="sub">Come in confused. Leave with clarity and your next move. ✦</p>
+    </div>
+
+    <!-- service path cards -->
+    <div class="paths">
+      <div class="path p1" onclick="doSend('I need encouragement today')">
+        <div class="pe">💛</div><div class="pt">I need encouragement</div></div>
+      <div class="path p2" onclick="doSend('Help me figure something out')">
+        <div class="pe">🧠</div><div class="pt">Help me figure this out</div></div>
+      <div class="path p3" onclick="doSend('Help me make a plan for something')">
+        <div class="pe">⚡</div><div class="pt">Help me make a plan</div></div>
+      <div class="path p4" onclick="doSend('I want personal help from Jewel')">
+        <div class="pe">💎</div><div class="pt">Personal help from Jewel</div></div>
+    </div>
+
+    <!-- chat -->
+    <div class="card">
+      <div class="thread" id="thread"></div>
+      <div class="lead-bar" id="leadBar">
+        <div class="lb-title">Almost there ✨</div>
+        <div class="lb-steps" id="leadSteps">
+          <div class="lb-step" id="ls1"><span class="lb-dot">1</span> What you need</div>
+          <div class="lb-line"></div>
+          <div class="lb-step" id="ls2"><span class="lb-dot">2</span> Your name</div>
+          <div class="lb-line"></div>
+          <div class="lb-step" id="ls3"><span class="lb-dot">3</span> Your email</div>
+        </div>
+      </div>
+      <div class="complete" id="complete">
+        <div class="ck">💛</div>
+        <div class="ct">You're in!</div>
+        <div class="cm" id="completeMsg">Your request has been sent to Jewel.</div>
+        <div class="cb">
+          <button class="cbtn cbtn-elle" onclick="resetChat()">Keep talking with Elle</button>
+          <button class="cbtn cbtn-jewel" onclick="doSend('What kind of sessions does Jewel offer?')">See ways to work with Jewel</button>
+        </div>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div class="limit-msg" id="limitMsg">You've had a great session! Come back anytime, or connect with Jewel for deeper support 💕</div>
+      <div class="comp" id="composer">
+        <div class="ib"><input class="say" id="say" type="text" placeholder="Say anything to Elle..." autocomplete="off"/></div>
+        <button class="sbtn" id="sendBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="footer">
+      <a href="https://buymeacoffee.com/aurynelle">buymeacoffee.com/aurynelle</a>
+      <span style="opacity:.3">&middot;</span>
+      <a href="https://jewelpsmith.github.io/aurynelle">jewelpsmith.github.io/aurynelle</a>
+    </div>
+
+    <!-- mobile jewel card -->
+    <div class="jcard jcard-mobile">
+      <div class="jt">Need deeper support?</div>
+      <div class="js">Get personal guidance from Jewel, the woman behind Elle.</div>
+      <div class="jbtns">
+        <button class="jb jb-primary" onclick="doSend('I want personal help from Jewel')">Talk to Jewel</button>
+        <button class="jb jb-secondary" onclick="doSend('What kind of sessions does Jewel offer?')">See options</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const BCOL=["#FF6B9D","#9B6BFF","#5AC8FA","#4CD964","#FF8C42"];
+const DEFAULT_CHIPS=["Tell me about your day","I need encouragement","Help me figure something out","Quiz me on something"];
+const MAX_MSGS=30;
+const WARN_AT=25;
+
+let history=[],loading=false,bIdx=0,msgCount=0;
+const thread=document.getElementById("thread"),say=document.getElementById("say"),
+  sendBtn=document.getElementById("sendBtn"),chipsEl=document.getElementById("chips"),
+  leadBar=document.getElementById("leadBar"),complete=document.getElementById("complete"),
+  limitMsg=document.getElementById("limitMsg"),composer=document.getElementById("composer");
+
+// confetti
+(function(){const c=["#FF6B9D","#9B6BFF","#5AC8FA","#4CD964","#FF8C42","#FFCC00","#FF2D78","#FFB6C1"];
+  for(let i=0;i<14;i++){const d=document.createElement("div");d.className="confetti";const s=5+Math.random()*20;
+    Object.assign(d.style,{width:s+"px",height:s+"px",left:Math.random()*100+"%",top:Math.random()*100+"%",
+      background:c[i%8],opacity:.05+Math.random()*.08,animationDelay:Math.random()*8+"s",
+      animationDuration:12+Math.random()*10+"s"});document.body.appendChild(d);}})();
+
+function renderChips(arr){
+  chipsEl.innerHTML="";
+  (arr||DEFAULT_CHIPS).forEach(t=>{
+    const b=document.createElement("button");
+    const isJewel=t.toLowerCase().includes("jewel");
+    b.className="chip"+(isJewel?" jewel":"");
+    b.textContent=t;b.onclick=()=>doSend(t);chipsEl.appendChild(b);});
+}
+
+function updateLeadBar(step){
+  if(step>0){leadBar.classList.add("show");}
+  for(let i=1;i<=3;i++){
+    const el=document.getElementById("ls"+i);
+    el.classList.remove("done","active");
+    if(i<step)el.classList.add("done");
+    else if(i===step)el.classList.add("active");
+  }
+}
+
+function showComplete(email){
+  complete.classList.add("show");
+  document.getElementById("completeMsg").textContent=
+    "Your request has been sent to Jewel. She'll reach out"+(email?" at "+email:"")+".";
+  leadBar.classList.remove("show");
+  chipsEl.innerHTML="";
+}
+
+function resetChat(){
+  complete.classList.remove("show");leadBar.classList.remove("show");
+  limitMsg.classList.remove("show");composer.style.display="flex";
+  renderChips(DEFAULT_CHIPS);
+}
+
+function addBubble(role,text){
+  const wrap=document.createElement("div");wrap.className="mw";
+  wrap.style.justifyContent=role==="you"?"flex-end":"flex-start";
+  const bub=document.createElement("div");bub.className="bub";
+  const ci=bIdx%BCOL.length;
+  if(role==="elle"){
+    bub.style.background=`linear-gradient(135deg,${BCOL[ci]}15,${BCOL[ci]}05)`;
+    bub.style.borderLeft=`2.5px solid ${BCOL[ci]}`;bub.style.borderRadius="3px 16px 16px 16px";
+    bub.style.boxShadow=`0 3px 16px -5px ${BCOL[ci]}28`;
+    const nm=document.createElement("div");nm.className="en";nm.textContent="Elle ✦";
+    nm.style.color=BCOL[ci];bub.appendChild(nm);
+  }else{
+    bub.style.background="linear-gradient(135deg,#FF6B9D10,#FF6B9D04)";
+    bub.style.borderRight="2.5px solid #FF6B9D";bub.style.borderRadius="16px 3px 16px 16px";
+    bub.style.boxShadow="0 3px 16px -5px #FF6B9D20";}
+  const tx=document.createElement("div");tx.style.whiteSpace="pre-wrap";tx.textContent=text;
+  bub.appendChild(tx);wrap.appendChild(bub);thread.appendChild(wrap);thread.scrollTop=thread.scrollHeight;}
+
+function showTyping(){const w=document.createElement("div");w.className="mw";w.id="tw";
+  w.style.justifyContent="flex-start";const b=document.createElement("div");b.className="bub";
+  b.style.background="linear-gradient(135deg,#FF6B9D15,#FF6B9D05)";
+  b.style.borderLeft="2.5px solid #FF6B9D";b.style.borderRadius="3px 16px 16px 16px";
+  const n=document.createElement("div");n.className="en";n.textContent="Elle ✦";n.style.color="#FF6B9D";
+  b.appendChild(n);const d=document.createElement("div");d.className="dt";
+  for(let i=0;i<3;i++){const s=document.createElement("span");s.style.background="#FF6B9D";
+    s.style.animationDelay=i*.2+"s";d.appendChild(s);}
+  b.appendChild(d);w.appendChild(b);thread.appendChild(w);thread.scrollTop=thread.scrollHeight;}
+function hideTyping(){const t=document.getElementById("tw");if(t)t.remove();}
+
+let lastEmail="";
+async function callAPI(text){
+  history.push({role:"user",content:text});
+  try{const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({messages:history})});
+    const d=await r.json();
+    const reply=d.content?.map(c=>c.text||"").join("")||"Something hiccupped, love. Try again? 💕";
+    history.push({role:"assistant",content:reply});
+
+    // handle metadata
+    if(d.chips&&d.chips.length>0) renderChips(d.chips);
+    else renderChips(DEFAULT_CHIPS);
+    if(d.leadProgress>0) updateLeadBar(d.leadProgress+1);
+    if(d.leadCaptured){
+      // try to extract email from the conversation
+      const emailMatch=text.match(/[\w.-]+@[\w.-]+\.\w+/);
+      if(emailMatch) lastEmail=emailMatch[0];
+      setTimeout(()=>showComplete(lastEmail),800);
+    }
+    return reply;
+  }catch{return "Ooh, something went sideways. One more try? ✨";}
+}
+
+async function doSend(text){
+  const v=(text||say.value).trim();if(!v||loading)return;say.value="";
+  if(msgCount>=MAX_MSGS){limitMsg.classList.add("show");composer.style.display="none";return;}
+  addBubble("you",v);loading=true;showTyping();msgCount++;
+  if(msgCount===WARN_AT) console.log("Approaching message limit");
+  const reply=await callAPI(v);hideTyping();bIdx++;addBubble("elle",reply);loading=false;say.focus();
+}
+
+sendBtn.addEventListener("click",()=>doSend());
+say.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();doSend();}});
+renderChips(DEFAULT_CHIPS);
+addBubble("elle","Hey gorgeous ✦ I'm Elle. Whatever you came here with, let's sort it out. Pick one of those cards up top, tap a quick option below, or just tell me what's on your mind. I'm here 💕");
+say.focus();
+</script>
+</body>
+</html>
