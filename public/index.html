@@ -8,10 +8,7 @@
   content="width=device-width, initial-scale=1, viewport-fit=cover"
 >
 
-<meta
-  name="theme-color"
-  content="#fff7fb"
->
+<meta name="theme-color" content="#fff7fb">
 
 <title>Ask Elle · AURYNELLE∞ IDEAS</title>
 
@@ -19,17 +16,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
-  href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@500;600;700&family=Figtree:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
   rel="stylesheet"
 >
 
 <style>
-
-/* =========================================================
-   ELLE V3
-   AURYNELLE∞ IDEAS
-   ========================================================= */
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -39,11 +30,12 @@
 :root {
   --pink: #ff5f97;
   --orange: #ff9653;
-  --gold: #e8b75f;
+  --gold: #d9b86c;
   --yellow: #ffd54f;
   --blue: #68caff;
   --green: #55da91;
   --purple: #9d74ff;
+  --plum: #39283f;
 
   --ink: #302936;
   --muted: #88818d;
@@ -57,16 +49,13 @@
   --page-b: #fffdf9;
   --page-c: #f7fbff;
 
-  --glow: rgba(255, 95, 151, .28);
-
-  --glass: rgba(255, 255, 255, .79);
-  --glass-strong: rgba(255, 255, 255, .92);
+  --glow: rgba(255,95,151,.28);
 
   --shadow:
-    0 26px 65px -47px rgba(32, 20, 44, .42);
+    0 26px 65px -47px rgba(32,20,44,.42);
 
   --shadow-small:
-    0 14px 32px -27px rgba(32, 20, 44, .35);
+    0 14px 32px -27px rgba(32,20,44,.35);
 }
 
 html {
@@ -75,7 +64,6 @@ html {
 
 body {
   min-height: 100dvh;
-
   overflow-x: hidden;
 
   font-family:
@@ -90,34 +78,19 @@ body {
   background:
     radial-gradient(
       circle at 7% 12%,
-      color-mix(
-        in srgb,
-        var(--mood-main) 10%,
-        transparent
-      ),
+      color-mix(in srgb, var(--mood-main) 10%, transparent),
       transparent 28%
     ),
-
     radial-gradient(
       circle at 91% 14%,
-      color-mix(
-        in srgb,
-        var(--mood-second) 11%,
-        transparent
-      ),
+      color-mix(in srgb, var(--mood-second) 11%, transparent),
       transparent 27%
     ),
-
     radial-gradient(
       circle at 50% 100%,
-      color-mix(
-        in srgb,
-        var(--mood-third) 8%,
-        transparent
-      ),
+      color-mix(in srgb, var(--mood-third) 8%, transparent),
       transparent 30%
     ),
-
     linear-gradient(
       145deg,
       var(--page-a),
@@ -125,10 +98,13 @@ body {
       var(--page-c)
     );
 
-  transition:
-    background .8s ease;
+  transition: background .8s ease;
 }
 
+body.modal-open,
+body.age-locked {
+  overflow: hidden;
+}
 
 /* =========================================================
    MOODS
@@ -206,43 +182,326 @@ body[data-mood="celebrate"] {
   --glow: rgba(255,79,158,.40);
 }
 
-
 /* =========================================================
-   AMBIENT BACKGROUND
+   AMBIENT
    ========================================================= */
 
 .ambient {
   position: fixed;
-
   border-radius: 999px;
-
   pointer-events: none;
-
   z-index: 0;
-
   opacity: .08;
-
-  animation:
-    ambientFloat
-    12s ease-in-out infinite;
+  animation: ambientFloat 12s ease-in-out infinite;
 }
 
 @keyframes ambientFloat {
-
   0%,
   100% {
-    transform:
-      translate(0, 0)
-      scale(1);
+    transform: translate(0,0) scale(1);
   }
 
   50% {
-    transform:
-      translate(8px, -22px)
-      scale(1.08);
+    transform: translate(8px,-22px) scale(1.08);
   }
 }
 
+/* =========================================================
+   AGE GATE
+   ========================================================= */
+
+.age-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    max(18px, env(safe-area-inset-top))
+    18px
+    max(18px, env(safe-area-inset-bottom));
+
+  background:
+    radial-gradient(
+      circle at 16% 16%,
+      rgba(255,95,151,.20),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 12%,
+      rgba(104,202,255,.22),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(217,184,108,.18),
+      transparent 35%
+    ),
+    rgba(255,249,252,.92);
+
+  backdrop-filter: blur(22px);
+}
+
+.age-gate.show {
+  display: flex;
+}
+
+.age-card {
+  position: relative;
+
+  width: min(560px,100%);
+
+  overflow: hidden;
+
+  padding: 30px;
+
+  border:
+    1px solid rgba(255,255,255,.95);
+
+  border-radius: 34px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.96),
+      rgba(255,251,254,.89)
+    );
+
+  box-shadow:
+    0 35px 90px -45px
+    rgba(50,30,55,.45);
+
+  text-align: center;
+}
+
+.age-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 8%;
+  right: 8%;
+
+  height: 4px;
+
+  border-radius:
+    0 0 99px 99px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--pink),
+      var(--blue),
+      var(--gold),
+      var(--purple)
+    );
+}
+
+.age-crest {
+  width: 64px;
+  height: 64px;
+
+  margin: 0 auto 12px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  color: white;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size: 28px;
+
+  background:
+    linear-gradient(
+      140deg,
+      var(--plum),
+      var(--pink)
+    );
+
+  box-shadow:
+    0 16px 30px -20px
+    rgba(57,40,63,.65);
+}
+
+.age-brand {
+  color: #9a909e;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: .20em;
+
+  text-transform: uppercase;
+}
+
+.age-title {
+  margin-top: 10px;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(31px,8vw,46px);
+
+  line-height: 1.05;
+
+  color: var(--plum);
+}
+
+.age-script {
+  margin-top: 7px;
+
+  color: var(--pink);
+
+  font-family:
+    "Caveat",
+    cursive;
+
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.age-copy {
+  max-width: 450px;
+
+  margin: 13px auto 0;
+
+  color: #7c7480;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.age-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+
+  margin-top: 22px;
+}
+
+.age-option {
+  min-height: 92px;
+
+  padding: 15px 12px;
+
+  border: 1px solid #eee6ed;
+  border-radius: 20px;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  background: white;
+
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease;
+}
+
+.age-option:hover {
+  transform: translateY(-3px);
+
+  border-color:
+    color-mix(
+      in srgb,
+      var(--pink) 30%,
+      white
+    );
+
+  box-shadow:
+    0 16px 28px -22px
+    rgba(50,30,55,.35);
+}
+
+.age-option-icon {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 24px;
+}
+
+.age-option strong {
+  display: block;
+
+  color: #4b424f;
+
+  font-size: 14px;
+}
+
+.age-option span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #aaa0ab;
+
+  font-size: 10px;
+}
+
+.age-under {
+  margin-top: 11px;
+
+  border: none;
+  background: none;
+
+  color: #aaa2ac;
+
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: 10px;
+
+  text-decoration: underline;
+}
+
+.age-privacy {
+  margin-top: 15px;
+
+  padding-top: 13px;
+
+  border-top:
+    1px solid #f1ecf1;
+
+  color: #aaa2ac;
+
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.under-message {
+  display: none;
+
+  margin-top: 18px;
+
+  padding: 14px;
+
+  border-radius: 15px;
+
+  color: #776d78;
+
+  background: #fff7ee;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.under-message.show {
+  display: block;
+}
 
 /* =========================================================
    MOBILE TOP BAR
@@ -252,7 +511,6 @@ body[data-mood="celebrate"] {
   display: none;
 
   position: sticky;
-
   top: 0;
 
   z-index: 100;
@@ -263,30 +521,25 @@ body[data-mood="celebrate"] {
     7px;
 
   background:
-    rgba(255,255,255,.79);
+    rgba(255,255,255,.82);
 
-  backdrop-filter:
-    blur(18px);
+  backdrop-filter: blur(18px);
 
   border-bottom:
-    1px solid
-    rgba(255,255,255,.8);
+    1px solid rgba(255,255,255,.85);
 }
 
 .mobile-brand {
   display: flex;
-
   align-items: center;
-
   gap: 7px;
 }
 
 .mobile-brand-dot {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
 
   display: grid;
-
   place-items: center;
 
   border-radius: 50%;
@@ -294,20 +547,19 @@ body[data-mood="celebrate"] {
   color: white;
 
   font-family:
-    "Bangers",
-    cursive;
+    "Playfair Display",
+    serif;
 
   background:
     linear-gradient(
       140deg,
-      var(--mood-main),
-      var(--mood-second)
+      var(--plum),
+      var(--mood-main)
     );
 }
 
 .mobile-brand-copy strong {
   display: block;
-
   font-size: 12px;
 }
 
@@ -325,41 +577,35 @@ body[data-mood="celebrate"] {
   margin-left: auto;
 
   display: flex;
-
   gap: 6px;
 }
 
 .top-icon {
-  width: 33px;
-  height: 33px;
+  width: 35px;
+  height: 35px;
 
   display: grid;
-
   place-items: center;
 
   border: none;
-
   border-radius: 50%;
 
   background:
-    rgba(255,255,255,.8);
+    rgba(255,255,255,.86);
 
   cursor: pointer;
 
   font-size: 14px;
 
-  box-shadow:
-    var(--shadow-small);
+  box-shadow: var(--shadow-small);
 }
 
-
 /* =========================================================
-   MAIN APP
+   APP
    ========================================================= */
 
 .app {
   position: relative;
-
   z-index: 2;
 
   width:
@@ -368,125 +614,102 @@ body[data-mood="celebrate"] {
       calc(100% - 28px)
     );
 
-  margin:
-    0 auto;
+  margin: 0 auto;
 
-  padding:
-    18px 0 30px;
+  padding: 18px 0 30px;
 
   display: grid;
 
   grid-template-columns:
     305px
-    minmax(0, 1fr);
+    minmax(0,1fr);
 
   gap: 22px;
 }
-
 
 /* =========================================================
    HERO
    ========================================================= */
 
 .hero-area {
-  grid-column:
-    1 / -1;
+  grid-column: 1 / -1;
 }
 
 .hero {
   position: relative;
-
   overflow: hidden;
 
-  padding:
-    23px 18px 21px;
+  padding: 24px 18px 22px;
 
   border:
-    1px solid
-    rgba(255,255,255,.84);
+    1px solid rgba(255,255,255,.88);
 
-  border-radius:
-    34px;
+  border-radius: 34px;
 
   background:
-
     radial-gradient(
-      circle at 12% 20%,
-      rgba(255,255,255,.75),
+      circle at 10% 15%,
+      rgba(255,255,255,.85),
       transparent 30%
     ),
-
     radial-gradient(
-      circle at 88% 15%,
+      circle at 90% 12%,
       color-mix(
         in srgb,
-        var(--mood-second) 11%,
+        var(--mood-second) 12%,
         transparent
       ),
       transparent 25%
     ),
-
-    radial-gradient(
-      circle at 50% 105%,
-      color-mix(
-        in srgb,
-        var(--mood-main) 9%,
-        transparent
-      ),
-      transparent 34%
-    ),
-
     linear-gradient(
       145deg,
-      rgba(255,255,255,.80),
-      rgba(255,255,255,.57)
+      rgba(255,255,255,.83),
+      rgba(255,255,255,.60)
     );
 
-  backdrop-filter:
-    blur(18px);
+  backdrop-filter: blur(20px);
 
-  box-shadow:
-    var(--shadow);
+  box-shadow: var(--shadow);
 }
 
+.hero::before,
 .hero::after {
   content: "";
 
   position: absolute;
 
-  inset: 0;
+  top: 16px;
+  bottom: 16px;
 
-  pointer-events: none;
+  width: 13px;
 
-  opacity: .7;
+  opacity: .65;
 
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      color-mix(
-        in srgb,
-        var(--mood-main) 7%,
-        transparent
-      ),
-      color-mix(
-        in srgb,
-        var(--mood-second) 8%,
-        transparent
-      ),
-      transparent
-    );
+  border-top:
+    1px solid var(--gold);
+
+  border-bottom:
+    1px solid var(--gold);
+}
+
+.hero::before {
+  left: 15px;
+  border-left:
+    1px solid var(--gold);
+}
+
+.hero::after {
+  right: 15px;
+  border-right:
+    1px solid var(--gold);
 }
 
 .hero-topline {
   position: relative;
-
   z-index: 2;
 
   display: flex;
-
   justify-content: center;
-
   align-items: center;
 
   gap: 10px;
@@ -496,7 +719,6 @@ body[data-mood="celebrate"] {
   color: #9b95a0;
 
   font-size: 10px;
-
   font-weight: 800;
 
   letter-spacing: .22em;
@@ -505,83 +727,49 @@ body[data-mood="celebrate"] {
 }
 
 .hero-topline-star {
-  color:
-    var(--mood-second);
+  color: var(--gold);
 }
 
 .hero-ribbon {
   position: relative;
-
   z-index: 2;
 
   width: fit-content;
-
   max-width: 100%;
 
-  margin:
-    0 auto
-    15px;
+  margin: 0 auto 14px;
 
-  padding:
-    8px 16px;
+  padding: 7px 16px;
 
   border:
-    1px solid
-    rgba(255,255,255,.92);
+    1px solid rgba(217,184,108,.30);
 
-  border-radius:
-    999px;
+  border-radius: 999px;
+
+  color: #756c76;
 
   text-align: center;
 
-  color: #6f6874;
+  font-family:
+    "Playfair Display",
+    serif;
 
   font-size: 11px;
 
-  font-weight: 700;
-
-  letter-spacing: .03em;
-
   background:
-
-    linear-gradient(
-      90deg,
-      color-mix(
-        in srgb,
-        var(--mood-main) 10%,
-        white
-      ),
-      color-mix(
-        in srgb,
-        var(--mood-second) 9%,
-        white
-      ),
-      color-mix(
-        in srgb,
-        var(--mood-third) 10%,
-        white
-      )
-    );
-
-  box-shadow:
-    0 10px 22px
-    -18px rgba(0,0,0,.24);
+    rgba(255,253,248,.76);
 }
 
 .hero-title-grid {
   position: relative;
-
   z-index: 2;
 
   display: grid;
 
   grid-template-columns:
-    54px
-    1fr
-    54px;
+    52px 1fr 52px;
 
   align-items: center;
-
   gap: 8px;
 }
 
@@ -592,26 +780,27 @@ body[data-mood="celebrate"] {
   margin: 0 auto;
 
   display: grid;
-
   place-items: center;
+
+  border:
+    1px solid rgba(217,184,108,.5);
 
   border-radius: 50%;
 
-  color: white;
+  color: var(--gold);
 
   font-size: 17px;
 
   background:
     linear-gradient(
-      140deg,
-      var(--mood-main),
-      var(--mood-second)
+      145deg,
+      var(--plum),
+      #4c3554
     );
 
   box-shadow:
-    0 12px 24px
-    -17px
-    var(--glow);
+    0 12px 24px -17px
+    rgba(57,40,63,.8);
 }
 
 .hero-center {
@@ -623,9 +812,11 @@ body[data-mood="celebrate"] {
 
   color: #928b98;
 
-  font-size: 12px;
+  font-family:
+    "Playfair Display",
+    serif;
 
-  font-weight: 700;
+  font-size: 11px;
 
   letter-spacing: .08em;
 
@@ -659,12 +850,10 @@ body[data-mood="celebrate"] {
     );
 
   -webkit-background-clip: text;
-
   -webkit-text-fill-color: transparent;
 
   -webkit-text-stroke:
-    1.8px
-    #342d38;
+    1.8px #342d38;
 
   filter:
     drop-shadow(
@@ -676,46 +865,38 @@ body[data-mood="celebrate"] {
 .hero-script {
   margin-top: 5px;
 
-  color:
-    var(--mood-main);
+  color: var(--mood-main);
 
   font-family:
     "Caveat",
     cursive;
 
   font-size: 24px;
-
   font-weight: 700;
 }
 
 .hero-copy {
   position: relative;
-
   z-index: 2;
 
   max-width: 760px;
 
-  margin:
-    14px auto 0;
+  margin: 14px auto 0;
 
   color: #7d7681;
 
   text-align: center;
 
-  font-size: 17px;
-
+  font-size: 16px;
   line-height: 1.5;
 }
 
 .hero-badges {
   position: relative;
-
   z-index: 2;
 
   display: flex;
-
   flex-wrap: wrap;
-
   justify-content: center;
 
   gap: 8px;
@@ -724,92 +905,76 @@ body[data-mood="celebrate"] {
 }
 
 .hero-badge {
-  padding:
-    8px 12px;
+  padding: 8px 12px;
 
-  border-radius:
-    999px;
+  border:
+    1px solid rgba(255,255,255,.92);
+
+  border-radius: 999px;
 
   color: #746e79;
 
-  font-size: 10.5px;
+  background:
+    rgba(255,255,255,.77);
 
+  font-size: 10.5px;
   font-weight: 700;
 
-  background:
-    rgba(255,255,255,.76);
-
-  border:
-    1px solid
-    rgba(255,255,255,.9);
-
-  box-shadow:
-    var(--shadow-small);
+  box-shadow: var(--shadow-small);
 }
 
 .vibe-line {
   position: relative;
-
   z-index: 2;
 
   display: flex;
-
+  flex-wrap: wrap;
   justify-content: center;
-
   align-items: center;
 
   gap: 8px;
 
-  margin-top: 17px;
+  margin-top: 16px;
 }
 
 .vibe-label {
   color: #9b94a0;
 
-  font-size: 11px;
-
+  font-size: 10px;
   font-weight: 700;
 }
 
-.vibe-pill {
-  padding:
-    9px 16px;
+.vibe-pill,
+.age-mode-pill {
+  padding: 8px 13px;
 
-  border-radius:
-    999px;
+  border-radius: 999px;
 
-  color:
-    var(--mood-main);
-
-  font-size: 13px;
-
+  font-size: 11px;
   font-weight: 800;
-
-  background:
-    linear-gradient(
-      90deg,
-      color-mix(
-        in srgb,
-        var(--mood-main) 10%,
-        white
-      ),
-      color-mix(
-        in srgb,
-        var(--mood-second) 8%,
-        white
-      )
-    );
-
-  border:
-    1px solid
-    rgba(255,255,255,.92);
-
-  box-shadow:
-    0 12px 24px
-    -20px
-    var(--glow);
 }
 
+.vibe-pill {
+  color: var(--mood-main);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--mood-main) 8%,
+      white
+    );
+}
+
+.age-mode-pill {
+  border:
+    1px solid rgba(217,184,108,.28);
+
+  color: #735e39;
+
+  background: #fffaf0;
+
+  cursor: pointer;
+}
 
 /* =========================================================
    SIDEBAR
@@ -817,21 +982,18 @@ body[data-mood="celebrate"] {
 
 .sidebar {
   position: sticky;
-
   top: 18px;
 
   align-self: start;
 
   display: flex;
-
   flex-direction: column;
 
   gap: 13px;
 }
 
-
 /* =========================================================
-   ELLE PORTRAIT
+   PORTRAIT
    ========================================================= */
 
 .portrait-card {
@@ -856,20 +1018,14 @@ body[data-mood="celebrate"] {
       ),
       color-mix(
         in srgb,
-        var(--mood-third) 66%,
+        var(--gold) 70%,
         white
       )
     );
 
   box-shadow:
-
-    0 24px 52px
-    -28px
-    var(--glow),
-
-    0 12px 26px
-    -22px
-    rgba(0,0,0,.35);
+    0 24px 52px -28px var(--glow),
+    0 12px 26px -22px rgba(0,0,0,.35);
 
   animation:
     portraitFloat
@@ -877,21 +1033,17 @@ body[data-mood="celebrate"] {
 }
 
 @keyframes portraitFloat {
-
   0%,
   100% {
-    transform:
-      translateY(0);
+    transform: translateY(0);
   }
 
   50% {
-    transform:
-      translateY(-4px);
+    transform: translateY(-4px);
   }
 }
 
 .portrait-card.talking {
-
   animation:
     portraitTalk
     .62s ease-in-out
@@ -899,7 +1051,6 @@ body[data-mood="celebrate"] {
 }
 
 @keyframes portraitTalk {
-
   from {
     transform:
       translateY(-2px)
@@ -916,14 +1067,10 @@ body[data-mood="celebrate"] {
 }
 
 .portrait-card.react {
-
-  animation:
-    portraitReaction
-    .62s ease;
+  animation: portraitReaction .62s ease;
 }
 
 @keyframes portraitReaction {
-
   0% {
     transform: scale(1);
   }
@@ -941,14 +1088,12 @@ body[data-mood="celebrate"] {
   }
 
   100% {
-    transform:
-      scale(1);
+    transform: scale(1);
   }
 }
 
 .portrait-shell {
   position: relative;
-
   overflow: hidden;
 
   border-radius: 24px;
@@ -962,7 +1107,6 @@ body[data-mood="celebrate"] {
   content: "";
 
   position: absolute;
-
   inset: 0;
 
   z-index: 2;
@@ -972,7 +1116,7 @@ body[data-mood="celebrate"] {
   background:
     linear-gradient(
       to top,
-      rgba(24,12,32,.42),
+      rgba(24,12,32,.44),
       transparent 40%
     );
 }
@@ -981,25 +1125,19 @@ body[data-mood="celebrate"] {
   display: block;
 
   width: 100%;
-
   height: auto;
-
-  animation:
-    imageIdle
-    5.5s ease-in-out infinite;
 
   transition:
     opacity .28s ease,
     transform .3s ease,
     filter .4s ease;
-}
 
-#ellePortrait.switching {
-  opacity: .3;
+  animation:
+    imageIdle
+    5.5s ease-in-out infinite;
 }
 
 @keyframes imageIdle {
-
   0%,
   100% {
     transform:
@@ -1014,20 +1152,19 @@ body[data-mood="celebrate"] {
   }
 }
 
-.portrait-card.talking #ellePortrait {
+#ellePortrait.switching {
+  opacity: .3;
+}
 
+.portrait-card.talking
+#ellePortrait {
   animation:
     imageTalk
     .58s ease-in-out
     infinite alternate;
-
-  filter:
-    saturate(1.06)
-    brightness(1.02);
 }
 
 @keyframes imageTalk {
-
   from {
     transform:
       scale(1.01)
@@ -1045,37 +1182,28 @@ body[data-mood="celebrate"] {
   position: absolute;
 
   top: 12px;
-
   left: 12px;
 
   z-index: 5;
 
   display: flex;
-
   align-items: center;
 
   gap: 7px;
 
-  padding:
-    7px 10px;
+  padding: 7px 10px;
 
-  border-radius:
-    999px;
+  border-radius: 999px;
 
   color: #403947;
 
-  font-size: 10px;
-
-  font-weight: 800;
-
   background:
-    rgba(255,255,255,.87);
+    rgba(255,255,255,.88);
 
-  backdrop-filter:
-    blur(12px);
+  backdrop-filter: blur(12px);
 
-  box-shadow:
-    var(--shadow-small);
+  font-size: 10px;
+  font-weight: 800;
 }
 
 .status-dot {
@@ -1089,60 +1217,12 @@ body[data-mood="celebrate"] {
   box-shadow:
     0 0 0 4px
     rgba(76,217,100,.13);
-
-  animation:
-    dotPulse
-    2s ease-in-out infinite;
-}
-
-@keyframes dotPulse {
-
-  0%,
-  100% {
-    transform: scale(.9);
-  }
-
-  50% {
-    transform: scale(1.2);
-  }
-}
-
-.portrait-card.talking
-.status-dot {
-
-  background:
-    var(--mood-main);
-
-  box-shadow:
-    0 0 0 4px
-    color-mix(
-      in srgb,
-      var(--mood-main) 15%,
-      transparent
-    );
-
-  animation:
-    fastDot
-    .55s ease-in-out
-    infinite alternate;
-}
-
-@keyframes fastDot {
-
-  from {
-    transform: scale(.82);
-  }
-
-  to {
-    transform: scale(1.3);
-  }
 }
 
 .nameplate {
   position: absolute;
 
   left: 16px;
-
   bottom: 14px;
 
   z-index: 5;
@@ -1155,7 +1235,6 @@ body[data-mood="celebrate"] {
 }
 
 .nameplate-name {
-
   font-family:
     "Bangers",
     cursive;
@@ -1165,7 +1244,6 @@ body[data-mood="celebrate"] {
   letter-spacing: .03em;
 
   background:
-
     linear-gradient(
       90deg,
       #ff6b9d,
@@ -1175,30 +1253,21 @@ body[data-mood="celebrate"] {
       #af85ff
     );
 
-  -webkit-background-clip:
-    text;
-
-  -webkit-text-fill-color:
-    transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
   -webkit-text-stroke:
-    1px
-    rgba(255,255,255,.4);
+    1px rgba(255,255,255,.4);
 }
 
 .nameplate-brand {
-
   font-size: 9px;
-
   letter-spacing: .14em;
-
   opacity: .9;
 }
 
 .reaction-layer {
-
   position: absolute;
-
   inset: 0;
 
   z-index: 10;
@@ -1211,9 +1280,7 @@ body[data-mood="celebrate"] {
 }
 
 .reaction-emoji {
-
   position: absolute;
-
   bottom: 25%;
 
   font-size: 28px;
@@ -1225,7 +1292,6 @@ body[data-mood="celebrate"] {
 }
 
 @keyframes emojiRise {
-
   0% {
     opacity: 0;
 
@@ -1253,82 +1319,54 @@ body[data-mood="celebrate"] {
   }
 }
 
-
 /* =========================================================
-   SIDEBAR ACTIONS
+   SIDE BUTTONS
    ========================================================= */
 
 .sidebar-actions {
-
   display: flex;
-
   gap: 7px;
 }
 
 .side-button {
-
   flex: 1;
 
   border:
-    1px solid
-    rgba(255,255,255,.84);
+    1px solid rgba(255,255,255,.84);
 
-  border-radius:
-    14px;
+  border-radius: 14px;
 
-  padding:
-    9px 8px;
+  padding: 9px 8px;
 
   background:
-    rgba(255,255,255,.73);
-
-  backdrop-filter:
-    blur(12px);
+    rgba(255,255,255,.77);
 
   color: #6f6874;
 
   font-family: inherit;
 
   font-size: 10.5px;
-
   font-weight: 800;
 
   cursor: pointer;
 
-  box-shadow:
-    var(--shadow-small);
-
-  transition:
-    transform .17s ease,
-    background .17s ease;
+  box-shadow: var(--shadow-small);
 }
-
-.side-button:hover {
-
-  transform:
-    translateY(-2px);
-
-  background:
-    white;
-}
-
-.side-button:active {
-
-  transform:
-    scale(.97);
-}
-
 
 /* =========================================================
-   LIVE ELLE CARD
+   LIVE ELLE
    ========================================================= */
 
-.live-card {
-
+.live-card,
+.minor-card {
   padding: 18px;
 
   border-radius: 22px;
 
+  box-shadow: var(--shadow-small);
+}
+
+.live-card {
   border:
     1px solid
     color-mix(
@@ -1338,30 +1376,45 @@ body[data-mood="celebrate"] {
     );
 
   background:
-
     linear-gradient(
       145deg,
-      rgba(255,255,255,.93),
+      rgba(255,255,255,.94),
       color-mix(
         in srgb,
         var(--mood-second) 5%,
         white
       )
     );
+}
 
-  box-shadow:
-    var(--shadow-small);
+.minor-card {
+  display: none;
+
+  border:
+    1px solid rgba(217,184,108,.28);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.94),
+      #fffaf1
+    );
+}
+
+.minor-card.show {
+  display: block;
+}
+
+.live-card.hidden {
+  display: none;
 }
 
 .live-eyebrow {
-
   margin-bottom: 5px;
 
-  color:
-    var(--mood-main);
+  color: var(--mood-main);
 
   font-size: 9px;
-
   font-weight: 800;
 
   letter-spacing: .14em;
@@ -1369,30 +1422,27 @@ body[data-mood="celebrate"] {
   text-transform: uppercase;
 }
 
+.minor-card .live-eyebrow {
+  color: #a47e35;
+}
+
 .live-title {
-
   font-size: 15px;
-
   font-weight: 800;
-
   line-height: 1.3;
 }
 
 .live-copy {
-
   margin-top: 7px;
 
   color: #817a84;
 
   font-size: 12px;
-
   line-height: 1.55;
 }
 
 .live-tags {
-
   display: flex;
-
   flex-wrap: wrap;
 
   gap: 5px;
@@ -1401,12 +1451,9 @@ body[data-mood="celebrate"] {
 }
 
 .live-tags span {
+  padding: 5px 7px;
 
-  padding:
-    5px 7px;
-
-  border-radius:
-    999px;
+  border-radius: 999px;
 
   background:
     color-mix(
@@ -1421,47 +1468,30 @@ body[data-mood="celebrate"] {
 }
 
 .live-buttons {
-
   display: grid;
-
   gap: 7px;
 
   margin-top: 13px;
 }
 
 .live-button {
-
   border: none;
-
   border-radius: 12px;
 
-  padding:
-    9px 11px;
+  padding: 9px 11px;
 
   cursor: pointer;
 
   font-family: inherit;
 
   font-size: 11px;
-
   font-weight: 800;
-
-  transition:
-    transform .17s ease;
-}
-
-.live-button:active {
-
-  transform:
-    scale(.975);
 }
 
 .live-button.primary {
-
   color: white;
 
   background:
-
     linear-gradient(
       90deg,
       var(--mood-main),
@@ -1470,9 +1500,7 @@ body[data-mood="celebrate"] {
 }
 
 .live-button.secondary {
-
-  color:
-    var(--mood-second);
+  color: var(--mood-second);
 
   border:
     1px solid
@@ -1490,28 +1518,24 @@ body[data-mood="celebrate"] {
     );
 }
 
-
 /* =========================================================
-   ELLE RADIO
+   RADIO
    ========================================================= */
 
 .radio-card {
-
   overflow: hidden;
 
   padding: 14px;
 
+  border:
+    1px solid rgba(255,255,255,.88);
+
   border-radius: 19px;
 
-  border:
-    1px solid
-    rgba(255,255,255,.88);
-
   background:
-
     linear-gradient(
       145deg,
-      rgba(255,255,255,.9),
+      rgba(255,255,255,.91),
       color-mix(
         in srgb,
         var(--mood-main) 5%,
@@ -1519,26 +1543,21 @@ body[data-mood="celebrate"] {
       )
     );
 
-  box-shadow:
-    var(--shadow-small);
+  box-shadow: var(--shadow-small);
 }
 
 .radio-head {
-
   display: flex;
-
   align-items: center;
 
   gap: 8px;
 }
 
 .radio-icon {
-
   width: 35px;
   height: 35px;
 
   display: grid;
-
   place-items: center;
 
   flex-shrink: 0;
@@ -1548,28 +1567,23 @@ body[data-mood="celebrate"] {
   color: white;
 
   background:
-
     linear-gradient(
       140deg,
-      var(--mood-main),
-      var(--mood-second)
+      var(--plum),
+      var(--mood-main)
     );
 }
 
 .radio-copy {
-
   min-width: 0;
 }
 
 .radio-title {
-
   font-size: 11px;
-
   font-weight: 800;
 }
 
 .radio-now {
-
   overflow: hidden;
 
   margin-top: 1px;
@@ -1579,18 +1593,14 @@ body[data-mood="celebrate"] {
   font-size: 9.5px;
 
   white-space: nowrap;
-
   text-overflow: ellipsis;
 }
 
 .radio-controls {
-
   display: grid;
 
   grid-template-columns:
-    34px
-    1fr
-    34px;
+    34px 1fr 34px;
 
   gap: 6px;
 
@@ -1600,33 +1610,25 @@ body[data-mood="celebrate"] {
 }
 
 .radio-small {
-
   width: 34px;
   height: 34px;
 
   border: none;
-
   border-radius: 50%;
 
   cursor: pointer;
 
-  background:
-    rgba(255,255,255,.85);
+  background: white;
 
   color: #6c6470;
 
-  font-size: 13px;
-
-  box-shadow:
-    var(--shadow-small);
+  box-shadow: var(--shadow-small);
 }
 
 .radio-play {
-
   height: 35px;
 
   border: none;
-
   border-radius: 999px;
 
   cursor: pointer;
@@ -1636,11 +1638,9 @@ body[data-mood="celebrate"] {
   font-family: inherit;
 
   font-size: 10px;
-
   font-weight: 800;
 
   background:
-
     linear-gradient(
       90deg,
       var(--mood-main),
@@ -1649,9 +1649,7 @@ body[data-mood="celebrate"] {
 }
 
 .radio-volume {
-
   display: flex;
-
   align-items: center;
 
   gap: 7px;
@@ -1660,61 +1658,48 @@ body[data-mood="celebrate"] {
 }
 
 .radio-volume span {
-
   color: #aaa2ac;
-
   font-size: 9px;
 }
 
 #radioVolume {
-
   width: 100%;
-
-  accent-color:
-    var(--mood-main);
+  accent-color: var(--mood-main);
 }
-
 
 /* =========================================================
    MAIN PANEL
    ========================================================= */
 
 .main-panel {
-
   min-width: 0;
 
   display: flex;
-
   flex-direction: column;
 
   gap: 11px;
 }
-
 
 /* =========================================================
    PATHS
    ========================================================= */
 
 .paths {
-
   display: grid;
 
   grid-template-columns:
-    repeat(4, 1fr);
+    repeat(4,1fr);
 
   gap: 9px;
 }
 
 .path-card {
-
   position: relative;
-
   overflow: hidden;
 
   min-height: 95px;
 
-  padding:
-    13px 9px;
+  padding: 13px 9px;
 
   border:
     1px solid
@@ -1731,101 +1716,62 @@ body[data-mood="celebrate"] {
   color: #4d4751;
 
   background:
-    rgba(255,255,255,.79);
-
-  backdrop-filter:
-    blur(12px);
+    rgba(255,255,255,.80);
 
   text-align: center;
 
   box-shadow:
-    0 11px 26px
-    -24px
+    0 11px 26px -24px
     var(--path-color);
 
   transition:
     transform .2s ease,
-    background .2s ease,
-    box-shadow .2s ease;
-}
-
-.path-card::before {
-
-  content: "";
-
-  position: absolute;
-
-  width: 78px;
-  height: 78px;
-
-  top: -39px;
-  right: -32px;
-
-  border-radius: 50%;
-
-  background:
-    var(--path-color);
-
-  opacity: .08;
-
-  transition:
-    transform .3s ease,
-    opacity .3s ease;
+    background .2s ease;
 }
 
 .path-card:hover {
-
-  transform:
-    translateY(-4px)
-    rotate(-.3deg);
-
+  transform: translateY(-4px);
   background: white;
-
-  box-shadow:
-    0 16px 30px
-    -21px
-    var(--path-color);
 }
 
-.path-card:hover::before {
+.path-card.locked {
+  cursor: default;
+}
 
-  transform:
-    scale(1.45);
+.path-card.locked::after {
+  content: "18+";
 
-  opacity: .12;
+  position: absolute;
+
+  top: 7px;
+  right: 7px;
+
+  padding: 3px 5px;
+
+  border-radius: 999px;
+
+  color: #8e7040;
+
+  background: #fff5df;
+
+  font-size: 7px;
+  font-weight: 800;
 }
 
 .path-icon {
-
-  position: relative;
-
-  z-index: 2;
-
   font-size: 24px;
 }
 
 .path-title {
-
-  position: relative;
-
-  z-index: 2;
-
   margin-top: 7px;
 
-  color:
-    var(--path-color);
+  color: var(--path-color);
 
   font-size: 11px;
-
   font-weight: 800;
 }
 
 .path-sub {
-
-  position: relative;
-
-  z-index: 2;
-
   margin-top: 3px;
 
   color: #a19aa4;
@@ -1833,43 +1779,35 @@ body[data-mood="celebrate"] {
   font-size: 9px;
 }
 
-
 /* =========================================================
    CHAT
    ========================================================= */
 
 .chat-card {
-
   position: relative;
-
   overflow: hidden;
 
   min-height: 635px;
 
   display: flex;
-
   flex-direction: column;
 
   padding: 15px;
 
   border:
-    1px solid
-    rgba(255,255,255,.84);
+    1px solid rgba(255,255,255,.84);
 
   border-radius: 28px;
 
   background:
-    rgba(255,255,255,.79);
+    rgba(255,255,255,.80);
 
-  backdrop-filter:
-    blur(20px);
+  backdrop-filter: blur(20px);
 
-  box-shadow:
-    var(--shadow);
+  box-shadow: var(--shadow);
 }
 
 .chat-card::before {
-
   content: "";
 
   position: absolute;
@@ -1884,63 +1822,43 @@ body[data-mood="celebrate"] {
     0 0 999px 999px;
 
   background:
-
     linear-gradient(
       90deg,
       transparent,
       var(--mood-main),
       var(--mood-second),
-      var(--mood-third),
+      var(--gold),
       transparent
     );
 }
 
 .thread {
-
   flex: 1;
-
   min-height: 0;
 
   overflow-y: auto;
 
   display: flex;
-
   flex-direction: column;
 
   gap: 11px;
 
-  padding:
-    7px 4px
-    12px;
+  padding: 7px 4px 12px;
 
   scrollbar-width: thin;
-
-  scrollbar-color:
-    #e6e1e7
-    transparent;
 }
 
 .message-row {
-
   width: 100%;
-
   display: flex;
 
   animation:
     bubbleIn
-    .36s
-    cubic-bezier(
-      .2,
-      .8,
-      .2,
-      1
-    );
+    .36s cubic-bezier(.2,.8,.2,1);
 }
 
 @keyframes bubbleIn {
-
   from {
-
     opacity: 0;
 
     transform:
@@ -1949,7 +1867,6 @@ body[data-mood="celebrate"] {
   }
 
   to {
-
     opacity: 1;
 
     transform:
@@ -1959,35 +1876,25 @@ body[data-mood="celebrate"] {
 }
 
 .bubble {
-
   max-width:
-    min(
-      88%,
-      690px
-    );
+    min(88%,690px);
 
-  padding:
-    11px 14px;
+  padding: 11px 14px;
 
   font-size: 13.5px;
-
   line-height: 1.58;
 
-  white-space:
-    pre-wrap;
+  white-space: pre-wrap;
 }
 
 .bubble-elle {
-
   border-left:
-    3px solid
-    var(--bubble-color);
+    3px solid var(--bubble-color);
 
   border-radius:
     8px 18px 18px 18px;
 
   background:
-
     linear-gradient(
       140deg,
       color-mix(
@@ -1995,26 +1902,18 @@ body[data-mood="celebrate"] {
         var(--bubble-color) 8%,
         white
       ),
-      rgba(255,255,255,.88)
+      rgba(255,255,255,.89)
     );
-
-  box-shadow:
-    0 10px 24px
-    -22px
-    var(--bubble-color);
 }
 
 .bubble-user {
-
   border-right:
-    3px solid
-    var(--mood-main);
+    3px solid var(--mood-main);
 
   border-radius:
     18px 8px 18px 18px;
 
   background:
-
     linear-gradient(
       135deg,
       color-mix(
@@ -2022,24 +1921,16 @@ body[data-mood="celebrate"] {
         var(--mood-main) 8%,
         white
       ),
-      rgba(255,255,255,.88)
+      rgba(255,255,255,.89)
     );
-
-  box-shadow:
-    0 10px 24px
-    -22px
-    var(--mood-main);
 }
 
 .elle-label {
-
   margin-bottom: 3px;
 
-  color:
-    var(--bubble-color);
+  color: var(--bubble-color);
 
   font-size: 9px;
-
   font-weight: 800;
 
   letter-spacing: .08em;
@@ -2048,25 +1939,21 @@ body[data-mood="celebrate"] {
 }
 
 .typing {
-
   height: 20px;
 
   display: flex;
-
   align-items: center;
 
   gap: 5px;
 }
 
 .typing span {
-
   width: 6px;
   height: 6px;
 
   border-radius: 50%;
 
-  background:
-    var(--mood-main);
+  background: var(--mood-main);
 
   animation:
     typingDot
@@ -2082,39 +1969,29 @@ body[data-mood="celebrate"] {
 }
 
 @keyframes typingDot {
-
   0%,
   65%,
   100% {
-
     opacity: .25;
-
-    transform:
-      translateY(0);
+    transform: translateY(0);
   }
 
   30% {
-
     opacity: 1;
-
-    transform:
-      translateY(-5px);
+    transform: translateY(-5px);
   }
 }
 
-
 /* =========================================================
-   LEAD FLOW
+   LEADS
    ========================================================= */
 
 .lead-progress {
-
   display: none;
 
   margin-top: 8px;
 
-  padding:
-    12px 14px;
+  padding: 12px 14px;
 
   border-radius: 15px;
 
@@ -2139,14 +2016,11 @@ body[data-mood="celebrate"] {
 }
 
 .lead-title {
-
   margin-bottom: 9px;
 
-  color:
-    var(--mood-second);
+  color: var(--mood-second);
 
   font-size: 10px;
-
   font-weight: 800;
 
   letter-spacing: .08em;
@@ -2155,9 +2029,7 @@ body[data-mood="celebrate"] {
 }
 
 .lead-steps {
-
   display: flex;
-
   align-items: center;
 
   gap: 6px;
@@ -2166,9 +2038,7 @@ body[data-mood="celebrate"] {
 }
 
 .lead-step {
-
   display: flex;
-
   align-items: center;
 
   gap: 4px;
@@ -2178,31 +2048,23 @@ body[data-mood="celebrate"] {
   color: #bbb5bd;
 
   font-size: 10px;
-
   font-weight: 600;
 }
 
 .lead-step.active {
-
-  color:
-    var(--mood-second);
-
+  color: var(--mood-second);
   font-weight: 800;
 }
 
 .lead-step.done {
-
-  color:
-    #43c95f;
+  color: #43c95f;
 }
 
 .lead-dot {
-
   width: 20px;
   height: 20px;
 
   display: grid;
-
   place-items: center;
 
   border:
@@ -2215,198 +2077,107 @@ body[data-mood="celebrate"] {
 
 .lead-step.active
 .lead-dot {
-
-  border-color:
-    var(--mood-second);
+  border-color: var(--mood-second);
 }
 
 .lead-step.done
 .lead-dot {
-
   color: white;
-
-  border-color:
-    #4cd964;
-
-  background:
-    #4cd964;
+  border-color: #4cd964;
+  background: #4cd964;
 }
 
 .lead-line {
-
   width: 18px;
   height: 2px;
 
   flex-shrink: 0;
 
-  border-radius:
-    99px;
+  border-radius: 99px;
 
-  background:
-    #ebe7ec;
+  background: #ebe7ec;
 }
 
 .lead-error {
-
   display: none;
 
   margin-top: 8px;
 
-  padding:
-    12px 14px;
+  padding: 12px 14px;
 
   border:
-    1px solid
-    rgba(255,145,70,.25);
+    1px solid rgba(255,145,70,.25);
 
   border-radius: 14px;
 
-  background:
-    #fff9f3;
+  background: #fff9f3;
 
   color: #786b62;
 
   font-size: 11px;
-
   line-height: 1.5;
 }
 
 .lead-error.show {
-
   display: block;
 }
 
 .complete {
-
   display: none;
 
   margin-top: 9px;
 
-  padding:
-    22px 18px;
+  padding: 22px 18px;
 
   border:
-    1px solid
-    rgba(76,217,100,.3);
+    1px solid rgba(76,217,100,.3);
 
   border-radius: 20px;
 
   text-align: center;
 
   background:
-
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(255,211,53,.12),
-      transparent 42%
-    ),
-
     linear-gradient(
       145deg,
       rgba(255,255,255,.96),
       rgba(251,255,249,.96)
     );
-
-  animation:
-    successPop
-    .55s
-    cubic-bezier(
-      .2,
-      .8,
-      .2,
-      1
-    );
 }
 
 .complete.show {
-
   display: block;
 }
 
-@keyframes successPop {
-
-  from {
-
-    opacity: 0;
-
-    transform:
-      translateY(15px)
-      scale(.97);
-  }
-
-  to {
-
-    opacity: 1;
-
-    transform:
-      translateY(0)
-      scale(1);
-  }
-}
-
 .complete-icon {
-
   font-size: 38px;
-
-  animation:
-    completeHeart
-    1.1s ease-in-out
-    infinite alternate;
-}
-
-@keyframes completeHeart {
-
-  from {
-
-    transform:
-      scale(.94)
-      rotate(-2deg);
-  }
-
-  to {
-
-    transform:
-      scale(1.08)
-      rotate(2deg);
-  }
 }
 
 .complete-title {
-
-  margin-top: 2px;
-
-  color:
-    #46ca61;
+  color: #46ca61;
 
   font-family:
     "Caveat",
     cursive;
 
   font-size: 32px;
-
   font-weight: 700;
 }
 
 .complete-copy {
-
   max-width: 520px;
 
-  margin:
-    5px auto 0;
+  margin: 5px auto 0;
 
   color: #87808a;
 
   font-size: 12px;
-
   line-height: 1.5;
 }
 
 .complete-remark {
-
   margin-top: 8px;
 
-  color:
-    var(--mood-main);
+  color: var(--mood-main);
 
   font-family:
     "Caveat",
@@ -2416,9 +2187,7 @@ body[data-mood="celebrate"] {
 }
 
 .complete-actions {
-
   display: flex;
-
   justify-content: center;
 
   gap: 8px;
@@ -2427,29 +2196,23 @@ body[data-mood="celebrate"] {
 }
 
 .complete-button {
-
   border: none;
-
   border-radius: 11px;
 
-  padding:
-    9px 14px;
+  padding: 9px 14px;
 
   cursor: pointer;
 
   font-family: inherit;
 
   font-size: 11px;
-
   font-weight: 800;
 }
 
 .complete-button.primary {
-
   color: white;
 
   background:
-
     linear-gradient(
       90deg,
       var(--mood-main),
@@ -2458,17 +2221,7 @@ body[data-mood="celebrate"] {
 }
 
 .complete-button.secondary {
-
-  color:
-    var(--mood-second);
-
-  border:
-    1px solid
-    color-mix(
-      in srgb,
-      var(--mood-second) 20%,
-      white
-    );
+  color: var(--mood-second);
 
   background:
     color-mix(
@@ -2478,17 +2231,14 @@ body[data-mood="celebrate"] {
     );
 }
 
-
 /* =========================================================
    CHIPS
    ========================================================= */
 
 .chips {
-
   min-height: 35px;
 
   display: flex;
-
   flex-wrap: wrap;
 
   gap: 7px;
@@ -2497,11 +2247,9 @@ body[data-mood="celebrate"] {
 }
 
 .chip {
-
   flex-shrink: 0;
 
-  padding:
-    7px 12px;
+  padding: 7px 12px;
 
   border:
     1px solid
@@ -2511,8 +2259,7 @@ body[data-mood="celebrate"] {
       white
     );
 
-  border-radius:
-    999px;
+  border-radius: 999px;
 
   background:
     color-mix(
@@ -2533,42 +2280,11 @@ body[data-mood="celebrate"] {
   font-family: inherit;
 
   font-size: 10.5px;
-
   font-weight: 650;
-
-  opacity: 0;
-
-  animation:
-    chipAppear
-    .34s ease
-    forwards;
-}
-
-@keyframes chipAppear {
-
-  from {
-
-    opacity: 0;
-
-    transform:
-      translateY(7px)
-      scale(.96);
-  }
-
-  to {
-
-    opacity: 1;
-
-    transform:
-      translateY(0)
-      scale(1);
-  }
 }
 
 .chip.live {
-
-  color:
-    var(--mood-second);
+  color: var(--mood-second);
 
   border-color:
     color-mix(
@@ -2585,13 +2301,11 @@ body[data-mood="celebrate"] {
     );
 }
 
-
 /* =========================================================
    COMPOSER
    ========================================================= */
 
 .limit-message {
-
   display: none;
 
   padding: 9px;
@@ -2604,14 +2318,11 @@ body[data-mood="celebrate"] {
 }
 
 .limit-message.show {
-
   display: block;
 }
 
 .composer {
-
   display: flex;
-
   align-items: center;
 
   gap: 8px;
@@ -2620,91 +2331,64 @@ body[data-mood="celebrate"] {
 }
 
 .input-wrap {
-
   min-width: 0;
-
   flex: 1;
 
   display: flex;
-
   align-items: center;
 
   padding:
-    3px 5px
-    3px 13px;
+    3px 5px 3px 13px;
 
   border:
     1px solid #e8e3e9;
 
-  border-radius:
-    15px;
+  border-radius: 15px;
 
   background:
     rgba(252,251,252,.95);
 }
 
 .input-wrap:focus-within {
-
   border-color:
     color-mix(
       in srgb,
       var(--mood-main) 40%,
       white
     );
-
-  box-shadow:
-    0 0 0 4px
-    color-mix(
-      in srgb,
-      var(--mood-main) 6%,
-      transparent
-    );
 }
 
 #say {
-
   width: 100%;
-
   min-width: 0;
 
-  padding:
-    9px 0;
+  padding: 9px 0;
 
   border: none;
-
   outline: none;
 
   color: #3a343d;
-
   background: transparent;
 
   font-family: inherit;
-
   font-size: 13px;
 }
 
 #say::placeholder {
-
   color: #bab3bc;
 }
 
 .send {
-
   min-width: 91px;
-
   height: 41px;
 
-  padding:
-    0 14px;
+  padding: 0 14px;
 
   border: none;
-
   border-radius: 13px;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   gap: 6px;
@@ -2716,61 +2400,246 @@ body[data-mood="celebrate"] {
   font-family: inherit;
 
   font-size: 11px;
-
   font-weight: 800;
 
   background:
-
     linear-gradient(
       100deg,
       var(--mood-main),
       var(--mood-second)
     );
-
-  box-shadow:
-    0 9px 22px
-    -13px
-    var(--glow);
 }
 
-
 /* =========================================================
-   FOOTER
+   TRUST STRIP / FOOTER
    ========================================================= */
 
+.trust-strip {
+  margin-top: 3px;
+
+  padding: 14px 16px;
+
+  border:
+    1px solid rgba(217,184,108,.24);
+
+  border-radius: 17px;
+
+  color: #756e78;
+
+  background:
+    rgba(255,253,249,.80);
+
+  text-align: center;
+
+  font-size: 10.5px;
+  line-height: 1.55;
+}
+
+.trust-strip strong {
+  color: #5b4b60;
+}
+
 .footer {
-
   display: flex;
-
+  flex-wrap: wrap;
   justify-content: center;
 
-  flex-wrap: wrap;
+  gap: 6px 9px;
 
-  gap: 7px;
+  padding: 4px 8px 8px;
 
-  margin-top: 8px;
-
-  color: #c0bac3;
+  color: #aaa2ac;
 
   font-size: 9px;
 }
 
+.footer-link {
+  padding: 0;
+
+  border: none;
+  background: none;
+
+  color: #8f8591;
+
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: 9px;
+
+  text-decoration: underline;
+}
+
 .footer a {
-
-  color: inherit;
-
+  color: #8f8591;
   text-decoration: none;
 }
 
+/* =========================================================
+   TRUST MODAL
+   ========================================================= */
+
+.trust-modal {
+  position: fixed;
+  inset: 0;
+
+  z-index: 8000;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    max(18px, env(safe-area-inset-top))
+    18px
+    max(18px, env(safe-area-inset-bottom));
+
+  background:
+    rgba(47,36,51,.42);
+
+  backdrop-filter: blur(14px);
+}
+
+.trust-modal.show {
+  display: flex;
+}
+
+.trust-modal-card {
+  width: min(680px,100%);
+  max-height: min(82dvh,760px);
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  border:
+    1px solid rgba(255,255,255,.90);
+
+  border-radius: 28px;
+
+  background: #fffdfc;
+
+  box-shadow:
+    0 35px 80px -38px
+    rgba(30,20,35,.6);
+}
+
+.trust-modal-head {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 17px 18px;
+
+  border-bottom:
+    1px solid #f0eaef;
+}
+
+.trust-modal-icon {
+  width: 37px;
+  height: 37px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      140deg,
+      var(--plum),
+      var(--mood-main)
+    );
+}
+
+.trust-modal-title {
+  flex: 1;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size: 18px;
+
+  color: #493b4e;
+}
+
+.trust-close {
+  width: 34px;
+  height: 34px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #f7f3f7;
+
+  cursor: pointer;
+
+  font-size: 16px;
+}
+
+.trust-modal-body {
+  overflow-y: auto;
+
+  padding: 18px;
+
+  color: #726a75;
+
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.trust-modal-body h3 {
+  margin:
+    18px 0 5px;
+
+  color: #493b4e;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size: 15px;
+}
+
+.trust-modal-body h3:first-child {
+  margin-top: 0;
+}
+
+.trust-modal-body p + p {
+  margin-top: 10px;
+}
+
+.trust-callout {
+  margin: 12px 0;
+
+  padding: 12px 14px;
+
+  border-left:
+    3px solid var(--gold);
+
+  border-radius: 9px;
+
+  background: #fff9ed;
+}
+
+.trust-small {
+  margin-top: 18px;
+
+  color: #a49ba6;
+
+  font-size: 9.5px;
+}
 
 /* =========================================================
    TABLET
    ========================================================= */
 
-@media (max-width: 980px) {
-
+@media (max-width:980px) {
   .app {
-
     width:
       min(
         100% - 20px,
@@ -2781,123 +2650,112 @@ body[data-mood="celebrate"] {
   }
 
   .sidebar {
-
     position: static;
 
     display: grid;
 
     grid-template-columns:
-      155px
-      1fr
-      1fr;
+      155px 1fr 1fr;
 
     align-items: stretch;
   }
 
   .portrait-card {
-
-    grid-row:
-      span 2;
+    grid-row: span 2;
   }
 
   .sidebar-actions {
-
-    grid-column:
-      2 / -1;
+    grid-column: 2 / -1;
   }
 
   .radio-card {
-
-    grid-column:
-      2;
+    grid-column: 2;
   }
 
-  .live-card {
-
-    grid-column:
-      3;
-
-    grid-row:
-      1;
+  .live-card,
+  .minor-card {
+    grid-column: 3;
+    grid-row: 1;
   }
 
   .paths {
-
     grid-template-columns:
-      repeat(2, 1fr);
+      repeat(2,1fr);
   }
 }
 
-
 /* =========================================================
-   MOBILE APP EXPERIENCE
+   MOBILE
    ========================================================= */
 
-@media (max-width: 700px) {
-
+@media (max-width:700px) {
   body {
-
     padding-bottom:
       env(safe-area-inset-bottom);
   }
 
+  .age-card {
+    padding: 24px 16px;
+
+    border-radius: 27px;
+  }
+
+  .age-options {
+    grid-template-columns: 1fr;
+  }
+
+  .age-option {
+    min-height: 72px;
+  }
+
   .mobile-topbar {
-
     display: flex;
-
     align-items: center;
   }
 
   .app {
-
     width:
       min(
         100% - 12px,
         600px
       );
 
-    padding:
-      7px 0 18px;
+    padding: 7px 0 18px;
 
     gap: 10px;
   }
 
   .hero {
+    padding: 16px 12px;
 
-    padding:
-      16px 12px;
+    border-radius: 24px;
+  }
 
-    border-radius:
-      24px;
+  .hero::before,
+  .hero::after {
+    display: none;
   }
 
   .hero-topline {
-
     display: none;
   }
 
   .hero-ribbon {
+    margin-bottom: 10px;
 
-    margin-bottom: 11px;
-
-    padding:
-      6px 10px;
+    padding: 6px 10px;
 
     font-size: 9px;
   }
 
   .hero-title-grid {
-
     grid-template-columns:
-      28px
-      1fr
-      28px;
+      28px 1fr 28px;
 
     gap: 4px;
   }
 
   .hero-jewel {
-
     width: 26px;
     height: 26px;
 
@@ -2905,12 +2763,10 @@ body[data-mood="celebrate"] {
   }
 
   .hero-kicker {
-
     font-size: 9px;
   }
 
   .hero-title {
-
     font-size:
       clamp(
         42px,
@@ -2923,182 +2779,135 @@ body[data-mood="celebrate"] {
   }
 
   .hero-script {
-
     font-size: 17px;
   }
 
   .hero-copy {
-
     margin-top: 10px;
 
     font-size: 12px;
   }
 
   .hero-badges {
-
     display: none;
   }
 
   .vibe-line {
-
     margin-top: 11px;
   }
 
   .vibe-label {
+    display: none;
+  }
 
+  .vibe-pill,
+  .age-mode-pill {
+    padding: 6px 9px;
     font-size: 9px;
   }
 
-  .vibe-pill {
-
-    padding:
-      6px 10px;
-
-    font-size: 10px;
-  }
-
   .sidebar {
-
     display: grid;
 
     grid-template-columns:
-      100px
-      minmax(0,1fr);
+      100px minmax(0,1fr);
 
     gap: 9px;
   }
 
   .portrait-card {
-
-    grid-row:
-      1;
-
-    grid-column:
-      1;
+    grid-row: 1;
+    grid-column: 1;
 
     align-self: start;
   }
 
-  .live-card {
-
-    grid-column:
-      2;
-
-    grid-row:
-      1;
+  .live-card,
+  .minor-card {
+    grid-column: 2;
+    grid-row: 1;
 
     padding: 12px;
 
-    border-radius:
-      17px;
+    border-radius: 17px;
   }
 
   .live-eyebrow {
-
     font-size: 7px;
   }
 
   .live-title {
-
     font-size: 12px;
   }
 
   .live-copy {
-
     margin-top: 4px;
 
     font-size: 10px;
-
     line-height: 1.4;
   }
 
   .live-tags {
-
     display: none;
   }
 
   .live-buttons {
-
     margin-top: 8px;
-
     gap: 5px;
   }
 
   .live-button {
-
-    padding:
-      7px 8px;
-
+    padding: 7px 8px;
     font-size: 9px;
   }
 
   .radio-card {
-
-    grid-column:
-      1 / -1;
-
-    grid-row:
-      2;
+    grid-column: 1 / -1;
+    grid-row: 2;
 
     padding: 10px;
 
-    border-radius:
-      16px;
+    border-radius: 16px;
   }
 
   .sidebar-actions {
-
-    grid-column:
-      1 / -1;
-
-    grid-row:
-      3;
+    grid-column: 1 / -1;
+    grid-row: 3;
   }
 
   .side-button {
-
-    padding:
-      7px;
-
+    padding: 7px;
     font-size: 9px;
   }
 
   .elle-status {
-
     top: 7px;
     left: 7px;
 
-    padding:
-      4px 6px;
+    padding: 4px 6px;
 
     font-size: 7px;
   }
 
   .status-dot {
-
     width: 5px;
     height: 5px;
   }
 
   .nameplate {
-
     left: 9px;
-
     bottom: 8px;
   }
 
   .nameplate-name {
-
     font-size: 22px;
   }
 
   .nameplate-brand {
-
     display: none;
   }
 
   .paths {
-
     display: flex;
 
     overflow-x: auto;
@@ -3114,12 +2923,10 @@ body[data-mood="celebrate"] {
   }
 
   .paths::-webkit-scrollbar {
-
     display: none;
   }
 
   .path-card {
-
     min-width: 154px;
 
     flex:
@@ -3127,56 +2934,44 @@ body[data-mood="celebrate"] {
 
     min-height: 80px;
 
-    padding:
-      9px 6px;
+    padding: 9px 6px;
 
-    scroll-snap-align:
-      start;
+    scroll-snap-align: start;
   }
 
   .path-icon {
-
     font-size: 20px;
   }
 
   .path-title {
-
     font-size: 10px;
   }
 
   .path-sub {
-
     display: none;
   }
 
   .chat-card {
-
     min-height:
       calc(
         100dvh - 340px
       );
 
-    padding:
-      10px;
+    padding: 10px;
 
-    border-radius:
-      20px;
+    border-radius: 20px;
   }
 
   .bubble {
-
     max-width: 94%;
 
-    padding:
-      10px 12px;
+    padding: 10px 12px;
 
     font-size: 12.5px;
-
     line-height: 1.5;
   }
 
   .chips {
-
     flex-wrap: nowrap;
 
     overflow-x: auto;
@@ -3184,26 +2979,14 @@ body[data-mood="celebrate"] {
     padding-bottom: 4px;
 
     scrollbar-width: none;
-
-    scroll-snap-type:
-      x proximity;
   }
 
   .chips::-webkit-scrollbar {
-
     display: none;
   }
 
-  .chip {
-
-    scroll-snap-align:
-      start;
-  }
-
   .composer {
-
     position: sticky;
-
     bottom: 0;
 
     z-index: 30;
@@ -3219,21 +3002,17 @@ body[data-mood="celebrate"] {
       );
 
     background:
-
       linear-gradient(
         to top,
-        rgba(255,255,255,.96),
-        rgba(255,255,255,.78)
+        rgba(255,255,255,.97),
+        rgba(255,255,255,.80)
       );
 
-    backdrop-filter:
-      blur(14px);
+    backdrop-filter: blur(14px);
   }
 
   .send {
-
     min-width: 45px;
-
     width: 45px;
 
     padding: 0;
@@ -3242,55 +3021,43 @@ body[data-mood="celebrate"] {
   }
 
   .send-label {
-
     display: none;
   }
 
   .complete-actions {
-
-    flex-direction:
-      column;
+    flex-direction: column;
   }
 
+  .trust-strip {
+    font-size: 9.5px;
+  }
+
+  .trust-modal-card {
+    max-height: 88dvh;
+
+    border-radius: 23px;
+  }
 }
 
-
-/* =========================================================
-   TINY PHONE
-   ========================================================= */
-
-@media (max-width: 390px) {
-
+@media (max-width:390px) {
   .hero-script {
-
     font-size: 15px;
   }
 
   .sidebar {
-
     grid-template-columns:
-      88px
-      minmax(0,1fr);
+      88px minmax(0,1fr);
   }
 
   .radio-now {
-
     max-width: 185px;
   }
-
 }
 
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
-
     animation-duration:
       .01ms !important;
 
@@ -3298,16 +3065,117 @@ body[data-mood="celebrate"] {
       1 !important;
   }
 }
-
 </style>
 </head>
 
-
 <body data-mood="default">
 
+<!-- =======================================================
+     AGE GATE
+     ======================================================= -->
+
+<div
+  class="age-gate"
+  id="ageGate"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="ageTitle"
+>
+  <section class="age-card">
+
+    <div class="age-crest">
+      E
+    </div>
+
+    <div class="age-brand">
+      AURYNELLE∞ IDEAS
+    </div>
+
+    <h1
+      class="age-title"
+      id="ageTitle"
+    >
+      Welcome to Elle
+    </h1>
+
+    <div class="age-script">
+      pick the experience made for you ✨
+    </div>
+
+    <p class="age-copy">
+      Elle is designed for ages 13 and up.
+      Choose your age group so Elle can give
+      you the right experience.
+    </p>
+
+    <div class="age-options">
+
+      <button
+        class="age-option"
+        type="button"
+        onclick="chooseAge('13-17')"
+      >
+        <span class="age-option-icon">
+          🌟
+        </span>
+
+        <strong>
+          I'm 13–17
+        </strong>
+
+        <span>
+          Smart, age-appropriate Elle
+        </span>
+      </button>
+
+      <button
+        class="age-option"
+        type="button"
+        onclick="chooseAge('18+')"
+      >
+        <span class="age-option-icon">
+          👑
+        </span>
+
+        <strong>
+          I'm 18+
+        </strong>
+
+        <span>
+          Adult Elle + Live Elle access
+        </span>
+      </button>
+
+    </div>
+
+    <button
+      type="button"
+      class="age-under"
+      onclick="showUnder13()"
+    >
+      I'm under 13
+    </button>
+
+    <div
+      class="under-message"
+      id="underMessage"
+    >
+      Elle is currently made for people
+      ages 13 and older. 💛
+    </div>
+
+    <p class="age-privacy">
+      Elle stores only the age group you select
+      on this device. You are not asked for your
+      birth date here. You can change your age
+      setting later.
+    </p>
+
+  </section>
+</div>
 
 <!-- =======================================================
-     MOBILE APP BAR
+     MOBILE BAR
      ======================================================= -->
 
 <header class="mobile-topbar">
@@ -3319,19 +3187,11 @@ body[data-mood="celebrate"] {
     </div>
 
     <div class="mobile-brand-copy">
-
-      <strong>
-        Ask Elle
-      </strong>
-
-      <span>
-        AURYNELLE∞ IDEAS
-      </span>
-
+      <strong>Ask Elle</strong>
+      <span>AURYNELLE∞ IDEAS</span>
     </div>
 
   </div>
-
 
   <div class="mobile-top-actions">
 
@@ -3357,10 +3217,8 @@ body[data-mood="celebrate"] {
 
 </header>
 
-
-
 <!-- =======================================================
-     BACKGROUND LIFE
+     AMBIENT
      ======================================================= -->
 
 <div
@@ -3393,15 +3251,12 @@ body[data-mood="celebrate"] {
     height:150px;
     left:45%;
     bottom:-60px;
-    background:#ffd34f;
+    background:#d9b86c;
     animation-delay:-6s;
   "
 ></div>
 
-
-
 <div class="app">
-
 
 <!-- =======================================================
      HERO
@@ -3412,29 +3267,15 @@ body[data-mood="celebrate"] {
   <header class="hero">
 
     <div class="hero-topline">
-
-      <span class="hero-topline-star">
-        ✦
-      </span>
-
-      <span>
-        AURYNELLE∞ IDEAS
-      </span>
-
-      <span class="hero-topline-star">
-        ✦
-      </span>
-
+      <span class="hero-topline-star">✦</span>
+      <span>AURYNELLE∞ IDEAS</span>
+      <span class="hero-topline-star">✦</span>
     </div>
-
 
     <div class="hero-ribbon">
-
       Your digital muse for clarity,
       confidence, and next moves
-
     </div>
-
 
     <div class="hero-title-grid">
 
@@ -3442,31 +3283,23 @@ body[data-mood="celebrate"] {
         ♕
       </div>
 
-
       <div class="hero-center">
 
         <div class="hero-kicker">
-
           Talk it through with
-
         </div>
 
         <h1 class="hero-title">
-
           Ask Elle
-
         </h1>
 
         <div class="hero-script">
-
           soft life guidance,
           boss energy,
           real help
-
         </div>
 
       </div>
-
 
       <div class="hero-jewel">
         ✦
@@ -3474,16 +3307,12 @@ body[data-mood="celebrate"] {
 
     </div>
 
-
     <p class="hero-copy">
-
       Come in confused.
       Leave with clarity,
       confidence,
       and your next move.
-
     </p>
-
 
     <div class="hero-badges">
 
@@ -3496,11 +3325,10 @@ body[data-mood="celebrate"] {
       </span>
 
       <span class="hero-badge">
-        👑 Human help through Live Elle
+        👑 Human help for adults
       </span>
 
     </div>
-
 
     <div class="vibe-line">
 
@@ -3515,24 +3343,26 @@ body[data-mood="celebrate"] {
         Elle Classic 💕
       </span>
 
+      <button
+        type="button"
+        class="age-mode-pill"
+        id="ageModePill"
+        onclick="changeAgeSetting()"
+      >
+        Age mode
+      </button>
+
     </div>
 
   </header>
 
 </section>
 
-
-
 <!-- =======================================================
      SIDEBAR
      ======================================================= -->
 
 <aside class="sidebar">
-
-
-<!-- =======================================================
-     ELLE
-     ======================================================= -->
 
 <div
   class="portrait-card"
@@ -3550,7 +3380,6 @@ body[data-mood="celebrate"] {
       alt="Elle"
     >
 
-
     <div class="elle-status">
 
       <span class="status-dot"></span>
@@ -3560,7 +3389,6 @@ body[data-mood="celebrate"] {
       </span>
 
     </div>
-
 
     <div class="nameplate">
 
@@ -3576,7 +3404,6 @@ body[data-mood="celebrate"] {
 
   </div>
 
-
   <div
     class="reaction-layer"
     id="reactionLayer"
@@ -3584,79 +3411,53 @@ body[data-mood="celebrate"] {
 
 </div>
 
+<!-- ADULT LIVE ELLE -->
 
-
-<!-- =======================================================
-     LIVE ELLE
-     ======================================================= -->
-
-<section class="live-card">
+<section
+  class="live-card"
+  id="liveCard"
+>
 
   <div class="live-eyebrow">
-    Live human support
+    Live human support · 18+
   </div>
 
   <div class="live-title">
-
     Need a real person
     on this one? 👀
-
   </div>
 
   <p class="live-copy">
-
     Go deeper with
     <strong>Live Elle</strong>
     for personal,
     one-on-one support.
-
   </p>
-
 
   <div class="live-tags">
 
-    <span>
-      Pick My Brain
-    </span>
-
-    <span>
-      Shopping Buddy
-    </span>
-
-    <span>
-      Hype Session
-    </span>
-
-    <span>
-      Someone to Talk To
-    </span>
+    <span>Pick My Brain</span>
+    <span>Shopping Buddy</span>
+    <span>Hype Session</span>
+    <span>Someone to Talk To</span>
+    <span>Work With Me</span>
 
   </div>
-
 
   <div class="live-buttons">
 
     <button
       type="button"
       class="live-button primary"
-      onclick="
-        doSend(
-          'I would like to talk to Live Elle'
-        )
-      "
+      onclick="requestLiveElle()"
     >
       Talk to Live Elle
     </button>
 
-
     <button
       type="button"
       class="live-button secondary"
-      onclick="
-        doSend(
-          'What Live Elle options are available?'
-        )
-      "
+      onclick="askLiveOptions()"
     >
       Ask Elle about options
     </button>
@@ -3665,11 +3466,47 @@ body[data-mood="celebrate"] {
 
 </section>
 
+<!-- MINOR CARD -->
 
+<section
+  class="minor-card"
+  id="minorCard"
+>
 
-<!-- =======================================================
-     ELLE RADIO
-     ======================================================= -->
+  <div class="live-eyebrow">
+    Your Elle experience
+  </div>
+
+  <div class="live-title">
+    You still get the good stuff ✨
+  </div>
+
+  <p class="live-copy">
+    Ask Elle about school, goals,
+    confidence, friendships, family,
+    faith, creativity, careers,
+    technology, plans and real life.
+  </p>
+
+  <div class="live-buttons">
+
+    <button
+      type="button"
+      class="live-button secondary"
+      onclick="
+        doSend(
+          'What can you help me with?'
+        )
+      "
+    >
+      Show me what Elle can do
+    </button>
+
+  </div>
+
+</section>
+
+<!-- RADIO -->
 
 <section class="radio-card">
 
@@ -3679,28 +3516,22 @@ body[data-mood="celebrate"] {
       🎧
     </div>
 
-
     <div class="radio-copy">
 
       <div class="radio-title">
-
         Elle Radio
-
       </div>
 
       <div
         class="radio-now"
         id="radioNow"
       >
-
         Music is off
-
       </div>
 
     </div>
 
   </div>
-
 
   <div class="radio-controls">
 
@@ -3713,7 +3544,6 @@ body[data-mood="celebrate"] {
       ⏮
     </button>
 
-
     <button
       type="button"
       class="radio-play"
@@ -3721,7 +3551,6 @@ body[data-mood="celebrate"] {
     >
       Play my music 🎵
     </button>
-
 
     <button
       type="button"
@@ -3734,12 +3563,9 @@ body[data-mood="celebrate"] {
 
   </div>
 
-
   <div class="radio-volume">
 
-    <span>
-      🔈
-    </span>
+    <span>🔈</span>
 
     <input
       id="radioVolume"
@@ -3751,15 +3577,11 @@ body[data-mood="celebrate"] {
       aria-label="Elle Radio volume"
     >
 
-    <span>
-      🔊
-    </span>
+    <span>🔊</span>
 
   </div>
 
 </section>
-
-
 
 <div class="sidebar-actions">
 
@@ -3771,7 +3593,6 @@ body[data-mood="celebrate"] {
     Change vibe ✨
   </button>
 
-
   <button
     type="button"
     class="side-button"
@@ -3782,10 +3603,7 @@ body[data-mood="celebrate"] {
 
 </div>
 
-
 </aside>
-
-
 
 <!-- =======================================================
      MAIN PANEL
@@ -3793,13 +3611,7 @@ body[data-mood="celebrate"] {
 
 <main class="main-panel">
 
-
-<!-- =======================================================
-     PATHS
-     ======================================================= -->
-
 <section class="paths">
-
 
 <button
   type="button"
@@ -3826,7 +3638,6 @@ body[data-mood="celebrate"] {
 
 </button>
 
-
 <button
   type="button"
   class="path-card"
@@ -3851,7 +3662,6 @@ body[data-mood="celebrate"] {
   </div>
 
 </button>
-
 
 <button
   type="button"
@@ -3878,16 +3688,12 @@ body[data-mood="celebrate"] {
 
 </button>
 
-
 <button
   type="button"
   class="path-card"
+  id="livePath"
   style="--path-color:#55c7f3;"
-  onclick="
-    doSend(
-      'I want personal help from Live Elle'
-    )
-  "
+  onclick="requestLiveElle()"
 >
 
   <div class="path-icon">
@@ -3898,23 +3704,18 @@ body[data-mood="celebrate"] {
     Talk to Live Elle
   </div>
 
-  <div class="path-sub">
+  <div
+    class="path-sub"
+    id="livePathSub"
+  >
     One-on-one human support
   </div>
 
 </button>
 
-
 </section>
 
-
-
-<!-- =======================================================
-     CHAT
-     ======================================================= -->
-
 <section class="chat-card">
-
 
 <div
   class="thread"
@@ -3922,24 +3723,16 @@ body[data-mood="celebrate"] {
   aria-live="polite"
 ></div>
 
-
-
-<!-- LEAD PROGRESS -->
-
 <div
   class="lead-progress"
   id="leadProgress"
 >
 
   <div class="lead-title">
-
     Getting you to Live Elle ✨
-
   </div>
 
-
   <div class="lead-steps">
-
 
     <div
       class="lead-step"
@@ -3954,9 +3747,7 @@ body[data-mood="celebrate"] {
 
     </div>
 
-
     <div class="lead-line"></div>
-
 
     <div
       class="lead-step"
@@ -3971,9 +3762,7 @@ body[data-mood="celebrate"] {
 
     </div>
 
-
     <div class="lead-line"></div>
-
 
     <div
       class="lead-step"
@@ -3988,30 +3777,19 @@ body[data-mood="celebrate"] {
 
     </div>
 
-
   </div>
 
 </div>
-
-
-
-<!-- ERROR -->
 
 <div
   class="lead-error"
   id="leadError"
 >
-
   Almost there, love.
   I have your information,
   but the connection hiccupped.
   Try once more.
-
 </div>
-
-
-
-<!-- SUCCESS -->
 
 <div
   class="complete"
@@ -4030,42 +3808,28 @@ body[data-mood="celebrate"] {
     class="complete-copy"
     id="completeCopy"
   >
-
     Your request has been
     sent to Live Elle.
-
   </p>
 
   <div class="complete-remark">
-
     Until then,
     you're stuck with me 😌✨
-
   </div>
-
 
   <div class="complete-actions">
 
     <button
       type="button"
-      class="
-        complete-button
-        primary
-      "
-      onclick="
-        resetPanels()
-      "
+      class="complete-button primary"
+      onclick="resetPanels()"
     >
       Keep talking with Elle
     </button>
 
-
     <button
       type="button"
-      class="
-        complete-button
-        secondary
-      "
+      class="complete-button secondary"
       onclick="
         doSend(
           'Tell me about Live Elle services'
@@ -4079,34 +3843,18 @@ body[data-mood="celebrate"] {
 
 </div>
 
-
-
-<!-- DYNAMIC CHIPS -->
-
 <div
   class="chips"
   id="chips"
 ></div>
 
-
-
-<!-- LIMIT -->
-
 <div
   class="limit-message"
   id="limitMessage"
 >
-
   Whew, we talked today 😂💕
-  Come back anytime,
-  or ask Elle about Live Elle
-  for deeper support.
-
+  Come back anytime.
 </div>
-
-
-
-<!-- COMPOSER -->
 
 <div
   class="composer"
@@ -4125,7 +3873,6 @@ body[data-mood="celebrate"] {
 
   </div>
 
-
   <button
     type="button"
     class="send"
@@ -4137,61 +3884,143 @@ body[data-mood="celebrate"] {
       Ask Elle
     </span>
 
-    <span>
-      ↑
-    </span>
+    <span>↑</span>
 
   </button>
 
 </div>
 
+</section>
+
+<!-- =======================================================
+     TRUST
+     ======================================================= -->
+
+<section class="trust-strip">
+
+  <strong>
+    Elle can make mistakes.
+  </strong>
+
+  Question her, correct her,
+  and verify important information.
+  Use Elle legally, respectfully,
+  and responsibly.
 
 </section>
 
-
-
 <footer class="footer">
 
-<a
-  href="https://buymeacoffee.com/aurynelle"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  buymeacoffee.com/aurynelle
-</a>
+  <span>
+    © AURYNELLE∞ IDEAS
+  </span>
 
-<span>
-  •
-</span>
+  <span>·</span>
 
-<a
-  href="https://jewelpsmith.github.io/aurynelle"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  AURYNELLE∞ IDEAS
-</a>
+  <span>
+    All rights reserved
+  </span>
+
+  <span>·</span>
+
+  <button
+    type="button"
+    class="footer-link"
+    onclick="openTrust('privacy')"
+  >
+    Privacy
+  </button>
+
+  <button
+    type="button"
+    class="footer-link"
+    onclick="openTrust('terms')"
+  >
+    Terms & Safety
+  </button>
+
+  <button
+    type="button"
+    class="footer-link"
+    onclick="openTrust('ip')"
+  >
+    Content & IP
+  </button>
+
+  <button
+    type="button"
+    class="footer-link"
+    onclick="openTrust('ai')"
+  >
+    AI Notice
+  </button>
+
+  <span>·</span>
+
+  <a
+    href="https://buymeacoffee.com/aurynelle"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Support AURYNELLE
+  </a>
 
 </footer>
 
-
 </main>
-
 
 </div>
 
-
-
 <!-- =======================================================
-     ELLE RADIO AUDIO
+     TRUST MODAL
      ======================================================= -->
+
+<div
+  class="trust-modal"
+  id="trustModal"
+  role="dialog"
+  aria-modal="true"
+>
+
+  <section class="trust-modal-card">
+
+    <header class="trust-modal-head">
+
+      <div class="trust-modal-icon">
+        ✦
+      </div>
+
+      <div
+        class="trust-modal-title"
+        id="trustTitle"
+      >
+        Elle Trust Center
+      </div>
+
+      <button
+        type="button"
+        class="trust-close"
+        onclick="closeTrust()"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+    </header>
+
+    <div
+      class="trust-modal-body"
+      id="trustBody"
+    ></div>
+
+  </section>
+
+</div>
 
 <audio
   id="elleAudio"
   preload="metadata"
 ></audio>
-
-
 
 <script>
 
@@ -4200,163 +4029,284 @@ body[data-mood="celebrate"] {
    ========================================================= */
 
 const DEFAULT_CHIPS = [
-
   "Tell me about your day",
-
   "I need encouragement",
-
   "Help me figure something out",
-
   "Quiz me on something"
-
 ];
-
 
 const BUBBLE_COLORS = [
-
   "#ff5f97",
-
   "#9b6bff",
-
   "#55c7f3",
-
   "#4cd964",
-
   "#ff8c42"
-
 ];
-
 
 const MAX_MESSAGES = 30;
 
 const WARN_AT = 25;
 
+/* =========================================================
+   AGE
+   ========================================================= */
 
+let ageGroup =
+  localStorage.getItem(
+    "elleAgeGroup"
+  ) || "";
+
+function validAgeGroup(value) {
+  return (
+    value === "13-17" ||
+    value === "18+"
+  );
+}
+
+function chooseAge(value) {
+  if (
+    !validAgeGroup(value)
+  ) {
+    return;
+  }
+
+  ageGroup = value;
+
+  localStorage.setItem(
+    "elleAgeGroup",
+    ageGroup
+  );
+
+  hideAgeGate();
+
+  applyAgeExperience();
+
+  reactPortrait(
+    "✨",
+    5
+  );
+}
+
+function showAgeGate() {
+  document
+    .getElementById("ageGate")
+    .classList
+    .add("show");
+
+  document.body
+    .classList
+    .add("age-locked");
+}
+
+function hideAgeGate() {
+  document
+    .getElementById("ageGate")
+    .classList
+    .remove("show");
+
+  document.body
+    .classList
+    .remove("age-locked");
+
+  document
+    .getElementById("underMessage")
+    .classList
+    .remove("show");
+}
+
+function changeAgeSetting() {
+  showAgeGate();
+}
+
+function showUnder13() {
+  document
+    .getElementById("underMessage")
+    .classList
+    .add("show");
+}
+
+function applyAgeExperience() {
+
+  const adult =
+    ageGroup === "18+";
+
+  const liveCard =
+    document.getElementById(
+      "liveCard"
+    );
+
+  const minorCard =
+    document.getElementById(
+      "minorCard"
+    );
+
+  const livePath =
+    document.getElementById(
+      "livePath"
+    );
+
+  const livePathSub =
+    document.getElementById(
+      "livePathSub"
+    );
+
+  const ageModePill =
+    document.getElementById(
+      "ageModePill"
+    );
+
+  if (adult) {
+
+    liveCard.classList.remove(
+      "hidden"
+    );
+
+    minorCard.classList.remove(
+      "show"
+    );
+
+    livePath.classList.remove(
+      "locked"
+    );
+
+    livePathSub.textContent =
+      "One-on-one human support";
+
+    ageModePill.textContent =
+      "18+ mode 👑";
+  }
+
+  else {
+
+    liveCard.classList.add(
+      "hidden"
+    );
+
+    minorCard.classList.add(
+      "show"
+    );
+
+    livePath.classList.add(
+      "locked"
+    );
+
+    livePathSub.textContent =
+      "Available at 18+";
+
+    ageModePill.textContent =
+      "13–17 mode 🌟";
+
+    leadProgress.classList.remove(
+      "show"
+    );
+
+    complete.classList.remove(
+      "show"
+    );
+
+    leadError.classList.remove(
+      "show"
+    );
+  }
+}
+
+function requestLiveElle() {
+
+  if (
+    ageGroup !== "18+"
+  ) {
+
+    addBubble(
+      "elle",
+      "Live Elle one-on-one support is currently for adults 18+, but I can still help you right here. Tell me what you're trying to figure out. 💛"
+    );
+
+    renderChips([
+      "Help me here",
+      "I need advice",
+      "Make me a plan"
+    ]);
+
+    return;
+  }
+
+  doSend(
+    "I would like to talk to Live Elle"
+  );
+}
+
+function askLiveOptions() {
+
+  if (
+    ageGroup !== "18+"
+  ) {
+
+    requestLiveElle();
+
+    return;
+  }
+
+  doSend(
+    "What Live Elle options are available?"
+  );
+}
 
 /* =========================================================
-   OPTIONAL PORTRAITS
-   If a mood image does not exist,
-   elle.png automatically remains.
+   PORTRAITS
    ========================================================= */
 
 const PORTRAITS = {
-
-  default:
-    "elle.png",
-
-  hype:
-    "elle-hype.png",
-
-  comfort:
-    "elle-comfort.png",
-
-  focus:
-    "elle-focus.png",
-
-  faith:
-    "elle-faith.png",
-
-  celebrate:
-    "elle-celebrate.png"
-
+  default: "elle.png",
+  hype: "elle-hype.png",
+  comfort: "elle-comfort.png",
+  focus: "elle-focus.png",
+  faith: "elle-faith.png",
+  celebrate: "elle-celebrate.png"
 };
 
-
-
 /* =========================================================
-   YOUR MUSIC
-   Change the titles and filenames later.
-
-   Upload songs into:
-   public/audio/
-
-   Example:
-   public/audio/elle-song-1.mp3
+   MUSIC
    ========================================================= */
 
 const ELLE_PLAYLIST = [
-
   {
-    title:
-      "Elle Track One",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/elle-song-1.mp3"
+    title: "Elle Track One",
+    artist: "AURYNELLE",
+    file: "audio/elle-song-1.mp3"
   },
-
   {
-    title:
-      "Elle Track Two",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/elle-song-2.mp3"
+    title: "Elle Track Two",
+    artist: "AURYNELLE",
+    file: "audio/elle-song-2.mp3"
   },
-
   {
-    title:
-      "Elle Track Three",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/elle-song-3.mp3"
+    title: "Elle Track Three",
+    artist: "AURYNELLE",
+    file: "audio/elle-song-3.mp3"
   }
-
 ];
-
-
 
 /* =========================================================
    MOODS
    ========================================================= */
 
 const MOODS = [
-
   "default",
-
   "hype",
-
   "comfort",
-
   "focus",
-
   "faith",
-
   "celebrate"
-
 ];
 
-
 const MOOD_NAMES = {
-
-  default:
-    "Elle Classic 💕",
-
-  hype:
-    "Hype Elle 🔥",
-
-  comfort:
-    "Soft Elle 💜",
-
-  focus:
-    "Locked In Elle ⚡",
-
-  faith:
-    "Faith Elle ✨",
-
-  celebrate:
-    "Celebration Elle 🎉"
-
+  default: "Elle Classic 💕",
+  hype: "Hype Elle 🔥",
+  comfort: "Soft Elle 💜",
+  focus: "Locked In Elle ⚡",
+  faith: "Faith Elle ✨",
+  celebrate: "Celebration Elle 🎉"
 };
-
-
 
 /* =========================================================
    STATE
@@ -4374,15 +4324,14 @@ let moodIndex = 0;
 
 let lastEmail = "";
 
-let currentTrack = Number(
-  localStorage.getItem(
-    "elleRadioTrack"
-  ) || 0
-);
+let currentTrack =
+  Number(
+    localStorage.getItem(
+      "elleRadioTrack"
+    ) || 0
+  );
 
 let radioPlaying = false;
-
-
 
 /* =========================================================
    ELEMENTS
@@ -4488,8 +4437,6 @@ const mobileMusic =
     "mobileMusic"
   );
 
-
-
 /* =========================================================
    RADIO ELEMENTS
    ========================================================= */
@@ -4524,8 +4471,6 @@ const radioVolume =
     "radioVolume"
   );
 
-
-
 /* =========================================================
    MOOD DETECTION
    ========================================================= */
@@ -4537,60 +4482,43 @@ function detectMood(text) {
       text || ""
     ).toLowerCase();
 
-
   if (
     /(congrat|celebrat|i did it|i won|got the job|passed|success|proud|good news|win)/i
       .test(value)
   ) {
-
     return "celebrate";
   }
-
 
   if (
     /(hype|motivat|confidence|boss|let's go|lets go|fire me up|gas me up)/i
       .test(value)
   ) {
-
     return "hype";
   }
-
 
   if (
     /(god|jesus|scripture|bible|pray|prayer|faith|verse|kjv)/i
       .test(value)
   ) {
-
     return "faith";
   }
-
 
   if (
     /(sad|hurt|lonely|cry|overwhelm|stressed|anxious|rough day|listen|comfort)/i
       .test(value)
   ) {
-
     return "comfort";
   }
-
 
   if (
     /(plan|business|career|study|goal|organize|decision|budget|strategy|figure out|steps)/i
       .test(value)
   ) {
-
     return "focus";
   }
 
-
   return "default";
 }
-
-
-
-/* =========================================================
-   SET MOOD
-   ========================================================= */
 
 function setMood(
   mood,
@@ -4600,35 +4528,23 @@ function setMood(
   if (
     !MOODS.includes(mood)
   ) {
-
-    mood =
-      "default";
+    mood = "default";
   }
-
 
   document.body.dataset.mood =
     mood;
 
-
   moodIndex =
-    MOODS.indexOf(
-      mood
-    );
-
+    MOODS.indexOf(mood);
 
   modePill.textContent =
     MOOD_NAMES[mood];
 
-
-  switchPortrait(
-    mood
-  );
-
+  switchPortrait(mood);
 
   if (
     !automatic
   ) {
-
     reactPortrait(
       "✨",
       5
@@ -4636,31 +4552,21 @@ function setMood(
   }
 }
 
-
-
-/* =========================================================
-   PORTRAIT SWITCHING WITH FALLBACK
-   ========================================================= */
-
 function switchPortrait(mood) {
 
   const desired =
     PORTRAITS[mood] ||
     PORTRAITS.default;
 
-
   if (
     ellePortrait.dataset.current ===
     desired
   ) {
-
     return;
   }
 
-
   const tester =
     new Image();
-
 
   tester.onload =
     () => {
@@ -4668,7 +4574,6 @@ function switchPortrait(mood) {
       ellePortrait.classList.add(
         "switching"
       );
-
 
       setTimeout(
         () => {
@@ -4688,82 +4593,43 @@ function switchPortrait(mood) {
       );
     };
 
-
   tester.onerror =
     () => {
 
-      if (
-        ellePortrait.src
-          .split("/")
-          .pop() !==
-        "elle.png"
-      ) {
-
-        ellePortrait.src =
-          "elle.png";
-      }
-
+      ellePortrait.src =
+        "elle.png";
 
       ellePortrait.dataset.current =
         "elle.png";
     };
 
-
   tester.src =
     desired;
 }
-
-
-
-/* =========================================================
-   AUTO MOOD
-   ========================================================= */
 
 function autoMood(text) {
 
   const mood =
     detectMood(text);
 
-
   setMood(
     mood,
     true
   );
 
-
   const labels = {
-
-    default:
-      "Elle's here",
-
-    hype:
-      "Elle is hyped 🔥",
-
-    comfort:
-      "Elle's listening 💜",
-
-    focus:
-      "Elle's locked in ⚡",
-
-    faith:
-      "Faith mode ✨",
-
-    celebrate:
-      "We celebrating! 🎉"
-
+    default: "Elle's here",
+    hype: "Elle is hyped 🔥",
+    comfort: "Elle's listening 💜",
+    focus: "Elle's locked in ⚡",
+    faith: "Faith mode ✨",
+    celebrate: "We celebrating! 🎉"
   };
-
 
   setStatus(
     labels[mood]
   );
 }
-
-
-
-/* =========================================================
-   CHANGE VIBE
-   ========================================================= */
 
 function cycleMood() {
 
@@ -4773,24 +4639,19 @@ function cycleMood() {
     ) %
     MOODS.length;
 
-
   setMood(
     MOODS[moodIndex]
   );
 }
-
-
 
 /* =========================================================
    STATUS
    ========================================================= */
 
 function setStatus(text) {
-
   elleStatus.textContent =
     text;
 }
-
 
 function startThinking() {
 
@@ -4798,12 +4659,10 @@ function startThinking() {
     "talking"
   );
 
-
   setStatus(
     "Elle's thinking..."
   );
 }
-
 
 function stopThinking() {
 
@@ -4811,36 +4670,20 @@ function stopThinking() {
     "talking"
   );
 
-
   setTimeout(
     () => {
 
       const mood =
         document.body.dataset.mood;
 
-
       const status = {
-
-        default:
-          "Elle's here",
-
-        hype:
-          "Elle's ready 🔥",
-
-        comfort:
-          "Elle's with you 💜",
-
-        focus:
-          "Elle's locked in ⚡",
-
-        faith:
-          "Faith mode ✨",
-
-        celebrate:
-          "We celebrating! 🎉"
-
+        default: "Elle's here",
+        hype: "Elle's ready 🔥",
+        comfort: "Elle's with you 💜",
+        focus: "Elle's locked in ⚡",
+        faith: "Faith mode ✨",
+        celebrate: "We celebrating! 🎉"
       };
-
 
       setStatus(
         status[mood] ||
@@ -4852,8 +4695,6 @@ function stopThinking() {
   );
 }
 
-
-
 /* =========================================================
    REACTIONS
    ========================================================= */
@@ -4864,14 +4705,11 @@ function portraitPop() {
     "react"
   );
 
-
   void portraitCard.offsetWidth;
-
 
   portraitCard.classList.add(
     "react"
   );
-
 
   setTimeout(
     () => {
@@ -4885,14 +4723,12 @@ function portraitPop() {
   );
 }
 
-
 function reactPortrait(
   emoji = "✨",
   amount = 5
 ) {
 
   portraitPop();
-
 
   for (
     let i = 0;
@@ -4905,14 +4741,11 @@ function reactPortrait(
         "span"
       );
 
-
     element.className =
       "reaction-emoji";
 
-
     element.textContent =
       emoji;
-
 
     element.style.left =
       (
@@ -4921,13 +4754,11 @@ function reactPortrait(
       ) +
       "%";
 
-
     element.style.animationDelay =
       (
         Math.random() * .28
       ) +
       "s";
-
 
     element.style.fontSize =
       (
@@ -4936,23 +4767,16 @@ function reactPortrait(
       ) +
       "px";
 
-
     reactionLayer.appendChild(
       element
     );
 
-
     setTimeout(
-      () => {
-
-        element.remove();
-
-      },
+      () => element.remove(),
       1800
     );
   }
 }
-
 
 function celebrate() {
 
@@ -4961,39 +4785,29 @@ function celebrate() {
     true
   );
 
-
   reactPortrait(
     "🎉",
     5
   );
 
-
   setTimeout(
-    () => {
-
+    () =>
       reactPortrait(
         "✨",
         6
-      );
-
-    },
+      ),
     150
   );
 
-
   setTimeout(
-    () => {
-
+    () =>
       reactPortrait(
         "👏",
         5
-      );
-
-    },
+      ),
     320
   );
 }
-
 
 function reactToText(text) {
 
@@ -5001,7 +4815,6 @@ function reactToText(text) {
     String(
       text || ""
     ).toLowerCase();
-
 
   if (
     /(congrat|proud of you|you did it|let's go|lets go|celebrat|good news|win)/i
@@ -5016,7 +4829,6 @@ function reactToText(text) {
     return;
   }
 
-
   if (
     /(beautiful|gorgeous|yes sis|period|love that|exactly)/i
       .test(value)
@@ -5029,50 +4841,36 @@ function reactToText(text) {
   }
 }
 
-
-
 /* =========================================================
-   DYNAMIC CHIPS
+   CHIPS
    ========================================================= */
 
 function renderChips(items) {
 
-  chips.innerHTML =
-    "";
-
+  chips.innerHTML = "";
 
   const list =
     Array.isArray(items) &&
     items.length
-      ?
-      items
-      :
-      DEFAULT_CHIPS;
-
+      ? items
+      : DEFAULT_CHIPS;
 
   list.forEach(
-    (
-      label,
-      index
-    ) => {
+    label => {
 
       const button =
         document.createElement(
           "button"
         );
 
-
       button.type =
         "button";
-
 
       button.className =
         "chip";
 
-
       const lower =
         label.toLowerCase();
-
 
       if (
         lower.includes(
@@ -5086,28 +4884,30 @@ function renderChips(items) {
         button.classList.add(
           "live"
         );
+
+        if (
+          ageGroup !== "18+"
+        ) {
+
+          button.onclick =
+            requestLiveElle;
+        }
+
+        else {
+
+          button.onclick =
+            () => doSend(label);
+        }
       }
 
+      else {
+
+        button.onclick =
+          () => doSend(label);
+      }
 
       button.textContent =
         label;
-
-
-      button.style.animationDelay =
-        (
-          index * .055
-        ) +
-        "s";
-
-
-      button.onclick =
-        () => {
-
-          doSend(
-            label
-          );
-        };
-
 
       chips.appendChild(
         button
@@ -5116,10 +4916,8 @@ function renderChips(items) {
   );
 }
 
-
-
 /* =========================================================
-   CHAT BUBBLES
+   CHAT
    ========================================================= */
 
 function addBubble(
@@ -5132,32 +4930,23 @@ function addBubble(
       "div"
     );
 
-
   row.className =
     "message-row";
 
-
   row.style.justifyContent =
     role === "you"
-      ?
-      "flex-end"
-      :
-      "flex-start";
-
+      ? "flex-end"
+      : "flex-start";
 
   const bubble =
     document.createElement(
       "div"
     );
 
-
   bubble.className =
     role === "you"
-      ?
-      "bubble bubble-user"
-      :
-      "bubble bubble-elle";
-
+      ? "bubble bubble-user"
+      : "bubble bubble-elle";
 
   if (
     role === "elle"
@@ -5169,78 +4958,59 @@ function addBubble(
         BUBBLE_COLORS.length
       ];
 
-
     bubble.style.setProperty(
       "--bubble-color",
       color
     );
-
 
     const label =
       document.createElement(
         "div"
       );
 
-
     label.className =
       "elle-label";
 
-
     label.textContent =
       "ELLE ✦";
-
 
     bubble.appendChild(
       label
     );
   }
 
-
   const content =
     document.createElement(
       "div"
     );
 
-
   content.textContent =
     text;
-
 
   bubble.appendChild(
     content
   );
 
-
   row.appendChild(
     bubble
   );
-
 
   thread.appendChild(
     row
   );
 
-
   thread.scrollTop =
     thread.scrollHeight;
-
 
   if (
     role === "elle"
   ) {
 
-    autoMood(
-      text
-    );
+    autoMood(text);
 
-
-    reactToText(
-      text
-    );
+    reactToText(text);
   }
 }
-
-
 
 /* =========================================================
    TYPING
@@ -5250,60 +5020,48 @@ function showTyping() {
 
   startThinking();
 
-
   const row =
     document.createElement(
       "div"
     );
 
-
   row.id =
     "typingRow";
 
-
   row.className =
     "message-row";
-
 
   const bubble =
     document.createElement(
       "div"
     );
 
-
   bubble.className =
     "bubble bubble-elle";
-
 
   bubble.style.setProperty(
     "--bubble-color",
     "var(--mood-main)"
   );
 
-
   const label =
     document.createElement(
       "div"
     );
 
-
   label.className =
     "elle-label";
 
-
   label.textContent =
     "ELLE ✦";
-
 
   const dots =
     document.createElement(
       "div"
     );
 
-
   dots.className =
     "typing";
-
 
   for (
     let i = 0;
@@ -5318,31 +5076,14 @@ function showTyping() {
     );
   }
 
-
-  bubble.appendChild(
-    label
-  );
-
-
-  bubble.appendChild(
-    dots
-  );
-
-
-  row.appendChild(
-    bubble
-  );
-
-
-  thread.appendChild(
-    row
-  );
-
+  bubble.appendChild(label);
+  bubble.appendChild(dots);
+  row.appendChild(bubble);
+  thread.appendChild(row);
 
   thread.scrollTop =
     thread.scrollHeight;
 }
-
 
 function hideTyping() {
 
@@ -5351,25 +5092,24 @@ function hideTyping() {
       "typingRow"
     );
 
-
-  if (
-    row
-  ) {
-
+  if (row) {
     row.remove();
   }
-
 
   stopThinking();
 }
 
-
-
 /* =========================================================
-   LEAD PROGRESS
+   LEAD UI
    ========================================================= */
 
 function updateLeadProgress(step) {
+
+  if (
+    ageGroup !== "18+"
+  ) {
+    return;
+  }
 
   if (
     step > 0
@@ -5379,7 +5119,6 @@ function updateLeadProgress(step) {
       "show"
     );
   }
-
 
   for (
     let i = 1;
@@ -5392,12 +5131,10 @@ function updateLeadProgress(step) {
         "lead" + i
       );
 
-
     element.classList.remove(
       "active",
       "done"
     );
-
 
     if (
       i < step
@@ -5419,45 +5156,35 @@ function updateLeadProgress(step) {
   }
 }
 
+function showLeadError(message) {
 
-
-/* =========================================================
-   LEAD ERROR
-   ========================================================= */
-
-function showLeadError(
-  message
-) {
+  if (
+    ageGroup !== "18+"
+  ) {
+    return;
+  }
 
   complete.classList.remove(
     "show"
   );
 
-
   leadError.classList.add(
     "show"
   );
 
-
-  if (
-    message
-  ) {
-
+  if (message) {
     leadError.textContent =
       message;
   }
-
 
   setMood(
     "comfort",
     true
   );
 
-
   setStatus(
     "Tiny hiccup, love"
   );
-
 
   reactPortrait(
     "💛",
@@ -5465,72 +5192,54 @@ function showLeadError(
   );
 }
 
-
 function hideLeadError() {
-
   leadError.classList.remove(
     "show"
   );
 }
 
-
-
-/* =========================================================
-   SUCCESS
-   ========================================================= */
-
 function showComplete(email) {
 
-  hideLeadError();
+  if (
+    ageGroup !== "18+"
+  ) {
+    return;
+  }
 
+  hideLeadError();
 
   complete.classList.add(
     "show"
   );
 
-
   leadProgress.classList.remove(
     "show"
   );
 
-
-  chips.innerHTML =
-    "";
-
+  chips.innerHTML = "";
 
   completeCopy.textContent =
     "Your request has been sent to Live Elle" +
-
     (
       email
-        ?
-        ". Live Elle can reach you at " +
-        email +
-        "."
-        :
-        "."
+        ? ". Live Elle can reach you at " +
+          email +
+          "."
+        : "."
     );
 
-
   celebrate();
-
 
   setStatus(
     "You're in! 🎉"
   );
 
-
   setTimeout(
     () => {
 
       complete.scrollIntoView({
-
-        behavior:
-          "smooth",
-
-        block:
-          "nearest"
-
+        behavior: "smooth",
+        block: "nearest"
       });
 
     },
@@ -5538,51 +5247,36 @@ function showComplete(email) {
   );
 }
 
-
-
-/* =========================================================
-   RESET UI
-   ========================================================= */
-
 function resetPanels() {
 
   complete.classList.remove(
     "show"
   );
 
-
   leadProgress.classList.remove(
     "show"
   );
 
-
   hideLeadError();
-
 
   limitMessage.classList.remove(
     "show"
   );
 
-
   composer.style.display =
     "flex";
-
 
   renderChips(
     DEFAULT_CHIPS
   );
-
 
   setMood(
     "default",
     true
   );
 
-
   say.focus();
 }
-
-
 
 /* =========================================================
    API
@@ -5591,15 +5285,9 @@ function resetPanels() {
 async function callAPI(text) {
 
   history.push({
-
-    role:
-      "user",
-
-    content:
-      text
-
+    role: "user",
+    content: text
   });
-
 
   try {
 
@@ -5607,32 +5295,23 @@ async function callAPI(text) {
       await fetch(
         "/api/chat",
         {
-
-          method:
-            "POST",
+          method: "POST",
 
           headers: {
-
             "Content-Type":
               "application/json"
-
           },
 
           body:
             JSON.stringify({
-
-              messages:
-                history
-
+              messages: history,
+              ageGroup: ageGroup
             })
-
         }
       );
 
-
     const data =
       await response.json();
-
 
     if (
       !response.ok
@@ -5644,7 +5323,6 @@ async function callAPI(text) {
       );
     }
 
-
     const reply =
       data.content
         ?.map(
@@ -5655,17 +5333,28 @@ async function callAPI(text) {
       ||
       "Something hiccupped, love. Try me one more time. 💕";
 
-
     history.push({
-
-      role:
-        "assistant",
-
-      content:
-        reply
-
+      role: "assistant",
+      content: reply
     });
 
+    if (
+      data.ageGroup &&
+      validAgeGroup(
+        data.ageGroup
+      )
+    ) {
+
+      ageGroup =
+        data.ageGroup;
+
+      localStorage.setItem(
+        "elleAgeGroup",
+        ageGroup
+      );
+
+      applyAgeExperience();
+    }
 
     if (
       Array.isArray(
@@ -5686,24 +5375,22 @@ async function callAPI(text) {
       );
     }
 
-
     if (
+      ageGroup === "18+" &&
       data.leadProgress > 0 &&
       !data.leadCaptured
     ) {
 
       updateLeadProgress(
-
         Math.min(
           data.leadProgress + 1,
           3
         )
-
       );
     }
 
-
     if (
+      ageGroup === "18+" &&
       data.lead &&
       data.lead.email
     ) {
@@ -5712,25 +5399,23 @@ async function callAPI(text) {
         data.lead.email;
     }
 
-    else {
+    else if (
+      ageGroup === "18+"
+    ) {
 
       const match =
         text.match(
           /[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}/
         );
 
-
-      if (
-        match
-      ) {
-
+      if (match) {
         lastEmail =
           match[0];
       }
     }
 
-
     if (
+      ageGroup === "18+" &&
       data.leadCaptured === true
     ) {
 
@@ -5746,31 +5431,24 @@ async function callAPI(text) {
       );
     }
 
-
     if (
+      ageGroup === "18+" &&
       data.leadError === true
     ) {
 
       showLeadError(
-
-        "Almost there, love. I have your information, but I hit a snag sending it to Live Elle. Tap Try again or send your email once more."
-
+        data.leadErrorMessage ||
+        "Almost there, love. I have your information, but I hit a snag sending it to Live Elle. Try once more."
       );
 
-
       renderChips([
-
         "Try again",
-
         "Keep talking with Elle"
-
       ]);
     }
 
-
     return reply;
   }
-
 
   catch (error) {
 
@@ -5779,12 +5457,10 @@ async function callAPI(text) {
       error
     );
 
-
     setMood(
       "comfort",
       true
     );
-
 
     return (
       "Ooh, something went sideways for a second, love. Try me one more time. 💛"
@@ -5792,13 +5468,22 @@ async function callAPI(text) {
   }
 }
 
-
-
 /* =========================================================
-   SEND MESSAGE
+   SEND
    ========================================================= */
 
 async function doSend(text) {
+
+  if (
+    !validAgeGroup(
+      ageGroup
+    )
+  ) {
+
+    showAgeGate();
+
+    return;
+  }
 
   let value =
     String(
@@ -5806,37 +5491,27 @@ async function doSend(text) {
       say.value
     ).trim();
 
-
   if (
     !value ||
     loading
   ) {
-
     return;
   }
 
-
   if (
     value.toLowerCase() ===
-    "try again"
+    "try again" &&
+    lastEmail &&
+    ageGroup === "18+"
   ) {
 
-    if (
-      lastEmail
-    ) {
-
-      value =
-        lastEmail;
-    }
+    value =
+      lastEmail;
   }
 
-
-  say.value =
-    "";
-
+  say.value = "";
 
   hideLeadError();
-
 
   if (
     messageCount >=
@@ -5847,35 +5522,24 @@ async function doSend(text) {
       "show"
     );
 
-
     composer.style.display =
       "none";
 
-
     return;
   }
-
 
   addBubble(
     "you",
     value
   );
 
+  autoMood(value);
 
-  autoMood(
-    value
-  );
-
-
-  loading =
-    true;
-
+  loading = true;
 
   showTyping();
 
-
   messageCount++;
-
 
   if (
     messageCount ===
@@ -5887,36 +5551,25 @@ async function doSend(text) {
     );
   }
 
-
   const reply =
-    await callAPI(
-      value
-    );
-
+    await callAPI(value);
 
   hideTyping();
 
-
   bubbleIndex++;
-
 
   addBubble(
     "elle",
     reply
   );
 
-
-  loading =
-    false;
-
+  loading = false;
 
   say.focus();
 }
 
-
-
 /* =========================================================
-   ELLE RADIO
+   RADIO
    ========================================================= */
 
 function normalizeTrackIndex() {
@@ -5926,10 +5579,8 @@ function normalizeTrackIndex() {
   ) {
 
     currentTrack = 0;
-
     return;
   }
-
 
   if (
     currentTrack < 0
@@ -5939,17 +5590,14 @@ function normalizeTrackIndex() {
       ELLE_PLAYLIST.length - 1;
   }
 
-
   if (
     currentTrack >=
     ELLE_PLAYLIST.length
   ) {
 
-    currentTrack =
-      0;
+    currentTrack = 0;
   }
 }
-
 
 function loadTrack() {
 
@@ -5963,81 +5611,62 @@ function loadTrack() {
     return;
   }
 
-
   normalizeTrackIndex();
-
 
   const track =
     ELLE_PLAYLIST[
       currentTrack
     ];
 
-
   audio.src =
     track.file;
-
 
   radioNow.textContent =
     track.title +
     " · " +
     track.artist;
 
-
   localStorage.setItem(
     "elleRadioTrack",
-    String(
-      currentTrack
-    )
+    String(currentTrack)
   );
 }
-
 
 async function playRadio() {
 
   if (
     !ELLE_PLAYLIST.length
   ) {
-
     return;
   }
-
 
   if (
     !audio.src
   ) {
-
     loadTrack();
   }
-
 
   try {
 
     await audio.play();
 
-
-    radioPlaying =
-      true;
-
+    radioPlaying = true;
 
     radioToggle.textContent =
       "Pause music ⏸";
 
-
     mobileMusic.textContent =
       "🔊";
-
 
     localStorage.setItem(
       "elleRadioEnabled",
       "true"
     );
 
-
     reactPortrait(
       "🎵",
       4
     );
-
   }
 
   catch (error) {
@@ -6047,29 +5676,22 @@ async function playRadio() {
       error
     );
 
-
     radioNow.textContent =
       "Upload your songs to /audio 🎵";
   }
 }
 
-
 function pauseRadio() {
 
   audio.pause();
 
-
-  radioPlaying =
-    false;
-
+  radioPlaying = false;
 
   radioToggle.textContent =
     "Play my music 🎵";
 
-
   mobileMusic.textContent =
     "🎧";
-
 
   localStorage.setItem(
     "elleRadioEnabled",
@@ -6077,89 +5699,371 @@ function pauseRadio() {
   );
 }
 
-
 function toggleRadio() {
 
   if (
     radioPlaying
   ) {
-
     pauseRadio();
   }
 
   else {
-
     playRadio();
   }
 }
-
 
 function nextSong() {
 
   currentTrack++;
 
-
   normalizeTrackIndex();
 
-
   loadTrack();
-
 
   if (
     radioPlaying
   ) {
-
     playRadio();
   }
 }
-
 
 function previousSong() {
 
   currentTrack--;
 
-
   normalizeTrackIndex();
 
-
   loadTrack();
-
 
   if (
     radioPlaying
   ) {
-
     playRadio();
   }
 }
 
+/* =========================================================
+   TRUST CENTER
+   ========================================================= */
 
+const TRUST_CONTENT = {
+
+  privacy: {
+    title: "Privacy",
+
+    html: `
+      <h3>Your privacy matters</h3>
+
+      <p>
+        Elle is designed to collect only the
+        information needed to provide the experience
+        you request.
+      </p>
+
+      <div class="trust-callout">
+        The age gate stores only your selected age
+        group, 13–17 or 18+, on your device. It does
+        not ask for your birth date.
+      </div>
+
+      <h3>Live Elle information</h3>
+
+      <p>
+        For eligible adult users who choose to contact
+        Live Elle, Elle may collect the name, customer
+        email address and requested support necessary
+        to submit that request.
+      </p>
+
+      <h3>Sensitive information</h3>
+
+      <p>
+        Do not send passwords, authentication codes,
+        banking credentials, government identification
+        numbers or other information that is not
+        necessary for your conversation.
+      </p>
+
+      <h3>Future Elle World features</h3>
+
+      <p>
+        Global community features should favor broad
+        country-level information rather than exact
+        location. Public global displays should not
+        expose names, home addresses, precise coordinates
+        or personal contact information.
+      </p>
+
+      <p class="trust-small">
+        This in-product notice is a general description
+        of Elle's current privacy approach and is not a
+        substitute for jurisdiction-specific legal review.
+      </p>
+    `
+  },
+
+  terms: {
+    title: "Terms & Safety",
+
+    html: `
+      <h3>Use Elle responsibly</h3>
+
+      <p>
+        Users may not use Elle or AURYNELLE services
+        for unlawful activity, harassment, exploitation,
+        fraud, impersonation intended to harm or deceive,
+        unauthorized surveillance, doxxing, infringement,
+        abuse or attempts to bypass platform safeguards
+        for harmful purposes.
+      </p>
+
+      <h3>Misuse & enforcement</h3>
+
+      <div class="trust-callout">
+        AURYNELLE may restrict or suspend access for
+        misuse, preserve records when reasonably
+        necessary or legally required, and cooperate
+        with valid legal requests or investigations
+        in accordance with applicable law.
+      </div>
+
+      <p>
+        Elle and AURYNELLE do not determine whether
+        somebody has committed a crime and do not
+        guarantee prosecution. Criminal or civil
+        consequences are determined by appropriate
+        authorities and courts under applicable law.
+      </p>
+
+      <h3>Age</h3>
+
+      <p>
+        Elle is currently designed for users age 13
+        and older. Live Elle one-on-one support and
+        future private stranger-matching or pen-pal
+        features are intended for adults 18+ unless
+        a future feature expressly states otherwise.
+      </p>
+
+      <h3>Safety</h3>
+
+      <p>
+        Elle may decline or redirect requests that
+        would meaningfully enable serious harm,
+        exploitation, unlawful activity, malicious
+        cyber abuse or violations of another person's
+        privacy.
+      </p>
+
+      <p class="trust-small">
+        Terms affecting legal rights should be reviewed
+        by qualified counsel before large-scale commercial
+        launch.
+      </p>
+    `
+  },
+
+  ip: {
+    title: "Content & Intellectual Property",
+
+    html: `
+      <h3>AURYNELLE original assets</h3>
+
+      <p>
+        AURYNELLE branding, Elle character artwork,
+        original visual assets, logos, original music,
+        original written brand materials, proprietary
+        experiences and other original AURYNELLE content
+        are protected as applicable.
+      </p>
+
+      <h3>Personal use vs. commercial use</h3>
+
+      <p>
+        Users may use ordinary guidance from Elle for
+        their own personal purposes, subject to
+        applicable law and any additional terms.
+      </p>
+
+      <div class="trust-callout">
+        A user may not take protected Elle character
+        assets, AURYNELLE branding, original music,
+        proprietary experiences or other protected
+        AURYNELLE materials and reproduce, redistribute,
+        sell or incorporate them into another commercial
+        product, production, advertisement, course,
+        merchandise line, application or training
+        dataset without permission where such permission
+        is legally required.
+      </div>
+
+      <h3>Permission</h3>
+
+      <p>
+        For commercial licensing, production or other
+        permission questions, contact Live Elle through
+        the adult Live Elle request process.
+      </p>
+
+      <p class="trust-small">
+        Copyright and ownership of AI-assisted or
+        AI-generated material can vary by jurisdiction
+        and circumstances. This notice does not claim
+        rights that applicable law does not provide.
+      </p>
+    `
+  },
+
+  ai: {
+    title: "AI Notice",
+
+    html: `
+      <h3>Elle is artificial intelligence</h3>
+
+      <p>
+        Elle generates responses using AI. She can be
+        useful, thoughtful and informative, but she can
+        also misunderstand a question, miss context or
+        provide information that is incomplete,
+        outdated or incorrect.
+      </p>
+
+      <div class="trust-callout">
+        Question Elle. Correct Elle. Verify important
+        information before relying on it.
+      </div>
+
+      <h3>High-stakes decisions</h3>
+
+      <p>
+        Elle is not a substitute for licensed medical,
+        legal, financial, emergency or other regulated
+        professional services. Important decisions
+        should be verified with an appropriate qualified
+        source when needed.
+      </p>
+
+      <h3>Corrections</h3>
+
+      <p>
+        Users are welcome to challenge or correct an
+        Elle response. Elle should reassess the issue
+        rather than pretending she is always right.
+      </p>
+
+      <h3>Context matters</h3>
+
+      <p>
+        Sensitive words alone do not automatically make
+        a question improper. Elle should consider the
+        purpose and context of a request while still
+        refusing assistance that would meaningfully
+        enable serious harmful or unlawful misuse.
+      </p>
+    `
+  }
+};
+
+function openTrust(section) {
+
+  const content =
+    TRUST_CONTENT[section];
+
+  if (!content) {
+    return;
+  }
+
+  document
+    .getElementById(
+      "trustTitle"
+    )
+    .textContent =
+      content.title;
+
+  document
+    .getElementById(
+      "trustBody"
+    )
+    .innerHTML =
+      content.html;
+
+  document
+    .getElementById(
+      "trustModal"
+    )
+    .classList
+    .add("show");
+
+  document.body
+    .classList
+    .add("modal-open");
+}
+
+function closeTrust() {
+
+  document
+    .getElementById(
+      "trustModal"
+    )
+    .classList
+    .remove("show");
+
+  document.body
+    .classList
+    .remove("modal-open");
+}
+
+document
+  .getElementById(
+    "trustModal"
+  )
+  .addEventListener(
+    "click",
+    event => {
+
+      if (
+        event.target.id ===
+        "trustModal"
+      ) {
+
+        closeTrust();
+      }
+    }
+  );
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if (
+      event.key === "Escape"
+    ) {
+
+      closeTrust();
+    }
+  }
+);
 
 /* =========================================================
-   RADIO EVENTS
+   EVENTS
    ========================================================= */
 
 radioToggle.onclick =
   toggleRadio;
 
-
 mobileMusic.onclick =
   toggleRadio;
-
 
 nextTrack.onclick =
   nextSong;
 
-
 prevTrack.onclick =
   previousSong;
-
 
 audio.addEventListener(
   "ended",
   nextSong
 );
-
 
 audio.addEventListener(
   "error",
@@ -6168,16 +6072,12 @@ audio.addEventListener(
     radioNow.textContent =
       "Add your song files to public/audio 🎵";
 
-
-    radioPlaying =
-      false;
-
+    radioPlaying = false;
 
     radioToggle.textContent =
       "Play my music 🎵";
   }
 );
-
 
 radioVolume.addEventListener(
   "input",
@@ -6188,7 +6088,6 @@ radioVolume.addEventListener(
         radioVolume.value
       );
 
-
     localStorage.setItem(
       "elleRadioVolume",
       radioVolume.value
@@ -6196,44 +6095,29 @@ radioVolume.addEventListener(
   }
 );
 
-
-
-/* =========================================================
-   BUTTON EVENTS
-   ========================================================= */
-
 sendButton.onclick =
-  () => {
-
-    doSend();
-  };
-
+  () => doSend();
 
 say.addEventListener(
   "keydown",
   event => {
 
     if (
-      event.key ===
-      "Enter"
+      event.key === "Enter"
     ) {
 
       event.preventDefault();
-
 
       doSend();
     }
   }
 );
 
-
 vibeButton.onclick =
   cycleMood;
 
-
 mobileVibe.onclick =
   cycleMood;
-
 
 heyButton.onclick =
   () => {
@@ -6243,11 +6127,9 @@ heyButton.onclick =
       4
     );
 
-
     setStatus(
       "Hey gorgeous 👋"
     );
-
 
     setTimeout(
       stopThinking,
@@ -6255,44 +6137,33 @@ heyButton.onclick =
     );
   };
 
-
 portraitShell.onclick =
   () => {
 
     const reactions = [
-
       "✨",
       "💕",
       "👏",
       "💛",
       "🔥"
-
     ];
-
 
     const reaction =
       reactions[
-
         Math.floor(
-
           Math.random() *
           reactions.length
-
         )
-
       ];
-
 
     reactPortrait(
       reaction,
       5
     );
 
-
     setStatus(
       "Heyyy 😌"
     );
-
 
     setTimeout(
       stopThinking,
@@ -6300,30 +6171,20 @@ portraitShell.onclick =
     );
   };
 
-
-
 /* =========================================================
-   CREATE AMBIENT DOTS
+   AMBIENT DOTS
    ========================================================= */
 
 function createAmbientDots() {
 
   const colors = [
-
     "#ff6b9d",
-
     "#9b6bff",
-
     "#55c7f3",
-
     "#4cd964",
-
     "#ff8c42",
-
-    "#ffd24a"
-
+    "#d9b86c"
   ];
-
 
   for (
     let i = 0;
@@ -6336,56 +6197,42 @@ function createAmbientDots() {
         "div"
       );
 
-
     element.className =
       "ambient";
-
 
     const size =
       8 +
       Math.random() * 18;
 
-
     Object.assign(
       element.style,
       {
-
-        width:
-          size + "px",
-
-        height:
-          size + "px",
-
+        width: size + "px",
+        height: size + "px",
         left:
           Math.random() *
           100 +
           "%",
-
         top:
           Math.random() *
           100 +
           "%",
-
         background:
           colors[
             i %
             colors.length
           ],
-
         animationDelay:
           -Math.random() *
           10 +
           "s",
-
         animationDuration:
           10 +
           Math.random() *
           8 +
           "s"
-
       }
     );
-
 
     document.body.appendChild(
       element
@@ -6393,10 +6240,8 @@ function createAmbientDots() {
   }
 }
 
-
-
 /* =========================================================
-   INITIALIZE RADIO SETTINGS
+   RADIO INIT
    ========================================================= */
 
 function initializeRadio() {
@@ -6406,7 +6251,6 @@ function initializeRadio() {
       "elleRadioVolume"
     );
 
-
   if (
     savedVolume !== null
   ) {
@@ -6415,76 +6259,64 @@ function initializeRadio() {
       savedVolume;
   }
 
-
   audio.volume =
     Number(
       radioVolume.value
     );
 
-
   loadTrack();
 
-
-  /*
-    We intentionally DO NOT autoplay.
-
-    Browsers block autoplay
-    and users should choose
-    when Elle Radio starts.
-  */
-
-  radioPlaying =
-    false;
-
+  radioPlaying = false;
 
   radioToggle.textContent =
     "Play my music 🎵";
-
 
   mobileMusic.textContent =
     "🎧";
 }
 
-
-
 /* =========================================================
-   START ELLE
+   INITIALIZE
    ========================================================= */
 
 createAmbientDots();
 
-
 initializeRadio();
-
 
 renderChips(
   DEFAULT_CHIPS
 );
-
 
 setMood(
   "default",
   true
 );
 
-
 ellePortrait.dataset.current =
   "elle.png";
 
+if (
+  validAgeGroup(
+    ageGroup
+  )
+) {
+
+  applyAgeExperience();
+}
+
+else {
+
+  showAgeGate();
+}
 
 addBubble(
-
   "elle",
-
   "Hey gorgeous ✦ I'm Elle. Ask me a real question, bring me a problem, let me hype you up, or tell me what you're trying to figure out. We’re getting you to your next move. 💕"
-
 );
-
 
 say.focus();
 
 </script>
-
 
 </body>
 </html>
