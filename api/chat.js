@@ -1,5 +1,4 @@
-const SHEET_URL =
-  "https://script.google.com/macros/s/AKfycbzHBk-4S8kYi0IdkChHa1EaI5ynZfO7eD61CVnNbIvJdtzD_9_mDYKcXUBk-ntem_i2Tw/exec";
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbxzLTPuxHNSWLddqMRRXluXpCVR_qESnizmfsy_G1tP6EUDps-VtdV-QK-Ot8JDumhiig/exec";
 
 const SYSTEM = `
 You are Elle, the vibrant heart of AURYNELLE IDEAS.
