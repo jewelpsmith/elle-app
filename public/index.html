@@ -1,365 +1,3209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>AURYNELLE∞ IDEAS · Talk to Elle</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Figtree:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>AURYNELLE∞ IDEAS · Ask Elle</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@500;600;700&family=Figtree:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-html,body{height:100%;}
-body{min-height:100dvh;overflow-x:hidden;background:linear-gradient(180deg,#FEFEFE,#FFF9F9 40%,#FEFEFE);
-  font-family:'Figtree',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#333;}
-.confetti{position:fixed;border-radius:50%;pointer-events:none;animation:fd 15s ease-in-out infinite;}
-@keyframes fd{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-18px) scale(1.08);}}
-@keyframes dp{0%,60%,100%{opacity:.3;transform:translateY(0);}30%{opacity:1;transform:translateY(-4px);}}
-@keyframes br{0%,100%{box-shadow:0 14px 36px -14px rgba(255,107,157,.28);}50%{box-shadow:0 18px 44px -14px rgba(255,107,157,.42);}}
+/* =========================================================
+   ELLE V2
+   Interactive mood-based interface
+   ========================================================= */
 
-.wrap{max-width:1100px;margin:0 auto;min-height:100dvh;display:grid;
-  grid-template-columns:280px 1fr;gap:24px;align-items:start;padding:28px 20px;}
-
-/* left column */
-.left{position:sticky;top:28px;}
-.frame{border-radius:20px;overflow:hidden;animation:br 5s ease-in-out infinite;position:relative;}
-.frame img{display:block;width:100%;height:auto;}
-.frame::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(30,15,40,.4),transparent 40%);pointer-events:none;}
-.nplate{position:absolute;left:14px;bottom:12px;color:#fff;z-index:2;text-shadow:0 2px 8px rgba(0,0,0,.4);}
-.nplate .n{font-family:'Bangers',cursive;font-size:26px;
-  background:linear-gradient(90deg,#FF6B9D,#FF8C42,#FFCC00,#4CD964,#5AC8FA,#9B6BFF);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;-webkit-text-stroke:1px rgba(0,0,0,.2);}
-.nplate .b{font-size:9px;letter-spacing:.11em;opacity:.8;margin-top:1px;}
-.nplate .b .inf{color:#F0C877;}
-
-/* jewel card */
-.jcard{margin-top:16px;background:#fff;border-radius:16px;padding:16px;
-  border:1.5px solid #5AC8FA30;box-shadow:0 4px 20px -8px rgba(90,200,250,.15);}
-.jcard .jt{font-weight:700;font-size:13px;color:#333;margin-bottom:4px;}
-.jcard .js{font-size:12px;color:#888;line-height:1.5;margin-bottom:12px;}
-.jcard .jbtns{display:flex;flex-direction:column;gap:6px;}
-.jcard .jb{display:block;text-align:center;padding:8px 12px;border-radius:10px;font-size:12px;font-weight:600;
-  text-decoration:none;cursor:pointer;transition:all .15s;border:none;font-family:'Figtree',sans-serif;}
-.jb-primary{background:#5AC8FA;color:#fff;box-shadow:0 4px 14px -4px rgba(90,200,250,.5);}
-.jb-secondary{background:#5AC8FA0A;color:#5AC8FA;border:1.5px solid #5AC8FA30 !important;}
-.jb:hover{filter:brightness(1.08);}.jb:active{transform:scale(.97);}
-.jcard-mobile{display:none;}
-
-/* right column */
-.right{display:flex;flex-direction:column;min-height:min(92dvh,780px);}
-.head{text-align:center;margin-bottom:12px;}
-.logo{font-size:10px;letter-spacing:.14em;color:#ccc;}.logo span{color:#FF8C42;}
-.tw{position:relative;display:inline-block;padding:3px 12px;}
-.sp{position:absolute;border-radius:50%;filter:blur(5px);z-index:1;}
-.sp1{top:-5px;left:-2px;width:24px;height:24px;background:#FF6B9D;opacity:.35;}
-.sp2{top:1px;right:-4px;width:20px;height:20px;background:#5AC8FA;opacity:.35;}
-.sp3{bottom:-4px;left:34%;width:22px;height:12px;background:#FFCC00;opacity:.35;}
-h1{font-family:'Bangers',cursive;font-size:42px;font-weight:400;line-height:1;letter-spacing:.03em;
-  position:relative;z-index:2;
-  background:linear-gradient(90deg,#FF6B9D,#FF8C42,#FFCC00,#4CD964,#5AC8FA,#9B6BFF,#FF2D78);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  -webkit-text-stroke:1.5px #222;filter:drop-shadow(1px 2px 0 rgba(0,0,0,.18));}
-.sub{font-size:11.5px;color:#999;margin-top:2px;}
-
-/* service path cards */
-.paths{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px;}
-.path{background:#fff;border:1.5px solid;border-radius:14px;padding:12px 10px;text-align:center;
-  cursor:pointer;transition:all .18s;position:relative;overflow:hidden;}
-.path:hover{transform:translateY(-2px);}.path:active{transform:scale(.97);}
-.path .pe{font-size:22px;margin-bottom:4px;}
-.path .pt{font-size:11.5px;font-weight:600;line-height:1.3;}
-.p1{border-color:#FF6B9D30;color:#FF6B9D;}.p1:hover{background:#FF6B9D08;box-shadow:0 6px 20px -8px #FF6B9D40;}
-.p2{border-color:#FF8C4230;color:#FF8C42;}.p2:hover{background:#FF8C4208;box-shadow:0 6px 20px -8px #FF8C4240;}
-.p3{border-color:#4CD96430;color:#4CD964;}.p3:hover{background:#4CD96408;box-shadow:0 6px 20px -8px #4CD96440;}
-.p4{border-color:#5AC8FA30;color:#5AC8FA;}.p4:hover{background:#5AC8FA08;box-shadow:0 6px 20px -8px #5AC8FA40;}
-
-/* chat card */
-.card{flex:1;display:flex;flex-direction:column;background:#fff;border-radius:20px;
-  padding:14px 14px 12px;box-shadow:0 4px 24px -8px rgba(0,0,0,.06);border-top:3px solid #FF6B9D;overflow:hidden;}
-.thread{flex:1;display:flex;flex-direction:column;gap:9px;overflow-y:auto;padding:4px 2px 6px;
-  scrollbar-width:thin;scrollbar-color:#eee transparent;}
-.thread::-webkit-scrollbar{width:4px;}.thread::-webkit-scrollbar-thumb{background:#eee;border-radius:6px;}
-.mw{display:flex;width:100%;}
-.bub{max-width:88%;padding:10px 14px;font-size:13.5px;line-height:1.6;white-space:pre-wrap;}
-.en{font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px;}
-.dt{display:flex;gap:5px;padding:3px 0;}
-.dt span{width:6px;height:6px;border-radius:50%;animation:dp 1.4s ease infinite;}
-
-/* lead progress */
-.lead-bar{display:none;padding:10px 14px;background:#F9FAFF;border-radius:12px;margin-top:8px;
-  border:1.5px solid #5AC8FA20;}
-.lead-bar.show{display:block;}
-.lb-title{font-size:11px;font-weight:700;color:#5AC8FA;letter-spacing:.06em;margin-bottom:8px;}
-.lb-steps{display:flex;gap:6px;align-items:center;}
-.lb-step{display:flex;align-items:center;gap:4px;font-size:11px;color:#bbb;font-weight:500;}
-.lb-step.done{color:#4CD964;}.lb-step.active{color:#5AC8FA;font-weight:700;}
-.lb-dot{width:18px;height:18px;border-radius:50%;border:2px solid #ddd;display:grid;place-items:center;font-size:9px;}
-.lb-step.done .lb-dot{background:#4CD964;border-color:#4CD964;color:#fff;}
-.lb-step.active .lb-dot{border-color:#5AC8FA;color:#5AC8FA;}
-.lb-line{width:16px;height:2px;background:#eee;border-radius:2px;}
-
-/* completion state */
-.complete{display:none;text-align:center;padding:20px 16px;background:linear-gradient(135deg,#F9FAFF,#FFF9F9);
-  border-radius:16px;margin-top:8px;border:1.5px solid #4CD96430;}
-.complete.show{display:block;}
-.complete .ck{font-size:32px;margin-bottom:6px;}
-.complete .ct{font-family:'Caveat',cursive;font-size:26px;color:#4CD964;}
-.complete .cm{font-size:13px;color:#888;margin-top:6px;line-height:1.5;}
-.complete .cb{display:flex;gap:8px;justify-content:center;margin-top:14px;}
-.complete .cbtn{padding:8px 16px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;
-  border:none;font-family:'Figtree',sans-serif;transition:all .15s;}
-.cbtn:active{transform:scale(.97);}
-.cbtn-elle{background:#FF6B9D;color:#fff;box-shadow:0 4px 14px -4px rgba(255,107,157,.5);}
-.cbtn-jewel{background:#5AC8FA12;color:#5AC8FA;border:1.5px solid #5AC8FA30 !important;}
-
-/* dynamic chips */
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;min-height:32px;}
-.chip{padding:7px 12px;border-radius:999px;font-size:11.5px;font-weight:500;
-  font-family:'Figtree',sans-serif;cursor:pointer;transition:all .15s;
-  border:1.5px solid #FF6B9D35;color:#e85a8a;background:#FF6B9D08;}
-.chip:hover{background:#FF6B9D18;}.chip:active{transform:scale(.97);}
-.chip.jewel{border-color:#5AC8FA35;color:#5AC8FA;background:#5AC8FA08;}
-.chip.jewel:hover{background:#5AC8FA18;}
-
-/* composer */
-.comp{display:flex;gap:7px;margin-top:8px;align-items:center;}
-.ib{flex:1;display:flex;background:#FAFAFA;border:1.5px solid #eee;border-radius:12px;padding:2px 4px 2px 12px;transition:border-color .2s;}
-.ib:focus-within{border-color:#FF6B9D35;}
-input.say{flex:1;border:none;outline:none;background:transparent;font-family:'Figtree',sans-serif;
-  font-size:13.5px;color:#333;padding:8px 0;}
-input.say::placeholder{color:#bbb;}
-.sbtn{width:38px;height:38px;flex-shrink:0;border:none;border-radius:50%;cursor:pointer;display:grid;place-items:center;
-  background:#FF6B9D;box-shadow:0 4px 14px -4px rgba(255,107,157,.5);color:#fff;transition:all .15s;}
-.sbtn:hover{filter:brightness(1.1);}.sbtn:active{transform:scale(.95);}
-.limit-msg{text-align:center;font-size:11px;color:#999;padding:8px;display:none;}
-.limit-msg.show{display:block;}
-
-.footer{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px;font-size:10px;color:#ccc;}
-.footer a{color:#ccc;text-decoration:none;}
-
-@media(max-width:900px){
-  .wrap{grid-template-columns:1fr;gap:14px;padding:14px 12px 28px;}
-  .left{position:static;display:flex;gap:12px;align-items:start;}
-  .frame{max-width:140px;flex-shrink:0;}
-  .jcard{display:none;}
-  .jcard-mobile{display:block;margin-top:10px;}
-  .paths{grid-template-columns:repeat(2,1fr);gap:6px;margin-bottom:10px;}
-  h1{font-size:34px;}
-  .right{min-height:auto;}
-}
-@media(max-width:480px){
-  .left{flex-direction:column;align-items:center;}
-  .frame{max-width:200px;}
-}
-</style>
-</head>
-<body>
-<div class="wrap">
-  <!-- LEFT: portrait + jewel card -->
-  <div class="left">
-    <div class="frame">
-      <img src="elle.png" alt="Elle"/>
-      <div class="nplate"><div class="n">Elle</div>
-        <div class="b">&Lambda;URYNELLE<span class="inf">&infin;</span> IDE&Lambda;S</div></div>
-    </div>
-    <div class="jcard">
-      <div class="jt">Need deeper support?</div>
-      <div class="js">Get personal guidance from Jewel, the woman behind Elle.</div>
-      <div class="jbtns">
-        <button class="jb jb-primary" onclick="doSend('I want personal help from Jewel')">Talk to Jewel</button>
-        <button class="jb jb-secondary" onclick="doSend('What kind of sessions does Jewel offer?')">See options</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- RIGHT: everything else -->
-  <div class="right">
-    <div class="head">
-      <div class="logo">&Lambda;URYNELLE<span>&infin;</span> IDE&Lambda;S</div>
-      <div class="tw"><div class="sp sp1"></div><div class="sp sp2"></div><div class="sp sp3"></div>
-        <h1>Talk to Elle</h1></div>
-      <p class="sub">Come in confused. Leave with clarity and your next move. ✦</p>
-    </div>
-
-    <!-- service path cards -->
-    <div class="paths">
-      <div class="path p1" onclick="doSend('I need encouragement today')">
-        <div class="pe">💛</div><div class="pt">I need encouragement</div></div>
-      <div class="path p2" onclick="doSend('Help me figure something out')">
-        <div class="pe">🧠</div><div class="pt">Help me figure this out</div></div>
-      <div class="path p3" onclick="doSend('Help me make a plan for something')">
-        <div class="pe">⚡</div><div class="pt">Help me make a plan</div></div>
-      <div class="path p4" onclick="doSend('I want personal help from Jewel')">
-        <div class="pe">💎</div><div class="pt">Personal help from Jewel</div></div>
-    </div>
-
-    <!-- chat -->
-    <div class="card">
-      <div class="thread" id="thread"></div>
-      <div class="lead-bar" id="leadBar">
-        <div class="lb-title">Almost there ✨</div>
-        <div class="lb-steps" id="leadSteps">
-          <div class="lb-step" id="ls1"><span class="lb-dot">1</span> What you need</div>
-          <div class="lb-line"></div>
-          <div class="lb-step" id="ls2"><span class="lb-dot">2</span> Your name</div>
-          <div class="lb-line"></div>
-          <div class="lb-step" id="ls3"><span class="lb-dot">3</span> Your email</div>
-        </div>
-      </div>
-      <div class="complete" id="complete">
-        <div class="ck">💛</div>
-        <div class="ct">You're in!</div>
-        <div class="cm" id="completeMsg">Your request has been sent to Jewel.</div>
-        <div class="cb">
-          <button class="cbtn cbtn-elle" onclick="resetChat()">Keep talking with Elle</button>
-          <button class="cbtn cbtn-jewel" onclick="doSend('What kind of sessions does Jewel offer?')">See ways to work with Jewel</button>
-        </div>
-      </div>
-      <div class="chips" id="chips"></div>
-      <div class="limit-msg" id="limitMsg">You've had a great session! Come back anytime, or connect with Jewel for deeper support 💕</div>
-      <div class="comp" id="composer">
-        <div class="ib"><input class="say" id="say" type="text" placeholder="Say anything to Elle..." autocomplete="off"/></div>
-        <button class="sbtn" id="sendBtn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <div class="footer">
-      <a href="https://buymeacoffee.com/aurynelle">buymeacoffee.com/aurynelle</a>
-      <span style="opacity:.3">&middot;</span>
-      <a href="https://jewelpsmith.github.io/aurynelle">jewelpsmith.github.io/aurynelle</a>
-    </div>
-
-    <!-- mobile jewel card -->
-    <div class="jcard jcard-mobile">
-      <div class="jt">Need deeper support?</div>
-      <div class="js">Get personal guidance from Jewel, the woman behind Elle.</div>
-      <div class="jbtns">
-        <button class="jb jb-primary" onclick="doSend('I want personal help from Jewel')">Talk to Jewel</button>
-        <button class="jb jb-secondary" onclick="doSend('What kind of sessions does Jewel offer?')">See options</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-const BCOL=["#FF6B9D","#9B6BFF","#5AC8FA","#4CD964","#FF8C42"];
-const DEFAULT_CHIPS=["Tell me about your day","I need encouragement","Help me figure something out","Quiz me on something"];
-const MAX_MSGS=30;
-const WARN_AT=25;
-
-let history=[],loading=false,bIdx=0,msgCount=0;
-const thread=document.getElementById("thread"),say=document.getElementById("say"),
-  sendBtn=document.getElementById("sendBtn"),chipsEl=document.getElementById("chips"),
-  leadBar=document.getElementById("leadBar"),complete=document.getElementById("complete"),
-  limitMsg=document.getElementById("limitMsg"),composer=document.getElementById("composer");
-
-// confetti
-(function(){const c=["#FF6B9D","#9B6BFF","#5AC8FA","#4CD964","#FF8C42","#FFCC00","#FF2D78","#FFB6C1"];
-  for(let i=0;i<14;i++){const d=document.createElement("div");d.className="confetti";const s=5+Math.random()*20;
-    Object.assign(d.style,{width:s+"px",height:s+"px",left:Math.random()*100+"%",top:Math.random()*100+"%",
-      background:c[i%8],opacity:.05+Math.random()*.08,animationDelay:Math.random()*8+"s",
-      animationDuration:12+Math.random()*10+"s"});document.body.appendChild(d);}})();
-
-function renderChips(arr){
-  chipsEl.innerHTML="";
-  (arr||DEFAULT_CHIPS).forEach(t=>{
-    const b=document.createElement("button");
-    const isJewel=t.toLowerCase().includes("jewel");
-    b.className="chip"+(isJewel?" jewel":"");
-    b.textContent=t;b.onclick=()=>doSend(t);chipsEl.appendChild(b);});
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-function updateLeadBar(step){
-  if(step>0){leadBar.classList.add("show");}
-  for(let i=1;i<=3;i++){
-    const el=document.getElementById("ls"+i);
-    el.classList.remove("done","active");
-    if(i<step)el.classList.add("done");
-    else if(i===step)el.classList.add("active");
+:root {
+  --pink: #ff5f97;
+  --pink-soft: #fff0f6;
+
+  --orange: #ff8c42;
+  --yellow: #ffd24a;
+  --green: #4cd964;
+  --blue: #55c7f3;
+  --purple: #9b6bff;
+
+  --ink: #312b35;
+  --muted: #8f8892;
+
+  --mood-main: #ff5f97;
+  --mood-second: #ff8c42;
+  --mood-third: #ffd24a;
+
+  --page-a: #fff7fb;
+  --page-b: #fffdf9;
+  --page-c: #f8fbff;
+
+  --glow: rgba(255, 95, 151, 0.28);
+  --card: rgba(255, 255, 255, 0.9);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  overflow-x: hidden;
+
+  font-family: "Figtree", system-ui, sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+
+  background:
+    radial-gradient(circle at 8% 12%, color-mix(in srgb, var(--mood-main) 10%, transparent), transparent 28%),
+    radial-gradient(circle at 88% 18%, color-mix(in srgb, var(--mood-second) 10%, transparent), transparent 25%),
+    radial-gradient(circle at 60% 92%, color-mix(in srgb, var(--mood-third) 9%, transparent), transparent 28%),
+    linear-gradient(145deg, var(--page-a), var(--page-b) 46%, var(--page-c));
+
+  transition:
+    background 0.9s ease,
+    color 0.5s ease;
+}
+
+/* =========================================================
+   MOODS
+   ========================================================= */
+
+body[data-mood="default"] {
+  --mood-main: #ff5f97;
+  --mood-second: #55c7f3;
+  --mood-third: #ffd24a;
+
+  --page-a: #fff7fb;
+  --page-b: #fffdf9;
+  --page-c: #f8fbff;
+
+  --glow: rgba(255, 95, 151, 0.3);
+}
+
+body[data-mood="hype"] {
+  --mood-main: #ff477e;
+  --mood-second: #ff8c42;
+  --mood-third: #ffd24a;
+
+  --page-a: #fff0f5;
+  --page-b: #fff7eb;
+  --page-c: #fffbea;
+
+  --glow: rgba(255, 71, 126, 0.4);
+}
+
+body[data-mood="comfort"] {
+  --mood-main: #a96df5;
+  --mood-second: #ff86ad;
+  --mood-third: #7dd9ed;
+
+  --page-a: #fbf5ff;
+  --page-b: #fff7fb;
+  --page-c: #f5fcff;
+
+  --glow: rgba(169, 109, 245, 0.3);
+}
+
+body[data-mood="focus"] {
+  --mood-main: #4aafe7;
+  --mood-second: #4cd994;
+  --mood-third: #7c77ee;
+
+  --page-a: #f1fbff;
+  --page-b: #f5fff9;
+  --page-c: #f7f5ff;
+
+  --glow: rgba(74, 175, 231, 0.32);
+}
+
+body[data-mood="faith"] {
+  --mood-main: #e9aa35;
+  --mood-second: #f3c96d;
+  --mood-third: #b59ee8;
+
+  --page-a: #fffaf0;
+  --page-b: #fffdf8;
+  --page-c: #faf7ff;
+
+  --glow: rgba(233, 170, 53, 0.32);
+}
+
+body[data-mood="celebrate"] {
+  --mood-main: #ff4f98;
+  --mood-second: #8f66ff;
+  --mood-third: #ffd335;
+
+  --page-a: #fff1f7;
+  --page-b: #f8f2ff;
+  --page-c: #fffbea;
+
+  --glow: rgba(255, 79, 152, 0.42);
+}
+
+/* =========================================================
+   BACKGROUND LIFE
+   ========================================================= */
+
+.bg-orb {
+  position: fixed;
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(1px);
+  opacity: 0.09;
+
+  animation: orbFloat 13s ease-in-out infinite;
+}
+
+@keyframes orbFloat {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-22px) translateX(8px) scale(1.08);
   }
 }
 
-function showComplete(email){
-  complete.classList.add("show");
-  document.getElementById("completeMsg").textContent=
-    "Your request has been sent to Jewel. She'll reach out"+(email?" at "+email:"")+".";
-  leadBar.classList.remove("show");
-  chipsEl.innerHTML="";
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+.shell {
+  width: min(1180px, calc(100% - 28px));
+  min-height: 100dvh;
+
+  margin: 0 auto;
+  padding: 24px 0 30px;
+
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 24px;
+
+  position: relative;
+  z-index: 2;
 }
 
-function resetChat(){
-  complete.classList.remove("show");leadBar.classList.remove("show");
-  limitMsg.classList.remove("show");composer.style.display="flex";
-  renderChips(DEFAULT_CHIPS);
+/* =========================================================
+   ELLE LEFT RAIL
+   ========================================================= */
+
+.elle-rail {
+  position: sticky;
+  top: 22px;
+  align-self: start;
 }
 
-function addBubble(role,text){
-  const wrap=document.createElement("div");wrap.className="mw";
-  wrap.style.justifyContent=role==="you"?"flex-end":"flex-start";
-  const bub=document.createElement("div");bub.className="bub";
-  const ci=bIdx%BCOL.length;
-  if(role==="elle"){
-    bub.style.background=`linear-gradient(135deg,${BCOL[ci]}15,${BCOL[ci]}05)`;
-    bub.style.borderLeft=`2.5px solid ${BCOL[ci]}`;bub.style.borderRadius="3px 16px 16px 16px";
-    bub.style.boxShadow=`0 3px 16px -5px ${BCOL[ci]}28`;
-    const nm=document.createElement("div");nm.className="en";nm.textContent="Elle ✦";
-    nm.style.color=BCOL[ci];bub.appendChild(nm);
-  }else{
-    bub.style.background="linear-gradient(135deg,#FF6B9D10,#FF6B9D04)";
-    bub.style.borderRight="2.5px solid #FF6B9D";bub.style.borderRadius="16px 3px 16px 16px";
-    bub.style.boxShadow="0 3px 16px -5px #FF6B9D20";}
-  const tx=document.createElement("div");tx.style.whiteSpace="pre-wrap";tx.textContent=text;
-  bub.appendChild(tx);wrap.appendChild(bub);thread.appendChild(wrap);thread.scrollTop=thread.scrollHeight;}
+.elle-stage {
+  position: relative;
 
-function showTyping(){const w=document.createElement("div");w.className="mw";w.id="tw";
-  w.style.justifyContent="flex-start";const b=document.createElement("div");b.className="bub";
-  b.style.background="linear-gradient(135deg,#FF6B9D15,#FF6B9D05)";
-  b.style.borderLeft="2.5px solid #FF6B9D";b.style.borderRadius="3px 16px 16px 16px";
-  const n=document.createElement("div");n.className="en";n.textContent="Elle ✦";n.style.color="#FF6B9D";
-  b.appendChild(n);const d=document.createElement("div");d.className="dt";
-  for(let i=0;i<3;i++){const s=document.createElement("span");s.style.background="#FF6B9D";
-    s.style.animationDelay=i*.2+"s";d.appendChild(s);}
-  b.appendChild(d);w.appendChild(b);thread.appendChild(w);thread.scrollTop=thread.scrollHeight;}
-function hideTyping(){const t=document.getElementById("tw");if(t)t.remove();}
+  border-radius: 28px;
+  padding: 5px;
 
-let lastEmail="";
-async function callAPI(text){
-  history.push({role:"user",content:text});
-  try{const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({messages:history})});
-    const d=await r.json();
-    const reply=d.content?.map(c=>c.text||"").join("")||"Something hiccupped, love. Try again? 💕";
-    history.push({role:"assistant",content:reply});
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--mood-main) 70%, white),
+      color-mix(in srgb, var(--mood-second) 58%, white),
+      color-mix(in srgb, var(--mood-third) 68%, white)
+    );
 
-    // handle metadata
-    if(d.chips&&d.chips.length>0) renderChips(d.chips);
-    else renderChips(DEFAULT_CHIPS);
-    if(d.leadProgress>0) updateLeadBar(d.leadProgress+1);
-    if(d.leadCaptured){
-      // try to extract email from the conversation
-      const emailMatch=text.match(/[\w.-]+@[\w.-]+\.\w+/);
-      if(emailMatch) lastEmail=emailMatch[0];
-      setTimeout(()=>showComplete(lastEmail),800);
+  box-shadow:
+    0 22px 50px -25px var(--glow),
+    0 12px 26px -22px rgba(0, 0, 0, 0.4);
+
+  transition:
+    background 0.8s ease,
+    box-shadow 0.8s ease,
+    transform 0.3s ease;
+
+  animation: stageBreath 5s ease-in-out infinite;
+}
+
+@keyframes stageBreath {
+  0%,
+  100% {
+    transform: translateY(0);
+    box-shadow:
+      0 20px 48px -25px var(--glow),
+      0 12px 26px -22px rgba(0, 0, 0, 0.38);
+  }
+
+  50% {
+    transform: translateY(-4px);
+    box-shadow:
+      0 29px 62px -22px var(--glow),
+      0 16px 32px -21px rgba(0, 0, 0, 0.38);
+  }
+}
+
+.elle-stage.talking {
+  animation: talkingStage 0.68s ease-in-out infinite alternate;
+}
+
+@keyframes talkingStage {
+  from {
+    transform: translateY(-2px) rotate(-0.3deg) scale(1);
+  }
+
+  to {
+    transform: translateY(-7px) rotate(0.3deg) scale(1.012);
+  }
+}
+
+.elle-stage.reaction {
+  animation: reactionPop 0.65s ease;
+}
+
+@keyframes reactionPop {
+  0% {
+    transform: scale(1);
+  }
+
+  35% {
+    transform: scale(1.035) rotate(-1deg);
+  }
+
+  65% {
+    transform: scale(1.025) rotate(1deg);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.elle-photo {
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 24px;
+
+  background: #fff;
+  cursor: pointer;
+}
+
+.elle-photo::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(20, 8, 28, 0.43),
+      transparent 40%
+    );
+}
+
+.elle-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  transform-origin: 50% 65%;
+
+  animation: elleIdle 5.5s ease-in-out infinite;
+
+  transition:
+    filter 0.6s ease,
+    transform 0.3s ease;
+}
+
+@keyframes elleIdle {
+  0%,
+  100% {
+    transform: scale(1.002) translateY(0);
+  }
+
+  50% {
+    transform: scale(1.012) translateY(-3px);
+  }
+}
+
+.elle-stage.talking img {
+  animation: elleTalking 0.58s ease-in-out infinite alternate;
+  filter: saturate(1.08) brightness(1.025);
+}
+
+@keyframes elleTalking {
+  from {
+    transform: scale(1.01) translateY(0);
+  }
+
+  to {
+    transform: scale(1.025) translateY(-4px);
+  }
+}
+
+.elle-photo:hover img {
+  transform: scale(1.025);
+}
+
+.nameplate {
+  position: absolute;
+
+  left: 17px;
+  bottom: 15px;
+
+  z-index: 3;
+
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.48);
+}
+
+.elle-name {
+  font-family: "Bangers", cursive;
+  font-size: 31px;
+  letter-spacing: 0.03em;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff6b9d,
+      #ff9b42,
+      #ffdb40,
+      #65e484,
+      #64d4ff,
+      #af82ff
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.42);
+}
+
+.brand-small {
+  margin-top: -2px;
+
+  font-size: 9px;
+  letter-spacing: 0.15em;
+
+  opacity: 0.9;
+}
+
+.status {
+  position: absolute;
+
+  top: 14px;
+  left: 14px;
+
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 7px 10px;
+
+  border-radius: 999px;
+
+  color: #37323a;
+  background: rgba(255, 255, 255, 0.86);
+
+  backdrop-filter: blur(12px);
+
+  font-size: 10.5px;
+  font-weight: 700;
+
+  box-shadow: 0 6px 18px -12px rgba(0, 0, 0, 0.35);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #4cd964;
+
+  box-shadow: 0 0 0 4px rgba(76, 217, 100, 0.13);
+
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    transform: scale(0.9);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.talking .status-dot {
+  background: var(--mood-main);
+
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--mood-main) 15%, transparent);
+
+  animation: statusFast 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes statusFast {
+  from {
+    transform: scale(0.85);
+  }
+
+  to {
+    transform: scale(1.3);
+  }
+}
+
+/* reaction emojis */
+
+.reaction-layer {
+  position: absolute;
+  inset: 0;
+
+  z-index: 10;
+
+  pointer-events: none;
+  overflow: hidden;
+
+  border-radius: 28px;
+}
+
+.reaction-emoji {
+  position: absolute;
+
+  bottom: 25%;
+
+  font-size: 28px;
+
+  animation: emojiFly 1.35s ease-out forwards;
+}
+
+@keyframes emojiFly {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.6) rotate(-10deg);
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  65% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-155px) scale(1.3) rotate(15deg);
+  }
+}
+
+/* =========================================================
+   VIBE CONTROLS
+   ========================================================= */
+
+.rail-controls {
+  display: flex;
+  gap: 8px;
+
+  margin-top: 11px;
+}
+
+.vibe-btn,
+.ping-btn {
+  flex: 1;
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+
+  border-radius: 13px;
+
+  padding: 9px 10px;
+
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(14px);
+
+  color: #6f6874;
+
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 700;
+
+  box-shadow: 0 8px 22px -18px rgba(0, 0, 0, 0.38);
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease;
+}
+
+.vibe-btn:hover,
+.ping-btn:hover {
+  transform: translateY(-2px);
+  background: white;
+}
+
+.vibe-btn:active,
+.ping-btn:active {
+  transform: scale(0.97);
+}
+
+/* =========================================================
+   LIVE ELLE CARD
+   ========================================================= */
+
+.live-card {
+  margin-top: 14px;
+
+  padding: 17px;
+
+  border:
+    1px solid color-mix(in srgb, var(--mood-second) 25%, #e8e8e8);
+
+  border-radius: 19px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.93),
+      color-mix(in srgb, var(--mood-second) 5%, white)
+    );
+
+  box-shadow:
+    0 15px 32px -28px var(--glow);
+
+  transition:
+    border-color 0.7s ease,
+    background 0.7s ease;
+}
+
+.live-eyebrow {
+  margin-bottom: 5px;
+
+  color: var(--mood-main);
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.live-title {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.live-copy {
+  margin-top: 6px;
+
+  color: #858087;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.live-mini {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+
+  margin-top: 10px;
+}
+
+.live-mini span {
+  padding: 4px 7px;
+
+  border-radius: 999px;
+
+  background:
+    color-mix(in srgb, var(--mood-second) 8%, white);
+
+  color: #77717a;
+
+  font-size: 9.5px;
+}
+
+.live-actions {
+  display: grid;
+  gap: 7px;
+
+  margin-top: 13px;
+}
+
+.live-btn {
+  border: none;
+
+  border-radius: 11px;
+
+  padding: 9px 12px;
+
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 700;
+
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease;
+}
+
+.live-btn:hover {
+  transform: translateY(-1px);
+}
+
+.live-btn:active {
+  transform: scale(0.975);
+}
+
+.live-primary {
+  color: white;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--mood-main),
+      var(--mood-second)
+    );
+
+  box-shadow:
+    0 8px 20px -12px var(--glow);
+}
+
+.live-secondary {
+  color: var(--mood-second);
+
+  background:
+    color-mix(in srgb, var(--mood-second) 7%, white);
+
+  border:
+    1px solid color-mix(in srgb, var(--mood-second) 22%, white);
+}
+
+/* =========================================================
+   RIGHT SIDE
+   ========================================================= */
+
+.main {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.hero {
+  text-align: center;
+
+  padding: 4px 12px 15px;
+}
+
+.brand {
+  color: #b2acb6;
+
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.brand span {
+  color: var(--mood-second);
+}
+
+.hero-title {
+  position: relative;
+
+  display: inline-block;
+
+  margin-top: 2px;
+
+  padding: 0 18px;
+}
+
+.hero-title h1 {
+  position: relative;
+  z-index: 2;
+
+  font-family: "Bangers", cursive;
+
+  font-size: clamp(40px, 5vw, 57px);
+  font-weight: 400;
+  letter-spacing: 0.025em;
+  line-height: 1;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--mood-main),
+      var(--mood-second),
+      var(--mood-third),
+      var(--mood-main)
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  -webkit-text-stroke: 1.4px #2c2530;
+
+  filter: drop-shadow(1px 2px 0 rgba(0, 0, 0, 0.12));
+
+  transition: background 0.8s ease;
+}
+
+.title-glow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(9px);
+
+  opacity: 0.24;
+
+  animation: titleGlow 5s ease-in-out infinite;
+}
+
+.title-glow.one {
+  width: 36px;
+  height: 36px;
+
+  left: 5px;
+  top: 2px;
+
+  background: var(--mood-main);
+}
+
+.title-glow.two {
+  width: 29px;
+  height: 29px;
+
+  right: 5px;
+  top: 8px;
+
+  background: var(--mood-second);
+
+  animation-delay: -2s;
+}
+
+@keyframes titleGlow {
+  0%,
+  100% {
+    transform: scale(0.9);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+.subtitle {
+  margin-top: 4px;
+
+  color: #8e8892;
+
+  font-size: 12px;
+}
+
+.mode-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  margin-top: 8px;
+
+  color: #aaa4ad;
+
+  font-size: 10px;
+}
+
+.mode-pill {
+  padding: 4px 8px;
+
+  border-radius: 999px;
+
+  background:
+    color-mix(in srgb, var(--mood-main) 7%, white);
+
+  color: var(--mood-main);
+
+  font-weight: 800;
+}
+
+/* =========================================================
+   SERVICE PATHS
+   ========================================================= */
+
+.paths {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 9px;
+
+  margin-bottom: 12px;
+}
+
+.path {
+  min-height: 93px;
+
+  position: relative;
+  overflow: hidden;
+
+  border:
+    1px solid color-mix(in srgb, var(--path-color) 24%, #ececec);
+
+  border-radius: 18px;
+
+  padding: 13px 10px;
+
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.79);
+  backdrop-filter: blur(14px);
+
+  color: #4f4952;
+
+  text-align: center;
+
+  box-shadow: 0 10px 24px -24px var(--path-color);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.path::before {
+  content: "";
+
+  position: absolute;
+
+  width: 75px;
+  height: 75px;
+
+  right: -32px;
+  top: -35px;
+
+  border-radius: 50%;
+
+  background: var(--path-color);
+
+  opacity: 0.07;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.path:hover {
+  transform: translateY(-5px) rotate(-0.3deg);
+
+  background: white;
+
+  box-shadow:
+    0 16px 30px -21px var(--path-color);
+}
+
+.path:hover::before {
+  transform: scale(1.45);
+  opacity: 0.12;
+}
+
+.path:active {
+  transform: scale(0.975);
+}
+
+.path-icon {
+  position: relative;
+  z-index: 2;
+
+  font-size: 25px;
+
+  transition: transform 0.25s ease;
+}
+
+.path:hover .path-icon {
+  transform: scale(1.13) rotate(-5deg);
+}
+
+.path-title {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 7px;
+
+  color: var(--path-color);
+
+  font-size: 11.5px;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.path-sub {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 3px;
+
+  color: #a19ba4;
+
+  font-size: 9.5px;
+}
+
+/* =========================================================
+   CHAT CARD
+   ========================================================= */
+
+.chat-card {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 610px;
+
+  padding: 15px;
+
+  overflow: hidden;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.8);
+
+  border-radius: 25px;
+
+  background: rgba(255, 255, 255, 0.78);
+
+  backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 24px 60px -45px rgba(40, 30, 50, 0.45);
+
+  position: relative;
+}
+
+.chat-card::before {
+  content: "";
+
+  height: 3px;
+
+  position: absolute;
+
+  top: 0;
+  left: 5%;
+  right: 5%;
+
+  border-radius: 0 0 999px 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--mood-main),
+      var(--mood-second),
+      var(--mood-third),
+      transparent
+    );
+
+  transition: background 0.8s ease;
+}
+
+.thread {
+  flex: 1;
+
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+
+  overflow-y: auto;
+
+  padding: 8px 4px 12px;
+
+  scrollbar-width: thin;
+  scrollbar-color: #e6e1e7 transparent;
+}
+
+.thread::-webkit-scrollbar {
+  width: 5px;
+}
+
+.thread::-webkit-scrollbar-thumb {
+  border-radius: 99px;
+  background: #e7e2e8;
+}
+
+.message-row {
+  width: 100%;
+
+  display: flex;
+
+  animation: bubbleIn 0.36s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes bubbleIn {
+  from {
+    opacity: 0;
+    transform: translateY(9px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.bubble {
+  max-width: min(88%, 690px);
+
+  padding: 11px 14px;
+
+  font-size: 13.5px;
+  line-height: 1.58;
+
+  white-space: pre-wrap;
+
+  position: relative;
+
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.bubble-elle {
+  border-radius: 7px 18px 18px 18px;
+
+  background:
+    linear-gradient(
+      140deg,
+      color-mix(in srgb, var(--bubble-color) 8%, white),
+      rgba(255, 255, 255, 0.86)
+    );
+
+  border-left: 3px solid var(--bubble-color);
+
+  box-shadow:
+    0 10px 24px -22px var(--bubble-color);
+}
+
+.bubble-user {
+  border-radius: 18px 7px 18px 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--mood-main) 8%, white),
+      rgba(255, 255, 255, 0.87)
+    );
+
+  border-right: 3px solid var(--mood-main);
+
+  box-shadow:
+    0 10px 24px -23px var(--mood-main);
+}
+
+.elle-label {
+  margin-bottom: 3px;
+
+  color: var(--bubble-color);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.typing-dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  height: 20px;
+}
+
+.typing-dots span {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--mood-main);
+
+  animation: typingDot 1.15s ease-in-out infinite;
+}
+
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes typingDot {
+  0%,
+  65%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+}
+
+/* =========================================================
+   LEAD PROGRESS
+   ========================================================= */
+
+.lead-bar {
+  display: none;
+
+  margin-top: 8px;
+
+  padding: 12px 14px;
+
+  border:
+    1px solid color-mix(in srgb, var(--mood-second) 18%, #eee);
+
+  border-radius: 14px;
+
+  background:
+    color-mix(in srgb, var(--mood-second) 4%, white);
+
+  animation: bubbleIn 0.32s ease;
+}
+
+.lead-bar.show {
+  display: block;
+}
+
+.lead-heading {
+  margin-bottom: 9px;
+
+  color: var(--mood-second);
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.lead-steps {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  overflow-x: auto;
+}
+
+.lead-step {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  flex-shrink: 0;
+
+  color: #bbb5bd;
+
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+.lead-step.active {
+  color: var(--mood-second);
+  font-weight: 800;
+}
+
+.lead-step.done {
+  color: #43c95f;
+}
+
+.lead-dot {
+  width: 20px;
+  height: 20px;
+
+  border:
+    2px solid #ddd7df;
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 9px;
+}
+
+.lead-step.active .lead-dot {
+  border-color: var(--mood-second);
+}
+
+.lead-step.done .lead-dot {
+  color: white;
+  border-color: #4cd964;
+  background: #4cd964;
+}
+
+.lead-line {
+  width: 18px;
+  height: 2px;
+
+  flex-shrink: 0;
+
+  border-radius: 99px;
+
+  background: #ebe7ec;
+}
+
+/* =========================================================
+   SUCCESS
+   ========================================================= */
+
+.complete {
+  display: none;
+
+  position: relative;
+  overflow: hidden;
+
+  margin-top: 9px;
+
+  padding: 22px 18px;
+
+  border:
+    1px solid rgba(76, 217, 100, 0.3);
+
+  border-radius: 19px;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255, 211, 53, 0.12),
+      transparent 42%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.95),
+      rgba(251, 255, 249, 0.96)
+    );
+
+  animation: successIn 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.complete.show {
+  display: block;
+}
+
+@keyframes successIn {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+
+  65% {
+    transform: translateY(-2px) scale(1.01);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.complete-icon {
+  font-size: 38px;
+
+  animation: heartPop 1.1s ease-in-out infinite alternate;
+}
+
+@keyframes heartPop {
+  from {
+    transform: scale(0.94) rotate(-2deg);
+  }
+
+  to {
+    transform: scale(1.08) rotate(2deg);
+  }
+}
+
+.complete-title {
+  margin-top: 2px;
+
+  font-family: "Caveat", cursive;
+  font-size: 32px;
+  font-weight: 700;
+
+  color: #46ca61;
+}
+
+.complete-message {
+  max-width: 520px;
+
+  margin: 5px auto 0;
+
+  color: #89838c;
+
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.complete-elle {
+  margin-top: 8px;
+
+  color: var(--mood-main);
+
+  font-family: "Caveat", cursive;
+  font-size: 18px;
+}
+
+.complete-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  margin-top: 15px;
+}
+
+.complete-btn {
+  border: none;
+
+  border-radius: 11px;
+
+  padding: 9px 15px;
+
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 700;
+
+  transition:
+    transform 0.17s ease,
+    filter 0.17s ease;
+}
+
+.complete-btn:hover {
+  transform: translateY(-2px);
+}
+
+.complete-btn:active {
+  transform: scale(0.97);
+}
+
+.complete-primary {
+  color: white;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--mood-main),
+      var(--mood-second)
+    );
+}
+
+.complete-secondary {
+  color: var(--mood-second);
+
+  background:
+    color-mix(in srgb, var(--mood-second) 7%, white);
+
+  border:
+    1px solid color-mix(in srgb, var(--mood-second) 20%, white);
+}
+
+/* =========================================================
+   LEAD ERROR
+   ========================================================= */
+
+.lead-error {
+  display: none;
+
+  margin-top: 9px;
+
+  padding: 12px 14px;
+
+  border:
+    1px solid rgba(255, 140, 66, 0.25);
+
+  border-radius: 14px;
+
+  background: #fff9f3;
+
+  color: #806f63;
+
+  font-size: 11.5px;
+  line-height: 1.45;
+}
+
+.lead-error.show {
+  display: block;
+}
+
+/* =========================================================
+   DYNAMIC CHIPS
+   ========================================================= */
+
+.chips {
+  min-height: 35px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+
+  margin-top: 9px;
+}
+
+.chip {
+  border:
+    1px solid color-mix(in srgb, var(--mood-main) 24%, white);
+
+  border-radius: 999px;
+
+  padding: 7px 12px;
+
+  color: color-mix(in srgb, var(--mood-main) 82%, #444);
+
+  background:
+    color-mix(in srgb, var(--mood-main) 5%, white);
+
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 650;
+
+  opacity: 0;
+
+  animation: chipIn 0.34s ease forwards;
+
+  transition:
+    transform 0.17s ease,
+    background 0.17s ease,
+    box-shadow 0.17s ease;
+}
+
+@keyframes chipIn {
+  from {
+    opacity: 0;
+    transform: translateY(7px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.chip:hover {
+  transform: translateY(-2px);
+
+  background:
+    color-mix(in srgb, var(--mood-main) 10%, white);
+
+  box-shadow:
+    0 9px 18px -16px var(--mood-main);
+}
+
+.chip:active {
+  transform: scale(0.965);
+}
+
+.chip.live-elle {
+  color: var(--mood-second);
+
+  border-color:
+    color-mix(in srgb, var(--mood-second) 28%, white);
+
+  background:
+    color-mix(in srgb, var(--mood-second) 6%, white);
+}
+
+/* =========================================================
+   COMPOSER
+   ========================================================= */
+
+.composer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 8px;
+}
+
+.input-shell {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+
+  min-width: 0;
+
+  border:
+    1px solid #e8e3e9;
+
+  border-radius: 15px;
+
+  padding: 3px 5px 3px 13px;
+
+  background: rgba(252, 251, 252, 0.95);
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.input-shell:focus-within {
+  border-color:
+    color-mix(in srgb, var(--mood-main) 40%, white);
+
+  box-shadow:
+    0 0 0 4px
+    color-mix(in srgb, var(--mood-main) 6%, transparent);
+}
+
+#say {
+  width: 100%;
+  min-width: 0;
+
+  border: none;
+  outline: none;
+
+  padding: 9px 0;
+
+  color: #3a343d;
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 13px;
+}
+
+#say::placeholder {
+  color: #b8b2ba;
+}
+
+.ask-btn {
+  min-width: 86px;
+  height: 41px;
+
+  border: none;
+  border-radius: 13px;
+
+  padding: 0 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  cursor: pointer;
+
+  color: white;
+
+  background:
+    linear-gradient(
+      100deg,
+      var(--mood-main),
+      var(--mood-second)
+    );
+
+  box-shadow:
+    0 9px 22px -13px var(--glow);
+
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 800;
+
+  transition:
+    transform 0.18s ease,
+    filter 0.18s ease,
+    background 0.7s ease;
+}
+
+.ask-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+}
+
+.ask-btn:active {
+  transform: scale(0.96);
+}
+
+.ask-arrow {
+  font-size: 14px;
+}
+
+/* =========================================================
+   MESSAGE LIMIT
+   ========================================================= */
+
+.limit-message {
+  display: none;
+
+  padding: 10px;
+
+  color: #979198;
+
+  text-align: center;
+
+  font-size: 11px;
+}
+
+.limit-message.show {
+  display: block;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7px;
+
+  margin-top: 9px;
+
+  color: #c1bbc3;
+
+  font-size: 9.5px;
+}
+
+.footer a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--mood-main);
+}
+
+/* =========================================================
+   MOBILE LIVE CARD
+   ========================================================= */
+
+.mobile-live {
+  display: none;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .shell {
+    width: min(100% - 20px, 760px);
+
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+
+    padding-top: 13px;
+  }
+
+  .elle-rail {
+    position: static;
+
+    display: grid;
+    grid-template-columns: 145px 1fr;
+    gap: 12px;
+
+    align-items: start;
+  }
+
+  .elle-stage {
+    width: 145px;
+  }
+
+  .rail-controls {
+    grid-column: 1;
+  }
+
+  .live-card {
+    margin-top: 0;
+  }
+
+  .paths {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .chat-card {
+    min-height: 590px;
+  }
+
+  .mobile-live {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .shell {
+    width: min(100% - 14px, 560px);
+  }
+
+  .elle-rail {
+    grid-template-columns: 112px 1fr;
+    gap: 10px;
+  }
+
+  .elle-stage {
+    width: 112px;
+  }
+
+  .nameplate {
+    left: 10px;
+    bottom: 9px;
+  }
+
+  .elle-name {
+    font-size: 22px;
+  }
+
+  .brand-small {
+    display: none;
+  }
+
+  .status {
+    top: 8px;
+    left: 8px;
+
+    padding: 5px 7px;
+
+    font-size: 8px;
+  }
+
+  .rail-controls {
+    grid-column: 1 / -1;
+
+    margin-top: 0;
+  }
+
+  .live-card {
+    padding: 13px;
+  }
+
+  .live-mini {
+    display: none;
+  }
+
+  .hero {
+    padding-bottom: 11px;
+  }
+
+  .hero-title h1 {
+    font-size: 40px;
+  }
+
+  .subtitle {
+    font-size: 10.5px;
+  }
+
+  .paths {
+    gap: 7px;
+  }
+
+  .path {
+    min-height: 81px;
+    padding: 10px 6px;
+  }
+
+  .path-icon {
+    font-size: 21px;
+  }
+
+  .path-title {
+    font-size: 10.5px;
+  }
+
+  .path-sub {
+    display: none;
+  }
+
+  .chat-card {
+    min-height: 560px;
+
+    border-radius: 20px;
+
+    padding: 11px;
+  }
+
+  .bubble {
+    max-width: 94%;
+    font-size: 13px;
+  }
+
+  .lead-steps {
+    gap: 4px;
+  }
+
+  .lead-step {
+    font-size: 9px;
+  }
+
+  .lead-line {
+    width: 8px;
+  }
+
+  .complete-actions {
+    flex-direction: column;
+  }
+
+  .ask-btn {
+    min-width: 48px;
+    width: 48px;
+
+    padding: 0;
+
+    border-radius: 50%;
+  }
+
+  .ask-label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body data-mood="default">
+
+<!-- ambient background -->
+<div class="bg-orb" style="width:180px;height:180px;left:-70px;top:15%;background:#ff6b9d;"></div>
+<div class="bg-orb" style="width:130px;height:130px;right:-40px;top:10%;background:#5ac8fa;animation-delay:-3s;"></div>
+<div class="bg-orb" style="width:150px;height:150px;left:42%;bottom:-60px;background:#ffd24a;animation-delay:-6s;"></div>
+
+<div class="shell">
+
+  <!-- =====================================================
+       LEFT RAIL
+       ===================================================== -->
+
+  <aside class="elle-rail">
+
+    <div class="elle-stage" id="elleStage">
+
+      <div class="elle-photo" id="ellePhoto" title="Tap Elle ✨">
+
+        <img src="elle.png" alt="Elle" />
+
+        <div class="status">
+          <span class="status-dot"></span>
+          <span id="elleStatus">Elle's here</span>
+        </div>
+
+        <div class="nameplate">
+          <div class="elle-name">ELLE</div>
+          <div class="brand-small">
+            ΛURYNELLE<span>∞</span> IDEΛS
+          </div>
+        </div>
+
+      </div>
+
+      <div class="reaction-layer" id="reactionLayer"></div>
+
+    </div>
+
+    <div class="rail-controls">
+
+      <button
+        class="vibe-btn"
+        id="vibeBtn"
+        type="button"
+        title="Change Elle's vibe"
+      >
+        Change vibe ✨
+      </button>
+
+      <button
+        class="ping-btn"
+        id="pingBtn"
+        type="button"
+        title="Say hey to Elle"
+      >
+        Hey Elle 👋
+      </button>
+
+    </div>
+
+    <div class="live-card">
+
+      <div class="live-eyebrow">Live human support</div>
+
+      <div class="live-title">
+        Need a real person on this one? 👀
+      </div>
+
+      <div class="live-copy">
+        Go deeper with <strong>Live Elle</strong> for personal,
+        one-on-one support.
+      </div>
+
+      <div class="live-mini">
+        <span>Pick My Brain</span>
+        <span>Shopping Buddy</span>
+        <span>Hype Session</span>
+        <span>Someone to Talk To</span>
+      </div>
+
+      <div class="live-actions">
+
+        <button
+          class="live-btn live-primary"
+          type="button"
+          onclick="doSend('I would like to talk to Live Elle')"
+        >
+          Talk to Live Elle
+        </button>
+
+        <button
+          class="live-btn live-secondary"
+          type="button"
+          onclick="doSend('What Live Elle options are available?')"
+        >
+          Ask Elle about options
+        </button>
+
+      </div>
+
+    </div>
+
+  </aside>
+
+  <!-- =====================================================
+       MAIN EXPERIENCE
+       ===================================================== -->
+
+  <main class="main">
+
+    <header class="hero">
+
+      <div class="brand">
+        ΛURYNELLE<span>∞</span> IDEΛS
+      </div>
+
+      <div class="hero-title">
+
+        <div class="title-glow one"></div>
+        <div class="title-glow two"></div>
+
+        <h1>Ask Elle</h1>
+
+      </div>
+
+      <p class="subtitle">
+        Come in confused. Leave with clarity, confidence, and your next move. ✦
+      </p>
+
+      <div class="mode-line">
+        <span>Current vibe:</span>
+        <span class="mode-pill" id="modePill">Elle Classic 💕</span>
+      </div>
+
+    </header>
+
+    <!-- ===================================================
+         STARTING PATHS
+         =================================================== -->
+
+    <section class="paths">
+
+      <button
+        class="path"
+        type="button"
+        style="--path-color:#ff5f97;"
+        onclick="doSend('I need encouragement today')"
+      >
+        <div class="path-icon">💛</div>
+        <div class="path-title">I need encouragement</div>
+        <div class="path-sub">Hype, comfort, perspective</div>
+      </button>
+
+      <button
+        class="path"
+        type="button"
+        style="--path-color:#ff8c42;"
+        onclick="doSend('Help me figure something out')"
+      >
+        <div class="path-icon">🧠</div>
+        <div class="path-title">Help me figure this out</div>
+        <div class="path-sub">Think it through with Elle</div>
+      </button>
+
+      <button
+        class="path"
+        type="button"
+        style="--path-color:#4cd964;"
+        onclick="doSend('Help me make a plan for something')"
+      >
+        <div class="path-icon">⚡</div>
+        <div class="path-title">Help me make a plan</div>
+        <div class="path-sub">Turn ideas into action</div>
+      </button>
+
+      <button
+        class="path"
+        type="button"
+        style="--path-color:#55c7f3;"
+        onclick="doSend('I want personal help from Live Elle')"
+      >
+        <div class="path-icon">✨</div>
+        <div class="path-title">Talk to Live Elle</div>
+        <div class="path-sub">One-on-one human support</div>
+      </button>
+
+    </section>
+
+    <!-- ===================================================
+         CHAT
+         =================================================== -->
+
+    <section class="chat-card">
+
+      <div
+        class="thread"
+        id="thread"
+        aria-live="polite"
+      ></div>
+
+      <!-- lead progress -->
+
+      <div class="lead-bar" id="leadBar">
+
+        <div class="lead-heading">
+          Getting you to Live Elle ✨
+        </div>
+
+        <div class="lead-steps">
+
+          <div class="lead-step" id="ls1">
+            <span class="lead-dot">1</span>
+            What you need
+          </div>
+
+          <div class="lead-line"></div>
+
+          <div class="lead-step" id="ls2">
+            <span class="lead-dot">2</span>
+            Your name
+          </div>
+
+          <div class="lead-line"></div>
+
+          <div class="lead-step" id="ls3">
+            <span class="lead-dot">3</span>
+            Your email
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- lead error -->
+
+      <div
+        class="lead-error"
+        id="leadError"
+      >
+        I have your information, love, but the connection hiccupped.
+        Try once more and I’ll send it to Live Elle.
+      </div>
+
+      <!-- confirmed lead success -->
+
+      <div
+        class="complete"
+        id="complete"
+      >
+
+        <div class="complete-icon">💛</div>
+
+        <div class="complete-title">
+          You're in!
+        </div>
+
+        <div
+          class="complete-message"
+          id="completeMsg"
+        >
+          Your request has been sent to Live Elle.
+        </div>
+
+        <div class="complete-elle">
+          Until then, you're stuck with me 😌✨
+        </div>
+
+        <div class="complete-actions">
+
+          <button
+            class="complete-btn complete-primary"
+            type="button"
+            onclick="resetChat()"
+          >
+            Keep talking with Elle
+          </button>
+
+          <button
+            class="complete-btn complete-secondary"
+            type="button"
+            onclick="doSend('Tell me about Live Elle services')"
+          >
+            Explore Live Elle
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- dynamic AI chips -->
+
+      <div
+        class="chips"
+        id="chips"
+      ></div>
+
+      <!-- usage limit -->
+
+      <div
+        class="limit-message"
+        id="limitMsg"
+      >
+        Whew, we talked today 😂💕 Come back anytime,
+        or ask Elle about Live Elle if you want deeper one-on-one support.
+      </div>
+
+      <!-- composer -->
+
+      <div
+        class="composer"
+        id="composer"
+      >
+
+        <div class="input-shell">
+
+          <input
+            id="say"
+            type="text"
+            placeholder="Tell Elle what's on your mind..."
+            autocomplete="off"
+            aria-label="Message Elle"
+          />
+
+        </div>
+
+        <button
+          class="ask-btn"
+          id="sendBtn"
+          type="button"
+          aria-label="Ask Elle"
+        >
+
+          <span class="ask-label">Ask Elle</span>
+          <span class="ask-arrow">↑</span>
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <footer class="footer">
+
+      <a
+        href="https://buymeacoffee.com/aurynelle"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        buymeacoffee.com/aurynelle
+      </a>
+
+      <span>•</span>
+
+      <a
+        href="https://jewelpsmith.github.io/aurynelle"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        AURYNELLE∞ IDEAS
+      </a>
+
+    </footer>
+
+  </main>
+
+</div>
+
+<script>
+/* =========================================================
+   ELLE FRONTEND
+   ========================================================= */
+
+const DEFAULT_CHIPS = [
+  "Tell me about your day",
+  "I need encouragement",
+  "Help me figure something out",
+  "Quiz me on something"
+];
+
+const BUBBLE_COLORS = [
+  "#ff5f97",
+  "#9b6bff",
+  "#55c7f3",
+  "#4cd964",
+  "#ff8c42"
+];
+
+const MAX_MSGS = 30;
+const WARN_AT = 25;
+
+const MOODS = [
+  "default",
+  "hype",
+  "comfort",
+  "focus",
+  "faith",
+  "celebrate"
+];
+
+const MOOD_LABELS = {
+  default: "Elle Classic 💕",
+  hype: "Hype Elle 🔥",
+  comfort: "Soft Elle 💜",
+  focus: "Locked In Elle ⚡",
+  faith: "Faith Elle ✨",
+  celebrate: "Celebration Elle 🎉"
+};
+
+let history = [];
+let loading = false;
+let bubbleIndex = 0;
+let messageCount = 0;
+let moodIndex = 0;
+let lastEmail = "";
+
+/* =========================================================
+   ELEMENTS
+   ========================================================= */
+
+const thread = document.getElementById("thread");
+const say = document.getElementById("say");
+const sendBtn = document.getElementById("sendBtn");
+
+const chipsEl = document.getElementById("chips");
+
+const leadBar = document.getElementById("leadBar");
+const leadError = document.getElementById("leadError");
+
+const complete = document.getElementById("complete");
+const completeMsg = document.getElementById("completeMsg");
+
+const limitMsg = document.getElementById("limitMsg");
+const composer = document.getElementById("composer");
+
+const elleStage = document.getElementById("elleStage");
+const ellePhoto = document.getElementById("ellePhoto");
+const elleStatus = document.getElementById("elleStatus");
+
+const reactionLayer =
+  document.getElementById("reactionLayer");
+
+const vibeBtn =
+  document.getElementById("vibeBtn");
+
+const pingBtn =
+  document.getElementById("pingBtn");
+
+const modePill =
+  document.getElementById("modePill");
+
+/* =========================================================
+   MOODS
+   ========================================================= */
+
+function setMood(mood, automatic = false) {
+  if (!MOODS.includes(mood)) {
+    mood = "default";
+  }
+
+  document.body.dataset.mood = mood;
+
+  moodIndex = MOODS.indexOf(mood);
+
+  modePill.textContent =
+    MOOD_LABELS[mood] || MOOD_LABELS.default;
+
+  if (!automatic) {
+    reactPortrait("✨", 5);
+  }
+}
+
+function cycleMood() {
+  moodIndex =
+    (moodIndex + 1) % MOODS.length;
+
+  setMood(MOODS[moodIndex]);
+}
+
+function detectMood(text) {
+  const t = String(text || "").toLowerCase();
+
+  if (
+    /(congrat|celebrat|i did it|i won|got the job|passed|success|proud|win|good news)/i.test(t)
+  ) {
+    return "celebrate";
+  }
+
+  if (
+    /(hype|motivat|confidence|boss|let's go|lets go|fire me up|gas me up)/i.test(t)
+  ) {
+    return "hype";
+  }
+
+  if (
+    /(god|jesus|scripture|bible|pray|prayer|faith|verse|kjv)/i.test(t)
+  ) {
+    return "faith";
+  }
+
+  if (
+    /(sad|hurt|lonely|cry|overwhelm|stressed|anxious|rough day|listen|comfort)/i.test(t)
+  ) {
+    return "comfort";
+  }
+
+  if (
+    /(plan|business|career|study|goal|organize|decision|budget|strategy|figure out|steps)/i.test(t)
+  ) {
+    return "focus";
+  }
+
+  return "default";
+}
+
+function autoMood(text) {
+  const mood = detectMood(text);
+
+  setMood(mood, true);
+
+  if (mood === "hype") {
+    setStatus("Elle is hyped 🔥");
+  }
+
+  if (mood === "comfort") {
+    setStatus("Elle's listening 💜");
+  }
+
+  if (mood === "focus") {
+    setStatus("Elle's locked in ⚡");
+  }
+
+  if (mood === "faith") {
+    setStatus("Faith mode ✨");
+  }
+
+  if (mood === "celebrate") {
+    setStatus("We celebrating! 🎉");
+  }
+}
+
+/* =========================================================
+   ELLE STATUS / PORTRAIT
+   ========================================================= */
+
+function setStatus(text) {
+  elleStatus.textContent = text;
+}
+
+function startTalking() {
+  elleStage.classList.add("talking");
+  setStatus("Elle's thinking...");
+}
+
+function stopTalking() {
+  elleStage.classList.remove("talking");
+
+  setTimeout(() => {
+    const mood =
+      document.body.dataset.mood;
+
+    const idleText = {
+      default: "Elle's here",
+      hype: "Elle's ready 🔥",
+      comfort: "Elle's with you 💜",
+      focus: "Elle's locked in ⚡",
+      faith: "Faith mode ✨",
+      celebrate: "We celebrating! 🎉"
+    };
+
+    setStatus(
+      idleText[mood] || "Elle's here"
+    );
+  }, 300);
+}
+
+function portraitPop() {
+  elleStage.classList.remove("reaction");
+
+  void elleStage.offsetWidth;
+
+  elleStage.classList.add("reaction");
+
+  setTimeout(() => {
+    elleStage.classList.remove("reaction");
+  }, 700);
+}
+
+/* =========================================================
+   REACTIONS
+   ========================================================= */
+
+function reactPortrait(emoji = "✨", amount = 5) {
+  portraitPop();
+
+  for (let i = 0; i < amount; i++) {
+    const el =
+      document.createElement("span");
+
+    el.className = "reaction-emoji";
+    el.textContent = emoji;
+
+    el.style.left =
+      12 + Math.random() * 72 + "%";
+
+    el.style.animationDelay =
+      Math.random() * 0.3 + "s";
+
+    el.style.fontSize =
+      20 + Math.random() * 18 + "px";
+
+    reactionLayer.appendChild(el);
+
+    setTimeout(() => {
+      el.remove();
+    }, 1800);
+  }
+}
+
+function clap() {
+  reactPortrait("👏", 7);
+
+  setStatus("Yessss! 👏");
+}
+
+function celebrate() {
+  setMood("celebrate", true);
+
+  reactPortrait("🎉", 5);
+
+  setTimeout(() => {
+    reactPortrait("✨", 6);
+  }, 150);
+
+  setTimeout(() => {
+    reactPortrait("👏", 5);
+  }, 320);
+}
+
+function reactToText(text) {
+  const t =
+    String(text || "").toLowerCase();
+
+  if (
+    /(congrat|proud of you|you did it|let's go|lets go|celebrat|win|good news)/i.test(t)
+  ) {
+    clap();
+    return;
+  }
+
+  if (
+    /(love that|beautiful|gorgeous|yes sis|period|exactly)/i.test(t)
+  ) {
+    reactPortrait("✨", 4);
+  }
+}
+
+/* =========================================================
+   BACKGROUND DOTS
+   ========================================================= */
+
+function createAmbientDots() {
+  const colors = [
+    "#ff6b9d",
+    "#9b6bff",
+    "#55c7f3",
+    "#4cd964",
+    "#ff8c42",
+    "#ffd24a"
+  ];
+
+  for (let i = 0; i < 11; i++) {
+    const dot =
+      document.createElement("div");
+
+    dot.className = "bg-orb";
+
+    const size =
+      7 + Math.random() * 19;
+
+    Object.assign(dot.style, {
+      width: size + "px",
+      height: size + "px",
+
+      left:
+        Math.random() * 100 + "%",
+
+      top:
+        Math.random() * 100 + "%",
+
+      background:
+        colors[i % colors.length],
+
+      animationDelay:
+        -Math.random() * 10 + "s",
+
+      animationDuration:
+        10 + Math.random() * 8 + "s"
+    });
+
+    document.body.appendChild(dot);
+  }
+}
+
+/* =========================================================
+   CHIPS
+   ========================================================= */
+
+function renderChips(items) {
+  chipsEl.innerHTML = "";
+
+  const list =
+    items && items.length
+      ? items
+      : DEFAULT_CHIPS;
+
+  list.forEach((label, index) => {
+    const button =
+      document.createElement("button");
+
+    button.type = "button";
+    button.className = "chip";
+
+    const lower =
+      label.toLowerCase();
+
+    if (
+      lower.includes("live elle") ||
+      lower.includes("human") ||
+      lower.includes("talk to elle")
+    ) {
+      button.classList.add("live-elle");
     }
+
+    button.textContent = label;
+
+    button.style.animationDelay =
+      index * 0.055 + "s";
+
+    button.addEventListener(
+      "click",
+      () => doSend(label)
+    );
+
+    chipsEl.appendChild(button);
+  });
+}
+
+/* =========================================================
+   LEAD UI
+   ========================================================= */
+
+function updateLeadBar(step) {
+  if (step > 0) {
+    leadBar.classList.add("show");
+  }
+
+  for (let i = 1; i <= 3; i++) {
+    const el =
+      document.getElementById("ls" + i);
+
+    el.classList.remove(
+      "done",
+      "active"
+    );
+
+    if (i < step) {
+      el.classList.add("done");
+    } else if (i === step) {
+      el.classList.add("active");
+    }
+  }
+}
+
+function showLeadError(message) {
+  complete.classList.remove("show");
+
+  leadError.classList.add("show");
+
+  if (message) {
+    leadError.textContent = message;
+  }
+
+  setMood("comfort", true);
+
+  setStatus("Tiny hiccup, love");
+
+  reactPortrait("💛", 3);
+}
+
+function hideLeadError() {
+  leadError.classList.remove("show");
+}
+
+function showComplete(email) {
+  hideLeadError();
+
+  complete.classList.add("show");
+
+  completeMsg.textContent =
+    "Your request has been sent to Live Elle" +
+    (
+      email
+        ? ". Live Elle can reach you at " +
+          email +
+          "."
+        : "."
+    );
+
+  leadBar.classList.remove("show");
+
+  chipsEl.innerHTML = "";
+
+  celebrate();
+
+  setStatus("You're in! 🎉");
+
+  setTimeout(() => {
+    complete.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
+    });
+  }, 200);
+}
+
+function resetChat() {
+  complete.classList.remove("show");
+
+  leadBar.classList.remove("show");
+
+  hideLeadError();
+
+  limitMsg.classList.remove("show");
+
+  composer.style.display = "flex";
+
+  renderChips(DEFAULT_CHIPS);
+
+  setMood("default", true);
+
+  setStatus("Elle's here");
+
+  say.focus();
+}
+
+/* =========================================================
+   CHAT BUBBLES
+   ========================================================= */
+
+function addBubble(role, text) {
+  const row =
+    document.createElement("div");
+
+  row.className = "message-row";
+
+  row.style.justifyContent =
+    role === "you"
+      ? "flex-end"
+      : "flex-start";
+
+  const bubble =
+    document.createElement("div");
+
+  bubble.className =
+    "bubble " +
+    (
+      role === "you"
+        ? "bubble-user"
+        : "bubble-elle"
+    );
+
+  if (role === "elle") {
+    const color =
+      BUBBLE_COLORS[
+        bubbleIndex %
+        BUBBLE_COLORS.length
+      ];
+
+    bubble.style.setProperty(
+      "--bubble-color",
+      color
+    );
+
+    const label =
+      document.createElement("div");
+
+    label.className = "elle-label";
+    label.textContent = "ELLE ✦";
+
+    bubble.appendChild(label);
+  }
+
+  const message =
+    document.createElement("div");
+
+  message.textContent = text;
+
+  bubble.appendChild(message);
+  row.appendChild(bubble);
+  thread.appendChild(row);
+
+  thread.scrollTop =
+    thread.scrollHeight;
+
+  if (role === "elle") {
+    autoMood(text);
+    reactToText(text);
+  }
+}
+
+/* =========================================================
+   TYPING
+   ========================================================= */
+
+function showTyping() {
+  startTalking();
+
+  const row =
+    document.createElement("div");
+
+  row.className = "message-row";
+  row.id = "typingRow";
+
+  const bubble =
+    document.createElement("div");
+
+  bubble.className =
+    "bubble bubble-elle";
+
+  bubble.style.setProperty(
+    "--bubble-color",
+    "var(--mood-main)"
+  );
+
+  const label =
+    document.createElement("div");
+
+  label.className = "elle-label";
+  label.textContent = "ELLE ✦";
+
+  const dots =
+    document.createElement("div");
+
+  dots.className = "typing-dots";
+
+  for (let i = 0; i < 3; i++) {
+    dots.appendChild(
+      document.createElement("span")
+    );
+  }
+
+  bubble.appendChild(label);
+  bubble.appendChild(dots);
+
+  row.appendChild(bubble);
+
+  thread.appendChild(row);
+
+  thread.scrollTop =
+    thread.scrollHeight;
+}
+
+function hideTyping() {
+  const row =
+    document.getElementById(
+      "typingRow"
+    );
+
+  if (row) {
+    row.remove();
+  }
+
+  stopTalking();
+}
+
+/* =========================================================
+   API
+   ========================================================= */
+
+async function callAPI(text) {
+  history.push({
+    role: "user",
+    content: text
+  });
+
+  try {
+    const response =
+      await fetch("/api/chat", {
+        method: "POST",
+
+        headers: {
+          "Content-Type":
+            "application/json"
+        },
+
+        body: JSON.stringify({
+          messages: history
+        })
+      });
+
+    const data =
+      await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        data.error ||
+        "Elle could not respond."
+      );
+    }
+
+    const reply =
+      data.content
+        ?.map(
+          block =>
+            block.text || ""
+        )
+        .join("") ||
+      "Something hiccupped, love. Try me one more time. 💕";
+
+    history.push({
+      role: "assistant",
+      content: reply
+    });
+
+    /* dynamic chips */
+
+    if (
+      Array.isArray(data.chips) &&
+      data.chips.length > 0
+    ) {
+      renderChips(data.chips);
+    } else {
+      renderChips(DEFAULT_CHIPS);
+    }
+
+    /* lead progress */
+
+    if (
+      data.leadProgress > 0 &&
+      !data.leadCaptured
+    ) {
+      /*
+        Backend:
+        1 = service collected
+        2 = name collected
+        3 = complete
+
+        UI:
+        step 2 active after service
+        step 3 active after name
+      */
+
+      updateLeadBar(
+        Math.min(
+          data.leadProgress + 1,
+          3
+        )
+      );
+    }
+
+    /* save customer email */
+
+    if (
+      data.lead &&
+      data.lead.email
+    ) {
+      lastEmail =
+        data.lead.email;
+    } else {
+      const emailMatch =
+        text.match(
+          /[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}/
+        );
+
+      if (emailMatch) {
+        lastEmail =
+          emailMatch[0];
+      }
+    }
+
+    /* confirmed success */
+
+    if (
+      data.leadCaptured === true
+    ) {
+      setTimeout(() => {
+        showComplete(lastEmail);
+      }, 550);
+    }
+
+    /* confirmed failure */
+
+    if (
+      data.leadError === true
+    ) {
+      showLeadError(
+        "Almost there, love. I have your information, but I hit a little snag sending it to Live Elle. Tap Try again or send your email once more."
+      );
+
+      renderChips([
+        "Try again",
+        "Keep talking with Elle"
+      ]);
+    }
+
     return reply;
-  }catch{return "Ooh, something went sideways. One more try? ✨";}
+
+  } catch (error) {
+    console.error(
+      "Elle API error:",
+      error
+    );
+
+    setMood("comfort", true);
+
+    return (
+      "Ooh, something went sideways for a second, love. " +
+      "Try me one more time. 💛"
+    );
+  }
 }
 
-async function doSend(text){
-  const v=(text||say.value).trim();if(!v||loading)return;say.value="";
-  if(msgCount>=MAX_MSGS){limitMsg.classList.add("show");composer.style.display="none";return;}
-  addBubble("you",v);loading=true;showTyping();msgCount++;
-  if(msgCount===WARN_AT) console.log("Approaching message limit");
-  const reply=await callAPI(v);hideTyping();bIdx++;addBubble("elle",reply);loading=false;say.focus();
+/* =========================================================
+   SEND
+   ========================================================= */
+
+async function doSend(text) {
+  const value =
+    String(
+      text || say.value
+    ).trim();
+
+  if (!value || loading) {
+    return;
+  }
+
+  if (
+    value.toLowerCase() ===
+    "try again"
+  ) {
+    say.value = lastEmail;
+
+    if (lastEmail) {
+      text = lastEmail;
+    }
+  }
+
+  const outgoing =
+    String(
+      text || say.value
+    ).trim();
+
+  if (!outgoing) {
+    return;
+  }
+
+  say.value = "";
+
+  hideLeadError();
+
+  if (
+    messageCount >=
+    MAX_MSGS
+  ) {
+    limitMsg.classList.add(
+      "show"
+    );
+
+    composer.style.display =
+      "none";
+
+    return;
+  }
+
+  addBubble(
+    "you",
+    outgoing
+  );
+
+  autoMood(outgoing);
+
+  loading = true;
+
+  showTyping();
+
+  messageCount++;
+
+  if (
+    messageCount === WARN_AT
+  ) {
+    console.log(
+      "Elle session approaching message limit."
+    );
+  }
+
+  const reply =
+    await callAPI(outgoing);
+
+  hideTyping();
+
+  bubbleIndex++;
+
+  addBubble(
+    "elle",
+    reply
+  );
+
+  loading = false;
+
+  say.focus();
 }
 
-sendBtn.addEventListener("click",()=>doSend());
-say.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();doSend();}});
-renderChips(DEFAULT_CHIPS);
-addBubble("elle","Hey gorgeous ✦ I'm Elle. Whatever you came here with, let's sort it out. Pick one of those cards up top, tap a quick option below, or just tell me what's on your mind. I'm here 💕");
+/* =========================================================
+   INTERACTIONS
+   ========================================================= */
+
+sendBtn.addEventListener(
+  "click",
+  () => doSend()
+);
+
+say.addEventListener(
+  "keydown",
+  event => {
+    if (
+      event.key === "Enter"
+    ) {
+      event.preventDefault();
+
+      doSend();
+    }
+  }
+);
+
+vibeBtn.addEventListener(
+  "click",
+  cycleMood
+);
+
+pingBtn.addEventListener(
+  "click",
+  () => {
+    reactPortrait("👋", 4);
+
+    setStatus("Hey gorgeous 👋");
+
+    portraitPop();
+
+    setTimeout(() => {
+      setStatus("Elle's here");
+    }, 1700);
+  }
+);
+
+ellePhoto.addEventListener(
+  "click",
+  () => {
+    const reactions = [
+      "✨",
+      "💕",
+      "👏",
+      "💛",
+      "🔥"
+    ];
+
+    const chosen =
+      reactions[
+        Math.floor(
+          Math.random() *
+          reactions.length
+        )
+      ];
+
+    reactPortrait(
+      chosen,
+      5
+    );
+
+    setStatus("Heyyy 😌");
+
+    setTimeout(() => {
+      stopTalking();
+    }, 1300);
+  }
+);
+
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
+
+createAmbientDots();
+
+renderChips(
+  DEFAULT_CHIPS
+);
+
+addBubble(
+  "elle",
+  "Hey gorgeous ✦ I'm Elle. Ask me a real question, bring me a problem, let me hype you up, or tell me what you're trying to figure out. We’re getting you to your next move. 💕"
+);
+
+setMood(
+  "default",
+  true
+);
+
 say.focus();
 </script>
+
 </body>
 </html>
