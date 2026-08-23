@@ -57,9 +57,8 @@ function normalizeEmail(value) {
 
 function getPermissions(member) {
   const tier =
-    String(
-      member?.tierKey || ""
-    ).toLowerCase();
+    String(member?.tierKey || "")
+      .toLowerCase();
 
   if (tier === "infinite") {
     return {
@@ -100,100 +99,148 @@ function getPermissions(member) {
   };
 }
 
+async function checkMember(email) {
+  const rawMember =
+    await redisCommand([
+      "GET",
+      `elle:member:${email}`,
+    ]);
+
+  if (!rawMember) {
+    return {
+      success: true,
+      accessActive: false,
+      reason:
+        "No membership found",
+      permissions:
+        getPermissions(null),
+    };
+  }
+
+  let member;
+
+  try {
+    member =
+      typeof rawMember === "string"
+        ? JSON.parse(rawMember)
+        : rawMember;
+  } catch {
+    throw new Error(
+      "Membership record could not be read."
+    );
+  }
+
+  const accessActive =
+    member?.accessActive === true;
+
+  return {
+    success: true,
+
+    accessActive,
+
+    member: {
+      name:
+        member?.name || "",
+
+      email:
+        member?.email || email,
+
+      tierName:
+        member?.tierName || "",
+
+      tierKey:
+        member?.tierKey || "unknown",
+
+      membershipStatus:
+        member?.membershipStatus || "",
+    },
+
+    permissions:
+      accessActive
+        ? getPermissions(member)
+        : getPermissions(null),
+  };
+}
+
 export default async function handler(
   req,
   res
 ) {
-  if (req.method !== "POST") {
+  try {
+
+    /*
+      TEMPORARY BROWSER TEST
+
+      This lets us test the fake
+      Buy Me a Coffee test member
+      without using DevTools.
+
+      We will remove this after testing.
+    */
+
+    if (req.method === "GET") {
+      const email =
+        normalizeEmail(
+          req.query?.email
+        );
+
+      if (
+        email !==
+        "john@example.com"
+      ) {
+        return res
+          .status(403)
+          .json({
+            success: false,
+            error:
+              "Temporary test access only",
+          });
+      }
+
+      const result =
+        await checkMember(email);
+
+      return res
+        .status(200)
+        .json(result);
+    }
+
+    /*
+      NORMAL MEMBER CHECK
+    */
+
+    if (req.method === "POST") {
+      const email =
+        normalizeEmail(
+          req.body?.email
+        );
+
+      if (!email) {
+        return res
+          .status(400)
+          .json({
+            success: false,
+            error:
+              "Email required",
+          });
+      }
+
+      const result =
+        await checkMember(email);
+
+      return res
+        .status(200)
+        .json(result);
+    }
+
     return res
       .status(405)
       .json({
         success: false,
-        error: "POST only",
+        error:
+          "GET or POST only",
       });
-  }
 
-  try {
-    const email =
-      normalizeEmail(
-        req.body?.email
-      );
-
-    if (!email) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          error: "Email required",
-        });
-    }
-
-    const rawMember =
-      await redisCommand([
-        "GET",
-        `elle:member:${email}`,
-      ]);
-
-    if (!rawMember) {
-      return res
-        .status(200)
-        .json({
-          success: true,
-          accessActive: false,
-          reason:
-            "No active membership found",
-          permissions:
-            getPermissions(null),
-        });
-    }
-
-    let member;
-
-    try {
-      member =
-        typeof rawMember === "string"
-          ? JSON.parse(rawMember)
-          : rawMember;
-    } catch {
-      throw new Error(
-        "Membership record could not be read."
-      );
-    }
-
-    const accessActive =
-      member?.accessActive === true;
-
-    const permissions =
-      accessActive
-        ? getPermissions(member)
-        : getPermissions(null);
-
-    return res
-      .status(200)
-      .json({
-        success: true,
-
-        accessActive,
-
-        member: {
-          name:
-            member?.name || "",
-
-          email:
-            member?.email || email,
-
-          tierName:
-            member?.tierName || "",
-
-          tierKey:
-            member?.tierKey || "unknown",
-
-          membershipStatus:
-            member?.membershipStatus || "",
-        },
-
-        permissions,
-      });
   } catch (error) {
     console.error(
       "Member access error:",
