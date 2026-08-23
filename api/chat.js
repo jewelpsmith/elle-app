@@ -1,7 +1,10 @@
 import { requireElleSession } from "./session-check.js";
 
 const SHEET_URL =
-   "https://script.google.com/macros/s/AKfycbyupD2eVltAQHX1uTmYrVhvReGVGqqOAvYb9CpahYntxfBPez1p5_1fGX8zpPnOan991Q/exec";
+  "https://script.google.com/macros/s/AKfycbyupD2eVltAQHX1uTmYrVhvReGVGqqOAvYb9CpahYntxfBPez1p5_1fGX8zpPnOan991Q/exec";
+
+const LIVE_ELLE_BOOKING_URL =
+  "https://calendar.app.google/ev2shsUdMNdtbjqU6";
 
 /* =========================================================
    ELLE SYSTEM
@@ -203,6 +206,20 @@ LIVE ELLE
 
 Live Elle is the human one-on-one support side of the Elle experience.
 
+Live Elle sessions are 30 minutes.
+
+Actual appointment availability is controlled by the booking calendar.
+
+Never invent, guess, promise, or claim that a specific appointment time is available.
+
+A customer is NOT booked merely because their Live Elle request was submitted.
+
+A customer is booked only after they select an available appointment and Google Calendar confirms the booking.
+
+If a user wants to cancel or reschedule an already-booked appointment, explain that they can use their Google Calendar booking confirmation to manage it.
+
+Do not claim that you personally cancelled or rescheduled a calendar appointment unless the application explicitly confirms that action.
+
 Live Elle offers:
 
 1. PICK MY BRAIN
@@ -272,6 +289,27 @@ Good reasons include:
 
 Do NOT mention Live Elle in every conversation.
 Do NOT interrupt useful answers with sales pitches.
+
+==================================================
+LIVE ELLE BOOKING LANGUAGE
+==================================================
+
+After the application successfully saves a Live Elle request, the backend will provide the customer with the booking calendar.
+
+Do not claim:
+- "You're booked"
+- "Your appointment is confirmed"
+- "I reserved your time"
+
+until Google Calendar has actually confirmed an appointment.
+
+The correct idea is:
+
+"Your Live Elle request is in. Now choose an available 30-minute time."
+
+The booking calendar controls which times are available.
+
+If a user says they need to cancel or reschedule an appointment, tell them to use the management options in their Google Calendar booking confirmation.
 
 ==================================================
 DYNAMIC CHIPS
@@ -642,6 +680,11 @@ Instead say something like:
 "Perfect, love. I have what I need."
 
 The application will confirm successful submission only after the backend saves it.
+
+After a successful save, the application will direct the customer to the real Live Elle booking calendar.
+
+Do not ask the customer to choose a time yourself.
+Do not invent appointment times.
 `;
 }
 
@@ -927,7 +970,13 @@ export default async function handler(
             false,
 
           leadError:
-            false
+            false,
+
+          bookingRequired:
+            false,
+
+          bookingUrl:
+            null
         });
     }
 
@@ -948,7 +997,13 @@ export default async function handler(
             false,
 
           leadError:
-            false
+            false,
+
+          bookingRequired:
+            false,
+
+          bookingUrl:
+            null
         });
     }
 
@@ -1090,7 +1145,13 @@ ${getLeadContext(
             false,
 
           leadError:
-            false
+            false,
+
+          bookingRequired:
+            false,
+
+          bookingUrl:
+            null
         });
     }
 
@@ -1143,6 +1204,15 @@ ${getLeadContext(
       null;
 
     let leadErrorMessage =
+      null;
+
+    let bookingRequired =
+      false;
+
+    let bookingUrl =
+      null;
+
+    let bookingMessage =
       null;
 
     /* =====================================================
@@ -1340,6 +1410,15 @@ ${getLeadContext(
 
         leadProgress =
           4;
+
+        bookingRequired =
+          true;
+
+        bookingUrl =
+          LIVE_ELLE_BOOKING_URL;
+
+        bookingMessage =
+          "Your Live Elle request is in. Choose an available 30-minute session time. Google Calendar will confirm the appointment and provide cancellation or rescheduling options.";
       } catch (error) {
         console.error(
           "Live Elle request save failed:",
@@ -1376,6 +1455,15 @@ ${getLeadContext(
 
       leadErrorMessage =
         null;
+
+      bookingRequired =
+        false;
+
+      bookingUrl =
+        null;
+
+      bookingMessage =
+        null;
     }
 
     /* =====================================================
@@ -1403,6 +1491,27 @@ ${getLeadContext(
         .trim();
 
     /* =====================================================
+       CUSTOMER-FACING TEXT
+       ===================================================== */
+
+    let finalText =
+      cleanedText;
+
+    if (
+      leadCaptured &&
+      bookingRequired
+    ) {
+      finalText =
+        `${cleanedText}
+
+Your Live Elle request is in. 💛 Now choose the 30-minute time that works best for you from the available openings. Google Calendar will confirm your appointment and give you options to cancel or reschedule if needed.`
+          .trim();
+
+      dynamicChips =
+        [];
+    }
+
+    /* =====================================================
        RESPONSE
        ===================================================== */
 
@@ -1415,7 +1524,7 @@ ${getLeadContext(
               "text",
 
             text:
-              cleanedText
+              finalText
           }
         ],
 
@@ -1456,7 +1565,34 @@ ${getLeadContext(
 
         leadErrorMessage,
 
-        lead
+        lead,
+
+        bookingRequired,
+
+        bookingUrl,
+
+        bookingMessage,
+
+        booking: {
+          required:
+            bookingRequired,
+
+          url:
+            bookingUrl,
+
+          durationMinutes:
+            bookingRequired
+              ? 30
+              : null,
+
+          status:
+            bookingRequired
+              ? "awaiting_customer_booking"
+              : null,
+
+          calendarConfirmed:
+            false
+        }
       });
   } catch (error) {
     console.error(
@@ -1474,7 +1610,13 @@ ${getLeadContext(
           false,
 
         leadError:
-          false
+          false,
+
+        bookingRequired:
+          false,
+
+        bookingUrl:
+          null
       });
   }
 }
