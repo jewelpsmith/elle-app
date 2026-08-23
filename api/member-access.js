@@ -38,7 +38,7 @@ async function redisCommand(command) {
   if (!response.ok) {
     throw new Error(
       data?.error ||
-      `Redis request failed with status ${response.status}`
+        `Redis request failed with status ${response.status}`
     );
   }
 
@@ -57,8 +57,9 @@ function normalizeEmail(value) {
 
 function getPermissions(member) {
   const tier =
-    String(member?.tierKey || "")
-      .toLowerCase();
+    String(
+      member?.tierKey || ""
+    ).toLowerCase();
 
   if (tier === "infinite") {
     return {
@@ -99,160 +100,99 @@ function getPermissions(member) {
   };
 }
 
-async function checkMember(email) {
-  const rawMember =
-    await redisCommand([
-      "GET",
-      `elle:member:${email}`,
-    ]);
-
-  if (!rawMember) {
-    return {
-      success: true,
-      accessActive: false,
-      reason:
-        "No membership found",
-      permissions:
-        getPermissions(null),
-    };
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({
+      success: false,
+      error: "POST only",
+    });
   }
-
-  let member;
 
   try {
-    member =
-      typeof rawMember === "string"
-        ? JSON.parse(rawMember)
-        : rawMember;
-  } catch {
-    throw new Error(
-      "Membership record could not be read."
-    );
-  }
+    const email =
+      normalizeEmail(
+        req.body?.email
+      );
 
-  const accessActive =
-    member?.accessActive === true;
+    if (!email) {
+      return res.status(400).json({
+        success: false,
+        error: "Email required",
+      });
+    }
 
-  return {
-    success: true,
+    const rawMember =
+      await redisCommand([
+        "GET",
+        `elle:member:${email}`,
+      ]);
 
-    accessActive,
+    if (!rawMember) {
+      return res.status(200).json({
+        success: true,
+        accessActive: false,
+        reason:
+          "No active membership found",
+        permissions:
+          getPermissions(null),
+      });
+    }
 
-    member: {
-      name:
-        member?.name || "",
+    let member;
 
-      email:
-        member?.email || email,
+    try {
+      member =
+        typeof rawMember === "string"
+          ? JSON.parse(rawMember)
+          : rawMember;
+    } catch {
+      throw new Error(
+        "Membership record could not be read."
+      );
+    }
 
-      tierName:
-        member?.tierName || "",
+    const accessActive =
+      member?.accessActive === true;
 
-      tierKey:
-        member?.tierKey || "unknown",
-
-      membershipStatus:
-        member?.membershipStatus || "",
-    },
-
-    permissions:
+    const permissions =
       accessActive
         ? getPermissions(member)
-        : getPermissions(null),
-  };
-}
+        : getPermissions(null);
 
-export default async function handler(
-  req,
-  res
-) {
-  try {
+    return res.status(200).json({
+      success: true,
 
-    /*
-      TEMPORARY BROWSER TEST
+      accessActive,
 
-      This lets us test the fake
-      Buy Me a Coffee test member
-      without using DevTools.
+      member: {
+        name:
+          member?.name || "",
 
-      We will remove this after testing.
-    */
+        email:
+          member?.email || email,
 
-    if (req.method === "GET") {
-      const email =
-        normalizeEmail(
-          req.query?.email
-        );
+        tierName:
+          member?.tierName || "",
 
-      if (
-        email !==
-        "john@example.com"
-      ) {
-        return res
-          .status(403)
-          .json({
-            success: false,
-            error:
-              "Temporary test access only",
-          });
-      }
+        tierKey:
+          member?.tierKey || "unknown",
 
-      const result =
-        await checkMember(email);
+        membershipStatus:
+          member?.membershipStatus || "",
+      },
 
-      return res
-        .status(200)
-        .json(result);
-    }
-
-    /*
-      NORMAL MEMBER CHECK
-    */
-
-    if (req.method === "POST") {
-      const email =
-        normalizeEmail(
-          req.body?.email
-        );
-
-      if (!email) {
-        return res
-          .status(400)
-          .json({
-            success: false,
-            error:
-              "Email required",
-          });
-      }
-
-      const result =
-        await checkMember(email);
-
-      return res
-        .status(200)
-        .json(result);
-    }
-
-    return res
-      .status(405)
-      .json({
-        success: false,
-        error:
-          "GET or POST only",
-      });
-
+      permissions,
+    });
   } catch (error) {
     console.error(
       "Member access error:",
       error
     );
 
-    return res
-      .status(500)
-      .json({
-        success: false,
-        error:
-          "Membership check failed",
-      });
+    return res.status(500).json({
+      success: false,
+      error:
+        "Membership check failed",
+    });
   }
 }
