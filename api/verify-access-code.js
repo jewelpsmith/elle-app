@@ -69,7 +69,31 @@ function createSessionToken() {
     .toString("hex");
 }
 
-function getPermissions(member) {
+function isOwner(email) {
+  const ownerEmail =
+    normalizeEmail(
+      process.env.ELLE_OWNER_EMAIL
+    );
+
+  return Boolean(
+    ownerEmail &&
+    email === ownerEmail
+  );
+}
+
+function getPermissions(member, owner) {
+  if (owner) {
+    return {
+      elleChat: true,
+      expandedPerks: true,
+      elleRadio: true,
+      liveElle: true,
+      liveVideo: true,
+      ownerMode: true,
+      testMode: true,
+    };
+  }
+
   const tier =
     String(
       member?.tierKey || ""
@@ -82,6 +106,8 @@ function getPermissions(member) {
       elleRadio: true,
       liveElle: true,
       liveVideo: true,
+      ownerMode: false,
+      testMode: false,
     };
   }
 
@@ -92,6 +118,8 @@ function getPermissions(member) {
       elleRadio: false,
       liveElle: false,
       liveVideo: false,
+      ownerMode: false,
+      testMode: false,
     };
   }
 
@@ -102,6 +130,8 @@ function getPermissions(member) {
       elleRadio: false,
       liveElle: false,
       liveVideo: false,
+      ownerMode: false,
+      testMode: false,
     };
   }
 
@@ -111,6 +141,8 @@ function getPermissions(member) {
     elleRadio: false,
     liveElle: false,
     liveVideo: false,
+    ownerMode: false,
+    testMode: false,
   };
 }
 
@@ -147,6 +179,9 @@ export default async function handler(req, res) {
           "Enter the six-digit code",
       });
     }
+
+    const owner =
+      isOwner(email);
 
     /*
     =========================================
@@ -231,50 +266,62 @@ export default async function handler(req, res) {
 
     /*
     =========================================
-    RECHECK MEMBERSHIP
+    OWNER OR MEMBER RECORD
     =========================================
     */
 
-    const rawMember =
-      await redisCommand([
-        "GET",
-        `elle:member:${email}`,
-      ]);
-
-    if (!rawMember) {
-      return res.status(200).json({
-        success: true,
-        verified: false,
-        reason:
-          "Membership not found",
-      });
-    }
-
     let member;
 
-    try {
-      member =
-        typeof rawMember === "string"
-          ? JSON.parse(rawMember)
-          : rawMember;
-    } catch {
-      throw new Error(
-        "Membership record could not be read."
-      );
-    }
+    if (owner) {
+      member = {
+        name: "Owner",
+        email,
+        tierName: "Owner Access",
+        tierKey: "owner",
+        accessActive: true,
+      };
+    } else {
+      const rawMember =
+        await redisCommand([
+          "GET",
+          `elle:member:${email}`,
+        ]);
 
-    if (member?.accessActive !== true) {
-      return res.status(200).json({
-        success: true,
-        verified: false,
-        reason:
-          "Membership is not active",
-      });
+      if (!rawMember) {
+        return res.status(200).json({
+          success: true,
+          verified: false,
+          reason:
+            "Membership not found",
+        });
+      }
+
+      try {
+        member =
+          typeof rawMember === "string"
+            ? JSON.parse(rawMember)
+            : rawMember;
+      } catch {
+        throw new Error(
+          "Membership record could not be read."
+        );
+      }
+
+      if (
+        member?.accessActive !== true
+      ) {
+        return res.status(200).json({
+          success: true,
+          verified: false,
+          reason:
+            "Membership is not active",
+        });
+      }
     }
 
     /*
     =========================================
-    CREATE PRIVATE ELLE SESSION
+    CREATE ELLE SESSION
     =========================================
     */
 
@@ -285,7 +332,10 @@ export default async function handler(req, res) {
       30 * 24 * 60 * 60;
 
     const permissions =
-      getPermissions(member);
+      getPermissions(
+        member,
+        owner
+      );
 
     const sessionRecord = {
       email,
@@ -298,6 +348,8 @@ export default async function handler(req, res) {
 
       tierKey:
         member?.tierKey || "unknown",
+
+      owner,
 
       permissions,
 
@@ -315,11 +367,6 @@ export default async function handler(req, res) {
       sessionSeconds,
     ]);
 
-    /*
-      One-time code.
-      Remove it after successful verification.
-    */
-
     await redisCommand([
       "DEL",
       `elle:access-code:${email}`,
@@ -328,6 +375,7 @@ export default async function handler(req, res) {
     return res.status(200).json({
       success: true,
       verified: true,
+      owner,
 
       sessionToken,
 
