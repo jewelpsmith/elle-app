@@ -10,7 +10,7 @@
 
 <meta
   name="theme-color"
-  content="#fffaf6"
+  content="#fff8f3"
 >
 
 <title>Elle · AURYNELLE∞ IDEAS</title>
@@ -32,10 +32,6 @@
 >
 
 <style>
-/* =========================================================
-RESET
-========================================================= */
-
 *{
   box-sizing:border-box;
   margin:0;
@@ -43,33 +39,28 @@ RESET
 }
 
 :root{
-  --cream:#fffaf6;
-  --cream2:#fff4ee;
+  --cream:#fff9f4;
+  --cream-2:#fff4ed;
   --pearl:#fffdfb;
-  --blush:#f7dfe0;
-  --blush2:#f2cfd3;
-  --rose:#d88a9c;
-
-  --plum:#59283f;
-  --plum2:#6e3850;
-  --plum-soft:#8a6273;
-
-  --gold:#c99448;
-  --gold-light:#efcf91;
-
-  --ink:#362c31;
-  --muted:#756b70;
-  --line:#eadbdd;
-
-  --green:#2b8b61;
+  --blush:#f8e4e2;
+  --blush-2:#f3d5d4;
+  --rose:#d88e9d;
+  --plum:#642c46;
+  --plum-2:#7a4059;
+  --ink:#3d3337;
+  --muted:#786d72;
+  --gold:#cb9346;
+  --gold-light:#efd19a;
+  --line:#ead9d9;
+  --green:#348b65;
 
   --shadow:
-    0 28px 80px -48px
-    rgba(72,42,52,.34);
+    0 30px 80px -46px
+    rgba(76,40,52,.36);
 
   --soft-shadow:
-    0 18px 48px -34px
-    rgba(72,42,52,.26);
+    0 18px 45px -32px
+    rgba(76,40,52,.25);
 }
 
 html{
@@ -78,11 +69,9 @@ html{
 
 body{
   min-height:100dvh;
-
   overflow-x:hidden;
 
-  color:
-    var(--ink);
+  color:var(--ink);
 
   font-family:
     "Figtree",
@@ -91,24 +80,23 @@ body{
 
   background:
     radial-gradient(
-      circle at 8% 5%,
-      rgba(234,187,195,.20),
-      transparent 26%
+      circle at 10% 0%,
+      rgba(240,205,204,.22),
+      transparent 25%
     ),
     radial-gradient(
-      circle at 92% 2%,
-      rgba(221,184,113,.14),
+      circle at 90% 4%,
+      rgba(239,209,154,.15),
       transparent 24%
     ),
     linear-gradient(
       180deg,
       #fffaf6,
-      #fffdfb 40%,
-      #fff7f2
+      #fffdfb 45%,
+      #fff6ef
     );
 
-  -webkit-font-smoothing:
-    antialiased;
+  -webkit-font-smoothing:antialiased;
 }
 
 body.locked{
@@ -121,12 +109,21 @@ input{
 }
 
 button{
-  -webkit-tap-highlight-color:
-    transparent;
+  -webkit-tap-highlight-color:transparent;
 }
 
+button,
 a{
-  color:inherit;
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    border-color .18s ease,
+    background .18s ease;
+}
+
+button:hover,
+.button-link:hover{
+  transform:translateY(-1px);
 }
 
 .hidden{
@@ -134,7 +131,7 @@ a{
 }
 
 /* =========================================================
-AGE GATE
+AGE + MEMBER GATES
 ========================================================= */
 
 .age-gate,
@@ -142,7 +139,7 @@ AGE GATE
   position:fixed;
   inset:0;
 
-  z-index:9999;
+  z-index:20000;
 
   display:none;
   align-items:center;
@@ -151,10 +148,10 @@ AGE GATE
   padding:18px;
 
   background:
-    rgba(255,249,245,.94);
+    rgba(255,249,245,.95);
 
   backdrop-filter:
-    blur(28px);
+    blur(25px);
 }
 
 .age-gate.show,
@@ -164,8 +161,7 @@ AGE GATE
 
 .age-card,
 .member-card{
-  width:
-    min(540px,100%);
+  width:min(540px,100%);
 
   overflow:hidden;
 
@@ -173,14 +169,13 @@ AGE GATE
     1px solid
     rgba(255,255,255,.95);
 
-  border-radius:34px;
+  border-radius:32px;
 
-  background:
-    rgba(255,255,255,.97);
+  background:white;
 
   box-shadow:
-    0 40px 100px -55px
-    rgba(76,38,54,.50);
+    0 40px 100px -50px
+    rgba(83,44,60,.55);
 }
 
 .age-card{
@@ -189,20 +184,19 @@ AGE GATE
   text-align:center;
 }
 
-.age-logo,
-.member-crown{
+.gate-mark{
   width:62px;
   height:62px;
 
   margin:
-    0 auto 13px;
+    0 auto 12px;
 
   display:grid;
   place-items:center;
 
   border:
     1px solid
-    rgba(201,148,72,.45);
+    rgba(203,147,70,.55);
 
   border-radius:50%;
 
@@ -212,8 +206,8 @@ AGE GATE
   background:
     linear-gradient(
       145deg,
-      #6f3b51,
-      #4e2539
+      var(--plum-2),
+      var(--plum)
     );
 
   font-family:
@@ -221,30 +215,22 @@ AGE GATE
     serif;
 
   font-size:27px;
-
-  box-shadow:
-    0 16px 35px -23px
-    rgba(89,40,63,.62);
 }
 
-.age-brand,
-.member-kicker{
-  color:
-    var(--gold);
+.gate-kicker{
+  color:var(--gold);
 
   font-size:9px;
   font-weight:800;
 
-  letter-spacing:.20em;
+  letter-spacing:.2em;
   text-transform:uppercase;
 }
 
-.age-title,
-.member-title{
+.gate-title{
   margin-top:7px;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   font-family:
     "Playfair Display",
@@ -256,16 +242,12 @@ AGE GATE
       8vw,
       48px
     );
-
-  line-height:1.05;
 }
 
-.age-script,
-.member-script{
-  margin-top:4px;
+.gate-script{
+  margin-top:3px;
 
-  color:
-    var(--rose);
+  color:var(--rose);
 
   font-family:
     "Caveat",
@@ -275,18 +257,16 @@ AGE GATE
   font-weight:700;
 }
 
-.age-copy,
-.member-copy{
+.gate-copy{
   max-width:430px;
 
   margin:
     12px auto 0;
 
-  color:
-    var(--muted);
+  color:var(--muted);
 
   font-size:11px;
-  line-height:1.65;
+  line-height:1.6;
 }
 
 .age-options{
@@ -297,11 +277,11 @@ AGE GATE
 
   gap:10px;
 
-  margin-top:22px;
+  margin-top:21px;
 }
 
 .age-option{
-  min-height:96px;
+  min-height:95px;
 
   padding:15px;
 
@@ -309,53 +289,45 @@ AGE GATE
     1px solid
     var(--line);
 
-  border-radius:20px;
+  border-radius:19px;
 
-  color:
-    var(--ink);
+  color:var(--ink);
 
   background:white;
 
   cursor:pointer;
-
-  transition:
-    .2s ease;
 }
 
 .age-option:hover{
-  transform:
-    translateY(-2px);
-
   border-color:
-    rgba(216,138,156,.58);
+    rgba(216,142,157,.6);
 
   box-shadow:
     var(--soft-shadow);
 }
 
-.age-option-icon{
+.age-option span:first-child{
   display:block;
 
-  margin-bottom:6px;
+  margin-bottom:4px;
 
-  font-size:23px;
+  font-size:22px;
 }
 
 .age-option strong{
   display:block;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   font-size:13px;
 }
 
-.age-option span:last-child{
+.age-option small{
   display:block;
 
-  margin-top:4px;
+  margin-top:3px;
 
-  color:#92878c;
+  color:#94898e;
 
   font-size:9px;
 }
@@ -365,29 +337,26 @@ AGE GATE
 
   border:none;
 
-  color:#8a7c83;
+  color:#8c8086;
 
   background:none;
 
   cursor:pointer;
 
   font-size:10px;
-
   text-decoration:underline;
 }
 
 .under-message{
   display:none;
 
-  margin-top:11px;
+  margin-top:12px;
 
-  padding:11px;
+  padding:10px;
 
   border-radius:13px;
 
-  color:#765938;
-
-  background:#fff4de;
+  background:#fff2dc;
 
   font-size:10px;
 }
@@ -395,25 +364,6 @@ AGE GATE
 .under-message.show{
   display:block;
 }
-
-.age-privacy{
-  margin-top:15px;
-
-  padding-top:13px;
-
-  border-top:
-    1px solid
-    #f0e5e7;
-
-  color:#958a90;
-
-  font-size:9px;
-  line-height:1.5;
-}
-
-/* =========================================================
-MEMBERSHIP GATE
-========================================================= */
 
 .member-head{
   padding:
@@ -425,13 +375,13 @@ MEMBERSHIP GATE
     linear-gradient(
       145deg,
       #fffaf6,
-      #fff1f2
+      #fff0f1
     );
 }
 
 .member-body{
   padding:
-    23px 28px 29px;
+    23px 28px 28px;
 }
 
 .member-step{
@@ -447,8 +397,7 @@ MEMBERSHIP GATE
 
   margin-bottom:7px;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   font-size:9px;
   font-weight:800;
@@ -466,28 +415,26 @@ MEMBERSHIP GATE
 
   border:
     1px solid
-    #dfd1d6;
+    #dfd1d4;
 
-  border-radius:16px;
+  border-radius:15px;
 
   outline:none;
 
-  color:
-    var(--ink);
+  color:var(--ink);
 
-  background:
-    #fffdfc;
+  background:#fffdfc;
 
   font-size:13px;
 }
 
 .member-input:focus{
   border-color:
-    rgba(216,138,156,.72);
+    rgba(216,142,157,.7);
 
   box-shadow:
     0 0 0 4px
-    rgba(216,138,156,.10);
+    rgba(216,142,157,.08);
 }
 
 .code-input{
@@ -514,33 +461,23 @@ MEMBERSHIP GATE
     linear-gradient(
       90deg,
       var(--plum),
-      #79425a
+      var(--plum-2)
     );
 
   cursor:pointer;
 
-  font-size:11px;
+  font-size:10px;
   font-weight:800;
-
-  box-shadow:
-    0 15px 30px -22px
-    rgba(89,40,63,.72);
-}
-
-.member-action:disabled{
-  opacity:.54;
-  cursor:wait;
 }
 
 .member-secondary{
   width:100%;
 
-  margin-top:11px;
+  margin-top:10px;
 
   border:none;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   background:none;
 
@@ -553,12 +490,11 @@ MEMBERSHIP GATE
 .member-message{
   display:none;
 
-  margin-top:12px;
+  margin-top:11px;
 
-  padding:
-    11px 13px;
+  padding:11px 12px;
 
-  border-radius:13px;
+  border-radius:12px;
 
   font-size:10px;
   line-height:1.5;
@@ -569,13 +505,13 @@ MEMBERSHIP GATE
 }
 
 .member-message.error{
-  color:#774b55;
+  color:#76505a;
 
   background:#fff0f2;
 }
 
 .member-message.ok{
-  color:#37694f;
+  color:#3c6d54;
 
   background:#eff9f3;
 }
@@ -583,15 +519,15 @@ MEMBERSHIP GATE
 .member-join{
   display:none;
 
-  margin-top:13px;
+  margin-top:12px;
 
-  padding:16px;
+  padding:15px;
 
   border:
     1px solid
-    #eadde2;
+    var(--line);
 
-  border-radius:18px;
+  border-radius:17px;
 
   text-align:center;
 
@@ -603,57 +539,48 @@ MEMBERSHIP GATE
 }
 
 .member-join strong{
-  display:block;
-
-  color:
-    var(--plum);
+  color:var(--plum);
 
   font-family:
     "Playfair Display",
     serif;
 
-  font-size:19px;
+  font-size:18px;
 }
 
 .member-join p{
-  margin-top:5px;
+  margin-top:4px;
 
-  color:
-    var(--muted);
+  color:var(--muted);
 
-  font-size:10px;
+  font-size:9px;
   line-height:1.5;
 }
 
 .member-join a{
   display:inline-flex;
-  align-items:center;
-  justify-content:center;
-
-  min-height:40px;
 
   margin-top:10px;
 
   padding:
-    0 18px;
+    10px 16px;
 
   border-radius:999px;
 
   color:white;
 
-  background:
-    var(--plum);
+  background:var(--plum);
 
   text-decoration:none;
 
-  font-size:10px;
+  font-size:9px;
   font-weight:800;
 }
 
 .member-foot{
-  margin-top:15px;
+  margin-top:13px;
 
-  color:#998e94;
+  color:#968b91;
 
   text-align:center;
 
@@ -669,14 +596,14 @@ HEADER
   position:sticky;
   top:0;
 
-  z-index:600;
+  z-index:1000;
 
   border-bottom:
     1px solid
-    rgba(239,223,222,.74);
+    rgba(235,220,220,.8);
 
   background:
-    rgba(255,250,246,.82);
+    rgba(255,250,246,.88);
 
   backdrop-filter:
     blur(22px);
@@ -685,18 +612,18 @@ HEADER
 .topbar-inner{
   width:
     min(
-      1240px,
+      1220px,
       calc(100% - 28px)
     );
 
-  min-height:66px;
+  min-height:68px;
 
   margin:auto;
 
   display:flex;
   align-items:center;
 
-  gap:15px;
+  gap:14px;
 }
 
 .brand{
@@ -707,29 +634,27 @@ HEADER
 }
 
 .brand-mark{
-  width:43px;
-  height:43px;
+  width:45px;
+  height:45px;
 
   display:grid;
   place-items:center;
 
   border:
     1px solid
-    rgba(201,148,72,.55);
+    rgba(203,147,70,.6);
 
   border-radius:50%;
 
-  color:
-    var(--gold);
+  color:var(--gold);
 
-  background:
-    rgba(255,255,255,.82);
+  background:white;
 
   font-family:
     "Playfair Display",
     serif;
 
-  font-size:22px;
+  font-size:23px;
 
   box-shadow:
     var(--soft-shadow);
@@ -738,8 +663,7 @@ HEADER
 .brand-copy strong{
   display:block;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   font-size:13px;
 }
@@ -749,12 +673,12 @@ HEADER
 
   margin-top:1px;
 
-  color:#958a90;
+  color:#95898f;
 
   font-size:7.5px;
   font-weight:700;
 
-  letter-spacing:.13em;
+  letter-spacing:.12em;
 }
 
 .nav{
@@ -763,32 +687,27 @@ HEADER
   display:flex;
   align-items:center;
 
-  gap:5px;
+  gap:4px;
 }
 
 .nav a{
   padding:
-    9px 11px;
+    9px 10px;
 
   border-radius:999px;
 
-  color:#665a60;
+  color:#64595e;
 
   text-decoration:none;
 
-  font-size:9px;
+  font-size:8.5px;
   font-weight:700;
-
-  transition:
-    .2s ease;
 }
 
 .nav a:hover{
-  color:
-    var(--plum);
+  color:var(--plum);
 
-  background:
-    rgba(255,255,255,.72);
+  background:white;
 }
 
 .top-actions{
@@ -800,24 +719,22 @@ HEADER
 
 .member-pill,
 .top-button{
-  min-height:35px;
+  min-height:36px;
 
   padding:
     0 12px;
 
   border:
     1px solid
-    #e7d9dd;
+    #e5d7db;
 
   border-radius:999px;
 
-  color:
-    #695d63;
+  color:#6b5c63;
 
-  background:
-    rgba(255,255,255,.80);
+  background:white;
 
-  font-size:8.5px;
+  font-size:8px;
   font-weight:800;
 }
 
@@ -826,7 +743,7 @@ HEADER
 }
 
 /* =========================================================
-OWNER MODE
+OWNER
 ========================================================= */
 
 .owner-bar{
@@ -834,10 +751,9 @@ OWNER MODE
 
   border-bottom:
     1px solid
-    #eadfe2;
+    #eadfd8;
 
-  background:
-    #fff6e7;
+  background:#fff5de;
 }
 
 .owner-bar.show{
@@ -847,7 +763,7 @@ OWNER MODE
 .owner-inner{
   width:
     min(
-      1240px,
+      1220px,
       calc(100% - 28px)
     );
 
@@ -856,21 +772,20 @@ OWNER MODE
   display:flex;
   align-items:center;
 
-  gap:8px;
+  gap:7px;
 
   padding:
     8px 0;
 }
 
 .owner-label{
-  color:
-    #7c5d2f;
+  color:#775b30;
 
   font-size:9px;
   font-weight:800;
 }
 
-.owner-test-buttons{
+.owner-buttons{
   display:flex;
   flex-wrap:wrap;
 
@@ -883,11 +798,11 @@ OWNER MODE
 
   border:
     1px solid
-    #dfc797;
+    #dec18b;
 
   border-radius:999px;
 
-  color:#795f3b;
+  color:#715936;
 
   background:white;
 
@@ -900,14 +815,13 @@ OWNER MODE
 .owner-test.active{
   color:white;
 
-  background:
-    #9a7040;
+  background:#957044;
 }
 
 .owner-status{
   margin-left:auto;
 
-  color:#907554;
+  color:#846e50;
 
   font-size:8px;
 }
@@ -919,7 +833,7 @@ PAGE
 .page{
   width:
     min(
-      1240px,
+      1220px,
       calc(100% - 28px)
     );
 
@@ -934,65 +848,76 @@ HERO
 .hero{
   position:relative;
 
-  overflow:hidden;
+  min-height:720px;
 
-  min-height:
-    min(790px,82vh);
+  overflow:hidden;
 
   border:
     1px solid
-    rgba(235,217,217,.92);
+    #ead8d7;
 
-  border-radius:38px;
+  border-radius:36px;
 
-  background:
-    #fff8f4;
+  background:#fdf5ef;
 
-  box-shadow:
-    var(--shadow);
+  box-shadow:var(--shadow);
 }
 
-.hero-grid{
-  display:grid;
+.hero-image{
+  position:absolute;
+  inset:0;
 
-  grid-template-columns:
-    minmax(0,.92fr)
-    minmax(440px,1.08fr);
+  width:100%;
+  height:100%;
 
-  min-height:
-    inherit;
+  object-fit:cover;
+  object-position:center;
+
+  z-index:1;
+}
+
+.hero-shade{
+  position:absolute;
+  inset:0;
+
+  z-index:2;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,249,244,.98) 0%,
+      rgba(255,249,244,.94) 30%,
+      rgba(255,249,244,.55) 48%,
+      rgba(255,249,244,.03) 72%
+    );
 }
 
 .hero-copy{
   position:relative;
   z-index:5;
 
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+  width:52%;
 
   padding:
-    56px 24px 56px 48px;
+    57px 30px 230px 46px;
 }
 
 .hero-kicker{
-  color:
-    var(--gold);
+  color:var(--gold);
 
   font-size:9px;
-  font-weight:800;
+  font-weight:900;
 
   letter-spacing:.22em;
   text-transform:uppercase;
 }
 
 .hero-title{
-  max-width:510px;
+  max-width:520px;
 
   margin-top:10px;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   font-family:
     "Playfair Display",
@@ -1000,24 +925,24 @@ HERO
 
   font-size:
     clamp(
-      52px,
+      53px,
       7vw,
-      86px
+      85px
     );
 
   font-weight:500;
 
-  line-height:.94;
+  line-height:.95;
 
   letter-spacing:-.035em;
 }
 
-.hero-sub{
-  max-width:460px;
+.hero-copy p{
+  max-width:455px;
 
-  margin-top:20px;
+  margin-top:19px;
 
-  color:#5f565a;
+  color:#554e51;
 
   font-size:
     clamp(
@@ -1030,19 +955,19 @@ HERO
 }
 
 .hero-heart{
-  margin-top:14px;
+  margin-top:13px;
 
-  color:
-    var(--plum-soft);
+  color:#685b61;
 
   font-size:11px;
 }
 
 .hero-heart span{
-  color:
-    var(--gold);
+  margin-right:6px;
 
-  margin-right:5px;
+  color:var(--gold);
+
+  font-size:17px;
 }
 
 .hero-actions{
@@ -1051,201 +976,663 @@ HERO
 
   gap:9px;
 
-  margin-top:24px;
+  margin-top:22px;
 }
 
-.hero-button{
-  min-height:46px;
+.primary-cta,
+.secondary-cta{
+  min-height:44px;
 
   padding:
-    0 20px;
+    0 18px;
 
   border-radius:999px;
 
   cursor:pointer;
 
-  font-size:10px;
+  font-size:9px;
   font-weight:800;
 }
 
-.hero-button.primary{
+.primary-cta{
   border:none;
 
   color:white;
 
-  background:
-    var(--plum);
+  background:var(--plum);
 
   box-shadow:
-    0 17px 34px -22px
-    rgba(89,40,63,.76);
+    0 17px 30px -21px
+    rgba(100,44,70,.7);
 }
 
-.hero-button.secondary{
+.secondary-cta{
   border:
     1px solid
-    #e0ced4;
+    #ddcbd0;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   background:
-    rgba(255,255,255,.74);
+    rgba(255,255,255,.83);
 }
 
-.hero-visual{
+/* live mini card */
+
+.live-mini{
+  position:absolute;
+
+  z-index:7;
+
+  left:45px;
+  bottom:35px;
+
+  width:min(500px,42%);
+
+  padding:22px;
+
+  border:
+    1px solid
+    rgba(234,211,208,.95);
+
+  border-radius:22px;
+
+  background:
+    rgba(255,250,246,.94);
+
+  box-shadow:
+    0 22px 55px -37px
+    rgba(70,35,47,.48);
+
+  backdrop-filter:
+    blur(16px);
+}
+
+.live-mini-kicker{
+  color:var(--gold);
+
+  font-size:8px;
+  font-weight:900;
+
+  letter-spacing:.17em;
+  text-transform:uppercase;
+}
+
+.live-mini-title{
+  margin-top:5px;
+
+  color:var(--plum);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:30px;
+  font-weight:500;
+
+  text-align:center;
+}
+
+.live-mini-sub{
+  margin-top:2px;
+
+  color:#6c6267;
+
+  text-align:center;
+
+  font-size:10px;
+}
+
+.live-mini-facts{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+
+  gap:8px;
+
+  margin-top:14px;
+
+  color:#65575e;
+
+  font-size:8px;
+  font-weight:700;
+}
+
+.live-mini-facts span{
+  display:inline-flex;
+  align-items:center;
+
+  gap:4px;
+}
+
+.live-mini-services{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:5px;
+
+  margin-top:13px;
+}
+
+.live-mini-services span{
+  padding:
+    6px 9px;
+
+  border:
+    1px solid
+    #e5d5d6;
+
+  border-radius:999px;
+
+  color:#785e68;
+
+  background:white;
+
+  font-size:7.5px;
+}
+
+.live-mini-actions{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:8px;
+
+  margin-top:14px;
+}
+
+.live-mini-actions button{
+  min-height:42px;
+
+  border-radius:10px;
+
+  cursor:pointer;
+
+  font-size:8.5px;
+  font-weight:800;
+}
+
+.live-mini-primary{
+  border:none;
+
+  color:white;
+
+  background:var(--plum);
+}
+
+.live-mini-secondary{
+  border:
+    1px solid
+    #e0ced2;
+
+  color:var(--plum);
+
+  background:white;
+}
+
+/* =========================================================
+TRUST BENEFITS
+========================================================= */
+
+.benefit-strip{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:0;
+
+  margin-top:0;
+
+  overflow:hidden;
+
+  border:
+    1px solid
+    #ead9d8;
+
+  border-top:none;
+
+  border-radius:
+    0 0 26px 26px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #fff1ec,
+      #fff6f1
+    );
+}
+
+.benefit{
+  min-height:91px;
+
+  display:flex;
+  align-items:center;
+
+  gap:10px;
+
+  padding:
+    17px 20px;
+}
+
+.benefit-icon{
+  color:var(--gold);
+
+  font-size:22px;
+}
+
+.benefit strong{
+  display:block;
+
+  color:#5c4e55;
+
+  font-size:9px;
+}
+
+.benefit span{
+  display:block;
+
+  margin-top:2px;
+
+  color:#877b81;
+
+  font-size:8px;
+}
+
+/* =========================================================
+FEATURE TRIO
+========================================================= */
+
+.feature-row{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:11px;
+
+  margin-top:18px;
+
+  padding:13px;
+
+  border:
+    1px solid
+    #eadbd9;
+
+  border-radius:26px;
+
+  background:
+    rgba(255,255,255,.62);
+
+  box-shadow:
+    var(--soft-shadow);
+}
+
+.feature-card{
+  position:relative;
+
+  min-height:310px;
+
+  overflow:hidden;
+
+  display:grid;
+
+  grid-template-columns:
+    1fr .78fr;
+
+  border:
+    1px solid
+    #eadbd9;
+
+  border-radius:20px;
+
+  background:white;
+}
+
+.feature-copy{
+  position:relative;
+  z-index:3;
+
+  padding:
+    24px 8px 22px 22px;
+}
+
+.feature-kicker{
+  color:var(--gold);
+
+  font-size:7.5px;
+  font-weight:900;
+
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.feature-copy h3{
+  margin-top:7px;
+
+  color:var(--plum);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:26px;
+  font-weight:500;
+
+  line-height:1.05;
+}
+
+.feature-copy p{
+  margin-top:8px;
+
+  color:#6f656a;
+
+  font-size:9px;
+  line-height:1.55;
+}
+
+.feature-pills{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:5px;
+
+  margin-top:11px;
+}
+
+.feature-pills span{
+  padding:
+    5px 7px;
+
+  border:
+    1px solid
+    #ead7d7;
+
+  border-radius:999px;
+
+  color:#80666f;
+
+  font-size:7px;
+}
+
+.feature-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-height:38px;
+
+  margin-top:13px;
+
+  padding:
+    0 13px;
+
+  border:none;
+  border-radius:8px;
+
+  color:white;
+
+  background:var(--plum);
+
+  cursor:pointer;
+
+  text-decoration:none;
+
+  font-size:8px;
+  font-weight:800;
+}
+
+.feature-media{
   position:relative;
 
   min-width:0;
-  min-height:
-    inherit;
 
   overflow:hidden;
 }
 
-.hero-elle{
-  position:absolute;
-  inset:0;
-
+.feature-media img{
   width:100%;
   height:100%;
 
   object-fit:cover;
-  object-position:center;
-
-  transform:
-    scale(1.01);
 }
 
-.hero-fade{
+.feature-media::after{
+  content:"";
+
   position:absolute;
   inset:0;
 
   background:
     linear-gradient(
       90deg,
-      #fff8f4 0%,
-      rgba(255,248,244,.68) 12%,
-      rgba(255,248,244,.06) 38%,
-      transparent 62%
+      white,
+      transparent 25%
     );
-
-  pointer-events:none;
 }
 
-.hero-glow{
+/* =========================================================
+QUOTE
+========================================================= */
+
+.quote-section{
+  position:relative;
+
+  min-height:240px;
+
+  margin-top:17px;
+
+  overflow:hidden;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:
+    35px 190px;
+
+  border-radius:25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff1eb,
+      #fff8f2
+    );
+
+  text-align:center;
+}
+
+.quote-section::before{
+  content:"";
+
   position:absolute;
 
-  right:9%;
-  top:8%;
+  left:24px;
+  bottom:0;
 
-  width:260px;
-  height:260px;
+  width:175px;
+  height:175px;
+
+  background:
+    url("elle-world-garden.png")
+    center /
+    cover
+    no-repeat;
+
+  border-radius:
+    90px 90px 0 0;
+
+  opacity:.27;
+}
+
+.quote-globe{
+  position:absolute;
+
+  right:24px;
+  bottom:-24px;
+
+  width:160px;
+  height:160px;
 
   border-radius:50%;
 
   background:
-    rgba(239,207,145,.20);
+    url("elle-world-4k.png")
+    center /
+    cover
+    no-repeat;
 
-  filter:
-    blur(70px);
+  box-shadow:
+    0 18px 35px -24px
+    rgba(82,45,52,.5);
+}
 
-  pointer-events:none;
+.quote{
+  position:relative;
+  z-index:3;
+
+  color:#42383d;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(
+      25px,
+      3.5vw,
+      39px
+    );
+
+  line-height:1.23;
+}
+
+.quote em{
+  display:block;
+
+  color:var(--plum);
+
+  font-weight:500;
+}
+
+.quote-heart{
+  margin-top:11px;
+
+  color:var(--gold);
+
+  font-size:21px;
 }
 
 /* =========================================================
-ASK ELLE CHAT
+REAL CHAT
 ========================================================= */
 
-.ask-section{
-  position:relative;
-
-  z-index:20;
-
-  width:
-    min(
-      1040px,
-      calc(100% - 34px)
-    );
-
-  margin:
-    -94px auto 0;
+.section{
+  margin-top:58px;
 }
 
-.chat-card{
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+
+  gap:25px;
+
+  margin-bottom:17px;
+}
+
+.section-kicker{
+  color:var(--gold);
+
+  font-size:8px;
+  font-weight:900;
+
+  letter-spacing:.19em;
+  text-transform:uppercase;
+}
+
+.section-title{
+  margin-top:5px;
+
+  color:var(--plum);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(
+      34px,
+      5vw,
+      49px
+    );
+
+  font-weight:500;
+}
+
+.section-description{
+  max-width:420px;
+
+  color:var(--muted);
+
+  text-align:right;
+
+  font-size:9.5px;
+  line-height:1.55;
+}
+
+.chat-shell{
   overflow:hidden;
 
   border:
     1px solid
-    rgba(231,211,214,.96);
+    #ead8d8;
 
-  border-radius:30px;
+  border-radius:27px;
 
-  background:
-    rgba(255,253,251,.95);
+  background:white;
 
-  box-shadow:
-    0 32px 78px -48px
-    rgba(78,45,55,.45);
-
-  backdrop-filter:
-    blur(18px);
-}
-
-.chat-card.flash{
-  animation:
-    chatFlash
-    .65s ease;
-}
-
-@keyframes chatFlash{
-  50%{
-    box-shadow:
-      0 0 0 6px
-      rgba(216,138,156,.13),
-      0 32px 78px -48px
-      rgba(78,45,55,.45);
-  }
+  box-shadow:var(--shadow);
 }
 
 .chat-head{
   display:flex;
   align-items:center;
 
-  gap:12px;
+  gap:11px;
 
   padding:
-    18px 20px;
+    17px 19px;
 
   border-bottom:
     1px solid
-    #efe2e3;
+    #efe1e1;
 
   background:
     linear-gradient(
       90deg,
       #fffdfb,
-      #fff5f2
+      #fff4f0
     );
 }
 
-.chat-monogram{
-  width:44px;
-  height:44px;
-
-  flex-shrink:0;
+.chat-mark{
+  width:43px;
+  height:43px;
 
   display:grid;
   place-items:center;
 
   border:
     1px solid
-    rgba(201,148,72,.38);
+    rgba(203,147,70,.45);
 
   border-radius:50%;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   background:white;
 
@@ -1254,16 +1641,12 @@ ASK ELLE CHAT
     serif;
 
   font-size:20px;
-
-  box-shadow:
-    var(--soft-shadow);
 }
 
-.chat-heading strong{
+.chat-head strong{
   display:block;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   font-family:
     "Playfair Display",
@@ -1272,35 +1655,29 @@ ASK ELLE CHAT
   font-size:21px;
 }
 
-.chat-heading span{
+.chat-head small{
   display:block;
 
   margin-top:2px;
 
-  color:
-    var(--muted);
+  color:var(--muted);
 
-  font-size:9px;
+  font-size:8px;
 }
 
-.online{
+.chat-online{
   margin-left:auto;
-
-  display:flex;
-  align-items:center;
-
-  gap:6px;
 
   padding:
     7px 10px;
 
   border:
     1px solid
-    #e8dedf;
+    #e6d9da;
 
   border-radius:999px;
 
-  color:#71666b;
+  color:#675c61;
 
   background:white;
 
@@ -1308,36 +1685,34 @@ ASK ELLE CHAT
   font-weight:700;
 }
 
-.online-dot{
-  width:7px;
-  height:7px;
+.chat-online::before{
+  content:"";
+
+  display:inline-block;
+
+  width:6px;
+  height:6px;
+
+  margin-right:5px;
 
   border-radius:50%;
 
-  background:
-    #52a974;
-
-  box-shadow:
-    0 0 0 4px
-    rgba(82,169,116,.10);
+  background:#4ba06e;
 }
 
 .thread{
-  height:330px;
+  height:345px;
 
   overflow-y:auto;
 
-  padding:
-    20px;
+  padding:19px;
 
   background:
     linear-gradient(
       180deg,
       #fffdfb,
-      #fffaf7
+      #fff9f5
     );
-
-  scrollbar-width:thin;
 }
 
 .message-row{
@@ -1351,15 +1726,14 @@ ASK ELLE CHAT
 }
 
 .bubble{
-  max-width:
-    min(76%,620px);
+  max-width:74%;
 
   padding:
     11px 14px;
 
-  border-radius:18px;
+  border-radius:17px;
 
-  font-size:11px;
+  font-size:10.5px;
   line-height:1.55;
 
   white-space:pre-wrap;
@@ -1368,35 +1742,27 @@ ASK ELLE CHAT
 .bubble-elle{
   border:
     1px solid
-    #eadcdf;
+    #eadbdd;
 
   border-top-left-radius:5px;
 
-  color:
-    #4a4044;
+  color:#50464a;
 
   background:white;
-
-  box-shadow:
-    0 9px 24px -21px
-    rgba(77,42,54,.50);
 }
 
 .bubble-user{
   border-top-right-radius:5px;
 
-  color:
-    #5d4851;
+  color:#614d56;
 
-  background:
-    #f8e5e3;
+  background:#f8e4e1;
 }
 
 .elle-label{
   margin-bottom:4px;
 
-  color:
-    var(--gold);
+  color:var(--gold);
 
   font-size:7px;
   font-weight:900;
@@ -1408,9 +1774,6 @@ ASK ELLE CHAT
   display:flex;
 
   gap:4px;
-
-  padding:
-    4px 0;
 }
 
 .typing span{
@@ -1419,11 +1782,10 @@ ASK ELLE CHAT
 
   border-radius:50%;
 
-  background:
-    var(--rose);
+  background:var(--rose);
 
   animation:
-    typingBounce
+    bounce
     1s infinite;
 }
 
@@ -1435,15 +1797,14 @@ ASK ELLE CHAT
   animation-delay:.24s;
 }
 
-@keyframes typingBounce{
+@keyframes bounce{
   50%{
-    transform:
-      translateY(-4px);
+    transform:translateY(-4px);
   }
 }
 
 .chips{
-  min-height:42px;
+  min-height:40px;
 
   display:flex;
   flex-wrap:wrap;
@@ -1460,15 +1821,13 @@ ASK ELLE CHAT
 
   border:
     1px solid
-    #ead9dd;
+    #e9d8da;
 
   border-radius:999px;
 
-  color:
-    #705862;
+  color:#745b65;
 
-  background:
-    #fffdfc;
+  background:white;
 
   cursor:pointer;
 
@@ -1476,17 +1835,8 @@ ASK ELLE CHAT
   font-weight:700;
 }
 
-.chip:hover{
-  border-color:
-    rgba(201,148,72,.55);
-
-  color:
-    var(--plum);
-}
-
 .composer{
   display:flex;
-  align-items:center;
 
   gap:8px;
 
@@ -1494,55 +1844,48 @@ ASK ELLE CHAT
     12px 18px 15px;
 }
 
-.input-wrap{
+.composer input{
   flex:1;
-}
 
-.input-wrap input{
-  width:100%;
+  min-width:0;
   height:48px;
 
   padding:
-    0 16px;
+    0 15px;
 
   border:
     1px solid
-    #e4d8da;
+    #e3d5d7;
 
-  border-radius:16px;
+  border-radius:15px;
 
   outline:none;
 
-  color:
-    var(--ink);
+  color:var(--ink);
 
   background:white;
 
-  font-size:11px;
+  font-size:10.5px;
 }
 
-.input-wrap input:focus{
+.composer input:focus{
   border-color:
-    rgba(216,138,156,.68);
+    rgba(216,142,157,.75);
 
   box-shadow:
     0 0 0 4px
-    rgba(216,138,156,.08);
+    rgba(216,142,157,.08);
 }
 
-.send{
-  height:46px;
-
-  padding:
-    0 18px;
+.send-button{
+  min-width:105px;
 
   border:none;
   border-radius:14px;
 
   color:white;
 
-  background:
-    var(--plum);
+  background:var(--plum);
 
   cursor:pointer;
 
@@ -1550,229 +1893,114 @@ ASK ELLE CHAT
   font-weight:800;
 }
 
-.send:disabled{
-  opacity:.5;
-  cursor:wait;
-}
-
 .chat-note{
   padding:
-    0 19px 14px;
+    0 18px 14px;
 
-  color:#9a8f94;
+  color:#988d92;
 
   font-size:8px;
-  line-height:1.5;
 }
 
-/* booking card inside chat */
-
-.booking-chat-card{
+.booking-card{
   margin:
-    12px 0 14px;
+    12px 0;
 
-  padding:17px;
+  padding:16px;
 
   border:
     1px solid
     #e7d6d7;
 
-  border-radius:20px;
+  border-radius:18px;
 
   background:
     linear-gradient(
       145deg,
-      #fffaf5,
-      #fff1ed
+      #fff8f2,
+      #fff0ec
     );
-
-  box-shadow:
-    var(--soft-shadow);
 }
 
-.booking-chat-kicker{
-  color:
-    var(--gold);
+.booking-card strong{
+  display:block;
 
-  font-size:7px;
-  font-weight:900;
-
-  letter-spacing:.18em;
-  text-transform:uppercase;
-}
-
-.booking-chat-title{
-  margin-top:5px;
-
-  color:
-    var(--plum);
+  color:var(--plum);
 
   font-family:
     "Playfair Display",
     serif;
 
-  font-size:20px;
+  font-size:19px;
 }
 
-.booking-chat-copy{
-  margin-top:5px;
+.booking-card p{
+  margin-top:4px;
 
-  color:
-    var(--muted);
+  color:var(--muted);
 
   font-size:9px;
   line-height:1.5;
 }
 
-.booking-chat-meta{
-  display:flex;
-  flex-wrap:wrap;
-
-  gap:6px;
-
-  margin-top:11px;
-}
-
-.booking-mini{
-  padding:
-    6px 8px;
-
-  border:
-    1px solid
-    #eadbda;
-
-  border-radius:999px;
-
-  color:
-    #705c64;
-
-  background:
-    rgba(255,255,255,.76);
-
-  font-size:8px;
-  font-weight:700;
-}
-
-.booking-chat-button{
+.booking-card a{
   display:inline-flex;
-  align-items:center;
-  justify-content:center;
 
-  min-height:40px;
-
-  margin-top:12px;
+  margin-top:10px;
 
   padding:
-    0 16px;
+    10px 14px;
 
   border-radius:999px;
 
   color:white;
 
-  background:
-    var(--plum);
+  background:var(--plum);
 
   text-decoration:none;
 
-  font-size:9px;
+  font-size:8px;
   font-weight:800;
 }
 
 /* =========================================================
-QUICK ACTIONS
+LIVE ELLE DETAIL
 ========================================================= */
 
-.quick-bar{
+.live-detail{
+  position:relative;
+
+  overflow:hidden;
+
   display:grid;
 
   grid-template-columns:
-    repeat(4,1fr);
-
-  gap:9px;
-
-  margin-top:16px;
-}
-
-.quick-button{
-  min-height:68px;
-
-  padding:
-    12px;
+    1.1fr .9fr;
 
   border:
     1px solid
-    #eadde0;
+    #ead9d8;
 
-  border-radius:20px;
-
-  color:
-    #65575d;
+  border-radius:27px;
 
   background:
-    rgba(255,255,255,.80);
+    linear-gradient(
+      135deg,
+      #fffdfb,
+      #fff0eb
+    );
 
-  cursor:pointer;
-
-  font-size:9px;
-  font-weight:800;
-
-  box-shadow:
-    var(--soft-shadow);
-
-  transition:
-    .2s ease;
+  box-shadow:var(--soft-shadow);
 }
 
-.quick-button span{
-  display:block;
-
-  margin-bottom:4px;
-
-  font-size:18px;
+.live-detail-copy{
+  padding:31px;
 }
 
-.quick-button:hover{
-  transform:
-    translateY(-2px);
-
-  color:
-    var(--plum);
-}
-
-/* =========================================================
-SECTION BASICS
-========================================================= */
-
-.section{
-  margin-top:62px;
-}
-
-.section-head{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-
-  gap:30px;
-
-  margin-bottom:17px;
-}
-
-.section-kicker{
-  color:
-    var(--gold);
-
-  font-size:8px;
-  font-weight:800;
-
-  letter-spacing:.20em;
-  text-transform:uppercase;
-}
-
-.section-title{
+.live-detail-copy h3{
   margin-top:5px;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   font-family:
     "Playfair Display",
@@ -1780,474 +2008,262 @@ SECTION BASICS
 
   font-size:
     clamp(
-      32px,
+      31px,
       5vw,
-      48px
+      45px
     );
 
   font-weight:500;
 }
 
-.section-copy{
-  max-width:420px;
+.live-detail-copy p{
+  max-width:520px;
 
-  color:
-    var(--muted);
+  margin-top:9px;
 
-  text-align:right;
+  color:var(--muted);
 
   font-size:10px;
-  line-height:1.55;
+  line-height:1.65;
+}
+
+.live-facts,
+.live-services{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:6px;
+
+  margin-top:13px;
+}
+
+.live-facts span,
+.live-services span{
+  padding:
+    7px 9px;
+
+  border:
+    1px solid
+    #e7d8d9;
+
+  border-radius:999px;
+
+  color:#745e67;
+
+  background:white;
+
+  font-size:7.5px;
+  font-weight:700;
+}
+
+.live-actions{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:8px;
+
+  margin-top:16px;
+}
+
+.live-side{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:28px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(239,209,154,.22),
+      transparent 36%
+    );
+}
+
+.calendar-card{
+  width:min(330px,100%);
+
+  padding:24px;
+
+  border:
+    1px solid
+    #e3d1d1;
+
+  border-radius:24px;
+
+  background:
+    rgba(255,255,255,.88);
+
+  box-shadow:
+    var(--soft-shadow);
+}
+
+.calendar-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.calendar-title{
+  color:var(--plum);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:21px;
+}
+
+.calendar-month{
+  color:var(--gold);
+
+  font-size:8px;
+  font-weight:900;
+
+  letter-spacing:.13em;
+  text-transform:uppercase;
+}
+
+.calendar-days{
+  display:grid;
+
+  grid-template-columns:
+    repeat(7,1fr);
+
+  gap:5px;
+
+  margin-top:16px;
+}
+
+.calendar-day{
+  aspect-ratio:1;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:9px;
+
+  color:#887c81;
+
+  background:#fff8f5;
+
+  font-size:8px;
+}
+
+.calendar-day.open{
+  color:white;
+
+  background:var(--plum);
+}
+
+.calendar-note{
+  margin-top:14px;
+
+  padding-top:12px;
+
+  border-top:
+    1px solid
+    #ecdfdf;
+
+  color:#85797e;
+
+  font-size:8px;
+  line-height:1.5;
+}
+
+.feature-lock{
+  position:absolute;
+  inset:0;
+
+  z-index:10;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:18px;
+
+  background:
+    rgba(255,249,245,.87);
+
+  backdrop-filter:
+    blur(11px);
+}
+
+.feature-lock-card{
+  width:min(310px,100%);
+
+  padding:22px;
+
+  border:
+    1px solid
+    #ead9da;
+
+  border-radius:21px;
+
+  text-align:center;
+
+  background:white;
+
+  box-shadow:var(--soft-shadow);
+}
+
+.feature-lock-card span{
+  display:block;
+
+  font-size:25px;
+}
+
+.feature-lock-card strong{
+  display:block;
+
+  margin-top:6px;
+
+  color:var(--plum);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:19px;
+}
+
+.feature-lock-card p{
+  margin-top:5px;
+
+  color:var(--muted);
+
+  font-size:8.5px;
+  line-height:1.5;
 }
 
 /* =========================================================
 ELLE WORLD
 ========================================================= */
 
-.world-shell{
-  position:relative;
-
-  overflow:hidden;
-
-  min-height:560px;
+.world-frame{
+  padding:10px;
 
   border:
     1px solid
-    #eadbda;
+    #ead9da;
 
-  border-radius:34px;
+  border-radius:31px;
 
   background:
-    radial-gradient(
-      circle at 50% 50%,
-      rgba(244,213,187,.60),
-      transparent 34%
-    ),
     linear-gradient(
       145deg,
-      #fffdfa,
-      #fff2ed
+      #fff9f5,
+      #f9eceb
     );
 
-  box-shadow:
-    var(--shadow);
+  box-shadow:var(--shadow);
 }
 
-.world-ambient{
-  position:absolute;
-  inset:0;
-
-  pointer-events:none;
-
-  background:
-    radial-gradient(
-      circle at 18% 20%,
-      rgba(239,207,145,.18),
-      transparent 22%
-    ),
-    radial-gradient(
-      circle at 80% 70%,
-      rgba(216,138,156,.15),
-      transparent 25%
-    );
-}
-
-.world-layout{
-  position:relative;
-  z-index:4;
-
-  display:grid;
-
-  grid-template-columns:
-    .85fr 1.15fr;
-
-  min-height:560px;
-}
-
-.world-copy-panel{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-
-  padding:
-    40px 20px 40px 42px;
-}
-
-.world-live{
-  width:fit-content;
-
-  display:flex;
-  align-items:center;
-
-  gap:7px;
-
-  padding:
-    7px 10px;
-
-  border:
-    1px solid
-    #e6d8d8;
-
-  border-radius:999px;
-
-  color:
-    #6c5d63;
-
-  background:
-    rgba(255,255,255,.76);
-
-  font-size:8px;
-  font-weight:800;
-}
-
-.world-live-dot{
-  width:7px;
-  height:7px;
-
-  border-radius:50%;
-
-  background:
-    #53ad79;
-
-  box-shadow:
-    0 0 0 5px
-    rgba(83,173,121,.09),
-    0 0 14px
-    rgba(83,173,121,.38);
-
-  animation:
-    livePulse
-    1.8s infinite;
-}
-
-@keyframes livePulse{
-  50%{
-    transform:
-      scale(1.2);
-
-    opacity:.72;
-  }
-}
-
-.world-heading{
-  margin-top:15px;
-
-  color:
-    var(--plum);
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:
-    clamp(
-      32px,
-      5vw,
-      51px
-    );
-
-  font-weight:500;
-
-  line-height:1.02;
-}
-
-.world-description{
-  max-width:420px;
-
-  margin-top:12px;
-
-  color:
-    var(--muted);
-
-  font-size:11px;
-  line-height:1.65;
-}
-
-.world-stats{
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,minmax(0,1fr));
-
-  gap:8px;
-
-  margin-top:19px;
-}
-
-.world-stat{
-  padding:13px;
-
-  border:
-    1px solid
-    #e7d9da;
-
-  border-radius:17px;
-
-  background:
-    rgba(255,255,255,.74);
-}
-
-.world-stat strong{
+elle-world{
   display:block;
 
-  color:
-    var(--plum);
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:23px;
-}
-
-.world-stat span{
-  display:block;
-
-  margin-top:2px;
-
-  color:#85787e;
-
-  font-size:8px;
-  font-weight:700;
-
-  text-transform:uppercase;
-
-  letter-spacing:.07em;
-}
-
-.country-list{
-  display:flex;
-  flex-wrap:wrap;
-
-  gap:5px;
-
-  margin-top:10px;
-}
-
-.country-pill{
-  padding:
-    6px 8px;
-
-  border:
-    1px solid
-    #eadcdc;
-
-  border-radius:999px;
-
-  color:#79676e;
-
-  background:white;
-
-  font-size:8px;
-}
-
-.world-privacy{
-  margin-top:13px;
-
-  color:#94888d;
-
-  font-size:8px;
-  line-height:1.5;
-}
-
-.globe-stage{
-  position:relative;
-
-  min-height:560px;
-
-  display:grid;
-  place-items:center;
-
-  overflow:hidden;
-}
-
-.globe-halo{
-  position:absolute;
-
-  width:
-    min(78%,500px);
-
-  aspect-ratio:1;
-
-  border-radius:50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(255,255,255,.75),
-      rgba(239,207,145,.20) 38%,
-      rgba(216,138,156,.08) 57%,
-      transparent 72%
-    );
-
-  filter:
-    blur(4px);
-
-  animation:
-    haloPulse
-    4s ease-in-out infinite;
-}
-
-@keyframes haloPulse{
-  50%{
-    transform:
-      scale(1.05);
-
-    opacity:.80;
-  }
-}
-
-.globe-orbit{
-  position:absolute;
-
-  width:70%;
-  aspect-ratio:1;
-
-  border:
-    1px solid
-    rgba(201,148,72,.30);
-
-  border-radius:50%;
-
-  transform:
-    rotateX(67deg)
-    rotateZ(-12deg);
-
-  animation:
-    orbitSpin
-    15s linear infinite;
-}
-
-.globe-orbit.second{
-  width:57%;
-
-  opacity:.55;
-
-  transform:
-    rotateX(72deg)
-    rotateZ(28deg);
-
-  animation-duration:
-    21s;
-}
-
-@keyframes orbitSpin{
-  to{
-    transform:
-      rotateX(67deg)
-      rotateZ(348deg);
-  }
-}
-
-.globe-image-wrap{
-  position:relative;
-
-  z-index:3;
-
-  width:
-    min(74%,470px);
-
-  aspect-ratio:1;
-
-  display:grid;
-  place-items:center;
-
-  border-radius:50%;
-
-  filter:
-    drop-shadow(
-      0 32px 35px
-      rgba(107,59,63,.18)
-    );
-
-  animation:
-    globeFloat
-    5s ease-in-out infinite;
-}
-
-@keyframes globeFloat{
-  50%{
-    transform:
-      translateY(-9px);
-  }
-}
-
-.globe-image{
   width:100%;
-  height:100%;
-
-  object-fit:cover;
-
-  border-radius:50%;
-
-  animation:
-    globeSpin
-    38s linear infinite;
-}
-
-@keyframes globeSpin{
-  to{
-    transform:
-      rotate(360deg);
-  }
-}
-
-.world-spark{
-  position:absolute;
-  z-index:5;
-
-  width:11px;
-  height:11px;
-
-  border-radius:50%;
-
-  background:
-    #ffd782;
-
-  box-shadow:
-    0 0 0 7px
-    rgba(255,215,130,.11),
-    0 0 22px
-    rgba(238,174,87,.70);
-
-  animation:
-    sparkPulse
-    2.1s ease-in-out infinite;
-}
-
-.world-spark.s1{
-  left:31%;
-  top:31%;
-}
-
-.world-spark.s2{
-  right:24%;
-  top:39%;
-
-  animation-delay:.6s;
-}
-
-.world-spark.s3{
-  left:42%;
-  bottom:28%;
-
-  animation-delay:1.1s;
-}
-
-.world-spark.s4{
-  right:33%;
-  bottom:36%;
-
-  animation-delay:1.5s;
-}
-
-@keyframes sparkPulse{
-  50%{
-    transform:
-      scale(1.45);
-
-    opacity:.48;
-  }
 }
 
 /* =========================================================
@@ -2257,24 +2273,22 @@ RADIO
 .radio-shell{
   position:relative;
 
-  min-height:520px;
+  min-height:515px;
 
   overflow:hidden;
 
   border:
     1px solid
-    #eadbda;
+    #e8d6d7;
 
-  border-radius:34px;
+  border-radius:30px;
 
-  background:
-    #f7e9e0;
+  background:#2d1d24;
 
-  box-shadow:
-    var(--shadow);
+  box-shadow:var(--shadow);
 }
 
-.radio-image{
+.radio-shell > img{
   position:absolute;
   inset:0;
 
@@ -2282,22 +2296,19 @@ RADIO
   height:100%;
 
   object-fit:cover;
-  object-position:center;
-
-  opacity:.98;
 }
 
-.radio-gradient{
+.radio-shade{
   position:absolute;
   inset:0;
 
   background:
     linear-gradient(
       90deg,
-      rgba(255,248,243,.98) 0%,
-      rgba(255,248,243,.89) 37%,
-      rgba(255,248,243,.44) 60%,
-      rgba(255,248,243,.04) 78%
+      rgba(255,249,245,.97) 0%,
+      rgba(255,249,245,.88) 38%,
+      rgba(255,249,245,.22) 64%,
+      rgba(255,249,245,.02) 82%
     );
 }
 
@@ -2305,18 +2316,15 @@ RADIO
   position:relative;
   z-index:5;
 
-  width:
-    min(500px,58%);
+  width:min(500px,58%);
 
-  padding:
-    44px;
+  padding:39px;
 }
 
-.radio-title{
+.radio-content h3{
   margin-top:6px;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   font-family:
     "Playfair Display",
@@ -2324,98 +2332,86 @@ RADIO
 
   font-size:
     clamp(
-      38px,
+      36px,
       6vw,
-      58px
+      55px
     );
 
   font-weight:500;
 }
 
 .radio-script{
-  color:
-    var(--rose);
+  color:var(--rose);
 
   font-family:
     "Caveat",
     cursive;
 
-  font-size:25px;
-  font-weight:700;
+  font-size:24px;
 }
 
 .now-playing{
-  margin-top:21px;
+  margin-top:19px;
 
-  padding:16px;
+  padding:15px;
 
   border:
     1px solid
-    rgba(218,198,196,.92);
+    #e2d2d3;
 
-  border-radius:19px;
+  border-radius:18px;
 
   background:
-    rgba(255,255,255,.78);
+    rgba(255,255,255,.81);
 
   backdrop-filter:
     blur(12px);
-
-  box-shadow:
-    var(--soft-shadow);
 }
 
-.now-label{
-  color:
-    var(--gold);
+.now-playing small{
+  color:var(--gold);
 
   font-size:7px;
   font-weight:900;
 
-  letter-spacing:.17em;
+  letter-spacing:.15em;
   text-transform:uppercase;
 }
 
 .song-title{
   margin-top:4px;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   font-size:15px;
   font-weight:800;
 }
 
 .song-artist{
-  margin-top:2px;
+  color:var(--muted);
 
-  color:
-    var(--muted);
-
-  font-size:9px;
+  font-size:8px;
 }
 
 .radio-controls{
   display:flex;
-  align-items:center;
 
   gap:7px;
 
-  margin-top:12px;
+  margin-top:11px;
 }
 
 .radio-control{
-  width:41px;
-  height:41px;
+  width:40px;
+  height:40px;
 
   border:
     1px solid
-    #e2d3d4;
+    #e0d1d3;
 
   border-radius:50%;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   background:white;
 
@@ -2423,108 +2419,104 @@ RADIO
 }
 
 .radio-play{
-  width:49px;
-  height:49px;
+  width:47px;
+  height:47px;
 
   border:none;
 
   color:white;
 
-  background:
-    var(--plum);
+  background:var(--plum);
 }
 
 .track-list{
   display:grid;
 
-  gap:6px;
+  gap:5px;
 
-  margin-top:15px;
+  margin-top:13px;
 }
 
 .track{
   display:flex;
   align-items:center;
 
-  gap:9px;
+  gap:8px;
 
   padding:
-    9px 10px;
+    8px 9px;
 
   border:
     1px solid
     transparent;
 
-  border-radius:12px;
+  border-radius:11px;
 
-  color:
-    #706066;
+  color:#716166;
 
   background:
-    rgba(255,255,255,.50);
+    rgba(255,255,255,.52);
 
   cursor:pointer;
 
-  font-size:9px;
+  font-size:8.5px;
   text-align:left;
 }
 
 .track.active{
   border-color:
-    rgba(201,148,72,.35);
+    rgba(203,147,70,.42);
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   background:white;
 }
 
 .track-number{
-  color:
-    var(--gold);
+  color:var(--gold);
 
-  font-size:8px;
+  font-size:7px;
   font-weight:900;
 }
 
 /* =========================================================
-6 SECOND TURNTABLE MOMENT
+3 SECOND TURNTABLE TAKEOVER
 ========================================================= */
 
-.turntable-moment{
+.turntable-takeover{
   position:fixed;
   inset:0;
 
-  z-index:12000;
+  z-index:25000;
 
   display:none;
   align-items:center;
   justify-content:center;
 
-  padding:20px;
+  padding:18px;
 
   background:
-    rgba(40,24,31,.80);
+    rgba(35,21,28,.83);
 
   backdrop-filter:
     blur(18px);
 }
 
-.turntable-moment.show{
+.turntable-takeover.show{
   display:flex;
 
   animation:
-    momentFade
-    6s ease forwards;
+    takeoverFade
+    3s ease forwards;
 }
 
-@keyframes momentFade{
+@keyframes takeoverFade{
   0%{
     opacity:0;
   }
 
-  8%,
-  84%{
+  10%,
+  78%{
     opacity:1;
   }
 
@@ -2536,26 +2528,22 @@ RADIO
 .turntable-stage{
   position:relative;
 
-  width:
-    min(1000px,92vw);
-
-  height:
-    min(700px,78vh);
+  width:min(1000px,92vw);
+  height:min(680px,78vh);
 
   overflow:hidden;
 
   border:
     1px solid
-    rgba(255,255,255,.28);
+    rgba(255,255,255,.26);
 
-  border-radius:36px;
+  border-radius:34px;
 
-  background:
-    #2a181f;
+  background:#26171e;
 
   box-shadow:
-    0 55px 120px -45px
-    rgba(0,0,0,.65);
+    0 50px 110px -35px
+    rgba(0,0,0,.72);
 }
 
 .turntable-stage img{
@@ -2565,97 +2553,88 @@ RADIO
   object-fit:cover;
 
   animation:
-    turntableZoom
-    6s ease forwards;
+    takeoverZoom
+    3s ease forwards;
 }
 
-@keyframes turntableZoom{
+@keyframes takeoverZoom{
   0%{
-    transform:
-      scale(1.03);
+    transform:scale(1.01);
   }
 
   50%{
-    transform:
-      scale(1.08);
+    transform:scale(1.075);
   }
 
   100%{
-    transform:
-      scale(1.04);
+    transform:scale(1.04);
   }
 }
 
-.turntable-stage::before{
+.turntable-stage::after{
   content:"";
 
   position:absolute;
-  z-index:4;
 
-  left:57%;
-  top:49%;
+  left:55%;
+  top:46%;
 
-  width:
-    min(250px,26vw);
-
+  width:min(245px,25vw);
   aspect-ratio:1;
 
   border:
     2px solid
-    rgba(240,207,145,.34);
+    rgba(240,207,145,.38);
 
   border-radius:50%;
 
-  pointer-events:none;
-
   box-shadow:
-    0 0 45px
-    rgba(240,207,145,.28),
-    inset 0 0 40px
-    rgba(240,207,145,.13);
+    0 0 60px
+    rgba(240,207,145,.32),
+    inset 0 0 45px
+    rgba(240,207,145,.15);
 
   animation:
-    recordSpinGlow
-    1.7s linear infinite;
+    recordGlow
+    1.15s linear infinite;
 }
 
-@keyframes recordSpinGlow{
+@keyframes recordGlow{
   to{
-    transform:
-      rotate(360deg);
+    transform:rotate(360deg);
   }
 }
 
-.turntable-caption{
+.takeover-title{
   position:absolute;
-  z-index:7;
 
-  left:30px;
+  z-index:4;
+
+  left:28px;
   bottom:28px;
 
   padding:
-    13px 17px;
+    12px 16px;
 
   border:
     1px solid
-    rgba(255,255,255,.14);
+    rgba(255,255,255,.15);
 
-  border-radius:16px;
+  border-radius:15px;
 
   color:white;
 
   background:
-    rgba(42,24,31,.66);
+    rgba(42,25,34,.67);
 
   backdrop-filter:
-    blur(13px);
+    blur(12px);
 }
 
-.turntable-caption small{
+.takeover-title small{
   display:block;
 
-  color:
-    var(--gold-light);
+  color:var(--gold-light);
 
   font-size:7px;
   font-weight:900;
@@ -2664,408 +2643,16 @@ RADIO
   text-transform:uppercase;
 }
 
-.turntable-caption strong{
+.takeover-title strong{
   display:block;
 
-  margin-top:4px;
+  margin-top:3px;
 
   font-family:
     "Playfair Display",
     serif;
 
   font-size:22px;
-}
-
-/* =========================================================
-LIVE ELLE
-========================================================= */
-
-.live-card{
-  position:relative;
-
-  overflow:hidden;
-
-  display:grid;
-
-  grid-template-columns:
-    1.05fr .95fr;
-
-  border:
-    1px solid
-    #eadadc;
-
-  border-radius:32px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fffdfb,
-      #fff4ef
-    );
-
-  box-shadow:
-    var(--shadow);
-}
-
-.live-copy{
-  padding:
-    38px;
-}
-
-.live-title{
-  margin-top:6px;
-
-  color:
-    var(--plum);
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:
-    clamp(
-      34px,
-      5vw,
-      50px
-    );
-
-  font-weight:500;
-}
-
-.live-description{
-  max-width:530px;
-
-  margin-top:10px;
-
-  color:
-    var(--muted);
-
-  font-size:11px;
-  line-height:1.65;
-}
-
-.live-facts{
-  display:flex;
-  flex-wrap:wrap;
-
-  gap:7px;
-
-  margin-top:16px;
-}
-
-.live-fact{
-  display:flex;
-  align-items:center;
-
-  gap:6px;
-
-  padding:
-    8px 10px;
-
-  border:
-    1px solid
-    #eadbdd;
-
-  border-radius:999px;
-
-  color:
-    #6e5e64;
-
-  background:white;
-
-  font-size:8px;
-  font-weight:800;
-}
-
-.live-services{
-  display:flex;
-  flex-wrap:wrap;
-
-  gap:6px;
-
-  margin-top:14px;
-}
-
-.live-service{
-  padding:
-    7px 10px;
-
-  border:
-    1px solid
-    #eadbdd;
-
-  border-radius:999px;
-
-  color:
-    #785e68;
-
-  background:
-    rgba(255,255,255,.80);
-
-  font-size:8px;
-  font-weight:700;
-}
-
-.live-actions{
-  display:flex;
-  flex-wrap:wrap;
-
-  gap:8px;
-
-  margin-top:19px;
-}
-
-.primary-button,
-.secondary-button{
-  min-height:43px;
-
-  padding:
-    0 17px;
-
-  border-radius:999px;
-
-  cursor:pointer;
-
-  font-size:9px;
-  font-weight:800;
-}
-
-.primary-button{
-  border:none;
-
-  color:white;
-
-  background:
-    var(--plum);
-}
-
-.secondary-button{
-  border:
-    1px solid
-    #e2d2d6;
-
-  color:
-    var(--plum);
-
-  background:white;
-}
-
-.live-side{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:
-    34px;
-
-  background:
-    radial-gradient(
-      circle at 50% 42%,
-      rgba(239,207,145,.20),
-      transparent 34%
-    ),
-    linear-gradient(
-      145deg,
-      #fff7f0,
-      #fdebea
-    );
-}
-
-.live-side-card{
-  width:
-    min(340px,100%);
-
-  padding:26px;
-
-  border:
-    1px solid
-    rgba(225,204,205,.94);
-
-  border-radius:26px;
-
-  text-align:center;
-
-  background:
-    rgba(255,255,255,.78);
-
-  box-shadow:
-    var(--soft-shadow);
-
-  backdrop-filter:
-    blur(12px);
-}
-
-.calendar-icon{
-  width:70px;
-  height:70px;
-
-  margin:
-    0 auto 14px;
-
-  display:grid;
-  place-items:center;
-
-  border:
-    1px solid
-    rgba(201,148,72,.36);
-
-  border-radius:22px;
-
-  color:
-    var(--gold);
-
-  background:
-    #fffaf6;
-
-  font-size:29px;
-}
-
-.live-side-card strong{
-  display:block;
-
-  color:
-    var(--plum);
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:24px;
-}
-
-.live-side-card p{
-  margin-top:7px;
-
-  color:
-    var(--muted);
-
-  font-size:9px;
-  line-height:1.55;
-}
-
-.live-booking-ready{
-  display:none;
-
-  margin-top:15px;
-
-  padding:
-    13px;
-
-  border:
-    1px solid
-    #dfe9df;
-
-  border-radius:16px;
-
-  color:#456554;
-
-  background:#f3faf5;
-
-  font-size:9px;
-  line-height:1.5;
-}
-
-.live-booking-ready.show{
-  display:block;
-}
-
-.live-booking-ready a{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-
-  min-height:38px;
-
-  margin-top:9px;
-
-  padding:
-    0 13px;
-
-  border-radius:999px;
-
-  color:white;
-
-  background:
-    var(--plum);
-
-  text-decoration:none;
-
-  font-size:8px;
-  font-weight:800;
-}
-
-/* =========================================================
-LOCKS
-========================================================= */
-
-.feature-lock{
-  position:absolute;
-  inset:0;
-
-  z-index:12;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:20px;
-
-  background:
-    rgba(255,249,245,.83);
-
-  backdrop-filter:
-    blur(12px);
-}
-
-.feature-lock-card{
-  width:
-    min(320px,100%);
-
-  padding:23px;
-
-  border:
-    1px solid
-    #eadbdd;
-
-  border-radius:23px;
-
-  text-align:center;
-
-  background:white;
-
-  box-shadow:
-    var(--soft-shadow);
-}
-
-.feature-lock-card > span{
-  display:block;
-
-  font-size:27px;
-}
-
-.feature-lock-card strong{
-  display:block;
-
-  margin-top:7px;
-
-  color:
-    var(--plum);
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:20px;
-}
-
-.feature-lock-card p{
-  margin-top:5px;
-
-  color:
-    var(--muted);
-
-  font-size:9px;
-  line-height:1.5;
 }
 
 /* =========================================================
@@ -3082,79 +2669,75 @@ MORE OF ELLE
 }
 
 .more-card{
-  min-height:215px;
+  min-height:205px;
 
-  padding:22px;
+  padding:21px;
 
   border:
     1px solid
-    #eadde0;
+    #eadbdc;
 
-  border-radius:24px;
+  border-radius:22px;
 
-  background:
-    rgba(255,255,255,.76);
+  background:white;
 
   box-shadow:
     var(--soft-shadow);
 }
 
 .more-icon{
-  width:43px;
-  height:43px;
+  width:42px;
+  height:42px;
 
   display:grid;
   place-items:center;
 
   border:
     1px solid
-    #eadbdd;
+    #e7d6d7;
 
-  border-radius:15px;
+  border-radius:14px;
 
-  background:
-    #fff8f4;
+  background:#fff7f2;
 
-  font-size:20px;
+  font-size:18px;
 }
 
 .more-card h3{
-  margin-top:14px;
+  margin-top:13px;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   font-family:
     "Playfair Display",
     serif;
 
   font-size:23px;
+  font-weight:500;
 }
 
 .more-card p{
-  margin-top:7px;
+  margin-top:6px;
 
-  color:
-    var(--muted);
+  color:var(--muted);
 
-  font-size:9px;
+  font-size:8.8px;
   line-height:1.6;
 }
 
 .more-card button{
-  margin-top:14px;
+  margin-top:13px;
 
   padding:
-    9px 12px;
+    8px 11px;
 
   border:
     1px solid
-    #e5d4d8;
+    #e5d5d7;
 
   border-radius:999px;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   background:white;
 
@@ -3165,46 +2748,41 @@ MORE OF ELLE
 }
 
 /* =========================================================
-TRUST
+TRUST + FOOTER
 ========================================================= */
 
 .trust-strip{
   display:flex;
   align-items:center;
 
-  gap:12px;
+  gap:11px;
 
-  margin-top:52px;
+  margin-top:48px;
 
   padding:
-    17px 19px;
+    16px 18px;
 
   border:
     1px solid
-    #eadddf;
+    #eadbdc;
 
-  border-radius:22px;
+  border-radius:21px;
 
-  background:
-    rgba(255,255,255,.72);
+  background:white;
 
-  box-shadow:
-    var(--soft-shadow);
+  box-shadow:var(--soft-shadow);
 }
 
 .trust-icon{
-  width:41px;
-  height:41px;
-
-  flex-shrink:0;
+  width:42px;
+  height:42px;
 
   display:grid;
   place-items:center;
 
-  border-radius:14px;
+  border-radius:13px;
 
-  background:
-    #fff3dc;
+  background:#fff3d9;
 
   font-size:18px;
 }
@@ -3216,10 +2794,9 @@ TRUST
 .trust-copy strong{
   display:block;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
-  font-size:10px;
+  font-size:9px;
 }
 
 .trust-copy span{
@@ -3227,20 +2804,16 @@ TRUST
 
   margin-top:2px;
 
-  color:#8c8086;
+  color:#8c8186;
 
   font-size:8px;
   line-height:1.45;
 }
 
 .trust-button{
-  padding:
-    9px 12px;
-
   border:none;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   background:none;
 
@@ -3250,36 +2823,26 @@ TRUST
   font-weight:900;
 }
 
-/* =========================================================
-FOOTER
-========================================================= */
-
 .footer{
   padding:
-    34px 5px 30px;
+    32px 0 28px;
+
+  color:#958a8f;
 
   text-align:center;
 
-  color:#94898e;
-
   font-size:8px;
-  line-height:1.65;
+  line-height:1.6;
 }
 
 .footer-logo{
-  color:
-    var(--plum);
+  color:var(--plum);
 
   font-family:
     "Playfair Display",
     serif;
 
-  font-size:23px;
-}
-
-.footer strong{
-  color:
-    var(--plum);
+  font-size:26px;
 }
 
 /* =========================================================
@@ -3290,7 +2853,7 @@ TRUST MODAL
   position:fixed;
   inset:0;
 
-  z-index:10000;
+  z-index:24000;
 
   display:none;
   align-items:center;
@@ -3299,7 +2862,7 @@ TRUST MODAL
   padding:18px;
 
   background:
-    rgba(55,37,44,.38);
+    rgba(48,30,37,.40);
 
   backdrop-filter:
     blur(15px);
@@ -3310,28 +2873,24 @@ TRUST MODAL
 }
 
 .modal-card{
-  width:
-    min(760px,100%);
-
-  max-height:
-    min(780px,88vh);
+  width:min(760px,100%);
+  max-height:86vh;
 
   overflow:auto;
 
-  padding:25px;
+  padding:24px;
 
   border:
     1px solid
-    rgba(255,255,255,.94);
+    rgba(255,255,255,.95);
 
   border-radius:28px;
 
-  background:
-    #fffdfb;
+  background:#fffdfb;
 
   box-shadow:
-    0 35px 95px -47px
-    rgba(55,30,42,.62);
+    0 40px 100px -50px
+    rgba(44,24,34,.7);
 }
 
 .modal-head{
@@ -3339,14 +2898,11 @@ TRUST MODAL
   align-items:center;
   justify-content:space-between;
 
-  gap:12px;
+  gap:10px;
 }
 
 .modal-title{
-  margin-top:4px;
-
-  color:
-    var(--plum);
+  color:var(--plum);
 
   font-family:
     "Playfair Display",
@@ -3356,17 +2912,16 @@ TRUST MODAL
 }
 
 .modal-close{
-  width:40px;
-  height:40px;
+  width:39px;
+  height:39px;
 
   border:
     1px solid
-    #e3d6d8;
+    #e2d4d7;
 
   border-radius:50%;
 
-  color:
-    var(--plum);
+  color:var(--plum);
 
   background:white;
 
@@ -3381,115 +2936,86 @@ TRUST MODAL
 
   gap:9px;
 
-  margin-top:18px;
+  margin-top:17px;
 }
 
 .trust-item{
-  padding:16px;
+  padding:15px;
 
   border:
     1px solid
-    #eadde0;
+    #eadbdd;
 
-  border-radius:18px;
+  border-radius:17px;
 
   background:white;
 }
 
 .trust-item strong{
-  color:
-    var(--plum);
+  color:var(--plum);
 
-  font-size:11px;
+  font-size:10px;
 }
 
 .trust-item p{
   margin-top:5px;
 
-  color:
-    var(--muted);
+  color:var(--muted);
 
-  font-size:9px;
-  line-height:1.6;
+  font-size:8.7px;
+  line-height:1.55;
 }
 
 /* =========================================================
 MOBILE
 ========================================================= */
 
-@media(max-width:980px){
+@media(max-width:950px){
 
   .nav{
     display:none;
   }
 
   .hero{
-    min-height:auto;
-  }
-
-  .hero-grid{
-    grid-template-columns:1fr;
+    min-height:840px;
   }
 
   .hero-copy{
-    padding:
-      38px 30px 24px;
+    width:62%;
+
+    padding-left:30px;
   }
 
-  .hero-visual{
-    min-height:540px;
+  .live-mini{
+    left:26px;
+
+    width:min(520px,58%);
   }
 
-  .hero-fade{
-    background:
-      linear-gradient(
-        180deg,
-        #fff8f4 0%,
-        rgba(255,248,244,.36) 18%,
-        transparent 48%
-      );
-  }
-
-  .ask-section{
-    margin-top:-60px;
-  }
-
-  .world-layout{
+  .feature-row{
     grid-template-columns:1fr;
   }
 
-  .world-copy-panel{
-    padding:
-      32px 28px 5px;
+  .feature-card{
+    min-height:280px;
   }
 
-  .globe-stage{
-    min-height:450px;
-  }
-
-  .live-card{
+  .live-detail{
     grid-template-columns:1fr;
   }
 
   .radio-content{
-    width:72%;
-  }
-
-  .more-grid{
-    grid-template-columns:1fr;
+    width:70%;
   }
 }
 
-@media(max-width:650px){
+@media(max-width:680px){
 
   .page,
   .topbar-inner,
   .owner-inner{
     width:
-      min(
-        100% - 18px,
-        1240px
-      );
+      calc(100% - 18px);
   }
 
   .brand-copy span{
@@ -3500,18 +3026,35 @@ MOBILE
     display:none;
   }
 
-  .top-button{
-    padding:
-      0 9px;
+  .hero{
+    min-height:auto;
+
+    padding-bottom:18px;
   }
 
-  .hero{
-    border-radius:27px;
+  .hero-image{
+    position:relative;
+
+    height:440px;
+
+    object-position:center top;
+  }
+
+  .hero-shade{
+    background:
+      linear-gradient(
+        180deg,
+        #fff9f4 0%,
+        rgba(255,249,244,.1) 35%,
+        transparent 60%
+      );
   }
 
   .hero-copy{
+    width:100%;
+
     padding:
-      31px 20px 20px;
+      29px 20px 20px;
   }
 
   .hero-title{
@@ -3523,35 +3066,58 @@ MOBILE
       );
   }
 
-  .hero-visual{
-    min-height:430px;
-  }
+  .live-mini{
+    position:relative;
 
-  .hero-elle{
-    object-position:57% center;
-  }
+    left:auto;
+    bottom:auto;
 
-  .ask-section{
     width:
-      calc(100% - 12px);
+      calc(100% - 28px);
 
-    margin-top:-42px;
+    margin:
+      -45px auto 0;
   }
 
-  .chat-head{
+  .benefit-strip{
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .benefit{
+    min-height:84px;
+
+    padding:13px;
+  }
+
+  .feature-card{
+    grid-template-columns:
+      1.1fr .9fr;
+  }
+
+  .quote-section{
     padding:
-      15px;
+      35px 25px 180px;
   }
 
-  .online{
-    display:none;
+  .quote-section::before{
+    width:120px;
+    height:120px;
   }
 
-  .thread{
-    height:360px;
+  .quote-globe{
+    width:130px;
+    height:130px;
+  }
 
-    padding:
-      14px;
+  .section-head{
+    display:block;
+  }
+
+  .section-description{
+    margin-top:5px;
+
+    text-align:left;
   }
 
   .bubble{
@@ -3559,86 +3125,35 @@ MOBILE
   }
 
   .composer{
-    align-items:stretch;
     flex-direction:column;
   }
 
-  .send{
-    width:100%;
-  }
-
-  .quick-bar{
-    grid-template-columns:
-      1fr 1fr;
-  }
-
-  .section{
-    margin-top:45px;
-  }
-
-  .section-head{
-    display:block;
-  }
-
-  .section-copy{
-    margin-top:6px;
-
-    text-align:left;
-  }
-
-  .world-shell,
-  .radio-shell,
-  .live-card{
-    border-radius:27px;
-  }
-
-  .world-copy-panel{
-    padding:
-      25px 20px 0;
-  }
-
-  .world-stats{
-    grid-template-columns:
-      1fr 1fr;
-  }
-
-  .globe-stage{
-    min-height:350px;
+  .send-button{
+    min-height:45px;
   }
 
   .radio-shell{
-    min-height:640px;
+    min-height:620px;
   }
 
-  .radio-gradient{
+  .radio-shade{
     background:
       linear-gradient(
         180deg,
-        rgba(255,248,243,.98) 0%,
-        rgba(255,248,243,.94) 58%,
-        rgba(255,248,243,.20) 82%
+        rgba(255,249,245,.98),
+        rgba(255,249,245,.92) 62%,
+        rgba(255,249,245,.15)
       );
   }
 
   .radio-content{
     width:100%;
 
-    padding:
-      29px 20px;
+    padding:26px 20px;
   }
 
-  .live-copy{
-    padding:
-      28px 21px;
-  }
-
-  .live-side{
-    padding:
-      20px;
-  }
-
-  .trust-strip{
-    align-items:flex-start;
+  .more-grid{
+    grid-template-columns:1fr;
   }
 
   .trust-grid{
@@ -3654,16 +3169,15 @@ MOBILE
     margin-left:0;
   }
 
-  .turntable-stage{
-    height:
-      min(560px,78vh);
+  .turntable-stage::after{
+    left:51%;
+    top:49%;
+
+    width:35vw;
   }
 
-  .turntable-stage::before{
-    left:54%;
-    top:52%;
-
-    width:34vw;
+  .age-options{
+    grid-template-columns:1fr;
   }
 }
 </style>
@@ -3679,28 +3193,29 @@ AGE GATE
   id="ageGate"
   class="age-gate"
 >
-  <section class="age-card">
 
-    <div class="age-logo">
+  <div class="age-card">
+
+    <div class="gate-mark">
       E
     </div>
 
-    <div class="age-brand">
+    <div class="gate-kicker">
       AURYNELLE∞ IDEAS
     </div>
 
-    <h1 class="age-title">
+    <h1 class="gate-title">
       Welcome to Elle
     </h1>
 
-    <div class="age-script">
+    <div class="gate-script">
       Choose your experience, love.
     </div>
 
-    <p class="age-copy">
+    <p class="gate-copy">
       Elle adapts parts of the experience based on age.
-      We save only the broad age group you choose,
-      not your date of birth.
+      We save the broad age group you select, not your
+      date of birth.
     </p>
 
     <div class="age-options">
@@ -3710,17 +3225,15 @@ AGE GATE
         class="age-option"
         data-age="13-17"
       >
-        <span class="age-option-icon">
-          ✨
-        </span>
+        <span>✨</span>
 
         <strong>
           Ages 13–17
         </strong>
 
-        <span>
+        <small>
           Smart, age-appropriate Elle
-        </span>
+        </small>
       </button>
 
       <button
@@ -3728,17 +3241,15 @@ AGE GATE
         class="age-option"
         data-age="18+"
       >
-        <span class="age-option-icon">
-          👑
-        </span>
+        <span>👑</span>
 
         <strong>
           Ages 18+
         </strong>
 
-        <span>
+        <small>
           Full adult Elle experience
-        </span>
+        </small>
       </button>
 
     </div>
@@ -3755,19 +3266,15 @@ AGE GATE
       id="underMessage"
       class="under-message"
     >
-      Elle is currently designed for people ages 13 and up. 💛
+      Elle is currently designed for people ages 13 and up.
     </div>
 
-    <div class="age-privacy">
-      Your selected age group helps Elle apply
-      appropriate feature and safety rules.
-    </div>
+  </div>
 
-  </section>
 </div>
 
 <!-- =========================================================
-MEMBER GATE
+MEMBERSHIP GATE
 ========================================================= -->
 
 <div
@@ -3775,32 +3282,32 @@ MEMBER GATE
   class="member-gate"
 >
 
-  <section class="member-card">
+  <div class="member-card">
 
-    <header class="member-head">
+    <div class="member-head">
 
-      <div class="member-crown">
+      <div class="gate-mark">
         ♕
       </div>
 
-      <div class="member-kicker">
+      <div class="gate-kicker">
         Member Access
       </div>
 
-      <h2 class="member-title">
+      <h2 class="gate-title">
         Enter Elle
       </h2>
 
-      <div class="member-script">
+      <div class="gate-script">
         Your membership opens the door.
       </div>
 
-      <p class="member-copy">
+      <p class="gate-copy">
         Use the email connected to your membership.
         Elle will send a temporary six-digit sign-in code.
       </p>
 
-    </header>
+    </div>
 
     <div class="member-body">
 
@@ -3888,7 +3395,7 @@ MEMBER GATE
         </strong>
 
         <p>
-          No active Elle membership was found for that email.
+          No active membership was found for that email.
         </p>
 
         <a
@@ -3902,14 +3409,14 @@ MEMBER GATE
       </div>
 
       <div class="member-foot">
-        Sign-in codes expire after about 10 minutes.
-        Your verified Elle session can remain active
-        for up to 30 days.
+        Codes expire after about 10 minutes.
+        Verified sessions can remain active for up to 30 days.
       </div>
 
     </div>
 
-  </section>
+  </div>
+
 </div>
 
 <!-- =========================================================
@@ -3996,7 +3503,7 @@ HEADER
 </header>
 
 <!-- =========================================================
-OWNER TEST MODE
+OWNER MODE
 ========================================================= -->
 
 <div
@@ -4010,7 +3517,7 @@ OWNER TEST MODE
       👑 Owner Test Mode
     </div>
 
-    <div class="owner-test-buttons">
+    <div class="owner-buttons">
 
       <button
         type="button"
@@ -4068,63 +3575,115 @@ HERO
   class="hero"
 >
 
-  <div class="hero-grid">
+  <img
+    class="hero-image"
+    src="elle.png"
+    alt="Elle"
+  >
 
-    <div class="hero-copy">
+  <div class="hero-shade"></div>
 
-      <div class="hero-kicker">
-        Welcome to Elle
-      </div>
+  <div class="hero-copy">
 
-      <h1 class="hero-title">
-        Your soft
-        place to land.
-      </h1>
+    <div class="hero-kicker">
+      Welcome to Elle
+    </div>
 
-      <p class="hero-sub">
-        Elle is your AI guide for real questions,
-        life decisions, ideas, planning, encouragement,
-        clarity and those moments when you just need
-        somewhere to start.
-      </p>
+    <h1 class="hero-title">
+      I got you.
+    </h1>
 
-      <div class="hero-heart">
-        <span>♥</span>
-        Real talk. Real help. One clear next move.
-      </div>
+    <p>
+      Your personal AI guide for advice,
+      ideas, decisions, planning, faith,
+      relationships, school, work, money,
+      encouragement and everything life throws at you.
+    </p>
 
-      <div class="hero-actions">
+    <div class="hero-heart">
+      <span>♥</span>
+      Real talk. Real help. One clear next move.
+    </div>
 
-        <button
-          type="button"
-          id="heroAsk"
-          class="hero-button primary"
-        >
-          Ask Elle Anything →
-        </button>
+    <div class="hero-actions">
 
-        <button
-          type="button"
-          id="heroLive"
-          class="hero-button secondary"
-        >
-          Explore Live Elle
-        </button>
+      <button
+        type="button"
+        id="heroAsk"
+        class="primary-cta"
+      >
+        Ask Elle Anything →
+      </button>
 
-      </div>
+      <button
+        type="button"
+        id="heroWorld"
+        class="secondary-cta"
+      >
+        Explore Elle World
+      </button>
 
     </div>
 
-    <div class="hero-visual">
+  </div>
 
-      <img
-        class="hero-elle"
-        src="elle.png"
-        alt="Elle"
+  <div class="live-mini">
+
+    <div class="live-mini-kicker">
+      Live Elle
+    </div>
+
+    <div class="live-mini-title">
+      Book a 1:1 Session
+    </div>
+
+    <div class="live-mini-sub">
+      Real conversation. Real support. Your time.
+    </div>
+
+    <div class="live-mini-facts">
+
+      <span>
+        ☎ WhatsApp Call
+      </span>
+
+      <span>
+        ◷ 30 Minutes
+      </span>
+
+      <span>
+        ◫ Pick Your Time
+      </span>
+
+    </div>
+
+    <div class="live-mini-services">
+
+      <span>Pick My Brain</span>
+      <span>Shopping Buddy</span>
+      <span>Hype Session</span>
+      <span>Someone to Talk To</span>
+      <span>Work With Me</span>
+
+    </div>
+
+    <div class="live-mini-actions">
+
+      <button
+        type="button"
+        id="heroLive"
+        class="live-mini-primary"
       >
+        Talk to Live Elle →
+      </button>
 
-      <div class="hero-fade"></div>
-      <div class="hero-glow"></div>
+      <button
+        type="button"
+        id="heroLiveLearn"
+        class="live-mini-secondary"
+      >
+        Learn More
+      </button>
 
     </div>
 
@@ -4133,43 +3692,313 @@ HERO
 </section>
 
 <!-- =========================================================
-ASK ELLE
+BENEFITS
+========================================================= -->
+
+<div class="benefit-strip">
+
+  <div class="benefit">
+
+    <div class="benefit-icon">
+      ♙
+    </div>
+
+    <div>
+
+      <strong>
+        Personal & Thoughtful
+      </strong>
+
+      <span>
+        Built around what you bring to Elle
+      </span>
+
+    </div>
+
+  </div>
+
+  <div class="benefit">
+
+    <div class="benefit-icon">
+      ✧
+    </div>
+
+    <div>
+
+      <strong>
+        Always Here
+      </strong>
+
+      <span>
+        Ask Elle whenever you need clarity
+      </span>
+
+    </div>
+
+  </div>
+
+  <div class="benefit">
+
+    <div class="benefit-icon">
+      ♡
+    </div>
+
+    <div>
+
+      <strong>
+        Tailored for You
+      </strong>
+
+      <span>
+        Support shaped around your question
+      </span>
+
+    </div>
+
+  </div>
+
+  <div class="benefit">
+
+    <div class="benefit-icon">
+      ◇
+    </div>
+
+    <div>
+
+      <strong>
+        Come As You Are
+      </strong>
+
+      <span>
+        Bring the real question
+      </span>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================================================
+FEATURE CARDS
+========================================================= -->
+
+<section class="feature-row">
+
+  <article class="feature-card">
+
+    <div class="feature-copy">
+
+      <div class="feature-kicker">
+        Ask Elle
+      </div>
+
+      <h3>
+        Need Advice?
+      </h3>
+
+      <p>
+        Bring Elle anything on your mind.
+        Get clarity, ideas and a practical next move.
+      </p>
+
+      <div class="feature-pills">
+
+        <span>Life</span>
+        <span>Career</span>
+        <span>Faith</span>
+        <span>Money</span>
+        <span>Love</span>
+
+      </div>
+
+      <button
+        type="button"
+        id="featureAsk"
+        class="feature-button"
+      >
+        Ask Elle Anything →
+      </button>
+
+    </div>
+
+    <div class="feature-media">
+
+      <img
+        src="ask-elle-balloons.png"
+        alt="Ask Elle"
+      >
+
+    </div>
+
+  </article>
+
+  <article class="feature-card">
+
+    <div class="feature-copy">
+
+      <div class="feature-kicker">
+        Elle's World
+      </div>
+
+      <h3>
+        Your World,
+        Connected
+      </h3>
+
+      <p>
+        See the Elle community glowing around
+        the world without exposing exact locations.
+      </p>
+
+      <button
+        type="button"
+        id="featureWorld"
+        class="feature-button"
+      >
+        Explore Elle World →
+      </button>
+
+    </div>
+
+    <div class="feature-media">
+
+      <img
+        src="elle-world-garden.png"
+        alt="Elle World"
+      >
+
+    </div>
+
+  </article>
+
+  <article class="feature-card">
+
+    <div class="feature-copy">
+
+      <div class="feature-kicker">
+        Elle Radio
+      </div>
+
+      <h3>
+        Your
+        Soundtrack
+      </h3>
+
+      <p>
+        Music for confidence, grounding,
+        faith, energy and putting your crown back on.
+      </p>
+
+      <button
+        type="button"
+        id="featureRadio"
+        class="feature-button"
+      >
+        Play Elle Radio →
+      </button>
+
+    </div>
+
+    <div class="feature-media">
+
+      <img
+        src="elle-turntable.png"
+        alt="Elle Radio turntable"
+      >
+
+    </div>
+
+  </article>
+
+</section>
+
+<!-- =========================================================
+QUOTE
+========================================================= -->
+
+<section class="quote-section">
+
+  <div>
+
+    <div class="quote">
+      You don’t have to have it all figured out.
+
+      <em>
+        You just need somewhere to start.
+        Elle's got you.
+      </em>
+    </div>
+
+    <div class="quote-heart">
+      ♥
+    </div>
+
+  </div>
+
+  <div class="quote-globe"></div>
+
+</section>
+
+<!-- =========================================================
+ASK ELLE REAL CHAT
 ========================================================= -->
 
 <section
   id="ask"
-  class="ask-section"
+  class="section"
 >
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="section-kicker">
+        Ask anything
+      </div>
+
+      <h2 class="section-title">
+        Talk to Elle
+      </h2>
+
+    </div>
+
+    <p class="section-description">
+      Business, school, faith, relationships,
+      planning, budgeting, ideas, decisions or
+      something you cannot quite put into words yet.
+    </p>
+
+  </div>
 
   <div
     id="chatCard"
-    class="chat-card"
+    class="chat-shell"
   >
 
-    <header class="chat-head">
+    <div class="chat-head">
 
-      <div class="chat-monogram">
+      <div class="chat-mark">
         E
       </div>
 
-      <div class="chat-heading">
+      <div>
 
         <strong>
           Ask Elle
         </strong>
 
-        <span>
-          Your AI guide for real advice, ideas and clarity.
-        </span>
+        <small>
+          Bring me the question. We'll find the move.
+        </small>
 
       </div>
 
-      <div class="online">
-        <span class="online-dot"></span>
+      <div class="chat-online">
         Here with you
       </div>
 
-    </header>
+    </div>
 
     <div
       id="thread"
@@ -4184,23 +4013,18 @@ ASK ELLE
 
     <div class="composer">
 
-      <div class="input-wrap">
-
-        <input
-          id="say"
-          type="text"
-          maxlength="1600"
-          autocomplete="off"
-          placeholder="What's on your mind?"
-          aria-label="Ask Elle"
-        >
-
-      </div>
+      <input
+        id="say"
+        type="text"
+        maxlength="1600"
+        autocomplete="off"
+        placeholder="What's on your mind?"
+      >
 
       <button
         type="button"
         id="send"
-        class="send"
+        class="send-button"
       >
         Ask Elle
       </button>
@@ -4215,50 +4039,6 @@ ASK ELLE
   </div>
 
 </section>
-
-<!-- =========================================================
-QUICK ACTIONS
-========================================================= -->
-
-<div class="quick-bar">
-
-  <button
-    type="button"
-    class="quick-button"
-    data-prompt="Help me figure out my next move."
-  >
-    <span>🧭</span>
-    Next Move
-  </button>
-
-  <button
-    type="button"
-    class="quick-button"
-    data-prompt="Help me think through a decision."
-  >
-    <span>⚖️</span>
-    Help Me Decide
-  </button>
-
-  <button
-    type="button"
-    class="quick-button"
-    data-prompt="Help me turn my idea into a plan."
-  >
-    <span>💡</span>
-    Build My Idea
-  </button>
-
-  <button
-    type="button"
-    class="quick-button"
-    data-prompt="I need some encouragement today."
-  >
-    <span>✨</span>
-    Hype Me Up
-  </button>
-
-</div>
 
 <!-- =========================================================
 LIVE ELLE
@@ -4283,75 +4063,51 @@ LIVE ELLE
 
     </div>
 
-    <p class="section-copy">
+    <p class="section-description">
       When AI is not what you want,
       qualifying adult members can request
-      real one-on-one human support.
+      human one-on-one support.
     </p>
 
   </div>
 
-  <div class="live-card">
+  <div class="live-detail">
 
-    <div class="live-copy">
+    <div class="live-detail-copy">
 
       <div class="section-kicker">
         The human side of Elle
       </div>
 
-      <h3 class="live-title">
-        Real conversation.
-        Your time.
+      <h3>
+        Your 30-minute
+        one-on-one.
       </h3>
 
-      <p class="live-description">
-        Start with Elle in chat. She will collect your
-        connection type, service, name and WhatsApp number.
-        After your request is safely received, you choose an
-        actual available 30-minute time from the Live Elle calendar.
+      <p>
+        Start the request inside Ask Elle.
+        Once your information is received,
+        Elle gives you the booking calendar.
+        The calendar controls actual availability,
+        so Elle never invents an appointment time.
       </p>
 
       <div class="live-facts">
 
-        <span class="live-fact">
-          ◷ 30 minutes
-        </span>
-
-        <span class="live-fact">
-          ☎ WhatsApp Call
-        </span>
-
-        <span class="live-fact">
-          ◉ Video when included
-        </span>
-
-        <span class="live-fact">
-          ◫ Real availability
-        </span>
+        <span>◷ 30-minute sessions</span>
+        <span>☎ WhatsApp</span>
+        <span>◫ Real calendar availability</span>
+        <span>↻ Cancel or reschedule</span>
 
       </div>
 
       <div class="live-services">
 
-        <span class="live-service">
-          Pick My Brain
-        </span>
-
-        <span class="live-service">
-          Shopping Buddy
-        </span>
-
-        <span class="live-service">
-          Hype Session
-        </span>
-
-        <span class="live-service">
-          Someone to Talk To
-        </span>
-
-        <span class="live-service">
-          Work With Me
-        </span>
+        <span>Pick My Brain</span>
+        <span>Shopping Buddy</span>
+        <span>Hype Session</span>
+        <span>Someone to Talk To</span>
+        <span>Work With Me</span>
 
       </div>
 
@@ -4360,7 +4116,7 @@ LIVE ELLE
         <button
           type="button"
           id="talkLive"
-          class="primary-button"
+          class="primary-cta"
         >
           Talk to Live Elle
         </button>
@@ -4368,7 +4124,7 @@ LIVE ELLE
         <button
           type="button"
           id="askAboutLive"
-          class="secondary-button"
+          class="secondary-cta"
         >
           Ask Elle About It
         </button>
@@ -4379,47 +4135,52 @@ LIVE ELLE
 
     <div class="live-side">
 
-      <div class="live-side-card">
+      <div class="calendar-card">
 
-        <div class="calendar-icon">
-          ◫
+        <div class="calendar-top">
+
+          <div class="calendar-title">
+            Live Elle
+          </div>
+
+          <div class="calendar-month">
+            30 Minutes
+          </div>
+
         </div>
 
-        <strong>
-          Your calendar.
-          Your choice.
-        </strong>
+        <div class="calendar-days">
 
-        <p>
-          Elle does not invent appointment times.
-          Once your request is received, the booking
-          calendar shows only times that are actually open.
-        </p>
+          <div class="calendar-day">M</div>
+          <div class="calendar-day">T</div>
+          <div class="calendar-day">W</div>
+          <div class="calendar-day">T</div>
+          <div class="calendar-day">F</div>
+          <div class="calendar-day">S</div>
+          <div class="calendar-day">S</div>
 
-        <p>
-          Confirmed bookings can be cancelled or
-          rescheduled through the Google Calendar
-          confirmation.
-        </p>
+          <div class="calendar-day">10</div>
+          <div class="calendar-day open">11</div>
+          <div class="calendar-day">12</div>
+          <div class="calendar-day open">13</div>
+          <div class="calendar-day">14</div>
+          <div class="calendar-day">15</div>
+          <div class="calendar-day">16</div>
 
-        <div
-          id="liveBookingReady"
-          class="live-booking-ready"
-        >
+          <div class="calendar-day open">17</div>
+          <div class="calendar-day">18</div>
+          <div class="calendar-day open">19</div>
+          <div class="calendar-day">20</div>
+          <div class="calendar-day open">21</div>
+          <div class="calendar-day">22</div>
+          <div class="calendar-day">23</div>
 
-          Your Live Elle request is ready for scheduling. 💛
+        </div>
 
-          <br>
-
-          <a
-            id="liveBookingLink"
-            href="https://calendar.app.google/ev2shsUdMNdtbjqU6"
-            target="_blank"
-            rel="noopener"
-          >
-            Choose My 30-Minute Time →
-          </a>
-
+        <div class="calendar-note">
+          This is a visual preview.
+          Your actual available times appear only
+          after your Live Elle request is received.
         </div>
 
       </div>
@@ -4442,8 +4203,8 @@ LIVE ELLE
         </strong>
 
         <p>
-          Live Elle is an adult feature
-          included with qualifying membership access.
+          Live Elle is available to adults
+          with qualifying Infinite ∞ access.
         </p>
 
       </div>
@@ -4455,7 +4216,7 @@ LIVE ELLE
 </section>
 
 <!-- =========================================================
-ELLE WORLD
+NEW ELLE WORLD
 ========================================================= -->
 
 <section
@@ -4477,120 +4238,24 @@ ELLE WORLD
 
     </div>
 
-    <p class="section-copy">
-      A living glimpse of the Elle community.
-      Country-level activity only, with no public
-      exact locations.
+    <p class="section-description">
+      This is the live spinning globe.
+      Broad country-level presence only.
+      No names, cities or exact locations.
     </p>
 
   </div>
 
-  <div class="world-shell">
+  <div class="world-frame">
 
-    <div class="world-ambient"></div>
-
-    <div class="world-layout">
-
-      <div class="world-copy-panel">
-
-        <div class="world-live">
-
-          <span class="world-live-dot"></span>
-
-          <span id="worldLiveText">
-            Elle World is waking up
-          </span>
-
-        </div>
-
-        <h3 class="world-heading">
-          A little world
-          glowing together.
-        </h3>
-
-        <p class="world-description">
-          The lights represent broad recent activity.
-          No names, no home addresses, no exact coordinates.
-          Just a beautiful reminder that somebody else
-          somewhere is figuring life out too.
-        </p>
-
-        <div
-          id="worldStats"
-          class="world-stats"
-        >
-
-          <div class="world-stat">
-
-            <strong id="worldActiveCount">
-              0
-            </strong>
-
-            <span>
-              Glowing now
-            </span>
-
-          </div>
-
-          <div class="world-stat">
-
-            <strong id="worldCountryCount">
-              0
-            </strong>
-
-            <span>
-              Countries
-            </span>
-
-          </div>
-
-        </div>
-
-        <div
-          id="worldCountryList"
-          class="country-list"
-        ></div>
-
-        <div class="world-privacy">
-          Elle World uses broad country-level presence
-          for the public experience. The gardens,
-          homes, animals and visual lights are decorative.
-        </div>
-
-      </div>
-
-      <div class="globe-stage">
-
-        <div class="globe-halo"></div>
-
-        <div class="globe-orbit"></div>
-        <div class="globe-orbit second"></div>
-
-        <div class="globe-image-wrap">
-
-          <img
-            class="globe-image"
-            src="elle-world-4k.png"
-            alt="Elle World illuminated globe"
-          >
-
-          <span class="world-spark s1"></span>
-          <span class="world-spark s2"></span>
-          <span class="world-spark s3"></span>
-          <span class="world-spark s4"></span>
-
-        </div>
-
-      </div>
-
-    </div>
+    <elle-world></elle-world>
 
   </div>
 
 </section>
 
 <!-- =========================================================
-ELLE RADIO
+RADIO
 ========================================================= -->
 
 <section
@@ -4612,34 +4277,32 @@ ELLE RADIO
 
     </div>
 
-    <p class="section-copy">
-      A little music for the mood.
-      Pick your song and let the room change for a moment.
+    <p class="section-description">
+      Pick the track. The turntable gets its
+      three-second dramatic moment, then disappears
+      while your music keeps playing.
     </p>
 
   </div>
 
-  <div
-    id="radioCard"
-    class="radio-shell"
-  >
+  <div class="radio-shell">
 
     <img
-      class="radio-image"
       src="elle-turntable.png"
-      alt="Luxury walnut and brass turntable"
+      alt="Luxury Elle turntable"
     >
 
-    <div class="radio-gradient"></div>
+    <div class="radio-shade"></div>
 
     <div class="radio-content">
 
       <div class="section-kicker">
-        Your AURYNELLE soundtrack
+        Your soundtrack
       </div>
 
-      <h3 class="radio-title">
-        Put your crown back on.
+      <h3>
+        Put your crown
+        back on.
       </h3>
 
       <div class="radio-script">
@@ -4648,9 +4311,9 @@ ELLE RADIO
 
       <div class="now-playing">
 
-        <div class="now-label">
+        <small>
           Now Playing
-        </div>
+        </small>
 
         <div
           id="songTitle"
@@ -4672,7 +4335,7 @@ ELLE RADIO
             type="button"
             id="previousTrack"
             class="radio-control"
-            aria-label="Previous track"
+            aria-label="Previous song"
           >
             ◀
           </button>
@@ -4690,7 +4353,7 @@ ELLE RADIO
             type="button"
             id="nextTrack"
             class="radio-control"
-            aria-label="Next track"
+            aria-label="Next song"
           >
             ▶
           </button>
@@ -4735,7 +4398,7 @@ ELLE RADIO
 </section>
 
 <!-- =========================================================
-MORE OF ELLE
+MORE
 ========================================================= -->
 
 <section
@@ -4757,9 +4420,8 @@ MORE OF ELLE
 
     </div>
 
-    <p class="section-copy">
-      Useful corners of Elle without filling
-      the whole room with noise.
+    <p class="section-description">
+      Quiet extras. No clutter.
     </p>
 
   </div>
@@ -4777,10 +4439,8 @@ MORE OF ELLE
       </h3>
 
       <p>
-        Bring the messy question to Elle.
-        Decisions, planning, school, work,
-        relationships, faith, money, ideas,
-        confidence or everyday life.
+        Bring the messy decision to Elle and
+        work toward one clear next move.
       </p>
 
       <button
@@ -4795,22 +4455,21 @@ MORE OF ELLE
     <article class="more-card">
 
       <div class="more-icon">
-        ◉
+        ◎
       </div>
 
       <h3>
-        Your World
+        Elle World
       </h3>
 
       <p>
-        Elle World gives the experience a little
-        sense of place and connection without
-        publishing exact user locations.
+        Watch the community glow around the
+        world without exposing exact locations.
       </p>
 
       <button
         type="button"
-        id="worldJump"
+        id="moreWorld"
       >
         Visit Elle World →
       </button>
@@ -4828,14 +4487,13 @@ MORE OF ELLE
       </h3>
 
       <p>
-        When you need energy, grounding or
-        a reminder of who you are, Elle Radio
-        is right here.
+        Motivation, faith, confidence and
+        a little dramatic turntable moment.
       </p>
 
       <button
         type="button"
-        id="radioJump"
+        id="moreRadio"
       >
         Open Elle Radio →
       </button>
@@ -4863,9 +4521,9 @@ TRUST
     </strong>
 
     <span>
-      Messages submitted to Elle are processed
-      by an AI service. Avoid sharing passwords,
-      authentication codes or other highly sensitive information.
+      Messages submitted to Elle are processed by an AI service.
+      Avoid passwords, authentication codes and unnecessary
+      highly sensitive information.
     </span>
 
   </div>
@@ -4900,12 +4558,12 @@ TRUST
 </main>
 
 <!-- =========================================================
-TURNTABLE 6 SECOND MOMENT
+3 SECOND TURNTABLE TAKEOVER
 ========================================================= -->
 
 <div
-  id="turntableMoment"
-  class="turntable-moment"
+  id="turntableTakeover"
+  class="turntable-takeover"
   aria-hidden="true"
 >
 
@@ -4916,13 +4574,13 @@ TURNTABLE 6 SECOND MOMENT
       alt=""
     >
 
-    <div class="turntable-caption">
+    <div class="takeover-title">
 
       <small>
         Elle Radio
       </small>
 
-      <strong id="momentSong">
+      <strong id="takeoverSong">
         Crown Back On
       </strong>
 
@@ -4941,9 +4599,9 @@ TRUST MODAL
   class="modal"
 >
 
-  <section class="modal-card">
+  <div class="modal-card">
 
-    <header class="modal-head">
+    <div class="modal-head">
 
       <div>
 
@@ -4961,16 +4619,15 @@ TRUST MODAL
         type="button"
         id="closeTrust"
         class="modal-close"
-        aria-label="Close Trust Center"
       >
         ✕
       </button>
 
-    </header>
+    </div>
 
     <div class="trust-grid">
 
-      <article class="trust-item">
+      <div class="trust-item">
 
         <strong>
           Privacy
@@ -4979,13 +4636,13 @@ TRUST MODAL
         <p>
           Messages submitted to Elle are sent to the
           AI service used to generate responses.
-          Avoid sharing passwords, authentication codes,
-          banking credentials or unnecessary highly sensitive data.
+          Avoid passwords, authentication codes,
+          banking credentials and unnecessary sensitive data.
         </p>
 
-      </article>
+      </div>
 
-      <article class="trust-item">
+      <div class="trust-item">
 
         <strong>
           Terms & Safety
@@ -4993,27 +4650,27 @@ TRUST MODAL
 
         <p>
           Elle is intended for lawful, responsible use.
-          Certain harmful, exploitative, fraudulent or unsafe
-          requests may be limited or refused.
+          Unsafe or harmful requests may be limited
+          or refused.
         </p>
 
-      </article>
+      </div>
 
-      <article class="trust-item">
+      <div class="trust-item">
 
         <strong>
           Content & IP
         </strong>
 
         <p>
-          AURYNELLE branding, original creative assets,
-          original music and other protected materials remain
-          subject to applicable ownership and licensing rights.
+          AURYNELLE branding, original creative assets
+          and original music remain subject to applicable
+          ownership and licensing rights.
         </p>
 
-      </article>
+      </div>
 
-      <article class="trust-item">
+      <div class="trust-item">
 
         <strong>
           AI Notice
@@ -5021,16 +4678,15 @@ TRUST MODAL
 
         <p>
           Elle is AI-generated and can make mistakes.
-          Important medical, legal, financial, safety
-          or other high-stakes information should be
-          verified with an appropriate qualified source.
+          Important medical, legal, financial or other
+          high-stakes information should be independently verified.
         </p>
 
-      </article>
+      </div>
 
     </div>
 
-  </section>
+  </div>
 
 </div>
 
@@ -5039,11 +4695,9 @@ TRUST MODAL
   preload="metadata"
 ></audio>
 
-<script>
-/* =========================================================
-STATE
-========================================================= */
+<script src="elle-world.js" defer></script>
 
+<script>
 const BOOKING_URL =
   "https://calendar.app.google/ev2shsUdMNdtbjqU6";
 
@@ -5098,12 +4752,7 @@ const state = {
 
   playing:false,
 
-  momentTimer:null,
-
-  worldSession:
-    localStorage.getItem(
-      "elleWorldSession"
-    ) || ""
+  takeoverTimer:null
 };
 
 function safeJSON(value){
@@ -5127,270 +4776,164 @@ ELEMENTS
 ========================================================= */
 
 const ageGate =
-  document.getElementById(
-    "ageGate"
-  );
+  document.getElementById("ageGate");
 
 const under13 =
-  document.getElementById(
-    "under13"
-  );
+  document.getElementById("under13");
 
 const underMessage =
-  document.getElementById(
-    "underMessage"
-  );
+  document.getElementById("underMessage");
 
 const memberGate =
-  document.getElementById(
-    "memberGate"
-  );
+  document.getElementById("memberGate");
 
 const emailStep =
-  document.getElementById(
-    "emailStep"
-  );
+  document.getElementById("emailStep");
 
 const codeStep =
-  document.getElementById(
-    "codeStep"
-  );
+  document.getElementById("codeStep");
 
 const memberEmail =
-  document.getElementById(
-    "memberEmail"
-  );
+  document.getElementById("memberEmail");
 
 const memberCode =
-  document.getElementById(
-    "memberCode"
-  );
+  document.getElementById("memberCode");
 
 const sendCode =
-  document.getElementById(
-    "sendCode"
-  );
+  document.getElementById("sendCode");
 
 const verifyCode =
-  document.getElementById(
-    "verifyCode"
-  );
+  document.getElementById("verifyCode");
 
 const differentEmail =
-  document.getElementById(
-    "differentEmail"
-  );
+  document.getElementById("differentEmail");
 
 const memberMessage =
-  document.getElementById(
-    "memberMessage"
-  );
+  document.getElementById("memberMessage");
 
 const memberJoin =
-  document.getElementById(
-    "memberJoin"
-  );
+  document.getElementById("memberJoin");
 
 const memberPill =
-  document.getElementById(
-    "memberPill"
-  );
+  document.getElementById("memberPill");
 
 const signOut =
-  document.getElementById(
-    "signOut"
-  );
+  document.getElementById("signOut");
 
 const ownerBar =
-  document.getElementById(
-    "ownerBar"
-  );
+  document.getElementById("ownerBar");
 
 const ownerStatus =
-  document.getElementById(
-    "ownerStatus"
-  );
+  document.getElementById("ownerStatus");
 
 const chatCard =
-  document.getElementById(
-    "chatCard"
-  );
+  document.getElementById("chatCard");
 
 const thread =
-  document.getElementById(
-    "thread"
-  );
+  document.getElementById("thread");
 
 const chips =
-  document.getElementById(
-    "chips"
-  );
+  document.getElementById("chips");
 
 const say =
-  document.getElementById(
-    "say"
-  );
+  document.getElementById("say");
 
 const send =
-  document.getElementById(
-    "send"
-  );
+  document.getElementById("send");
 
 const heroAsk =
-  document.getElementById(
-    "heroAsk"
-  );
+  document.getElementById("heroAsk");
+
+const heroWorld =
+  document.getElementById("heroWorld");
 
 const heroLive =
-  document.getElementById(
-    "heroLive"
-  );
+  document.getElementById("heroLive");
+
+const heroLiveLearn =
+  document.getElementById("heroLiveLearn");
+
+const featureAsk =
+  document.getElementById("featureAsk");
+
+const featureWorld =
+  document.getElementById("featureWorld");
+
+const featureRadio =
+  document.getElementById("featureRadio");
 
 const talkLive =
-  document.getElementById(
-    "talkLive"
-  );
+  document.getElementById("talkLive");
 
 const askAboutLive =
-  document.getElementById(
-    "askAboutLive"
-  );
+  document.getElementById("askAboutLive");
 
 const liveLock =
-  document.getElementById(
-    "liveLock"
-  );
-
-const liveBookingReady =
-  document.getElementById(
-    "liveBookingReady"
-  );
-
-const liveBookingLink =
-  document.getElementById(
-    "liveBookingLink"
-  );
-
-const worldLiveText =
-  document.getElementById(
-    "worldLiveText"
-  );
-
-const worldActiveCount =
-  document.getElementById(
-    "worldActiveCount"
-  );
-
-const worldCountryCount =
-  document.getElementById(
-    "worldCountryCount"
-  );
-
-const worldCountryList =
-  document.getElementById(
-    "worldCountryList"
-  );
-
-const radioCard =
-  document.getElementById(
-    "radioCard"
-  );
-
-const radioLock =
-  document.getElementById(
-    "radioLock"
-  );
-
-const radioAudio =
-  document.getElementById(
-    "radioAudio"
-  );
-
-const songTitle =
-  document.getElementById(
-    "songTitle"
-  );
-
-const songArtist =
-  document.getElementById(
-    "songArtist"
-  );
-
-const trackList =
-  document.getElementById(
-    "trackList"
-  );
-
-const playPause =
-  document.getElementById(
-    "playPause"
-  );
-
-const previousTrack =
-  document.getElementById(
-    "previousTrack"
-  );
-
-const nextTrack =
-  document.getElementById(
-    "nextTrack"
-  );
-
-const turntableMoment =
-  document.getElementById(
-    "turntableMoment"
-  );
-
-const momentSong =
-  document.getElementById(
-    "momentSong"
-  );
+  document.getElementById("liveLock");
 
 const moreSection =
+  document.getElementById("moreSection");
+
+const moreWorld =
+  document.getElementById("moreWorld");
+
+const moreRadio =
+  document.getElementById("moreRadio");
+
+const radioLock =
+  document.getElementById("radioLock");
+
+const radioAudio =
+  document.getElementById("radioAudio");
+
+const songTitle =
+  document.getElementById("songTitle");
+
+const songArtist =
+  document.getElementById("songArtist");
+
+const trackList =
+  document.getElementById("trackList");
+
+const playPause =
+  document.getElementById("playPause");
+
+const previousTrack =
+  document.getElementById("previousTrack");
+
+const nextTrack =
+  document.getElementById("nextTrack");
+
+const turntableTakeover =
   document.getElementById(
-    "moreSection"
+    "turntableTakeover"
   );
 
-const worldJump =
+const takeoverSong =
   document.getElementById(
-    "worldJump"
-  );
-
-const radioJump =
-  document.getElementById(
-    "radioJump"
+    "takeoverSong"
   );
 
 const trustModal =
-  document.getElementById(
-    "trustModal"
-  );
+  document.getElementById("trustModal");
 
 const openTrust =
-  document.getElementById(
-    "openTrust"
-  );
+  document.getElementById("openTrust");
 
 const trustTop =
-  document.getElementById(
-    "trustTop"
-  );
+  document.getElementById("trustTop");
 
 const closeTrust =
-  document.getElementById(
-    "closeTrust"
-  );
+  document.getElementById("closeTrust");
 
 /* =========================================================
 AGE
 ========================================================= */
 
 document
-  .querySelectorAll(
-    "[data-age]"
-  )
+  .querySelectorAll("[data-age]")
   .forEach(
-    (button) => {
+    button => {
 
       button.addEventListener(
         "click",
@@ -5432,7 +4975,7 @@ under13.addEventListener(
 );
 
 /* =========================================================
-MEMBERSHIP GATE
+MEMBERSHIP
 ========================================================= */
 
 function showMemberMessage(
@@ -5502,26 +5045,6 @@ function resetMemberGate(){
   clearMemberMessage();
 
 }
-
-sendCode.addEventListener(
-  "click",
-  requestAccessCode
-);
-
-memberEmail.addEventListener(
-  "keydown",
-  (event) => {
-
-    if(
-      event.key === "Enter"
-    ){
-
-      requestAccessCode();
-
-    }
-
-  }
-);
 
 async function requestAccessCode(){
 
@@ -5593,8 +5116,8 @@ async function requestAccessCode(){
     }
 
     if(
-      data.accessActive === false ||
-      data.codeSent === false
+      data.accessActive !== true ||
+      data.codeSent !== true
     ){
 
       memberJoin.classList.add(
@@ -5643,6 +5166,26 @@ async function requestAccessCode(){
 
 }
 
+sendCode.addEventListener(
+  "click",
+  requestAccessCode
+);
+
+memberEmail.addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      event.key === "Enter"
+    ){
+
+      requestAccessCode();
+
+    }
+
+  }
+);
+
 differentEmail.addEventListener(
   "click",
   () => {
@@ -5650,26 +5193,6 @@ differentEmail.addEventListener(
     resetMemberGate();
 
     memberEmail.focus();
-
-  }
-);
-
-verifyCode.addEventListener(
-  "click",
-  verifyAccessCode
-);
-
-memberCode.addEventListener(
-  "keydown",
-  (event) => {
-
-    if(
-      event.key === "Enter"
-    ){
-
-      verifyAccessCode();
-
-    }
 
   }
 );
@@ -5766,9 +5289,7 @@ async function verifyAccessCode(){
       data.permissions || {};
 
     state.owner =
-      data.owner === true ||
-      state.permissions.ownerMode === true ||
-      state.permissions.testMode === true;
+      data.owner === true;
 
     localStorage.setItem(
       "elleSessionToken",
@@ -5818,9 +5339,59 @@ async function verifyAccessCode(){
 
 }
 
+verifyCode.addEventListener(
+  "click",
+  verifyAccessCode
+);
+
+memberCode.addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      event.key === "Enter"
+    ){
+
+      verifyAccessCode();
+
+    }
+
+  }
+);
+
 /* =========================================================
 SIGN OUT
 ========================================================= */
+
+function clearSavedSession(){
+
+  [
+    "elleSessionToken",
+    "elleMember",
+    "ellePermissions",
+    "elleOwner",
+    "elleOwnerTestTier"
+  ].forEach(
+    key =>
+      localStorage.removeItem(key)
+  );
+
+  state.sessionToken =
+    "";
+
+  state.member =
+    {};
+
+  state.permissions =
+    {};
+
+  state.owner =
+    false;
+
+  state.history =
+    [];
+
+}
 
 signOut.addEventListener(
   "click",
@@ -5842,11 +5413,9 @@ OWNER TEST MODE
 ========================================================= */
 
 document
-  .querySelectorAll(
-    ".owner-test"
-  )
+  .querySelectorAll(".owner-test")
   .forEach(
-    (button) => {
+    button => {
 
       button.addEventListener(
         "click",
@@ -5978,28 +5547,19 @@ function testTierLabel(){
 
 }
 
-/* =========================================================
-ACCESS UI
-========================================================= */
-
 function applyAccess(){
 
   const permissions =
     visiblePermissions();
 
-  const tierName =
+  memberPill.textContent =
     state.owner
-      ? "Owner"
+      ? "👑 Owner"
       : (
         state.member?.tierName ||
         state.member?.tier ||
         "Member"
       );
-
-  memberPill.textContent =
-    state.owner
-      ? "👑 Owner"
-      : tierName;
 
   ownerBar.classList.toggle(
     "show",
@@ -6011,7 +5571,7 @@ function applyAccess(){
       ".owner-test"
     )
     .forEach(
-      (button) => {
+      button => {
 
         button.classList.toggle(
           "active",
@@ -6035,13 +5595,10 @@ function applyAccess(){
     permissions.elleRadio === true
   );
 
-  const adult =
-    state.ageGroup === "18+";
-
   liveLock.classList.toggle(
     "hidden",
     permissions.liveElle === true &&
-    adult
+    state.ageGroup === "18+"
   );
 
   if(
@@ -6106,16 +5663,16 @@ function addBubble(
 
   }
 
-  const textNode =
+  const copy =
     document.createElement(
       "div"
     );
 
-  textNode.textContent =
+  copy.textContent =
     text;
 
   bubble.appendChild(
-    textNode
+    copy
   );
 
   row.appendChild(
@@ -6133,7 +5690,7 @@ function addBubble(
 
 function addBookingCard(
   url,
-  message=""
+  message
 ){
 
   const row =
@@ -6150,82 +5707,29 @@ function addBookingCard(
     );
 
   card.className =
-    "booking-chat-card";
-
-  const kicker =
-    document.createElement(
-      "div"
-    );
-
-  kicker.className =
-    "booking-chat-kicker";
-
-  kicker.textContent =
-    "LIVE ELLE · NEXT STEP";
+    "booking-card";
 
   const title =
     document.createElement(
-      "div"
+      "strong"
     );
 
-  title.className =
-    "booking-chat-title";
-
   title.textContent =
-    "Choose your 30-minute time";
+    "Choose your 30-minute Live Elle time";
 
   const copy =
     document.createElement(
-      "div"
+      "p"
     );
-
-  copy.className =
-    "booking-chat-copy";
 
   copy.textContent =
     message ||
-    "Your request is in. The calendar will show only the times that are actually available.";
-
-  const meta =
-    document.createElement(
-      "div"
-    );
-
-  meta.className =
-    "booking-chat-meta";
-
-  [
-    "◷ 30 minutes",
-    "◫ Real availability",
-    "↻ Cancel or reschedule"
-  ].forEach(
-    (text) => {
-
-      const item =
-        document.createElement(
-          "span"
-        );
-
-      item.className =
-        "booking-mini";
-
-      item.textContent =
-        text;
-
-      meta.appendChild(
-        item
-      );
-
-    }
-  );
+    "Your request is in. Google Calendar will show the actual available times and confirm your appointment.";
 
   const link =
     document.createElement(
       "a"
     );
-
-  link.className =
-    "booking-chat-button";
 
   link.href =
     url || BOOKING_URL;
@@ -6239,43 +5743,16 @@ function addBookingCard(
   link.textContent =
     "Book an Available Time →";
 
-  card.appendChild(
-    kicker
-  );
+  card.appendChild(title);
+  card.appendChild(copy);
+  card.appendChild(link);
 
-  card.appendChild(
-    title
-  );
+  row.appendChild(card);
 
-  card.appendChild(
-    copy
-  );
-
-  card.appendChild(
-    meta
-  );
-
-  card.appendChild(
-    link
-  );
-
-  row.appendChild(
-    card
-  );
-
-  thread.appendChild(
-    row
-  );
+  thread.appendChild(row);
 
   thread.scrollTop =
     thread.scrollHeight;
-
-  liveBookingLink.href =
-    url || BOOKING_URL;
-
-  liveBookingReady.classList.add(
-    "show"
-  );
 
 }
 
@@ -6286,11 +5763,11 @@ function showTyping(){
       "div"
     );
 
-  row.className =
-    "message-row";
-
   row.id =
     "typingRow";
+
+  row.className =
+    "message-row";
 
   const bubble =
     document.createElement(
@@ -6312,13 +5789,9 @@ function showTyping(){
     </div>
   `;
 
-  row.appendChild(
-    bubble
-  );
+  row.appendChild(bubble);
 
-  thread.appendChild(
-    row
-  );
+  thread.appendChild(row);
 
   thread.scrollTop =
     thread.scrollHeight;
@@ -6345,7 +5818,7 @@ function renderChips(
   list
     .slice(0,4)
     .forEach(
-      (label) => {
+      label => {
 
         const button =
           document.createElement(
@@ -6365,9 +5838,7 @@ function renderChips(
           "click",
           () => {
 
-            sendMessage(
-              label
-            );
+            sendMessage(label);
 
           }
         );
@@ -6526,7 +5997,7 @@ async function sendMessage(
 
       addBookingCard(
         data.bookingUrl,
-        data.bookingMessage || ""
+        data.bookingMessage
       );
 
     }
@@ -6594,7 +6065,7 @@ send.addEventListener(
 
 say.addEventListener(
   "keydown",
-  (event) => {
+  event => {
 
     if(
       event.key === "Enter"
@@ -6612,32 +6083,18 @@ say.addEventListener(
 function bringChatIntoView(){
 
   chatCard.scrollIntoView({
-
     behavior:"smooth",
     block:"center"
-
   });
-
-  chatCard.classList.remove(
-    "flash"
-  );
-
-  void chatCard.offsetWidth;
-
-  chatCard.classList.add(
-    "flash"
-  );
 
   setTimeout(
     () => say.focus(),
-    450
+    400
   );
 
 }
 
-function promptChat(
-  text
-){
+function promptChat(text){
 
   bringChatIntoView();
 
@@ -6653,7 +6110,7 @@ document
     "[data-prompt]"
   )
   .forEach(
-    (button) => {
+    button => {
 
       button.addEventListener(
         "click",
@@ -6670,6 +6127,11 @@ document
   );
 
 heroAsk.addEventListener(
+  "click",
+  bringChatIntoView
+);
+
+featureAsk.addEventListener(
   "click",
   bringChatIntoView
 );
@@ -6744,24 +6206,27 @@ function startLiveElle(){
 
 }
 
-talkLive.addEventListener(
+heroLive.addEventListener(
   "click",
   startLiveElle
 );
 
-heroLive.addEventListener(
+heroLiveLearn.addEventListener(
   "click",
   () => {
 
     document
-      .getElementById(
-        "live"
-      )
+      .getElementById("live")
       .scrollIntoView({
         behavior:"smooth"
       });
 
   }
+);
+
+talkLive.addEventListener(
+  "click",
+  startLiveElle
 );
 
 askAboutLive.addEventListener(
@@ -6776,7 +6241,36 @@ askAboutLive.addEventListener(
 );
 
 /* =========================================================
-ELLE RADIO
+WORLD LINKS
+========================================================= */
+
+function goWorld(){
+
+  document
+    .getElementById("world")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+heroWorld.addEventListener(
+  "click",
+  goWorld
+);
+
+featureWorld.addEventListener(
+  "click",
+  goWorld
+);
+
+moreWorld.addEventListener(
+  "click",
+  goWorld
+);
+
+/* =========================================================
+RADIO
 ========================================================= */
 
 const ELLE_PLAYLIST = [
@@ -6807,7 +6301,7 @@ const ELLE_PLAYLIST = [
 
 ];
 
-function normalizeTrackIndex(index){
+function normalizeTrack(index){
 
   return (
     index +
@@ -6852,7 +6346,7 @@ function renderPlaylist(){
         </span>
 
         <span>
-          ${escapeHTML(track.title)}
+          ${track.title}
         </span>
       `;
 
@@ -6887,53 +6381,51 @@ function renderPlaylist(){
 
 }
 
-function showTurntableMoment(
-  title
-){
+function showTurntableTakeover(title){
 
   if(
-    state.momentTimer
+    state.takeoverTimer
   ){
 
     clearTimeout(
-      state.momentTimer
+      state.takeoverTimer
     );
 
   }
 
-  momentSong.textContent =
+  takeoverSong.textContent =
     title;
 
-  turntableMoment.classList.remove(
+  turntableTakeover.classList.remove(
     "show"
   );
 
-  void turntableMoment.offsetWidth;
+  void turntableTakeover.offsetWidth;
 
-  turntableMoment.classList.add(
+  turntableTakeover.classList.add(
     "show"
   );
 
-  turntableMoment.setAttribute(
+  turntableTakeover.setAttribute(
     "aria-hidden",
     "false"
   );
 
-  state.momentTimer =
+  state.takeoverTimer =
     setTimeout(
       () => {
 
-        turntableMoment.classList.remove(
+        turntableTakeover.classList.remove(
           "show"
         );
 
-        turntableMoment.setAttribute(
+        turntableTakeover.setAttribute(
           "aria-hidden",
           "true"
         );
 
       },
-      6000
+      3000
     );
 
 }
@@ -6941,7 +6433,7 @@ function showTurntableMoment(
 function loadTrack(
   index,
   autoplay=false,
-  dramatic=false
+  takeover=false
 ){
 
   if(
@@ -6954,15 +6446,11 @@ function loadTrack(
   }
 
   state.trackIndex =
-    normalizeTrackIndex(
-      index
-    );
+    normalizeTrack(index);
 
   localStorage.setItem(
     "elleRadioTrack",
-    String(
-      state.trackIndex
-    )
+    String(state.trackIndex)
   );
 
   const track =
@@ -6982,10 +6470,10 @@ function loadTrack(
   renderPlaylist();
 
   if(
-    dramatic
+    takeover
   ){
 
-    showTurntableMoment(
+    showTurntableTakeover(
       track.title
     );
 
@@ -7076,13 +6564,10 @@ playPause.addEventListener(
 
     }else{
 
-      const track =
+      showTurntableTakeover(
         ELLE_PLAYLIST[
           state.trackIndex
-        ];
-
-      showTurntableMoment(
-        track.title
+        ].title
       );
 
       playRadio();
@@ -7131,311 +6616,24 @@ radioAudio.addEventListener(
   }
 );
 
-radioJump.addEventListener(
+function goRadio(){
+
+  document
+    .getElementById("radio")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+featureRadio.addEventListener(
   "click",
-  () => {
-
-    document
-      .getElementById(
-        "radio"
-      )
-      .scrollIntoView({
-        behavior:"smooth"
-      });
-
-  }
+  goRadio
 );
 
-/* =========================================================
-ELLE WORLD
-========================================================= */
-
-function ensureWorldSession(){
-
-  if(
-    state.worldSession
-  ){
-
-    return;
-
-  }
-
-  if(
-    window.crypto &&
-    typeof crypto.randomUUID ===
-    "function"
-  ){
-
-    state.worldSession =
-      crypto.randomUUID();
-
-  }else{
-
-    state.worldSession =
-      "elle_" +
-      Date.now().toString(36) +
-      "_" +
-      Math.random()
-        .toString(36)
-        .slice(2);
-
-  }
-
-  localStorage.setItem(
-    "elleWorldSession",
-    state.worldSession
-  );
-
-}
-
-async function heartbeatWorld(){
-
-  ensureWorldSession();
-
-  try{
-
-    const response =
-      await fetch(
-        "/api/world",
-        {
-
-          method:"POST",
-
-          headers:{
-            "Content-Type":
-              "application/json"
-          },
-
-          body:
-            JSON.stringify({
-              sessionId:
-                state.worldSession
-            })
-
-        }
-      );
-
-    if(
-      !response.ok
-    ){
-
-      return;
-
-    }
-
-    const data =
-      await response.json();
-
-    if(
-      data.success &&
-      data.live
-    ){
-
-      renderWorld(
-        data.live
-      );
-
-    }else{
-
-      renderWorld(
-        data
-      );
-
-    }
-
-  }catch{
-    /* quiet */
-  }
-
-}
-
-async function pollWorld(){
-
-  try{
-
-    const response =
-      await fetch(
-        "/api/world",
-        {
-          cache:"no-store"
-        }
-      );
-
-    if(
-      !response.ok
-    ){
-
-      return;
-
-    }
-
-    const data =
-      await response.json();
-
-    if(
-      data.success &&
-      data.live
-    ){
-
-      renderWorld(
-        data.live
-      );
-
-    }else{
-
-      renderWorld(
-        data
-      );
-
-    }
-
-  }catch{
-    /* quiet */
-  }
-
-}
-
-function renderWorld(
-  live
-){
-
-  if(
-    !live
-  ){
-
-    return;
-
-  }
-
-  const countries =
-    Array.isArray(
-      live.countries
-    )
-      ? live.countries
-      : [];
-
-  const total =
-    Number(
-      live.totalActive ??
-      live.total ??
-      live.active ??
-      live.count ??
-      0
-    );
-
-  const countryCount =
-    Number(
-      live.countryCount ??
-      countries.length ??
-      0
-    );
-
-  worldActiveCount.textContent =
-    String(total);
-
-  worldCountryCount.textContent =
-    String(countryCount);
-
-  worldLiveText.textContent =
-    total > 0
-      ? `${total} glowing right now`
-      : "Elle World is awake";
-
-  worldCountryList.innerHTML =
-    "";
-
-  countries
-    .slice(0,6)
-    .forEach(
-      (country) => {
-
-        const name =
-          country.name ||
-          country.country ||
-          country.code ||
-          "";
-
-        if(
-          !name ||
-          name === "XX"
-        ){
-
-          return;
-
-        }
-
-        const pill =
-          document.createElement(
-            "div"
-          );
-
-        pill.className =
-          "country-pill";
-
-        pill.textContent =
-          `✦ ${name}`;
-
-        worldCountryList.appendChild(
-          pill
-        );
-
-      }
-    );
-
-}
-
-function startWorld(){
-
-  heartbeatWorld();
-  pollWorld();
-
-  setInterval(
-    () => {
-
-      if(
-        document.visibilityState ===
-        "visible"
-      ){
-
-        pollWorld();
-
-      }
-
-    },
-    15000
-  );
-
-  setInterval(
-    () => {
-
-      if(
-        document.visibilityState ===
-        "visible"
-      ){
-
-        heartbeatWorld();
-
-      }
-
-    },
-    40000
-  );
-
-}
-
-worldJump.addEventListener(
+moreRadio.addEventListener(
   "click",
-  () => {
-
-    document
-      .getElementById(
-        "world"
-      )
-      .scrollIntoView({
-        behavior:"smooth"
-      });
-
-  }
+  goRadio
 );
 
 /* =========================================================
@@ -7475,7 +6673,7 @@ closeTrust.addEventListener(
 
 trustModal.addEventListener(
   "click",
-  (event) => {
+  event => {
 
     if(
       event.target === trustModal
@@ -7487,75 +6685,6 @@ trustModal.addEventListener(
 
   }
 );
-
-/* =========================================================
-HELPERS
-========================================================= */
-
-function escapeHTML(value){
-
-  return String(value)
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
-}
-
-function clearSavedSession(){
-
-  [
-    "elleSessionToken",
-    "elleMember",
-    "ellePermissions",
-    "elleOwner",
-    "elleOwnerTestTier"
-  ].forEach(
-    (key) =>
-      localStorage.removeItem(
-        key
-      )
-  );
-
-  state.sessionToken =
-    "";
-
-  state.member =
-    {};
-
-  state.permissions =
-    {};
-
-  state.owner =
-    false;
-
-  state.history =
-    [];
-
-  state.testTier =
-    "owner";
-
-  liveBookingReady.classList.remove(
-    "show"
-  );
-
-}
 
 /* =========================================================
 STARTUP
@@ -7603,8 +6732,6 @@ function continueStartup(){
 
 function init(){
 
-  ensureWorldSession();
-
   renderPlaylist();
 
   if(
@@ -7619,8 +6746,6 @@ function init(){
     );
 
   }
-
-  startWorld();
 
   if(
     !state.ageGroup
