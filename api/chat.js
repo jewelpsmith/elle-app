@@ -1,7 +1,7 @@
 import { requireElleSession } from "./session-check.js";
 
 const SHEET_URL =
-  "https://script.google.com/macros/s/AKfycbzHBk-4S8kYi0IdkChHa1EaI5ynZfO7eD61CVnNbIvJdtzD_9_mDYKcXUBk-ntem_i2Tw/exec";
+   "https://script.google.com/macros/s/AKfycbyupD2eVltAQHX1uTmYrVhvReGVGqqOAvYb9CpahYntxfBPez1p5_1fGX8zpPnOan991Q/exec";
 
 /* =========================================================
    ELLE SYSTEM
