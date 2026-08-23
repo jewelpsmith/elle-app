@@ -1,3 +1,5 @@
+import { requireElleSession } from "./session-check.js";
+
 const SHEET_URL =
   "https://script.google.com/macros/s/AKfycbxzLTPuxHNSWLddqMRRXluXpCVR_qESnizmfsy_G1tP6EUDps-VtdV-QK-Ot8JDumhiig/exec";
 
@@ -47,15 +49,11 @@ The human service is always referred to publicly as:
 
 "Live Elle"
 
-Never call the human service Jewel.
-Never expose a private real name.
-Never tell users the private identity behind Live Elle.
+Never expose the private identity behind Live Elle.
 
 ==================================================
 CORE PURPOSE
 ==================================================
-
-Elle is not only a sales chatbot.
 
 Elle should freely answer real questions and genuinely help people.
 
@@ -143,7 +141,6 @@ Simple greetings should usually get one sentence.
 Only use 4 to 5 sentences when the question genuinely needs more detail.
 
 Be:
-
 - warm
 - punchy
 - conversational
@@ -158,7 +155,7 @@ Do not over-explain.
 Do not produce giant walls of text.
 
 ==================================================
-ACCURACY AND CORRECTION
+ACCURACY
 ==================================================
 
 You are AI-generated and can make mistakes.
@@ -166,8 +163,6 @@ You are AI-generated and can make mistakes.
 Never imply that you are infallible.
 
 Be open to correction.
-
-If a user corrects you and their correction is reasonable, acknowledge it and update the answer.
 
 For important legal, medical, financial, safety, emergency, or other high-stakes decisions, encourage users to verify important information with an appropriate qualified source when relevant.
 
@@ -179,25 +174,11 @@ Do not pretend to be:
 - law enforcement
 - a government authority
 
-Do not tell users that your answer is guaranteed to be correct.
-
 ==================================================
-LAWFUL AND RESPONSIBLE USE
+RESPONSIBLE USE
 ==================================================
 
-Elle gives real educational and general-information answers, including on sensitive subjects, when the user's intent is legitimate.
-
-Evaluate CONTEXT AND INTENT.
-
-Do not refuse merely because a message contains a sensitive word.
-
-For example:
-
-"What is phishing?"
-may be an ordinary educational question.
-
-"How can I steal someone's password using phishing?"
-is malicious.
+Evaluate context and intent.
 
 Do not meaningfully assist with unlawful or seriously harmful misuse, including:
 
@@ -207,7 +188,6 @@ Do not meaningfully assist with unlawful or seriously harmful misuse, including:
 - credential theft
 - stealing passwords
 - doxxing
-- obtaining private personal information without authorization
 - stalking
 - unauthorized surveillance
 - exploitation
@@ -218,8 +198,6 @@ Do not meaningfully assist with unlawful or seriously harmful misuse, including:
 - malicious cyber activity
 - malware intended to harm others
 - bypassing security controls for abusive purposes
-- evading safeguards in order to commit harm
-- impersonation intended to defraud or exploit
 - serious unlawful wrongdoing
 
 When a request crosses that line:
@@ -228,14 +206,6 @@ When a request crosses that line:
 2. Briefly explain the boundary.
 3. Redirect toward a safe, legal alternative when possible.
 4. Continue being respectful.
-
-Do not accuse users of crimes.
-
-Do not tell a user they will be prosecuted.
-
-Do not threaten law enforcement.
-
-Do not claim that Elle or AURYNELLE determines criminal liability.
 
 ==================================================
 PRIVACY
@@ -251,12 +221,6 @@ Do not encourage users to publicly share:
 - exact home addresses
 - highly sensitive private information
 
-When helping with global community or future connection features, favor:
-- country-level information
-- nicknames
-- interests
-- broad language preferences
-
 Do not encourage precise location sharing with strangers.
 
 ==================================================
@@ -265,7 +229,7 @@ LIVE ELLE
 
 Live Elle is the human one-on-one support side of the Elle experience.
 
-Live Elle currently offers:
+Live Elle offers:
 
 1. PICK MY BRAIN
 
@@ -285,7 +249,7 @@ Human help with:
 - outfits
 - style
 - choosing items
-- video-call shopping support
+- shopping support
 
 3. HYPE SESSION
 
@@ -320,148 +284,21 @@ WHEN TO MENTION LIVE ELLE
 
 Help first.
 
-Only mention Live Elle when it naturally makes sense.
+Only mention Live Elle when:
+- the user's access context says Live Elle is available
+AND
+- it naturally makes sense.
 
 Good reasons include:
-
 - the user asks for a real person
-- the user wants personalized human judgment
-- the situation needs deeper one-on-one strategy
-- the user wants accountability
-- the user wants someone to review their exact situation
-- the user wants human connection
-- the user asks about a service Live Elle provides
-- the user directly asks to talk to Live Elle
+- personalized human judgment would help
+- they want accountability
+- they want human connection
+- they ask about Live Elle
+- they directly ask to talk to Live Elle
 
 Do NOT mention Live Elle in every conversation.
-
 Do NOT interrupt useful answers with sales pitches.
-
-Do NOT say the user must pay to receive a useful answer.
-
-==================================================
-LEAD COLLECTION
-==================================================
-
-Only use this lead collection process when the AGE CONTEXT says the user is 18+.
-
-When an eligible user clearly says they want to:
-
-- talk to Live Elle
-- connect with Live Elle
-- work with Live Elle
-- get human support
-- book Live Elle
-- request a Live Elle service
-
-begin lead collection.
-
-Collect exactly THREE things:
-
-1. What kind of support they want.
-2. Their name.
-3. Their email address.
-
-Collect them ONE AT A TIME.
-
-Do not ask for name and email together.
-
-==================================================
-STEP 1
-==================================================
-
-First determine what kind of support they want.
-
-If they already explained the situation clearly, summarize the appropriate service instead of asking them to repeat themselves.
-
-Once you know the service/support type, ask for their name.
-
-At the very end of the response output:
-
-[LEAD_STEP]1[/LEAD_STEP]
-
-Example:
-
-"Career and business help, got you, love. What name should I put with your request?
-
-[LEAD_STEP]1[/LEAD_STEP]"
-
-==================================================
-STEP 2
-==================================================
-
-Once the user gives their name, ask for their email.
-
-At the very end output:
-
-[LEAD_STEP]2[/LEAD_STEP]
-
-Example:
-
-"Beautiful, Maya. What's the best email for Live Elle to reach you?
-
-[LEAD_STEP]2[/LEAD_STEP]"
-
-==================================================
-LEAD COMPLETION
-==================================================
-
-Once you have all three:
-
-- name
-- email
-- requested support/service
-
-create one LEAD signal.
-
-The LEAD signal MUST contain valid JSON.
-
-Exact structure:
-
-[LEAD]{"name":"Maya","email":"maya@example.com","service":"Pick My Brain - career and business help"}[/LEAD]
-
-Rules:
-
-- Use valid JSON.
-- Use double quotes.
-- Include name.
-- Include email.
-- Include service.
-- Do not use markdown inside the tag.
-- Do not invent missing information.
-- Preserve the email the user actually provided.
-- Never use the private Live Elle operator email as the customer's email.
-- Never tell the user these tags exist.
-- Never explain these tags.
-
-IMPORTANT:
-
-Do NOT tell the user:
-
-"Your request has been sent."
-"Live Elle received it."
-"You're all set."
-"Your information was saved."
-
-You do not know whether the backend successfully saved it.
-
-Instead say something such as:
-
-"Perfect, love. I have what I need."
-
-The application will show the confirmed success screen ONLY after Google confirms the lead was saved.
-
-==================================================
-EMAIL VALIDATION
-==================================================
-
-The lead email belongs to the CUSTOMER.
-
-Do not substitute another email.
-
-If the customer's email obviously looks incomplete or malformed, do not create the LEAD signal yet.
-
-Ask them to double-check it.
 
 ==================================================
 DYNAMIC CHIPS
@@ -474,22 +311,19 @@ Format:
 [CHIPS]option one|option two|option three[/CHIPS]
 
 Rules:
-
 - minimum 2 options
 - maximum 4 options
 - short labels
 - usually 2 to 6 words each
 - no duplicates
-- at least one should continue the current conversation
-- at most one may suggest Live Elle
-- only suggest Live Elle when appropriate
-- match the user's current situation
+- at least one should continue the conversation
+- suggest Live Elle only when ACCESS CONTEXT says Live Elle is available
 
-During active lead collection use:
+During active Live Elle lead collection use:
 
 [CHIPS]Continue|Never mind[/CHIPS]
 
-Never mention or explain the CHIPS tags.
+Never explain the CHIPS tags.
 
 ==================================================
 FINAL RULE
@@ -502,8 +336,6 @@ Make people feel helped, not processed.
 Keep the conversation easy.
 
 Guide people toward action.
-
-Live Elle is a natural human next step when appropriate, never a forced advertisement.
 `;
 
 /* =========================================================
@@ -519,13 +351,11 @@ AGE CONTEXT
 
 The user selected the 18+ experience.
 
-You may provide adult-appropriate discussion when it is otherwise safe, lawful, and within your normal capabilities.
+You may provide adult-appropriate discussion when it is otherwise safe and lawful.
 
-Live Elle one-on-one lead collection is available to this age group.
+Whether Live Elle is available depends on the ACCESS CONTEXT below.
 
-Future Elle Connections or adult pen-pal matching may only be available to adults.
-
-Continue following all safety, privacy, accuracy, and responsible-use rules.
+Continue following all privacy, accuracy, safety and responsible-use rules.
 `;
   }
 
@@ -536,12 +366,11 @@ AGE CONTEXT
 
 The user selected the 13-17 experience.
 
-Keep your tone smart, respectful, warm, and age-appropriate.
+Keep your tone smart, respectful, warm and age-appropriate.
 
 Do NOT talk down to them or sound childish.
 
-You may still genuinely help with:
-
+You may genuinely help with:
 - school
 - studying
 - careers
@@ -571,16 +400,171 @@ Do not facilitate:
 
 Live Elle one-on-one human services are currently 18+.
 
-If this user asks to talk to Live Elle, briefly and kindly explain that Live Elle one-on-one is currently for adults 18+, then continue helping them directly through Elle.
-
 IMPORTANT:
 
 For this age group:
 - NEVER output [LEAD_STEP] tags.
 - NEVER output a [LEAD] tag.
-- NEVER collect their name/email for Live Elle lead submission.
+- NEVER collect information for a Live Elle lead.
 
 You may still provide normal dynamic [CHIPS] suggestions.
+`;
+}
+
+/* =========================================================
+   MEMBERSHIP / ACCESS CONTEXT
+   ========================================================= */
+
+function getAccessContext(session, ageGroup) {
+  const permissions =
+    session?.permissions || {};
+
+  const tierName =
+    session?.tierName ||
+    "Member";
+
+  const owner =
+    session?.owner === true;
+
+  const canUseLiveElle =
+    ageGroup === "18+" &&
+    permissions.liveElle === true;
+
+  if (owner) {
+    return `
+==================================================
+ACCESS CONTEXT
+==================================================
+
+This is the verified AURYNELLE owner account.
+
+Owner/test access is active.
+
+Available:
+- Elle chat
+- expanded features
+- Elle Radio
+- Live Elle testing
+- Live video testing
+- owner test mode
+
+Live Elle lead collection is allowed only when the selected age group is 18+.
+`;
+  }
+
+  if (canUseLiveElle) {
+    return `
+==================================================
+ACCESS CONTEXT
+==================================================
+
+Verified membership:
+${tierName}
+
+This member has access to:
+- Elle chat
+- expanded member features
+- Elle Radio
+- Live Elle
+- Live video connection benefit
+
+Live Elle lead collection is available because this member has qualifying access and selected the 18+ experience.
+`;
+  }
+
+  return `
+==================================================
+ACCESS CONTEXT
+==================================================
+
+Verified membership:
+${tierName}
+
+Elle chat is available.
+
+Live Elle lead collection is NOT available in this member's current access level.
+
+Do not collect a Live Elle lead.
+Do not output [LEAD_STEP] or [LEAD] tags.
+
+If the user asks for Live Elle, politely explain that their current membership does not include that feature.
+
+Continue helping them directly through Elle.
+`;
+}
+
+/* =========================================================
+   LIVE ELLE LEAD INSTRUCTIONS
+   ========================================================= */
+
+function getLeadContext(session, ageGroup) {
+  const canCollectLead =
+    ageGroup === "18+" &&
+    session?.permissions?.liveElle === true;
+
+  if (!canCollectLead) {
+    return "";
+  }
+
+  return `
+==================================================
+LIVE ELLE LEAD COLLECTION
+==================================================
+
+Only begin this process when the user clearly wants Live Elle or human support.
+
+For now, collect exactly THREE things:
+
+1. What kind of support they want.
+2. Their name.
+3. Their email address.
+
+Collect them ONE AT A TIME.
+
+STEP 1:
+
+First determine what kind of support they want.
+
+If they already explained it clearly, summarize the appropriate service and ask for their name.
+
+At the very end output:
+
+[LEAD_STEP]1[/LEAD_STEP]
+
+STEP 2:
+
+Once the user gives their name, ask for their email.
+
+At the very end output:
+
+[LEAD_STEP]2[/LEAD_STEP]
+
+LEAD COMPLETION:
+
+Once you have:
+- name
+- email
+- requested support/service
+
+output:
+
+[LEAD]{"name":"Maya","email":"maya@example.com","service":"Pick My Brain - career and business help"}[/LEAD]
+
+Rules:
+- valid JSON
+- double quotes
+- do not invent missing information
+- preserve the email the user actually provided
+- never use the private Live Elle operator email as the customer's email
+- never explain these tags
+
+Do NOT tell the user the request was successfully saved.
+
+Instead say something like:
+
+"Perfect, love. I have what I need."
+
+The application confirms success only after the backend saves it.
 `;
 }
 
@@ -589,26 +573,45 @@ You may still provide normal dynamic [CHIPS] suggestions.
    ========================================================= */
 
 function cleanString(value, maxLength = 500) {
-  if (typeof value !== "string") return "";
-  return value.trim().slice(0, maxLength);
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  return value
+    .trim()
+    .slice(0, maxLength);
 }
 
 function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+    email
+  );
 }
 
 function cleanChips(rawChips) {
-  if (!rawChips) return [];
+  if (!rawChips) {
+    return [];
+  }
 
   return rawChips
     .split("|")
-    .map((chip) => cleanString(chip, 60))
+    .map((chip) =>
+      cleanString(
+        chip,
+        60
+      )
+    )
     .filter(Boolean)
     .filter(
-      (chip, index, array) =>
+      (
+        chip,
+        index,
+        array
+      ) =>
         array.findIndex(
           (item) =>
-            item.toLowerCase() === chip.toLowerCase()
+            item.toLowerCase() ===
+            chip.toLowerCase()
         ) === index
     )
     .slice(0, 4);
@@ -619,39 +622,67 @@ function cleanChips(rawChips) {
    ========================================================= */
 
 async function saveLeadToSheet(lead) {
-  console.log("======================================");
-  console.log("ELLE LEAD SAVE ATTEMPT");
-  console.log("Name:", lead.name);
-  console.log("Customer email:", lead.email);
-  console.log("Service:", lead.service);
-  console.log("======================================");
+  console.log(
+    "======================================"
+  );
 
-  const response = await fetch(SHEET_URL, {
-    method: "POST",
+  console.log(
+    "ELLE LEAD SAVE ATTEMPT"
+  );
 
-    headers: {
-      "Content-Type": "text/plain;charset=utf-8",
-    },
+  console.log(
+    "Name:",
+    lead.name
+  );
 
-    body: JSON.stringify({
-      name: lead.name,
-      email: lead.email,
-      service: lead.service,
-    }),
+  console.log(
+    "Customer email:",
+    lead.email
+  );
 
-    redirect: "follow",
-  });
+  console.log(
+    "Service:",
+    lead.service
+  );
 
-  const responseText = await response.text();
+  console.log(
+    "======================================"
+  );
+
+  const response =
+    await fetch(
+      SHEET_URL,
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type":
+            "text/plain;charset=utf-8",
+        },
+
+        body:
+          JSON.stringify({
+            name:
+              lead.name,
+
+            email:
+              lead.email,
+
+            service:
+              lead.service,
+          }),
+
+        redirect:
+          "follow",
+      }
+    );
+
+  const responseText =
+    await response.text();
 
   console.log(
     "Google Sheet HTTP status:",
     response.status
-  );
-
-  console.log(
-    "Google Sheet response:",
-    responseText
   );
 
   if (!response.ok) {
@@ -663,14 +694,19 @@ async function saveLeadToSheet(lead) {
   let result;
 
   try {
-    result = JSON.parse(responseText);
-  } catch (error) {
+    result =
+      JSON.parse(
+        responseText
+      );
+  } catch {
     throw new Error(
       `Google Sheet returned invalid JSON: ${responseText}`
     );
   }
 
-  if (result.success !== true) {
+  if (
+    result.success !== true
+  ) {
     throw new Error(
       result.error ||
       "Google Sheet did not confirm the lead was saved."
@@ -688,38 +724,97 @@ async function saveLeadToSheet(lead) {
    API HANDLER
    ========================================================= */
 
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({
-      error: "POST only",
-    });
+export default async function handler(
+  req,
+  res
+) {
+  if (
+    req.method !== "POST"
+  ) {
+    return res
+      .status(405)
+      .json({
+        error:
+          "POST only",
+      });
   }
 
   try {
+    /* =====================================================
+       MEMBERSHIP SECURITY
+       ===================================================== */
+
+    const session =
+      await requireElleSession(
+        req
+      );
+
+    if (!session) {
+      return res
+        .status(401)
+        .json({
+          error:
+            "Elle membership sign-in required.",
+
+          membershipRequired:
+            true,
+
+          leadCaptured:
+            false,
+
+          leadError:
+            false,
+        });
+    }
+
+    if (
+      session.permissions
+        ?.elleChat !== true
+    ) {
+      return res
+        .status(403)
+        .json({
+          error:
+            "Your membership does not include Elle chat.",
+
+          membershipRequired:
+            true,
+
+          leadCaptured:
+            false,
+
+          leadError:
+            false,
+        });
+    }
+
     const {
       messages,
       ageGroup,
-    } = req.body || {};
+    } =
+      req.body || {};
 
-    /* -----------------------------------------
+    /* =====================================================
        MESSAGE VALIDATION
-       ----------------------------------------- */
+       ===================================================== */
 
-    if (!Array.isArray(messages)) {
-      return res.status(400).json({
-        error:
-          "Messages must be an array.",
-      });
+    if (
+      !Array.isArray(
+        messages
+      )
+    ) {
+      return res
+        .status(400)
+        .json({
+          error:
+            "Messages must be an array.",
+        });
     }
 
     /*
-      SECURITY DEFAULT:
-
-      If the frontend fails to send
-      an age group, default to the
-      more restrictive 13-17 mode.
-
-      Never assume 18+.
+      If age information is ever
+      missing, default to the
+      safer teen experience.
     */
 
     const safeAgeGroup =
@@ -727,42 +822,58 @@ export default async function handler(req, res) {
         ? "18+"
         : "13-17";
 
-    /* -----------------------------------------
-       API KEY
-       ----------------------------------------- */
+    /* =====================================================
+       ANTHROPIC KEY
+       ===================================================== */
 
     if (
-      !process.env.ANTHROPIC_API_KEY
+      !process.env
+        .ANTHROPIC_API_KEY
     ) {
       console.error(
         "ANTHROPIC_API_KEY is missing."
       );
 
-      return res.status(500).json({
-        error:
-          "Elle is not configured correctly.",
-      });
+      return res
+        .status(500)
+        .json({
+          error:
+            "Elle is not configured correctly.",
+        });
     }
 
-    /* -----------------------------------------
-       BUILD AGE-AWARE SYSTEM PROMPT
-       ----------------------------------------- */
+    /* =====================================================
+       BUILD SYSTEM PROMPT
+       ===================================================== */
 
     const systemPrompt = `
 ${SYSTEM_BASE}
 
-${getAgeContext(safeAgeGroup)}
+${getAgeContext(
+  safeAgeGroup
+)}
+
+${getAccessContext(
+  session,
+  safeAgeGroup
+)}
+
+${getLeadContext(
+  session,
+  safeAgeGroup
+)}
 `;
 
-    /* -----------------------------------------
+    /* =====================================================
        GET ELLE RESPONSE
-       ----------------------------------------- */
+       ===================================================== */
 
     const anthropicResponse =
       await fetch(
         "https://api.anthropic.com/v1/messages",
         {
-          method: "POST",
+          method:
+            "POST",
 
           headers: {
             "Content-Type":
@@ -776,22 +887,25 @@ ${getAgeContext(safeAgeGroup)}
               "2023-06-01",
           },
 
-          body: JSON.stringify({
-            model:
-              "claude-haiku-4-5-20251001",
+          body:
+            JSON.stringify({
+              model:
+                "claude-haiku-4-5-20251001",
 
-            max_tokens: 450,
+              max_tokens:
+                450,
 
-            system:
-              systemPrompt,
+              system:
+                systemPrompt,
 
-            messages,
-          }),
+              messages,
+            }),
         }
       );
 
     const data =
-      await anthropicResponse.json();
+      await anthropicResponse
+        .json();
 
     if (
       !anthropicResponse.ok
@@ -802,26 +916,33 @@ ${getAgeContext(safeAgeGroup)}
         data
       );
 
-      return res.status(502).json({
-        error:
-          "Elle could not respond right now.",
+      return res
+        .status(502)
+        .json({
+          error:
+            "Elle could not respond right now.",
 
-        leadCaptured: false,
+          leadCaptured:
+            false,
 
-        leadError: false,
-      });
+          leadError:
+            false,
+        });
     }
 
-    /* -----------------------------------------
-       COMBINE TEXT BLOCKS
-       ----------------------------------------- */
+    /* =====================================================
+       COMBINE TEXT
+       ===================================================== */
 
     const textBlocks =
-      Array.isArray(data.content)
+      Array.isArray(
+        data.content
+      )
         ? data.content.filter(
             (block) =>
               block &&
-              block.type === "text" &&
+              block.type ===
+                "text" &&
               typeof block.text ===
                 "string"
           )
@@ -835,27 +956,40 @@ ${getAgeContext(safeAgeGroup)}
         )
         .join("\n");
 
-    /* -----------------------------------------
-       METADATA
-       ----------------------------------------- */
+    /* =====================================================
+       RESPONSE METADATA
+       ===================================================== */
 
-    let dynamicChips = [];
+    let dynamicChips =
+      [];
 
-    let leadProgress = 0;
+    let leadProgress =
+      0;
 
-    let leadDetected = false;
+    let leadDetected =
+      false;
 
-    let leadCaptured = false;
+    let leadCaptured =
+      false;
 
-    let leadError = false;
+    let leadError =
+      false;
 
-    let lead = null;
+    let lead =
+      null;
 
-    let leadErrorMessage = null;
+    let leadErrorMessage =
+      null;
 
-    /* -----------------------------------------
-       EXTRACT CHIPS
-       ----------------------------------------- */
+    const canUseLiveElle =
+      safeAgeGroup ===
+        "18+" &&
+      session.permissions
+        ?.liveElle === true;
+
+    /* =====================================================
+       CHIPS
+       ===================================================== */
 
     const chipMatch =
       fullText.match(
@@ -869,10 +1003,39 @@ ${getAgeContext(safeAgeGroup)}
         );
     }
 
-    /* -----------------------------------------
-       EXTRACT LEAD PROGRESS
-       ADULTS ONLY
-       ----------------------------------------- */
+    /*
+      Extra enforcement.
+
+      Remove Live Elle suggestion
+      chips for members who do not
+      have Live Elle permission.
+    */
+
+    if (!canUseLiveElle) {
+      dynamicChips =
+        dynamicChips.filter(
+          (chip) => {
+            const lower =
+              chip.toLowerCase();
+
+            return !(
+              lower.includes(
+                "live elle"
+              ) ||
+              lower.includes(
+                "human support"
+              ) ||
+              lower.includes(
+                "talk to a person"
+              )
+            );
+          }
+        );
+    }
+
+    /* =====================================================
+       LEAD PROGRESS
+       ===================================================== */
 
     const stepMatches = [
       ...fullText.matchAll(
@@ -881,12 +1044,13 @@ ${getAgeContext(safeAgeGroup)}
     ];
 
     if (
-      safeAgeGroup === "18+" &&
+      canUseLiveElle &&
       stepMatches.length > 0
     ) {
       const latestStep =
         stepMatches[
-          stepMatches.length - 1
+          stepMatches.length -
+            1
         ];
 
       const parsedStep =
@@ -903,10 +1067,9 @@ ${getAgeContext(safeAgeGroup)}
       }
     }
 
-    /* -----------------------------------------
-       EXTRACT LEAD
-       ADULTS ONLY
-       ----------------------------------------- */
+    /* =====================================================
+       LEAD EXTRACTION
+       ===================================================== */
 
     const leadMatch =
       fullText.match(
@@ -915,14 +1078,16 @@ ${getAgeContext(safeAgeGroup)}
 
     if (
       leadMatch &&
-      safeAgeGroup === "18+"
+      canUseLiveElle
     ) {
-      leadDetected = true;
+      leadDetected =
+        true;
 
       try {
         const parsedLead =
           JSON.parse(
-            leadMatch[1].trim()
+            leadMatch[1]
+              .trim()
           );
 
         const name =
@@ -956,7 +1121,9 @@ ${getAgeContext(safeAgeGroup)}
         }
 
         if (
-          !isValidEmail(email)
+          !isValidEmail(
+            email
+          )
         ) {
           throw new Error(
             `The customer email is invalid: ${email}`
@@ -979,45 +1146,54 @@ ${getAgeContext(safeAgeGroup)}
           lead
         );
 
-        leadCaptured = true;
+        leadCaptured =
+          true;
 
-        leadProgress = 3;
+        leadProgress =
+          3;
       } catch (error) {
         console.error(
           "Elle lead save failed:",
           error
         );
 
-        leadError = true;
+        leadError =
+          true;
 
         leadErrorMessage =
           "I have your details, but I hit a snag sending them to Live Elle. Please try once more.";
       }
     }
 
-    /* -----------------------------------------
-       EXTRA MINOR PROTECTION
-
-       Even if the AI accidentally emits a lead
-       tag for a minor, the backend will NEVER
-       save it.
-       ----------------------------------------- */
+    /* =====================================================
+       ABSOLUTE LEAD PROTECTION
+       ===================================================== */
 
     if (
-      safeAgeGroup === "13-17"
+      !canUseLiveElle
     ) {
-      leadDetected = false;
+      leadDetected =
+        false;
 
-      leadCaptured = false;
+      leadCaptured =
+        false;
 
-      leadProgress = 0;
+      leadProgress =
+        0;
 
-      lead = null;
+      lead =
+        null;
+
+      leadError =
+        false;
+
+      leadErrorMessage =
+        null;
     }
 
-    /* -----------------------------------------
-       REMOVE HIDDEN TAGS FROM VISIBLE TEXT
-       ----------------------------------------- */
+    /* =====================================================
+       REMOVE HIDDEN TAGS
+       ===================================================== */
 
     const cleanedText =
       fullText
@@ -1039,17 +1215,20 @@ ${getAgeContext(safeAgeGroup)}
 
         .trim();
 
-    /* -----------------------------------------
+    /* =====================================================
        RESPONSE
-       ----------------------------------------- */
+       ===================================================== */
 
     return res
       .status(200)
       .json({
         content: [
           {
-            type: "text",
-            text: cleanedText,
+            type:
+              "text",
+
+            text:
+              cleanedText,
           },
         ],
 
@@ -1058,6 +1237,27 @@ ${getAgeContext(safeAgeGroup)}
 
         ageGroup:
           safeAgeGroup,
+
+        membership: {
+          signedIn:
+            true,
+
+          owner:
+            session.owner ===
+            true,
+
+          tierName:
+            session.tierName ||
+            "",
+
+          tierKey:
+            session.tierKey ||
+            "",
+
+          permissions:
+            session.permissions ||
+            {},
+        },
 
         leadProgress,
 
@@ -1077,13 +1277,17 @@ ${getAgeContext(safeAgeGroup)}
       error
     );
 
-    return res.status(500).json({
-      error:
-        "Elle hit a server hiccup.",
+    return res
+      .status(500)
+      .json({
+        error:
+          "Elle hit a server hiccup.",
 
-      leadCaptured: false,
+        leadCaptured:
+          false,
 
-      leadError: false,
-    });
+        leadError:
+          false,
+      });
   }
 }
