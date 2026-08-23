@@ -71,6 +71,18 @@ function createSixDigitCode() {
   );
 }
 
+function isOwner(email) {
+  const ownerEmail =
+    normalizeEmail(
+      process.env.ELLE_OWNER_EMAIL
+    );
+
+  return Boolean(
+    ownerEmail &&
+    email === ownerEmail
+  );
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({
@@ -92,49 +104,72 @@ export default async function handler(req, res) {
       });
     }
 
+    const owner =
+      isOwner(email);
+
+    let member = null;
+
     /*
     =========================================
-    CHECK MEMBER
+    OWNER ACCESS
     =========================================
     */
 
-    const rawMember =
-      await redisCommand([
-        "GET",
-        `elle:member:${email}`,
-      ]);
-
-    if (!rawMember) {
-      return res.status(200).json({
-        success: true,
-        codeSent: false,
-        accessActive: false,
-        reason:
-          "No active membership found",
-      });
+    if (owner) {
+      member = {
+        name: "Owner",
+        email,
+        tierName: "Owner Access",
+        tierKey: "owner",
+        accessActive: true,
+      };
     }
 
-    let member;
+    /*
+    =========================================
+    NORMAL MEMBER ACCESS
+    =========================================
+    */
 
-    try {
-      member =
-        typeof rawMember === "string"
-          ? JSON.parse(rawMember)
-          : rawMember;
-    } catch {
-      throw new Error(
-        "Membership record could not be read."
-      );
-    }
+    if (!owner) {
+      const rawMember =
+        await redisCommand([
+          "GET",
+          `elle:member:${email}`,
+        ]);
 
-    if (member?.accessActive !== true) {
-      return res.status(200).json({
-        success: true,
-        codeSent: false,
-        accessActive: false,
-        reason:
-          "Membership is not active",
-      });
+      if (!rawMember) {
+        return res.status(200).json({
+          success: true,
+          codeSent: false,
+          accessActive: false,
+          reason:
+            "No active membership found",
+        });
+      }
+
+      try {
+        member =
+          typeof rawMember === "string"
+            ? JSON.parse(rawMember)
+            : rawMember;
+      } catch {
+        throw new Error(
+          "Membership record could not be read."
+        );
+      }
+
+      if (
+        member?.accessActive !== true
+      ) {
+        return res.status(200).json({
+          success: true,
+          codeSent: false,
+          accessActive: false,
+          reason:
+            "Membership is not active",
+        });
+      }
     }
 
     /*
@@ -156,6 +191,7 @@ export default async function handler(req, res) {
         code,
         attempts: 0,
         createdAt: Date.now(),
+        owner,
       }),
       "EX",
       expiresInSeconds,
@@ -163,7 +199,7 @@ export default async function handler(req, res) {
 
     /*
     =========================================
-    ASK GOOGLE TO EMAIL CODE
+    EMAIL THE CODE
     =========================================
     */
 
@@ -227,16 +263,11 @@ export default async function handler(req, res) {
       );
     }
 
-    /*
-    =========================================
-    SUCCESS
-    =========================================
-    */
-
     return res.status(200).json({
       success: true,
       codeSent: true,
       accessActive: true,
+      owner,
 
       member: {
         name:
