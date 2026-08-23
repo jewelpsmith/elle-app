@@ -2,29 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
 <meta
   name="viewport"
   content="width=device-width,initial-scale=1,viewport-fit=cover"
 >
-
-<meta
-  name="theme-color"
-  content="#fff9f5"
->
+<meta name="theme-color" content="#fff9f5">
 
 <title>Elle · AURYNELLE∞ IDEAS</title>
 
-<link
-  rel="preconnect"
-  href="https://fonts.googleapis.com"
->
-
-<link
-  rel="preconnect"
-  href="https://fonts.gstatic.com"
-  crossorigin
->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
   href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Figtree:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
@@ -40,34 +27,33 @@
 
 :root{
   --cream:#fff9f5;
-  --cream2:#fff3ec;
+  --cream2:#fff2eb;
   --pearl:#fffdfb;
 
   --blush:#f7dfdf;
-  --blush2:#f2cecf;
-
-  --rose:#ca7188;
+  --blush2:#efcbcf;
+  --rose:#c86f87;
 
   --plum:#612b44;
   --plum2:#7a4059;
+  --deep:#432032;
 
   --gold:#bb8037;
-  --gold2:#e8c485;
+  --gold2:#e4bd78;
+  --gold3:#f5e1b9;
 
   --ink:#40363a;
-  --body:#5c5256;
-  --muted:#756a6f;
+  --body:#564c50;
+  --muted:#71666b;
 
-  --line:#e8d7d8;
-  --green:#4b9c70;
+  --line:#e8d6d8;
+  --green:#4d9f72;
 
   --shadow:
-    0 32px 80px -48px
-    rgba(79,42,54,.40);
+    0 30px 75px -44px rgba(76,40,53,.38);
 
   --soft-shadow:
-    0 20px 46px -34px
-    rgba(79,42,54,.30);
+    0 18px 45px -32px rgba(76,40,53,.28);
 }
 
 html{
@@ -90,12 +76,12 @@ body{
   background:
     radial-gradient(
       circle at 6% 0%,
-      rgba(240,201,204,.22),
+      rgba(240,201,204,.23),
       transparent 27%
     ),
     radial-gradient(
-      circle at 94% 3%,
-      rgba(232,196,133,.16),
+      circle at 94% 4%,
+      rgba(232,196,133,.18),
       transparent 26%
     ),
     linear-gradient(
@@ -127,7 +113,8 @@ a{
     transform .18s ease,
     box-shadow .18s ease,
     border-color .18s ease,
-    background .18s ease;
+    background .18s ease,
+    opacity .18s ease;
 }
 
 button:hover,
@@ -135,12 +122,113 @@ a:hover{
   transform:translateY(-1px);
 }
 
+button:focus-visible,
+a:focus-visible,
+input:focus-visible{
+  outline:3px solid rgba(187,128,55,.26);
+  outline-offset:3px;
+}
+
 .hidden{
   display:none !important;
 }
 
 /* =========================================================
-GATES
+SHARED
+========================================================= */
+
+.page{
+  width:min(1220px,calc(100% - 28px));
+  margin:18px auto 0;
+}
+
+.section{
+  margin-top:58px;
+}
+
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+
+  gap:28px;
+
+  margin-bottom:18px;
+}
+
+.section-kicker{
+  color:var(--gold);
+
+  font-size:11px;
+  font-weight:900;
+
+  letter-spacing:.17em;
+  text-transform:uppercase;
+}
+
+.section-title{
+  margin-top:6px;
+
+  color:var(--plum);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:clamp(38px,5vw,54px);
+  font-weight:500;
+
+  line-height:1.04;
+}
+
+.section-description{
+  max-width:450px;
+
+  color:#5e5458;
+
+  text-align:right;
+
+  font-size:15px;
+  line-height:1.6;
+}
+
+.primary-cta,
+.secondary-cta{
+  min-height:47px;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:0 20px;
+
+  border-radius:999px;
+
+  cursor:pointer;
+
+  font-size:13px;
+  font-weight:800;
+}
+
+.primary-cta{
+  border:none;
+
+  color:white;
+  background:var(--plum);
+
+  box-shadow:
+    0 18px 34px -24px rgba(97,43,68,.68);
+}
+
+.secondary-cta{
+  border:1px solid #dbc9cd;
+
+  color:var(--plum);
+  background:rgba(255,255,255,.92);
+}
+
+/* =========================================================
+AGE / MEMBER GATES
 ========================================================= */
 
 .age-gate,
@@ -156,11 +244,9 @@ GATES
 
   padding:20px;
 
-  background:
-    rgba(255,249,245,.96);
+  background:rgba(255,249,245,.96);
 
-  backdrop-filter:
-    blur(26px);
+  backdrop-filter:blur(26px);
 }
 
 .age-gate.show,
@@ -174,17 +260,14 @@ GATES
 
   overflow:hidden;
 
-  border:
-    1px solid
-    rgba(255,255,255,.96);
+  border:1px solid rgba(255,255,255,.96);
 
   border-radius:32px;
 
   background:white;
 
   box-shadow:
-    0 42px 100px -52px
-    rgba(82,44,59,.60);
+    0 42px 100px -52px rgba(82,44,59,.60);
 }
 
 .age-card{
@@ -196,16 +279,12 @@ GATES
   width:64px;
   height:64px;
 
-  margin:
-    0 auto 13px;
+  margin:0 auto 13px;
 
   display:grid;
   place-items:center;
 
-  border:
-    1px solid
-    rgba(187,128,55,.50);
-
+  border:1px solid rgba(187,128,55,.50);
   border-radius:50%;
 
   color:#f0d398;
@@ -243,13 +322,7 @@ GATES
     "Playfair Display",
     serif;
 
-  font-size:
-    clamp(
-      38px,
-      8vw,
-      50px
-    );
-
+  font-size:clamp(38px,8vw,50px);
   line-height:1.05;
 }
 
@@ -269,8 +342,7 @@ GATES
 .gate-copy{
   max-width:440px;
 
-  margin:
-    14px auto 0;
+  margin:14px auto 0;
 
   color:var(--body);
 
@@ -292,17 +364,19 @@ GATES
 
   padding:17px;
 
-  border:
-    1px solid
-    var(--line);
-
+  border:1px solid var(--line);
   border-radius:20px;
 
   color:var(--ink);
-
   background:white;
 
   cursor:pointer;
+}
+
+.age-option:hover{
+  border-color:rgba(200,111,135,.52);
+
+  box-shadow:var(--soft-shadow);
 }
 
 .age-option span:first-child{
@@ -337,13 +411,11 @@ GATES
   border:none;
 
   color:#74686d;
-
   background:none;
 
   cursor:pointer;
 
   font-size:13px;
-
   text-decoration:underline;
 }
 
@@ -357,7 +429,6 @@ GATES
   border-radius:14px;
 
   color:#6b563e;
-
   background:#fff2dc;
 
   font-size:14px;
@@ -368,8 +439,7 @@ GATES
 }
 
 .member-head{
-  padding:
-    33px 32px 24px;
+  padding:33px 32px 24px;
 
   text-align:center;
 
@@ -382,8 +452,7 @@ GATES
 }
 
 .member-body{
-  padding:
-    25px 30px 30px;
+  padding:25px 30px 30px;
 }
 
 .member-step{
@@ -412,19 +481,14 @@ GATES
   width:100%;
   height:52px;
 
-  padding:
-    0 16px;
+  padding:0 16px;
 
-  border:
-    1px solid
-    #ddced2;
-
+  border:1px solid #ddced2;
   border-radius:16px;
 
   outline:none;
 
   color:var(--ink);
-
   background:#fffdfc;
 
   font-size:15px;
@@ -446,7 +510,6 @@ GATES
   margin-top:11px;
 
   border:none;
-
   border-radius:999px;
 
   color:white;
@@ -464,6 +527,11 @@ GATES
   font-weight:800;
 }
 
+.member-action:disabled{
+  opacity:.55;
+  cursor:wait;
+}
+
 .member-secondary{
   width:100%;
 
@@ -472,7 +540,6 @@ GATES
   border:none;
 
   color:var(--plum);
-
   background:none;
 
   cursor:pointer;
@@ -486,8 +553,7 @@ GATES
 
   margin-top:13px;
 
-  padding:
-    12px 14px;
+  padding:12px 14px;
 
   border-radius:13px;
 
@@ -516,10 +582,7 @@ GATES
 
   padding:17px;
 
-  border:
-    1px solid
-    var(--line);
-
+  border:1px solid var(--line);
   border-radius:18px;
 
   text-align:center;
@@ -561,13 +624,11 @@ GATES
 
   margin-top:11px;
 
-  padding:
-    0 18px;
+  padding:0 18px;
 
   border-radius:999px;
 
   color:white;
-
   background:var(--plum);
 
   text-decoration:none;
@@ -597,24 +658,15 @@ HEADER
 
   z-index:1000;
 
-  border-bottom:
-    1px solid
-    rgba(232,215,216,.82);
+  border-bottom:1px solid rgba(232,215,216,.82);
 
-  background:
-    rgba(255,250,246,.90);
+  background:rgba(255,250,246,.91);
 
-  backdrop-filter:
-    blur(22px);
+  backdrop-filter:blur(22px);
 }
 
 .topbar-inner{
-  width:
-    min(
-      1220px,
-      calc(100% - 28px)
-    );
-
+  width:min(1220px,calc(100% - 28px));
   min-height:72px;
 
   margin:auto;
@@ -639,14 +691,10 @@ HEADER
   display:grid;
   place-items:center;
 
-  border:
-    1px solid
-    rgba(187,128,55,.55);
-
+  border:1px solid rgba(187,128,55,.55);
   border-radius:50%;
 
   color:var(--gold);
-
   background:white;
 
   font-family:
@@ -655,8 +703,7 @@ HEADER
 
   font-size:23px;
 
-  box-shadow:
-    var(--soft-shadow);
+  box-shadow:var(--soft-shadow);
 }
 
 .brand-copy strong{
@@ -690,8 +737,7 @@ HEADER
 }
 
 .nav a{
-  padding:
-    10px 11px;
+  padding:10px 11px;
 
   border-radius:999px;
 
@@ -701,6 +747,11 @@ HEADER
 
   font-size:12px;
   font-weight:700;
+}
+
+.nav a:hover{
+  color:var(--plum);
+  background:white;
 }
 
 .top-actions{
@@ -714,17 +765,12 @@ HEADER
 .top-button{
   min-height:37px;
 
-  padding:
-    0 13px;
+  padding:0 13px;
 
-  border:
-    1px solid
-    #e3d4d8;
-
+  border:1px solid #e3d4d8;
   border-radius:999px;
 
   color:#5f5459;
-
   background:white;
 
   font-size:12px;
@@ -742,9 +788,7 @@ OWNER
 .owner-bar{
   display:none;
 
-  border-bottom:
-    1px solid
-    #e7ded5;
+  border-bottom:1px solid #e7ded5;
 
   background:#fff4dc;
 }
@@ -754,11 +798,7 @@ OWNER
 }
 
 .owner-inner{
-  width:
-    min(
-      1220px,
-      calc(100% - 28px)
-    );
+  width:min(1220px,calc(100% - 28px));
 
   margin:auto;
 
@@ -767,8 +807,7 @@ OWNER
 
   gap:8px;
 
-  padding:
-    9px 0;
+  padding:9px 0;
 }
 
 .owner-label{
@@ -786,17 +825,12 @@ OWNER
 }
 
 .owner-test{
-  padding:
-    7px 10px;
+  padding:7px 10px;
 
-  border:
-    1px solid
-    #d9bc89;
-
+  border:1px solid #d9bc89;
   border-radius:999px;
 
   color:#6c5536;
-
   background:white;
 
   cursor:pointer;
@@ -819,21 +853,6 @@ OWNER
 }
 
 /* =========================================================
-PAGE
-========================================================= */
-
-.page{
-  width:
-    min(
-      1220px,
-      calc(100% - 28px)
-    );
-
-  margin:
-    18px auto 0;
-}
-
-/* =========================================================
 HERO
 ========================================================= */
 
@@ -844,10 +863,7 @@ HERO
 
   overflow:hidden;
 
-  border:
-    1px solid
-    #e8d6d6;
-
+  border:1px solid #e8d6d6;
   border-radius:36px;
 
   background:#fdf5ef;
@@ -891,8 +907,7 @@ HERO
 
   width:53%;
 
-  padding:
-    60px 28px 245px 48px;
+  padding:60px 28px 245px 48px;
 }
 
 .hero-kicker{
@@ -914,13 +929,7 @@ HERO
     "Playfair Display",
     serif;
 
-  font-size:
-    clamp(
-      58px,
-      7vw,
-      88px
-    );
-
+  font-size:clamp(58px,7vw,88px);
   font-weight:500;
 
   line-height:.94;
@@ -933,13 +942,7 @@ HERO
 
   color:#4e4549;
 
-  font-size:
-    clamp(
-      17px,
-      1.7vw,
-      20px
-    );
-
+  font-size:clamp(17px,1.7vw,20px);
   line-height:1.65;
 }
 
@@ -969,42 +972,8 @@ HERO
   margin-top:24px;
 }
 
-.primary-cta,
-.secondary-cta{
-  min-height:46px;
-
-  padding:
-    0 19px;
-
-  border-radius:999px;
-
-  cursor:pointer;
-
-  font-size:13px;
-  font-weight:800;
-}
-
-.primary-cta{
-  border:none;
-
-  color:white;
-
-  background:var(--plum);
-}
-
-.secondary-cta{
-  border:
-    1px solid
-    #dbc9cd;
-
-  color:var(--plum);
-
-  background:
-    rgba(255,255,255,.87);
-}
-
 /* =========================================================
-LIVE MINI
+HERO LIVE ELLE CARD
 ========================================================= */
 
 .live-mini{
@@ -1015,25 +984,19 @@ LIVE MINI
   left:47px;
   bottom:35px;
 
-  width:min(520px,44%);
+  width:min(530px,45%);
 
   padding:23px;
 
-  border:
-    1px solid
-    rgba(231,208,208,.96);
-
+  border:1px solid rgba(231,208,208,.96);
   border-radius:23px;
 
-  background:
-    rgba(255,250,246,.95);
+  background:rgba(255,250,246,.95);
 
   box-shadow:
-    0 24px 55px -36px
-    rgba(72,36,50,.50);
+    0 24px 55px -36px rgba(72,36,50,.50);
 
-  backdrop-filter:
-    blur(16px);
+  backdrop-filter:blur(16px);
 }
 
 .live-mini-kicker{
@@ -1069,6 +1032,7 @@ LIVE MINI
   text-align:center;
 
   font-size:14px;
+  line-height:1.5;
 }
 
 .live-mini-facts{
@@ -1076,7 +1040,7 @@ LIVE MINI
   justify-content:center;
   flex-wrap:wrap;
 
-  gap:9px;
+  gap:10px;
 
   margin-top:14px;
 
@@ -1086,37 +1050,44 @@ LIVE MINI
   font-weight:700;
 }
 
-.live-mini-services{
+.live-service-buttons{
   display:flex;
   flex-wrap:wrap;
 
-  gap:6px;
+  gap:7px;
 
-  margin-top:14px;
+  margin-top:15px;
 }
 
-.live-mini-services span{
-  padding:
-    7px 9px;
+.live-service-button{
+  min-height:35px;
 
-  border:
-    1px solid
-    #e3d2d4;
+  padding:0 11px;
 
+  border:1px solid #ddcdd0;
   border-radius:999px;
 
   color:#654f59;
-
   background:white;
 
+  cursor:pointer;
+
   font-size:11px;
+  font-weight:700;
+}
+
+.live-service-button:hover{
+  border-color:rgba(187,128,55,.55);
+
+  color:var(--plum);
+
+  box-shadow:
+    0 9px 22px -18px rgba(75,39,53,.55);
 }
 
 .live-mini-actions{
   display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
+  grid-template-columns:1fr 1fr;
 
   gap:8px;
 
@@ -1124,7 +1095,7 @@ LIVE MINI
 }
 
 .live-mini-actions button{
-  min-height:43px;
+  min-height:44px;
 
   border-radius:11px;
 
@@ -1138,88 +1109,120 @@ LIVE MINI
   border:none;
 
   color:white;
-
   background:var(--plum);
 }
 
 .live-mini-secondary{
-  border:
-    1px solid
-    #decdd1;
+  border:1px solid #decdd1;
 
   color:var(--plum);
-
   background:white;
 }
 
 /* =========================================================
-BENEFITS
+LUXURY VALUE STRIP
 ========================================================= */
 
-.benefit-strip{
+.value-grid{
   display:grid;
 
   grid-template-columns:
     repeat(4,1fr);
 
+  gap:10px;
+
+  margin-top:13px;
+}
+
+.value-card{
+  position:relative;
+
+  min-height:130px;
+
   overflow:hidden;
 
-  border:
-    1px solid
-    #e8d8d8;
+  padding:18px;
 
-  border-top:none;
+  border:1px solid rgba(229,208,205,.92);
+  border-radius:20px;
 
-  border-radius:
-    0 0 27px 27px;
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(232,196,133,.23),
+      transparent 37%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.96),
+      #fff3ed
+    );
+
+  box-shadow:
+    0 18px 40px -32px rgba(87,45,58,.32);
+}
+
+.value-card::before{
+  content:"";
+
+  position:absolute;
+
+  top:-32px;
+  right:-30px;
+
+  width:92px;
+  height:92px;
+
+  border:1px solid rgba(187,128,55,.22);
+  border-radius:50%;
+}
+
+.value-icon{
+  width:42px;
+  height:42px;
+
+  display:grid;
+  place-items:center;
+
+  border:1px solid rgba(187,128,55,.35);
+  border-radius:14px;
+
+  color:var(--gold);
 
   background:
     linear-gradient(
-      90deg,
-      #fff0eb,
-      #fff6f1
+      145deg,
+      #fffdf9,
+      #fff0df
     );
+
+  font-size:20px;
+
+  box-shadow:
+    0 12px 25px -22px rgba(89,48,57,.40);
 }
 
-.benefit{
-  min-height:96px;
-
-  display:flex;
-  align-items:center;
-
-  gap:11px;
-
-  padding:
-    18px 20px;
-}
-
-.benefit-icon{
-  color:var(--gold);
-
-  font-size:23px;
-}
-
-.benefit strong{
+.value-card strong{
   display:block;
 
-  color:#51464b;
+  margin-top:13px;
 
-  font-size:13px;
+  color:#54484e;
+
+  font-size:14px;
 }
 
-.benefit span{
-  display:block;
+.value-card p{
+  margin-top:4px;
 
-  margin-top:3px;
-
-  color:#74696e;
+  color:#71656a;
 
   font-size:12px;
-  line-height:1.4;
+  line-height:1.5;
 }
 
 /* =========================================================
-FEATURE CARDS
+FEATURE TRIO
 ========================================================= */
 
 .feature-row{
@@ -1230,27 +1233,22 @@ FEATURE CARDS
 
   gap:12px;
 
-  margin-top:19px;
+  margin-top:18px;
 
   padding:14px;
 
-  border:
-    1px solid
-    #e8dada;
-
+  border:1px solid #e8dada;
   border-radius:27px;
 
-  background:
-    rgba(255,255,255,.68);
+  background:rgba(255,255,255,.68);
 
-  box-shadow:
-    var(--soft-shadow);
+  box-shadow:var(--soft-shadow);
 }
 
 .feature-card{
   position:relative;
 
-  min-height:335px;
+  min-height:340px;
 
   overflow:hidden;
 
@@ -1259,10 +1257,7 @@ FEATURE CARDS
   grid-template-columns:
     1.08fr .92fr;
 
-  border:
-    1px solid
-    #e8dada;
-
+  border:1px solid #e8dada;
   border-radius:21px;
 
   background:white;
@@ -1273,12 +1268,10 @@ FEATURE CARDS
 
   z-index:3;
 
-  padding:
-    25px 9px 23px 22px;
+  padding:25px 9px 23px 22px;
 }
 
-.feature-kicker,
-.section-kicker{
+.feature-kicker{
   color:var(--gold);
 
   font-size:11px;
@@ -1312,28 +1305,36 @@ FEATURE CARDS
   line-height:1.6;
 }
 
-.feature-pills{
+.topic-buttons{
   display:flex;
   flex-wrap:wrap;
 
-  gap:5px;
+  gap:6px;
 
   margin-top:12px;
 }
 
-.feature-pills span{
-  padding:
-    6px 8px;
+.topic-button{
+  min-height:32px;
 
-  border:
-    1px solid
-    #e7d6d7;
+  padding:0 9px;
 
+  border:1px solid #e0d0d2;
   border-radius:999px;
 
-  color:#6d5660;
+  color:#6b5560;
+  background:#fffafa;
+
+  cursor:pointer;
 
   font-size:11px;
+  font-weight:700;
+}
+
+.topic-button:hover{
+  color:white;
+  background:var(--plum);
+  border-color:var(--plum);
 }
 
 .feature-button{
@@ -1345,15 +1346,12 @@ FEATURE CARDS
 
   margin-top:14px;
 
-  padding:
-    0 14px;
+  padding:0 14px;
 
   border:none;
-
   border-radius:9px;
 
   color:white;
-
   background:var(--plum);
 
   cursor:pointer;
@@ -1364,7 +1362,6 @@ FEATURE CARDS
 
 .feature-media{
   position:relative;
-
   overflow:hidden;
 }
 
@@ -1385,169 +1382,9 @@ FEATURE CARDS
     linear-gradient(
       90deg,
       white,
-      rgba(255,255,255,.3) 22%,
-      transparent 50%
+      rgba(255,255,255,.25) 23%,
+      transparent 52%
     );
-}
-
-/* =========================================================
-QUOTE
-========================================================= */
-
-.quote-section{
-  position:relative;
-
-  min-height:245px;
-
-  margin-top:18px;
-
-  overflow:hidden;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:
-    40px 195px;
-
-  border-radius:26px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fff0eb,
-      #fff8f2
-    );
-
-  text-align:center;
-}
-
-.quote-section::before{
-  content:"";
-
-  position:absolute;
-
-  left:24px;
-  bottom:0;
-
-  width:178px;
-  height:178px;
-
-  border-radius:
-    90px 90px 0 0;
-
-  background:
-    url("elle-world-garden.png")
-    center /
-    cover
-    no-repeat;
-
-  opacity:.30;
-}
-
-.quote-globe{
-  position:absolute;
-
-  right:25px;
-  bottom:-24px;
-
-  width:165px;
-  height:165px;
-
-  border-radius:50%;
-
-  background:
-    url("elle-world-4k.png")
-    center /
-    cover
-    no-repeat;
-}
-
-.quote{
-  position:relative;
-
-  z-index:3;
-
-  color:#40363a;
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:
-    clamp(
-      28px,
-      3.5vw,
-      40px
-    );
-
-  line-height:1.25;
-}
-
-.quote em{
-  display:block;
-
-  margin-top:3px;
-
-  color:var(--plum);
-
-  font-weight:500;
-}
-
-.quote-heart{
-  margin-top:12px;
-
-  color:var(--gold);
-
-  font-size:22px;
-}
-
-/* =========================================================
-SECTIONS
-========================================================= */
-
-.section{
-  margin-top:58px;
-}
-
-.section-head{
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-
-  gap:25px;
-
-  margin-bottom:18px;
-}
-
-.section-title{
-  margin-top:6px;
-
-  color:var(--plum);
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:
-    clamp(
-      38px,
-      5vw,
-      52px
-    );
-
-  font-weight:500;
-}
-
-.section-description{
-  max-width:440px;
-
-  color:#5e5458;
-
-  text-align:right;
-
-  font-size:14px;
-  line-height:1.6;
 }
 
 /* =========================================================
@@ -1557,16 +1394,12 @@ CHAT
 .chat-shell{
   overflow:hidden;
 
-  border:
-    1px solid
-    #e7d6d7;
-
+  border:1px solid #e7d6d7;
   border-radius:28px;
 
   background:white;
 
-  box-shadow:
-    var(--shadow);
+  box-shadow:var(--shadow);
 }
 
 .chat-head{
@@ -1575,12 +1408,9 @@ CHAT
 
   gap:12px;
 
-  padding:
-    18px 20px;
+  padding:18px 20px;
 
-  border-bottom:
-    1px solid
-    #eddfdf;
+  border-bottom:1px solid #eddfdf;
 
   background:
     linear-gradient(
@@ -1597,14 +1427,10 @@ CHAT
   display:grid;
   place-items:center;
 
-  border:
-    1px solid
-    rgba(187,128,55,.42);
-
+  border:1px solid rgba(187,128,55,.42);
   border-radius:50%;
 
   color:var(--plum);
-
   background:white;
 
   font-family:
@@ -1631,7 +1457,7 @@ CHAT
 
   margin-top:2px;
 
-  color:#6a5f64;
+  color:#665c60;
 
   font-size:12px;
 }
@@ -1639,17 +1465,12 @@ CHAT
 .chat-online{
   margin-left:auto;
 
-  padding:
-    8px 11px;
+  padding:8px 11px;
 
-  border:
-    1px solid
-    #e3d6d8;
-
+  border:1px solid #e3d6d8;
   border-radius:999px;
 
   color:#5f5559;
-
   background:white;
 
   font-size:11px;
@@ -1672,7 +1493,7 @@ CHAT
 }
 
 .thread{
-  height:360px;
+  height:355px;
 
   overflow-y:auto;
 
@@ -1699,8 +1520,7 @@ CHAT
 .bubble{
   max-width:76%;
 
-  padding:
-    12px 15px;
+  padding:12px 15px;
 
   border-radius:18px;
 
@@ -1711,14 +1531,10 @@ CHAT
 }
 
 .bubble-elle{
-  border:
-    1px solid
-    #e8d9db;
-
+  border:1px solid #e8d9db;
   border-top-left-radius:5px;
 
   color:#4c4246;
-
   background:white;
 }
 
@@ -1726,7 +1542,6 @@ CHAT
   border-top-right-radius:5px;
 
   color:#59464e;
-
   background:#f7e2e0;
 }
 
@@ -1772,8 +1587,7 @@ CHAT
 
 @keyframes typingBounce{
   50%{
-    transform:
-      translateY(-4px);
+    transform:translateY(-4px);
   }
 }
 
@@ -1785,22 +1599,16 @@ CHAT
 
   gap:7px;
 
-  padding:
-    11px 19px 0;
+  padding:11px 19px 0;
 }
 
 .chip{
-  padding:
-    8px 11px;
+  padding:8px 11px;
 
-  border:
-    1px solid
-    #e6d6d8;
-
+  border:1px solid #e6d6d8;
   border-radius:999px;
 
   color:#684f5a;
-
   background:white;
 
   cursor:pointer;
@@ -1814,8 +1622,7 @@ CHAT
 
   gap:9px;
 
-  padding:
-    13px 19px 16px;
+  padding:13px 19px 16px;
 }
 
 .composer input{
@@ -1824,19 +1631,14 @@ CHAT
   min-width:0;
   height:50px;
 
-  padding:
-    0 16px;
+  padding:0 16px;
 
-  border:
-    1px solid
-    #dfd1d4;
-
+  border:1px solid #dfd1d4;
   border-radius:16px;
 
   outline:none;
 
   color:var(--ink);
-
   background:white;
 
   font-size:15px;
@@ -1846,11 +1648,9 @@ CHAT
   min-width:112px;
 
   border:none;
-
   border-radius:15px;
 
   color:white;
-
   background:var(--plum);
 
   cursor:pointer;
@@ -1859,9 +1659,12 @@ CHAT
   font-weight:800;
 }
 
+.send-button:disabled{
+  opacity:.55;
+}
+
 .chat-note{
-  padding:
-    0 19px 15px;
+  padding:0 19px 15px;
 
   color:#746a6e;
 
@@ -1869,28 +1672,52 @@ CHAT
   line-height:1.5;
 }
 
+/* clean booking card */
+
 .booking-card{
-  margin:
-    13px 0;
+  width:min(540px,100%);
 
-  padding:18px;
+  margin:13px 0;
 
-  border:
-    1px solid
-    #e5d4d5;
+  overflow:hidden;
 
-  border-radius:19px;
+  border:1px solid #dfcdd0;
+  border-radius:21px;
 
   background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(232,196,133,.20),
+      transparent 34%
+    ),
     linear-gradient(
       145deg,
-      #fff8f2,
-      #fff0ec
+      #fff9f4,
+      #fff0eb
     );
+
+  box-shadow:
+    0 18px 38px -30px rgba(83,43,56,.34);
+}
+
+.booking-card-top{
+  padding:18px 18px 15px;
+}
+
+.booking-card-kicker{
+  color:var(--gold);
+
+  font-size:10px;
+  font-weight:900;
+
+  letter-spacing:.14em;
+  text-transform:uppercase;
 }
 
 .booking-card strong{
   display:block;
+
+  margin-top:4px;
 
   color:var(--plum);
 
@@ -1898,44 +1725,44 @@ CHAT
     "Playfair Display",
     serif;
 
-  font-size:21px;
+  font-size:23px;
 }
 
 .booking-card p{
-  margin-top:6px;
+  margin-top:7px;
 
-  color:#5e5358;
+  color:#5b5054;
 
   font-size:13px;
-  line-height:1.55;
+  line-height:1.6;
+}
+
+.booking-card-action{
+  display:block;
+
+  padding:0 18px 18px;
 }
 
 .booking-card a{
-  display:inline-flex;
+  min-height:46px;
+
+  display:flex;
   align-items:center;
   justify-content:center;
-
-  min-height:42px;
-
-  margin-top:11px;
-
-  padding:
-    0 15px;
 
   border-radius:999px;
 
   color:white;
-
   background:var(--plum);
 
   text-decoration:none;
 
-  font-size:12px;
+  font-size:13px;
   font-weight:800;
 }
 
 /* =========================================================
-LIVE ELLE
+LIVE ELLE DETAIL
 ========================================================= */
 
 .live-detail{
@@ -1944,14 +1771,9 @@ LIVE ELLE
   overflow:hidden;
 
   display:grid;
+  grid-template-columns:1.05fr .95fr;
 
-  grid-template-columns:
-    1.05fr .95fr;
-
-  border:
-    1px solid
-    #e7d7d7;
-
+  border:1px solid #e7d7d7;
   border-radius:28px;
 
   background:
@@ -1961,8 +1783,7 @@ LIVE ELLE
       #fff1eb
     );
 
-  box-shadow:
-    var(--soft-shadow);
+  box-shadow:var(--soft-shadow);
 }
 
 .live-detail-copy{
@@ -1978,14 +1799,10 @@ LIVE ELLE
     "Playfair Display",
     serif;
 
-  font-size:
-    clamp(
-      34px,
-      5vw,
-      47px
-    );
-
+  font-size:clamp(34px,5vw,47px);
   font-weight:500;
+
+  line-height:1.08;
 }
 
 .live-detail-copy p{
@@ -1993,39 +1810,69 @@ LIVE ELLE
 
   margin-top:11px;
 
-  color:#5a5054;
+  color:#584e52;
 
   font-size:15px;
   line-height:1.65;
 }
 
-.live-facts,
-.live-services{
+.live-facts{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:14px;
+
+  margin-top:17px;
+
+  color:#61565b;
+
+  font-size:12px;
+  font-weight:700;
+}
+
+.live-fact{
+  display:flex;
+  align-items:center;
+
+  gap:6px;
+}
+
+.live-fact-symbol{
+  color:var(--gold);
+
+  font-size:16px;
+}
+
+.live-detail-services{
   display:flex;
   flex-wrap:wrap;
 
   gap:7px;
 
-  margin-top:14px;
+  margin-top:18px;
 }
 
-.live-facts span,
-.live-services span{
-  padding:
-    8px 10px;
+.live-detail-service{
+  min-height:38px;
 
-  border:
-    1px solid
-    #e4d6d7;
+  padding:0 12px;
 
+  border:1px solid #ddcdd0;
   border-radius:999px;
 
   color:#654f59;
-
   background:white;
 
-  font-size:11px;
+  cursor:pointer;
+
+  font-size:12px;
   font-weight:700;
+}
+
+.live-detail-service:hover{
+  color:white;
+  background:var(--plum);
+  border-color:var(--plum);
 }
 
 .live-actions{
@@ -2034,7 +1881,7 @@ LIVE ELLE
 
   gap:9px;
 
-  margin-top:18px;
+  margin-top:19px;
 }
 
 .live-side{
@@ -2047,8 +1894,8 @@ LIVE ELLE
   background:
     radial-gradient(
       circle,
-      rgba(232,196,133,.24),
-      transparent 38%
+      rgba(232,196,133,.25),
+      transparent 40%
     ),
     linear-gradient(
       145deg,
@@ -2057,22 +1904,19 @@ LIVE ELLE
     );
 }
 
-.calendar-card{
-  width:min(360px,100%);
+.booking-panel{
+  width:min(380px,100%);
 
-  padding:25px;
+  padding:26px;
 
-  border:
-    1px solid
-    #dfcecf;
-
+  border:1px solid #dfcecf;
   border-radius:25px;
 
-  background:
-    rgba(255,255,255,.92);
+  background:rgba(255,255,255,.93);
 
-  box-shadow:
-    var(--soft-shadow);
+  box-shadow:var(--soft-shadow);
+
+  text-align:center;
 }
 
 .calendar-graphic{
@@ -2083,13 +1927,9 @@ LIVE ELLE
   width:82px;
   height:82px;
 
-  margin:
-    0 auto 17px;
+  margin:0 auto 17px;
 
-  border:
-    1px solid
-    #dfcdcf;
-
+  border:1px solid #dfcdcf;
   border-radius:22px;
 
   background:#fff9f5;
@@ -2125,69 +1965,66 @@ LIVE ELLE
     serif;
 
   font-size:27px;
-
-  text-align:center;
 }
 
-.calendar-title{
+.booking-panel-title{
   color:var(--plum);
 
   font-family:
     "Playfair Display",
     serif;
 
-  font-size:25px;
-
-  text-align:center;
+  font-size:26px;
+  line-height:1.15;
 }
 
-.calendar-sub{
-  margin-top:6px;
+.booking-panel-copy{
+  margin-top:7px;
 
-  color:#61565a;
-
-  text-align:center;
+  color:#5f5559;
 
   font-size:14px;
-  line-height:1.5;
+  line-height:1.55;
 }
 
-.calendar-features{
+.booking-panel-actions{
   display:grid;
 
-  gap:8px;
+  gap:9px;
 
-  margin-top:17px;
+  margin-top:19px;
 }
 
-.calendar-feature{
-  padding:
-    10px 11px;
+.booking-panel-actions button{
+  width:100%;
+  min-height:47px;
 
-  border:
-    1px solid
-    #e6d8da;
+  border-radius:12px;
 
-  border-radius:13px;
+  cursor:pointer;
 
-  color:#5d5357;
-
-  background:#fffaf8;
-
-  font-size:12px;
-  font-weight:700;
+  font-size:13px;
+  font-weight:800;
 }
 
-.calendar-note{
-  margin-top:14px;
+.booking-start{
+  border:none;
 
-  padding-top:13px;
+  color:white;
+  background:var(--plum);
+}
 
-  border-top:
-    1px solid
-    #eadedf;
+.booking-explain{
+  border:1px solid #dfced1;
 
-  color:#72676c;
+  color:var(--plum);
+  background:#fffdfd;
+}
+
+.booking-panel-note{
+  margin-top:15px;
+
+  color:#766a70;
 
   font-size:12px;
   line-height:1.55;
@@ -2205,11 +2042,9 @@ LIVE ELLE
 
   padding:20px;
 
-  background:
-    rgba(255,249,245,.87);
+  background:rgba(255,249,245,.88);
 
-  backdrop-filter:
-    blur(11px);
+  backdrop-filter:blur(11px);
 }
 
 .feature-lock-card{
@@ -2217,18 +2052,14 @@ LIVE ELLE
 
   padding:23px;
 
-  border:
-    1px solid
-    #e6d6d8;
-
+  border:1px solid #e6d6d8;
   border-radius:22px;
 
   text-align:center;
 
   background:white;
 
-  box-shadow:
-    var(--soft-shadow);
+  box-shadow:var(--soft-shadow);
 }
 
 .feature-lock-card span{
@@ -2261,7 +2092,7 @@ LIVE ELLE
 }
 
 /* =========================================================
-ELLE WORLD BUILT DIRECTLY INTO INDEX
+ELLE WORLD
 ========================================================= */
 
 .world-luxury{
@@ -2271,10 +2102,7 @@ ELLE WORLD BUILT DIRECTLY INTO INDEX
 
   overflow:hidden;
 
-  border:
-    1px solid
-    #e7d7d8;
-
+  border:1px solid #e7d7d8;
   border-radius:32px;
 
   background:
@@ -2300,8 +2128,7 @@ ELLE WORLD BUILT DIRECTLY INTO INDEX
       #f8e4e4
     );
 
-  box-shadow:
-    var(--shadow);
+  box-shadow:var(--shadow);
 }
 
 .world-luxury-layout{
@@ -2310,9 +2137,7 @@ ELLE WORLD BUILT DIRECTLY INTO INDEX
   z-index:3;
 
   display:grid;
-
-  grid-template-columns:
-    .88fr 1.12fr;
+  grid-template-columns:.88fr 1.12fr;
 
   min-height:570px;
 }
@@ -2322,8 +2147,7 @@ ELLE WORLD BUILT DIRECTLY INTO INDEX
   flex-direction:column;
   justify-content:center;
 
-  padding:
-    42px 20px 42px 42px;
+  padding:42px 20px 42px 42px;
 }
 
 .world-luxury-title{
@@ -2335,13 +2159,7 @@ ELLE WORLD BUILT DIRECTLY INTO INDEX
     "Playfair Display",
     serif;
 
-  font-size:
-    clamp(
-      44px,
-      6vw,
-      67px
-    );
-
+  font-size:clamp(44px,6vw,67px);
   font-weight:500;
 
   line-height:.98;
@@ -2394,19 +2212,14 @@ ELLE WORLD BUILT DIRECTLY INTO INDEX
 
   gap:9px;
 
-  padding:
-    10px 13px;
+  padding:10px 13px;
 
-  border:
-    1px solid
-    #e4d4d6;
-
+  border:1px solid #e4d4d6;
   border-radius:999px;
 
   color:#5f5459;
 
-  background:
-    rgba(255,255,255,.84);
+  background:rgba(255,255,255,.84);
 
   font-size:13px;
   font-weight:700;
@@ -2421,10 +2234,8 @@ ELLE WORLD BUILT DIRECTLY INTO INDEX
   background:#51a877;
 
   box-shadow:
-    0 0 0 5px
-    rgba(81,168,119,.10),
-    0 0 16px
-    rgba(81,168,119,.40);
+    0 0 0 5px rgba(81,168,119,.10),
+    0 0 16px rgba(81,168,119,.40);
 
   animation:
     worldPulse
@@ -2454,14 +2265,10 @@ ELLE WORLD BUILT DIRECTLY INTO INDEX
 .world-stat{
   padding:15px;
 
-  border:
-    1px solid
-    #e6d6d8;
-
+  border:1px solid #e6d6d8;
   border-radius:18px;
 
-  background:
-    rgba(255,255,255,.82);
+  background:rgba(255,255,255,.82);
 }
 
 .world-stat strong{
@@ -2474,7 +2281,6 @@ ELLE WORLD BUILT DIRECTLY INTO INDEX
     serif;
 
   font-size:31px;
-
   line-height:1;
 }
 
@@ -2502,19 +2308,14 @@ ELLE WORLD BUILT DIRECTLY INTO INDEX
 }
 
 .world-country{
-  padding:
-    8px 10px;
+  padding:8px 10px;
 
-  border:
-    1px solid
-    #e8d9da;
-
+  border:1px solid #e8d9da;
   border-radius:999px;
 
   color:#62575c;
 
-  background:
-    rgba(255,255,255,.84);
+  background:rgba(255,255,255,.84);
 
   font-size:12px;
   font-weight:700;
@@ -2540,8 +2341,6 @@ ELLE WORLD BUILT DIRECTLY INTO INDEX
 
   font-size:12px;
 }
-
-/* globe visual */
 
 .world-visual{
   position:relative;
@@ -2595,10 +2394,7 @@ ELLE WORLD BUILT DIRECTLY INTO INDEX
 
   aspect-ratio:1;
 
-  border:
-    1px solid
-    rgba(187,128,55,.35);
-
+  border:1px solid rgba(187,128,55,.35);
   border-radius:50%;
 
   transform:
@@ -2654,8 +2450,7 @@ ELLE WORLD BUILT DIRECTLY INTO INDEX
 
 @keyframes globeFloat{
   50%{
-    transform:
-      translateY(-8px);
+    transform:translateY(-8px);
   }
 }
 
@@ -2672,14 +2467,12 @@ ELLE WORLD BUILT DIRECTLY INTO INDEX
     34s linear infinite;
 
   box-shadow:
-    inset 0 0 34px
-    rgba(255,255,255,.30);
+    inset 0 0 34px rgba(255,255,255,.30);
 }
 
 @keyframes globeRotate{
   to{
-    transform:
-      rotate(360deg);
+    transform:rotate(360deg);
   }
 }
 
@@ -2696,10 +2489,8 @@ ELLE WORLD BUILT DIRECTLY INTO INDEX
   background:#ffd47f;
 
   box-shadow:
-    0 0 0 7px
-    rgba(255,212,127,.12),
-    0 0 26px
-    rgba(221,159,73,.70);
+    0 0 0 7px rgba(255,212,127,.12),
+    0 0 26px rgba(221,159,73,.70);
 
   animation:
     worldSpark
@@ -2750,16 +2541,12 @@ RADIO
 
   overflow:hidden;
 
-  border:
-    1px solid
-    #e6d4d6;
-
+  border:1px solid #e6d4d6;
   border-radius:30px;
 
   background:#2c1c23;
 
-  box-shadow:
-    var(--shadow);
+  box-shadow:var(--shadow);
 }
 
 .radio-shell > img{
@@ -2805,13 +2592,7 @@ RADIO
     "Playfair Display",
     serif;
 
-  font-size:
-    clamp(
-      39px,
-      6vw,
-      58px
-    );
-
+  font-size:clamp(39px,6vw,58px);
   font-weight:500;
 }
 
@@ -2830,17 +2611,12 @@ RADIO
 
   padding:17px;
 
-  border:
-    1px solid
-    #dfd0d2;
-
+  border:1px solid #dfd0d2;
   border-radius:19px;
 
-  background:
-    rgba(255,255,255,.84);
+  background:rgba(255,255,255,.85);
 
-  backdrop-filter:
-    blur(12px);
+  backdrop-filter:blur(12px);
 }
 
 .now-playing small{
@@ -2882,14 +2658,10 @@ RADIO
   width:42px;
   height:42px;
 
-  border:
-    1px solid
-    #ddd0d2;
-
+  border:1px solid #ddd0d2;
   border-radius:50%;
 
   color:var(--plum);
-
   background:white;
 
   cursor:pointer;
@@ -2902,7 +2674,6 @@ RADIO
   border:none;
 
   color:white;
-
   background:var(--plum);
 }
 
@@ -2920,33 +2691,25 @@ RADIO
 
   gap:9px;
 
-  padding:
-    10px 11px;
+  padding:10px 11px;
 
-  border:
-    1px solid
-    transparent;
-
+  border:1px solid transparent;
   border-radius:12px;
 
   color:#5f5459;
 
-  background:
-    rgba(255,255,255,.58);
+  background:rgba(255,255,255,.62);
 
   cursor:pointer;
 
   font-size:13px;
-
   text-align:left;
 }
 
 .track.active{
-  border-color:
-    rgba(187,128,55,.42);
+  border-color:rgba(187,128,55,.42);
 
   color:var(--plum);
-
   background:white;
 }
 
@@ -2973,11 +2736,9 @@ RADIO
 
   padding:18px;
 
-  background:
-    rgba(34,21,28,.84);
+  background:rgba(34,21,28,.84);
 
-  backdrop-filter:
-    blur(18px);
+  backdrop-filter:blur(18px);
 }
 
 .turntable-takeover.show{
@@ -3011,17 +2772,13 @@ RADIO
 
   overflow:hidden;
 
-  border:
-    1px solid
-    rgba(255,255,255,.26);
-
+  border:1px solid rgba(255,255,255,.26);
   border-radius:34px;
 
   background:#25161d;
 
   box-shadow:
-    0 50px 110px -35px
-    rgba(0,0,0,.72);
+    0 50px 110px -35px rgba(0,0,0,.72);
 }
 
 .turntable-stage img{
@@ -3049,6 +2806,36 @@ RADIO
   }
 }
 
+.turntable-stage::after{
+  content:"";
+
+  position:absolute;
+
+  left:55%;
+  top:46%;
+
+  width:min(245px,25vw);
+
+  aspect-ratio:1;
+
+  border:2px solid rgba(240,207,145,.38);
+  border-radius:50%;
+
+  box-shadow:
+    0 0 60px rgba(240,207,145,.32),
+    inset 0 0 45px rgba(240,207,145,.15);
+
+  animation:
+    recordGlow
+    1.15s linear infinite;
+}
+
+@keyframes recordGlow{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
 .takeover-title{
   position:absolute;
 
@@ -3057,22 +2844,16 @@ RADIO
   left:29px;
   bottom:29px;
 
-  padding:
-    13px 17px;
+  padding:13px 17px;
 
-  border:
-    1px solid
-    rgba(255,255,255,.15);
-
+  border:1px solid rgba(255,255,255,.15);
   border-radius:15px;
 
   color:white;
 
-  background:
-    rgba(42,25,34,.69);
+  background:rgba(42,25,34,.69);
 
-  backdrop-filter:
-    blur(12px);
+  backdrop-filter:blur(12px);
 }
 
 .takeover-title small{
@@ -3100,7 +2881,7 @@ RADIO
 }
 
 /* =========================================================
-TRUST + FOOTER
+TRUST
 ========================================================= */
 
 .trust-strip{
@@ -3111,19 +2892,14 @@ TRUST + FOOTER
 
   margin-top:50px;
 
-  padding:
-    18px 20px;
+  padding:18px 20px;
 
-  border:
-    1px solid
-    #e7d8da;
-
+  border:1px solid #e7d8da;
   border-radius:22px;
 
   background:white;
 
-  box-shadow:
-    var(--soft-shadow);
+  box-shadow:var(--soft-shadow);
 }
 
 .trust-icon{
@@ -3132,6 +2908,8 @@ TRUST + FOOTER
 
   display:grid;
   place-items:center;
+
+  flex-shrink:0;
 
   border-radius:14px;
 
@@ -3164,13 +2942,11 @@ TRUST + FOOTER
 }
 
 .trust-button{
-  padding:
-    8px 10px;
+  padding:8px 10px;
 
   border:none;
 
   color:var(--plum);
-
   background:none;
 
   cursor:pointer;
@@ -3180,8 +2956,7 @@ TRUST + FOOTER
 }
 
 .footer{
-  padding:
-    35px 0 30px;
+  padding:35px 0 30px;
 
   color:#756b70;
 
@@ -3202,7 +2977,7 @@ TRUST + FOOTER
 }
 
 /* =========================================================
-MODAL
+TRUST MODAL
 ========================================================= */
 
 .modal{
@@ -3217,11 +2992,9 @@ MODAL
 
   padding:18px;
 
-  background:
-    rgba(48,30,37,.42);
+  background:rgba(48,30,37,.42);
 
-  backdrop-filter:
-    blur(15px);
+  backdrop-filter:blur(15px);
 }
 
 .modal.show{
@@ -3230,7 +3003,6 @@ MODAL
 
 .modal-card{
   width:min(780px,100%);
-
   max-height:87vh;
 
   overflow:auto;
@@ -3242,8 +3014,7 @@ MODAL
   background:#fffdfb;
 
   box-shadow:
-    0 40px 100px -50px
-    rgba(44,24,34,.70);
+    0 40px 100px -50px rgba(44,24,34,.70);
 }
 
 .modal-head{
@@ -3268,14 +3039,10 @@ MODAL
   width:41px;
   height:41px;
 
-  border:
-    1px solid
-    #dfd2d5;
-
+  border:1px solid #dfd2d5;
   border-radius:50%;
 
   color:var(--plum);
-
   background:white;
 
   cursor:pointer;
@@ -3283,9 +3050,7 @@ MODAL
 
 .trust-grid{
   display:grid;
-
-  grid-template-columns:
-    1fr 1fr;
+  grid-template-columns:1fr 1fr;
 
   gap:10px;
 
@@ -3295,10 +3060,7 @@ MODAL
 .trust-item{
   padding:17px;
 
-  border:
-    1px solid
-    #e6d7d9;
-
+  border:1px solid #e6d7d9;
   border-radius:18px;
 
   background:white;
@@ -3320,7 +3082,7 @@ MODAL
 }
 
 /* =========================================================
-RESPONSIVE
+TABLET
 ========================================================= */
 
 @media(max-width:950px){
@@ -3335,16 +3097,26 @@ RESPONSIVE
 
   .hero-copy{
     width:64%;
+
     padding-left:31px;
   }
 
   .live-mini{
     left:27px;
-    width:min(540px,60%);
+
+    width:min(550px,61%);
+  }
+
+  .value-grid{
+    grid-template-columns:1fr 1fr;
   }
 
   .feature-row{
     grid-template-columns:1fr;
+  }
+
+  .feature-card{
+    min-height:300px;
   }
 
   .live-detail{
@@ -3356,8 +3128,7 @@ RESPONSIVE
   }
 
   .world-luxury-copy{
-    padding:
-      35px 30px 0;
+    padding:35px 30px 0;
   }
 
   .world-visual{
@@ -3369,13 +3140,35 @@ RESPONSIVE
   }
 }
 
+/* =========================================================
+MOBILE
+========================================================= */
+
 @media(max-width:680px){
+
+  body{
+    font-size:15px;
+  }
 
   .page,
   .topbar-inner,
   .owner-inner{
-    width:
-      calc(100% - 18px);
+    width:calc(100% - 18px);
+  }
+
+  .topbar-inner{
+    min-height:62px;
+  }
+
+  .brand-mark{
+    width:40px;
+    height:40px;
+
+    font-size:20px;
+  }
+
+  .brand-copy strong{
+    font-size:13px;
   }
 
   .brand-copy span,
@@ -3383,134 +3176,461 @@ RESPONSIVE
     display:none;
   }
 
+  .top-actions{
+    gap:4px;
+  }
+
+  .top-button{
+    min-height:34px;
+
+    padding:0 9px;
+
+    font-size:10px;
+  }
+
+  /* hero */
+
   .hero{
     min-height:auto;
 
-    padding-bottom:18px;
+    display:flex;
+    flex-direction:column;
+
+    overflow:hidden;
+
+    padding-bottom:17px;
+
+    border-radius:26px;
   }
 
   .hero-image{
     position:relative;
+    inset:auto;
 
-    height:450px;
+    order:1;
 
+    width:100%;
+    height:430px;
+
+    object-fit:cover;
     object-position:center top;
   }
 
   .hero-shade{
-    background:
-      linear-gradient(
-        180deg,
-        #fff9f4 0%,
-        rgba(255,249,244,.08) 34%,
-        transparent 60%
-      );
+    display:none;
   }
 
   .hero-copy{
+    position:relative;
+
+    order:2;
+
     width:100%;
 
-    padding:
-      30px 20px 20px;
+    padding:27px 18px 16px;
+
+    background:
+      linear-gradient(
+        180deg,
+        #fffaf6,
+        #fff5ef
+      );
+  }
+
+  .hero-kicker{
+    font-size:11px;
   }
 
   .hero-title{
-    font-size:
-      clamp(
-        50px,
-        14vw,
-        70px
-      );
+    font-size:clamp(46px,13vw,64px);
+    line-height:.95;
   }
+
+  .hero-copy p{
+    max-width:100%;
+
+    margin-top:16px;
+
+    font-size:16px;
+    line-height:1.6;
+  }
+
+  .hero-heart{
+    margin-top:12px;
+
+    font-size:14px;
+  }
+
+  .hero-actions{
+    display:grid;
+    grid-template-columns:1fr;
+
+    gap:9px;
+
+    margin-top:19px;
+  }
+
+  .hero-actions button{
+    width:100%;
+  }
+
+  /* hero Live Elle */
 
   .live-mini{
     position:relative;
 
+    order:3;
+
     left:auto;
+    right:auto;
     bottom:auto;
 
-    width:
-      calc(100% - 28px);
+    width:calc(100% - 24px);
 
-    margin:
-      -45px auto 0;
+    margin:2px auto 0;
+
+    padding:20px 16px;
+
+    border-radius:21px;
   }
 
-  .benefit-strip{
-    grid-template-columns:
-      1fr 1fr;
+  .live-mini-title{
+    font-size:27px;
+    line-height:1.15;
   }
 
-  .feature-card{
-    grid-template-columns:
-      1.1fr .9fr;
+  .live-mini-sub{
+    font-size:14px;
   }
 
-  .quote-section{
-    padding:
-      38px 24px 180px;
+  .live-mini-facts{
+    gap:8px;
+
+    font-size:12px;
   }
 
-  .quote-section::before{
-    width:125px;
-    height:125px;
+  .live-service-buttons{
+    justify-content:center;
   }
 
-  .quote-globe{
-    width:135px;
-    height:135px;
+  .live-service-button{
+    font-size:11px;
   }
 
-  .section-head{
-    display:block;
+  .live-mini-actions{
+    grid-template-columns:1fr;
   }
 
-  .section-description{
-    margin-top:7px;
-
-    text-align:left;
+  .live-mini-actions button{
+    min-height:47px;
 
     font-size:13px;
   }
 
-  .bubble{
-    max-width:89%;
+  /* luxury value cards */
+
+  .value-grid{
+    grid-template-columns:1fr;
+
+    gap:9px;
+  }
+
+  .value-card{
+    min-height:auto;
+
+    display:grid;
+    grid-template-columns:45px 1fr;
+
+    column-gap:12px;
+
+    padding:15px;
+  }
+
+  .value-icon{
+    grid-row:1 / span 2;
+  }
+
+  .value-card strong{
+    margin-top:1px;
+
+    font-size:13px;
+  }
+
+  .value-card p{
+    font-size:12px;
+  }
+
+  /* feature cards */
+
+  .feature-row{
+    grid-template-columns:1fr;
+
+    gap:12px;
+
+    padding:10px;
+  }
+
+  .feature-card{
+    grid-template-columns:1fr;
+
+    min-height:auto;
+  }
+
+  .feature-copy{
+    padding:22px 18px 18px;
+  }
+
+  .feature-copy h3{
+    font-size:29px;
+  }
+
+  .feature-copy p{
     font-size:14px;
+  }
+
+  .feature-media{
+    min-height:225px;
+  }
+
+  .feature-media::after{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255,255,255,.08),
+        transparent
+      );
+  }
+
+  /* sections */
+
+  .section{
+    margin-top:42px;
+  }
+
+  .section-head{
+    display:block;
+
+    margin-bottom:14px;
+  }
+
+  .section-title{
+    font-size:clamp(35px,10vw,46px);
+  }
+
+  .section-description{
+    max-width:none;
+
+    margin-top:8px;
+
+    text-align:left;
+
+    font-size:14px;
+  }
+
+  /* chat */
+
+  .chat-head{
+    padding:16px;
+  }
+
+  .chat-mark{
+    width:41px;
+    height:41px;
+
+    font-size:19px;
+  }
+
+  .chat-head strong{
+    font-size:21px;
+  }
+
+  .chat-head small{
+    font-size:11px;
+  }
+
+  .chat-online{
+    display:none;
+  }
+
+  .thread{
+    height:330px;
+
+    padding:16px;
+  }
+
+  .bubble{
+    max-width:90%;
+
+    font-size:14px;
+    line-height:1.56;
+  }
+
+  .chips{
+    padding:10px 16px 0;
+  }
+
+  .chip{
+    font-size:11px;
   }
 
   .composer{
     flex-direction:column;
+
+    padding:12px 16px 16px;
+  }
+
+  .composer input{
+    height:48px;
   }
 
   .send-button{
-    min-height:46px;
+    width:100%;
+    min-height:47px;
   }
 
+  .booking-card{
+    width:100%;
+  }
+
+  /* Live Elle */
+
+  .live-detail{
+    grid-template-columns:1fr;
+  }
+
+  .live-detail-copy{
+    padding:24px 18px;
+  }
+
+  .live-detail-copy h3{
+    font-size:36px;
+  }
+
+  .live-detail-copy p{
+    font-size:14px;
+  }
+
+  .live-facts{
+    display:grid;
+
+    gap:9px;
+  }
+
+  .live-detail-services{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .live-detail-service{
+    width:100%;
+
+    padding:0 8px;
+
+    font-size:11px;
+  }
+
+  .live-actions{
+    flex-direction:column;
+  }
+
+  .live-actions button{
+    width:100%;
+  }
+
+  .live-side{
+    padding:18px;
+  }
+
+  .booking-panel{
+    width:100%;
+
+    padding:21px 16px;
+  }
+
+  .booking-panel-title{
+    font-size:24px;
+  }
+
+  /* Elle World */
+
   .world-luxury{
+    min-height:auto;
+
+    border-radius:24px;
+  }
+
+  .world-luxury-layout{
+    grid-template-columns:1fr;
+
     min-height:auto;
   }
 
   .world-luxury-copy{
-    padding:
-      28px 19px 0;
+    padding:27px 18px 0;
+  }
+
+  .world-luxury-title{
+    font-size:clamp(42px,12vw,58px);
+  }
+
+  .world-script{
+    font-size:26px;
   }
 
   .world-copy{
     font-size:14px;
   }
 
+  .world-live-pill{
+    width:100%;
+
+    font-size:12px;
+  }
+
+  .world-stats{
+    max-width:none;
+  }
+
+  .world-stat{
+    padding:13px;
+  }
+
+  .world-stat strong{
+    font-size:27px;
+  }
+
+  .world-stat span{
+    font-size:10px;
+  }
+
+  .world-country{
+    font-size:11px;
+  }
+
+  .world-privacy{
+    font-size:11px;
+  }
+
   .world-visual{
     min-height:350px;
 
-    padding:15px;
+    padding:10px 14px 24px;
   }
 
   .globe-stage{
-    width:min(82%,340px);
+    width:min(82%,320px);
   }
 
+  /* radio */
+
   .radio-shell{
-    min-height:640px;
+    min-height:620px;
+
+    border-radius:24px;
+  }
+
+  .radio-shell > img{
+    object-position:center bottom;
   }
 
   .radio-shade{
@@ -3518,21 +3638,56 @@ RESPONSIVE
       linear-gradient(
         180deg,
         rgba(255,249,245,.98),
-        rgba(255,249,245,.92) 63%,
-        rgba(255,249,245,.17)
+        rgba(255,249,245,.94) 62%,
+        rgba(255,249,245,.22)
       );
   }
 
   .radio-content{
     width:100%;
 
-    padding:
-      28px 20px;
+    padding:26px 18px;
+  }
+
+  .radio-content h3{
+    font-size:42px;
+    line-height:1.04;
+  }
+
+  .radio-script{
+    font-size:25px;
+  }
+
+  .track{
+    font-size:12px;
+  }
+
+  /* trust */
+
+  .trust-strip{
+    align-items:flex-start;
+    flex-direction:column;
+
+    gap:10px;
+  }
+
+  .trust-button{
+    padding-left:0;
   }
 
   .trust-grid{
     grid-template-columns:1fr;
   }
+
+  .modal-card{
+    padding:20px 16px;
+  }
+
+  .modal-title{
+    font-size:30px;
+  }
+
+  /* owner */
 
   .owner-inner{
     align-items:flex-start;
@@ -3545,6 +3700,39 @@ RESPONSIVE
 
   .age-options{
     grid-template-columns:1fr;
+  }
+
+  /* takeover */
+
+  .turntable-stage{
+    width:94vw;
+    height:min(72vh,560px);
+
+    border-radius:24px;
+  }
+
+  .turntable-stage::after{
+    width:34vw;
+  }
+
+  .takeover-title{
+    left:18px;
+    bottom:18px;
+  }
+}
+
+@media(max-width:390px){
+
+  .hero-image{
+    height:390px;
+  }
+
+  .live-detail-services{
+    grid-template-columns:1fr;
+  }
+
+  .world-stats{
+    grid-template-columns:1fr 1fr;
   }
 }
 
@@ -3564,10 +3752,12 @@ RESPONSIVE
 
 <body>
 
-<div
-  id="ageGate"
-  class="age-gate"
->
+<!-- =========================================================
+AGE GATE
+========================================================= -->
+
+<div id="ageGate" class="age-gate">
+
   <div class="age-card">
 
     <div class="gate-mark">
@@ -3632,12 +3822,15 @@ RESPONSIVE
     </div>
 
   </div>
+
 </div>
 
-<div
-  id="memberGate"
-  class="member-gate"
->
+<!-- =========================================================
+MEMBERSHIP
+========================================================= -->
+
+<div id="memberGate" class="member-gate">
+
   <div class="member-card">
 
     <div class="member-head">
@@ -3766,13 +3959,18 @@ RESPONSIVE
 
       <div class="member-foot">
         Sign-in codes expire after about 10 minutes.
-        Verified Elle sessions can remain active for up to 30 days.
+        Verified sessions can remain active for up to 30 days.
       </div>
 
     </div>
 
   </div>
+
 </div>
+
+<!-- =========================================================
+HEADER
+========================================================= -->
 
 <header class="topbar">
 
@@ -3785,18 +3983,27 @@ RESPONSIVE
       </div>
 
       <div class="brand-copy">
-        <strong>AURYNELLE∞ IDEAS</strong>
-        <span>IDEAS · CLARITY · CONNECTION</span>
+
+        <strong>
+          AURYNELLE∞ IDEAS
+        </strong>
+
+        <span>
+          IDEAS · CLARITY · CONNECTION
+        </span>
+
       </div>
 
     </div>
 
     <nav class="nav">
+
       <a href="#home">Home</a>
       <a href="#ask">Ask Elle</a>
       <a href="#live">Live Elle</a>
       <a href="#world">Elle World</a>
       <a href="#radio">Radio</a>
+
     </nav>
 
     <div class="top-actions">
@@ -3830,10 +4037,12 @@ RESPONSIVE
 
 </header>
 
-<div
-  id="ownerBar"
-  class="owner-bar"
->
+<!-- =========================================================
+OWNER
+========================================================= -->
+
+<div id="ownerBar" class="owner-bar">
+
   <div class="owner-inner">
 
     <div class="owner-label">
@@ -3843,6 +4052,7 @@ RESPONSIVE
     <div class="owner-buttons">
 
       <button
+        type="button"
         class="owner-test active"
         data-test-tier="owner"
       >
@@ -3850,6 +4060,7 @@ RESPONSIVE
       </button>
 
       <button
+        type="button"
         class="owner-test"
         data-test-tier="spark"
       >
@@ -3857,6 +4068,7 @@ RESPONSIVE
       </button>
 
       <button
+        type="button"
         class="owner-test"
         data-test-tier="idea-circle"
       >
@@ -3864,6 +4076,7 @@ RESPONSIVE
       </button>
 
       <button
+        type="button"
         class="owner-test"
         data-test-tier="infinite"
       >
@@ -3880,14 +4093,16 @@ RESPONSIVE
     </div>
 
   </div>
+
 </div>
 
 <main class="page">
 
-<section
-  id="home"
-  class="hero"
->
+<!-- =========================================================
+HERO
+========================================================= -->
+
+<section id="home" class="hero">
 
   <img
     class="hero-image"
@@ -3922,6 +4137,7 @@ RESPONSIVE
     <div class="hero-actions">
 
       <button
+        type="button"
         id="heroAsk"
         class="primary-cta"
       >
@@ -3929,6 +4145,7 @@ RESPONSIVE
       </button>
 
       <button
+        type="button"
         id="heroWorld"
         class="secondary-cta"
       >
@@ -3954,22 +4171,59 @@ RESPONSIVE
     </div>
 
     <div class="live-mini-facts">
-      <span>☎ WhatsApp Call</span>
+      <span>☎ WhatsApp</span>
       <span>◷ 30 Minutes</span>
       <span>◫ Pick Your Time</span>
     </div>
 
-    <div class="live-mini-services">
-      <span>Pick My Brain</span>
-      <span>Shopping Buddy</span>
-      <span>Hype Session</span>
-      <span>Someone to Talk To</span>
-      <span>Work With Me</span>
+    <div class="live-service-buttons">
+
+      <button
+        type="button"
+        class="live-service-button"
+        data-live-service="Pick My Brain"
+      >
+        Pick My Brain
+      </button>
+
+      <button
+        type="button"
+        class="live-service-button"
+        data-live-service="Shopping Buddy"
+      >
+        Shopping Buddy
+      </button>
+
+      <button
+        type="button"
+        class="live-service-button"
+        data-live-service="Hype Session"
+      >
+        Hype Session
+      </button>
+
+      <button
+        type="button"
+        class="live-service-button"
+        data-live-service="Someone to Talk To"
+      >
+        Someone to Talk To
+      </button>
+
+      <button
+        type="button"
+        class="live-service-button"
+        data-live-service="Work With Me"
+      >
+        Work With Me
+      </button>
+
     </div>
 
     <div class="live-mini-actions">
 
       <button
+        type="button"
         id="heroLive"
         class="live-mini-primary"
       >
@@ -3977,6 +4231,7 @@ RESPONSIVE
       </button>
 
       <button
+        type="button"
         id="heroLiveLearn"
         class="live-mini-secondary"
       >
@@ -3989,41 +4244,84 @@ RESPONSIVE
 
 </section>
 
-<div class="benefit-strip">
+<!-- =========================================================
+LUXURY VALUE CARDS
+========================================================= -->
 
-  <div class="benefit">
-    <div class="benefit-icon">♙</div>
-    <div>
-      <strong>Personal & Thoughtful</strong>
-      <span>Help shaped around what you bring to Elle.</span>
+<section
+  class="value-grid"
+  aria-label="Why people use Elle"
+>
+
+  <article class="value-card">
+
+    <div class="value-icon">
+      ♙
     </div>
-  </div>
 
-  <div class="benefit">
-    <div class="benefit-icon">✧</div>
-    <div>
-      <strong>Always Here</strong>
-      <span>Ask whenever you need clarity or direction.</span>
+    <strong>
+      Personal & Thoughtful
+    </strong>
+
+    <p>
+      Help shaped around the question you actually bring.
+    </p>
+
+  </article>
+
+  <article class="value-card">
+
+    <div class="value-icon">
+      ✧
     </div>
-  </div>
 
-  <div class="benefit">
-    <div class="benefit-icon">♡</div>
-    <div>
-      <strong>Built for Real Life</strong>
-      <span>Decisions, ideas, plans and everyday questions.</span>
+    <strong>
+      Always Here
+    </strong>
+
+    <p>
+      Ask whenever you need clarity, ideas or direction.
+    </p>
+
+  </article>
+
+  <article class="value-card">
+
+    <div class="value-icon">
+      ♡
     </div>
-  </div>
 
-  <div class="benefit">
-    <div class="benefit-icon">◇</div>
-    <div>
-      <strong>Come As You Are</strong>
-      <span>Bring the real question, even if it is messy.</span>
+    <strong>
+      Built for Real Life
+    </strong>
+
+    <p>
+      Decisions, planning, relationships, work, school and more.
+    </p>
+
+  </article>
+
+  <article class="value-card">
+
+    <div class="value-icon">
+      ◇
     </div>
-  </div>
 
-</div>
+    <strong>
+      Come As You Are
+    </strong>
+
+    <p>
+      The question does not have to be perfectly figured out first.
+    </p>
+
+  </article>
+
+</section>
+
+<!-- =========================================================
+FEATURE CARDS
+========================================================= -->
 
 <section class="feature-row">
 
@@ -4045,15 +4343,52 @@ RESPONSIVE
         you can actually use.
       </p>
 
-      <div class="feature-pills">
-        <span>Life</span>
-        <span>Career</span>
-        <span>Faith</span>
-        <span>Money</span>
-        <span>Love</span>
+      <div class="topic-buttons">
+
+        <button
+          type="button"
+          class="topic-button"
+          data-ask-topic="life"
+        >
+          Life
+        </button>
+
+        <button
+          type="button"
+          class="topic-button"
+          data-ask-topic="career"
+        >
+          Career
+        </button>
+
+        <button
+          type="button"
+          class="topic-button"
+          data-ask-topic="faith"
+        >
+          Faith
+        </button>
+
+        <button
+          type="button"
+          class="topic-button"
+          data-ask-topic="money"
+        >
+          Money
+        </button>
+
+        <button
+          type="button"
+          class="topic-button"
+          data-ask-topic="relationships"
+        >
+          Love
+        </button>
+
       </div>
 
       <button
+        type="button"
         id="featureAsk"
         class="feature-button"
       >
@@ -4063,10 +4398,12 @@ RESPONSIVE
     </div>
 
     <div class="feature-media">
+
       <img
         src="ask-elle-balloons.png"
-        alt="Ask Elle"
+        alt="Ask Elle experience"
       >
+
     </div>
 
   </article>
@@ -4091,6 +4428,7 @@ RESPONSIVE
       </p>
 
       <button
+        type="button"
         id="featureWorld"
         class="feature-button"
       >
@@ -4100,10 +4438,12 @@ RESPONSIVE
     </div>
 
     <div class="feature-media">
+
       <img
         src="elle-world-garden.png"
         alt="Elle World"
       >
+
     </div>
 
   </article>
@@ -4127,6 +4467,7 @@ RESPONSIVE
       </p>
 
       <button
+        type="button"
         id="featureRadio"
         class="feature-button"
       >
@@ -4136,47 +4477,28 @@ RESPONSIVE
     </div>
 
     <div class="feature-media">
+
       <img
         src="elle-turntable.png"
-        alt="Elle Radio"
+        alt="Elle Radio turntable"
       >
+
     </div>
 
   </article>
 
 </section>
 
-<section class="quote-section">
+<!-- =========================================================
+ASK ELLE
+========================================================= -->
 
-  <div>
-
-    <div class="quote">
-      You don’t have to have it all figured out.
-
-      <em>
-        You just need somewhere to start.
-        Elle's got you.
-      </em>
-    </div>
-
-    <div class="quote-heart">
-      ♥
-    </div>
-
-  </div>
-
-  <div class="quote-globe"></div>
-
-</section>
-
-<section
-  id="ask"
-  class="section"
->
+<section id="ask" class="section">
 
   <div class="section-head">
 
     <div>
+
       <div class="section-kicker">
         Ask anything
       </div>
@@ -4184,6 +4506,7 @@ RESPONSIVE
       <h2 class="section-title">
         Talk to Elle
       </h2>
+
     </div>
 
     <p class="section-description">
@@ -4206,10 +4529,15 @@ RESPONSIVE
       </div>
 
       <div>
-        <strong>Ask Elle</strong>
+
+        <strong>
+          Ask Elle
+        </strong>
+
         <small>
           Bring me the question. We'll figure out the move.
         </small>
+
       </div>
 
       <div class="chat-online">
@@ -4240,6 +4568,7 @@ RESPONSIVE
       >
 
       <button
+        type="button"
         id="send"
         class="send-button"
       >
@@ -4257,14 +4586,16 @@ RESPONSIVE
 
 </section>
 
-<section
-  id="live"
-  class="section"
->
+<!-- =========================================================
+LIVE ELLE
+========================================================= -->
+
+<section id="live" class="section">
 
   <div class="section-head">
 
     <div>
+
       <div class="section-kicker">
         Human connection
       </div>
@@ -4272,6 +4603,7 @@ RESPONSIVE
       <h2 class="section-title">
         Live Elle
       </h2>
+
     </div>
 
     <p class="section-description">
@@ -4296,41 +4628,96 @@ RESPONSIVE
       </h3>
 
       <p>
-        Start your Live Elle request through the chat.
-        After your request is received, you choose from
-        the actual times available in the booking calendar.
-        Elle does not invent or promise appointment times.
+        Choose the kind of session you want below.
+        Elle will start the request with that service already
+        selected, then the actual booking calendar appears
+        after the request is successfully received.
       </p>
 
       <div class="live-facts">
-        <span>◷ 30-minute sessions</span>
-        <span>☎ WhatsApp Call</span>
-        <span>◉ Video when included</span>
-        <span>◫ Real availability</span>
+
+        <div class="live-fact">
+          <span class="live-fact-symbol">◷</span>
+          30 minutes
+        </div>
+
+        <div class="live-fact">
+          <span class="live-fact-symbol">☎</span>
+          WhatsApp
+        </div>
+
+        <div class="live-fact">
+          <span class="live-fact-symbol">◉</span>
+          Video when included
+        </div>
+
+        <div class="live-fact">
+          <span class="live-fact-symbol">◫</span>
+          Real calendar availability
+        </div>
+
       </div>
 
-      <div class="live-services">
-        <span>Pick My Brain</span>
-        <span>Shopping Buddy</span>
-        <span>Hype Session</span>
-        <span>Someone to Talk To</span>
-        <span>Work With Me</span>
+      <div class="live-detail-services">
+
+        <button
+          type="button"
+          class="live-detail-service"
+          data-live-service="Pick My Brain"
+        >
+          Pick My Brain
+        </button>
+
+        <button
+          type="button"
+          class="live-detail-service"
+          data-live-service="Shopping Buddy"
+        >
+          Shopping Buddy
+        </button>
+
+        <button
+          type="button"
+          class="live-detail-service"
+          data-live-service="Hype Session"
+        >
+          Hype Session
+        </button>
+
+        <button
+          type="button"
+          class="live-detail-service"
+          data-live-service="Someone to Talk To"
+        >
+          Someone to Talk To
+        </button>
+
+        <button
+          type="button"
+          class="live-detail-service"
+          data-live-service="Work With Me"
+        >
+          Work With Me
+        </button>
+
       </div>
 
       <div class="live-actions">
 
         <button
+          type="button"
           id="talkLive"
           class="primary-cta"
         >
-          Talk to Live Elle
+          Start Live Elle Request
         </button>
 
         <button
+          type="button"
           id="askAboutLive"
           class="secondary-cta"
         >
-          Ask Elle About It
+          Ask How Live Elle Works
         </button>
 
       </div>
@@ -4339,38 +4726,43 @@ RESPONSIVE
 
     <div class="live-side">
 
-      <div class="calendar-card">
+      <div class="booking-panel">
 
         <div class="calendar-graphic"></div>
 
-        <div class="calendar-title">
-          Choose What Works for You
+        <div class="booking-panel-title">
+          Choose Your Time After Your Request
         </div>
 
-        <div class="calendar-sub">
-          Your real Live Elle calendar opens
-          after your request has been received.
+        <p class="booking-panel-copy">
+          Once Elle confirms your request was received,
+          you can open the real booking calendar and choose
+          from the actual available 30-minute times.
+        </p>
+
+        <div class="booking-panel-actions">
+
+          <button
+            type="button"
+            id="bookingStart"
+            class="booking-start"
+          >
+            Start My Request
+          </button>
+
+          <button
+            type="button"
+            id="bookingExplain"
+            class="booking-explain"
+          >
+            How Does Booking Work?
+          </button>
+
         </div>
 
-        <div class="calendar-features">
-
-          <div class="calendar-feature">
-            ◷ 30-minute appointment
-          </div>
-
-          <div class="calendar-feature">
-            ◫ Only real open times are shown
-          </div>
-
-          <div class="calendar-feature">
-            ↻ Cancel or reschedule from your confirmation
-          </div>
-
-        </div>
-
-        <div class="calendar-note">
-          Your appointment is not booked until
-          Google Calendar confirms the time you selected.
+        <div class="booking-panel-note">
+          Google Calendar confirms the appointment and provides
+          cancellation or rescheduling options after booking.
         </div>
 
       </div>
@@ -4384,7 +4776,9 @@ RESPONSIVE
 
       <div class="feature-lock-card">
 
-        <span>♡</span>
+        <span>
+          ♡
+        </span>
 
         <strong>
           Live Elle
@@ -4404,13 +4798,10 @@ RESPONSIVE
 </section>
 
 <!-- =========================================================
-LUXURY ELLE WORLD DIRECTLY IN INDEX
+ELLE WORLD
 ========================================================= -->
 
-<section
-  id="world"
-  class="section"
->
+<section id="world" class="section">
 
   <div class="section-head">
 
@@ -4454,10 +4845,9 @@ LUXURY ELLE WORLD DIRECTLY IN INDEX
 
         <p class="world-copy">
           A beautiful glimpse of the Elle community
-          around the world. The activity numbers below
-          are live and country-level. The glowing fantasy
-          globe is Elle World’s visual experience around
-          those real stats.
+          around the world. The activity numbers are live
+          and country-level. The glowing fantasy globe is
+          Elle World’s visual experience around those real stats.
         </p>
 
         <div class="world-live-pill">
@@ -4473,21 +4863,27 @@ LUXURY ELLE WORLD DIRECTLY IN INDEX
         <div class="world-stats">
 
           <div class="world-stat">
+
             <strong id="worldActiveCount">
               0
             </strong>
+
             <span>
               glowing now
             </span>
+
           </div>
 
           <div class="world-stat">
+
             <strong id="worldCountryCount">
               0
             </strong>
+
             <span>
               countries
             </span>
+
           </div>
 
         </div>
@@ -4513,9 +4909,7 @@ LUXURY ELLE WORLD DIRECTLY IN INDEX
       <div class="world-visual">
 
         <div class="world-halo"></div>
-
         <div class="world-orbit"></div>
-
         <div class="world-orbit two"></div>
 
         <div class="globe-stage">
@@ -4541,10 +4935,11 @@ LUXURY ELLE WORLD DIRECTLY IN INDEX
 
 </section>
 
-<section
-  id="radio"
-  class="section"
->
+<!-- =========================================================
+RADIO
+========================================================= -->
+
+<section id="radio" class="section">
 
   <div class="section-head">
 
@@ -4615,22 +5010,28 @@ LUXURY ELLE WORLD DIRECTLY IN INDEX
         <div class="radio-controls">
 
           <button
+            type="button"
             id="previousTrack"
             class="radio-control"
+            aria-label="Previous song"
           >
             ◀
           </button>
 
           <button
+            type="button"
             id="playPause"
             class="radio-control radio-play"
+            aria-label="Play or pause"
           >
             ▶
           </button>
 
           <button
+            type="button"
             id="nextTrack"
             class="radio-control"
+            aria-label="Next song"
           >
             ▶
           </button>
@@ -4653,7 +5054,9 @@ LUXURY ELLE WORLD DIRECTLY IN INDEX
 
       <div class="feature-lock-card">
 
-        <span>♫</span>
+        <span>
+          ♫
+        </span>
 
         <strong>
           Elle Radio
@@ -4671,6 +5074,10 @@ LUXURY ELLE WORLD DIRECTLY IN INDEX
   </div>
 
 </section>
+
+<!-- =========================================================
+TRUST
+========================================================= -->
 
 <div class="trust-strip">
 
@@ -4693,6 +5100,7 @@ LUXURY ELLE WORLD DIRECTLY IN INDEX
   </div>
 
   <button
+    type="button"
     id="openTrust"
     class="trust-button"
   >
@@ -4719,6 +5127,10 @@ LUXURY ELLE WORLD DIRECTLY IN INDEX
 </footer>
 
 </main>
+
+<!-- =========================================================
+TURNTABLE TAKEOVER
+========================================================= -->
 
 <div
   id="turntableTakeover"
@@ -4749,10 +5161,11 @@ LUXURY ELLE WORLD DIRECTLY IN INDEX
 
 </div>
 
-<div
-  id="trustModal"
-  class="modal"
->
+<!-- =========================================================
+TRUST MODAL
+========================================================= -->
+
+<div id="trustModal" class="modal">
 
   <div class="modal-card">
 
@@ -4771,8 +5184,10 @@ LUXURY ELLE WORLD DIRECTLY IN INDEX
       </div>
 
       <button
+        type="button"
         id="closeTrust"
         class="modal-close"
+        aria-label="Close Trust Center"
       >
         ✕
       </button>
@@ -4915,11 +5330,15 @@ const state = {
 function safeJSON(value){
 
   try{
+
     return value
       ? JSON.parse(value)
       : {};
+
   }catch{
+
     return {};
+
   }
 
 }
@@ -5021,6 +5440,12 @@ const talkLive =
 const askAboutLive =
   document.getElementById("askAboutLive");
 
+const bookingStart =
+  document.getElementById("bookingStart");
+
+const bookingExplain =
+  document.getElementById("bookingExplain");
+
 const liveLock =
   document.getElementById("liveLock");
 
@@ -5049,10 +5474,14 @@ const nextTrack =
   document.getElementById("nextTrack");
 
 const turntableTakeover =
-  document.getElementById("turntableTakeover");
+  document.getElementById(
+    "turntableTakeover"
+  );
 
 const takeoverSong =
-  document.getElementById("takeoverSong");
+  document.getElementById(
+    "takeoverSong"
+  );
 
 const trustModal =
   document.getElementById("trustModal");
@@ -5224,6 +5653,7 @@ async function requestAccessCode(){
       await fetch(
         "/api/request-access-code",
         {
+
           method:"POST",
 
           headers:{
@@ -5235,6 +5665,7 @@ async function requestAccessCode(){
             JSON.stringify({
               email
             })
+
         }
       );
 
@@ -5283,6 +5714,11 @@ async function requestAccessCode(){
       "ok"
     );
 
+    setTimeout(
+      () => memberCode.focus(),
+      150
+    );
+
   }catch(error){
 
     showMemberMessage(
@@ -5302,6 +5738,21 @@ async function requestAccessCode(){
 sendCode.addEventListener(
   "click",
   requestAccessCode
+);
+
+memberEmail.addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      event.key === "Enter"
+    ){
+
+      requestAccessCode();
+
+    }
+
+  }
 );
 
 differentEmail.addEventListener(
@@ -5352,6 +5803,7 @@ async function verifyAccessCode(){
       await fetch(
         "/api/verify-access-code",
         {
+
           method:"POST",
 
           headers:{
@@ -5364,6 +5816,7 @@ async function verifyAccessCode(){
               email,
               code
             })
+
         }
       );
 
@@ -5458,8 +5911,23 @@ verifyCode.addEventListener(
   verifyAccessCode
 );
 
+memberCode.addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      event.key === "Enter"
+    ){
+
+      verifyAccessCode();
+
+    }
+
+  }
+);
+
 /* =========================================================
-OWNER
+OWNER TESTING
 ========================================================= */
 
 function ownerPermissions(){
@@ -5479,7 +5947,8 @@ function ownerPermissions(){
   }
 
   if(
-    state.testTier === "idea-circle"
+    state.testTier ===
+    "idea-circle"
   ){
 
     return {
@@ -5493,7 +5962,8 @@ function ownerPermissions(){
   }
 
   if(
-    state.testTier === "infinite"
+    state.testTier ===
+    "infinite"
   ){
 
     return {
@@ -5524,6 +5994,38 @@ function visiblePermissions(){
 
 }
 
+function ownerLabel(){
+
+  if(
+    state.testTier === "spark"
+  ){
+
+    return "Testing The Spark";
+
+  }
+
+  if(
+    state.testTier ===
+    "idea-circle"
+  ){
+
+    return "Testing The Idea Circle";
+
+  }
+
+  if(
+    state.testTier ===
+    "infinite"
+  ){
+
+    return "Testing The Infinite ∞";
+
+  }
+
+  return "Testing full owner access";
+
+}
+
 function applyAccess(){
 
   const permissions =
@@ -5543,6 +6045,25 @@ function applyAccess(){
     state.owner
   );
 
+  ownerStatus.textContent =
+    ownerLabel();
+
+  document
+    .querySelectorAll(
+      ".owner-test"
+    )
+    .forEach(
+      button => {
+
+        button.classList.toggle(
+          "active",
+          button.dataset.testTier ===
+          state.testTier
+        );
+
+      }
+    );
+
   radioLock.classList.toggle(
     "hidden",
     permissions.elleRadio === true
@@ -5557,13 +6078,17 @@ function applyAccess(){
   if(
     permissions.elleRadio !== true
   ){
+
     pauseRadio();
+
   }
 
 }
 
 document
-  .querySelectorAll(".owner-test")
+  .querySelectorAll(
+    ".owner-test"
+  )
   .forEach(
     button => {
 
@@ -5574,7 +6099,9 @@ document
           if(
             !state.owner
           ){
+
             return;
+
           }
 
           state.testTier =
@@ -5585,20 +6112,21 @@ document
             state.testTier
           );
 
-          document
-            .querySelectorAll(".owner-test")
-            .forEach(
-              item =>
-                item.classList.toggle(
-                  "active",
-                  item === button
-                )
+          applyAccess();
+
+          if(
+            visiblePermissions()
+              .elleRadio === true &&
+            !radioAudio.src
+          ){
+
+            loadTrack(
+              state.trackIndex,
+              false,
+              false
             );
 
-          ownerStatus.textContent =
-            `Testing ${button.textContent.trim()}`;
-
-          applyAccess();
+          }
 
         }
       );
@@ -5684,8 +6212,7 @@ function addBubble(
 }
 
 function addBookingCard(
-  url,
-  message=""
+  url
 ){
 
   const row =
@@ -5705,15 +6232,31 @@ function addBookingCard(
     "booking-card";
 
   card.innerHTML = `
-    <strong>
-      Choose your 30-minute Live Elle time
-    </strong>
+    <div class="booking-card-top">
 
-    <p>
-      ${message ||
-      "Your request is in. Google Calendar will show the real available times and confirm your appointment."}
-    </p>
+      <div class="booking-card-kicker">
+        Live Elle · Next Step
+      </div>
+
+      <strong>
+        Choose your 30-minute time
+      </strong>
+
+      <p>
+        Your request is in. Choose from the actual available
+        openings and Google Calendar will confirm your appointment.
+      </p>
+
+    </div>
   `;
+
+  const action =
+    document.createElement(
+      "div"
+    );
+
+  action.className =
+    "booking-card-action";
 
   const link =
     document.createElement(
@@ -5730,10 +6273,14 @@ function addBookingCard(
     "noopener";
 
   link.textContent =
-    "Book an Available Time →";
+    "Choose an Available Time →";
+
+  action.appendChild(
+    link
+  );
 
   card.appendChild(
-    link
+    action
   );
 
   row.appendChild(
@@ -5743,6 +6290,9 @@ function addBookingCard(
   thread.appendChild(
     row
   );
+
+  thread.scrollTop =
+    thread.scrollHeight;
 
 }
 
@@ -5759,25 +6309,36 @@ function showTyping(){
   row.className =
     "message-row";
 
-  row.innerHTML = `
-    <div class="bubble bubble-elle">
+  const bubble =
+    document.createElement(
+      "div"
+    );
 
-      <div class="elle-label">
-        ELLE
-      </div>
+  bubble.className =
+    "bubble bubble-elle";
 
-      <div class="typing">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+  bubble.innerHTML = `
+    <div class="elle-label">
+      ELLE
+    </div>
 
+    <div class="typing">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   `;
+
+  row.appendChild(
+    bubble
+  );
 
   thread.appendChild(
     row
   );
+
+  thread.scrollTop =
+    thread.scrollHeight;
 
 }
 
@@ -5808,6 +6369,9 @@ function renderChips(
             "button"
           );
 
+        button.type =
+          "button";
+
         button.className =
           "chip";
 
@@ -5816,7 +6380,13 @@ function renderChips(
 
         button.addEventListener(
           "click",
-          () => sendMessage(label)
+          () => {
+
+            sendMessage(
+              label
+            );
+
+          }
         );
 
         chips.appendChild(
@@ -5835,7 +6405,9 @@ async function sendMessage(
   if(
     state.sending
   ){
+
     return;
+
   }
 
   if(
@@ -5857,7 +6429,9 @@ async function sendMessage(
   if(
     !text
   ){
+
     return;
+
   }
 
   state.sending =
@@ -5889,24 +6463,30 @@ async function sendMessage(
       await fetch(
         "/api/chat",
         {
+
           method:"POST",
 
           headers:{
+
             "Content-Type":
               "application/json",
 
             "Authorization":
               `Bearer ${state.sessionToken}`
+
           },
 
           body:
             JSON.stringify({
+
               messages:
                 state.history,
 
               ageGroup:
                 state.ageGroup
+
             })
+
         }
       );
 
@@ -5942,28 +6522,63 @@ async function sendMessage(
 
     hideTyping();
 
-    addBubble(
-      "elle",
-      reply
-    );
-
-    state.history.push({
-      role:"assistant",
-      content:reply
-    });
-
-    renderChips(
-      data.chips || []
-    );
+    /*
+      Booking handoff:
+      do NOT display the AI's longer booking explanation
+      and then display the booking explanation again.
+      One concise confirmation + one booking card.
+    */
 
     if(
       data.bookingRequired === true &&
       data.bookingUrl
     ){
 
+      const cleanReply =
+        "Perfect, love. 💛 Your Live Elle request is in.";
+
+      addBubble(
+        "elle",
+        cleanReply
+      );
+
+      state.history.push({
+        role:"assistant",
+        content:cleanReply
+      });
+
       addBookingCard(
-        data.bookingUrl,
-        data.bookingMessage || ""
+        data.bookingUrl
+      );
+
+      renderChips([]);
+
+    }else{
+
+      addBubble(
+        "elle",
+        reply
+      );
+
+      state.history.push({
+        role:"assistant",
+        content:reply
+      });
+
+      renderChips(
+        data.chips || []
+      );
+
+    }
+
+    if(
+      data.leadError === true &&
+      data.leadErrorMessage
+    ){
+
+      addBubble(
+        "elle",
+        data.leadErrorMessage
       );
 
     }
@@ -5972,12 +6587,31 @@ async function sendMessage(
 
     hideTyping();
 
-    addBubble(
-      "elle",
-      error.message === "MEMBERSHIP_SESSION"
-        ? "Your Elle session needs to be refreshed. Sign in again and we’ll pick it right back up."
-        : "I hit a little hiccup. Try me again in a moment, love."
-    );
+    if(
+      error.message ===
+      "MEMBERSHIP_SESSION"
+    ){
+
+      addBubble(
+        "elle",
+        "Your Elle session needs to be refreshed. Sign in again and we’ll pick it right back up."
+      );
+
+      clearSavedSession();
+
+      setTimeout(
+        showMemberGate,
+        500
+      );
+
+    }else{
+
+      addBubble(
+        "elle",
+        "I hit a little hiccup. Try me again in a moment, love."
+      );
+
+    }
 
   }finally{
 
@@ -6038,27 +6672,26 @@ function promptChat(text){
 
 }
 
-heroAsk.addEventListener(
-  "click",
-  bringChatIntoView
-);
-
-featureAsk.addEventListener(
-  "click",
-  bringChatIntoView
-);
-
 function greetMember(){
 
   thread.innerHTML =
     "";
 
+  chips.innerHTML =
+    "";
+
   state.history =
     [];
 
+  const name =
+    state.member?.name &&
+    state.member.name !== "Owner"
+      ? ` ${state.member.name}`
+      : "";
+
   addBubble(
     "elle",
-    "Hey 💛 I’m Elle. What are we figuring out today?"
+    `Hey${name} 💛 I’m Elle. What are we figuring out today?`
   );
 
   renderChips([
@@ -6070,11 +6703,59 @@ function greetMember(){
 
 }
 
+heroAsk.addEventListener(
+  "click",
+  bringChatIntoView
+);
+
+featureAsk.addEventListener(
+  "click",
+  bringChatIntoView
+);
+
+/* Ask Elle topic buttons */
+
+document
+  .querySelectorAll(
+    "[data-ask-topic]"
+  )
+  .forEach(
+    button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          const topic =
+            button.dataset.askTopic;
+
+          bringChatIntoView();
+
+          setTimeout(
+            () => {
+
+              say.value =
+                `I want help with ${topic}. `;
+
+              say.focus();
+
+            },
+            420
+          );
+
+        }
+      );
+
+    }
+  );
+
 /* =========================================================
 LIVE ELLE
 ========================================================= */
 
-function startLiveElle(){
+function startLiveElle(
+  service=""
+){
 
   const permissions =
     visiblePermissions();
@@ -6103,42 +6784,95 @@ function startLiveElle(){
 
   }
 
+  if(
+    service
+  ){
+
+    promptChat(
+      `I want a Live Elle session. Service: ${service}.`
+    );
+
+    return;
+
+  }
+
   promptChat(
     "I want to talk to Live Elle."
   );
 
 }
 
+document
+  .querySelectorAll(
+    "[data-live-service]"
+  )
+  .forEach(
+    button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          startLiveElle(
+            button.dataset.liveService
+          );
+
+        }
+      );
+
+    }
+  );
+
 heroLive.addEventListener(
   "click",
-  startLiveElle
-);
-
-heroLiveLearn.addEventListener(
-  "click",
-  () =>
-    document
-      .getElementById("live")
-      .scrollIntoView({
-        behavior:"smooth"
-      })
+  () => startLiveElle()
 );
 
 talkLive.addEventListener(
   "click",
-  startLiveElle
+  () => startLiveElle()
 );
+
+bookingStart.addEventListener(
+  "click",
+  () => startLiveElle()
+);
+
+heroLiveLearn.addEventListener(
+  "click",
+  () => {
+
+    document
+      .getElementById(
+        "live"
+      )
+      .scrollIntoView({
+        behavior:"smooth"
+      });
+
+  }
+);
+
+function explainLiveElle(){
+
+  promptChat(
+    "Explain how Live Elle works, including the 30-minute request and booking process."
+  );
+
+}
 
 askAboutLive.addEventListener(
   "click",
-  () =>
-    promptChat(
-      "Tell me about Live Elle."
-    )
+  explainLiveElle
+);
+
+bookingExplain.addEventListener(
+  "click",
+  explainLiveElle
 );
 
 /* =========================================================
-WORLD LIVE DATA
+WORLD
 ========================================================= */
 
 function createWorldSession(){
@@ -6146,7 +6880,9 @@ function createWorldSession(){
   if(
     state.worldSessionId
   ){
+
     return;
+
   }
 
   state.worldSessionId =
@@ -6268,6 +7004,7 @@ async function sendWorldHeartbeat(){
       await fetch(
         "/api/world",
         {
+
           method:"POST",
 
           headers:{
@@ -6280,13 +7017,16 @@ async function sendWorldHeartbeat(){
               sessionId:
                 state.worldSessionId
             })
+
         }
       );
 
     if(
       !response.ok
     ){
+
       return;
+
     }
 
     const data =
@@ -6330,7 +7070,9 @@ async function refreshWorld(){
     if(
       !response.ok
     ){
+
       return;
+
     }
 
     const data =
@@ -6492,11 +7234,15 @@ function renderPlaylist(){
           "button"
         );
 
+      button.type =
+        "button";
+
       button.className =
         "track";
 
       if(
-        index === state.trackIndex
+        index ===
+        state.trackIndex
       ){
 
         button.classList.add(
@@ -6505,16 +7251,15 @@ function renderPlaylist(){
 
       }
 
-      button.innerHTML =
-        `
-          <span class="track-number">
-            ${String(index + 1).padStart(2,"0")}
-          </span>
+      button.innerHTML = `
+        <span class="track-number">
+          ${String(index + 1).padStart(2,"0")}
+        </span>
 
-          <span>
-            ${track.title}
-          </span>
-        `;
+        <span>
+          ${track.title}
+        </span>
+      `;
 
       button.addEventListener(
         "click",
@@ -6524,7 +7269,9 @@ function renderPlaylist(){
             visiblePermissions()
               .elleRadio !== true
           ){
+
             return;
+
           }
 
           loadTrack(
@@ -6547,9 +7294,15 @@ function renderPlaylist(){
 
 function showTurntableTakeover(title){
 
-  clearTimeout(
+  if(
     state.takeoverTimer
-  );
+  ){
+
+    clearTimeout(
+      state.takeoverTimer
+    );
+
+  }
 
   takeoverSong.textContent =
     title;
@@ -6564,12 +7317,22 @@ function showTurntableTakeover(title){
     "show"
   );
 
+  turntableTakeover.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
   state.takeoverTimer =
     setTimeout(
       () => {
 
         turntableTakeover.classList.remove(
           "show"
+        );
+
+        turntableTakeover.setAttribute(
+          "aria-hidden",
+          "true"
         );
 
       },
@@ -6588,7 +7351,9 @@ function loadTrack(
     visiblePermissions()
       .elleRadio !== true
   ){
+
     return;
+
   }
 
   state.trackIndex =
@@ -6645,7 +7410,21 @@ async function playRadio(){
     visiblePermissions()
       .elleRadio !== true
   ){
+
     return;
+
+  }
+
+  if(
+    !radioAudio.src
+  ){
+
+    loadTrack(
+      state.trackIndex,
+      false,
+      false
+    );
+
   }
 
   try{
@@ -6684,6 +7463,15 @@ playPause.addEventListener(
   () => {
 
     if(
+      visiblePermissions()
+        .elleRadio !== true
+    ){
+
+      return;
+
+    }
+
+    if(
       state.playing
     ){
 
@@ -6706,42 +7494,56 @@ playPause.addEventListener(
 
 previousTrack.addEventListener(
   "click",
-  () =>
+  () => {
+
     loadTrack(
       state.trackIndex - 1,
       true,
       true
-    )
+    );
+
+  }
 );
 
 nextTrack.addEventListener(
   "click",
-  () =>
+  () => {
+
     loadTrack(
       state.trackIndex + 1,
       true,
       true
-    )
+    );
+
+  }
 );
 
 radioAudio.addEventListener(
   "ended",
-  () =>
+  () => {
+
     loadTrack(
       state.trackIndex + 1,
       true,
       true
-    )
+    );
+
+  }
 );
 
 featureRadio.addEventListener(
   "click",
-  () =>
+  () => {
+
     document
-      .getElementById("radio")
+      .getElementById(
+        "radio"
+      )
       .scrollIntoView({
         behavior:"smooth"
-      })
+      });
+
+  }
 );
 
 /* =========================================================
@@ -6799,36 +7601,47 @@ trustModal.addEventListener(
 SIGN OUT
 ========================================================= */
 
+function clearSavedSession(){
+
+  [
+    "elleSessionToken",
+    "elleMember",
+    "ellePermissions",
+    "elleOwner",
+    "elleOwnerTestTier"
+  ].forEach(
+    key =>
+      localStorage.removeItem(
+        key
+      )
+  );
+
+  state.sessionToken =
+    "";
+
+  state.member =
+    {};
+
+  state.permissions =
+    {};
+
+  state.owner =
+    false;
+
+  state.history =
+    [];
+
+}
+
 signOut.addEventListener(
   "click",
   () => {
 
-    [
-      "elleSessionToken",
-      "elleMember",
-      "ellePermissions",
-      "elleOwner",
-      "elleOwnerTestTier"
-    ].forEach(
-      key =>
-        localStorage.removeItem(
-          key
-        )
-    );
-
-    state.sessionToken =
-      "";
-
-    state.member =
-      {};
-
-    state.permissions =
-      {};
-
-    state.owner =
-      false;
+    clearSavedSession();
 
     pauseRadio();
+
+    resetMemberGate();
 
     showMemberGate();
 
@@ -6836,7 +7649,7 @@ signOut.addEventListener(
 );
 
 /* =========================================================
-STARTUP
+START
 ========================================================= */
 
 function continueStartup(){
@@ -6856,6 +7669,10 @@ function continueStartup(){
     return;
 
   }
+
+  document.body.classList.remove(
+    "locked"
+  );
 
   if(
     !state.sessionToken
