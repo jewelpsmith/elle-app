@@ -55,7 +55,7 @@ Never expose the private identity behind Live Elle.
 CORE PURPOSE
 ==================================================
 
-Elle should freely answer real questions and genuinely help people.
+Elle should genuinely help people.
 
 You can help with topics including:
 
@@ -83,23 +83,6 @@ Give useful answers.
 
 Do not intentionally weaken your answer to force someone toward a paid service.
 
-Elle gives:
-- immediate help
-- clarity
-- encouragement
-- brainstorming
-- education
-- next steps
-- planning
-
-Live Elle gives:
-- human connection
-- deeper personalization
-- human judgment
-- accountability
-- one-on-one support
-- personalized strategy
-
 HELP FIRST.
 SELL SECOND.
 
@@ -120,15 +103,6 @@ Do not label those steps out loud.
 If you genuinely need more information, ask ONE useful clarifying question.
 
 Whenever possible, help the person leave with a next step.
-
-Examples:
-
-"Here is what I would do today..."
-"Start with this..."
-"Your next move is..."
-"Do this first..."
-
-Do not force the same wording into every response.
 
 ==================================================
 TONE
@@ -239,7 +213,6 @@ Human one-on-one support for:
 - ideas
 - life decisions
 - strategy
-- figuring something out
 - personalized perspective
 
 2. SHOPPING BUDDY
@@ -285,7 +258,7 @@ WHEN TO MENTION LIVE ELLE
 Help first.
 
 Only mention Live Elle when:
-- the user's access context says Live Elle is available
+- the ACCESS CONTEXT says Live Elle is available
 AND
 - it naturally makes sense.
 
@@ -317,11 +290,9 @@ Rules:
 - usually 2 to 6 words each
 - no duplicates
 - at least one should continue the conversation
-- suggest Live Elle only when ACCESS CONTEXT says Live Elle is available
+- suggest Live Elle only when ACCESS CONTEXT says it is available
 
-During active Live Elle lead collection use:
-
-[CHIPS]Continue|Never mind[/CHIPS]
+During active Live Elle collection, use chips that fit the exact question being asked.
 
 Never explain the CHIPS tags.
 
@@ -353,7 +324,7 @@ The user selected the 18+ experience.
 
 You may provide adult-appropriate discussion when it is otherwise safe and lawful.
 
-Whether Live Elle is available depends on the ACCESS CONTEXT below.
+Whether Live Elle is available depends on the ACCESS CONTEXT.
 
 Continue following all privacy, accuracy, safety and responsible-use rules.
 `;
@@ -400,19 +371,21 @@ Do not facilitate:
 
 Live Elle one-on-one human services are currently 18+.
 
+If the user asks for Live Elle, briefly explain that Live Elle is currently for adults 18+, then continue helping them directly through Elle.
+
 IMPORTANT:
 
 For this age group:
 - NEVER output [LEAD_STEP] tags.
 - NEVER output a [LEAD] tag.
-- NEVER collect information for a Live Elle lead.
+- NEVER collect Live Elle contact information.
 
 You may still provide normal dynamic [CHIPS] suggestions.
 `;
 }
 
 /* =========================================================
-   MEMBERSHIP / ACCESS CONTEXT
+   ACCESS CONTEXT
    ========================================================= */
 
 function getAccessContext(session, ageGroup) {
@@ -420,15 +393,18 @@ function getAccessContext(session, ageGroup) {
     session?.permissions || {};
 
   const tierName =
-    session?.tierName ||
-    "Member";
+    session?.tierName || "Member";
 
   const owner =
     session?.owner === true;
 
-  const canUseLiveElle =
+  const liveElleAvailable =
     ageGroup === "18+" &&
     permissions.liveElle === true;
+
+  const videoAvailable =
+    liveElleAvailable &&
+    permissions.liveVideo === true;
 
   if (owner) {
     return `
@@ -438,21 +414,22 @@ ACCESS CONTEXT
 
 This is the verified AURYNELLE owner account.
 
-Owner/test access is active.
+Owner access is active.
 
 Available:
 - Elle chat
 - expanded features
 - Elle Radio
-- Live Elle testing
-- Live video testing
-- owner test mode
+- Live Elle
+- WhatsApp Call
+- WhatsApp Video Call
+- owner testing
 
-Live Elle lead collection is allowed only when the selected age group is 18+.
+Live Elle contact collection is allowed only when the selected age group is 18+.
 `;
   }
 
-  if (canUseLiveElle) {
+  if (liveElleAvailable) {
     return `
 ==================================================
 ACCESS CONTEXT
@@ -461,14 +438,16 @@ ACCESS CONTEXT
 Verified membership:
 ${tierName}
 
-This member has access to:
-- Elle chat
-- expanded member features
-- Elle Radio
-- Live Elle
-- Live video connection benefit
+Live Elle is available.
 
-Live Elle lead collection is available because this member has qualifying access and selected the 18+ experience.
+Allowed connection types:
+- WhatsApp Call
+${videoAvailable ? "- WhatsApp Video Call" : ""}
+
+Do not offer a connection type that is not listed above.
+
+The member's verified membership email is already known by the application.
+Do NOT ask the user for their email again.
 `;
   }
 
@@ -482,9 +461,9 @@ ${tierName}
 
 Elle chat is available.
 
-Live Elle lead collection is NOT available in this member's current access level.
+Live Elle is NOT included in this member's current access.
 
-Do not collect a Live Elle lead.
+Do not collect Live Elle contact information.
 Do not output [LEAD_STEP] or [LEAD] tags.
 
 If the user asks for Live Elle, politely explain that their current membership does not include that feature.
@@ -494,77 +473,175 @@ Continue helping them directly through Elle.
 }
 
 /* =========================================================
-   LIVE ELLE LEAD INSTRUCTIONS
+   LIVE ELLE COLLECTION
    ========================================================= */
 
 function getLeadContext(session, ageGroup) {
-  const canCollectLead =
-    ageGroup === "18+" &&
-    session?.permissions?.liveElle === true;
+  const permissions =
+    session?.permissions || {};
 
-  if (!canCollectLead) {
+  const canUseLiveElle =
+    ageGroup === "18+" &&
+    permissions.liveElle === true;
+
+  const canUseVideo =
+    canUseLiveElle &&
+    permissions.liveVideo === true;
+
+  if (!canUseLiveElle) {
     return "";
   }
 
+  const allowedConnectionTypes =
+    canUseVideo
+      ? `
+- WhatsApp Call
+- WhatsApp Video Call
+`
+      : `
+- WhatsApp Call
+`;
+
   return `
 ==================================================
-LIVE ELLE LEAD COLLECTION
+LIVE ELLE REQUEST FLOW
 ==================================================
 
-Only begin this process when the user clearly wants Live Elle or human support.
+Only begin this process when the user clearly wants Live Elle or human one-on-one support.
 
-For now, collect exactly THREE things:
+The application already knows the member's verified membership email.
 
-1. What kind of support they want.
-2. Their name.
-3. Their email address.
+DO NOT ask for their email.
+
+Collect exactly FOUR pieces of information:
+
+1. Connection type.
+2. Live Elle service.
+3. Their name.
+4. Their WhatsApp number.
 
 Collect them ONE AT A TIME.
 
-STEP 1:
+Do not ask two questions in the same message.
 
-First determine what kind of support they want.
+==================================================
+STEP 1 - CONNECTION TYPE
+==================================================
 
-If they already explained it clearly, summarize the appropriate service and ask for their name.
+Ask how they want to connect.
+
+Allowed choices:
+${allowedConnectionTypes}
+
+Do not offer WhatsApp Video Call unless it appears in the allowed choices above.
 
 At the very end output:
 
 [LEAD_STEP]1[/LEAD_STEP]
 
-STEP 2:
+Suggested chips should match the available choices.
 
-Once the user gives their name, ask for their email.
+Example when video is allowed:
+
+"Absolutely, love. First, how do you want to connect with Live Elle?"
+
+[CHIPS]WhatsApp Call|WhatsApp Video Call[/CHIPS]
+[LEAD_STEP]1[/LEAD_STEP]
+
+==================================================
+STEP 2 - SERVICE
+==================================================
+
+After the user chooses the connection type, ask what kind of Live Elle support they want.
+
+Available services:
+
+- Pick My Brain
+- Shopping Buddy
+- Hype Session
+- Someone to Talk To
+- Work With Me
+
+If their earlier conversation already makes the service obvious, you may suggest the best fitting service, but still confirm it.
 
 At the very end output:
 
 [LEAD_STEP]2[/LEAD_STEP]
 
-LEAD COMPLETION:
+Suggested chips may include the most relevant service choices.
 
-Once you have:
+==================================================
+STEP 3 - NAME
+==================================================
+
+After connection type and service are known, ask:
+
+"What name should Live Elle use?"
+
+At the very end output:
+
+[LEAD_STEP]3[/LEAD_STEP]
+
+Use:
+
+[CHIPS]Continue|Never mind[/CHIPS]
+
+==================================================
+STEP 4 - WHATSAPP NUMBER
+==================================================
+
+After the user gives their name, ask for the WhatsApp number where Live Elle should contact them.
+
+Encourage them to include the country code.
+
+Example:
+
+"Perfect. What's the WhatsApp number Live Elle should use? Include the country code if you can."
+
+At the very end output:
+
+[LEAD_STEP]4[/LEAD_STEP]
+
+Use:
+
+[CHIPS]Continue|Never mind[/CHIPS]
+
+==================================================
+COMPLETION
+==================================================
+
+Once you have all FOUR:
+
+- connectionType
+- service
 - name
-- email
-- requested support/service
+- whatsapp
 
-output:
+output exactly one LEAD signal.
 
-[LEAD]{"name":"Maya","email":"maya@example.com","service":"Pick My Brain - career and business help"}[/LEAD]
+Exact JSON structure:
+
+[LEAD]{"name":"Maya","whatsapp":"+1 555 123 4567","connectionType":"WhatsApp Video Call","service":"Shopping Buddy"}[/LEAD]
 
 Rules:
-- valid JSON
-- double quotes
-- do not invent missing information
-- preserve the email the user actually provided
-- never use the private Live Elle operator email as the customer's email
-- never explain these tags
 
-Do NOT tell the user the request was successfully saved.
+- Use valid JSON.
+- Use double quotes.
+- Include all four properties.
+- Do not include an email property.
+- Do not invent missing information.
+- Preserve the WhatsApp number the user actually supplied.
+- connectionType must be one of the allowed choices.
+- service must be one of the five Live Elle services.
+- Never explain these tags.
+
+Do NOT claim the request was successfully saved before the backend confirms it.
 
 Instead say something like:
 
 "Perfect, love. I have what I need."
 
-The application confirms success only after the backend saves it.
+The application will confirm successful submission only after the backend saves it.
 `;
 }
 
@@ -582,12 +659,6 @@ function cleanString(value, maxLength = 500) {
     .slice(0, maxLength);
 }
 
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
-    email
-  );
-}
-
 function cleanChips(rawChips) {
   if (!rawChips) {
     return [];
@@ -596,18 +667,11 @@ function cleanChips(rawChips) {
   return rawChips
     .split("|")
     .map((chip) =>
-      cleanString(
-        chip,
-        60
-      )
+      cleanString(chip, 60)
     )
     .filter(Boolean)
     .filter(
-      (
-        chip,
-        index,
-        array
-      ) =>
+      (chip, index, array) =>
         array.findIndex(
           (item) =>
             item.toLowerCase() ===
@@ -617,8 +681,81 @@ function cleanChips(rawChips) {
     .slice(0, 4);
 }
 
+function normalizeWhatsApp(value) {
+  const raw =
+    cleanString(value, 50);
+
+  if (!raw) {
+    return "";
+  }
+
+  const hasPlus =
+    raw.trim().startsWith("+");
+
+  const digits =
+    raw.replace(/\D/g, "");
+
+  if (
+    digits.length < 7 ||
+    digits.length > 15
+  ) {
+    return "";
+  }
+
+  return hasPlus
+    ? `+${digits}`
+    : digits;
+}
+
+function normalizeConnectionType(value) {
+  const cleaned =
+    cleanString(value, 80)
+      .toLowerCase();
+
+  if (
+    cleaned ===
+    "whatsapp video call"
+  ) {
+    return "WhatsApp Video Call";
+  }
+
+  if (
+    cleaned ===
+    "whatsapp call"
+  ) {
+    return "WhatsApp Call";
+  }
+
+  return "";
+}
+
+function normalizeService(value) {
+  const cleaned =
+    cleanString(value, 100)
+      .toLowerCase();
+
+  const services = {
+    "pick my brain":
+      "Pick My Brain",
+
+    "shopping buddy":
+      "Shopping Buddy",
+
+    "hype session":
+      "Hype Session",
+
+    "someone to talk to":
+      "Someone to Talk To",
+
+    "work with me":
+      "Work With Me"
+  };
+
+  return services[cleaned] || "";
+}
+
 /* =========================================================
-   GOOGLE SHEET LEAD SAVE
+   GOOGLE SHEET SAVE
    ========================================================= */
 
 async function saveLeadToSheet(lead) {
@@ -627,7 +764,7 @@ async function saveLeadToSheet(lead) {
   );
 
   console.log(
-    "ELLE LEAD SAVE ATTEMPT"
+    "LIVE ELLE REQUEST SAVE ATTEMPT"
   );
 
   console.log(
@@ -636,8 +773,18 @@ async function saveLeadToSheet(lead) {
   );
 
   console.log(
-    "Customer email:",
+    "WhatsApp:",
+    lead.whatsapp
+  );
+
+  console.log(
+    "Membership email:",
     lead.email
+  );
+
+  console.log(
+    "Connection type:",
+    lead.connectionType
   );
 
   console.log(
@@ -657,23 +804,35 @@ async function saveLeadToSheet(lead) {
 
         headers: {
           "Content-Type":
-            "text/plain;charset=utf-8",
+            "text/plain;charset=utf-8"
         },
 
         body:
           JSON.stringify({
+            action:
+              "save_live_elle",
+
             name:
               lead.name,
+
+            whatsapp:
+              lead.whatsapp,
 
             email:
               lead.email,
 
+            connectionType:
+              lead.connectionType,
+
+            sessionType:
+              lead.connectionType,
+
             service:
-              lead.service,
+              lead.service
           }),
 
         redirect:
-          "follow",
+          "follow"
       }
     );
 
@@ -683,6 +842,11 @@ async function saveLeadToSheet(lead) {
   console.log(
     "Google Sheet HTTP status:",
     response.status
+  );
+
+  console.log(
+    "Google Sheet response:",
+    responseText
   );
 
   if (!response.ok) {
@@ -709,12 +873,12 @@ async function saveLeadToSheet(lead) {
   ) {
     throw new Error(
       result.error ||
-      "Google Sheet did not confirm the lead was saved."
+      "Google Sheet did not confirm the Live Elle request was saved."
     );
   }
 
   console.log(
-    "ELLE LEAD SAVED SUCCESSFULLY"
+    "LIVE ELLE REQUEST SAVED SUCCESSFULLY"
   );
 
   return result;
@@ -735,7 +899,7 @@ export default async function handler(
       .status(405)
       .json({
         error:
-          "POST only",
+          "POST only"
       });
   }
 
@@ -763,7 +927,7 @@ export default async function handler(
             false,
 
           leadError:
-            false,
+            false
         });
     }
 
@@ -784,19 +948,15 @@ export default async function handler(
             false,
 
           leadError:
-            false,
+            false
         });
     }
 
     const {
       messages,
-      ageGroup,
+      ageGroup
     } =
       req.body || {};
-
-    /* =====================================================
-       MESSAGE VALIDATION
-       ===================================================== */
 
     if (
       !Array.isArray(
@@ -807,24 +967,14 @@ export default async function handler(
         .status(400)
         .json({
           error:
-            "Messages must be an array.",
+            "Messages must be an array."
         });
     }
-
-    /*
-      If age information is ever
-      missing, default to the
-      safer teen experience.
-    */
 
     const safeAgeGroup =
       ageGroup === "18+"
         ? "18+"
         : "13-17";
-
-    /* =====================================================
-       ANTHROPIC KEY
-       ===================================================== */
 
     if (
       !process.env
@@ -838,12 +988,26 @@ export default async function handler(
         .status(500)
         .json({
           error:
-            "Elle is not configured correctly.",
+            "Elle is not configured correctly."
         });
     }
 
     /* =====================================================
-       BUILD SYSTEM PROMPT
+       ACCESS FLAGS
+       ===================================================== */
+
+    const canUseLiveElle =
+      safeAgeGroup === "18+" &&
+      session.permissions
+        ?.liveElle === true;
+
+    const canUseVideo =
+      canUseLiveElle &&
+      session.permissions
+        ?.liveVideo === true;
+
+    /* =====================================================
+       SYSTEM PROMPT
        ===================================================== */
 
     const systemPrompt = `
@@ -865,7 +1029,7 @@ ${getLeadContext(
 `;
 
     /* =====================================================
-       GET ELLE RESPONSE
+       ANTHROPIC
        ===================================================== */
 
     const anthropicResponse =
@@ -884,7 +1048,7 @@ ${getLeadContext(
                 .ANTHROPIC_API_KEY,
 
             "anthropic-version":
-              "2023-06-01",
+              "2023-06-01"
           },
 
           body:
@@ -893,13 +1057,13 @@ ${getLeadContext(
                 "claude-haiku-4-5-20251001",
 
               max_tokens:
-                450,
+                500,
 
               system:
                 systemPrompt,
 
-              messages,
-            }),
+              messages
+            })
         }
       );
 
@@ -926,7 +1090,7 @@ ${getLeadContext(
             false,
 
           leadError:
-            false,
+            false
         });
     }
 
@@ -957,7 +1121,7 @@ ${getLeadContext(
         .join("\n");
 
     /* =====================================================
-       RESPONSE METADATA
+       METADATA
        ===================================================== */
 
     let dynamicChips =
@@ -981,12 +1145,6 @@ ${getLeadContext(
     let leadErrorMessage =
       null;
 
-    const canUseLiveElle =
-      safeAgeGroup ===
-        "18+" &&
-      session.permissions
-        ?.liveElle === true;
-
     /* =====================================================
        CHIPS
        ===================================================== */
@@ -1003,14 +1161,6 @@ ${getLeadContext(
         );
     }
 
-    /*
-      Extra enforcement.
-
-      Remove Live Elle suggestion
-      chips for members who do not
-      have Live Elle permission.
-    */
-
     if (!canUseLiveElle) {
       dynamicChips =
         dynamicChips.filter(
@@ -1026,10 +1176,25 @@ ${getLeadContext(
                 "human support"
               ) ||
               lower.includes(
-                "talk to a person"
+                "whatsapp call"
+              ) ||
+              lower.includes(
+                "video call"
               )
             );
           }
+        );
+    }
+
+    if (!canUseVideo) {
+      dynamicChips =
+        dynamicChips.filter(
+          (chip) =>
+            !chip
+              .toLowerCase()
+              .includes(
+                "video"
+              )
         );
     }
 
@@ -1039,8 +1204,8 @@ ${getLeadContext(
 
     const stepMatches = [
       ...fullText.matchAll(
-        /\[LEAD_STEP\](\d)\[\/LEAD_STEP\]/g
-      ),
+        /\[LEAD_STEP\]([1-4])\[\/LEAD_STEP\]/g
+      )
     ];
 
     if (
@@ -1049,8 +1214,7 @@ ${getLeadContext(
     ) {
       const latestStep =
         stepMatches[
-          stepMatches.length -
-            1
+          stepMatches.length - 1
         ];
 
       const parsedStep =
@@ -1059,8 +1223,8 @@ ${getLeadContext(
         );
 
       if (
-        parsedStep === 1 ||
-        parsedStep === 2
+        parsedStep >= 1 &&
+        parsedStep <= 4
       ) {
         leadProgress =
           parsedStep;
@@ -1096,51 +1260,76 @@ ${getLeadContext(
             100
           );
 
-        const email =
-          cleanString(
-            parsedLead.email,
-            200
+        const whatsapp =
+          normalizeWhatsApp(
+            parsedLead.whatsapp
+          );
+
+        const connectionType =
+          normalizeConnectionType(
+            parsedLead.connectionType
           );
 
         const service =
-          cleanString(
-            parsedLead.service,
-            500
+          normalizeService(
+            parsedLead.service
           );
 
         if (!name) {
           throw new Error(
-            "The lead is missing a name."
+            "The Live Elle request is missing a name."
           );
         }
 
-        if (!email) {
+        if (!whatsapp) {
           throw new Error(
-            "The lead is missing an email."
+            "The WhatsApp number is missing or invalid."
+          );
+        }
+
+        if (!connectionType) {
+          throw new Error(
+            "The connection type is invalid."
           );
         }
 
         if (
-          !isValidEmail(
-            email
-          )
+          connectionType ===
+            "WhatsApp Video Call" &&
+          !canUseVideo
         ) {
           throw new Error(
-            `The customer email is invalid: ${email}`
+            "This membership does not include Live Elle video calls."
           );
         }
 
         if (!service) {
           throw new Error(
-            "The lead is missing a service."
+            "The Live Elle service is invalid."
           );
         }
 
         lead = {
           name,
-          email,
-          service,
+
+          whatsapp,
+
+          email:
+            cleanString(
+              session.email,
+              200
+            ),
+
+          connectionType,
+
+          service
         };
+
+        if (!lead.email) {
+          throw new Error(
+            "The verified member email is missing from the session."
+          );
+        }
 
         await saveLeadToSheet(
           lead
@@ -1150,10 +1339,10 @@ ${getLeadContext(
           true;
 
         leadProgress =
-          3;
+          4;
       } catch (error) {
         console.error(
-          "Elle lead save failed:",
+          "Live Elle request save failed:",
           error
         );
 
@@ -1166,12 +1355,10 @@ ${getLeadContext(
     }
 
     /* =====================================================
-       ABSOLUTE LEAD PROTECTION
+       ABSOLUTE LIVE ELLE PROTECTION
        ===================================================== */
 
-    if (
-      !canUseLiveElle
-    ) {
+    if (!canUseLiveElle) {
       leadDetected =
         false;
 
@@ -1204,7 +1391,7 @@ ${getLeadContext(
         )
 
         .replace(
-          /\[LEAD_STEP\]\d\[\/LEAD_STEP\]/g,
+          /\[LEAD_STEP\][1-4]\[\/LEAD_STEP\]/g,
           ""
         )
 
@@ -1228,8 +1415,8 @@ ${getLeadContext(
               "text",
 
             text:
-              cleanedText,
-          },
+              cleanedText
+          }
         ],
 
         chips:
@@ -1256,7 +1443,7 @@ ${getLeadContext(
 
           permissions:
             session.permissions ||
-            {},
+            {}
         },
 
         leadProgress,
@@ -1269,7 +1456,7 @@ ${getLeadContext(
 
         leadErrorMessage,
 
-        lead,
+        lead
       });
   } catch (error) {
     console.error(
@@ -1287,7 +1474,7 @@ ${getLeadContext(
           false,
 
         leadError:
-          false,
+          false
       });
   }
 }
