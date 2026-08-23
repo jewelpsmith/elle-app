@@ -1,13 +1,10 @@
 import crypto from "crypto";
-import { Redis } from "@upstash/redis";
 
 export const config = {
   api: {
     bodyParser: false,
   },
 };
-
-const redis = Redis.fromEnv();
 
 const TIER_ACCESS = {
   "The Spark": {
@@ -31,6 +28,57 @@ const TIER_ACCESS = {
   },
 };
 
+function getRedisConfig() {
+  const url =
+    process.env.KV_REST_API_URL ||
+    process.env.STORAGE_KV_REST_API_URL;
+
+  const token =
+    process.env.KV_REST_API_TOKEN ||
+    process.env.STORAGE_KV_REST_API_TOKEN;
+
+  if (!url || !token) {
+    throw new Error(
+      "Redis environment variables are missing."
+    );
+  }
+
+  return {
+    url: url.replace(/\/+$/, ""),
+    token,
+  };
+}
+
+async function redisCommand(command) {
+  const { url, token } = getRedisConfig();
+
+  const response = await fetch(url, {
+    method: "POST",
+
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify(command),
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(
+      data?.error ||
+        `Redis request failed with status ${response.status}`
+    );
+  }
+
+  if (data?.error) {
+    throw new Error(data.error);
+  }
+
+  return data.result;
+}
+
 function normalizeEmail(value) {
   return String(value || "")
     .trim()
@@ -38,7 +86,8 @@ function normalizeEmail(value) {
 }
 
 function getTier(levelName) {
-  const cleanName = String(levelName || "").trim();
+  const cleanName =
+    String(levelName || "").trim();
 
   if (TIER_ACCESS[cleanName]) {
     return {
@@ -47,19 +96,30 @@ function getTier(levelName) {
     };
   }
 
-  const lower = cleanName.toLowerCase();
+  const lower =
+    cleanName.toLowerCase();
 
   if (lower.includes("infinite")) {
     return {
-      name: cleanName || "The Infinite ∞",
+      name:
+        cleanName ||
+        "The Infinite ∞",
+
       key: "infinite",
       rank: 3,
     };
   }
 
-  if (lower.includes("idea circle")) {
+  if (
+    lower.includes(
+      "idea circle"
+    )
+  ) {
     return {
-      name: cleanName || "The Idea Circle",
+      name:
+        cleanName ||
+        "The Idea Circle",
+
       key: "idea-circle",
       rank: 2,
     };
@@ -67,85 +127,176 @@ function getTier(levelName) {
 
   if (lower.includes("spark")) {
     return {
-      name: cleanName || "The Spark",
+      name:
+        cleanName ||
+        "The Spark",
+
       key: "spark",
       rank: 1,
     };
   }
 
   return {
-    name: cleanName || "Unknown",
+    name:
+      cleanName ||
+      "Unknown",
+
     key: "unknown",
     rank: 0,
   };
 }
 
 function readRawBody(req) {
-  return new Promise((resolve, reject) => {
-    let data = "";
+  return new Promise(
+    (resolve, reject) => {
+      let data = "";
 
-    req.setEncoding("utf8");
+      req.setEncoding("utf8");
 
-    req.on("data", (chunk) => {
-      data += chunk;
-    });
+      req.on(
+        "data",
+        (chunk) => {
+          data += chunk;
+        }
+      );
 
-    req.on("end", () => {
-      resolve(data);
-    });
+      req.on(
+        "end",
+        () => {
+          resolve(data);
+        }
+      );
 
-    req.on("error", reject);
-  });
+      req.on(
+        "error",
+        reject
+      );
+    }
+  );
 }
 
-function verifySignature(rawBody, signature) {
-  const secret = process.env.BMAC_WEBHOOK_SECRET;
+function verifySignature(
+  rawBody,
+  signature
+) {
+  const secret =
+    process.env.BMAC_WEBHOOK_SECRET;
 
   if (!secret || !signature) {
     return false;
   }
 
-  const expected = crypto
-    .createHmac("sha256", secret)
-    .update(rawBody)
-    .digest("hex");
+  const expected =
+    crypto
+      .createHmac(
+        "sha256",
+        secret
+      )
+      .update(rawBody)
+      .digest("hex");
 
-  const expectedBuffer = Buffer.from(expected);
-  const signatureBuffer = Buffer.from(String(signature));
+  const received =
+    String(signature)
+      .trim()
+      .replace(
+        /^sha256=/i,
+        ""
+      );
 
-  if (expectedBuffer.length !== signatureBuffer.length) {
+  const expectedBuffer =
+    Buffer.from(
+      expected,
+      "utf8"
+    );
+
+  const receivedBuffer =
+    Buffer.from(
+      received,
+      "utf8"
+    );
+
+  if (
+    expectedBuffer.length !==
+    receivedBuffer.length
+  ) {
     return false;
   }
 
   return crypto.timingSafeEqual(
     expectedBuffer,
-    signatureBuffer
+    receivedBuffer
   );
 }
 
-function shouldHaveAccess(eventType, data) {
-  if (eventType === "membership.started") {
+function toBoolean(value) {
+  return (
+    value === true ||
+    value === "true" ||
+    value === 1 ||
+    value === "1"
+  );
+}
+
+function toUnixSeconds(value) {
+  const number =
+    Number(value);
+
+  if (
+    Number.isFinite(number)
+  ) {
+    return number;
+  }
+
+  return 0;
+}
+
+function shouldHaveAccess(
+  eventType,
+  data
+) {
+  const now =
+    Math.floor(
+      Date.now() / 1000
+    );
+
+  const periodEnd =
+    toUnixSeconds(
+      data.current_period_end
+    );
+
+  if (
+    eventType ===
+    "membership.started"
+  ) {
     return true;
   }
 
-  if (eventType === "membership.updated") {
+  if (
+    eventType ===
+    "membership.updated"
+  ) {
+    const status =
+      String(
+        data.status || ""
+      ).toLowerCase();
+
     return (
-      data.status === "active" &&
-      data.paused !== "true"
+      status === "active" &&
+      !toBoolean(
+        data.paused
+      )
     );
   }
 
-  if (eventType === "membership.cancelled") {
-    /*
-      Buy Me a Coffee can tell us a cancellation
-      will happen at the end of the paid period.
-
-      If the person still has paid time remaining,
-      keep access until current_period_end.
-    */
+  if (
+    eventType ===
+    "membership.cancelled"
+  ) {
     if (
-      data.cancel_at_period_end === "true" &&
-      Number(data.current_period_end) > Math.floor(Date.now() / 1000)
+      toBoolean(
+        data.cancel_at_period_end
+      ) &&
+      periodEnd > now
     ) {
       return true;
     }
@@ -153,103 +304,209 @@ function shouldHaveAccess(eventType, data) {
     return false;
   }
 
-  if (eventType === "membership.paused") {
-    /*
-      Paused members can retain their benefits
-      through the end of the already-paid billing period.
-    */
+  if (
+    eventType ===
+    "membership.paused"
+  ) {
     return (
-      Number(data.current_period_end) >
-      Math.floor(Date.now() / 1000)
+      periodEnd > now
     );
   }
 
   return false;
 }
 
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({
-      success: false,
-      error: "POST only",
-    });
+function getEventType(event) {
+  return String(
+    event?.type ||
+      event?.event ||
+      event?.event_type ||
+      ""
+  )
+    .trim()
+    .toLowerCase();
+}
+
+function getEventData(event) {
+  return (
+    event?.data ||
+    event?.object ||
+    event ||
+    {}
+  );
+}
+
+function getMemberEmail(data) {
+  return normalizeEmail(
+    data.supporter_email ||
+      data.email ||
+      data.payer_email ||
+      data.member_email
+  );
+}
+
+function getMemberName(data) {
+  return String(
+    data.supporter_name ||
+      data.name ||
+      data.member_name ||
+      ""
+  ).trim();
+}
+
+function getMembershipLevelName(
+  data
+) {
+  return String(
+    data.membership_level_name ||
+      data.membership_name ||
+      data.level_name ||
+      data.tier_name ||
+      ""
+  ).trim();
+}
+
+export default async function handler(
+  req,
+  res
+) {
+  if (
+    req.method !== "POST"
+  ) {
+    return res
+      .status(405)
+      .json({
+        success: false,
+        error: "POST only",
+      });
   }
 
   try {
-    const rawBody = await readRawBody(req);
+    const rawBody =
+      await readRawBody(req);
 
     const signature =
-      req.headers["x-signature-sha256"];
+      req.headers[
+        "x-signature-sha256"
+      ];
 
-    if (!verifySignature(rawBody, signature)) {
-      return res.status(401).json({
-        success: false,
-        error: "Invalid webhook signature",
-      });
+    if (
+      !verifySignature(
+        rawBody,
+        signature
+      )
+    ) {
+      console.error(
+        "Buy Me a Coffee webhook signature rejected."
+      );
+
+      return res
+        .status(401)
+        .json({
+          success: false,
+          error:
+            "Invalid webhook signature",
+        });
     }
 
     let event;
 
     try {
-      event = JSON.parse(rawBody);
+      event =
+        JSON.parse(rawBody);
     } catch {
-      return res.status(400).json({
-        success: false,
-        error: "Invalid JSON",
-      });
+      return res
+        .status(400)
+        .json({
+          success: false,
+          error: "Invalid JSON",
+        });
     }
 
-    const allowedEvents = new Set([
-      "membership.started",
-      "membership.updated",
-      "membership.cancelled",
-      "membership.paused",
-    ]);
+    const eventType =
+      getEventType(event);
 
-    if (!allowedEvents.has(event.type)) {
-      return res.status(200).json({
-        success: true,
-        ignored: true,
-      });
-    }
-
-    const data = event.data || {};
-
-    const email = normalizeEmail(
-      data.supporter_email
+    console.log(
+      "Buy Me a Coffee event:",
+      eventType
     );
+
+    const allowedEvents =
+      new Set([
+        "membership.started",
+        "membership.updated",
+        "membership.cancelled",
+        "membership.paused",
+      ]);
+
+    if (
+      !allowedEvents.has(
+        eventType
+      )
+    ) {
+      return res
+        .status(200)
+        .json({
+          success: true,
+          ignored: true,
+          eventType,
+        });
+    }
+
+    const data =
+      getEventData(event);
+
+    const email =
+      getMemberEmail(data);
 
     if (!email) {
-      return res.status(200).json({
-        success: true,
-        ignored: true,
-        reason: "No member email",
-      });
+      console.log(
+        "Membership event had no email."
+      );
+
+      return res
+        .status(200)
+        .json({
+          success: true,
+          ignored: true,
+          reason:
+            "No member email",
+        });
     }
 
-    const tier = getTier(
-      data.membership_level_name
-    );
+    const tier =
+      getTier(
+        getMembershipLevelName(
+          data
+        )
+      );
 
     const accessActive =
-      shouldHaveAccess(event.type, data);
+      shouldHaveAccess(
+        eventType,
+        data
+      );
 
     const memberRecord = {
       email,
 
       name:
-        String(
-          data.supporter_name || ""
-        ).trim(),
+        getMemberName(data),
 
       supporterId:
-        data.supporter_id || null,
+        data.supporter_id ||
+        data.supporter?.id ||
+        null,
 
       membershipId:
-        data.id || null,
+        data.id ||
+        data.membership_id ||
+        null,
 
       membershipLevelId:
-        data.membership_level_id || null,
+        data.membership_level_id ||
+        data.level_id ||
+        null,
 
       tierName:
         tier.name,
@@ -261,27 +518,36 @@ export default async function handler(req, res) {
         tier.rank,
 
       membershipStatus:
-        data.status || "",
+        String(
+          data.status || ""
+        ),
 
       accessActive,
 
       cancelAtPeriodEnd:
-        data.cancel_at_period_end === "true",
+        toBoolean(
+          data.cancel_at_period_end
+        ),
 
       paused:
-        data.paused === "true",
+        toBoolean(
+          data.paused
+        ),
 
       currentPeriodStart:
-        data.current_period_start || null,
+        data.current_period_start ||
+        null,
 
       currentPeriodEnd:
-        data.current_period_end || null,
+        data.current_period_end ||
+        null,
 
-      eventType:
-        event.type,
+      eventType,
 
       eventId:
-        event.event_id || null,
+        event.event_id ||
+        event.id ||
+        null,
 
       liveMode:
         event.live_mode === true,
@@ -291,43 +557,70 @@ export default async function handler(req, res) {
     };
 
     /*
-      Primary lookup:
-      email -> membership record
+      Save the membership record
+      by customer email.
     */
-    await redis.set(
+
+    await redisCommand([
+      "SET",
       `elle:member:${email}`,
-      memberRecord
-    );
+      JSON.stringify(
+        memberRecord
+      ),
+    ]);
 
     /*
-      Optional lookup:
-      Buy Me a Coffee supporter ID -> email
+      Optional supporter ID lookup.
     */
-    if (data.supporter_id) {
-      await redis.set(
-        `elle:member-id:${data.supporter_id}`,
-        email
-      );
+
+    if (
+      memberRecord.supporterId
+    ) {
+      await redisCommand([
+        "SET",
+        `elle:member-id:${memberRecord.supporterId}`,
+        email,
+      ]);
     }
 
-    return res.status(200).json({
-      success: true,
-      received: event.type,
-      member: {
+    console.log(
+      "Elle membership saved:",
+      {
         email,
-        tier: tier.key,
+        tier:
+          tier.key,
         accessActive,
-      },
-    });
+        eventType,
+      }
+    );
+
+    return res
+      .status(200)
+      .json({
+        success: true,
+
+        received:
+          eventType,
+
+        member: {
+          email,
+          tier:
+            tier.key,
+          accessActive,
+        },
+      });
   } catch (error) {
     console.error(
       "Buy Me a Coffee webhook error:",
       error
     );
 
-    return res.status(500).json({
-      success: false,
-      error: "Webhook processing failed",
-    });
+    return res
+      .status(500)
+      .json({
+        success: false,
+        error:
+          "Webhook processing failed",
+      });
   }
 }
