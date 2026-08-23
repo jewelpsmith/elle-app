@@ -2,21 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
 <meta
   name="viewport"
   content="width=device-width,initial-scale=1,viewport-fit=cover"
 >
+
 <meta
   name="theme-color"
-  content="#f7eee8"
+  content="#fffaf6"
 >
 
-<title>Ask Elle · AURYNELLE∞ IDEAS</title>
+<title>Elle · AURYNELLE∞ IDEAS</title>
 
 <link
   rel="preconnect"
   href="https://fonts.googleapis.com"
 >
+
 <link
   rel="preconnect"
   href="https://fonts.gstatic.com"
@@ -24,11 +27,15 @@
 >
 
 <link
-  href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Figtree:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Figtree:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
   rel="stylesheet"
 >
 
 <style>
+/* =========================================================
+RESET
+========================================================= */
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -36,27 +43,33 @@
 }
 
 :root{
-  --pink:#d9608d;
-  --pink-dark:#bd4f77;
-  --rose:#e88dab;
-  --cream:#fff9f4;
-  --cream-deep:#f7eee8;
-  --gold:#c99b50;
-  --gold-soft:#e0be7d;
-  --plum:#4c3746;
-  --plum-deep:#2c202a;
-  --ink:#352e34;
-  --muted:#776c74;
-  --line:#eadfe2;
-  --green:#2f8b65;
+  --cream:#fffaf6;
+  --cream2:#fff4ee;
+  --pearl:#fffdfb;
+  --blush:#f7dfe0;
+  --blush2:#f2cfd3;
+  --rose:#d88a9c;
+
+  --plum:#59283f;
+  --plum2:#6e3850;
+  --plum-soft:#8a6273;
+
+  --gold:#c99448;
+  --gold-light:#efcf91;
+
+  --ink:#362c31;
+  --muted:#756b70;
+  --line:#eadbdd;
+
+  --green:#2b8b61;
 
   --shadow:
-    0 28px 70px -42px
-    rgba(56,34,41,.42);
+    0 28px 80px -48px
+    rgba(72,42,52,.34);
 
   --soft-shadow:
-    0 16px 36px -28px
-    rgba(56,34,41,.30);
+    0 18px 48px -34px
+    rgba(72,42,52,.26);
 }
 
 html{
@@ -65,9 +78,11 @@ html{
 
 body{
   min-height:100dvh;
+
   overflow-x:hidden;
 
-  color:var(--ink);
+  color:
+    var(--ink);
 
   font-family:
     "Figtree",
@@ -76,23 +91,28 @@ body{
 
   background:
     radial-gradient(
-      circle at 10% 8%,
-      rgba(232,141,171,.11),
+      circle at 8% 5%,
+      rgba(234,187,195,.20),
       transparent 26%
     ),
     radial-gradient(
-      circle at 90% 10%,
-      rgba(201,155,80,.10),
-      transparent 25%
+      circle at 92% 2%,
+      rgba(221,184,113,.14),
+      transparent 24%
     ),
     linear-gradient(
-      145deg,
+      180deg,
       #fffaf6,
-      #f8efe9 48%,
-      #fffdf9
+      #fffdfb 40%,
+      #fff7f2
     );
 
-  -webkit-font-smoothing:antialiased;
+  -webkit-font-smoothing:
+    antialiased;
+}
+
+body.locked{
+  overflow:hidden;
 }
 
 button,
@@ -101,22 +121,24 @@ input{
 }
 
 button{
-  -webkit-tap-highlight-color:transparent;
+  -webkit-tap-highlight-color:
+    transparent;
 }
 
-body.locked{
-  overflow:hidden;
+a{
+  color:inherit;
 }
 
 .hidden{
   display:none !important;
 }
 
-/* =====================================================
+/* =========================================================
 AGE GATE
-===================================================== */
+========================================================= */
 
-.age-gate{
+.age-gate,
+.member-gate{
   position:fixed;
   inset:0;
 
@@ -129,81 +151,97 @@ AGE GATE
   padding:18px;
 
   background:
-    rgba(249,241,236,.96);
+    rgba(255,249,245,.94);
 
   backdrop-filter:
-    blur(24px);
+    blur(28px);
 }
 
-.age-gate.show{
+.age-gate.show,
+.member-gate.show{
   display:flex;
 }
 
-.age-card{
-  width:min(550px,100%);
+.age-card,
+.member-card{
+  width:
+    min(540px,100%);
 
-  padding:30px;
+  overflow:hidden;
 
   border:
     1px solid
     rgba(255,255,255,.95);
 
-  border-radius:30px;
-
-  text-align:center;
+  border-radius:34px;
 
   background:
-    rgba(255,255,255,.96);
+    rgba(255,255,255,.97);
 
   box-shadow:
-    var(--shadow);
+    0 40px 100px -55px
+    rgba(76,38,54,.50);
 }
 
-.age-logo{
+.age-card{
+  padding:32px;
+
+  text-align:center;
+}
+
+.age-logo,
+.member-crown{
   width:62px;
   height:62px;
 
   margin:
-    0 auto 12px;
+    0 auto 13px;
 
   display:grid;
   place-items:center;
 
   border:
-    2px solid
-    var(--gold);
+    1px solid
+    rgba(201,148,72,.45);
 
   border-radius:50%;
 
   color:
-    var(--gold-soft);
+    var(--gold-light);
 
   background:
     linear-gradient(
       145deg,
-      #4d3548,
-      #684c61
+      #6f3b51,
+      #4e2539
     );
 
   font-family:
     "Playfair Display",
     serif;
 
-  font-size:28px;
+  font-size:27px;
+
+  box-shadow:
+    0 16px 35px -23px
+    rgba(89,40,63,.62);
 }
 
-.age-brand{
-  color:#8b8087;
+.age-brand,
+.member-kicker{
+  color:
+    var(--gold);
 
   font-size:9px;
   font-weight:800;
 
-  letter-spacing:.18em;
+  letter-spacing:.20em;
   text-transform:uppercase;
 }
 
-.age-title{
-  margin-top:8px;
+.age-title,
+.member-title{
+  margin-top:7px;
 
   color:
     var(--plum);
@@ -214,37 +252,41 @@ AGE GATE
 
   font-size:
     clamp(
-      31px,
-      7vw,
-      46px
+      34px,
+      8vw,
+      48px
     );
+
+  line-height:1.05;
 }
 
-.age-script{
-  margin-top:5px;
+.age-script,
+.member-script{
+  margin-top:4px;
 
   color:
-    var(--pink);
+    var(--rose);
 
   font-family:
     "Caveat",
     cursive;
 
-  font-size:23px;
+  font-size:24px;
   font-weight:700;
 }
 
-.age-copy{
-  max-width:440px;
+.age-copy,
+.member-copy{
+  max-width:430px;
 
   margin:
     12px auto 0;
 
   color:
-    #746c72;
+    var(--muted);
 
-  font-size:12px;
-  line-height:1.6;
+  font-size:11px;
+  line-height:1.65;
 }
 
 .age-options{
@@ -253,21 +295,21 @@ AGE GATE
   grid-template-columns:
     1fr 1fr;
 
-  gap:9px;
+  gap:10px;
 
-  margin-top:20px;
+  margin-top:22px;
 }
 
 .age-option{
-  min-height:90px;
+  min-height:96px;
 
-  padding:14px;
+  padding:15px;
 
   border:
     1px solid
     var(--line);
 
-  border-radius:18px;
+  border-radius:20px;
 
   color:
     var(--ink);
@@ -275,46 +317,55 @@ AGE GATE
   background:white;
 
   cursor:pointer;
+
+  transition:
+    .2s ease;
 }
 
 .age-option:hover{
-  border-color:
-    rgba(217,96,141,.45);
-
   transform:
-    translateY(-1px);
+    translateY(-2px);
+
+  border-color:
+    rgba(216,138,156,.58);
+
+  box-shadow:
+    var(--soft-shadow);
 }
 
 .age-option-icon{
   display:block;
 
-  margin-bottom:5px;
+  margin-bottom:6px;
 
-  font-size:22px;
+  font-size:23px;
 }
 
 .age-option strong{
   display:block;
 
+  color:
+    var(--plum);
+
   font-size:13px;
 }
 
-.age-option span{
+.age-option span:last-child{
   display:block;
 
-  margin-top:3px;
+  margin-top:4px;
 
-  color:#998f96;
+  color:#92878c;
 
   font-size:9px;
 }
 
 .age-under{
-  margin-top:12px;
+  margin-top:14px;
 
   border:none;
 
-  color:#887f85;
+  color:#8a7c83;
 
   background:none;
 
@@ -330,15 +381,15 @@ AGE GATE
 
   margin-top:11px;
 
-  padding:10px;
+  padding:11px;
 
-  border-radius:12px;
+  border-radius:13px;
 
-  background:
-    #fff1dd;
+  color:#765938;
+
+  background:#fff4de;
 
   font-size:10px;
-  line-height:1.5;
 }
 
 .under-message.show{
@@ -346,173 +397,41 @@ AGE GATE
 }
 
 .age-privacy{
-  margin-top:14px;
+  margin-top:15px;
 
-  padding-top:12px;
+  padding-top:13px;
 
   border-top:
     1px solid
-    #efe5e8;
+    #f0e5e7;
 
-  color:#887f86;
+  color:#958a90;
 
   font-size:9px;
   line-height:1.5;
 }
 
-/* =====================================================
-MEMBER GATE
-===================================================== */
-
-.member-gate{
-  position:fixed;
-  inset:0;
-
-  z-index:9000;
-
-  display:none;
-  align-items:center;
-  justify-content:center;
-
-  padding:18px;
-
-  background:
-    radial-gradient(
-      circle at 50% 20%,
-      rgba(217,96,141,.10),
-      transparent 35%
-    ),
-    rgba(245,236,231,.96);
-
-  backdrop-filter:
-    blur(24px);
-}
-
-.member-gate.show{
-  display:flex;
-}
-
-.member-card{
-  width:min(520px,100%);
-
-  overflow:hidden;
-
-  border:
-    1px solid
-    rgba(255,255,255,.95);
-
-  border-radius:32px;
-
-  background:
-    rgba(255,255,255,.97);
-
-  box-shadow:
-    0 35px 90px -52px
-    rgba(58,35,47,.62);
-}
+/* =========================================================
+MEMBERSHIP GATE
+========================================================= */
 
 .member-head{
   padding:
-    29px 28px 22px;
+    31px 30px 23px;
 
   text-align:center;
 
   background:
     linear-gradient(
-      150deg,
+      145deg,
       #fffaf6,
-      #fff2f6
+      #fff1f2
     );
-}
-
-.member-crown{
-  width:58px;
-  height:58px;
-
-  margin:
-    0 auto 12px;
-
-  display:grid;
-  place-items:center;
-
-  border:
-    1px solid
-    rgba(201,155,80,.55);
-
-  border-radius:50%;
-
-  background:
-    var(--plum);
-
-  color:
-    var(--gold-soft);
-
-  font-size:24px;
-
-  box-shadow:
-    0 16px 30px -20px
-    rgba(76,55,70,.7);
-}
-
-.member-kicker{
-  color:
-    var(--gold);
-
-  font-size:9px;
-  font-weight:800;
-
-  letter-spacing:.19em;
-  text-transform:uppercase;
-}
-
-.member-title{
-  margin-top:6px;
-
-  color:
-    var(--plum);
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:
-    clamp(
-      30px,
-      8vw,
-      43px
-    );
-}
-
-.member-script{
-  margin-top:3px;
-
-  color:
-    var(--pink);
-
-  font-family:
-    "Caveat",
-    cursive;
-
-  font-size:23px;
-  font-weight:700;
-}
-
-.member-copy{
-  max-width:410px;
-
-  margin:
-    10px auto 0;
-
-  color:
-    var(--muted);
-
-  font-size:11px;
-  line-height:1.6;
 }
 
 .member-body{
   padding:
-    22px 26px 26px;
+    23px 28px 29px;
 }
 
 .member-step{
@@ -534,22 +453,22 @@ MEMBER GATE
   font-size:9px;
   font-weight:800;
 
-  letter-spacing:.07em;
+  letter-spacing:.08em;
   text-transform:uppercase;
 }
 
 .member-input{
   width:100%;
-  height:48px;
+  height:50px;
 
   padding:
-    0 15px;
+    0 16px;
 
   border:
     1px solid
-    #ded3d8;
+    #dfd1d6;
 
-  border-radius:15px;
+  border-radius:16px;
 
   outline:none;
 
@@ -557,18 +476,18 @@ MEMBER GATE
     var(--ink);
 
   background:
-    #fffdfd;
+    #fffdfc;
 
   font-size:13px;
 }
 
 .member-input:focus{
   border-color:
-    rgba(217,96,141,.65);
+    rgba(216,138,156,.72);
 
   box-shadow:
     0 0 0 4px
-    rgba(217,96,141,.08);
+    rgba(216,138,156,.10);
 }
 
 .code-input{
@@ -577,17 +496,16 @@ MEMBER GATE
   font-size:22px;
   font-weight:800;
 
-  letter-spacing:.24em;
+  letter-spacing:.22em;
 }
 
 .member-action{
   width:100%;
-  min-height:47px;
+  min-height:48px;
 
   margin-top:10px;
 
   border:none;
-
   border-radius:999px;
 
   color:white;
@@ -595,30 +513,34 @@ MEMBER GATE
   background:
     linear-gradient(
       90deg,
-      #c95682,
-      #df82a2
+      var(--plum),
+      #79425a
     );
 
   cursor:pointer;
 
   font-size:11px;
   font-weight:800;
+
+  box-shadow:
+    0 15px 30px -22px
+    rgba(89,40,63,.72);
 }
 
 .member-action:disabled{
-  opacity:.55;
+  opacity:.54;
   cursor:wait;
 }
 
 .member-secondary{
   width:100%;
 
-  margin-top:10px;
+  margin-top:11px;
 
   border:none;
 
   color:
-    var(--pink-dark);
+    var(--plum);
 
   background:none;
 
@@ -631,14 +553,15 @@ MEMBER GATE
 .member-message{
   display:none;
 
-  margin-top:11px;
+  margin-top:12px;
 
-  padding:10px 12px;
+  padding:
+    11px 13px;
 
-  border-radius:12px;
+  border-radius:13px;
 
   font-size:10px;
-  line-height:1.45;
+  line-height:1.5;
 }
 
 .member-message.show{
@@ -646,17 +569,15 @@ MEMBER GATE
 }
 
 .member-message.error{
-  color:#7a4d53;
+  color:#774b55;
 
-  background:
-    #fff0f2;
+  background:#fff0f2;
 }
 
 .member-message.ok{
-  color:#386c55;
+  color:#37694f;
 
-  background:
-    #effaf4;
+  background:#eff9f3;
 }
 
 .member-join{
@@ -664,18 +585,17 @@ MEMBER GATE
 
   margin-top:13px;
 
-  padding:15px;
+  padding:16px;
 
   border:
     1px solid
     #eadde2;
 
-  border-radius:17px;
+  border-radius:18px;
 
   text-align:center;
 
-  background:
-    #fffafc;
+  background:#fff9fb;
 }
 
 .member-join.show{
@@ -692,7 +612,7 @@ MEMBER GATE
     "Playfair Display",
     serif;
 
-  font-size:18px;
+  font-size:19px;
 }
 
 .member-join p{
@@ -710,7 +630,7 @@ MEMBER GATE
   align-items:center;
   justify-content:center;
 
-  min-height:39px;
+  min-height:40px;
 
   margin-top:10px;
 
@@ -731,32 +651,32 @@ MEMBER GATE
 }
 
 .member-foot{
-  margin-top:14px;
+  margin-top:15px;
 
-  color:#948b91;
+  color:#998e94;
 
   text-align:center;
 
   font-size:8px;
-  line-height:1.45;
+  line-height:1.5;
 }
 
-/* =====================================================
+/* =========================================================
 HEADER
-===================================================== */
+========================================================= */
 
 .topbar{
   position:sticky;
   top:0;
 
-  z-index:500;
-
-  background:
-    rgba(249,242,236,.89);
+  z-index:600;
 
   border-bottom:
     1px solid
-    rgba(255,255,255,.9);
+    rgba(239,223,222,.74);
+
+  background:
+    rgba(255,250,246,.82);
 
   backdrop-filter:
     blur(22px);
@@ -765,25 +685,25 @@ HEADER
 .topbar-inner{
   width:
     min(
-      1220px,
-      calc(100% - 26px)
+      1240px,
+      calc(100% - 28px)
     );
 
-  min-height:62px;
+  min-height:66px;
 
   margin:auto;
 
   display:flex;
   align-items:center;
 
-  gap:12px;
+  gap:15px;
 }
 
 .brand{
   display:flex;
   align-items:center;
 
-  gap:10px;
+  gap:11px;
 }
 
 .brand-mark{
@@ -794,34 +714,34 @@ HEADER
   place-items:center;
 
   border:
-    2px solid
-    var(--gold);
+    1px solid
+    rgba(201,148,72,.55);
 
   border-radius:50%;
 
   color:
-    #e7bd69;
+    var(--gold);
 
   background:
-    linear-gradient(
-      145deg,
-      #51374c,
-      #6d4a60
-    );
+    rgba(255,255,255,.82);
 
   font-family:
     "Playfair Display",
     serif;
 
   font-size:22px;
+
+  box-shadow:
+    var(--soft-shadow);
 }
 
 .brand-copy strong{
   display:block;
 
-  color:#493d45;
+  color:
+    var(--plum);
 
-  font-size:14px;
+  font-size:13px;
 }
 
 .brand-copy span{
@@ -829,91 +749,95 @@ HEADER
 
   margin-top:1px;
 
-  color:#8f838a;
+  color:#958a90;
 
-  font-size:8px;
+  font-size:7.5px;
+  font-weight:700;
 
-  letter-spacing:.1em;
+  letter-spacing:.13em;
+}
+
+.nav{
+  margin-left:auto;
+
+  display:flex;
+  align-items:center;
+
+  gap:5px;
+}
+
+.nav a{
+  padding:
+    9px 11px;
+
+  border-radius:999px;
+
+  color:#665a60;
+
+  text-decoration:none;
+
+  font-size:9px;
+  font-weight:700;
+
+  transition:
+    .2s ease;
+}
+
+.nav a:hover{
+  color:
+    var(--plum);
+
+  background:
+    rgba(255,255,255,.72);
 }
 
 .top-actions{
-  margin-left:auto;
-
   display:flex;
   align-items:center;
 
   gap:7px;
 }
 
-.member-pill{
-  max-width:180px;
-
-  overflow:hidden;
+.member-pill,
+.top-button{
+  min-height:35px;
 
   padding:
-    8px 11px;
+    0 12px;
 
   border:
     1px solid
-    #eadde1;
+    #e7d9dd;
 
   border-radius:999px;
 
-  color:#665961;
+  color:
+    #695d63;
 
   background:
-    rgba(255,255,255,.91);
+    rgba(255,255,255,.80);
 
-  font-size:9px;
+  font-size:8.5px;
   font-weight:800;
-
-  text-overflow:ellipsis;
-  white-space:nowrap;
 }
 
 .top-button{
-  min-height:36px;
-
-  padding:
-    0 13px;
-
-  border:
-    1px solid
-    #eee2e4;
-
-  border-radius:999px;
-
-  color:#5f555d;
-
-  background:
-    rgba(255,255,255,.92);
-
   cursor:pointer;
-
-  font-size:9px;
-  font-weight:800;
-
-  box-shadow:
-    var(--soft-shadow);
 }
 
-/* =====================================================
-OWNER TEST BAR
-===================================================== */
+/* =========================================================
+OWNER MODE
+========================================================= */
 
 .owner-bar{
   display:none;
 
   border-bottom:
     1px solid
-    rgba(201,155,80,.28);
+    #eadfe2;
 
   background:
-    linear-gradient(
-      90deg,
-      #33242f,
-      #5a3d51
-    );
+    #fff6e7;
 }
 
 .owner-bar.show{
@@ -923,54 +847,49 @@ OWNER TEST BAR
 .owner-inner{
   width:
     min(
-      1220px,
-      calc(100% - 26px)
+      1240px,
+      calc(100% - 28px)
     );
-
-  min-height:48px;
 
   margin:auto;
 
   display:flex;
   align-items:center;
 
-  gap:10px;
+  gap:8px;
+
+  padding:
+    8px 0;
 }
 
 .owner-label{
   color:
-    #f3dca7;
+    #7c5d2f;
 
   font-size:9px;
   font-weight:800;
-
-  letter-spacing:.1em;
-  text-transform:uppercase;
 }
 
 .owner-test-buttons{
   display:flex;
   flex-wrap:wrap;
 
-  gap:6px;
+  gap:5px;
 }
 
 .owner-test{
-  min-height:29px;
-
   padding:
-    0 10px;
+    6px 9px;
 
   border:
     1px solid
-    rgba(255,255,255,.16);
+    #dfc797;
 
   border-radius:999px;
 
-  color:white;
+  color:#795f3b;
 
-  background:
-    rgba(255,255,255,.07);
+  background:white;
 
   cursor:pointer;
 
@@ -979,119 +898,101 @@ OWNER TEST BAR
 }
 
 .owner-test.active{
-  color:
-    var(--plum);
+  color:white;
 
   background:
-    #f5dca8;
-
-  border-color:
-    #f5dca8;
+    #9a7040;
 }
 
 .owner-status{
   margin-left:auto;
 
-  color:
-    #eadde6;
+  color:#907554;
 
   font-size:8px;
 }
 
-/* =====================================================
+/* =========================================================
 PAGE
-===================================================== */
+========================================================= */
 
 .page{
   width:
     min(
-      1220px,
-      calc(100% - 24px)
+      1240px,
+      calc(100% - 28px)
     );
 
   margin:
-    0 auto;
-
-  padding:
-    18px 0 38px;
+    18px auto 0;
 }
 
-/* =====================================================
+/* =========================================================
 HERO
-===================================================== */
+========================================================= */
 
 .hero{
   position:relative;
 
-  min-height:650px;
-
   overflow:hidden;
+
+  min-height:
+    min(790px,82vh);
 
   border:
     1px solid
-    rgba(255,255,255,.95);
+    rgba(235,217,217,.92);
 
-  border-radius:34px;
+  border-radius:38px;
 
   background:
-    linear-gradient(
-      90deg,
-      rgba(250,240,231,.99) 0%,
-      rgba(250,240,231,.96) 46%,
-      rgba(250,240,231,.16) 73%
-    ),
-    url("elle-office.png")
-    right center /
-    54% 100%
-    no-repeat;
+    #fff8f4;
 
   box-shadow:
     var(--shadow);
 }
 
-.hero-content{
-  position:relative;
+.hero-grid{
+  display:grid;
 
+  grid-template-columns:
+    minmax(0,.92fr)
+    minmax(440px,1.08fr);
+
+  min-height:
+    inherit;
+}
+
+.hero-copy{
+  position:relative;
   z-index:5;
 
-  width:66%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 
   padding:
-    28px 28px 25px;
+    56px 24px 56px 48px;
 }
 
-.balloon-wrap{
-  max-width:680px;
+.hero-kicker{
+  color:
+    var(--gold);
 
-  margin:
-    0 auto;
+  font-size:9px;
+  font-weight:800;
 
-  text-align:center;
+  letter-spacing:.22em;
+  text-transform:uppercase;
 }
 
-.balloon-title{
-  width:100%;
+.hero-title{
+  max-width:510px;
 
-  max-width:650px;
+  margin-top:10px;
 
-  display:block;
-
-  margin:
-    0 auto;
-
-  filter:
-    drop-shadow(
-      0 12px 16px
-      rgba(113,66,78,.17)
-    );
-}
-
-.hero-tagline{
-  margin-top:-4px;
-
-  color:#574750;
-
-  text-align:center;
+  color:
+    var(--plum);
 
   font-family:
     "Playfair Display",
@@ -1099,104 +1000,350 @@ HERO
 
   font-size:
     clamp(
-      19px,
-      2.3vw,
-      27px
+      52px,
+      7vw,
+      86px
     );
+
+  font-weight:500;
+
+  line-height:.94;
+
+  letter-spacing:-.035em;
 }
 
-.hero-tagline em{
-  color:
-    var(--pink);
+.hero-sub{
+  max-width:460px;
 
-  font-family:
-    "Caveat",
-    cursive;
-
-  font-size:1.15em;
-}
-
-.topic-line{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-
-  gap:
-    7px 12px;
-
-  margin-top:11px;
-
-  color:#6d6168;
-
-  font-size:9px;
-  font-weight:600;
-}
-
-/* =====================================================
-CHAT
-===================================================== */
-
-.chat-card{
   margin-top:20px;
 
-  overflow:hidden;
+  color:#5f565a;
 
-  padding:15px;
+  font-size:
+    clamp(
+      14px,
+      1.8vw,
+      18px
+    );
+
+  line-height:1.55;
+}
+
+.hero-heart{
+  margin-top:14px;
+
+  color:
+    var(--plum-soft);
+
+  font-size:11px;
+}
+
+.hero-heart span{
+  color:
+    var(--gold);
+
+  margin-right:5px;
+}
+
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:9px;
+
+  margin-top:24px;
+}
+
+.hero-button{
+  min-height:46px;
+
+  padding:
+    0 20px;
+
+  border-radius:999px;
+
+  cursor:pointer;
+
+  font-size:10px;
+  font-weight:800;
+}
+
+.hero-button.primary{
+  border:none;
+
+  color:white;
+
+  background:
+    var(--plum);
+
+  box-shadow:
+    0 17px 34px -22px
+    rgba(89,40,63,.76);
+}
+
+.hero-button.secondary{
+  border:
+    1px solid
+    #e0ced4;
+
+  color:
+    var(--plum);
+
+  background:
+    rgba(255,255,255,.74);
+}
+
+.hero-visual{
+  position:relative;
+
+  min-width:0;
+  min-height:
+    inherit;
+
+  overflow:hidden;
+}
+
+.hero-elle{
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+  object-position:center;
+
+  transform:
+    scale(1.01);
+}
+
+.hero-fade{
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      90deg,
+      #fff8f4 0%,
+      rgba(255,248,244,.68) 12%,
+      rgba(255,248,244,.06) 38%,
+      transparent 62%
+    );
+
+  pointer-events:none;
+}
+
+.hero-glow{
+  position:absolute;
+
+  right:9%;
+  top:8%;
+
+  width:260px;
+  height:260px;
+
+  border-radius:50%;
+
+  background:
+    rgba(239,207,145,.20);
+
+  filter:
+    blur(70px);
+
+  pointer-events:none;
+}
+
+/* =========================================================
+ASK ELLE CHAT
+========================================================= */
+
+.ask-section{
+  position:relative;
+
+  z-index:20;
+
+  width:
+    min(
+      1040px,
+      calc(100% - 34px)
+    );
+
+  margin:
+    -94px auto 0;
+}
+
+.chat-card{
+  overflow:hidden;
 
   border:
     1px solid
-    rgba(222,119,156,.36);
+    rgba(231,211,214,.96);
 
-  border-radius:23px;
+  border-radius:30px;
 
   background:
-    rgba(255,255,255,.94);
+    rgba(255,253,251,.95);
 
   box-shadow:
-    0 20px 45px -32px
-    rgba(120,55,86,.38);
+    0 32px 78px -48px
+    rgba(78,45,55,.45);
 
   backdrop-filter:
-    blur(14px);
+    blur(18px);
 }
 
 .chat-card.flash{
   animation:
-    chatGlow
-    1.1s ease;
+    chatFlash
+    .65s ease;
 }
 
-@keyframes chatGlow{
-  40%{
+@keyframes chatFlash{
+  50%{
     box-shadow:
-      0 0 0 5px
-      rgba(217,96,141,.12),
-      0 24px 52px -26px
-      rgba(217,96,141,.48);
+      0 0 0 6px
+      rgba(216,138,156,.13),
+      0 32px 78px -48px
+      rgba(78,45,55,.45);
   }
 }
 
+.chat-head{
+  display:flex;
+  align-items:center;
+
+  gap:12px;
+
+  padding:
+    18px 20px;
+
+  border-bottom:
+    1px solid
+    #efe2e3;
+
+  background:
+    linear-gradient(
+      90deg,
+      #fffdfb,
+      #fff5f2
+    );
+}
+
+.chat-monogram{
+  width:44px;
+  height:44px;
+
+  flex-shrink:0;
+
+  display:grid;
+  place-items:center;
+
+  border:
+    1px solid
+    rgba(201,148,72,.38);
+
+  border-radius:50%;
+
+  color:
+    var(--plum);
+
+  background:white;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:20px;
+
+  box-shadow:
+    var(--soft-shadow);
+}
+
+.chat-heading strong{
+  display:block;
+
+  color:
+    var(--plum);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:21px;
+}
+
+.chat-heading span{
+  display:block;
+
+  margin-top:2px;
+
+  color:
+    var(--muted);
+
+  font-size:9px;
+}
+
+.online{
+  margin-left:auto;
+
+  display:flex;
+  align-items:center;
+
+  gap:6px;
+
+  padding:
+    7px 10px;
+
+  border:
+    1px solid
+    #e8dedf;
+
+  border-radius:999px;
+
+  color:#71666b;
+
+  background:white;
+
+  font-size:8px;
+  font-weight:700;
+}
+
+.online-dot{
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:
+    #52a974;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(82,169,116,.10);
+}
+
 .thread{
-  min-height:155px;
-  max-height:330px;
+  height:330px;
 
   overflow-y:auto;
 
-  display:flex;
-  flex-direction:column;
-
-  gap:9px;
-
   padding:
-    5px 3px 10px;
+    20px;
 
-  scroll-behavior:smooth;
+  background:
+    linear-gradient(
+      180deg,
+      #fffdfb,
+      #fffaf7
+    );
+
+  scrollbar-width:thin;
 }
 
 .message-row{
   display:flex;
 
-  width:100%;
+  margin-bottom:10px;
 }
 
 .message-row.user{
@@ -1204,64 +1351,66 @@ CHAT
 }
 
 .bubble{
-  max-width:91%;
+  max-width:
+    min(76%,620px);
 
   padding:
-    9px 12px;
+    11px 14px;
 
-  border-radius:
-    15px;
+  border-radius:18px;
 
-  font-size:12.5px;
-  line-height:1.5;
+  font-size:11px;
+  line-height:1.55;
 
   white-space:pre-wrap;
 }
 
 .bubble-elle{
-  border-left:
-    3px solid
-    var(--pink);
+  border:
+    1px solid
+    #eadcdf;
 
-  border-radius:
-    7px 15px 15px 15px;
+  border-top-left-radius:5px;
 
-  background:
-    #fff8fa;
+  color:
+    #4a4044;
+
+  background:white;
+
+  box-shadow:
+    0 9px 24px -21px
+    rgba(77,42,54,.50);
 }
 
 .bubble-user{
-  border-right:
-    3px solid
-    var(--pink);
+  border-top-right-radius:5px;
 
-  border-radius:
-    15px 7px 15px 15px;
+  color:
+    #5d4851;
 
   background:
-    #fff1f5;
+    #f8e5e3;
 }
 
 .elle-label{
-  margin-bottom:3px;
+  margin-bottom:4px;
 
   color:
-    var(--pink-dark);
+    var(--gold);
 
-  font-size:8px;
-  font-weight:800;
+  font-size:7px;
+  font-weight:900;
 
-  letter-spacing:.08em;
-  text-transform:uppercase;
+  letter-spacing:.16em;
 }
 
 .typing{
-  height:18px;
-
   display:flex;
-  align-items:center;
 
   gap:4px;
+
+  padding:
+    4px 0;
 }
 
 .typing span{
@@ -1271,11 +1420,11 @@ CHAT
   border-radius:50%;
 
   background:
-    var(--pink);
+    var(--rose);
 
   animation:
-    typing
-    1s ease-in-out infinite;
+    typingBounce
+    1s infinite;
 }
 
 .typing span:nth-child(2){
@@ -1286,7 +1435,7 @@ CHAT
   animation-delay:.24s;
 }
 
-@keyframes typing{
+@keyframes typingBounce{
   50%{
     transform:
       translateY(-4px);
@@ -1294,33 +1443,45 @@ CHAT
 }
 
 .chips{
+  min-height:42px;
+
   display:flex;
   flex-wrap:wrap;
 
-  gap:7px;
+  gap:6px;
 
-  margin-top:5px;
+  padding:
+    10px 18px 0;
 }
 
 .chip{
   padding:
-    7px 11px;
+    7px 10px;
 
   border:
     1px solid
-    #eccbd7;
+    #ead9dd;
 
   border-radius:999px;
 
-  color:#bf587d;
+  color:
+    #705862;
 
   background:
-    #fff6f9;
+    #fffdfc;
 
   cursor:pointer;
 
-  font-size:9px;
+  font-size:8px;
   font-weight:700;
+}
+
+.chip:hover{
+  border-color:
+    rgba(201,148,72,.55);
+
+  color:
+    var(--plum);
 }
 
 .composer{
@@ -1329,88 +1490,197 @@ CHAT
 
   gap:8px;
 
-  margin-top:9px;
+  padding:
+    12px 18px 15px;
 }
 
 .input-wrap{
   flex:1;
+}
+
+.input-wrap input{
+  width:100%;
+  height:48px;
 
   padding:
-    3px 5px
-    3px 13px;
+    0 16px;
 
   border:
     1px solid
-    #e2d7dc;
+    #e4d8da;
 
-  border-radius:999px;
+  border-radius:16px;
 
-  background:
-    #fffdfd;
-}
-
-#say{
-  width:100%;
-
-  padding:
-    10px 0;
-
-  border:none;
   outline:none;
 
-  color:#3b3439;
+  color:
+    var(--ink);
 
-  background:none;
+  background:white;
 
-  font-size:12px;
+  font-size:11px;
 }
 
-#say::placeholder{
-  color:#aaa0a5;
+.input-wrap input:focus{
+  border-color:
+    rgba(216,138,156,.68);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(216,138,156,.08);
 }
 
 .send{
-  min-width:96px;
-  height:42px;
+  height:46px;
+
+  padding:
+    0 18px;
 
   border:none;
+  border-radius:14px;
+
+  color:white;
+
+  background:
+    var(--plum);
+
+  cursor:pointer;
+
+  font-size:9px;
+  font-weight:800;
+}
+
+.send:disabled{
+  opacity:.5;
+  cursor:wait;
+}
+
+.chat-note{
+  padding:
+    0 19px 14px;
+
+  color:#9a8f94;
+
+  font-size:8px;
+  line-height:1.5;
+}
+
+/* booking card inside chat */
+
+.booking-chat-card{
+  margin:
+    12px 0 14px;
+
+  padding:17px;
+
+  border:
+    1px solid
+    #e7d6d7;
+
+  border-radius:20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffaf5,
+      #fff1ed
+    );
+
+  box-shadow:
+    var(--soft-shadow);
+}
+
+.booking-chat-kicker{
+  color:
+    var(--gold);
+
+  font-size:7px;
+  font-weight:900;
+
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.booking-chat-title{
+  margin-top:5px;
+
+  color:
+    var(--plum);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:20px;
+}
+
+.booking-chat-copy{
+  margin-top:5px;
+
+  color:
+    var(--muted);
+
+  font-size:9px;
+  line-height:1.5;
+}
+
+.booking-chat-meta{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:6px;
+
+  margin-top:11px;
+}
+
+.booking-mini{
+  padding:
+    6px 8px;
+
+  border:
+    1px solid
+    #eadbda;
+
+  border-radius:999px;
+
+  color:
+    #705c64;
+
+  background:
+    rgba(255,255,255,.76);
+
+  font-size:8px;
+  font-weight:700;
+}
+
+.booking-chat-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-height:40px;
+
+  margin-top:12px;
+
+  padding:
+    0 16px;
 
   border-radius:999px;
 
   color:white;
 
-  cursor:pointer;
-
   background:
-    linear-gradient(
-      90deg,
-      #cf5b86,
-      #dc7a9b
-    );
+    var(--plum);
 
-  font-size:10px;
+  text-decoration:none;
+
+  font-size:9px;
   font-weight:800;
 }
 
-.send:disabled{
-  opacity:.58;
-  cursor:wait;
-}
-
-.chat-note{
-  margin-top:8px;
-
-  color:#93898f;
-
-  text-align:center;
-
-  font-size:8px;
-  line-height:1.4;
-}
-
-/* =====================================================
-QUICK BAR
-===================================================== */
+/* =========================================================
+QUICK ACTIONS
+========================================================= */
 
 .quick-bar{
   display:grid;
@@ -1420,62 +1690,71 @@ QUICK BAR
 
   gap:9px;
 
-  margin-top:13px;
+  margin-top:16px;
 }
 
 .quick-button{
-  min-height:58px;
+  min-height:68px;
 
   padding:
-    10px 8px;
+    12px;
 
   border:
     1px solid
-    rgba(255,255,255,.94);
+    #eadde0;
 
-  border-radius:16px;
+  border-radius:20px;
 
-  color:#554951;
+  color:
+    #65575d;
 
   background:
-    rgba(255,255,255,.78);
+    rgba(255,255,255,.80);
 
   cursor:pointer;
+
+  font-size:9px;
+  font-weight:800;
 
   box-shadow:
     var(--soft-shadow);
 
-  font-size:9px;
-  font-weight:800;
+  transition:
+    .2s ease;
 }
 
 .quick-button span{
   display:block;
 
-  margin-bottom:3px;
+  margin-bottom:4px;
 
-  font-size:16px;
+  font-size:18px;
 }
 
-/* =====================================================
-SECTION
-===================================================== */
+.quick-button:hover{
+  transform:
+    translateY(-2px);
+
+  color:
+    var(--plum);
+}
+
+/* =========================================================
+SECTION BASICS
+========================================================= */
 
 .section{
-  margin-top:20px;
+  margin-top:62px;
 }
 
 .section-head{
   display:flex;
-  align-items:flex-end;
+  align-items:end;
   justify-content:space-between;
 
-  gap:12px;
+  gap:30px;
 
-  margin-bottom:9px;
-
-  padding:
-    0 4px;
+  margin-bottom:17px;
 }
 
 .section-kicker{
@@ -1485,421 +1764,15 @@ SECTION
   font-size:8px;
   font-weight:800;
 
-  letter-spacing:.16em;
+  letter-spacing:.20em;
   text-transform:uppercase;
 }
 
 .section-title{
-  margin-top:3px;
+  margin-top:5px;
 
   color:
     var(--plum);
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:
-    clamp(
-      22px,
-      4vw,
-      31px
-    );
-}
-
-.section-copy{
-  max-width:400px;
-
-  color:
-    var(--muted);
-
-  text-align:right;
-
-  font-size:10px;
-  line-height:1.45;
-}
-
-/* =====================================================
-ELLE WORLD
-===================================================== */
-
-.world-card{
-  position:relative;
-
-  min-height:290px;
-
-  overflow:hidden;
-
-  border-radius:28px;
-
-  background:
-    #111815;
-
-  box-shadow:
-    var(--shadow);
-}
-
-.world-image{
-  position:absolute;
-  inset:0;
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-  object-position:center;
-
-  opacity:.94;
-}
-
-.world-shade{
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(12,18,15,.82),
-      rgba(12,18,15,.24) 62%,
-      rgba(12,18,15,.08)
-    );
-}
-
-.world-content{
-  position:relative;
-
-  z-index:3;
-
-  width:min(470px,80%);
-
-  padding:
-    28px;
-}
-
-.world-live{
-  display:inline-flex;
-  align-items:center;
-
-  gap:6px;
-
-  padding:
-    7px 10px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.18);
-
-  border-radius:999px;
-
-  color:#f7e8c1;
-
-  background:
-    rgba(18,27,22,.48);
-
-  font-size:8px;
-  font-weight:800;
-
-  letter-spacing:.08em;
-  text-transform:uppercase;
-}
-
-.world-dot{
-  width:7px;
-  height:7px;
-
-  border-radius:50%;
-
-  background:
-    #68d79c;
-
-  box-shadow:
-    0 0 0 5px
-    rgba(104,215,156,.12);
-}
-
-.world-title{
-  margin-top:14px;
-
-  color:white;
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:
-    clamp(
-      28px,
-      5vw,
-      44px
-    );
-}
-
-.world-copy{
-  margin-top:7px;
-
-  color:
-    rgba(255,255,255,.78);
-
-  font-size:11px;
-  line-height:1.55;
-}
-
-.world-stats{
-  display:flex;
-  flex-wrap:wrap;
-
-  gap:8px;
-
-  margin-top:16px;
-}
-
-.world-stat{
-  padding:
-    9px 11px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.14);
-
-  border-radius:13px;
-
-  color:white;
-
-  background:
-    rgba(0,0,0,.24);
-
-  font-size:9px;
-}
-
-.world-stat strong{
-  margin-right:4px;
-
-  color:
-    #f1d79c;
-}
-
-.world-disclaimer{
-  margin-top:12px;
-
-  color:
-    rgba(255,255,255,.52);
-
-  font-size:8px;
-  line-height:1.45;
-}
-
-/* =====================================================
-MORE OF ELLE
-===================================================== */
-
-.more-grid{
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:10px;
-}
-
-.more-card{
-  min-height:126px;
-
-  padding:16px;
-
-  border:
-    1px solid
-    rgba(232,219,223,.92);
-
-  border-radius:20px;
-
-  background:
-    rgba(255,255,255,.72);
-
-  box-shadow:
-    var(--soft-shadow);
-}
-
-.more-icon{
-  font-size:20px;
-}
-
-.more-card strong{
-  display:block;
-
-  margin-top:8px;
-
-  color:
-    var(--plum);
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:16px;
-}
-
-.more-card p{
-  margin-top:5px;
-
-  color:
-    var(--muted);
-
-  font-size:9px;
-  line-height:1.5;
-}
-
-/* =====================================================
-FEATURE LOCK
-===================================================== */
-
-.feature-lock{
-  position:absolute;
-  inset:0;
-
-  z-index:8;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:20px;
-
-  background:
-    rgba(44,32,42,.72);
-
-  backdrop-filter:
-    blur(10px);
-}
-
-.feature-lock-card{
-  width:min(340px,100%);
-
-  padding:20px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.18);
-
-  border-radius:20px;
-
-  text-align:center;
-
-  color:white;
-
-  background:
-    rgba(45,31,42,.84);
-}
-
-.feature-lock-card span{
-  font-size:25px;
-}
-
-.feature-lock-card strong{
-  display:block;
-
-  margin-top:7px;
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:19px;
-}
-
-.feature-lock-card p{
-  margin-top:5px;
-
-  color:
-    rgba(255,255,255,.72);
-
-  font-size:9px;
-  line-height:1.5;
-}
-
-/* =====================================================
-RADIO
-===================================================== */
-
-.radio-card{
-  position:relative;
-
-  min-height:520px;
-
-  overflow:hidden;
-
-  border-radius:30px;
-
-  background:
-    #170f15;
-
-  box-shadow:
-    var(--shadow);
-}
-
-.turntable-image{
-  position:absolute;
-  inset:0;
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-  object-position:center;
-
-  opacity:.94;
-
-  transform:
-    scale(1.015);
-
-  transition:
-    transform .8s ease;
-}
-
-.radio-card.playing
-.turntable-image{
-  transform:
-    scale(1.035);
-}
-
-.radio-overlay{
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(25,14,23,.90) 0%,
-      rgba(25,14,23,.63) 41%,
-      rgba(25,14,23,.06) 76%
-    );
-}
-
-.radio-content{
-  position:relative;
-
-  z-index:5;
-
-  width:min(500px,72%);
-
-  padding:
-    34px;
-}
-
-.radio-kicker{
-  color:
-    #e7c980;
-
-  font-size:8px;
-  font-weight:800;
-
-  letter-spacing:.18em;
-  text-transform:uppercase;
-}
-
-.radio-title{
-  margin-top:5px;
-
-  color:white;
 
   font-family:
     "Playfair Display",
@@ -1908,55 +1781,606 @@ RADIO
   font-size:
     clamp(
       32px,
-      6vw,
+      5vw,
       48px
     );
+
+  font-weight:500;
+}
+
+.section-copy{
+  max-width:420px;
+
+  color:
+    var(--muted);
+
+  text-align:right;
+
+  font-size:10px;
+  line-height:1.55;
+}
+
+/* =========================================================
+ELLE WORLD
+========================================================= */
+
+.world-shell{
+  position:relative;
+
+  overflow:hidden;
+
+  min-height:560px;
+
+  border:
+    1px solid
+    #eadbda;
+
+  border-radius:34px;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(244,213,187,.60),
+      transparent 34%
+    ),
+    linear-gradient(
+      145deg,
+      #fffdfa,
+      #fff2ed
+    );
+
+  box-shadow:
+    var(--shadow);
+}
+
+.world-ambient{
+  position:absolute;
+  inset:0;
+
+  pointer-events:none;
+
+  background:
+    radial-gradient(
+      circle at 18% 20%,
+      rgba(239,207,145,.18),
+      transparent 22%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(216,138,156,.15),
+      transparent 25%
+    );
+}
+
+.world-layout{
+  position:relative;
+  z-index:4;
+
+  display:grid;
+
+  grid-template-columns:
+    .85fr 1.15fr;
+
+  min-height:560px;
+}
+
+.world-copy-panel{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+  padding:
+    40px 20px 40px 42px;
+}
+
+.world-live{
+  width:fit-content;
+
+  display:flex;
+  align-items:center;
+
+  gap:7px;
+
+  padding:
+    7px 10px;
+
+  border:
+    1px solid
+    #e6d8d8;
+
+  border-radius:999px;
+
+  color:
+    #6c5d63;
+
+  background:
+    rgba(255,255,255,.76);
+
+  font-size:8px;
+  font-weight:800;
+}
+
+.world-live-dot{
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:
+    #53ad79;
+
+  box-shadow:
+    0 0 0 5px
+    rgba(83,173,121,.09),
+    0 0 14px
+    rgba(83,173,121,.38);
+
+  animation:
+    livePulse
+    1.8s infinite;
+}
+
+@keyframes livePulse{
+  50%{
+    transform:
+      scale(1.2);
+
+    opacity:.72;
+  }
+}
+
+.world-heading{
+  margin-top:15px;
+
+  color:
+    var(--plum);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(
+      32px,
+      5vw,
+      51px
+    );
+
+  font-weight:500;
+
+  line-height:1.02;
+}
+
+.world-description{
+  max-width:420px;
+
+  margin-top:12px;
+
+  color:
+    var(--muted);
+
+  font-size:11px;
+  line-height:1.65;
+}
+
+.world-stats{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
+
+  gap:8px;
+
+  margin-top:19px;
+}
+
+.world-stat{
+  padding:13px;
+
+  border:
+    1px solid
+    #e7d9da;
+
+  border-radius:17px;
+
+  background:
+    rgba(255,255,255,.74);
+}
+
+.world-stat strong{
+  display:block;
+
+  color:
+    var(--plum);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:23px;
+}
+
+.world-stat span{
+  display:block;
+
+  margin-top:2px;
+
+  color:#85787e;
+
+  font-size:8px;
+  font-weight:700;
+
+  text-transform:uppercase;
+
+  letter-spacing:.07em;
+}
+
+.country-list{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:5px;
+
+  margin-top:10px;
+}
+
+.country-pill{
+  padding:
+    6px 8px;
+
+  border:
+    1px solid
+    #eadcdc;
+
+  border-radius:999px;
+
+  color:#79676e;
+
+  background:white;
+
+  font-size:8px;
+}
+
+.world-privacy{
+  margin-top:13px;
+
+  color:#94888d;
+
+  font-size:8px;
+  line-height:1.5;
+}
+
+.globe-stage{
+  position:relative;
+
+  min-height:560px;
+
+  display:grid;
+  place-items:center;
+
+  overflow:hidden;
+}
+
+.globe-halo{
+  position:absolute;
+
+  width:
+    min(78%,500px);
+
+  aspect-ratio:1;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,255,255,.75),
+      rgba(239,207,145,.20) 38%,
+      rgba(216,138,156,.08) 57%,
+      transparent 72%
+    );
+
+  filter:
+    blur(4px);
+
+  animation:
+    haloPulse
+    4s ease-in-out infinite;
+}
+
+@keyframes haloPulse{
+  50%{
+    transform:
+      scale(1.05);
+
+    opacity:.80;
+  }
+}
+
+.globe-orbit{
+  position:absolute;
+
+  width:70%;
+  aspect-ratio:1;
+
+  border:
+    1px solid
+    rgba(201,148,72,.30);
+
+  border-radius:50%;
+
+  transform:
+    rotateX(67deg)
+    rotateZ(-12deg);
+
+  animation:
+    orbitSpin
+    15s linear infinite;
+}
+
+.globe-orbit.second{
+  width:57%;
+
+  opacity:.55;
+
+  transform:
+    rotateX(72deg)
+    rotateZ(28deg);
+
+  animation-duration:
+    21s;
+}
+
+@keyframes orbitSpin{
+  to{
+    transform:
+      rotateX(67deg)
+      rotateZ(348deg);
+  }
+}
+
+.globe-image-wrap{
+  position:relative;
+
+  z-index:3;
+
+  width:
+    min(74%,470px);
+
+  aspect-ratio:1;
+
+  display:grid;
+  place-items:center;
+
+  border-radius:50%;
+
+  filter:
+    drop-shadow(
+      0 32px 35px
+      rgba(107,59,63,.18)
+    );
+
+  animation:
+    globeFloat
+    5s ease-in-out infinite;
+}
+
+@keyframes globeFloat{
+  50%{
+    transform:
+      translateY(-9px);
+  }
+}
+
+.globe-image{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  border-radius:50%;
+
+  animation:
+    globeSpin
+    38s linear infinite;
+}
+
+@keyframes globeSpin{
+  to{
+    transform:
+      rotate(360deg);
+  }
+}
+
+.world-spark{
+  position:absolute;
+  z-index:5;
+
+  width:11px;
+  height:11px;
+
+  border-radius:50%;
+
+  background:
+    #ffd782;
+
+  box-shadow:
+    0 0 0 7px
+    rgba(255,215,130,.11),
+    0 0 22px
+    rgba(238,174,87,.70);
+
+  animation:
+    sparkPulse
+    2.1s ease-in-out infinite;
+}
+
+.world-spark.s1{
+  left:31%;
+  top:31%;
+}
+
+.world-spark.s2{
+  right:24%;
+  top:39%;
+
+  animation-delay:.6s;
+}
+
+.world-spark.s3{
+  left:42%;
+  bottom:28%;
+
+  animation-delay:1.1s;
+}
+
+.world-spark.s4{
+  right:33%;
+  bottom:36%;
+
+  animation-delay:1.5s;
+}
+
+@keyframes sparkPulse{
+  50%{
+    transform:
+      scale(1.45);
+
+    opacity:.48;
+  }
+}
+
+/* =========================================================
+RADIO
+========================================================= */
+
+.radio-shell{
+  position:relative;
+
+  min-height:520px;
+
+  overflow:hidden;
+
+  border:
+    1px solid
+    #eadbda;
+
+  border-radius:34px;
+
+  background:
+    #f7e9e0;
+
+  box-shadow:
+    var(--shadow);
+}
+
+.radio-image{
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+  object-position:center;
+
+  opacity:.98;
+}
+
+.radio-gradient{
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,248,243,.98) 0%,
+      rgba(255,248,243,.89) 37%,
+      rgba(255,248,243,.44) 60%,
+      rgba(255,248,243,.04) 78%
+    );
+}
+
+.radio-content{
+  position:relative;
+  z-index:5;
+
+  width:
+    min(500px,58%);
+
+  padding:
+    44px;
+}
+
+.radio-title{
+  margin-top:6px;
+
+  color:
+    var(--plum);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(
+      38px,
+      6vw,
+      58px
+    );
+
+  font-weight:500;
 }
 
 .radio-script{
   color:
-    #ef97b4;
+    var(--rose);
 
   font-family:
     "Caveat",
     cursive;
 
-  font-size:24px;
+  font-size:25px;
+  font-weight:700;
 }
 
 .now-playing{
-  margin-top:18px;
+  margin-top:21px;
 
-  padding:15px;
+  padding:16px;
 
   border:
     1px solid
-    rgba(255,255,255,.14);
+    rgba(218,198,196,.92);
 
-  border-radius:18px;
+  border-radius:19px;
 
   background:
-    rgba(255,255,255,.07);
+    rgba(255,255,255,.78);
 
   backdrop-filter:
     blur(12px);
+
+  box-shadow:
+    var(--soft-shadow);
 }
 
 .now-label{
   color:
-    rgba(255,255,255,.54);
+    var(--gold);
 
-  font-size:8px;
-  font-weight:800;
+  font-size:7px;
+  font-weight:900;
 
-  letter-spacing:.11em;
+  letter-spacing:.17em;
   text-transform:uppercase;
 }
 
 .song-title{
   margin-top:4px;
 
-  color:white;
+  color:
+    var(--plum);
 
   font-size:15px;
   font-weight:800;
@@ -1966,7 +2390,7 @@ RADIO
   margin-top:2px;
 
   color:
-    #d8c7d0;
+    var(--muted);
 
   font-size:9px;
 }
@@ -1975,45 +2399,39 @@ RADIO
   display:flex;
   align-items:center;
 
-  gap:8px;
+  gap:7px;
 
   margin-top:12px;
 }
 
 .radio-control{
-  width:40px;
-  height:40px;
+  width:41px;
+  height:41px;
 
   border:
     1px solid
-    rgba(255,255,255,.15);
+    #e2d3d4;
 
   border-radius:50%;
+
+  color:
+    var(--plum);
+
+  background:white;
+
+  cursor:pointer;
+}
+
+.radio-play{
+  width:49px;
+  height:49px;
+
+  border:none;
 
   color:white;
 
   background:
-    rgba(255,255,255,.09);
-
-  cursor:pointer;
-
-  font-size:15px;
-}
-
-.radio-play{
-  width:48px;
-  height:48px;
-
-  color:
-    var(--plum-deep);
-
-  background:
-    #f0d28f;
-
-  border-color:
-    #f0d28f;
-
-  font-size:17px;
+    var(--plum);
 }
 
 .track-list{
@@ -2021,7 +2439,7 @@ RADIO
 
   gap:6px;
 
-  margin-top:16px;
+  margin-top:15px;
 }
 
 .track{
@@ -2031,88 +2449,236 @@ RADIO
   gap:9px;
 
   padding:
-    8px 10px;
+    9px 10px;
 
   border:
     1px solid
     transparent;
 
-  border-radius:11px;
+  border-radius:12px;
 
   color:
-    rgba(255,255,255,.68);
+    #706066;
 
   background:
-    rgba(255,255,255,.035);
+    rgba(255,255,255,.50);
 
   cursor:pointer;
 
   font-size:9px;
+  text-align:left;
 }
 
 .track.active{
   border-color:
-    rgba(240,210,143,.22);
+    rgba(201,148,72,.35);
 
-  color:white;
+  color:
+    var(--plum);
 
-  background:
-    rgba(240,210,143,.10);
+  background:white;
 }
 
 .track-number{
   color:
-    #e7c980;
+    var(--gold);
 
   font-size:8px;
-  font-weight:800;
+  font-weight:900;
 }
 
-.record-glow{
-  position:absolute;
+/* =========================================================
+6 SECOND TURNTABLE MOMENT
+========================================================= */
 
-  right:17%;
-  bottom:19%;
+.turntable-moment{
+  position:fixed;
+  inset:0;
 
-  width:160px;
-  height:160px;
+  z-index:12000;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:
+    rgba(40,24,31,.80);
+
+  backdrop-filter:
+    blur(18px);
+}
+
+.turntable-moment.show{
+  display:flex;
+
+  animation:
+    momentFade
+    6s ease forwards;
+}
+
+@keyframes momentFade{
+  0%{
+    opacity:0;
+  }
+
+  8%,
+  84%{
+    opacity:1;
+  }
+
+  100%{
+    opacity:0;
+  }
+}
+
+.turntable-stage{
+  position:relative;
+
+  width:
+    min(1000px,92vw);
+
+  height:
+    min(700px,78vh);
+
+  overflow:hidden;
 
   border:
     1px solid
-    rgba(240,210,143,.10);
+    rgba(255,255,255,.28);
+
+  border-radius:36px;
+
+  background:
+    #2a181f;
+
+  box-shadow:
+    0 55px 120px -45px
+    rgba(0,0,0,.65);
+}
+
+.turntable-stage img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  animation:
+    turntableZoom
+    6s ease forwards;
+}
+
+@keyframes turntableZoom{
+  0%{
+    transform:
+      scale(1.03);
+  }
+
+  50%{
+    transform:
+      scale(1.08);
+  }
+
+  100%{
+    transform:
+      scale(1.04);
+  }
+}
+
+.turntable-stage::before{
+  content:"";
+
+  position:absolute;
+  z-index:4;
+
+  left:57%;
+  top:49%;
+
+  width:
+    min(250px,26vw);
+
+  aspect-ratio:1;
+
+  border:
+    2px solid
+    rgba(240,207,145,.34);
 
   border-radius:50%;
-
-  opacity:0;
 
   pointer-events:none;
 
   box-shadow:
-    0 0 50px
-    rgba(240,210,143,.22);
-}
-
-.radio-card.playing
-.record-glow{
-  opacity:1;
+    0 0 45px
+    rgba(240,207,145,.28),
+    inset 0 0 40px
+    rgba(240,207,145,.13);
 
   animation:
-    recordPulse
-    2s ease-in-out infinite;
+    recordSpinGlow
+    1.7s linear infinite;
 }
 
-@keyframes recordPulse{
-  50%{
+@keyframes recordSpinGlow{
+  to{
     transform:
-      scale(1.08);
-
-    opacity:.45;
+      rotate(360deg);
   }
 }
 
-/* =====================================================
+.turntable-caption{
+  position:absolute;
+  z-index:7;
+
+  left:30px;
+  bottom:28px;
+
+  padding:
+    13px 17px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.14);
+
+  border-radius:16px;
+
+  color:white;
+
+  background:
+    rgba(42,24,31,.66);
+
+  backdrop-filter:
+    blur(13px);
+}
+
+.turntable-caption small{
+  display:block;
+
+  color:
+    var(--gold-light);
+
+  font-size:7px;
+  font-weight:900;
+
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.turntable-caption strong{
+  display:block;
+
+  margin-top:4px;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:22px;
+}
+
+/* =========================================================
 LIVE ELLE
-===================================================== */
+========================================================= */
 
 .live-card{
   position:relative;
@@ -2126,38 +2692,28 @@ LIVE ELLE
 
   border:
     1px solid
-    rgba(236,222,226,.95);
+    #eadadc;
 
-  border-radius:28px;
+  border-radius:32px;
 
   background:
     linear-gradient(
       135deg,
       #fffdfb,
-      #fff4f7
+      #fff4ef
     );
 
   box-shadow:
-    var(--soft-shadow);
+    var(--shadow);
 }
 
 .live-copy{
-  padding:28px;
-}
-
-.live-kicker{
-  color:
-    var(--gold);
-
-  font-size:8px;
-  font-weight:800;
-
-  letter-spacing:.16em;
-  text-transform:uppercase;
+  padding:
+    38px;
 }
 
 .live-title{
-  margin-top:5px;
+  margin-top:6px;
 
   color:
     var(--plum);
@@ -2168,22 +2724,57 @@ LIVE ELLE
 
   font-size:
     clamp(
-      28px,
+      34px,
       5vw,
-      40px
+      50px
     );
+
+  font-weight:500;
 }
 
 .live-description{
-  max-width:490px;
+  max-width:530px;
 
-  margin-top:9px;
+  margin-top:10px;
 
   color:
     var(--muted);
 
   font-size:11px;
-  line-height:1.6;
+  line-height:1.65;
+}
+
+.live-facts{
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:7px;
+
+  margin-top:16px;
+}
+
+.live-fact{
+  display:flex;
+  align-items:center;
+
+  gap:6px;
+
+  padding:
+    8px 10px;
+
+  border:
+    1px solid
+    #eadbdd;
+
+  border-radius:999px;
+
+  color:
+    #6e5e64;
+
+  background:white;
+
+  font-size:8px;
+  font-weight:800;
 }
 
 .live-services{
@@ -2201,16 +2792,18 @@ LIVE ELLE
 
   border:
     1px solid
-    #eadce1;
+    #eadbdd;
 
   border-radius:999px;
 
-  color:#735d69;
+  color:
+    #785e68;
 
-  background:white;
+  background:
+    rgba(255,255,255,.80);
 
   font-size:8px;
-  font-weight:800;
+  font-weight:700;
 }
 
 .live-actions{
@@ -2219,16 +2812,174 @@ LIVE ELLE
 
   gap:8px;
 
-  margin-top:16px;
+  margin-top:19px;
+}
+
+.primary-button,
+.secondary-button{
+  min-height:43px;
+
+  padding:
+    0 17px;
+
+  border-radius:999px;
+
+  cursor:pointer;
+
+  font-size:9px;
+  font-weight:800;
 }
 
 .primary-button{
-  min-height:42px;
+  border:none;
+
+  color:white;
+
+  background:
+    var(--plum);
+}
+
+.secondary-button{
+  border:
+    1px solid
+    #e2d2d6;
+
+  color:
+    var(--plum);
+
+  background:white;
+}
+
+.live-side{
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
   padding:
-    0 16px;
+    34px;
 
-  border:none;
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(239,207,145,.20),
+      transparent 34%
+    ),
+    linear-gradient(
+      145deg,
+      #fff7f0,
+      #fdebea
+    );
+}
+
+.live-side-card{
+  width:
+    min(340px,100%);
+
+  padding:26px;
+
+  border:
+    1px solid
+    rgba(225,204,205,.94);
+
+  border-radius:26px;
+
+  text-align:center;
+
+  background:
+    rgba(255,255,255,.78);
+
+  box-shadow:
+    var(--soft-shadow);
+
+  backdrop-filter:
+    blur(12px);
+}
+
+.calendar-icon{
+  width:70px;
+  height:70px;
+
+  margin:
+    0 auto 14px;
+
+  display:grid;
+  place-items:center;
+
+  border:
+    1px solid
+    rgba(201,148,72,.36);
+
+  border-radius:22px;
+
+  color:
+    var(--gold);
+
+  background:
+    #fffaf6;
+
+  font-size:29px;
+}
+
+.live-side-card strong{
+  display:block;
+
+  color:
+    var(--plum);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:24px;
+}
+
+.live-side-card p{
+  margin-top:7px;
+
+  color:
+    var(--muted);
+
+  font-size:9px;
+  line-height:1.55;
+}
+
+.live-booking-ready{
+  display:none;
+
+  margin-top:15px;
+
+  padding:
+    13px;
+
+  border:
+    1px solid
+    #dfe9df;
+
+  border-radius:16px;
+
+  color:#456554;
+
+  background:#f3faf5;
+
+  font-size:9px;
+  line-height:1.5;
+}
+
+.live-booking-ready.show{
+  display:block;
+}
+
+.live-booking-ready a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-height:38px;
+
+  margin-top:9px;
+
+  padding:
+    0 13px;
 
   border-radius:999px;
 
@@ -2237,21 +2988,168 @@ LIVE ELLE
   background:
     var(--plum);
 
-  cursor:pointer;
+  text-decoration:none;
 
-  font-size:9px;
+  font-size:8px;
   font-weight:800;
 }
 
-.secondary-button{
-  min-height:42px;
+/* =========================================================
+LOCKS
+========================================================= */
 
-  padding:
-    0 16px;
+.feature-lock{
+  position:absolute;
+  inset:0;
+
+  z-index:12;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:
+    rgba(255,249,245,.83);
+
+  backdrop-filter:
+    blur(12px);
+}
+
+.feature-lock-card{
+  width:
+    min(320px,100%);
+
+  padding:23px;
 
   border:
     1px solid
-    #e1d4da;
+    #eadbdd;
+
+  border-radius:23px;
+
+  text-align:center;
+
+  background:white;
+
+  box-shadow:
+    var(--soft-shadow);
+}
+
+.feature-lock-card > span{
+  display:block;
+
+  font-size:27px;
+}
+
+.feature-lock-card strong{
+  display:block;
+
+  margin-top:7px;
+
+  color:
+    var(--plum);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:20px;
+}
+
+.feature-lock-card p{
+  margin-top:5px;
+
+  color:
+    var(--muted);
+
+  font-size:9px;
+  line-height:1.5;
+}
+
+/* =========================================================
+MORE OF ELLE
+========================================================= */
+
+.more-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:10px;
+}
+
+.more-card{
+  min-height:215px;
+
+  padding:22px;
+
+  border:
+    1px solid
+    #eadde0;
+
+  border-radius:24px;
+
+  background:
+    rgba(255,255,255,.76);
+
+  box-shadow:
+    var(--soft-shadow);
+}
+
+.more-icon{
+  width:43px;
+  height:43px;
+
+  display:grid;
+  place-items:center;
+
+  border:
+    1px solid
+    #eadbdd;
+
+  border-radius:15px;
+
+  background:
+    #fff8f4;
+
+  font-size:20px;
+}
+
+.more-card h3{
+  margin-top:14px;
+
+  color:
+    var(--plum);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:23px;
+}
+
+.more-card p{
+  margin-top:7px;
+
+  color:
+    var(--muted);
+
+  font-size:9px;
+  line-height:1.6;
+}
+
+.more-card button{
+  margin-top:14px;
+
+  padding:
+    9px 12px;
+
+  border:
+    1px solid
+    #e5d4d8;
 
   border-radius:999px;
 
@@ -2262,79 +3160,13 @@ LIVE ELLE
 
   cursor:pointer;
 
-  font-size:9px;
+  font-size:8px;
   font-weight:800;
 }
 
-.live-art{
-  min-height:290px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:28px;
-
-  background:
-    linear-gradient(
-      145deg,
-      #4d3547,
-      #2b2029
-    );
-}
-
-.live-art-inner{
-  text-align:center;
-
-  color:white;
-}
-
-.live-phone{
-  width:100px;
-  height:100px;
-
-  margin:
-    0 auto;
-
-  display:grid;
-  place-items:center;
-
-  border:
-    1px solid
-    rgba(255,255,255,.17);
-
-  border-radius:50%;
-
-  background:
-    rgba(255,255,255,.07);
-
-  font-size:43px;
-}
-
-.live-art-inner strong{
-  display:block;
-
-  margin-top:14px;
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:20px;
-}
-
-.live-art-inner p{
-  margin-top:5px;
-
-  color:
-    rgba(255,255,255,.63);
-
-  font-size:9px;
-}
-
-/* =====================================================
+/* =========================================================
 TRUST
-===================================================== */
+========================================================= */
 
 .trust-strip{
   display:flex;
@@ -2342,16 +3174,16 @@ TRUST
 
   gap:12px;
 
-  margin-top:20px;
+  margin-top:52px;
 
   padding:
-    13px 16px;
+    17px 19px;
 
   border:
     1px solid
-    rgba(232,220,224,.92);
+    #eadddf;
 
-  border-radius:17px;
+  border-radius:22px;
 
   background:
     rgba(255,255,255,.72);
@@ -2361,21 +3193,20 @@ TRUST
 }
 
 .trust-icon{
-  width:34px;
-  height:34px;
+  width:41px;
+  height:41px;
 
   flex-shrink:0;
 
   display:grid;
   place-items:center;
 
-  border-radius:50%;
-
-  color:
-    var(--gold);
+  border-radius:14px;
 
   background:
-    #fff7e8;
+    #fff3dc;
+
+  font-size:18px;
 }
 
 .trust-copy{
@@ -2396,30 +3227,64 @@ TRUST
 
   margin-top:2px;
 
-  color:
-    var(--muted);
+  color:#8c8086;
 
   font-size:8px;
-  line-height:1.4;
+  line-height:1.45;
 }
 
 .trust-button{
+  padding:
+    9px 12px;
+
   border:none;
 
   color:
-    var(--pink-dark);
+    var(--plum);
 
   background:none;
 
   cursor:pointer;
 
-  font-size:9px;
-  font-weight:800;
+  font-size:8px;
+  font-weight:900;
 }
 
-/* =====================================================
+/* =========================================================
+FOOTER
+========================================================= */
+
+.footer{
+  padding:
+    34px 5px 30px;
+
+  text-align:center;
+
+  color:#94898e;
+
+  font-size:8px;
+  line-height:1.65;
+}
+
+.footer-logo{
+  color:
+    var(--plum);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:23px;
+}
+
+.footer strong{
+  color:
+    var(--plum);
+}
+
+/* =========================================================
 TRUST MODAL
-===================================================== */
+========================================================= */
 
 .modal{
   position:fixed;
@@ -2434,10 +3299,10 @@ TRUST MODAL
   padding:18px;
 
   background:
-    rgba(38,28,35,.72);
+    rgba(55,37,44,.38);
 
   backdrop-filter:
-    blur(16px);
+    blur(15px);
 }
 
 .modal.show{
@@ -2445,35 +3310,41 @@ TRUST MODAL
 }
 
 .modal-card{
-  width:min(660px,100%);
-  max-height:84vh;
+  width:
+    min(760px,100%);
 
-  overflow-y:auto;
+  max-height:
+    min(780px,88vh);
+
+  overflow:auto;
 
   padding:25px;
 
   border:
     1px solid
-    rgba(255,255,255,.20);
+    rgba(255,255,255,.94);
 
-  border-radius:25px;
+  border-radius:28px;
 
   background:
-    #fffaf7;
+    #fffdfb;
 
   box-shadow:
-    0 35px 90px -45px
-    rgba(0,0,0,.55);
+    0 35px 95px -47px
+    rgba(55,30,42,.62);
 }
 
 .modal-head{
   display:flex;
-  align-items:flex-start;
+  align-items:center;
+  justify-content:space-between;
 
   gap:12px;
 }
 
 .modal-title{
+  margin-top:4px;
+
   color:
     var(--plum);
 
@@ -2481,20 +3352,21 @@ TRUST MODAL
     "Playfair Display",
     serif;
 
-  font-size:27px;
+  font-size:32px;
 }
 
 .modal-close{
-  margin-left:auto;
-
-  width:35px;
-  height:35px;
+  width:40px;
+  height:40px;
 
   border:
     1px solid
-    #eadde1;
+    #e3d6d8;
 
   border-radius:50%;
+
+  color:
+    var(--plum);
 
   background:white;
 
@@ -2509,17 +3381,17 @@ TRUST MODAL
 
   gap:9px;
 
-  margin-top:17px;
+  margin-top:18px;
 }
 
 .trust-item{
-  padding:15px;
+  padding:16px;
 
   border:
     1px solid
-    #eadfe2;
+    #eadde0;
 
-  border-radius:17px;
+  border-radius:18px;
 
   background:white;
 }
@@ -2538,124 +3410,87 @@ TRUST MODAL
     var(--muted);
 
   font-size:9px;
-  line-height:1.55;
+  line-height:1.6;
 }
 
-/* =====================================================
-FOOTER
-===================================================== */
-
-.footer{
-  padding:
-    26px 4px 4px;
-
-  color:#8f858b;
-
-  text-align:center;
-
-  font-size:8px;
-  line-height:1.55;
-}
-
-.footer strong{
-  color:
-    var(--plum);
-}
-
-/* =====================================================
+/* =========================================================
 MOBILE
-===================================================== */
+========================================================= */
 
-@media(max-width:900px){
+@media(max-width:980px){
+
+  .nav{
+    display:none;
+  }
 
   .hero{
     min-height:auto;
-
-    background:
-      linear-gradient(
-        180deg,
-        rgba(250,240,231,.97) 0%,
-        rgba(250,240,231,.95) 60%,
-        rgba(250,240,231,.54)
-      ),
-      url("elle-office.png")
-      center bottom /
-      cover
-      no-repeat;
   }
 
-  .hero-content{
-    width:100%;
+  .hero-grid{
+    grid-template-columns:1fr;
+  }
 
+  .hero-copy{
     padding:
-      22px 18px
-      230px;
+      38px 30px 24px;
   }
 
-  .quick-bar{
-    grid-template-columns:
-      1fr 1fr;
+  .hero-visual{
+    min-height:540px;
   }
 
-  .more-grid{
-    grid-template-columns:
-      1fr;
-  }
-
-  .radio-card{
-    min-height:560px;
-  }
-
-  .radio-overlay{
+  .hero-fade{
     background:
       linear-gradient(
         180deg,
-        rgba(25,14,23,.90),
-        rgba(25,14,23,.62) 67%,
-        rgba(25,14,23,.16)
+        #fff8f4 0%,
+        rgba(255,248,244,.36) 18%,
+        transparent 48%
       );
   }
 
-  .radio-content{
-    width:100%;
+  .ask-section{
+    margin-top:-60px;
+  }
 
+  .world-layout{
+    grid-template-columns:1fr;
+  }
+
+  .world-copy-panel{
     padding:
-      28px 20px;
+      32px 28px 5px;
+  }
+
+  .globe-stage{
+    min-height:450px;
   }
 
   .live-card{
-    grid-template-columns:
-      1fr;
+    grid-template-columns:1fr;
   }
 
-  .live-art{
-    min-height:200px;
+  .radio-content{
+    width:72%;
   }
 
-  .section-head{
-    display:block;
-  }
-
-  .section-copy{
-    margin-top:4px;
-
-    text-align:left;
-  }
-
-  .owner-inner{
-    padding:
-      8px 0;
-
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-  .owner-status{
-    margin-left:0;
+  .more-grid{
+    grid-template-columns:1fr;
   }
 }
 
-@media(max-width:620px){
+@media(max-width:650px){
+
+  .page,
+  .topbar-inner,
+  .owner-inner{
+    width:
+      min(
+        100% - 18px,
+        1240px
+      );
+  }
 
   .brand-copy span{
     display:none;
@@ -2667,21 +3502,60 @@ MOBILE
 
   .top-button{
     padding:
-      0 10px;
+      0 9px;
   }
 
-  .age-options{
-    grid-template-columns:
-      1fr;
+  .hero{
+    border-radius:27px;
   }
 
-  .hero-content{
-    padding-bottom:
-      190px;
+  .hero-copy{
+    padding:
+      31px 20px 20px;
   }
 
-  .balloon-title{
-    max-width:500px;
+  .hero-title{
+    font-size:
+      clamp(
+        48px,
+        14vw,
+        68px
+      );
+  }
+
+  .hero-visual{
+    min-height:430px;
+  }
+
+  .hero-elle{
+    object-position:57% center;
+  }
+
+  .ask-section{
+    width:
+      calc(100% - 12px);
+
+    margin-top:-42px;
+  }
+
+  .chat-head{
+    padding:
+      15px;
+  }
+
+  .online{
+    display:none;
+  }
+
+  .thread{
+    height:360px;
+
+    padding:
+      14px;
+  }
+
+  .bubble{
+    max-width:88%;
   }
 
   .composer{
@@ -2693,24 +3567,103 @@ MOBILE
     width:100%;
   }
 
-  .world-content{
-    width:92%;
+  .quick-bar{
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .section{
+    margin-top:45px;
+  }
+
+  .section-head{
+    display:block;
+  }
+
+  .section-copy{
+    margin-top:6px;
+
+    text-align:left;
+  }
+
+  .world-shell,
+  .radio-shell,
+  .live-card{
+    border-radius:27px;
+  }
+
+  .world-copy-panel{
+    padding:
+      25px 20px 0;
+  }
+
+  .world-stats{
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .globe-stage{
+    min-height:350px;
+  }
+
+  .radio-shell{
+    min-height:640px;
+  }
+
+  .radio-gradient{
+    background:
+      linear-gradient(
+        180deg,
+        rgba(255,248,243,.98) 0%,
+        rgba(255,248,243,.94) 58%,
+        rgba(255,248,243,.20) 82%
+      );
+  }
+
+  .radio-content{
+    width:100%;
 
     padding:
-      22px;
+      29px 20px;
   }
 
-  .world-card{
-    min-height:330px;
+  .live-copy{
+    padding:
+      28px 21px;
   }
 
-  .trust-grid{
-    grid-template-columns:
-      1fr;
+  .live-side{
+    padding:
+      20px;
   }
 
   .trust-strip{
     align-items:flex-start;
+  }
+
+  .trust-grid{
+    grid-template-columns:1fr;
+  }
+
+  .owner-inner{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .owner-status{
+    margin-left:0;
+  }
+
+  .turntable-stage{
+    height:
+      min(560px,78vh);
+  }
+
+  .turntable-stage::before{
+    left:54%;
+    top:52%;
+
+    width:34vw;
   }
 }
 </style>
@@ -2718,15 +3671,15 @@ MOBILE
 
 <body>
 
-<!-- =====================================================
+<!-- =========================================================
 AGE GATE
-===================================================== -->
+========================================================= -->
 
 <div
   id="ageGate"
   class="age-gate"
 >
-  <div class="age-card">
+  <section class="age-card">
 
     <div class="age-logo">
       E
@@ -2745,15 +3698,15 @@ AGE GATE
     </div>
 
     <p class="age-copy">
-      Elle adapts parts of the experience
-      based on age. We only save the broad
-      age group you choose, not your date
-      of birth.
+      Elle adapts parts of the experience based on age.
+      We save only the broad age group you choose,
+      not your date of birth.
     </p>
 
     <div class="age-options">
 
       <button
+        type="button"
         class="age-option"
         data-age="13-17"
       >
@@ -2771,6 +3724,7 @@ AGE GATE
       </button>
 
       <button
+        type="button"
         class="age-option"
         data-age="18+"
       >
@@ -2790,6 +3744,7 @@ AGE GATE
     </div>
 
     <button
+      type="button"
       id="under13"
       class="age-under"
     >
@@ -2800,31 +3755,29 @@ AGE GATE
       id="underMessage"
       class="under-message"
     >
-      Elle is currently designed for
-      people ages 13 and up.
+      Elle is currently designed for people ages 13 and up. 💛
     </div>
 
     <div class="age-privacy">
-      Your selected age group helps Elle
-      apply appropriate safety and feature
-      rules.
+      Your selected age group helps Elle apply
+      appropriate feature and safety rules.
     </div>
 
-  </div>
+  </section>
 </div>
 
-<!-- =====================================================
+<!-- =========================================================
 MEMBER GATE
-===================================================== -->
+========================================================= -->
 
 <div
   id="memberGate"
   class="member-gate"
 >
 
-  <div class="member-card">
+  <section class="member-card">
 
-    <div class="member-head">
+    <header class="member-head">
 
       <div class="member-crown">
         ♕
@@ -2843,13 +3796,11 @@ MEMBER GATE
       </div>
 
       <p class="member-copy">
-        Use the email connected to your
-        Buy Me a Coffee membership. Elle
-        will send a temporary six-digit
-        sign-in code to that email.
+        Use the email connected to your membership.
+        Elle will send a temporary six-digit sign-in code.
       </p>
 
-    </div>
+    </header>
 
     <div class="member-body">
 
@@ -2874,6 +3825,7 @@ MEMBER GATE
         >
 
         <button
+          type="button"
           id="sendCode"
           class="member-action"
         >
@@ -2904,6 +3856,7 @@ MEMBER GATE
         >
 
         <button
+          type="button"
           id="verifyCode"
           class="member-action"
         >
@@ -2911,6 +3864,7 @@ MEMBER GATE
         </button>
 
         <button
+          type="button"
           id="differentEmail"
           class="member-secondary"
         >
@@ -2928,14 +3882,13 @@ MEMBER GATE
         id="memberJoin"
         class="member-join"
       >
+
         <strong>
           Elle is for active members.
         </strong>
 
         <p>
-          No active membership was found
-          for that email. Join a membership,
-          then come right back.
+          No active Elle membership was found for that email.
         </p>
 
         <a
@@ -2945,23 +3898,23 @@ MEMBER GATE
         >
           View Membership
         </a>
+
       </div>
 
       <div class="member-foot">
-        Sign-in codes expire after about
-        10 minutes. Your verified Elle
-        session can remain active for
-        up to 30 days.
+        Sign-in codes expire after about 10 minutes.
+        Your verified Elle session can remain active
+        for up to 30 days.
       </div>
 
     </div>
 
-  </div>
+  </section>
 </div>
 
-<!-- =====================================================
+<!-- =========================================================
 HEADER
-===================================================== -->
+========================================================= -->
 
 <header class="topbar">
 
@@ -2987,6 +3940,30 @@ HEADER
 
     </div>
 
+    <nav class="nav">
+
+      <a href="#home">
+        Home
+      </a>
+
+      <a href="#ask">
+        Ask Elle
+      </a>
+
+      <a href="#live">
+        Live Elle
+      </a>
+
+      <a href="#world">
+        Elle World
+      </a>
+
+      <a href="#radio">
+        Radio
+      </a>
+
+    </nav>
+
     <div class="top-actions">
 
       <div
@@ -2997,6 +3974,7 @@ HEADER
       </div>
 
       <button
+        type="button"
         id="trustTop"
         class="top-button"
       >
@@ -3004,6 +3982,7 @@ HEADER
       </button>
 
       <button
+        type="button"
         id="signOut"
         class="top-button"
       >
@@ -3016,9 +3995,9 @@ HEADER
 
 </header>
 
-<!-- =====================================================
+<!-- =========================================================
 OWNER TEST MODE
-===================================================== -->
+========================================================= -->
 
 <div
   id="ownerBar"
@@ -3034,6 +4013,7 @@ OWNER TEST MODE
     <div class="owner-test-buttons">
 
       <button
+        type="button"
         class="owner-test active"
         data-test-tier="owner"
       >
@@ -3041,6 +4021,7 @@ OWNER TEST MODE
       </button>
 
       <button
+        type="button"
         class="owner-test"
         data-test-tier="spark"
       >
@@ -3048,6 +4029,7 @@ OWNER TEST MODE
       </button>
 
       <button
+        type="button"
         class="owner-test"
         data-test-tier="idea-circle"
       >
@@ -3055,6 +4037,7 @@ OWNER TEST MODE
       </button>
 
       <button
+        type="button"
         class="owner-test"
         data-test-tier="infinite"
       >
@@ -3067,649 +4050,900 @@ OWNER TEST MODE
       id="ownerStatus"
       class="owner-status"
     >
-      Testing full access
+      Testing full owner access
     </div>
 
   </div>
 
 </div>
 
-<!-- =====================================================
-PAGE
-===================================================== -->
-
 <main class="page">
 
-  <!-- HERO -->
+<!-- =========================================================
+HERO
+========================================================= -->
 
-  <section class="hero">
+<section
+  id="home"
+  class="hero"
+>
 
-    <div class="hero-content">
+  <div class="hero-grid">
 
-      <div class="balloon-wrap">
+    <div class="hero-copy">
 
-        <img
-          class="balloon-title"
-          src="ask-elle-balloons.png"
-          alt="Ask Elle"
-        >
-
-        <div class="hero-tagline">
-          Bring me the question.
-          <em>
-            We’ll find the move.
-          </em>
-        </div>
-
-        <div class="topic-line">
-          <span>Business</span>
-          <span>School</span>
-          <span>Faith</span>
-          <span>Relationships</span>
-          <span>Planning</span>
-          <span>Money</span>
-          <span>Tech</span>
-          <span>Life</span>
-        </div>
-
+      <div class="hero-kicker">
+        Welcome to Elle
       </div>
 
-      <div
-        id="chatCard"
-        class="chat-card"
-      >
+      <h1 class="hero-title">
+        Your soft
+        place to land.
+      </h1>
 
-        <div
-          id="thread"
-          class="thread"
-        ></div>
+      <p class="hero-sub">
+        Elle is your AI guide for real questions,
+        life decisions, ideas, planning, encouragement,
+        clarity and those moments when you just need
+        somewhere to start.
+      </p>
 
-        <div
-          id="chips"
-          class="chips"
-        ></div>
+      <div class="hero-heart">
+        <span>♥</span>
+        Real talk. Real help. One clear next move.
+      </div>
 
-        <div class="composer">
+      <div class="hero-actions">
 
-          <div class="input-wrap">
+        <button
+          type="button"
+          id="heroAsk"
+          class="hero-button primary"
+        >
+          Ask Elle Anything →
+        </button>
 
-            <input
-              id="say"
-              type="text"
-              maxlength="1600"
-              autocomplete="off"
-              placeholder="Ask Elle anything..."
-            >
-
-          </div>
-
-          <button
-            id="send"
-            class="send"
-          >
-            Ask Elle
-          </button>
-
-        </div>
-
-        <div class="chat-note">
-          Elle is AI-generated and can
-          make mistakes. Verify important
-          information when it matters.
-        </div>
+        <button
+          type="button"
+          id="heroLive"
+          class="hero-button secondary"
+        >
+          Explore Live Elle
+        </button>
 
       </div>
 
     </div>
 
-  </section>
+    <div class="hero-visual">
 
-  <!-- QUICK ACTIONS -->
+      <img
+        class="hero-elle"
+        src="elle.png"
+        alt="Elle"
+      >
 
-  <div class="quick-bar">
+      <div class="hero-fade"></div>
+      <div class="hero-glow"></div>
 
-    <button
-      class="quick-button"
-      data-prompt="Help me figure out my next move."
-    >
-      <span>🧭</span>
-      Next Move
-    </button>
-
-    <button
-      class="quick-button"
-      data-prompt="Help me think through a decision."
-    >
-      <span>⚖️</span>
-      Decide
-    </button>
-
-    <button
-      class="quick-button"
-      data-prompt="Help me turn my idea into a plan."
-    >
-      <span>💡</span>
-      Build an Idea
-    </button>
-
-    <button
-      class="quick-button"
-      data-prompt="I need a little encouragement today."
-    >
-      <span>✨</span>
-      Hype Me Up
-    </button>
+    </div>
 
   </div>
 
-  <!-- ELLE WORLD -->
+</section>
 
-  <section class="section">
+<!-- =========================================================
+ASK ELLE
+========================================================= -->
 
-    <div class="section-head">
+<section
+  id="ask"
+  class="ask-section"
+>
 
-      <div>
+  <div
+    id="chatCard"
+    class="chat-card"
+  >
 
-        <div class="section-kicker">
-          Around the world
-        </div>
+    <header class="chat-head">
 
-        <h2 class="section-title">
-          Elle World
-        </h2>
+      <div class="chat-monogram">
+        E
+      </div>
+
+      <div class="chat-heading">
+
+        <strong>
+          Ask Elle
+        </strong>
+
+        <span>
+          Your AI guide for real advice, ideas and clarity.
+        </span>
 
       </div>
 
-      <p class="section-copy">
-        A glimpse of the Elle community,
-        without putting anyone’s exact
-        location on display.
-      </p>
+      <div class="online">
+        <span class="online-dot"></span>
+        Here with you
+      </div>
+
+    </header>
+
+    <div
+      id="thread"
+      class="thread"
+      aria-live="polite"
+    ></div>
+
+    <div
+      id="chips"
+      class="chips"
+    ></div>
+
+    <div class="composer">
+
+      <div class="input-wrap">
+
+        <input
+          id="say"
+          type="text"
+          maxlength="1600"
+          autocomplete="off"
+          placeholder="What's on your mind?"
+          aria-label="Ask Elle"
+        >
+
+      </div>
+
+      <button
+        type="button"
+        id="send"
+        class="send"
+      >
+        Ask Elle
+      </button>
 
     </div>
 
-    <div class="world-card">
+    <div class="chat-note">
+      Elle is AI-generated and can make mistakes.
+      Verify important information when it matters.
+    </div>
 
-      <img
-        class="world-image"
-        src="elle-world-4k.png"
-        alt="A lush illuminated Elle World globe"
-      >
+  </div>
 
-      <div class="world-shade"></div>
+</section>
 
-      <div class="world-content">
+<!-- =========================================================
+QUICK ACTIONS
+========================================================= -->
+
+<div class="quick-bar">
+
+  <button
+    type="button"
+    class="quick-button"
+    data-prompt="Help me figure out my next move."
+  >
+    <span>🧭</span>
+    Next Move
+  </button>
+
+  <button
+    type="button"
+    class="quick-button"
+    data-prompt="Help me think through a decision."
+  >
+    <span>⚖️</span>
+    Help Me Decide
+  </button>
+
+  <button
+    type="button"
+    class="quick-button"
+    data-prompt="Help me turn my idea into a plan."
+  >
+    <span>💡</span>
+    Build My Idea
+  </button>
+
+  <button
+    type="button"
+    class="quick-button"
+    data-prompt="I need some encouragement today."
+  >
+    <span>✨</span>
+    Hype Me Up
+  </button>
+
+</div>
+
+<!-- =========================================================
+LIVE ELLE
+========================================================= -->
+
+<section
+  id="live"
+  class="section"
+>
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="section-kicker">
+        Human connection
+      </div>
+
+      <h2 class="section-title">
+        Live Elle
+      </h2>
+
+    </div>
+
+    <p class="section-copy">
+      When AI is not what you want,
+      qualifying adult members can request
+      real one-on-one human support.
+    </p>
+
+  </div>
+
+  <div class="live-card">
+
+    <div class="live-copy">
+
+      <div class="section-kicker">
+        The human side of Elle
+      </div>
+
+      <h3 class="live-title">
+        Real conversation.
+        Your time.
+      </h3>
+
+      <p class="live-description">
+        Start with Elle in chat. She will collect your
+        connection type, service, name and WhatsApp number.
+        After your request is safely received, you choose an
+        actual available 30-minute time from the Live Elle calendar.
+      </p>
+
+      <div class="live-facts">
+
+        <span class="live-fact">
+          ◷ 30 minutes
+        </span>
+
+        <span class="live-fact">
+          ☎ WhatsApp Call
+        </span>
+
+        <span class="live-fact">
+          ◉ Video when included
+        </span>
+
+        <span class="live-fact">
+          ◫ Real availability
+        </span>
+
+      </div>
+
+      <div class="live-services">
+
+        <span class="live-service">
+          Pick My Brain
+        </span>
+
+        <span class="live-service">
+          Shopping Buddy
+        </span>
+
+        <span class="live-service">
+          Hype Session
+        </span>
+
+        <span class="live-service">
+          Someone to Talk To
+        </span>
+
+        <span class="live-service">
+          Work With Me
+        </span>
+
+      </div>
+
+      <div class="live-actions">
+
+        <button
+          type="button"
+          id="talkLive"
+          class="primary-button"
+        >
+          Talk to Live Elle
+        </button>
+
+        <button
+          type="button"
+          id="askAboutLive"
+          class="secondary-button"
+        >
+          Ask Elle About It
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="live-side">
+
+      <div class="live-side-card">
+
+        <div class="calendar-icon">
+          ◫
+        </div>
+
+        <strong>
+          Your calendar.
+          Your choice.
+        </strong>
+
+        <p>
+          Elle does not invent appointment times.
+          Once your request is received, the booking
+          calendar shows only times that are actually open.
+        </p>
+
+        <p>
+          Confirmed bookings can be cancelled or
+          rescheduled through the Google Calendar
+          confirmation.
+        </p>
+
+        <div
+          id="liveBookingReady"
+          class="live-booking-ready"
+        >
+
+          Your Live Elle request is ready for scheduling. 💛
+
+          <br>
+
+          <a
+            id="liveBookingLink"
+            href="https://calendar.app.google/ev2shsUdMNdtbjqU6"
+            target="_blank"
+            rel="noopener"
+          >
+            Choose My 30-Minute Time →
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div
+      id="liveLock"
+      class="feature-lock"
+    >
+
+      <div class="feature-lock-card">
+
+        <span>
+          ♡
+        </span>
+
+        <strong>
+          Live Elle
+        </strong>
+
+        <p>
+          Live Elle is an adult feature
+          included with qualifying membership access.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+ELLE WORLD
+========================================================= -->
+
+<section
+  id="world"
+  class="section"
+>
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="section-kicker">
+        Around the world
+      </div>
+
+      <h2 class="section-title">
+        Elle World
+      </h2>
+
+    </div>
+
+    <p class="section-copy">
+      A living glimpse of the Elle community.
+      Country-level activity only, with no public
+      exact locations.
+    </p>
+
+  </div>
+
+  <div class="world-shell">
+
+    <div class="world-ambient"></div>
+
+    <div class="world-layout">
+
+      <div class="world-copy-panel">
 
         <div class="world-live">
 
-          <span class="world-dot"></span>
+          <span class="world-live-dot"></span>
 
-          Elle World Live
+          <span id="worldLiveText">
+            Elle World is waking up
+          </span>
+
         </div>
 
-        <h3 class="world-title">
-          A little world of ideas.
+        <h3 class="world-heading">
+          A little world
+          glowing together.
         </h3>
 
-        <p class="world-copy">
-          Elle World shows broad,
-          anonymous activity across the
-          community. The houses, gardens,
-          animals and lights are decorative.
+        <p class="world-description">
+          The lights represent broad recent activity.
+          No names, no home addresses, no exact coordinates.
+          Just a beautiful reminder that somebody else
+          somewhere is figuring life out too.
         </p>
 
         <div
           id="worldStats"
           class="world-stats"
         >
+
           <div class="world-stat">
-            <strong>∞</strong>
-            Connecting...
-          </div>
-        </div>
 
-        <div class="world-disclaimer">
-          Elle World does not intentionally
-          display your exact location.
-        </div>
+            <strong id="worldActiveCount">
+              0
+            </strong>
 
-      </div>
+            <span>
+              Glowing now
+            </span>
 
-    </div>
-
-  </section>
-
-  <!-- MORE OF ELLE -->
-
-  <section
-    id="moreSection"
-    class="section"
-  >
-
-    <div class="section-head">
-
-      <div>
-
-        <div class="section-kicker">
-          Member extras
-        </div>
-
-        <h2 class="section-title">
-          More of Elle
-        </h2>
-
-      </div>
-
-      <p class="section-copy">
-        Useful extras without making the
-        whole room shout at you. 😌
-      </p>
-
-    </div>
-
-    <div class="more-grid">
-
-      <div class="more-card">
-
-        <div class="more-icon">
-          📝
-        </div>
-
-        <strong>
-          Ideas & Planning
-        </strong>
-
-        <p>
-          Turn messy thoughts into a clear
-          direction, checklist or plan.
-        </p>
-
-      </div>
-
-      <div class="more-card">
-
-        <div class="more-icon">
-          🌱
-        </div>
-
-        <strong>
-          Daily Growth
-        </strong>
-
-        <p>
-          Encouragement, challenges and
-          thoughtful nudges designed to
-          keep you moving.
-        </p>
-
-      </div>
-
-      <div class="more-card">
-
-        <div class="more-icon">
-          💎
-        </div>
-
-        <strong>
-          Member Extras
-        </strong>
-
-        <p>
-          Expanded content and perks for
-          qualifying membership levels.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- ELLE RADIO -->
-
-  <section
-    id="radioSection"
-    class="section"
-  >
-
-    <div class="section-head">
-
-      <div>
-
-        <div class="section-kicker">
-          Infinite access
-        </div>
-
-        <h2 class="section-title">
-          Elle Radio
-        </h2>
-
-      </div>
-
-      <p class="section-copy">
-        Original AURYNELLE energy,
-        playing from a turntable that
-        finally looks like a turntable. 😂
-      </p>
-
-    </div>
-
-    <div
-      id="radioCard"
-      class="radio-card"
-    >
-
-      <img
-        class="turntable-image"
-        src="elle-turntable.png"
-        alt="Luxury walnut and brass record turntable"
-      >
-
-      <div class="radio-overlay"></div>
-
-      <div class="record-glow"></div>
-
-      <div class="radio-content">
-
-        <div class="radio-kicker">
-          AURYNELLE∞ SOUND
-        </div>
-
-        <h3 class="radio-title">
-          Elle Radio
-        </h3>
-
-        <div class="radio-script">
-          Put your crown back on.
-        </div>
-
-        <div class="now-playing">
-
-          <div class="now-label">
-            Now Playing
           </div>
 
-          <div
-            id="songTitle"
-            class="song-title"
-          >
-            Crown Back On
-          </div>
+          <div class="world-stat">
 
-          <div
-            id="songArtist"
-            class="song-artist"
-          >
-            AURYNELLE
-          </div>
+            <strong id="worldCountryCount">
+              0
+            </strong>
 
-          <div class="radio-controls">
-
-            <button
-              id="previousTrack"
-              class="radio-control"
-              aria-label="Previous song"
-            >
-              ◀
-            </button>
-
-            <button
-              id="playPause"
-              class="radio-control radio-play"
-              aria-label="Play or pause"
-            >
-              ▶
-            </button>
-
-            <button
-              id="nextTrack"
-              class="radio-control"
-              aria-label="Next song"
-            >
-              ▶
-            </button>
+            <span>
+              Countries
+            </span>
 
           </div>
 
         </div>
 
         <div
-          id="trackList"
-          class="track-list"
+          id="worldCountryList"
+          class="country-list"
         ></div>
 
-      </div>
-
-      <div
-        id="radioLock"
-        class="feature-lock"
-      >
-
-        <div class="feature-lock-card">
-
-          <span>
-            🎶
-          </span>
-
-          <strong>
-            Elle Radio
-          </strong>
-
-          <p>
-            Elle Radio is included with
-            The Infinite ∞ membership.
-          </p>
-
+        <div class="world-privacy">
+          Elle World uses broad country-level presence
+          for the public experience. The gardens,
+          homes, animals and visual lights are decorative.
         </div>
 
       </div>
 
-    </div>
+      <div class="globe-stage">
 
-  </section>
+        <div class="globe-halo"></div>
 
-  <!-- LIVE ELLE -->
+        <div class="globe-orbit"></div>
+        <div class="globe-orbit second"></div>
 
-  <section
-    id="liveSection"
-    class="section"
-  >
+        <div class="globe-image-wrap">
 
-    <div class="section-head">
-
-      <div>
-
-        <div class="section-kicker">
-          Human connection
-        </div>
-
-        <h2 class="section-title">
-          Live Elle
-        </h2>
-
-      </div>
-
-      <p class="section-copy">
-        When AI help is not what you want,
-        qualifying adult members can
-        request human one-on-one support.
-      </p>
-
-    </div>
-
-    <div class="live-card">
-
-      <div class="live-copy">
-
-        <div class="live-kicker">
-          The human side of Elle
-        </div>
-
-        <h3 class="live-title">
-          Talk to Live Elle
-        </h3>
-
-        <p class="live-description">
-          For deeper strategy, shopping
-          support, a hype session, someone
-          to talk to, or hands-on help with
-          what you are building.
-        </p>
-
-        <div class="live-services">
-
-          <span class="live-service">
-            Pick My Brain
-          </span>
-
-          <span class="live-service">
-            Shopping Buddy
-          </span>
-
-          <span class="live-service">
-            Hype Session
-          </span>
-
-          <span class="live-service">
-            Someone to Talk To
-          </span>
-
-          <span class="live-service">
-            Work With Me
-          </span>
-
-        </div>
-
-        <div class="live-actions">
-
-          <button
-            id="talkLive"
-            class="primary-button"
+          <img
+            class="globe-image"
+            src="elle-world-4k.png"
+            alt="Elle World illuminated globe"
           >
-            Talk to Live Elle
-          </button>
 
-          <button
-            id="askAboutLive"
-            class="secondary-button"
-          >
-            Ask Elle About It
-          </button>
-
-        </div>
-
-      </div>
-
-      <div class="live-art">
-
-        <div class="live-art-inner">
-
-          <div class="live-phone">
-            📱
-          </div>
-
-          <strong>
-            WhatsApp Connection
-          </strong>
-
-          <p>
-            Call options are handled as
-            part of the Live Elle request.
-          </p>
-
-        </div>
-
-      </div>
-
-      <div
-        id="liveLock"
-        class="feature-lock"
-      >
-
-        <div class="feature-lock-card">
-
-          <span>
-            📱
-          </span>
-
-          <strong>
-            Live Elle
-          </strong>
-
-          <p>
-            Live Elle is an adult feature
-            included with The Infinite ∞
-            membership.
-          </p>
+          <span class="world-spark s1"></span>
+          <span class="world-spark s2"></span>
+          <span class="world-spark s3"></span>
+          <span class="world-spark s4"></span>
 
         </div>
 
       </div>
 
     </div>
-
-  </section>
-
-  <!-- TRUST -->
-
-  <div class="trust-strip">
-
-    <div class="trust-icon">
-      🔐
-    </div>
-
-    <div class="trust-copy">
-
-      <strong>
-        Privacy, safety and transparency
-      </strong>
-
-      <span>
-        Messages submitted to Elle are
-        processed by an AI service.
-        Avoid sharing passwords,
-        authentication codes or other
-        highly sensitive information.
-      </span>
-
-    </div>
-
-    <button
-      id="openTrust"
-      class="trust-button"
-    >
-      Trust Center
-    </button>
 
   </div>
 
-  <footer class="footer">
+</section>
+
+<!-- =========================================================
+ELLE RADIO
+========================================================= -->
+
+<section
+  id="radio"
+  class="section"
+>
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="section-kicker">
+        AURYNELLE∞ SOUND
+      </div>
+
+      <h2 class="section-title">
+        Elle Radio
+      </h2>
+
+    </div>
+
+    <p class="section-copy">
+      A little music for the mood.
+      Pick your song and let the room change for a moment.
+    </p>
+
+  </div>
+
+  <div
+    id="radioCard"
+    class="radio-shell"
+  >
+
+    <img
+      class="radio-image"
+      src="elle-turntable.png"
+      alt="Luxury walnut and brass turntable"
+    >
+
+    <div class="radio-gradient"></div>
+
+    <div class="radio-content">
+
+      <div class="section-kicker">
+        Your AURYNELLE soundtrack
+      </div>
+
+      <h3 class="radio-title">
+        Put your crown back on.
+      </h3>
+
+      <div class="radio-script">
+        Pick the song. I’ll set the vibe.
+      </div>
+
+      <div class="now-playing">
+
+        <div class="now-label">
+          Now Playing
+        </div>
+
+        <div
+          id="songTitle"
+          class="song-title"
+        >
+          Crown Back On
+        </div>
+
+        <div
+          id="songArtist"
+          class="song-artist"
+        >
+          AURYNELLE
+        </div>
+
+        <div class="radio-controls">
+
+          <button
+            type="button"
+            id="previousTrack"
+            class="radio-control"
+            aria-label="Previous track"
+          >
+            ◀
+          </button>
+
+          <button
+            type="button"
+            id="playPause"
+            class="radio-control radio-play"
+            aria-label="Play or pause"
+          >
+            ▶
+          </button>
+
+          <button
+            type="button"
+            id="nextTrack"
+            class="radio-control"
+            aria-label="Next track"
+          >
+            ▶
+          </button>
+
+        </div>
+
+      </div>
+
+      <div
+        id="trackList"
+        class="track-list"
+      ></div>
+
+    </div>
+
+    <div
+      id="radioLock"
+      class="feature-lock"
+    >
+
+      <div class="feature-lock-card">
+
+        <span>
+          ♫
+        </span>
+
+        <strong>
+          Elle Radio
+        </strong>
+
+        <p>
+          Elle Radio is included with
+          The Infinite ∞ membership.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+MORE OF ELLE
+========================================================= -->
+
+<section
+  id="moreSection"
+  class="section"
+>
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="section-kicker">
+        More when you want it
+      </div>
+
+      <h2 class="section-title">
+        More of Elle
+      </h2>
+
+    </div>
+
+    <p class="section-copy">
+      Useful corners of Elle without filling
+      the whole room with noise.
+    </p>
+
+  </div>
+
+  <div class="more-grid">
+
+    <article class="more-card">
+
+      <div class="more-icon">
+        ✦
+      </div>
+
+      <h3>
+        Need clarity?
+      </h3>
+
+      <p>
+        Bring the messy question to Elle.
+        Decisions, planning, school, work,
+        relationships, faith, money, ideas,
+        confidence or everyday life.
+      </p>
+
+      <button
+        type="button"
+        data-prompt="Help me get clear on something."
+      >
+        Ask Elle →
+      </button>
+
+    </article>
+
+    <article class="more-card">
+
+      <div class="more-icon">
+        ◉
+      </div>
+
+      <h3>
+        Your World
+      </h3>
+
+      <p>
+        Elle World gives the experience a little
+        sense of place and connection without
+        publishing exact user locations.
+      </p>
+
+      <button
+        type="button"
+        id="worldJump"
+      >
+        Visit Elle World →
+      </button>
+
+    </article>
+
+    <article class="more-card">
+
+      <div class="more-icon">
+        ♫
+      </div>
+
+      <h3>
+        Your soundtrack
+      </h3>
+
+      <p>
+        When you need energy, grounding or
+        a reminder of who you are, Elle Radio
+        is right here.
+      </p>
+
+      <button
+        type="button"
+        id="radioJump"
+      >
+        Open Elle Radio →
+      </button>
+
+    </article>
+
+  </div>
+
+</section>
+
+<!-- =========================================================
+TRUST
+========================================================= -->
+
+<div class="trust-strip">
+
+  <div class="trust-icon">
+    🔐
+  </div>
+
+  <div class="trust-copy">
 
     <strong>
-      AURYNELLE∞ IDEAS
+      Privacy, safety and transparency
     </strong>
 
-    <br>
+    <span>
+      Messages submitted to Elle are processed
+      by an AI service. Avoid sharing passwords,
+      authentication codes or other highly sensitive information.
+    </span>
 
-    Elle is an AI guide. Live Elle refers
-    to human one-on-one support.
+  </div>
 
-  </footer>
+  <button
+    type="button"
+    id="openTrust"
+    class="trust-button"
+  >
+    Trust Center
+  </button>
+
+</div>
+
+<footer class="footer">
+
+  <div class="footer-logo">
+    Elle
+  </div>
+
+  <strong>
+    AURYNELLE∞ IDEAS
+  </strong>
+
+  <br>
+
+  Elle is an AI guide.
+  Live Elle refers to human one-on-one support.
+
+</footer>
 
 </main>
 
-<!-- =====================================================
+<!-- =========================================================
+TURNTABLE 6 SECOND MOMENT
+========================================================= -->
+
+<div
+  id="turntableMoment"
+  class="turntable-moment"
+  aria-hidden="true"
+>
+
+  <div class="turntable-stage">
+
+    <img
+      src="elle-turntable.png"
+      alt=""
+    >
+
+    <div class="turntable-caption">
+
+      <small>
+        Elle Radio
+      </small>
+
+      <strong id="momentSong">
+        Crown Back On
+      </strong>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================================================
 TRUST MODAL
-===================================================== -->
+========================================================= -->
 
 <div
   id="trustModal"
   class="modal"
 >
 
-  <div class="modal-card">
+  <section class="modal-card">
 
-    <div class="modal-head">
+    <header class="modal-head">
 
       <div>
 
@@ -3724,84 +4958,79 @@ TRUST MODAL
       </div>
 
       <button
+        type="button"
         id="closeTrust"
         class="modal-close"
-        aria-label="Close"
+        aria-label="Close Trust Center"
       >
         ✕
       </button>
 
-    </div>
+    </header>
 
     <div class="trust-grid">
 
-      <div class="trust-item">
+      <article class="trust-item">
 
         <strong>
           Privacy
         </strong>
 
         <p>
-          Messages you submit to Elle are
-          sent to the AI service used to
-          generate responses. Do not share
-          passwords, authentication codes,
-          banking credentials or other
-          highly sensitive information.
+          Messages submitted to Elle are sent to the
+          AI service used to generate responses.
+          Avoid sharing passwords, authentication codes,
+          banking credentials or unnecessary highly sensitive data.
         </p>
 
-      </div>
+      </article>
 
-      <div class="trust-item">
+      <article class="trust-item">
 
         <strong>
           Terms & Safety
         </strong>
 
         <p>
-          Elle is intended for lawful,
-          responsible use. Certain harmful,
-          exploitative or unsafe requests
-          may be limited or refused.
+          Elle is intended for lawful, responsible use.
+          Certain harmful, exploitative, fraudulent or unsafe
+          requests may be limited or refused.
         </p>
 
-      </div>
+      </article>
 
-      <div class="trust-item">
+      <article class="trust-item">
 
         <strong>
           Content & IP
         </strong>
 
         <p>
-          AURYNELLE branding, original
-          creative assets and original
-          music remain subject to applicable
-          ownership and licensing rights.
+          AURYNELLE branding, original creative assets,
+          original music and other protected materials remain
+          subject to applicable ownership and licensing rights.
         </p>
 
-      </div>
+      </article>
 
-      <div class="trust-item">
+      <article class="trust-item">
 
         <strong>
           AI Notice
         </strong>
 
         <p>
-          Elle is AI-generated and can make
-          mistakes. Important medical,
-          legal, financial, safety or other
-          high-stakes information should be
-          verified with an appropriate
-          qualified source.
+          Elle is AI-generated and can make mistakes.
+          Important medical, legal, financial, safety
+          or other high-stakes information should be
+          verified with an appropriate qualified source.
         </p>
 
-      </div>
+      </article>
 
     </div>
 
-  </div>
+  </section>
 
 </div>
 
@@ -3815,7 +5044,11 @@ TRUST MODAL
 STATE
 ========================================================= */
 
+const BOOKING_URL =
+  "https://calendar.app.google/ev2shsUdMNdtbjqU6";
+
 const state = {
+
   ageGroup:
     localStorage.getItem(
       "elleAgeGroup"
@@ -3850,23 +5083,43 @@ const state = {
       "elleOwnerTestTier"
     ) || "owner",
 
-  history: [],
+  pendingEmail:"",
+
+  history:[],
 
   sending:false,
 
-  trackIndex:0,
+  trackIndex:
+    Number(
+      localStorage.getItem(
+        "elleRadioTrack"
+      ) || 0
+    ),
 
-  playing:false
+  playing:false,
+
+  momentTimer:null,
+
+  worldSession:
+    localStorage.getItem(
+      "elleWorldSession"
+    ) || ""
 };
 
 function safeJSON(value){
+
   try{
+
     return value
       ? JSON.parse(value)
       : {};
+
   }catch{
+
     return {};
+
   }
+
 }
 
 /* =========================================================
@@ -3983,19 +5236,14 @@ const send =
     "send"
   );
 
-const moreSection =
+const heroAsk =
   document.getElementById(
-    "moreSection"
+    "heroAsk"
   );
 
-const radioLock =
+const heroLive =
   document.getElementById(
-    "radioLock"
-  );
-
-const liveLock =
-  document.getElementById(
-    "liveLock"
+    "heroLive"
   );
 
 const talkLive =
@@ -4008,14 +5256,49 @@ const askAboutLive =
     "askAboutLive"
   );
 
-const worldStats =
+const liveLock =
   document.getElementById(
-    "worldStats"
+    "liveLock"
+  );
+
+const liveBookingReady =
+  document.getElementById(
+    "liveBookingReady"
+  );
+
+const liveBookingLink =
+  document.getElementById(
+    "liveBookingLink"
+  );
+
+const worldLiveText =
+  document.getElementById(
+    "worldLiveText"
+  );
+
+const worldActiveCount =
+  document.getElementById(
+    "worldActiveCount"
+  );
+
+const worldCountryCount =
+  document.getElementById(
+    "worldCountryCount"
+  );
+
+const worldCountryList =
+  document.getElementById(
+    "worldCountryList"
   );
 
 const radioCard =
   document.getElementById(
     "radioCard"
+  );
+
+const radioLock =
+  document.getElementById(
+    "radioLock"
   );
 
 const radioAudio =
@@ -4051,6 +5334,31 @@ const previousTrack =
 const nextTrack =
   document.getElementById(
     "nextTrack"
+  );
+
+const turntableMoment =
+  document.getElementById(
+    "turntableMoment"
+  );
+
+const momentSong =
+  document.getElementById(
+    "momentSong"
+  );
+
+const moreSection =
+  document.getElementById(
+    "moreSection"
+  );
+
+const worldJump =
+  document.getElementById(
+    "worldJump"
+  );
+
+const radioJump =
+  document.getElementById(
+    "radioJump"
   );
 
 const trustModal =
@@ -4100,7 +5408,12 @@ document
             "show"
           );
 
+          document.body.classList.remove(
+            "locked"
+          );
+
           continueStartup();
+
         }
       );
 
@@ -4110,36 +5423,43 @@ document
 under13.addEventListener(
   "click",
   () => {
+
     underMessage.classList.add(
       "show"
     );
+
   }
 );
 
 /* =========================================================
-MEMBER GATE
+MEMBERSHIP GATE
 ========================================================= */
 
 function showMemberMessage(
   text,
   type="error"
 ){
+
   memberMessage.textContent =
     text;
 
   memberMessage.className =
     `member-message show ${type}`;
+
 }
 
 function clearMemberMessage(){
+
   memberMessage.textContent =
     "";
 
   memberMessage.className =
     "member-message";
+
 }
 
 function showMemberGate(){
+
   memberGate.classList.add(
     "show"
   );
@@ -4147,9 +5467,11 @@ function showMemberGate(){
   document.body.classList.add(
     "locked"
   );
+
 }
 
 function hideMemberGate(){
+
   memberGate.classList.remove(
     "show"
   );
@@ -4157,9 +5479,11 @@ function hideMemberGate(){
   document.body.classList.remove(
     "locked"
   );
+
 }
 
 function resetMemberGate(){
+
   emailStep.classList.add(
     "show"
   );
@@ -4176,6 +5500,7 @@ function resetMemberGate(){
   );
 
   clearMemberMessage();
+
 }
 
 sendCode.addEventListener(
@@ -4186,11 +5511,15 @@ sendCode.addEventListener(
 memberEmail.addEventListener(
   "keydown",
   (event) => {
+
     if(
       event.key === "Enter"
     ){
+
       requestAccessCode();
+
     }
+
   }
 );
 
@@ -4205,12 +5534,17 @@ async function requestAccessCode(){
     !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
       .test(email)
   ){
+
     showMemberMessage(
       "Enter the email connected to your membership."
     );
 
     return;
+
   }
+
+  state.pendingEmail =
+    email;
 
   sendCode.disabled =
     true;
@@ -4227,6 +5561,7 @@ async function requestAccessCode(){
       await fetch(
         "/api/request-access-code",
         {
+
           method:"POST",
 
           headers:{
@@ -4238,6 +5573,7 @@ async function requestAccessCode(){
             JSON.stringify({
               email
             })
+
         }
       );
 
@@ -4248,16 +5584,19 @@ async function requestAccessCode(){
       !response.ok ||
       data.success !== true
     ){
+
       throw new Error(
         data.error ||
         "Could not send your code."
       );
+
     }
 
     if(
-      data.accessActive !== true ||
-      data.codeSent !== true
+      data.accessActive === false ||
+      data.codeSent === false
     ){
+
       memberJoin.classList.add(
         "show"
       );
@@ -4267,10 +5606,8 @@ async function requestAccessCode(){
       );
 
       return;
-    }
 
-    state.pendingEmail =
-      email;
+    }
 
     emailStep.classList.remove(
       "show"
@@ -4281,14 +5618,13 @@ async function requestAccessCode(){
     );
 
     showMemberMessage(
-      "Your code is on the way. Check that email, love.",
+      "Your six-digit Elle code is on the way. 💛",
       "ok"
     );
 
     setTimeout(
-      () =>
-        memberCode.focus(),
-      100
+      () => memberCode.focus(),
+      150
     );
 
   }catch(error){
@@ -4302,14 +5638,19 @@ async function requestAccessCode(){
 
     sendCode.disabled =
       false;
+
   }
+
 }
 
 differentEmail.addEventListener(
   "click",
   () => {
+
     resetMemberGate();
+
     memberEmail.focus();
+
   }
 );
 
@@ -4319,25 +5660,15 @@ verifyCode.addEventListener(
 );
 
 memberCode.addEventListener(
-  "input",
-  () => {
-
-    memberCode.value =
-      memberCode.value
-        .replace(/\D/g,"")
-        .slice(0,6);
-
-  }
-);
-
-memberCode.addEventListener(
   "keydown",
   (event) => {
 
     if(
       event.key === "Enter"
     ){
+
       verifyAccessCode();
+
     }
 
   }
@@ -4357,17 +5688,22 @@ async function verifyAccessCode(){
       .slice(0,6);
 
   if(
+    !email ||
     code.length !== 6
   ){
+
     showMemberMessage(
       "Enter the six-digit code from your email."
     );
 
     return;
+
   }
 
   verifyCode.disabled =
     true;
+
+  clearMemberMessage();
 
   try{
 
@@ -4375,6 +5711,7 @@ async function verifyAccessCode(){
       await fetch(
         "/api/verify-access-code",
         {
+
           method:"POST",
 
           headers:{
@@ -4387,6 +5724,7 @@ async function verifyAccessCode(){
               email,
               code
             })
+
         }
       );
 
@@ -4394,25 +5732,28 @@ async function verifyAccessCode(){
       await response.json();
 
     if(
-      !response.ok ||
-      data.success !== true
+      !response.ok
     ){
+
       throw new Error(
         data.error ||
         "Could not verify your code."
       );
+
     }
 
     if(
       data.verified !== true ||
       !data.sessionToken
     ){
+
       showMemberMessage(
         data.reason ||
         "That code could not be verified."
       );
 
       return;
+
     }
 
     state.sessionToken =
@@ -4425,7 +5766,9 @@ async function verifyAccessCode(){
       data.permissions || {};
 
     state.owner =
-      data.owner === true;
+      data.owner === true ||
+      state.permissions.ownerMode === true ||
+      state.permissions.testMode === true;
 
     localStorage.setItem(
       "elleSessionToken",
@@ -4470,7 +5813,9 @@ async function verifyAccessCode(){
 
     verifyCode.disabled =
       false;
+
   }
+
 }
 
 /* =========================================================
@@ -4481,33 +5826,7 @@ signOut.addEventListener(
   "click",
   () => {
 
-    [
-      "elleSessionToken",
-      "elleMember",
-      "ellePermissions",
-      "elleOwner",
-      "elleOwnerTestTier"
-    ].forEach(
-      (key) =>
-        localStorage.removeItem(
-          key
-        )
-    );
-
-    state.sessionToken =
-      "";
-
-    state.member =
-      {};
-
-    state.permissions =
-      {};
-
-    state.owner =
-      false;
-
-    state.history =
-      [];
+    clearSavedSession();
 
     pauseRadio();
 
@@ -4536,7 +5855,9 @@ document
           if(
             !state.owner
           ){
+
             return;
+
           }
 
           state.testTier =
@@ -4556,12 +5877,11 @@ document
   );
 
 function ownerPermissions(){
-  const tier =
-    state.testTier;
 
   if(
-    tier === "spark"
+    state.testTier === "spark"
   ){
+
     return {
       elleChat:true,
       expandedPerks:false,
@@ -4569,11 +5889,14 @@ function ownerPermissions(){
       liveElle:false,
       liveVideo:false
     };
+
   }
 
   if(
-    tier === "idea-circle"
+    state.testTier ===
+    "idea-circle"
   ){
+
     return {
       elleChat:true,
       expandedPerks:true,
@@ -4581,11 +5904,14 @@ function ownerPermissions(){
       liveElle:false,
       liveVideo:false
     };
+
   }
 
   if(
-    tier === "infinite"
+    state.testTier ===
+    "infinite"
   ){
+
     return {
       elleChat:true,
       expandedPerks:true,
@@ -4593,6 +5919,7 @@ function ownerPermissions(){
       liveElle:true,
       liveVideo:true
     };
+
   }
 
   return {
@@ -4602,6 +5929,7 @@ function ownerPermissions(){
     liveElle:true,
     liveVideo:true
   };
+
 }
 
 function visiblePermissions(){
@@ -4609,10 +5937,13 @@ function visiblePermissions(){
   if(
     state.owner
   ){
+
     return ownerPermissions();
+
   }
 
   return state.permissions || {};
+
 }
 
 function testTierLabel(){
@@ -4620,24 +5951,31 @@ function testTierLabel(){
   if(
     state.testTier === "spark"
   ){
+
     return "Testing The Spark";
+
   }
 
   if(
     state.testTier ===
     "idea-circle"
   ){
+
     return "Testing The Idea Circle";
+
   }
 
   if(
     state.testTier ===
     "infinite"
   ){
+
     return "Testing The Infinite ∞";
+
   }
 
   return "Testing full owner access";
+
 }
 
 /* =========================================================
@@ -4654,6 +5992,7 @@ function applyAccess(){
       ? "Owner"
       : (
         state.member?.tierName ||
+        state.member?.tier ||
         "Member"
       );
 
@@ -4688,13 +6027,12 @@ function applyAccess(){
 
   moreSection.classList.toggle(
     "hidden",
-    !permissions.expandedPerks
+    permissions.expandedPerks !== true
   );
 
   radioLock.classList.toggle(
     "hidden",
-    permissions.elleRadio ===
-    true
+    permissions.elleRadio === true
   );
 
   const adult =
@@ -4702,17 +6040,18 @@ function applyAccess(){
 
   liveLock.classList.toggle(
     "hidden",
-    permissions.liveElle ===
-      true &&
+    permissions.liveElle === true &&
     adult
   );
 
   if(
-    permissions.elleRadio !==
-    true
+    permissions.elleRadio !== true
   ){
+
     pauseRadio();
+
   }
+
 }
 
 /* =========================================================
@@ -4749,6 +6088,7 @@ function addBubble(
   if(
     role !== "user"
   ){
+
     const label =
       document.createElement(
         "div"
@@ -4763,6 +6103,7 @@ function addBubble(
     bubble.appendChild(
       label
     );
+
   }
 
   const textNode =
@@ -4787,6 +6128,155 @@ function addBubble(
 
   thread.scrollTop =
     thread.scrollHeight;
+
+}
+
+function addBookingCard(
+  url,
+  message=""
+){
+
+  const row =
+    document.createElement(
+      "div"
+    );
+
+  row.className =
+    "message-row";
+
+  const card =
+    document.createElement(
+      "div"
+    );
+
+  card.className =
+    "booking-chat-card";
+
+  const kicker =
+    document.createElement(
+      "div"
+    );
+
+  kicker.className =
+    "booking-chat-kicker";
+
+  kicker.textContent =
+    "LIVE ELLE · NEXT STEP";
+
+  const title =
+    document.createElement(
+      "div"
+    );
+
+  title.className =
+    "booking-chat-title";
+
+  title.textContent =
+    "Choose your 30-minute time";
+
+  const copy =
+    document.createElement(
+      "div"
+    );
+
+  copy.className =
+    "booking-chat-copy";
+
+  copy.textContent =
+    message ||
+    "Your request is in. The calendar will show only the times that are actually available.";
+
+  const meta =
+    document.createElement(
+      "div"
+    );
+
+  meta.className =
+    "booking-chat-meta";
+
+  [
+    "◷ 30 minutes",
+    "◫ Real availability",
+    "↻ Cancel or reschedule"
+  ].forEach(
+    (text) => {
+
+      const item =
+        document.createElement(
+          "span"
+        );
+
+      item.className =
+        "booking-mini";
+
+      item.textContent =
+        text;
+
+      meta.appendChild(
+        item
+      );
+
+    }
+  );
+
+  const link =
+    document.createElement(
+      "a"
+    );
+
+  link.className =
+    "booking-chat-button";
+
+  link.href =
+    url || BOOKING_URL;
+
+  link.target =
+    "_blank";
+
+  link.rel =
+    "noopener";
+
+  link.textContent =
+    "Book an Available Time →";
+
+  card.appendChild(
+    kicker
+  );
+
+  card.appendChild(
+    title
+  );
+
+  card.appendChild(
+    copy
+  );
+
+  card.appendChild(
+    meta
+  );
+
+  card.appendChild(
+    link
+  );
+
+  row.appendChild(
+    card
+  );
+
+  thread.appendChild(
+    row
+  );
+
+  thread.scrollTop =
+    thread.scrollHeight;
+
+  liveBookingLink.href =
+    url || BOOKING_URL;
+
+  liveBookingReady.classList.add(
+    "show"
+  );
+
 }
 
 function showTyping(){
@@ -4832,6 +6322,7 @@ function showTyping(){
 
   thread.scrollTop =
     thread.scrollHeight;
+
 }
 
 function hideTyping(){
@@ -4841,6 +6332,7 @@ function hideTyping(){
       "typingRow"
     )
     ?.remove();
+
 }
 
 function renderChips(
@@ -4860,6 +6352,9 @@ function renderChips(
             "button"
           );
 
+        button.type =
+          "button";
+
         button.className =
           "chip";
 
@@ -4870,10 +6365,9 @@ function renderChips(
           "click",
           () => {
 
-            say.value =
-              label;
-
-            sendMessage();
+            sendMessage(
+              label
+            );
 
           }
         );
@@ -4884,6 +6378,7 @@ function renderChips(
 
       }
     );
+
 }
 
 async function sendMessage(
@@ -4893,14 +6388,19 @@ async function sendMessage(
   if(
     state.sending
   ){
+
     return;
+
   }
 
   if(
     !state.sessionToken
   ){
+
     showMemberGate();
+
     return;
+
   }
 
   const text =
@@ -4909,8 +6409,12 @@ async function sendMessage(
       say.value
     ).trim();
 
-  if(!text){
+  if(
+    !text
+  ){
+
     return;
+
   }
 
   state.sending =
@@ -4942,24 +6446,30 @@ async function sendMessage(
       await fetch(
         "/api/chat",
         {
+
           method:"POST",
 
           headers:{
+
             "Content-Type":
               "application/json",
 
             "Authorization":
               `Bearer ${state.sessionToken}`
+
           },
 
           body:
             JSON.stringify({
+
               messages:
                 state.history,
 
               ageGroup:
                 state.ageGroup
+
             })
+
         }
       );
 
@@ -4971,18 +6481,22 @@ async function sendMessage(
       response.status === 403 ||
       data.membershipRequired
     ){
+
       throw new Error(
         "MEMBERSHIP_SESSION"
       );
+
     }
 
     if(
       !response.ok
     ){
+
       throw new Error(
         data.error ||
         "Elle could not answer right now."
       );
+
     }
 
     const reply =
@@ -5006,31 +6520,27 @@ async function sendMessage(
     );
 
     if(
-      data.leadCaptured ===
-      true
+      data.bookingRequired === true &&
+      data.bookingUrl
     ){
-      setTimeout(
-        () => {
 
-          addBubble(
-            "elle",
-            "Your Live Elle request was received. 💛"
-          );
-
-        },
-        250
+      addBookingCard(
+        data.bookingUrl,
+        data.bookingMessage || ""
       );
+
     }
 
     if(
-      data.leadError ===
-      true &&
+      data.leadError === true &&
       data.leadErrorMessage
     ){
+
       addBubble(
         "elle",
         data.leadErrorMessage
       );
+
     }
 
   }catch(error){
@@ -5041,6 +6551,7 @@ async function sendMessage(
       error.message ===
       "MEMBERSHIP_SESSION"
     ){
+
       addBubble(
         "elle",
         "Your Elle session needs to be refreshed. Sign in again and we’ll pick it right back up."
@@ -5071,7 +6582,9 @@ async function sendMessage(
       false;
 
     say.focus();
+
   }
+
 }
 
 send.addEventListener(
@@ -5084,46 +6597,25 @@ say.addEventListener(
   (event) => {
 
     if(
-      event.key ===
-      "Enter"
+      event.key === "Enter"
     ){
+
       event.preventDefault();
+
       sendMessage();
+
     }
 
   }
 );
 
-document
-  .querySelectorAll(
-    "[data-prompt]"
-  )
-  .forEach(
-    (button) => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          const prompt =
-            button.dataset.prompt;
-
-          say.value =
-            prompt;
-
-          bringChatIntoView();
-
-        }
-      );
-
-    }
-  );
-
 function bringChatIntoView(){
 
   chatCard.scrollIntoView({
+
     behavior:"smooth",
     block:"center"
+
   });
 
   chatCard.classList.remove(
@@ -5138,9 +6630,49 @@ function bringChatIntoView(){
 
   setTimeout(
     () => say.focus(),
-    500
+    450
   );
+
 }
+
+function promptChat(
+  text
+){
+
+  bringChatIntoView();
+
+  setTimeout(
+    () => sendMessage(text),
+    420
+  );
+
+}
+
+document
+  .querySelectorAll(
+    "[data-prompt]"
+  )
+  .forEach(
+    (button) => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          promptChat(
+            button.dataset.prompt
+          );
+
+        }
+      );
+
+    }
+  );
+
+heroAsk.addEventListener(
+  "click",
+  bringChatIntoView
+);
 
 function greetMember(){
 
@@ -5167,52 +6699,67 @@ function greetMember(){
   renderChips([
     "Help me decide",
     "Build a plan",
-    "I need ideas"
+    "I need ideas",
+    "Encourage me"
   ]);
+
 }
 
 /* =========================================================
 LIVE ELLE
 ========================================================= */
 
+function startLiveElle(){
+
+  const permissions =
+    visiblePermissions();
+
+  if(
+    state.ageGroup !== "18+"
+  ){
+
+    promptChat(
+      "I want to know about Live Elle, but I am in the 13–17 experience."
+    );
+
+    return;
+
+  }
+
+  if(
+    permissions.liveElle !== true
+  ){
+
+    promptChat(
+      "What is Live Elle and which membership includes it?"
+    );
+
+    return;
+
+  }
+
+  promptChat(
+    "I want to talk to Live Elle."
+  );
+
+}
+
 talkLive.addEventListener(
+  "click",
+  startLiveElle
+);
+
+heroLive.addEventListener(
   "click",
   () => {
 
-    const permissions =
-      visiblePermissions();
-
-    if(
-      state.ageGroup !==
-      "18+"
-    ){
-      bringChatIntoView();
-
-      sendMessage(
-        "I want to know about Live Elle, but I am in the 13–17 experience."
-      );
-
-      return;
-    }
-
-    if(
-      permissions.liveElle !==
-      true
-    ){
-      bringChatIntoView();
-
-      sendMessage(
-        "What is Live Elle and which membership includes it?"
-      );
-
-      return;
-    }
-
-    bringChatIntoView();
-
-    sendMessage(
-      "I want to talk to Live Elle."
-    );
+    document
+      .getElementById(
+        "live"
+      )
+      .scrollIntoView({
+        behavior:"smooth"
+      });
 
   }
 );
@@ -5221,9 +6768,7 @@ askAboutLive.addEventListener(
   "click",
   () => {
 
-    bringChatIntoView();
-
-    sendMessage(
+    promptChat(
       "Tell me about Live Elle."
     );
 
@@ -5235,113 +6780,190 @@ ELLE RADIO
 ========================================================= */
 
 const ELLE_PLAYLIST = [
+
   {
     title:"Crown Back On",
     artist:"AURYNELLE",
     file:"audio/elle-song-1.mp3"
   },
+
   {
     title:"Stand Firm",
     artist:"AURYNELLE",
     file:"audio/Stand Firm.mp3"
   },
+
   {
     title:"Walk in Light",
     artist:"AURYNELLE",
     file:"audio/Walk in Light.mp3"
   },
+
   {
     title:"I Choose Me Too",
     artist:"AURYNELLE",
     file:"audio/I Choose Me Too.mp3"
   }
+
 ];
+
+function normalizeTrackIndex(index){
+
+  return (
+    index +
+    ELLE_PLAYLIST.length
+  ) %
+  ELLE_PLAYLIST.length;
+
+}
 
 function renderPlaylist(){
 
   trackList.innerHTML =
     "";
 
-  ELLE_PLAYLIST
-    .forEach(
-      (track,index) => {
+  ELLE_PLAYLIST.forEach(
+    (track,index) => {
 
-        const button =
-          document.createElement(
-            "button"
-          );
-
-        button.className =
-          "track";
-
-        if(
-          index ===
-          state.trackIndex
-        ){
-          button.classList.add(
-            "active"
-          );
-        }
-
-        button.innerHTML = `
-          <span class="track-number">
-            ${String(index + 1).padStart(2,"0")}
-          </span>
-
-          <span>
-            ${track.title}
-          </span>
-        `;
-
-        button.addEventListener(
-          "click",
-          () => {
-
-            if(
-              visiblePermissions()
-                .elleRadio !==
-              true
-            ){
-              return;
-            }
-
-            loadTrack(
-              index,
-              true
-            );
-
-          }
+      const button =
+        document.createElement(
+          "button"
         );
 
-        trackList.appendChild(
-          button
+      button.type =
+        "button";
+
+      button.className =
+        "track";
+
+      if(
+        index === state.trackIndex
+      ){
+
+        button.classList.add(
+          "active"
         );
 
       }
+
+      button.innerHTML = `
+        <span class="track-number">
+          ${String(index + 1).padStart(2,"0")}
+        </span>
+
+        <span>
+          ${escapeHTML(track.title)}
+        </span>
+      `;
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          if(
+            visiblePermissions()
+              .elleRadio !== true
+          ){
+
+            return;
+
+          }
+
+          loadTrack(
+            index,
+            true,
+            true
+          );
+
+        }
+      );
+
+      trackList.appendChild(
+        button
+      );
+
+    }
+  );
+
+}
+
+function showTurntableMoment(
+  title
+){
+
+  if(
+    state.momentTimer
+  ){
+
+    clearTimeout(
+      state.momentTimer
     );
+
+  }
+
+  momentSong.textContent =
+    title;
+
+  turntableMoment.classList.remove(
+    "show"
+  );
+
+  void turntableMoment.offsetWidth;
+
+  turntableMoment.classList.add(
+    "show"
+  );
+
+  turntableMoment.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  state.momentTimer =
+    setTimeout(
+      () => {
+
+        turntableMoment.classList.remove(
+          "show"
+        );
+
+        turntableMoment.setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+      },
+      6000
+    );
+
 }
 
 function loadTrack(
   index,
-  autoplay=false
+  autoplay=false,
+  dramatic=false
 ){
 
-  const permissions =
-    visiblePermissions();
-
   if(
-    permissions.elleRadio !==
-    true
+    visiblePermissions()
+      .elleRadio !== true
   ){
+
     return;
+
   }
 
   state.trackIndex =
-    (
-      index +
-      ELLE_PLAYLIST.length
-    ) %
-    ELLE_PLAYLIST.length;
+    normalizeTrackIndex(
+      index
+    );
+
+  localStorage.setItem(
+    "elleRadioTrack",
+    String(
+      state.trackIndex
+    )
+  );
 
   const track =
     ELLE_PLAYLIST[
@@ -5359,28 +6981,47 @@ function loadTrack(
 
   renderPlaylist();
 
-  if(autoplay){
-    playRadio();
+  if(
+    dramatic
+  ){
+
+    showTurntableMoment(
+      track.title
+    );
+
   }
+
+  if(
+    autoplay
+  ){
+
+    playRadio();
+
+  }
+
 }
 
 async function playRadio(){
 
   if(
     visiblePermissions()
-      .elleRadio !==
-    true
+      .elleRadio !== true
   ){
+
     return;
+
   }
 
   if(
     !radioAudio.src
   ){
+
     loadTrack(
       state.trackIndex,
+      false,
       false
     );
+
   }
 
   try{
@@ -5393,14 +7034,13 @@ async function playRadio(){
     playPause.textContent =
       "❚❚";
 
-    radioCard.classList.add(
-      "playing"
-    );
-
   }catch{
+
     state.playing =
       false;
+
   }
+
 }
 
 function pauseRadio(){
@@ -5413,9 +7053,6 @@ function pauseRadio(){
   playPause.textContent =
     "▶";
 
-  radioCard.classList.remove(
-    "playing"
-  );
 }
 
 playPause.addEventListener(
@@ -5424,18 +7061,32 @@ playPause.addEventListener(
 
     if(
       visiblePermissions()
-        .elleRadio !==
-      true
+        .elleRadio !== true
     ){
+
       return;
+
     }
 
     if(
       state.playing
     ){
+
       pauseRadio();
+
     }else{
+
+      const track =
+        ELLE_PLAYLIST[
+          state.trackIndex
+        ];
+
+      showTurntableMoment(
+        track.title
+      );
+
       playRadio();
+
     }
 
   }
@@ -5447,6 +7098,7 @@ previousTrack.addEventListener(
 
     loadTrack(
       state.trackIndex - 1,
+      true,
       true
     );
 
@@ -5459,6 +7111,7 @@ nextTrack.addEventListener(
 
     loadTrack(
       state.trackIndex + 1,
+      true,
       true
     );
 
@@ -5471,8 +7124,24 @@ radioAudio.addEventListener(
 
     loadTrack(
       state.trackIndex + 1,
+      true,
       true
     );
+
+  }
+);
+
+radioJump.addEventListener(
+  "click",
+  () => {
+
+    document
+      .getElementById(
+        "radio"
+      )
+      .scrollIntoView({
+        behavior:"smooth"
+      });
 
   }
 );
@@ -5481,7 +7150,47 @@ radioAudio.addEventListener(
 ELLE WORLD
 ========================================================= */
 
+function ensureWorldSession(){
+
+  if(
+    state.worldSession
+  ){
+
+    return;
+
+  }
+
+  if(
+    window.crypto &&
+    typeof crypto.randomUUID ===
+    "function"
+  ){
+
+    state.worldSession =
+      crypto.randomUUID();
+
+  }else{
+
+    state.worldSession =
+      "elle_" +
+      Date.now().toString(36) +
+      "_" +
+      Math.random()
+        .toString(36)
+        .slice(2);
+
+  }
+
+  localStorage.setItem(
+    "elleWorldSession",
+    state.worldSession
+  );
+
+}
+
 async function heartbeatWorld(){
+
+  ensureWorldSession();
 
   try{
 
@@ -5489,6 +7198,7 @@ async function heartbeatWorld(){
       await fetch(
         "/api/world",
         {
+
           method:"POST",
 
           headers:{
@@ -5498,25 +7208,45 @@ async function heartbeatWorld(){
 
           body:
             JSON.stringify({
-              action:"heartbeat"
+              sessionId:
+                state.worldSession
             })
+
         }
       );
 
     if(
-      response.ok
+      !response.ok
     ){
-      const data =
-        await response.json();
+
+      return;
+
+    }
+
+    const data =
+      await response.json();
+
+    if(
+      data.success &&
+      data.live
+    ){
+
+      renderWorld(
+        data.live
+      );
+
+    }else{
 
       renderWorld(
         data
       );
+
     }
 
   }catch{
-    /* Quietly fail */
+    /* quiet */
   }
+
 }
 
 async function pollWorld(){
@@ -5525,105 +7255,133 @@ async function pollWorld(){
 
     const response =
       await fetch(
-        "/api/world"
+        "/api/world",
+        {
+          cache:"no-store"
+        }
       );
 
     if(
-      response.ok
+      !response.ok
     ){
-      const data =
-        await response.json();
+
+      return;
+
+    }
+
+    const data =
+      await response.json();
+
+    if(
+      data.success &&
+      data.live
+    ){
+
+      renderWorld(
+        data.live
+      );
+
+    }else{
 
       renderWorld(
         data
       );
+
     }
 
   }catch{
-    /* Quietly fail */
+    /* quiet */
   }
+
 }
 
 function renderWorld(
-  data
+  live
 ){
 
-  if(!data){
-    return;
-  }
+  if(
+    !live
+  ){
 
-  const total =
-    Number(
-      data.total ||
-      data.active ||
-      data.count ||
-      0
-    );
+    return;
+
+  }
 
   const countries =
     Array.isArray(
-      data.countries
+      live.countries
     )
-      ? data.countries
+      ? live.countries
       : [];
 
-  const parts =
-    [];
+  const total =
+    Number(
+      live.totalActive ??
+      live.total ??
+      live.active ??
+      live.count ??
+      0
+    );
 
-  if(total > 0){
-    parts.push(`
-      <div class="world-stat">
-        <strong>${total}</strong>
-        active now
-      </div>
-    `);
-  }
+  const countryCount =
+    Number(
+      live.countryCount ??
+      countries.length ??
+      0
+    );
+
+  worldActiveCount.textContent =
+    String(total);
+
+  worldCountryCount.textContent =
+    String(countryCount);
+
+  worldLiveText.textContent =
+    total > 0
+      ? `${total} glowing right now`
+      : "Elle World is awake";
+
+  worldCountryList.innerHTML =
+    "";
 
   countries
-    .slice(0,4)
+    .slice(0,6)
     .forEach(
-      (item) => {
+      (country) => {
 
         const name =
-          item.country ||
-          item.name ||
+          country.name ||
+          country.country ||
+          country.code ||
           "";
-
-        const count =
-          Number(
-            item.count || 0
-          );
 
         if(
           !name ||
           name === "XX"
         ){
+
           return;
+
         }
 
-        parts.push(`
-          <div class="world-stat">
-            <strong>${count || ""}</strong>
-            ${escapeHTML(name)}
-          </div>
-        `);
+        const pill =
+          document.createElement(
+            "div"
+          );
+
+        pill.className =
+          "country-pill";
+
+        pill.textContent =
+          `✦ ${name}`;
+
+        worldCountryList.appendChild(
+          pill
+        );
 
       }
     );
 
-  if(
-    parts.length === 0
-  ){
-    parts.push(`
-      <div class="world-stat">
-        <strong>∞</strong>
-        Elle World is awake
-      </div>
-    `);
-  }
-
-  worldStats.innerHTML =
-    parts.join("");
 }
 
 function startWorld(){
@@ -5638,7 +7396,9 @@ function startWorld(){
         document.visibilityState ===
         "visible"
       ){
+
         pollWorld();
+
       }
 
     },
@@ -5652,28 +7412,50 @@ function startWorld(){
         document.visibilityState ===
         "visible"
       ){
+
         heartbeatWorld();
+
       }
 
     },
     40000
   );
+
 }
+
+worldJump.addEventListener(
+  "click",
+  () => {
+
+    document
+      .getElementById(
+        "world"
+      )
+      .scrollIntoView({
+        behavior:"smooth"
+      });
+
+  }
+);
 
 /* =========================================================
 TRUST
 ========================================================= */
 
 function showTrust(){
+
   trustModal.classList.add(
     "show"
   );
+
 }
 
 function hideTrust(){
+
   trustModal.classList.remove(
     "show"
   );
+
 }
 
 openTrust.addEventListener(
@@ -5696,10 +7478,11 @@ trustModal.addEventListener(
   (event) => {
 
     if(
-      event.target ===
-      trustModal
+      event.target === trustModal
     ){
+
       hideTrust();
+
     }
 
   }
@@ -5732,6 +7515,7 @@ function escapeHTML(value){
       "'",
       "&#039;"
     );
+
 }
 
 function clearSavedSession(){
@@ -5763,6 +7547,14 @@ function clearSavedSession(){
 
   state.history =
     [];
+
+  state.testTier =
+    "owner";
+
+  liveBookingReady.classList.remove(
+    "show"
+  );
+
 }
 
 /* =========================================================
@@ -5774,6 +7566,7 @@ function continueStartup(){
   if(
     !state.ageGroup
   ){
+
     ageGate.classList.add(
       "show"
     );
@@ -5783,6 +7576,7 @@ function continueStartup(){
     );
 
     return;
+
   }
 
   document.body.classList.remove(
@@ -5792,8 +7586,11 @@ function continueStartup(){
   if(
     !state.sessionToken
   ){
+
     showMemberGate();
+
     return;
+
   }
 
   hideMemberGate();
@@ -5801,22 +7598,34 @@ function continueStartup(){
   applyAccess();
 
   greetMember();
+
 }
 
 function init(){
 
+  ensureWorldSession();
+
   renderPlaylist();
 
-  loadTrack(
-    0,
-    false
-  );
+  if(
+    visiblePermissions()
+      .elleRadio === true
+  ){
+
+    loadTrack(
+      state.trackIndex,
+      false,
+      false
+    );
+
+  }
 
   startWorld();
 
   if(
     !state.ageGroup
   ){
+
     ageGate.classList.add(
       "show"
     );
@@ -5826,9 +7635,11 @@ function init(){
     );
 
     return;
+
   }
 
   continueStartup();
+
 }
 
 init();
