@@ -859,7 +859,7 @@ HERO
 .hero{
   position:relative;
 
-  min-height:720px;
+  min-height:860px;
 
   overflow:hidden;
 
@@ -907,7 +907,7 @@ HERO
 
   width:53%;
 
-  padding:60px 28px 245px 48px;
+  padding:60px 28px 360px 48px;
 }
 
 .hero-kicker{
@@ -964,6 +964,9 @@ HERO
 }
 
 .hero-actions{
+  position:relative;
+  z-index:9;
+
   display:flex;
   flex-wrap:wrap;
 
@@ -1671,8 +1674,6 @@ CHAT
   font-size:11px;
   line-height:1.5;
 }
-
-/* clean booking card */
 
 .booking-card{
   width:min(540px,100%);
@@ -2977,7 +2978,7 @@ TRUST
 }
 
 /* =========================================================
-TRUST MODAL
+MODAL
 ========================================================= */
 
 .modal{
@@ -3092,13 +3093,13 @@ TABLET
   }
 
   .hero{
-    min-height:850px;
+    min-height:920px;
   }
 
   .hero-copy{
     width:64%;
-
     padding-left:31px;
+    padding-bottom:385px;
   }
 
   .live-mini{
@@ -3188,8 +3189,6 @@ MOBILE
     font-size:10px;
   }
 
-  /* hero */
-
   .hero{
     min-height:auto;
 
@@ -3274,8 +3273,6 @@ MOBILE
     width:100%;
   }
 
-  /* hero Live Elle */
-
   .live-mini{
     position:relative;
 
@@ -3327,8 +3324,6 @@ MOBILE
     font-size:13px;
   }
 
-  /* luxury value cards */
-
   .value-grid{
     grid-template-columns:1fr;
 
@@ -3359,8 +3354,6 @@ MOBILE
   .value-card p{
     font-size:12px;
   }
-
-  /* feature cards */
 
   .feature-row{
     grid-template-columns:1fr;
@@ -3401,8 +3394,6 @@ MOBILE
       );
   }
 
-  /* sections */
-
   .section{
     margin-top:42px;
   }
@@ -3426,8 +3417,6 @@ MOBILE
 
     font-size:14px;
   }
-
-  /* chat */
 
   .chat-head{
     padding:16px;
@@ -3492,8 +3481,6 @@ MOBILE
     width:100%;
   }
 
-  /* Live Elle */
-
   .live-detail{
     grid-template-columns:1fr;
   }
@@ -3550,8 +3537,6 @@ MOBILE
   .booking-panel-title{
     font-size:24px;
   }
-
-  /* Elle World */
 
   .world-luxury{
     min-height:auto;
@@ -3621,8 +3606,6 @@ MOBILE
     width:min(82%,320px);
   }
 
-  /* radio */
-
   .radio-shell{
     min-height:620px;
 
@@ -3662,8 +3645,6 @@ MOBILE
     font-size:12px;
   }
 
-  /* trust */
-
   .trust-strip{
     align-items:flex-start;
     flex-direction:column;
@@ -3687,8 +3668,6 @@ MOBILE
     font-size:30px;
   }
 
-  /* owner */
-
   .owner-inner{
     align-items:flex-start;
     flex-direction:column;
@@ -3701,8 +3680,6 @@ MOBILE
   .age-options{
     grid-template-columns:1fr;
   }
-
-  /* takeover */
 
   .turntable-stage{
     width:94vw;
@@ -3752,17 +3729,11 @@ MOBILE
 
 <body>
 
-<!-- =========================================================
-AGE GATE
-========================================================= -->
-
 <div id="ageGate" class="age-gate">
 
   <div class="age-card">
 
-    <div class="gate-mark">
-      E
-    </div>
+    <div class="gate-mark">E</div>
 
     <div class="gate-kicker">
       AURYNELLE∞ IDEAS
@@ -3825,19 +3796,13 @@ AGE GATE
 
 </div>
 
-<!-- =========================================================
-MEMBERSHIP
-========================================================= -->
-
 <div id="memberGate" class="member-gate">
 
   <div class="member-card">
 
     <div class="member-head">
 
-      <div class="gate-mark">
-        ♕
-      </div>
+      <div class="gate-mark">♕</div>
 
       <div class="gate-kicker">
         Member Access
@@ -3968,10 +3933,6 @@ MEMBERSHIP
 
 </div>
 
-<!-- =========================================================
-HEADER
-========================================================= -->
-
 <header class="topbar">
 
   <div class="topbar-inner">
@@ -3997,13 +3958,11 @@ HEADER
     </div>
 
     <nav class="nav">
-
       <a href="#home">Home</a>
       <a href="#ask">Ask Elle</a>
       <a href="#live">Live Elle</a>
       <a href="#world">Elle World</a>
       <a href="#radio">Radio</a>
-
     </nav>
 
     <div class="top-actions">
@@ -4036,10 +3995,6 @@ HEADER
   </div>
 
 </header>
-
-<!-- =========================================================
-OWNER
-========================================================= -->
 
 <div id="ownerBar" class="owner-bar">
 
@@ -4097,10 +4052,6 @@ OWNER
 </div>
 
 <main class="page">
-
-<!-- =========================================================
-HERO
-========================================================= -->
 
 <section id="home" class="hero">
 
@@ -4244,10 +4195,6 @@ HERO
 
 </section>
 
-<!-- =========================================================
-LUXURY VALUE CARDS
-========================================================= -->
-
 <section
   class="value-grid"
   aria-label="Why people use Elle"
@@ -4318,10 +4265,6 @@ LUXURY VALUE CARDS
   </article>
 
 </section>
-
-<!-- =========================================================
-FEATURE CARDS
-========================================================= -->
 
 <section class="feature-row">
 
@@ -4489,10 +4432,6 @@ FEATURE CARDS
 
 </section>
 
-<!-- =========================================================
-ASK ELLE
-========================================================= -->
-
 <section id="ask" class="section">
 
   <div class="section-head">
@@ -4585,10 +4524,6 @@ ASK ELLE
   </div>
 
 </section>
-
-<!-- =========================================================
-LIVE ELLE
-========================================================= -->
 
 <section id="live" class="section">
 
@@ -4797,10 +4732,6 @@ LIVE ELLE
 
 </section>
 
-<!-- =========================================================
-ELLE WORLD
-========================================================= -->
-
 <section id="world" class="section">
 
   <div class="section-head">
@@ -4934,10 +4865,6 @@ ELLE WORLD
   </div>
 
 </section>
-
-<!-- =========================================================
-RADIO
-========================================================= -->
 
 <section id="radio" class="section">
 
@@ -5075,10 +5002,6 @@ RADIO
 
 </section>
 
-<!-- =========================================================
-TRUST
-========================================================= -->
-
 <div class="trust-strip">
 
   <div class="trust-icon">
@@ -5128,10 +5051,6 @@ TRUST
 
 </main>
 
-<!-- =========================================================
-TURNTABLE TAKEOVER
-========================================================= -->
-
 <div
   id="turntableTakeover"
   class="turntable-takeover"
@@ -5160,10 +5079,6 @@ TURNTABLE TAKEOVER
   </div>
 
 </div>
-
-<!-- =========================================================
-TRUST MODAL
-========================================================= -->
 
 <div id="trustModal" class="modal">
 
@@ -5343,10 +5258,6 @@ function safeJSON(value){
 
 }
 
-/* =========================================================
-ELEMENTS
-========================================================= */
-
 const ageGate =
   document.getElementById("ageGate");
 
@@ -5495,10 +5406,6 @@ const trustTop =
 const closeTrust =
   document.getElementById("closeTrust");
 
-/* =========================================================
-AGE
-========================================================= */
-
 document
   .querySelectorAll("[data-age]")
   .forEach(
@@ -5542,10 +5449,6 @@ under13.addEventListener(
 
   }
 );
-
-/* =========================================================
-MEMBERSHIP
-========================================================= */
 
 function showMemberMessage(
   text,
@@ -5926,10 +5829,6 @@ memberCode.addEventListener(
   }
 );
 
-/* =========================================================
-OWNER TESTING
-========================================================= */
-
 function ownerPermissions(){
 
   if(
@@ -6133,10 +6032,6 @@ document
 
     }
   );
-
-/* =========================================================
-CHAT
-========================================================= */
 
 function addBubble(
   role,
@@ -6522,13 +6417,6 @@ async function sendMessage(
 
     hideTyping();
 
-    /*
-      Booking handoff:
-      do NOT display the AI's longer booking explanation
-      and then display the booking explanation again.
-      One concise confirmation + one booking card.
-    */
-
     if(
       data.bookingRequired === true &&
       data.bookingUrl
@@ -6713,8 +6601,6 @@ featureAsk.addEventListener(
   bringChatIntoView
 );
 
-/* Ask Elle topic buttons */
-
 document
   .querySelectorAll(
     "[data-ask-topic]"
@@ -6748,10 +6634,6 @@ document
 
     }
   );
-
-/* =========================================================
-LIVE ELLE
-========================================================= */
 
 function startLiveElle(
   service=""
@@ -6870,10 +6752,6 @@ bookingExplain.addEventListener(
   "click",
   explainLiveElle
 );
-
-/* =========================================================
-WORLD
-========================================================= */
 
 function createWorldSession(){
 
@@ -7178,10 +7056,6 @@ document.addEventListener(
 
   }
 );
-
-/* =========================================================
-RADIO
-========================================================= */
 
 const ELLE_PLAYLIST = [
 
@@ -7546,10 +7420,6 @@ featureRadio.addEventListener(
   }
 );
 
-/* =========================================================
-TRUST
-========================================================= */
-
 function showTrust(){
 
   trustModal.classList.add(
@@ -7597,10 +7467,6 @@ trustModal.addEventListener(
   }
 );
 
-/* =========================================================
-SIGN OUT
-========================================================= */
-
 function clearSavedSession(){
 
   [
@@ -7647,10 +7513,6 @@ signOut.addEventListener(
 
   }
 );
-
-/* =========================================================
-START
-========================================================= */
 
 function continueStartup(){
 
