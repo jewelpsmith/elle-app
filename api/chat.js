@@ -1,4 +1,5 @@
 import { requireElleSession } from "./session-check.js";
+import { randomUUID } from "node:crypto";
 
 const SHEET_URL =
   "https://script.google.com/macros/s/AKfycbyupD2eVltAQHX1uTmYrVhvReGVGqqOAvYb9CpahYntxfBPez1p5_1fGX8zpPnOan991Q/exec";
@@ -800,6 +801,25 @@ function normalizeService(value) {
   return services[cleaned] || "";
 }
 
+function generateLiveElleLeadId() {
+  return (
+    "LE-" +
+    randomUUID()
+      .replace(/-/g, "")
+      .toUpperCase()
+  );
+}
+
+function sleep(ms) {
+  return new Promise(
+    (resolve) =>
+      setTimeout(
+        resolve,
+        ms
+      )
+  );
+}
+
 /* =========================================================
    GOOGLE SHEET SAVE
    ========================================================= */
@@ -811,12 +831,23 @@ async function saveLeadToSheet(lead) {
     );
   }
 
+  if (!lead?.leadId) {
+    throw new Error(
+      "Live Elle Lead ID is missing."
+    );
+  }
+
   console.log(
     "======================================"
   );
 
   console.log(
     "LIVE ELLE REQUEST SAVE ATTEMPT"
+  );
+
+  console.log(
+    "Lead ID:",
+    lead.leadId
   );
 
   console.log(
@@ -848,95 +879,224 @@ async function saveLeadToSheet(lead) {
     "======================================"
   );
 
-  const response =
-    await fetch(
-      SHEET_URL,
-      {
-        method: "POST",
+  const requestBody =
+    JSON.stringify({
+      action:
+        "save_live_elle",
 
-        headers: {
-          "Content-Type":
-            "text/plain;charset=utf-8"
-        },
+      secret:
+        ELLE_SHEET_SECRET,
 
-        body:
-          JSON.stringify({
-            action:
-              "save_live_elle",
+      leadId:
+        lead.leadId,
 
-            secret:
-              ELLE_SHEET_SECRET,
+      name:
+        lead.name,
 
-            name:
-              lead.name,
+      whatsapp:
+        lead.whatsapp,
 
-            whatsapp:
-              lead.whatsapp,
+      email:
+        lead.email,
 
-            email:
-              lead.email,
+      connectionType:
+        lead.connectionType,
 
-            connectionType:
-              lead.connectionType,
+      sessionType:
+        lead.connectionType,
 
-            sessionType:
-              lead.connectionType,
+      service:
+        lead.service
+    });
 
-            service:
-              lead.service
-          }),
+  const maxAttempts =
+    3;
 
-        redirect:
-          "follow"
-      }
-    );
+  let lastError =
+    null;
 
-  const responseText =
-    await response.text();
+  for (
+    let attempt = 1;
+    attempt <= maxAttempts;
+    attempt++
+  ) {
+    try {
+      const requestUrl =
+        `${SHEET_URL}?elle_attempt=${attempt}&elle_nonce=${Date.now()}`;
 
-  console.log(
-    "Google Sheet HTTP status:",
-    response.status
-  );
+      const response =
+        await fetch(
+          requestUrl,
+          {
+            method:
+              "POST",
 
-  console.log(
-    "Google Sheet response:",
-    responseText
-  );
+            headers: {
+              "Content-Type":
+                "text/plain;charset=utf-8",
 
-  if (!response.ok) {
-    throw new Error(
-      `Google Sheet HTTP error ${response.status}: ${responseText}`
-    );
-  }
+              "Accept":
+                "application/json,text/plain,*/*",
 
-  let result;
+              "Cache-Control":
+                "no-cache"
+            },
 
-  try {
-    result =
-      JSON.parse(
+            body:
+              requestBody,
+
+            redirect:
+              "follow",
+
+            cache:
+              "no-store"
+          }
+        );
+
+      const responseText =
+        await response.text();
+
+      console.log(
+        `Google Sheet attempt ${attempt} HTTP status:`,
+        response.status
+      );
+
+      console.log(
+        `Google Sheet attempt ${attempt} content-type:`,
+        response.headers.get(
+          "content-type"
+        ) || ""
+      );
+
+      console.log(
+        `Google Sheet attempt ${attempt} response:`,
         responseText
       );
-  } catch {
-    throw new Error(
-      `Google Sheet returned invalid JSON: ${responseText}`
-    );
+
+      let result =
+        null;
+
+      try {
+        result =
+          JSON.parse(
+            responseText
+          );
+      } catch {
+        result =
+          null;
+      }
+
+      if (
+        result &&
+        result.success === true
+      ) {
+        const returnedLeadId =
+          cleanString(
+            result.leadId,
+            100
+          );
+
+        if (
+          returnedLeadId !==
+          lead.leadId
+        ) {
+          throw new Error(
+            "Google Sheet returned a mismatched Lead ID."
+          );
+        }
+
+        console.log(
+          "LIVE ELLE REQUEST SAVED SUCCESSFULLY"
+        );
+
+        console.log(
+          "Google Sheet duplicate:",
+          result.duplicate === true
+        );
+
+        return result;
+      }
+
+      if (
+        result &&
+        result.success === false
+      ) {
+        const errorMessage =
+          cleanString(
+            result.error,
+            500
+          ) ||
+          "Google Sheet rejected the Live Elle request.";
+
+        const retryableMessage =
+          errorMessage
+            .toLowerCase();
+
+        const retryable =
+          retryableMessage.includes(
+            "busy"
+          ) ||
+          retryableMessage.includes(
+            "retry"
+          );
+
+        if (
+          !retryable
+        ) {
+          throw new Error(
+            errorMessage
+          );
+        }
+
+        lastError =
+          new Error(
+            errorMessage
+          );
+      } else {
+        const looksLikeHtml =
+          /^\s*<!doctype html|^\s*<html/i
+            .test(
+              responseText
+            );
+
+        if (
+          !response.ok ||
+          looksLikeHtml ||
+          !result
+        ) {
+          lastError =
+            new Error(
+              `Google Sheet returned an invalid response on attempt ${attempt} (HTTP ${response.status}).`
+            );
+        }
+      }
+    } catch (error) {
+      lastError =
+        error;
+    }
+
+    if (
+      attempt < maxAttempts
+    ) {
+      const delayMs =
+        attempt * 700;
+
+      console.warn(
+        `Retrying Live Elle Sheet save with the same Lead ID in ${delayMs}ms.`
+      );
+
+      await sleep(
+        delayMs
+      );
+    }
   }
 
-  if (
-    result.success !== true
-  ) {
-    throw new Error(
-      result.error ||
+  throw (
+    lastError ||
+    new Error(
       "Google Sheet did not confirm the Live Elle request was saved."
-    );
-  }
-
-  console.log(
-    "LIVE ELLE REQUEST SAVED SUCCESSFULLY"
+    )
   );
-
-  return result;
 }
 
 /* =========================================================
@@ -1394,7 +1554,12 @@ ${getLeadContext(
           );
         }
 
+        leadId =
+          generateLiveElleLeadId();
+
         lead = {
+          leadId,
+
           name,
 
           whatsapp,
@@ -1421,20 +1586,24 @@ ${getLeadContext(
             lead
           );
 
-        leadId =
+        const confirmedLeadId =
           cleanString(
             sheetResult?.leadId,
             100
           );
 
-        if (!leadId) {
+        if (
+          !confirmedLeadId ||
+          confirmedLeadId !==
+            leadId
+        ) {
           throw new Error(
-            "Live Elle request saved without a Lead ID."
+            "Live Elle request saved without the expected Lead ID."
           );
         }
 
         lead.leadId =
-          leadId;
+          confirmedLeadId;
 
         leadCaptured =
           true;
