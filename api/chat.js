@@ -6,6 +6,9 @@ const SHEET_URL =
 const LIVE_ELLE_BOOKING_URL =
   "https://calendar.app.google/ev2shsUdMNdtbjqU6";
 
+const ELLE_SHEET_SECRET =
+  process.env.ELLE_SHEET_SECRET || "";
+
 /* =========================================================
    ELLE SYSTEM
    ========================================================= */
@@ -802,6 +805,12 @@ function normalizeService(value) {
    ========================================================= */
 
 async function saveLeadToSheet(lead) {
+  if (!ELLE_SHEET_SECRET) {
+    throw new Error(
+      "ELLE_SHEET_SECRET is not configured."
+    );
+  }
+
   console.log(
     "======================================"
   );
@@ -854,6 +863,9 @@ async function saveLeadToSheet(lead) {
           JSON.stringify({
             action:
               "save_live_elle",
+
+            secret:
+              ELLE_SHEET_SECRET,
 
             name:
               lead.name,
