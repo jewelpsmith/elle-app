@@ -1,5 +1,5 @@
 const GOOGLE_MAILER_URL =
-  "https://script.google.com/macros/s/AKfycbxzLTPuxHNSWLddqMRRXluXpCVR_qESnizmfsy_G1tP6EUDps-VtdV-QK-Ot8JDumhiig/exec";
+    "https://script.google.com/macros/s/AKfycbyupD2eVltAQHX1uTmYrVhvReGVGqqOAvYb9CpahYntxfBPez1p5_1fGX8zpPnOan991Q/exec";
 
 function getRedisConfig() {
   const url =
