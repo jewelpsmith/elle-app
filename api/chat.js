@@ -1215,6 +1215,9 @@ ${getLeadContext(
     let lead =
       null;
 
+    let leadId =
+      null;
+
     let leadErrorMessage =
       null;
 
@@ -1413,9 +1416,25 @@ ${getLeadContext(
           );
         }
 
-        await saveLeadToSheet(
-          lead
-        );
+        const sheetResult =
+          await saveLeadToSheet(
+            lead
+          );
+
+        leadId =
+          cleanString(
+            sheetResult?.leadId,
+            100
+          );
+
+        if (!leadId) {
+          throw new Error(
+            "Live Elle request saved without a Lead ID."
+          );
+        }
+
+        lead.leadId =
+          leadId;
 
         leadCaptured =
           true;
@@ -1460,6 +1479,9 @@ ${getLeadContext(
         0;
 
       lead =
+        null;
+
+      leadId =
         null;
 
       leadError =
@@ -1579,6 +1601,8 @@ Your Live Elle request is in. 💛 Now choose the 30-minute time that works best
 
         lead,
 
+        leadId,
+
         bookingRequired,
 
         bookingUrl,
@@ -1591,6 +1615,9 @@ Your Live Elle request is in. 💛 Now choose the 30-minute time that works best
 
           url:
             bookingUrl,
+
+          leadId:
+            leadId,
 
           durationMinutes:
             bookingRequired
