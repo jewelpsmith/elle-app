@@ -6,7 +6,7 @@
   name="viewport"
   content="width=device-width,initial-scale=1,viewport-fit=cover"
 >
-<meta name="theme-color" content="#fff9f5">
+<meta name="theme-color" content="#211814">
 
 <title>Elle · AURYNELLE∞ IDEAS</title>
 
@@ -19,547 +19,7 @@
 >
 
 <style>
-/* =========================================================
-ELLE 2026 MOODBOARD REDESIGN
-========================================================= */
-
-:root{
-  --elle-espresso:#211814;
-  --elle-espresso-soft:#33231d;
-  --elle-cream:#f7f0e6;
-  --elle-ivory:#fffaf3;
-  --elle-sand:#dcc8ae;
-  --elle-blush:#e8b9b5;
-  --elle-blush-soft:#f5ddda;
-  --elle-green:#596f49;
-  --elle-green-soft:#879675;
-  --elle-gold:#c89c5d;
-  --elle-ink:#2e2723;
-  --elle-muted:#766a62;
-  --elle-line:rgba(74,53,43,.14);
-
-  --cream:var(--elle-cream);
-  --cream2:#f3e7da;
-  --pearl:var(--elle-ivory);
-
-  --blush:var(--elle-blush-soft);
-  --blush2:var(--elle-blush);
-  --rose:#c9787c;
-
-  --plum:var(--elle-espresso);
-  --plum2:var(--elle-espresso-soft);
-  --deep:#17100d;
-
-  --gold:var(--elle-gold);
-  --gold2:#ddb879;
-  --gold3:#f2dec0;
-
-  --ink:var(--elle-ink);
-  --body:#554a43;
-  --muted:var(--elle-muted);
-
-  --line:var(--elle-line);
-  --green:var(--elle-green);
-
-  --shadow:
-    0 28px 70px -38px rgba(44,28,20,.36);
-
-  --soft-shadow:
-    0 20px 45px -32px rgba(44,28,20,.28);
-}
-
-html{
-  scroll-behavior:smooth;
-  background:var(--elle-cream);
-}
-
-body{
-  color:var(--elle-ink);
-
-  background:
-    radial-gradient(
-      circle at 5% 2%,
-      rgba(232,185,181,.25),
-      transparent 24%
-    ),
-    radial-gradient(
-      circle at 96% 9%,
-      rgba(89,111,73,.10),
-      transparent 24%
-    ),
-    linear-gradient(
-      180deg,
-      #faf4eb 0%,
-      #fffaf3 44%,
-      #f5ece1 100%
-    );
-}
-
-.page{
-  width:min(1180px,calc(100% - 32px));
-  margin:20px auto 0;
-}
-
-.section{
-  margin-top:42px;
-}
-
-.section-head{
-  margin-bottom:16px;
-}
-
-.section-kicker{
-  color:var(--elle-green);
-
-  font-size:10px;
-  font-weight:900;
-
-  letter-spacing:.19em;
-}
-
-.section-title{
-  color:var(--elle-espresso);
-
-  font-size:clamp(34px,4.6vw,50px);
-}
-
-.section-description{
-  color:var(--elle-muted);
-
-  font-size:14px;
-  line-height:1.55;
-}
-
-/* ---------- buttons ---------- */
-
-.primary-cta,
-.secondary-cta{
-  min-height:46px;
-
-  padding:0 20px;
-
-  border-radius:14px;
-
-  font-size:13px;
-  font-weight:800;
-}
-
-.primary-cta{
-  color:#fff;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--elle-espresso),
-      #453129
-    );
-
-  box-shadow:
-    0 14px 30px -20px rgba(33,24,20,.75);
-}
-
-.secondary-cta{
-  border:1px solid rgba(64,45,36,.18);
-
-  color:var(--elle-espresso);
-  background:rgba(255,250,243,.86);
-}
-
-/* =========================================================
-HEADER
-========================================================= */
-
-.topbar{
-  border-bottom:1px solid rgba(62,45,37,.11);
-
-  background:
-    rgba(250,244,235,.90);
-
-  backdrop-filter:blur(18px);
-}
-
-.topbar-inner{
-  width:min(1180px,calc(100% - 32px));
-  min-height:68px;
-
-  gap:14px;
-}
-
-.brand-mark{
-  width:43px;
-  height:43px;
-
-  border-color:rgba(200,156,93,.55);
-
-  color:var(--elle-cream);
-
-  background:
-    linear-gradient(
-      145deg,
-      #31231d,
-      #18110e
-    );
-
-  box-shadow:none;
-}
-
-.brand-copy strong{
-  color:var(--elle-espresso);
-}
-
-.brand-copy span{
-  color:#87786d;
-}
-
-.nav a{
-  color:#655950;
-}
-
-.nav a:hover{
-  color:var(--elle-espresso);
-
-  background:
-    rgba(255,255,255,.68);
-}
-
-.member-pill,
-.top-button{
-  border-color:rgba(66,47,38,.13);
-
-  color:#5d5149;
-
-  background:rgba(255,250,243,.82);
-}
-
-/* =========================================================
-NEW ELLE HERO
-========================================================= */
-
-.hero{
-  min-height:590px;
-
-  display:grid;
-  grid-template-columns:
-    minmax(0,.92fr)
-    minmax(420px,1.08fr);
-
-  overflow:hidden;
-
-  border:none;
-  border-radius:30px;
-
-  background:
-    var(--elle-espresso);
-
-  box-shadow:
-    0 34px 80px -42px rgba(35,22,16,.60);
-}
-
-.hero-image{
-  position:relative;
-  inset:auto;
-
-  grid-column:2;
-  grid-row:1;
-
-  width:100%;
-  height:590px;
-
-  object-fit:cover;
-  object-position:center 32%;
-
-  z-index:1;
-}
-
-.hero-shade{
-  position:absolute;
-  inset:0;
-
-  z-index:2;
-
-  pointer-events:none;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(33,24,20,1) 0%,
-      rgba(33,24,20,.98) 38%,
-      rgba(33,24,20,.72) 51%,
-      rgba(33,24,20,.09) 72%
-    );
-}
-
-.hero-copy{
-  position:absolute;
-
-  left:0;
-  top:0;
-  bottom:0;
-
-  z-index:5;
-
-  width:54%;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-
-  padding:54px 46px;
-}
-
-.hero-kicker{
-  color:var(--elle-blush);
-
-  font-size:11px;
-  font-weight:900;
-
-  letter-spacing:.21em;
-}
-
-.hero-title{
-  max-width:570px;
-
-  margin-top:13px;
-
-  color:#fffaf3;
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:clamp(51px,6vw,78px);
-  font-weight:500;
-
-  line-height:.98;
-}
-
-.hero-copy p{
-  max-width:500px;
-
-  margin-top:20px;
-
-  color:#e9ddd1;
-
-  font-size:clamp(16px,1.5vw,18px);
-  line-height:1.65;
-}
-
-.hero-heart{
-  margin-top:14px;
-
-  color:#d8cabd;
-
-  font-size:13px;
-}
-
-.hero-heart span{
-  color:var(--elle-blush);
-}
-
-.hero-actions{
-  margin-top:23px;
-}
-
-.hero .primary-cta{
-  color:var(--elle-espresso);
-
-  background:var(--elle-blush);
-
-  box-shadow:
-    0 18px 34px -24px rgba(232,185,181,.85);
-}
-
-.hero .secondary-cta{
-  border-color:rgba(255,255,255,.24);
-
-  color:#fffaf3;
-
-  background:rgba(255,255,255,.08);
-
-  backdrop-filter:blur(10px);
-}
-
-/* hide old oversized booking box from hero */
-
-.live-mini{
-  display:none;
-}
-
-/* =========================================================
-COMPACT VALUE STRIP
-========================================================= */
-
-.value-grid{
-  grid-template-columns:
-    repeat(4,minmax(0,1fr));
-
-  gap:9px;
-
-  margin-top:12px;
-}
-
-.value-card{
-  min-height:105px;
-
-  padding:15px;
-
-  border:1px solid var(--elle-line);
-  border-radius:17px;
-
-  background:
-    rgba(255,250,243,.88);
-
-  box-shadow:none;
-}
-
-.value-card::before{
-  display:none;
-}
-
-.value-icon{
-  width:36px;
-  height:36px;
-
-  border:none;
-  border-radius:11px;
-
-  color:var(--elle-espresso);
-
-  background:var(--elle-blush-soft);
-
-  box-shadow:none;
-}
-
-.value-card strong{
-  margin-top:10px;
-
-  color:var(--elle-espresso);
-}
-
-.value-card p{
-  color:var(--elle-muted);
-}
-
-/* =========================================================
-MOBILE HERO
-========================================================= */
-
-@media(max-width:760px){
-
-  .page{
-    width:min(100% - 20px,1180px);
-    margin-top:10px;
-  }
-
-  .section{
-    margin-top:30px;
-  }
-
-  .topbar-inner{
-    width:calc(100% - 20px);
-    min-height:62px;
-  }
-
-  .brand-copy span{
-    display:none;
-  }
-
-  .nav{
-    display:none;
-  }
-
-  .member-pill{
-    display:none;
-  }
-
-  .hero{
-    min-height:0;
-
-    display:flex;
-    flex-direction:column;
-
-    border-radius:23px;
-  }
-
-  .hero-image{
-    order:1;
-
-    width:100%;
-    height:390px;
-
-    object-position:center 24%;
-  }
-
-  .hero-shade{
-    background:
-      linear-gradient(
-        180deg,
-        transparent 32%,
-        rgba(33,24,20,.20) 53%,
-        rgba(33,24,20,.96) 78%,
-        var(--elle-espresso) 100%
-      );
-  }
-
-  .hero-copy{
-    position:relative;
-
-    order:2;
-
-    width:100%;
-
-    margin-top:-92px;
-
-    padding:
-      0
-      22px
-      28px;
-
-    justify-content:flex-end;
-  }
-
-  .hero-kicker{
-    color:#f0c7c3;
-  }
-
-  .hero-title{
-    font-size:
-      clamp(43px,13vw,59px);
-  }
-
-  .hero-copy p{
-    margin-top:15px;
-
-    color:#eee3d8;
-
-    font-size:15px;
-    line-height:1.55;
-  }
-
-  .hero-actions{
-    display:grid;
-
-    grid-template-columns:1fr;
-
-    width:100%;
-  }
-
-  .hero-actions button{
-    width:100%;
-  }
-
-  .value-grid{
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
-
-    gap:8px;
-  }
-
-  .value-card{
-    min-height:110px;
-  }
-
-}*{
+*{
   box-sizing:border-box;
   margin:0;
   padding:0;
@@ -2080,8 +1540,7 @@ CHAT
   color:#4c4246;
   background:white;
 }
-
-.bubble-user{
+  .bubble-user{
   border-top-right-radius:5px;
 
   color:#59464e;
@@ -3260,8 +2719,7 @@ RADIO
   font-size:10px;
   font-weight:900;
 }
-
-/* =========================================================
+  /* =========================================================
 3 SECOND TURNTABLE TAKEOVER
 ========================================================= */
 
@@ -4264,12 +3722,836 @@ MOBILE
     animation:none;
   }
 }
+
+/* =========================================================
+NEW ELLE MOODBOARD LAYOUT
+THIS LAYER OVERRIDES THE PRESERVED APP STYLES ABOVE
+========================================================= */
+
+:root{
+  --elle-espresso:#241813;
+  --elle-coffee:#38271f;
+  --elle-cream:#f5ecdf;
+  --elle-ivory:#fffaf2;
+  --elle-sand:#dbc7aa;
+  --elle-blush:#e7b6b1;
+  --elle-blush-soft:#f5deda;
+  --elle-green:#667656;
+  --elle-green-soft:#879579;
+  --elle-gold:#c89d63;
+  --elle-ink:#302722;
+  --elle-muted:#776b62;
+
+  --cream:var(--elle-cream);
+  --cream2:#efe2d3;
+  --pearl:var(--elle-ivory);
+
+  --blush:var(--elle-blush-soft);
+  --blush2:var(--elle-blush);
+  --rose:#c87b7c;
+
+  --plum:var(--elle-espresso);
+  --plum2:var(--elle-coffee);
+  --deep:#17100c;
+
+  --gold:var(--elle-gold);
+  --gold2:#ddb77b;
+  --gold3:#f0dcc1;
+
+  --ink:var(--elle-ink);
+  --body:#554941;
+  --muted:var(--elle-muted);
+
+  --line:rgba(63,45,36,.14);
+  --green:var(--elle-green);
+
+  --shadow:
+    0 28px 70px -40px rgba(42,28,20,.42);
+
+  --soft-shadow:
+    0 18px 42px -32px rgba(42,28,20,.30);
+}
+
+body{
+  color:var(--elle-ink);
+
+  background:
+    radial-gradient(
+      circle at 4% 0%,
+      rgba(231,182,177,.20),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 96% 6%,
+      rgba(102,118,86,.11),
+      transparent 24%
+    ),
+    linear-gradient(
+      180deg,
+      #f8f0e5 0%,
+      #fffaf2 46%,
+      #f3e8db 100%
+    );
+}
+
+.page{
+  width:min(1160px,calc(100% - 30px));
+  margin-top:18px;
+}
+
+.section{
+  margin-top:38px;
+}
+
+.section-head{
+  margin-bottom:15px;
+}
+
+.section-kicker{
+  color:var(--elle-green);
+}
+
+.section-title{
+  color:var(--elle-espresso);
+}
+
+.section-description{
+  color:var(--elle-muted);
+}
+
+/* HEADER */
+
+.topbar{
+  border-bottom:1px solid rgba(56,39,31,.10);
+
+  background:rgba(248,240,229,.92);
+}
+
+.topbar-inner{
+  width:min(1160px,calc(100% - 30px));
+  min-height:66px;
+}
+
+.brand-mark{
+  width:43px;
+  height:43px;
+
+  border-color:rgba(200,157,99,.55);
+
+  color:#f8ead6;
+
+  background:
+    linear-gradient(
+      145deg,
+      #392820,
+      #1d130f
+    );
+
+  box-shadow:none;
+}
+
+.brand-copy strong{
+  color:var(--elle-espresso);
+}
+
+.nav a{
+  color:#665950;
+}
+
+.member-pill,
+.top-button{
+  border-color:rgba(62,44,35,.14);
+
+  color:#5c5047;
+
+  background:rgba(255,250,242,.84);
+}
+
+/* HERO */
+
+.hero{
+  min-height:590px;
+
+  border:none;
+  border-radius:30px;
+
+  background:var(--elle-espresso);
+
+  box-shadow:
+    0 34px 78px -42px rgba(34,21,15,.62);
+}
+
+.hero-image{
+  object-position:68% center;
+}
+
+.hero-shade{
+  background:
+    linear-gradient(
+      90deg,
+      rgba(36,24,19,1) 0%,
+      rgba(36,24,19,.99) 35%,
+      rgba(36,24,19,.82) 48%,
+      rgba(36,24,19,.20) 70%,
+      rgba(36,24,19,.02) 100%
+    );
+}
+
+.hero-copy{
+  width:55%;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+  padding:52px 35px 52px 46px;
+}
+
+.hero-kicker{
+  color:var(--elle-blush);
+
+  font-size:11px;
+}
+
+.hero-title{
+  max-width:590px;
+
+  color:#fff8ed;
+
+  font-size:clamp(52px,6vw,78px);
+
+  line-height:.98;
+}
+
+.hero-copy p{
+  max-width:490px;
+
+  color:#eaded2;
+
+  font-size:17px;
+  line-height:1.62;
+}
+
+.hero-heart{
+  color:#d8c9bc;
+}
+
+.hero-heart span{
+  color:var(--elle-blush);
+}
+
+.hero .primary-cta{
+  color:var(--elle-espresso);
+
+  background:var(--elle-blush);
+}
+
+.hero .secondary-cta{
+  border-color:rgba(255,255,255,.24);
+
+  color:#fff9ef;
+
+  background:rgba(255,255,255,.08);
+}
+
+/* Old hero booking card is intentionally removed from the visual layout.
+   Live Elle remains available in its dedicated section. */
+
+.live-mini{
+  display:none;
+}
+
+/* VALUE CARDS */
+
+.value-grid{
+  gap:9px;
+
+  margin-top:11px;
+}
+
+.value-card{
+  min-height:108px;
+
+  padding:15px;
+
+  border:1px solid var(--line);
+  border-radius:17px;
+
+  background:rgba(255,250,242,.88);
+
+  box-shadow:none;
+}
+
+.value-card::before{
+  display:none;
+}
+
+.value-icon{
+  width:37px;
+  height:37px;
+
+  border:none;
+  border-radius:11px;
+
+  color:var(--elle-espresso);
+
+  background:var(--elle-blush-soft);
+
+  box-shadow:none;
+}
+
+.value-card strong{
+  margin-top:10px;
+
+  color:var(--elle-espresso);
+}
+
+.value-card p{
+  color:var(--elle-muted);
+}
+
+/* FEATURE CARDS */
+
+.feature-row{
+  gap:10px;
+
+  margin-top:12px;
+
+  padding:10px;
+
+  border-color:var(--line);
+  border-radius:22px;
+
+  background:rgba(255,250,242,.54);
+
+  box-shadow:none;
+}
+
+.feature-card{
+  min-height:290px;
+
+  border-color:var(--line);
+  border-radius:18px;
+}
+
+.feature-copy{
+  padding:21px 8px 19px 19px;
+}
+
+.feature-kicker{
+  color:var(--elle-green);
+}
+
+.feature-copy h3{
+  color:var(--elle-espresso);
+
+  font-size:27px;
+}
+
+.feature-copy p{
+  color:#62564e;
+
+  font-size:13px;
+}
+
+.topic-button{
+  border-color:rgba(65,46,37,.15);
+
+  color:#69594f;
+
+  background:#fffaf3;
+}
+
+.topic-button:hover{
+  background:var(--elle-espresso);
+  border-color:var(--elle-espresso);
+}
+
+.feature-button{
+  background:var(--elle-espresso);
+}
+
+/* ASK ELLE */
+
+.chat-shell{
+  border-color:var(--line);
+  border-radius:23px;
+
+  box-shadow:var(--soft-shadow);
+}
+
+.chat-head{
+  padding:15px 17px;
+
+  border-color:var(--line);
+
+  background:
+    linear-gradient(
+      90deg,
+      #fffaf3,
+      #f5e3dd
+    );
+}
+
+.chat-mark{
+  width:42px;
+  height:42px;
+
+  border-color:rgba(200,157,99,.38);
+
+  color:var(--elle-espresso);
+}
+
+.chat-head strong{
+  color:var(--elle-espresso);
+}
+
+.thread{
+  height:315px;
+
+  padding:17px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffaf4,
+      #f9f1e7
+    );
+}
+
+.bubble{
+  border-radius:17px;
+
+  font-size:14px;
+}
+
+.bubble-elle{
+  border-color:rgba(67,47,38,.12);
+
+  color:#4d423b;
+
+  background:#fffdf8;
+}
+
+.bubble-user{
+  color:#493d36;
+
+  background:var(--elle-blush-soft);
+}
+
+.elle-label{
+  color:var(--elle-green);
+}
+
+.chip{
+  border-color:rgba(65,46,37,.14);
+
+  color:#63544b;
+
+  background:#fffaf3;
+}
+
+.composer input{
+  border-color:rgba(65,46,37,.16);
+
+  background:#fffdf9;
+}
+
+.send-button{
+  background:var(--elle-espresso);
+}
+
+/* LIVE ELLE */
+
+.live-detail{
+  grid-template-columns:1.12fr .88fr;
+
+  border-color:var(--line);
+  border-radius:24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffaf2,
+      #f4e2d8
+    );
+
+  box-shadow:none;
+}
+
+.live-detail-copy{
+  padding:30px;
+}
+
+.live-detail-copy h3{
+  color:var(--elle-espresso);
+}
+
+.live-detail-service{
+  border-color:rgba(65,46,37,.15);
+
+  color:#65554c;
+
+  background:#fffaf3;
+}
+
+.live-detail-service:hover{
+  background:var(--elle-espresso);
+  border-color:var(--elle-espresso);
+}
+
+.live-side{
+  padding:24px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(231,182,177,.34),
+      transparent 46%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(102,118,86,.10),
+      rgba(245,222,218,.44)
+    );
+}
+
+.booking-panel{
+  border-color:var(--line);
+
+  background:rgba(255,250,242,.93);
+
+  box-shadow:none;
+}
+
+.booking-start{
+  background:var(--elle-espresso);
+}
+
+/* ELLE WORLD */
+
+.world-luxury{
+  min-height:470px;
+
+  border-color:var(--line);
+  border-radius:25px;
+
+  background:
+    radial-gradient(
+      circle at 73% 48%,
+      rgba(255,250,242,.98),
+      transparent 22%
+    ),
+    radial-gradient(
+      circle at 73% 48%,
+      rgba(102,118,86,.15),
+      transparent 44%
+    ),
+    linear-gradient(
+      145deg,
+      #fffaf2,
+      #f0e4d7 60%,
+      #efd8d4
+    );
+
+  box-shadow:none;
+}
+
+.world-luxury-layout{
+  min-height:470px;
+}
+
+.world-luxury-copy{
+  padding:34px 20px 34px 34px;
+}
+
+.world-luxury-title{
+  color:var(--elle-espresso);
+
+  font-size:clamp(40px,5vw,60px);
+}
+
+.world-luxury-title span{
+  background:
+    linear-gradient(
+      90deg,
+      #c97d7c,
+      #b99059,
+      #667656
+    );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.world-script{
+  color:#c77b7b;
+}
+
+.world-copy{
+  color:#5d5149;
+}
+
+.world-live-pill,
+.world-stat,
+.world-country{
+  border-color:var(--line);
+
+  background:rgba(255,250,242,.82);
+}
+
+.world-stat strong{
+  color:var(--elle-espresso);
+}
+
+.world-visual{
+  min-height:470px;
+}
+
+/* RADIO */
+
+.radio-shell{
+  min-height:440px;
+
+  border:none;
+  border-radius:25px;
+
+  background:var(--elle-espresso);
+
+  box-shadow:none;
+}
+
+.radio-shade{
+  background:
+    linear-gradient(
+      90deg,
+      rgba(247,239,228,.98) 0%,
+      rgba(247,239,228,.93) 38%,
+      rgba(247,239,228,.30) 65%,
+      rgba(36,24,19,.10) 100%
+    );
+}
+
+.radio-content{
+  width:min(500px,58%);
+
+  padding:32px;
+}
+
+.radio-content h3{
+  color:var(--elle-espresso);
+
+  font-size:clamp(36px,5vw,52px);
+}
+
+.radio-script{
+  color:#c77b7b;
+}
+
+.now-playing{
+  margin-top:15px;
+
+  border-color:var(--line);
+
+  background:rgba(255,250,242,.86);
+}
+
+.song-title{
+  color:var(--elle-espresso);
+}
+
+.radio-control{
+  border-color:var(--line);
+
+  color:var(--elle-espresso);
+
+  background:#fffaf3;
+}
+
+.radio-play{
+  color:white;
+
+  background:var(--elle-espresso);
+}
+
+.track{
+  color:#62564d;
+
+  background:rgba(255,250,242,.66);
+}
+
+.track.active{
+  border-color:rgba(200,157,99,.42);
+
+  color:var(--elle-espresso);
+
+  background:#fffaf3;
+}
+
+/* TRUST + FOOTER */
+
+.trust-strip{
+  margin-top:38px;
+
+  border-color:var(--line);
+
+  background:#fffaf3;
+
+  box-shadow:none;
+}
+
+.trust-copy strong,
+.footer-logo{
+  color:var(--elle-espresso);
+}
+
+.footer{
+  padding:28px 0 26px;
+}
+
+/* =========================================================
+FINAL MOBILE MOODBOARD OVERRIDES
+========================================================= */
+
+@media(max-width:680px){
+
+  .page,
+  .topbar-inner,
+  .owner-inner{
+    width:calc(100% - 18px);
+  }
+
+  .section{
+    margin-top:28px;
+  }
+
+  .hero{
+    padding-bottom:0;
+
+    background:var(--elle-espresso);
+
+    border-radius:22px;
+  }
+
+  .hero-image{
+    height:380px;
+
+    object-position:center 22%;
+  }
+
+  .hero-shade{
+    display:block;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(36,24,19,0) 28%,
+        rgba(36,24,19,.08) 45%,
+        rgba(36,24,19,.76) 74%,
+        rgba(36,24,19,1) 100%
+      );
+  }
+
+  .hero-copy{
+    margin-top:-84px;
+
+    padding:0 19px 25px;
+
+    background:transparent;
+  }
+
+  .hero-kicker{
+    color:#efc5c0;
+  }
+
+  .hero-title{
+    color:#fff8ee;
+
+    font-size:clamp(42px,12vw,57px);
+  }
+
+  .hero-copy p{
+    color:#eaddd0;
+
+    font-size:15px;
+  }
+
+  .hero-heart{
+    color:#d7c8bb;
+  }
+
+  .hero-actions{
+    grid-template-columns:1fr;
+  }
+
+  .hero .primary-cta,
+  .hero .secondary-cta{
+    width:100%;
+  }
+
+  .value-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .value-card{
+    display:block;
+
+    min-height:126px;
+  }
+
+  .value-icon{
+    margin-bottom:4px;
+  }
+
+  .feature-row{
+    padding:8px;
+  }
+
+  .feature-media{
+    min-height:190px;
+  }
+
+  .thread{
+    height:300px;
+  }
+
+  .live-detail-copy{
+    padding:22px 17px;
+  }
+
+  .world-luxury-copy{
+    padding:24px 17px 0;
+  }
+
+  .world-visual{
+    min-height:310px;
+  }
+
+  .radio-shell{
+    min-height:560px;
+  }
+
+  .radio-content{
+    padding:23px 17px;
+  }
+}
+
+@media(max-width:390px){
+
+  .hero-image{
+    height:350px;
+  }
+
+  .value-grid{
+    grid-template-columns:1fr;
+  }
+}
+
 </style>
 </head>
 
 <body>
-
-<div id="ageGate" class="age-gate">
+  <div id="ageGate" class="age-gate">
 
   <div class="age-card">
 
@@ -4335,6 +4617,7 @@ MOBILE
   </div>
 
 </div>
+
 
 <div id="memberGate" class="member-gate">
 
@@ -4473,6 +4756,7 @@ MOBILE
 
 </div>
 
+
 <header class="topbar">
 
   <div class="topbar-inner">
@@ -4490,7 +4774,7 @@ MOBILE
         </strong>
 
         <span>
-          IDEAS · CLARITY · CONNECTION
+          REAL TALK · GOOD ENERGY · ELEVATED LIVING
         </span>
 
       </div>
@@ -4500,9 +4784,10 @@ MOBILE
     <nav class="nav">
       <a href="#home">Home</a>
       <a href="#ask">Ask Elle</a>
-      <a href="#live">Live Elle</a>
-      <a href="#world">Elle World</a>
       <a href="#radio">Radio</a>
+      <a href="#world">World</a>
+      <a href="#penboard">Pen Board</a>
+      <a href="#live">Live Elle</a>
     </nav>
 
     <div class="top-actions">
@@ -4535,6 +4820,7 @@ MOBILE
   </div>
 
 </header>
+
 
 <div id="ownerBar" class="owner-bar">
 
@@ -4591,13 +4877,19 @@ MOBILE
 
 </div>
 
+
 <main class="page">
+
+
+<!-- ======================================================
+HERO
+====================================================== -->
 
 <section id="home" class="hero">
 
   <img
     class="hero-image"
-    src="elle.png"
+    src="new elle.png"
     alt="Elle"
   >
 
@@ -4610,19 +4902,20 @@ MOBILE
     </div>
 
     <h1 class="hero-title">
-      I got you.
+      Real talk.<br>
+      Good energy.<br>
+      Elevated living.
     </h1>
 
     <p>
-      Your personal AI guide for advice, ideas,
-      decisions, planning, faith, relationships,
-      school, work, money, encouragement and
-      everything life throws at you.
+      Your personal AI guide for ideas, clarity,
+      encouragement, decisions, planning, faith,
+      relationships, school, work, money and real life.
     </p>
 
     <div class="hero-heart">
-      <span>♥</span>
-      Real talk. Real help. One clear next move.
+      <span>♡</span>
+      Come as you are. We’ll figure it out together.
     </div>
 
     <div class="hero-actions">
@@ -4632,7 +4925,7 @@ MOBILE
         id="heroAsk"
         class="primary-cta"
       >
-        Ask Elle Anything →
+        Ask Elle →
       </button>
 
       <button
@@ -4643,9 +4936,22 @@ MOBILE
         Explore Elle World
       </button>
 
+      <button
+        type="button"
+        id="heroLive"
+        class="secondary-cta"
+      >
+        Talk to Live Elle
+      </button>
+
     </div>
 
   </div>
+
+  <!--
+    Kept for existing JavaScript compatibility.
+    Hidden by the new layout.
+  -->
 
   <div class="live-mini">
 
@@ -4654,11 +4960,11 @@ MOBILE
     </div>
 
     <div class="live-mini-title">
-      Book a 1:1 Session
+      Real human connection.
     </div>
 
     <div class="live-mini-sub">
-      Real conversation. Real support. Your time.
+      Private 30-minute one-on-one sessions.
     </div>
 
     <div class="live-mini-facts">
@@ -4715,10 +5021,9 @@ MOBILE
 
       <button
         type="button"
-        id="heroLive"
         class="live-mini-primary"
       >
-        Talk to Live Elle →
+        Live Elle
       </button>
 
       <button
@@ -4735,6 +5040,11 @@ MOBILE
 
 </section>
 
+
+<!-- ======================================================
+QUICK VALUE STRIP
+====================================================== -->
+
 <section
   class="value-grid"
   aria-label="Why people use Elle"
@@ -4743,68 +5053,80 @@ MOBILE
   <article class="value-card">
 
     <div class="value-icon">
-      ♙
-    </div>
-
-    <strong>
-      Personal & Thoughtful
-    </strong>
-
-    <p>
-      Help shaped around the question you actually bring.
-    </p>
-
-  </article>
-
-  <article class="value-card">
-
-    <div class="value-icon">
-      ✧
-    </div>
-
-    <strong>
-      Always Here
-    </strong>
-
-    <p>
-      Ask whenever you need clarity, ideas or direction.
-    </p>
-
-  </article>
-
-  <article class="value-card">
-
-    <div class="value-icon">
       ♡
     </div>
 
     <strong>
-      Built for Real Life
+      Real-Life Clarity
     </strong>
 
     <p>
-      Decisions, planning, relationships, work, school and more.
+      Advice and ideas shaped around the question
+      you actually bring.
     </p>
 
   </article>
 
+
   <article class="value-card">
 
     <div class="value-icon">
-      ◇
+      ✦
     </div>
 
     <strong>
-      Come As You Are
+      Here When You Need Her
     </strong>
 
     <p>
-      The question does not have to be perfectly figured out first.
+      Ask whenever you need a thought partner,
+      direction or encouragement.
+    </p>
+
+  </article>
+
+
+  <article class="value-card">
+
+    <div class="value-icon">
+      ♫
+    </div>
+
+    <strong>
+      Music + Mood
+    </strong>
+
+    <p>
+      Elle Radio brings a little soundtrack
+      to the experience.
+    </p>
+
+  </article>
+
+
+  <article class="value-card">
+
+    <div class="value-icon">
+      ◉
+    </div>
+
+    <strong>
+      Connected Worldwide
+    </strong>
+
+    <p>
+      See Elle glowing across countries
+      without exposing private locations.
     </p>
 
   </article>
 
 </section>
+
+
+<!-- ======================================================
+MOODBOARD FEATURE CARDS
+====================================================== -->
 
 <section class="feature-row">
 
@@ -4817,13 +5139,13 @@ MOBILE
       </div>
 
       <h3>
-        Need Advice?
+        Bring me the question.
       </h3>
 
       <p>
-        Bring Elle whatever is on your mind.
-        Get clarity, practical ideas and a next move
-        you can actually use.
+        Business. School. Love. Faith. Money.
+        Decisions. Ideas. Planning. Tech.
+        Or the thing you cannot quite put into words yet.
       </p>
 
       <div class="topic-buttons">
@@ -4875,7 +5197,7 @@ MOBILE
         id="featureAsk"
         class="feature-button"
       >
-        Ask Elle Anything →
+        Ask Elle →
       </button>
 
     </div>
@@ -4883,53 +5205,14 @@ MOBILE
     <div class="feature-media">
 
       <img
-        src="ask-elle-balloons.png"
-        alt="Ask Elle experience"
+        src="new elle.png"
+        alt="Elle"
       >
 
     </div>
 
   </article>
 
-  <article class="feature-card">
-
-    <div class="feature-copy">
-
-      <div class="feature-kicker">
-        Elle World
-      </div>
-
-      <h3>
-        Your World,
-        Connected
-      </h3>
-
-      <p>
-        See the Elle community glowing around
-        the world without exposing names,
-        cities or exact locations.
-      </p>
-
-      <button
-        type="button"
-        id="featureWorld"
-        class="feature-button"
-      >
-        Explore Elle World →
-      </button>
-
-    </div>
-
-    <div class="feature-media">
-
-      <img
-        src="elle-world-garden.png"
-        alt="Elle World"
-      >
-
-    </div>
-
-  </article>
 
   <article class="feature-card">
 
@@ -4940,13 +5223,12 @@ MOBILE
       </div>
 
       <h3>
-        Your Soundtrack
+        Soundtrack for the moment.
       </h3>
 
       <p>
-        Music for confidence, grounding,
-        faith, energy and those moments when
-        your crown needs adjusting.
+        Confidence, grounding, energy and
+        crown-adjusting music when the vibe needs help.
       </p>
 
       <button
@@ -4963,7 +5245,46 @@ MOBILE
 
       <img
         src="elle-turntable.png"
-        alt="Elle Radio turntable"
+        alt="Elle Radio"
+      >
+
+    </div>
+
+  </article>
+
+
+  <article class="feature-card">
+
+    <div class="feature-copy">
+
+      <div class="feature-kicker">
+        Elle World
+      </div>
+
+      <h3>
+        We are connected.
+      </h3>
+
+      <p>
+        See country-level activity and discover
+        how the Elle community is growing around the world.
+      </p>
+
+      <button
+        type="button"
+        id="featureWorld"
+        class="feature-button"
+      >
+        Explore Elle World →
+      </button>
+
+    </div>
+
+    <div class="feature-media">
+
+      <img
+        src="elle-world-4k.png"
+        alt="Elle World"
       >
 
     </div>
@@ -4971,6 +5292,11 @@ MOBILE
   </article>
 
 </section>
+
+
+<!-- ======================================================
+ASK ELLE
+====================================================== -->
 
 <section id="ask" class="section">
 
@@ -4989,12 +5315,12 @@ MOBILE
     </div>
 
     <p class="section-description">
-      Business, school, faith, relationships,
-      planning, budgeting, ideas, decisions or
-      something you cannot quite put into words yet.
+      Come with the full story, half the story,
+      or just the feeling that something needs figuring out.
     </p>
 
   </div>
+
 
   <div
     id="chatCard"
@@ -5014,7 +5340,7 @@ MOBILE
         </strong>
 
         <small>
-          Bring me the question. We'll figure out the move.
+          Real talk. One clear next move.
         </small>
 
       </div>
@@ -5025,16 +5351,19 @@ MOBILE
 
     </div>
 
+
     <div
       id="thread"
       class="thread"
       aria-live="polite"
     ></div>
 
+
     <div
       id="chips"
       class="chips"
     ></div>
+
 
     <div class="composer">
 
@@ -5056,6 +5385,7 @@ MOBILE
 
     </div>
 
+
     <div class="chat-note">
       Elle is AI-generated and can make mistakes.
       Verify important information when it matters.
@@ -5064,6 +5394,469 @@ MOBILE
   </div>
 
 </section>
+
+
+<!-- ======================================================
+ELLE RADIO
+====================================================== -->
+
+<section id="radio" class="section">
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="section-kicker">
+        AURYNELLE∞ SOUND
+      </div>
+
+      <h2 class="section-title">
+        Elle Radio
+      </h2>
+
+    </div>
+
+    <p class="section-description">
+      Pick your track. Let Elle set the vibe
+      while you keep moving.
+    </p>
+
+  </div>
+
+
+  <div class="radio-shell">
+
+    <img
+      src="elle-turntable.png"
+      alt="Luxury Elle turntable"
+    >
+
+    <div class="radio-shade"></div>
+
+
+    <div class="radio-content">
+
+      <div class="section-kicker">
+        Your soundtrack
+      </div>
+
+      <h3>
+        Put your crown
+        back on.
+      </h3>
+
+      <div class="radio-script">
+        Pick the song. I’ll set the vibe.
+      </div>
+
+
+      <div class="now-playing">
+
+        <small>
+          Now Playing
+        </small>
+
+        <div
+          id="songTitle"
+          class="song-title"
+        >
+          Crown Back On
+        </div>
+
+        <div
+          id="songArtist"
+          class="song-artist"
+        >
+          AURYNELLE
+        </div>
+
+
+        <div class="radio-controls">
+
+          <button
+            type="button"
+            id="previousTrack"
+            class="radio-control"
+            aria-label="Previous song"
+          >
+            ◀
+          </button>
+
+          <button
+            type="button"
+            id="playPause"
+            class="radio-control radio-play"
+            aria-label="Play or pause"
+          >
+            ▶
+          </button>
+
+          <button
+            type="button"
+            id="nextTrack"
+            class="radio-control"
+            aria-label="Next song"
+          >
+            ▶
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="trackList"
+        class="track-list"
+      ></div>
+
+    </div>
+
+
+    <div
+      id="radioLock"
+      class="feature-lock"
+    >
+
+      <div class="feature-lock-card">
+
+        <span>
+          ♫
+        </span>
+
+        <strong>
+          Elle Radio
+        </strong>
+
+        <p>
+          Elle Radio is included with
+          The Infinite ∞ membership.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+ELLE WORLD + REAL STATS
+====================================================== -->
+
+<section id="world" class="section">
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="section-kicker">
+        Around the world
+      </div>
+
+      <h2 class="section-title">
+        Elle World
+      </h2>
+
+    </div>
+
+    <p class="section-description">
+      A privacy-conscious glimpse of where the
+      Elle community is connecting from.
+    </p>
+
+  </div>
+
+
+  <div class="world-luxury">
+
+    <div class="world-luxury-layout">
+
+      <div class="world-luxury-copy">
+
+        <div class="section-kicker">
+          AURYNELLE∞ IDEAS
+        </div>
+
+        <div class="world-luxury-title">
+          Elle <span>World</span>
+        </div>
+
+        <div class="world-script">
+          look who's glowing with Elle...
+        </div>
+
+        <p class="world-copy">
+          Elle World uses live country-level activity
+          to give the community a sense of connection
+          without exposing names, cities or exact locations.
+        </p>
+
+
+        <div class="world-live-pill">
+
+          <span class="world-live-dot"></span>
+
+          <span id="worldLiveText">
+            Connecting Elle World...
+          </span>
+
+        </div>
+
+
+        <div class="world-stats">
+
+          <div class="world-stat">
+
+            <strong id="worldActiveCount">
+              0
+            </strong>
+
+            <span>
+              glowing now
+            </span>
+
+          </div>
+
+
+          <div class="world-stat">
+
+            <strong id="worldCountryCount">
+              0
+            </strong>
+
+            <span>
+              countries
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div
+          id="worldCountries"
+          class="world-countries"
+        ></div>
+
+
+        <div class="world-privacy">
+          🔒 Country-level only. Elle World does not display
+          names, cities, exact coordinates or public IP addresses.
+          Activity represents approximately the last two minutes.
+        </div>
+
+
+        <div
+          id="worldError"
+          class="world-error"
+        ></div>
+
+      </div>
+
+
+      <div class="world-visual">
+
+        <div class="world-halo"></div>
+        <div class="world-orbit"></div>
+        <div class="world-orbit two"></div>
+
+
+        <div class="globe-stage">
+
+          <img
+            class="luxury-globe"
+            src="elle-world-4k.png"
+            alt="Rotating Elle World globe"
+          >
+
+          <span class="world-spark one"></span>
+          <span class="world-spark two"></span>
+          <span class="world-spark three"></span>
+          <span class="world-spark four"></span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+GLOBAL PEN BOARD
+Preview only until secure posting backend is connected.
+====================================================== -->
+
+<section id="penboard" class="section">
+
+  <div class="section-head">
+
+    <div>
+
+      <div class="section-kicker">
+        Notes from everywhere
+      </div>
+
+      <h2 class="section-title">
+        The Pen Board
+      </h2>
+
+    </div>
+
+    <p class="section-description">
+      A little global wall for thoughts, encouragement,
+      wins, questions and beautiful reminders from the community.
+    </p>
+
+  </div>
+
+
+  <div class="feature-row">
+
+    <article class="feature-card">
+
+      <div class="feature-copy">
+
+        <div class="feature-kicker">
+          Trinidad & Tobago
+        </div>
+
+        <h3>
+          “Starting again still counts.”
+        </h3>
+
+        <p>
+          Today I stopped waiting to feel completely ready
+          and took one small step anyway.
+        </p>
+
+        <div class="world-script">
+          — Island Dreamer
+        </div>
+
+      </div>
+
+      <div class="feature-media">
+
+        <img
+          src="new elle.png"
+          alt="Elle community"
+        >
+
+      </div>
+
+    </article>
+
+
+    <article class="feature-card">
+
+      <div class="feature-copy">
+
+        <div class="feature-kicker">
+          United States
+        </div>
+
+        <h3>
+          “I finally sent the email.”
+        </h3>
+
+        <p>
+          I had been overthinking it for three days.
+          Sent it this morning. Feeling lighter already.
+        </p>
+
+        <div class="world-script">
+          — Soft Life Loading
+        </div>
+
+      </div>
+
+      <div class="feature-media">
+
+        <img
+          src="elle-world-4k.png"
+          alt="Global Elle community"
+        >
+
+      </div>
+
+    </article>
+
+
+    <article class="feature-card">
+
+      <div class="feature-copy">
+
+        <div class="feature-kicker">
+          United Kingdom
+        </div>
+
+        <h3>
+          “You can be scared and still move.”
+        </h3>
+
+        <p>
+          Leaving this here for whoever needs the reminder today.
+          Courage does not always feel confident.
+        </p>
+
+        <div class="world-script">
+          — Tea & Big Dreams
+        </div>
+
+      </div>
+
+      <div class="feature-media">
+
+        <img
+          src="new elle.png"
+          alt="Elle"
+        >
+
+      </div>
+
+    </article>
+
+  </div>
+
+
+  <div
+    class="trust-strip"
+    style="margin-top:12px;"
+  >
+
+    <div class="trust-icon">
+      ✎
+    </div>
+
+    <div class="trust-copy">
+
+      <strong>
+        Community posting is coming next.
+      </strong>
+
+      <span>
+        The Pen Board is currently a preview.
+        Member posting will be connected only after
+        moderation, privacy and abuse protection are in place.
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ======================================================
+LIVE ELLE
+====================================================== -->
 
 <section id="live" class="section">
 
@@ -5082,12 +5875,13 @@ MOBILE
     </div>
 
     <p class="section-description">
-      When AI is not what you want,
-      qualifying adult members can request
-      real one-on-one human support.
+      Sometimes you do not want AI.
+      Sometimes you want a real person,
+      a real conversation and a little focused time.
     </p>
 
   </div>
+
 
   <div class="live-detail">
 
@@ -5103,11 +5897,12 @@ MOBILE
       </h3>
 
       <p>
-        Choose the kind of session you want below.
-        Elle will start the request with that service already
-        selected, then the actual booking calendar appears
-        after the request is successfully received.
+        Choose the kind of session you want.
+        Elle gathers the request first, then unlocks
+        the real booking calendar after your request
+        has been safely received.
       </p>
+
 
       <div class="live-facts">
 
@@ -5132,6 +5927,7 @@ MOBILE
         </div>
 
       </div>
+
 
       <div class="live-detail-services">
 
@@ -5177,6 +5973,7 @@ MOBILE
 
       </div>
 
+
       <div class="live-actions">
 
         <button
@@ -5199,6 +5996,7 @@ MOBILE
 
     </div>
 
+
     <div class="live-side">
 
       <div class="booking-panel">
@@ -5206,14 +6004,16 @@ MOBILE
         <div class="calendar-graphic"></div>
 
         <div class="booking-panel-title">
-          Choose Your Time After Your Request
+          Request first.
+          Choose your time next.
         </div>
 
         <p class="booking-panel-copy">
           Once Elle confirms your request was received,
           you can open the real booking calendar and choose
-          from the actual available 30-minute times.
+          from currently available 30-minute times.
         </p>
+
 
         <div class="booking-panel-actions">
 
@@ -5235,14 +6035,16 @@ MOBILE
 
         </div>
 
+
         <div class="booking-panel-note">
-          Google Calendar confirms the appointment and provides
-          cancellation or rescheduling options after booking.
+          Google Calendar handles the appointment
+          confirmation, cancellation and rescheduling options.
         </div>
 
       </div>
 
     </div>
+
 
     <div
       id="liveLock"
@@ -5272,275 +6074,10 @@ MOBILE
 
 </section>
 
-<section id="world" class="section">
 
-  <div class="section-head">
-
-    <div>
-
-      <div class="section-kicker">
-        Around the world
-      </div>
-
-      <h2 class="section-title">
-        Elle World
-      </h2>
-
-    </div>
-
-    <p class="section-description">
-      A living glimpse of the Elle community.
-      Country-level activity only, with no public
-      names, cities or exact locations.
-    </p>
-
-  </div>
-
-  <div class="world-luxury">
-
-    <div class="world-luxury-layout">
-
-      <div class="world-luxury-copy">
-
-        <div class="section-kicker">
-          AURYNELLE∞ IDEAS
-        </div>
-
-        <div class="world-luxury-title">
-          Elle <span>World</span>
-        </div>
-
-        <div class="world-script">
-          look who's glowing with Elle...
-        </div>
-
-        <p class="world-copy">
-          A beautiful glimpse of the Elle community
-          around the world. The activity numbers are live
-          and country-level. The glowing fantasy globe is
-          Elle World’s visual experience around those real stats.
-        </p>
-
-        <div class="world-live-pill">
-
-          <span class="world-live-dot"></span>
-
-          <span id="worldLiveText">
-            Connecting Elle World...
-          </span>
-
-        </div>
-
-        <div class="world-stats">
-
-          <div class="world-stat">
-
-            <strong id="worldActiveCount">
-              0
-            </strong>
-
-            <span>
-              glowing now
-            </span>
-
-          </div>
-
-          <div class="world-stat">
-
-            <strong id="worldCountryCount">
-              0
-            </strong>
-
-            <span>
-              countries
-            </span>
-
-          </div>
-
-        </div>
-
-        <div
-          id="worldCountries"
-          class="world-countries"
-        ></div>
-
-        <div class="world-privacy">
-          🔒 Country-level only. Elle World does not display
-          names, cities, exact coordinates or public IP addresses.
-          Activity represents approximately the last two minutes.
-        </div>
-
-        <div
-          id="worldError"
-          class="world-error"
-        ></div>
-
-      </div>
-
-      <div class="world-visual">
-
-        <div class="world-halo"></div>
-        <div class="world-orbit"></div>
-        <div class="world-orbit two"></div>
-
-        <div class="globe-stage">
-
-          <img
-            class="luxury-globe"
-            src="elle-world-4k.png"
-            alt="Lush rotating Elle World globe"
-          >
-
-          <span class="world-spark one"></span>
-          <span class="world-spark two"></span>
-          <span class="world-spark three"></span>
-          <span class="world-spark four"></span>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<section id="radio" class="section">
-
-  <div class="section-head">
-
-    <div>
-
-      <div class="section-kicker">
-        AURYNELLE∞ SOUND
-      </div>
-
-      <h2 class="section-title">
-        Elle Radio
-      </h2>
-
-    </div>
-
-    <p class="section-description">
-      Pick your track. The luxury turntable gets
-      a three-second moment on screen, then disappears
-      while your music keeps playing.
-    </p>
-
-  </div>
-
-  <div class="radio-shell">
-
-    <img
-      src="elle-turntable.png"
-      alt="Luxury Elle turntable"
-    >
-
-    <div class="radio-shade"></div>
-
-    <div class="radio-content">
-
-      <div class="section-kicker">
-        Your soundtrack
-      </div>
-
-      <h3>
-        Put your crown
-        back on.
-      </h3>
-
-      <div class="radio-script">
-        Pick the song. I’ll set the vibe.
-      </div>
-
-      <div class="now-playing">
-
-        <small>
-          Now Playing
-        </small>
-
-        <div
-          id="songTitle"
-          class="song-title"
-        >
-          Crown Back On
-        </div>
-
-        <div
-          id="songArtist"
-          class="song-artist"
-        >
-          AURYNELLE
-        </div>
-
-        <div class="radio-controls">
-
-          <button
-            type="button"
-            id="previousTrack"
-            class="radio-control"
-            aria-label="Previous song"
-          >
-            ◀
-          </button>
-
-          <button
-            type="button"
-            id="playPause"
-            class="radio-control radio-play"
-            aria-label="Play or pause"
-          >
-            ▶
-          </button>
-
-          <button
-            type="button"
-            id="nextTrack"
-            class="radio-control"
-            aria-label="Next song"
-          >
-            ▶
-          </button>
-
-        </div>
-
-      </div>
-
-      <div
-        id="trackList"
-        class="track-list"
-      ></div>
-
-    </div>
-
-    <div
-      id="radioLock"
-      class="feature-lock"
-    >
-
-      <div class="feature-lock-card">
-
-        <span>
-          ♫
-        </span>
-
-        <strong>
-          Elle Radio
-        </strong>
-
-        <p>
-          Elle Radio is included with
-          The Infinite ∞ membership.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
+<!-- ======================================================
+TRUST
+====================================================== -->
 
 <div class="trust-strip">
 
@@ -5572,6 +6109,7 @@ MOBILE
 
 </div>
 
+
 <footer class="footer">
 
   <div class="footer-logo">
@@ -5584,12 +6122,21 @@ MOBILE
 
   <br>
 
+  Real talk. Good energy. Elevated living.
+
+  <br>
+
   Elle is an AI guide.
   Live Elle refers to human one-on-one support.
 
 </footer>
 
 </main>
+
+
+<!-- ======================================================
+ELLE RADIO TAKEOVER
+====================================================== -->
 
 <div
   id="turntableTakeover"
@@ -5620,6 +6167,11 @@ MOBILE
 
 </div>
 
+
+<!-- ======================================================
+TRUST MODAL
+====================================================== -->
+
 <div id="trustModal" class="modal">
 
   <div class="modal-card">
@@ -5649,6 +6201,7 @@ MOBILE
 
     </div>
 
+
     <div class="trust-grid">
 
       <div class="trust-item">
@@ -5666,6 +6219,7 @@ MOBILE
 
       </div>
 
+
       <div class="trust-item">
 
         <strong>
@@ -5680,6 +6234,7 @@ MOBILE
 
       </div>
 
+
       <div class="trust-item">
 
         <strong>
@@ -5693,6 +6248,7 @@ MOBILE
         </p>
 
       </div>
+
 
       <div class="trust-item">
 
@@ -5714,17 +6270,20 @@ MOBILE
 
 </div>
 
+
 <audio
   id="radioAudio"
   preload="metadata"
 ></audio>
 
+
 <script>
-const BOOKING_URL =
+  const BOOKING_URL =
   "https://calendar.app.google/ev2shsUdMNdtbjqU6";
 
 const state = {
-leadProgress: 0,
+  leadProgress: 0,
+
   ageGroup:
     localStorage.getItem(
       "elleAgeGroup"
@@ -6891,19 +7450,20 @@ async function sendMessage(
   });
 
   showTyping();
-if(
-  state.leadProgress === 4
-){
 
-  addBubble(
-    "elle",
-    "Got it, love. I’m sending your Live Elle request now…"
-  );
+  if(
+    state.leadProgress === 4
+  ){
 
-  state.leadProgress =
-    0;
+    addBubble(
+      "elle",
+      "Got it, love. I’m sending your Live Elle request now…"
+    );
 
-}
+    state.leadProgress =
+      0;
+
+  }
 
   try{
 
@@ -6967,12 +7527,14 @@ if(
     const reply =
       data.content?.[0]?.text ||
       "I’m here, love. Try that once more.";
-state.leadProgress =
-  data.bookingRequired === true
-    ? 0
-  :Number(
-    data.leadProgress || 0
-  );
+
+    state.leadProgress =
+      data.bookingRequired === true
+        ? 0
+        : Number(
+            data.leadProgress || 0
+          );
+
     hideTyping();
 
     if(
