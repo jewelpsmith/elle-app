@@ -19,7 +19,547 @@
 >
 
 <style>
-*{
+/* =========================================================
+ELLE 2026 MOODBOARD REDESIGN
+========================================================= */
+
+:root{
+  --elle-espresso:#211814;
+  --elle-espresso-soft:#33231d;
+  --elle-cream:#f7f0e6;
+  --elle-ivory:#fffaf3;
+  --elle-sand:#dcc8ae;
+  --elle-blush:#e8b9b5;
+  --elle-blush-soft:#f5ddda;
+  --elle-green:#596f49;
+  --elle-green-soft:#879675;
+  --elle-gold:#c89c5d;
+  --elle-ink:#2e2723;
+  --elle-muted:#766a62;
+  --elle-line:rgba(74,53,43,.14);
+
+  --cream:var(--elle-cream);
+  --cream2:#f3e7da;
+  --pearl:var(--elle-ivory);
+
+  --blush:var(--elle-blush-soft);
+  --blush2:var(--elle-blush);
+  --rose:#c9787c;
+
+  --plum:var(--elle-espresso);
+  --plum2:var(--elle-espresso-soft);
+  --deep:#17100d;
+
+  --gold:var(--elle-gold);
+  --gold2:#ddb879;
+  --gold3:#f2dec0;
+
+  --ink:var(--elle-ink);
+  --body:#554a43;
+  --muted:var(--elle-muted);
+
+  --line:var(--elle-line);
+  --green:var(--elle-green);
+
+  --shadow:
+    0 28px 70px -38px rgba(44,28,20,.36);
+
+  --soft-shadow:
+    0 20px 45px -32px rgba(44,28,20,.28);
+}
+
+html{
+  scroll-behavior:smooth;
+  background:var(--elle-cream);
+}
+
+body{
+  color:var(--elle-ink);
+
+  background:
+    radial-gradient(
+      circle at 5% 2%,
+      rgba(232,185,181,.25),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 96% 9%,
+      rgba(89,111,73,.10),
+      transparent 24%
+    ),
+    linear-gradient(
+      180deg,
+      #faf4eb 0%,
+      #fffaf3 44%,
+      #f5ece1 100%
+    );
+}
+
+.page{
+  width:min(1180px,calc(100% - 32px));
+  margin:20px auto 0;
+}
+
+.section{
+  margin-top:42px;
+}
+
+.section-head{
+  margin-bottom:16px;
+}
+
+.section-kicker{
+  color:var(--elle-green);
+
+  font-size:10px;
+  font-weight:900;
+
+  letter-spacing:.19em;
+}
+
+.section-title{
+  color:var(--elle-espresso);
+
+  font-size:clamp(34px,4.6vw,50px);
+}
+
+.section-description{
+  color:var(--elle-muted);
+
+  font-size:14px;
+  line-height:1.55;
+}
+
+/* ---------- buttons ---------- */
+
+.primary-cta,
+.secondary-cta{
+  min-height:46px;
+
+  padding:0 20px;
+
+  border-radius:14px;
+
+  font-size:13px;
+  font-weight:800;
+}
+
+.primary-cta{
+  color:#fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--elle-espresso),
+      #453129
+    );
+
+  box-shadow:
+    0 14px 30px -20px rgba(33,24,20,.75);
+}
+
+.secondary-cta{
+  border:1px solid rgba(64,45,36,.18);
+
+  color:var(--elle-espresso);
+  background:rgba(255,250,243,.86);
+}
+
+/* =========================================================
+HEADER
+========================================================= */
+
+.topbar{
+  border-bottom:1px solid rgba(62,45,37,.11);
+
+  background:
+    rgba(250,244,235,.90);
+
+  backdrop-filter:blur(18px);
+}
+
+.topbar-inner{
+  width:min(1180px,calc(100% - 32px));
+  min-height:68px;
+
+  gap:14px;
+}
+
+.brand-mark{
+  width:43px;
+  height:43px;
+
+  border-color:rgba(200,156,93,.55);
+
+  color:var(--elle-cream);
+
+  background:
+    linear-gradient(
+      145deg,
+      #31231d,
+      #18110e
+    );
+
+  box-shadow:none;
+}
+
+.brand-copy strong{
+  color:var(--elle-espresso);
+}
+
+.brand-copy span{
+  color:#87786d;
+}
+
+.nav a{
+  color:#655950;
+}
+
+.nav a:hover{
+  color:var(--elle-espresso);
+
+  background:
+    rgba(255,255,255,.68);
+}
+
+.member-pill,
+.top-button{
+  border-color:rgba(66,47,38,.13);
+
+  color:#5d5149;
+
+  background:rgba(255,250,243,.82);
+}
+
+/* =========================================================
+NEW ELLE HERO
+========================================================= */
+
+.hero{
+  min-height:590px;
+
+  display:grid;
+  grid-template-columns:
+    minmax(0,.92fr)
+    minmax(420px,1.08fr);
+
+  overflow:hidden;
+
+  border:none;
+  border-radius:30px;
+
+  background:
+    var(--elle-espresso);
+
+  box-shadow:
+    0 34px 80px -42px rgba(35,22,16,.60);
+}
+
+.hero-image{
+  position:relative;
+  inset:auto;
+
+  grid-column:2;
+  grid-row:1;
+
+  width:100%;
+  height:590px;
+
+  object-fit:cover;
+  object-position:center 32%;
+
+  z-index:1;
+}
+
+.hero-shade{
+  position:absolute;
+  inset:0;
+
+  z-index:2;
+
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(33,24,20,1) 0%,
+      rgba(33,24,20,.98) 38%,
+      rgba(33,24,20,.72) 51%,
+      rgba(33,24,20,.09) 72%
+    );
+}
+
+.hero-copy{
+  position:absolute;
+
+  left:0;
+  top:0;
+  bottom:0;
+
+  z-index:5;
+
+  width:54%;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
+  padding:54px 46px;
+}
+
+.hero-kicker{
+  color:var(--elle-blush);
+
+  font-size:11px;
+  font-weight:900;
+
+  letter-spacing:.21em;
+}
+
+.hero-title{
+  max-width:570px;
+
+  margin-top:13px;
+
+  color:#fffaf3;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:clamp(51px,6vw,78px);
+  font-weight:500;
+
+  line-height:.98;
+}
+
+.hero-copy p{
+  max-width:500px;
+
+  margin-top:20px;
+
+  color:#e9ddd1;
+
+  font-size:clamp(16px,1.5vw,18px);
+  line-height:1.65;
+}
+
+.hero-heart{
+  margin-top:14px;
+
+  color:#d8cabd;
+
+  font-size:13px;
+}
+
+.hero-heart span{
+  color:var(--elle-blush);
+}
+
+.hero-actions{
+  margin-top:23px;
+}
+
+.hero .primary-cta{
+  color:var(--elle-espresso);
+
+  background:var(--elle-blush);
+
+  box-shadow:
+    0 18px 34px -24px rgba(232,185,181,.85);
+}
+
+.hero .secondary-cta{
+  border-color:rgba(255,255,255,.24);
+
+  color:#fffaf3;
+
+  background:rgba(255,255,255,.08);
+
+  backdrop-filter:blur(10px);
+}
+
+/* hide old oversized booking box from hero */
+
+.live-mini{
+  display:none;
+}
+
+/* =========================================================
+COMPACT VALUE STRIP
+========================================================= */
+
+.value-grid{
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
+
+  gap:9px;
+
+  margin-top:12px;
+}
+
+.value-card{
+  min-height:105px;
+
+  padding:15px;
+
+  border:1px solid var(--elle-line);
+  border-radius:17px;
+
+  background:
+    rgba(255,250,243,.88);
+
+  box-shadow:none;
+}
+
+.value-card::before{
+  display:none;
+}
+
+.value-icon{
+  width:36px;
+  height:36px;
+
+  border:none;
+  border-radius:11px;
+
+  color:var(--elle-espresso);
+
+  background:var(--elle-blush-soft);
+
+  box-shadow:none;
+}
+
+.value-card strong{
+  margin-top:10px;
+
+  color:var(--elle-espresso);
+}
+
+.value-card p{
+  color:var(--elle-muted);
+}
+
+/* =========================================================
+MOBILE HERO
+========================================================= */
+
+@media(max-width:760px){
+
+  .page{
+    width:min(100% - 20px,1180px);
+    margin-top:10px;
+  }
+
+  .section{
+    margin-top:30px;
+  }
+
+  .topbar-inner{
+    width:calc(100% - 20px);
+    min-height:62px;
+  }
+
+  .brand-copy span{
+    display:none;
+  }
+
+  .nav{
+    display:none;
+  }
+
+  .member-pill{
+    display:none;
+  }
+
+  .hero{
+    min-height:0;
+
+    display:flex;
+    flex-direction:column;
+
+    border-radius:23px;
+  }
+
+  .hero-image{
+    order:1;
+
+    width:100%;
+    height:390px;
+
+    object-position:center 24%;
+  }
+
+  .hero-shade{
+    background:
+      linear-gradient(
+        180deg,
+        transparent 32%,
+        rgba(33,24,20,.20) 53%,
+        rgba(33,24,20,.96) 78%,
+        var(--elle-espresso) 100%
+      );
+  }
+
+  .hero-copy{
+    position:relative;
+
+    order:2;
+
+    width:100%;
+
+    margin-top:-92px;
+
+    padding:
+      0
+      22px
+      28px;
+
+    justify-content:flex-end;
+  }
+
+  .hero-kicker{
+    color:#f0c7c3;
+  }
+
+  .hero-title{
+    font-size:
+      clamp(43px,13vw,59px);
+  }
+
+  .hero-copy p{
+    margin-top:15px;
+
+    color:#eee3d8;
+
+    font-size:15px;
+    line-height:1.55;
+  }
+
+  .hero-actions{
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    width:100%;
+  }
+
+  .hero-actions button{
+    width:100%;
+  }
+
+  .value-grid{
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
+
+    gap:8px;
+  }
+
+  .value-card{
+    min-height:110px;
+  }
+
+}*{
   box-sizing:border-box;
   margin:0;
   padding:0;
