@@ -1,4 +1,7 @@
-import { requireElleSession } from "./session-check.js";
+import {
+  requireElleSession,
+  redisCommand,
+} from "./session-check.js";
 import { randomUUID } from "node:crypto";
 
 const SHEET_URL =
