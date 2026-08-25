@@ -1,8 +1,5 @@
-import {
-  requireElleSession,
-  redisCommand,
-} from "./session-check.js";
-import { randomUUID } from "node:crypto";
+import { requireElleSession } from "./session-check.js";
+import { createHash, randomUUID } from "node:crypto";
 
 const SHEET_URL =
   "https://script.google.com/macros/s/AKfycbyupD2eVltAQHX1uTmYrVhvReGVGqqOAvYb9CpahYntxfBPez1p5_1fGX8zpPnOan991Q/exec";
@@ -520,7 +517,6 @@ Continue helping them directly through Elle.
 /* =========================================================
    LIVE ELLE COLLECTION
    ========================================================= */
-
 function getLeadContext(session, ageGroup) {
   const permissions =
     session?.permissions || {};
@@ -798,7 +794,7 @@ function normalizeService(value) {
       "Someone to Talk To",
 
     "work with me":
-      "Work With Me"
+      "Work With Me",
   };
 
   return services[cleaned] || "";
@@ -821,6 +817,166 @@ function sleep(ms) {
         ms
       )
   );
+}
+
+/* =========================================================
+   REDIS FOR CHAT PROTECTION
+   ========================================================= */
+
+function getRedisConfig() {
+  const url =
+    process.env.KV_REST_API_URL ||
+    process.env.STORAGE_KV_REST_API_URL;
+
+  const token =
+    process.env.KV_REST_API_TOKEN ||
+    process.env.STORAGE_KV_REST_API_TOKEN;
+
+  if (!url || !token) {
+    throw new Error(
+      "Redis environment variables are missing."
+    );
+  }
+
+  return {
+    url: url.replace(/\/+$/, ""),
+    token,
+  };
+}
+
+async function redisCommand(command) {
+  const { url, token } =
+    getRedisConfig();
+
+  const response =
+    await fetch(
+      url,
+      {
+        method: "POST",
+
+        headers: {
+          Authorization:
+            `Bearer ${token}`,
+
+          "Content-Type":
+            "application/json",
+        },
+
+        body:
+          JSON.stringify(
+            command
+          ),
+      }
+    );
+
+  const data =
+    await response.json();
+
+  if (!response.ok) {
+    throw new Error(
+      data?.error ||
+      `Redis request failed with status ${response.status}`
+    );
+  }
+
+  if (data?.error) {
+    throw new Error(
+      data.error
+    );
+  }
+
+  return data.result;
+}
+
+function getRateLimitIdentifier(session) {
+  const raw =
+    String(
+      session?.email ||
+      session?.token ||
+      ""
+    )
+      .trim()
+      .toLowerCase();
+
+  if (!raw) {
+    return "";
+  }
+
+  return createHash("sha256")
+    .update(raw)
+    .digest("hex")
+    .slice(0, 32);
+}
+
+async function checkChatRateLimit(session) {
+  const identifier =
+    getRateLimitIdentifier(
+      session
+    );
+
+  if (!identifier) {
+    return {
+      allowed: false,
+      retryAfter: 60,
+    };
+  }
+
+  const minuteKey =
+    `elle:chat:minute:${identifier}`;
+
+  const hourKey =
+    `elle:chat:hour:${identifier}`;
+
+  const minuteCount =
+    Number(
+      await redisCommand([
+        "INCR",
+        minuteKey,
+      ])
+    );
+
+  if (minuteCount === 1) {
+    await redisCommand([
+      "EXPIRE",
+      minuteKey,
+      60,
+    ]);
+  }
+
+  if (minuteCount > 12) {
+    return {
+      allowed: false,
+      retryAfter: 60,
+    };
+  }
+
+  const hourCount =
+    Number(
+      await redisCommand([
+        "INCR",
+        hourKey,
+      ])
+    );
+
+  if (hourCount === 1) {
+    await redisCommand([
+      "EXPIRE",
+      hourKey,
+      3600,
+    ]);
+  }
+
+  if (hourCount > 120) {
+    return {
+      allowed: false,
+      retryAfter: 3600,
+    };
+  }
+
+  return {
+    allowed: true,
+    retryAfter: 0,
+  };
 }
 
 /* =========================================================
@@ -909,14 +1065,12 @@ async function saveLeadToSheet(lead) {
         lead.connectionType,
 
       service:
-        lead.service
+        lead.service,
     });
 
-  const maxAttempts =
-    3;
+  const maxAttempts = 3;
 
-  let lastError =
-    null;
+  let lastError = null;
 
   for (
     let attempt = 1;
@@ -942,7 +1096,7 @@ async function saveLeadToSheet(lead) {
                 "application/json,text/plain,*/*",
 
               "Cache-Control":
-                "no-cache"
+                "no-cache",
             },
 
             body:
@@ -952,7 +1106,7 @@ async function saveLeadToSheet(lead) {
               "follow",
 
             cache:
-              "no-store"
+              "no-store",
           }
         );
 
@@ -976,8 +1130,7 @@ async function saveLeadToSheet(lead) {
         responseText
       );
 
-      let result =
-        null;
+      let result = null;
 
       try {
         result =
@@ -985,8 +1138,7 @@ async function saveLeadToSheet(lead) {
             responseText
           );
       } catch {
-        result =
-          null;
+        result = null;
       }
 
       if (
@@ -1043,9 +1195,7 @@ async function saveLeadToSheet(lead) {
             "retry"
           );
 
-        if (
-          !retryable
-        ) {
+        if (!retryable) {
           throw new Error(
             errorMessage
           );
@@ -1074,8 +1224,7 @@ async function saveLeadToSheet(lead) {
         }
       }
     } catch (error) {
-      lastError =
-        error;
+      lastError = error;
     }
 
     if (
@@ -1101,7 +1250,6 @@ async function saveLeadToSheet(lead) {
     )
   );
 }
-
 /* =========================================================
    API HANDLER
    ========================================================= */
@@ -1117,7 +1265,7 @@ export default async function handler(
       .status(405)
       .json({
         error:
-          "POST only"
+          "POST only",
       });
   }
 
@@ -1151,7 +1299,7 @@ export default async function handler(
             false,
 
           bookingUrl:
-            null
+            null,
         });
     }
 
@@ -1178,13 +1326,128 @@ export default async function handler(
             false,
 
           bookingUrl:
-            null
+            null,
+        });
+    }
+
+    /* =====================================================
+       EMERGENCY CHAT SWITCH
+       ===================================================== */
+
+    const chatEnabled =
+      String(
+        process.env
+          .ELLE_CHAT_ENABLED ||
+        "true"
+      )
+        .trim()
+        .toLowerCase();
+
+    if (
+      chatEnabled !== "true"
+    ) {
+      return res
+        .status(503)
+        .json({
+          error:
+            "Elle is taking a quick break right now. Please try again shortly.",
+
+          chatDisabled:
+            true,
+
+          leadCaptured:
+            false,
+
+          leadError:
+            false,
+
+          bookingRequired:
+            false,
+
+          bookingUrl:
+            null,
+        });
+    }
+
+    /* =====================================================
+       CHAT RATE LIMIT
+       ===================================================== */
+
+    let rateLimit;
+
+    try {
+      rateLimit =
+        await checkChatRateLimit(
+          session
+        );
+    } catch (error) {
+      console.error(
+        "Elle chat rate-limit check failed:",
+        error
+      );
+
+      return res
+        .status(503)
+        .json({
+          error:
+            "Elle is having a quick connection hiccup. Please try again shortly.",
+
+          temporaryError:
+            true,
+
+          leadCaptured:
+            false,
+
+          leadError:
+            false,
+
+          bookingRequired:
+            false,
+
+          bookingUrl:
+            null,
+        });
+    }
+
+    if (
+      !rateLimit.allowed
+    ) {
+      res.setHeader(
+        "Retry-After",
+        String(
+          rateLimit.retryAfter
+        )
+      );
+
+      return res
+        .status(429)
+        .json({
+          error:
+            "Elle is getting a lot of love right now. Give it a moment and try again. 💛",
+
+          rateLimited:
+            true,
+
+          retryAfter:
+            rateLimit.retryAfter,
+
+          leadCaptured:
+            false,
+
+          leadError:
+            false,
+
+          bookingRequired:
+            false,
+
+          bookingUrl:
+            null,
         });
     }
 
     const {
       messages,
-      ageGroup
+      ageGroup,
     } =
       req.body || {};
 
@@ -1197,7 +1460,7 @@ export default async function handler(
         .status(400)
         .json({
           error:
-            "Messages must be an array."
+            "Messages must be an array.",
         });
     }
 
@@ -1218,7 +1481,7 @@ export default async function handler(
         .status(500)
         .json({
           error:
-            "Elle is not configured correctly."
+            "Elle is not configured correctly.",
         });
     }
 
@@ -1262,59 +1525,57 @@ ${getLeadContext(
        ANTHROPIC
        ===================================================== */
 
-    const anthropicResponse =
-      await fetch(
-        "https://api.anthropic.com/v1/messages",
-        {
-          method:
-            "POST",
+    let anthropicResponse;
 
-          headers: {
-            "Content-Type":
-              "application/json",
+    try {
+      anthropicResponse =
+        await fetch(
+          "https://api.anthropic.com/v1/messages",
+          {
+            method:
+              "POST",
 
-            "x-api-key":
-              process.env
-                .ANTHROPIC_API_KEY,
+            headers: {
+              "Content-Type":
+                "application/json",
 
-            "anthropic-version":
-              "2023-06-01"
-          },
+              "x-api-key":
+                process.env
+                  .ANTHROPIC_API_KEY,
 
-          body:
-            JSON.stringify({
-              model:
-                "claude-haiku-4-5-20251001",
+              "anthropic-version":
+                "2023-06-01",
+            },
 
-              max_tokens:
-                500,
+            body:
+              JSON.stringify({
+                model:
+                  "claude-haiku-4-5-20251001",
 
-              system:
-                systemPrompt,
+                max_tokens:
+                  500,
 
-              messages
-            })
-        }
-      );
+                system:
+                  systemPrompt,
 
-    const data =
-      await anthropicResponse
-        .json();
-
-    if (
-      !anthropicResponse.ok
-    ) {
+                messages,
+              }),
+          }
+        );
+    } catch (error) {
       console.error(
-        "Anthropic API error:",
-        anthropicResponse.status,
-        data
+        "Anthropic network error:",
+        error
       );
 
       return res
-        .status(502)
+        .status(503)
         .json({
           error:
-            "Elle could not respond right now.",
+            "Elle is having a quick connection hiccup. Please try again shortly.",
+
+          temporaryError:
+            true,
 
           leadCaptured:
             false,
@@ -1326,7 +1587,87 @@ ${getLeadContext(
             false,
 
           bookingUrl:
-            null
+            null,
+        });
+    }
+
+    let data;
+
+    try {
+      data =
+        await anthropicResponse
+          .json();
+    } catch (error) {
+      console.error(
+        "Anthropic returned invalid JSON:",
+        error
+      );
+
+      return res
+        .status(502)
+        .json({
+          error:
+            "Elle could not respond right now. Please try again shortly.",
+
+          temporaryError:
+            true,
+
+          leadCaptured:
+            false,
+
+          leadError:
+            false,
+
+          bookingRequired:
+            false,
+
+          bookingUrl:
+            null,
+        });
+    }
+
+    if (
+      !anthropicResponse.ok
+    ) {
+      console.error(
+        "Anthropic API error:",
+        anthropicResponse.status,
+        data
+      );
+
+      const retryable =
+        anthropicResponse.status === 429 ||
+        anthropicResponse.status === 500 ||
+        anthropicResponse.status === 502 ||
+        anthropicResponse.status === 503 ||
+        anthropicResponse.status === 504;
+
+      return res
+        .status(
+          retryable
+            ? 503
+            : 502
+        )
+        .json({
+          error:
+            retryable
+              ? "Elle is getting a lot of love right now. Give it a moment and try again. 💛"
+              : "Elle could not respond right now.",
+
+          temporaryError:
+            retryable,
+
+          leadCaptured:
+            false,
+
+          leadError:
+            false,
+
+          bookingRequired:
+            false,
+
+          bookingUrl:
+            null,
         });
     }
 
@@ -1360,11 +1701,9 @@ ${getLeadContext(
        METADATA
        ===================================================== */
 
-    let dynamicChips =
-      [];
+    let dynamicChips = [];
 
-    let leadProgress =
-      0;
+    let leadProgress = 0;
 
     let leadDetected =
       false;
@@ -1375,11 +1714,9 @@ ${getLeadContext(
     let leadError =
       false;
 
-    let lead =
-      null;
+    let lead = null;
 
-    let leadId =
-      null;
+    let leadId = null;
 
     let leadErrorMessage =
       null;
@@ -1387,8 +1724,7 @@ ${getLeadContext(
     let bookingRequired =
       false;
 
-    let bookingUrl =
-      null;
+    let bookingUrl = null;
 
     let bookingMessage =
       null;
@@ -1453,7 +1789,7 @@ ${getLeadContext(
     const stepMatches = [
       ...fullText.matchAll(
         /\[LEAD_STEP\]([1-4])\[\/LEAD_STEP\]/g
-      )
+      ),
     ];
 
     if (
@@ -1575,7 +1911,7 @@ ${getLeadContext(
 
           connectionType,
 
-          service
+          service,
         };
 
         if (!lead.email) {
@@ -1635,8 +1971,7 @@ ${getLeadContext(
           "I have your details, but I hit a snag sending them to Live Elle. Please try once more.";
       }
     }
-
-    /* =====================================================
+        /* =====================================================
        ABSOLUTE LIVE ELLE PROTECTION
        ===================================================== */
 
@@ -1678,22 +2013,18 @@ ${getLeadContext(
 
     const cleanedText =
       fullText
-
         .replace(
           /\[CHIPS\][\s\S]*?\[\/CHIPS\]/g,
           ""
         )
-
         .replace(
           /\[LEAD_STEP\][1-4]\[\/LEAD_STEP\]/g,
           ""
         )
-
         .replace(
           /\[LEAD\][\s\S]*?\[\/LEAD\]/g,
           ""
         )
-
         .trim();
 
     /* =====================================================
@@ -1730,8 +2061,8 @@ Your Live Elle request is in. 💛 Now choose the 30-minute time that works best
               "text",
 
             text:
-              finalText
-          }
+              finalText,
+          },
         ],
 
         chips:
@@ -1758,7 +2089,7 @@ Your Live Elle request is in. 💛 Now choose the 30-minute time that works best
 
           permissions:
             session.permissions ||
-            {}
+            {},
         },
 
         leadProgress,
@@ -1802,8 +2133,8 @@ Your Live Elle request is in. 💛 Now choose the 30-minute time that works best
               : null,
 
           calendarConfirmed:
-            false
-        }
+            false,
+        },
       });
   } catch (error) {
     console.error(
@@ -1827,7 +2158,7 @@ Your Live Elle request is in. 💛 Now choose the 30-minute time that works best
           false,
 
         bookingUrl:
-          null
+          null,
       });
   }
 }
