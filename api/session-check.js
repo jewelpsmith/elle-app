@@ -19,7 +19,7 @@ function getRedisConfig() {
   };
 }
 
-async function redisCommand(command) {
+export async function redisCommand(command) {
   const { url, token } = getRedisConfig();
 
   const response = await fetch(url, {
