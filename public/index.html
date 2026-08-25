@@ -6351,6 +6351,19 @@ async function sendMessage(
   });
 
   showTyping();
+if(
+  state.leadProgress === 4
+){
+
+  addBubble(
+    "elle",
+    "Got it, love. I’m sending your Live Elle request now…"
+  );
+
+  state.leadProgress =
+    0;
+
+}
 
   try{
 
@@ -6414,7 +6427,12 @@ async function sendMessage(
     const reply =
       data.content?.[0]?.text ||
       "I’m here, love. Try that once more.";
-
+state.leadProgress =
+  data.bookingRequired === true
+    ? 0
+  :Number(
+    data.leadProgress || 0
+  );
     hideTyping();
 
     if(
