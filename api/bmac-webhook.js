@@ -7,6 +7,11 @@ export const config = {
 };
 
 const TIER_ACCESS = {
+Elle Next": {
+    key: "elle-next",
+    rank: 1,
+  },
+  
   "The Spark": {
     key: "spark",
     rank: 1,
