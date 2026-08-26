@@ -98,7 +98,17 @@ function getPermissions(member, owner) {
     String(
       member?.tierKey || ""
     ).toLowerCase();
-
+if (tier === "elle-next") {
+  return {
+    elleChat: true,
+    expandedPerks: true,
+    elleRadio: false,
+    liveElle: false,
+    liveVideo: false,
+    ownerMode: false,
+    testMode: false,
+  };
+}
   if (tier === "infinite") {
     return {
       elleChat: true,
