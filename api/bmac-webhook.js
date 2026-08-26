@@ -103,7 +103,20 @@ function getTier(levelName) {
 
   const lower =
     cleanName.toLowerCase();
+if (
+  lower.includes(
+    "elle next"
+  )
+) {
+  return {
+    name:
+      cleanName ||
+      "Elle Next",
 
+    key: "elle-next",
+    rank: 1,
+  };
+}
   if (lower.includes("infinite")) {
     return {
       name:
