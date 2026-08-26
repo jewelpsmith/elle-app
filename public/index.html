@@ -4648,6 +4648,399 @@ FINAL MOBILE MOODBOARD OVERRIDES
   }
 }
 
+
+/* =========================================================
+ELLE CLEAN LOUNGE REBALANCE · AUGUST 2026
+Keeps the approved imagery and palette while reducing visual noise.
+========================================================= */
+
+/* Elongated preview cards above Ask Elle / Radio / World */
+.feature-row{
+  grid-template-columns:1fr;
+  gap:12px;
+  padding:0;
+  border:none;
+  background:transparent;
+}
+
+.feature-card{
+  min-height:220px;
+  grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);
+  border-radius:24px;
+  box-shadow:var(--soft-shadow);
+}
+
+.feature-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:28px 30px;
+}
+
+.feature-copy h3{
+  max-width:520px;
+  font-size:clamp(28px,3.5vw,40px);
+}
+
+.feature-copy p{
+  max-width:620px;
+  font-size:14px;
+}
+
+.feature-media{
+  min-height:220px;
+}
+
+.feature-media img{
+  object-position:center;
+}
+
+/* Collapsible Elle Radio */
+.radio-disclosure{
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:26px;
+  background:rgba(255,250,242,.78);
+  box-shadow:var(--soft-shadow);
+}
+
+.radio-disclosure > summary{
+  list-style:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:18px 20px;
+  user-select:none;
+}
+
+.radio-disclosure > summary::-webkit-details-marker{
+  display:none;
+}
+
+.radio-summary-icon{
+  width:44px;
+  height:44px;
+  flex:0 0 44px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  color:var(--elle-espresso);
+  background:var(--elle-blush-soft);
+  font-size:20px;
+}
+
+.radio-summary-copy{
+  min-width:0;
+  flex:1;
+}
+
+.radio-summary-copy strong{
+  display:block;
+  color:var(--elle-espresso);
+  font-family:"Playfair Display",serif;
+  font-size:24px;
+  font-weight:600;
+}
+
+.radio-summary-copy span{
+  display:block;
+  margin-top:3px;
+  color:var(--elle-muted);
+  font-size:13px;
+}
+
+.radio-summary-toggle{
+  flex:0 0 auto;
+  color:var(--elle-green);
+  font-size:13px;
+  font-weight:800;
+}
+
+.radio-summary-toggle::after{
+  content:"Open ↓";
+}
+
+.radio-disclosure[open] .radio-summary-toggle::after{
+  content:"Close ↑";
+}
+
+.radio-disclosure[open] > summary{
+  border-bottom:1px solid var(--line);
+}
+
+.radio-disclosure .radio-shell{
+  border-radius:0;
+}
+
+/* Compact Pen Board preview */
+.pen-board-card{
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:26px;
+  background:#fffaf3;
+  box-shadow:var(--soft-shadow);
+}
+
+.pen-board-top{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:22px;
+  align-items:center;
+  padding:25px 28px;
+  background:linear-gradient(135deg,#fffaf3,#f4e1dc);
+}
+
+.pen-board-top h3{
+  margin-top:5px;
+  color:var(--elle-espresso);
+  font-family:"Playfair Display",serif;
+  font-size:clamp(28px,4vw,40px);
+  font-weight:500;
+}
+
+.pen-board-top p{
+  max-width:700px;
+  margin-top:7px;
+  color:#62564e;
+  line-height:1.6;
+}
+
+.pen-board-badge{
+  padding:9px 13px;
+  border:1px solid rgba(102,118,86,.22);
+  border-radius:999px;
+  color:var(--elle-green);
+  background:rgba(255,250,242,.78);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+.pen-note-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0;
+}
+
+.pen-note{
+  min-width:0;
+  padding:22px 24px;
+  border-top:1px solid var(--line);
+}
+
+.pen-note + .pen-note{
+  border-left:1px solid var(--line);
+}
+
+.pen-note-country{
+  color:var(--elle-green);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.pen-note strong{
+  display:block;
+  margin-top:8px;
+  color:var(--elle-espresso);
+  font-family:"Playfair Display",serif;
+  font-size:20px;
+  line-height:1.25;
+}
+
+.pen-note p{
+  margin-top:8px;
+  color:#675a52;
+  font-size:13px;
+  line-height:1.55;
+}
+
+.pen-note-signature{
+  margin-top:10px;
+  color:#c77b7b;
+  font-family:"Caveat",cursive;
+  font-size:20px;
+  font-weight:700;
+}
+
+.pen-board-foot{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 24px;
+  border-top:1px solid var(--line);
+  color:var(--elle-muted);
+  background:#f7eee4;
+  font-size:12px;
+  line-height:1.5;
+}
+
+/* Swipe / shuffle membership carousel */
+.membership-carousel-shell{
+  position:relative;
+}
+
+.membership-carousel-tools{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:12px;
+}
+
+.membership-carousel-note{
+  color:var(--elle-muted);
+  font-size:12px;
+  font-weight:700;
+}
+
+.membership-carousel-buttons{
+  display:flex;
+  gap:8px;
+}
+
+.membership-arrow{
+  width:42px;
+  height:42px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  color:var(--elle-espresso);
+  background:#fffaf3;
+  cursor:pointer;
+  font-size:18px;
+  font-weight:800;
+}
+
+.membership-tier-grid{
+  display:flex;
+  gap:14px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  padding:4px 2px 16px;
+  scrollbar-width:none;
+}
+
+.membership-tier-grid::-webkit-scrollbar{
+  display:none;
+}
+
+.membership-tier-card{
+  flex:0 0 min(390px,82vw);
+  min-height:100%;
+  scroll-snap-align:start;
+  border-radius:26px;
+  padding:26px;
+}
+
+.membership-tier-card.featured{
+  transform:none;
+  background:#f5dfda;
+}
+
+.membership-tier-card.teen{
+  background:linear-gradient(145deg,#f4e8dc,#eef0e7);
+}
+
+.membership-tier-tag{
+  width:fit-content;
+  padding:6px 9px;
+  border-radius:999px;
+  color:#5f574f;
+  background:rgba(102,118,86,.11);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+/* Prevent giant duplicated top sections on smaller screens */
+@media(max-width:820px){
+  .feature-card{
+    grid-template-columns:1fr minmax(150px,.72fr);
+    min-height:210px;
+  }
+
+  .feature-copy{
+    padding:23px 22px;
+  }
+
+  .feature-media{
+    min-height:210px;
+  }
+
+  .pen-note-grid{
+    grid-template-columns:1fr;
+  }
+
+  .pen-note + .pen-note{
+    border-left:none;
+  }
+
+  .membership-tier-grid{
+    grid-template-columns:none;
+  }
+}
+
+@media(max-width:680px){
+  .feature-card{
+    grid-template-columns:1fr;
+  }
+
+  .feature-media{
+    min-height:175px;
+    max-height:220px;
+  }
+
+  .radio-disclosure > summary{
+    padding:15px;
+  }
+
+  .radio-summary-copy strong{
+    font-size:21px;
+  }
+
+  .radio-summary-copy span{
+    font-size:12px;
+  }
+
+  .pen-board-top{
+    grid-template-columns:1fr;
+    gap:12px;
+    padding:22px 18px;
+  }
+
+  .pen-board-badge{
+    width:fit-content;
+  }
+
+  .pen-note{
+    padding:19px 18px;
+  }
+
+  .pen-board-foot{
+    align-items:flex-start;
+    padding:14px 18px;
+  }
+
+  .membership-carousel-tools{
+    align-items:flex-start;
+  }
+
+  .membership-carousel-note{
+    max-width:220px;
+  }
+
+  .membership-tier-card{
+    flex-basis:calc(100vw - 54px);
+    padding:23px;
+  }
+}
+
 </style>
 </head>
 
@@ -4963,6 +5356,14 @@ FINAL MOBILE MOODBOARD OVERRIDES
         data-test-tier="infinite"
       >
         Infinite
+      </button>
+
+      <button
+        type="button"
+        class="owner-test"
+        data-test-tier="elle-next"
+      >
+        Elle Next
       </button>
 
     </div>
@@ -5506,139 +5907,106 @@ ELLE RADIO
   <div class="section-head">
 
     <div>
-
-      <div class="section-kicker">
-        AURYNELLE∞ SOUND
-      </div>
-
-      <h2 class="section-title">
-        Elle Radio
-      </h2>
-
+      <div class="section-kicker">AURYNELLE∞ SOUND</div>
+      <h2 class="section-title">Elle Radio</h2>
     </div>
 
     <p class="section-description">
-      Pick your track. Let Elle set the vibe
-      while you keep moving.
+      Your soundtrack is here when you want it, and tucked away when you do not.
     </p>
 
   </div>
 
+  <details class="radio-disclosure">
 
-  <div class="radio-shell">
+    <summary>
+      <span class="radio-summary-icon">♫</span>
+      <span class="radio-summary-copy">
+        <strong>Open Elle Radio</strong>
+        <span>Pick a track, play your mood, then collapse the player when you are done.</span>
+      </span>
+      <span class="radio-summary-toggle" aria-hidden="true"></span>
+    </summary>
 
-    <img
-      src="elle-turntable.png"
-      alt="Luxury Elle turntable"
-    >
+    <div class="radio-shell">
 
-    <div class="radio-shade"></div>
+      <img src="elle-turntable.png" alt="Luxury Elle turntable">
+      <div class="radio-shade"></div>
 
+      <div class="radio-content">
 
-    <div class="radio-content">
+        <div class="section-kicker">Your soundtrack</div>
 
-      <div class="section-kicker">
-        Your soundtrack
-      </div>
+        <h3>Put your crown back on.</h3>
 
-      <h3>
-        Put your crown
-        back on.
-      </h3>
-
-      <div class="radio-script">
-        Pick the song. I’ll set the vibe.
-      </div>
-
-
-      <div class="now-playing">
-
-        <small>
-          Now Playing
-        </small>
-
-        <div
-          id="songTitle"
-          class="song-title"
-        >
-          Crown Back On
+        <div class="radio-script">
+          Pick the song. I’ll set the vibe.
         </div>
 
-        <div
-          id="songArtist"
-          class="song-artist"
-        >
-          AURYNELLE
-        </div>
+        <div class="now-playing">
 
+          <small>Now Playing</small>
 
-        <div class="radio-controls">
+          <div id="songTitle" class="song-title">
+            Crown Back On
+          </div>
 
-          <button
-            type="button"
-            id="previousTrack"
-            class="radio-control"
-            aria-label="Previous song"
-          >
-            ◀
-          </button>
+          <div id="songArtist" class="song-artist">
+            AURYNELLE
+          </div>
 
-          <button
-            type="button"
-            id="playPause"
-            class="radio-control radio-play"
-            aria-label="Play or pause"
-          >
-            ▶
-          </button>
+          <div class="radio-controls">
 
-          <button
-            type="button"
-            id="nextTrack"
-            class="radio-control"
-            aria-label="Next song"
-          >
-            ▶
-          </button>
+            <button
+              type="button"
+              id="previousTrack"
+              class="radio-control"
+              aria-label="Previous song"
+            >
+              ◀
+            </button>
+
+            <button
+              type="button"
+              id="playPause"
+              class="radio-control radio-play"
+              aria-label="Play or pause"
+            >
+              ▶
+            </button>
+
+            <button
+              type="button"
+              id="nextTrack"
+              class="radio-control"
+              aria-label="Next song"
+            >
+              ▶
+            </button>
+
+          </div>
 
         </div>
 
+        <div id="trackList" class="track-list"></div>
+
       </div>
 
+      <div id="radioLock" class="feature-lock">
 
-      <div
-        id="trackList"
-        class="track-list"
-      ></div>
-
-    </div>
-
-
-    <div
-      id="radioLock"
-      class="feature-lock"
-    >
-
-      <div class="feature-lock-card">
-
-        <span>
-          ♫
-        </span>
-
-        <strong>
-          Elle Radio
-        </strong>
-
-        <p>
-          Elle Radio is included with
-          The Infinite ∞ membership.
-        </p>
+        <div class="feature-lock-card">
+          <span>♫</span>
+          <strong>Elle Radio</strong>
+          <p>
+            Elle Radio is included with The Infinite ∞ membership.
+          </p>
+        </div>
 
       </div>
 
     </div>
 
-  </div>
+  </details>
 
 </section>
 
@@ -5799,158 +6167,69 @@ Preview only until secure posting backend is connected.
   <div class="section-head">
 
     <div>
-
-      <div class="section-kicker">
-        Notes from everywhere
-      </div>
-
-      <h2 class="section-title">
-        The Pen Board
-      </h2>
-
+      <div class="section-kicker">Notes from everywhere</div>
+      <h2 class="section-title">The Pen Board</h2>
     </div>
 
     <p class="section-description">
-      A little global wall for thoughts, encouragement,
-      wins, questions and beautiful reminders from the community.
+      A simple community preview. One card, a few notes, no visual overload.
     </p>
 
   </div>
 
+  <article class="pen-board-card">
 
-  <div class="feature-row">
-
-    <article class="feature-card">
-
-      <div class="feature-copy">
-
-        <div class="feature-kicker">
-          Trinidad & Tobago
-        </div>
-
-        <h3>
-          “Starting again still counts.”
-        </h3>
-
+    <div class="pen-board-top">
+      <div>
+        <div class="section-kicker">Community preview</div>
+        <h3>Little notes. Big energy.</h3>
         <p>
-          Today I stopped waiting to feel completely ready
-          and took one small step anyway.
+          Encouragement, wins and reminders from around the Elle community.
         </p>
-
-        <div class="world-script">
-          — Island Dreamer
-        </div>
-
       </div>
 
-      <div class="feature-media">
-
-        <img
-          src="new elle.png"
-          alt="Elle community"
-        >
-
-      </div>
-
-    </article>
-
-
-    <article class="feature-card">
-
-      <div class="feature-copy">
-
-        <div class="feature-kicker">
-          United States
-        </div>
-
-        <h3>
-          “I finally sent the email.”
-        </h3>
-
-        <p>
-          I had been overthinking it for three days.
-          Sent it this morning. Feeling lighter already.
-        </p>
-
-        <div class="world-script">
-          — Soft Life Loading
-        </div>
-
-      </div>
-
-      <div class="feature-media">
-
-        <img
-          src="elle-world-4k.png"
-          alt="Global Elle community"
-        >
-
-      </div>
-
-    </article>
-
-
-    <article class="feature-card">
-
-      <div class="feature-copy">
-
-        <div class="feature-kicker">
-          United Kingdom
-        </div>
-
-        <h3>
-          “You can be scared and still move.”
-        </h3>
-
-        <p>
-          Leaving this here for whoever needs the reminder today.
-          Courage does not always feel confident.
-        </p>
-
-        <div class="world-script">
-          — Tea & Big Dreams
-        </div>
-
-      </div>
-
-      <div class="feature-media">
-
-        <img
-          src="new elle.png"
-          alt="Elle"
-        >
-
-      </div>
-
-    </article>
-
-  </div>
-
-
-  <div
-    class="trust-strip"
-    style="margin-top:12px;"
-  >
-
-    <div class="trust-icon">
-      ✎
+      <div class="pen-board-badge">Preview only</div>
     </div>
 
-    <div class="trust-copy">
+    <div class="pen-note-grid">
 
-      <strong>
-        Community posting is coming next.
-      </strong>
+      <div class="pen-note">
+        <div class="pen-note-country">Trinidad &amp; Tobago</div>
+        <strong>“Starting again still counts.”</strong>
+        <p>
+          I stopped waiting to feel completely ready and took one small step anyway.
+        </p>
+        <div class="pen-note-signature">— Island Dreamer</div>
+      </div>
 
+      <div class="pen-note">
+        <div class="pen-note-country">United States</div>
+        <strong>“I finally sent the email.”</strong>
+        <p>
+          Three days of overthinking. Sent it this morning. Feeling lighter already.
+        </p>
+        <div class="pen-note-signature">— Soft Life Loading</div>
+      </div>
+
+      <div class="pen-note">
+        <div class="pen-note-country">United Kingdom</div>
+        <strong>“You can be scared and still move.”</strong>
+        <p>
+          Courage does not always feel confident. Leaving that here for somebody today.
+        </p>
+        <div class="pen-note-signature">— Tea &amp; Big Dreams</div>
+      </div>
+
+    </div>
+
+    <div class="pen-board-foot">
+      <span>✎</span>
       <span>
-        The Pen Board is currently a preview.
-        Member posting will be connected only after
-        moderation, privacy and abuse protection are in place.
+        Member posting stays off until moderation, privacy and abuse protection are ready.
       </span>
-
     </div>
 
-  </div>
+  </article>
 
 </section>
 
@@ -6185,180 +6464,180 @@ MEMBERSHIP
   <div class="section-head">
 
     <div>
-
-      <div class="section-kicker">
-        Choose your Elle access
-      </div>
-
-      <h2 class="section-title">
-        Membership
-      </h2>
-
+      <div class="section-kicker">Choose your Elle access</div>
+      <h2 class="section-title">Membership</h2>
     </div>
 
     <p class="section-description">
-      Pick the level that fits you.
-      Your membership controls which Elle features unlock
-      after you sign in with your membership email.
+      Swipe or use the arrows to compare each membership without stacking the whole page.
     </p>
 
   </div>
 
+  <div class="membership-carousel-shell">
 
-  <div class="membership-tier-grid">
+    <div class="membership-carousel-tools">
+      <div class="membership-carousel-note">
+        Four ways in. Choose what fits you.
+      </div>
 
-  <article class="membership-tier-card">
+      <div class="membership-carousel-buttons">
+        <button
+          type="button"
+          id="membershipPrev"
+          class="membership-arrow"
+          aria-label="Previous membership"
+        >
+          ←
+        </button>
 
-    <div class="membership-tier-kicker">
-      Elle Next
+        <button
+          type="button"
+          id="membershipNext"
+          class="membership-arrow"
+          aria-label="Next membership"
+        >
+          →
+        </button>
+      </div>
     </div>
 
-    <h3>
-      Grow with confidence.
-    </h3>
+    <div id="membershipTrack" class="membership-tier-grid">
 
-    <div class="membership-tier-price">
-      $15
-      <span>/ month</span>
+      <article class="membership-tier-card">
+        <div class="membership-tier-tag">Easy entry</div>
+        <div class="membership-tier-kicker">The Spark</div>
+        <h3>Start with Elle.</h3>
+
+        <div class="membership-tier-price">
+          $3 <span>/ month</span>
+        </div>
+
+        <p>
+          A simple way to step into the Elle experience and get everyday AI guidance.
+        </p>
+
+        <ul class="membership-tier-list">
+          <li>Elle AI chat</li>
+          <li>Everyday ideas and guidance</li>
+          <li>Member access</li>
+        </ul>
+
+        <a
+          class="membership-tier-button"
+          href="https://buymeacoffee.com/aurynelle/membership"
+          target="_blank"
+          rel="noopener"
+        >
+          Choose The Spark
+        </a>
+      </article>
+
+      <article class="membership-tier-card featured">
+        <div class="membership-tier-tag">More room</div>
+        <div class="membership-tier-kicker">The Idea Circle</div>
+        <h3>Go a little deeper.</h3>
+
+        <div class="membership-tier-price">
+          $7 <span>/ month</span>
+        </div>
+
+        <p>
+          More room to explore, plan, brainstorm and use Elle as a stronger thought partner.
+        </p>
+
+        <ul class="membership-tier-list">
+          <li>Elle AI chat</li>
+          <li>Expanded Elle features</li>
+          <li>More member perks</li>
+        </ul>
+
+        <a
+          class="membership-tier-button"
+          href="https://buymeacoffee.com/aurynelle/membership"
+          target="_blank"
+          rel="noopener"
+        >
+          Choose Idea Circle
+        </a>
+      </article>
+
+      <article class="membership-tier-card">
+        <div class="membership-tier-tag">Full adult experience</div>
+        <div class="membership-tier-kicker">The Infinite ∞</div>
+        <h3>Unlock the full experience.</h3>
+
+        <div class="membership-tier-price">
+          $15 <span>/ month</span>
+        </div>
+
+        <p>
+          The fullest adult Elle experience, including premium features and human connection.
+        </p>
+
+        <ul class="membership-tier-list">
+          <li>Full Elle AI access</li>
+          <li>Expanded Elle features</li>
+          <li>Elle Radio</li>
+          <li>Live Elle 30-minute sessions</li>
+          <li>Video access when available</li>
+        </ul>
+
+        <a
+          class="membership-tier-button"
+          href="https://buymeacoffee.com/aurynelle/membership"
+          target="_blank"
+          rel="noopener"
+        >
+          Choose Infinite ∞
+        </a>
+      </article>
+
+      <article class="membership-tier-card teen">
+        <div class="membership-tier-tag">Ages 13–17</div>
+        <div class="membership-tier-kicker">Elle Next</div>
+        <h3>Grow with confidence.</h3>
+
+        <div class="membership-tier-price">
+          $15 <span>/ month</span>
+        </div>
+
+        <p>
+          A supportive Elle experience for school, goals, confidence, creativity, faith,
+          friendships, future planning, money basics and everyday life.
+        </p>
+
+        <ul class="membership-tier-list">
+          <li>Elle AI chat</li>
+          <li>School and study support</li>
+          <li>Ideas and creativity</li>
+          <li>Planning and organization</li>
+          <li>Confidence and encouragement</li>
+          <li>Faith-positive guidance</li>
+          <li>Career and future planning</li>
+          <li>Money basics and everyday life help</li>
+        </ul>
+
+        <p>
+          Live Elle one-on-one sessions are currently available for adults 18+ only.
+        </p>
+
+        <a
+          class="membership-tier-button"
+          href="https://buymeacoffee.com/aurynelle/membership"
+          target="_blank"
+          rel="noopener"
+        >
+          Choose Elle Next
+        </a>
+      </article>
+
     </div>
-
-    <p>
-      Ages 13–17
-    </p>
-
-    <p>
-      A supportive Elle experience for school,
-      goals, confidence, creativity, faith,
-      friendships, future planning, money basics
-      and everyday life.
-    </p>
-
-    <ul class="membership-tier-list">
-      <li>Elle AI chat</li>
-      <li>School and study support</li>
-      <li>Ideas and creativity</li>
-      <li>Planning and organization</li>
-      <li>Confidence and encouragement</li>
-      <li>Faith-positive guidance</li>
-      <li>Career and future planning</li>
-      <li>Money basics and everyday life help</li>
-    </ul>
-
-    <p>
-      Live Elle one-on-one sessions are currently
-      available for adults 18+ only.
-    </p>
-
-    <a
-      class="membership-tier-button"
-      href="https://buymeacoffee.com/aurynelle/membership"
-      target="_blank"
-      rel="noopener"
-    >
-      Choose Elle Next
-    </a>
-
-  </article>
-<p>
-    A simple way to step into the Elle experience
-    and get everyday AI guidance.
-  </p>
-
-  <ul class="membership-tier-list">
-    <li>Elle chat</li>
-    <li>Everyday ideas and guidance</li>
-    <li>Member access</li>
-  </ul>
-
-  <a
-    class="membership-tier-button"
-    href="https://buymeacoffee.com/aurynelle/membership"
-    target="_blank"
-    rel="noopener"
-  >
-    Choose The Spark
-  </a>
-
-</article>
-    <article class="membership-tier-card featured">
-
-      <div class="membership-tier-kicker">
-        The Idea Circle
-      </div>
-
-      <h3>
-        Go a little deeper.
-      </h3>
-
-      <div class="membership-tier-price">
-        $7
-        <span>/ month</span>
-      </div>
-
-      <p>
-        More room to explore, plan, brainstorm
-        and use Elle as a stronger thought partner.
-      </p>
-
-      <ul class="membership-tier-list">
-        <li>Elle chat</li>
-        <li>Expanded Elle features</li>
-        <li>More member perks</li>
-      </ul>
-
-      <a
-        class="membership-tier-button"
-        href="https://buymeacoffee.com/aurynelle/membership"
-        target="_blank"
-        rel="noopener"
-      >
-        Choose Idea Circle
-      </a>
-
-    </article>
-
-
-    <article class="membership-tier-card">
-
-      <div class="membership-tier-kicker">
-        The Infinite ∞
-      </div>
-
-      <h3>
-        Unlock the full experience.
-      </h3>
-
-      <div class="membership-tier-price">
-        $15
-        <span>/ month</span>
-      </div>
-
-      <p>
-        For members who want the fullest Elle experience,
-        including premium features and human connection.
-      </p>
-
-      <ul class="membership-tier-list">
-        <li>Full Elle access</li>
-        <li>Elle Radio</li>
-        <li>Live Elle</li>
-        <li>Video access when available</li>
-      </ul>
-
-      <a
-        class="membership-tier-button"
-        href="https://buymeacoffee.com/aurynelle/membership"
-        target="_blank"
-        rel="noopener"
-      >
-        Choose Infinite ∞
-      </a>
-
-    </article>
 
   </div>
 
 </section>
+
 <!-- ======================================================
 TRUST
 ====================================================== -->
@@ -6559,7 +6838,6 @@ TRUST MODAL
   id="radioAudio"
   preload="metadata"
 ></audio>
-
 
 <script>
   const BOOKING_URL =
@@ -7245,6 +7523,21 @@ function ownerPermissions(){
 
   if(
     state.testTier ===
+    "elle-next"
+  ){
+
+    return {
+      elleChat:true,
+      expandedPerks:true,
+      elleRadio:false,
+      liveElle:false,
+      liveVideo:false
+    };
+
+  }
+
+  if(
+    state.testTier ===
     "infinite"
   ){
 
@@ -7301,6 +7594,15 @@ function ownerLabel(){
   ){
 
     return "Testing The Infinite ∞";
+
+  }
+
+  if(
+    state.testTier ===
+    "elle-next"
+  ){
+
+    return "Testing Elle Next";
 
   }
 
@@ -9080,6 +9382,66 @@ function init(){
 }
 
 init();
+
+/* =========================================================
+MEMBERSHIP CAROUSEL
+========================================================= */
+
+const membershipTrack =
+  document.getElementById(
+    "membershipTrack"
+  );
+
+const membershipPrev =
+  document.getElementById(
+    "membershipPrev"
+  );
+
+const membershipNext =
+  document.getElementById(
+    "membershipNext"
+  );
+
+function moveMembership(
+  direction
+){
+
+  if(
+    !membershipTrack
+  ){
+
+    return;
+
+  }
+
+  const card =
+    membershipTrack.querySelector(
+      ".membership-tier-card"
+    );
+
+  const amount =
+    card
+      ? card.getBoundingClientRect().width + 14
+      : 360;
+
+  membershipTrack.scrollBy({
+    left:
+      direction * amount,
+    behavior:"smooth"
+  });
+
+}
+
+membershipPrev?.addEventListener(
+  "click",
+  () => moveMembership(-1)
+);
+
+membershipNext?.addEventListener(
+  "click",
+  () => moveMembership(1)
+);
+
 </script>
 
 </body>
