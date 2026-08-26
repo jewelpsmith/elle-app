@@ -7612,20 +7612,14 @@ async function sendMessage(
         500
       );
 
-    }else if(response.status === 429){
-
-  addBubble(
-    "elle",
-    "Elle is getting a lot of love right now. Give me a minute and try again. 💛"
-  );
-
-}else{
+   }else{
 
   addBubble(
     "elle",
     "I hit a little hiccup. Try me again in a moment, love."
   );
 
+}
 
   }finally{
 
