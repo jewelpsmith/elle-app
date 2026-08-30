@@ -8055,7 +8055,9 @@ async function sendMessage(
 
     const response =
       await fetch(
-        "/api/chat",
+       text.match(/\b(create|make|generate|draw|design)\b.*\b(image|picture|photo|graphic|poster|flyer|logo)\b/i)
+  ? "/api/image"
+  : "/api/chat",
         {
 
           method:"POST",
@@ -8070,16 +8072,18 @@ async function sendMessage(
 
           },
 
-          body:
-            JSON.stringify({
-
-              messages:
-                state.history,
-
-              ageGroup:
-                state.ageGroup
-
-            })
+         body:
+  JSON.stringify(
+    text.match(/\b(create|make|generate|draw|design)\b.*\b(image|picture|photo|graphic|poster|flyer|logo)\b/i)
+      ? {
+          prompt: text,
+          ageGroup: state.ageGroup
+        }
+      : {
+          messages: state.history,
+          ageGroup: state.ageGroup
+        }
+  )
 
         }
       );
@@ -8109,7 +8113,83 @@ async function sendMessage(
       );
 
     }
+if(
+  data.type === "image" &&
+  data.image
+){
 
+  hideTyping();
+
+  const row =
+    document.createElement(
+      "div"
+    );
+
+  row.className =
+    "message-row";
+
+  const bubble =
+    document.createElement(
+      "div"
+    );
+
+  bubble.className =
+    "bubble bubble-elle";
+
+  const label =
+    document.createElement(
+      "div"
+    );
+
+  label.className =
+    "elle-label";
+
+  label.textContent =
+    "ELLE";
+
+  const image =
+    document.createElement(
+      "img"
+    );
+
+  image.src =
+    data.image;
+
+  image.alt =
+    data.prompt ||
+    "Elle generated image";
+
+  image.style.maxWidth =
+    "100%";
+
+  image.style.borderRadius =
+    "16px";
+
+  image.style.marginTop =
+    "10px";
+
+  bubble.appendChild(
+    label
+  );
+
+  bubble.appendChild(
+    image
+  );
+
+  row.appendChild(
+    bubble
+  );
+
+  thread.appendChild(
+    row
+  );
+
+  thread.scrollTop =
+    thread.scrollHeight;
+
+  return;
+
+}
     const reply =
       data.content?.[0]?.text ||
       "I’m here, love. Try that once more.";
