@@ -8055,7 +8055,7 @@ async function sendMessage(
 
     const response =
       await fetch(
-       text.match(/\b(create|make|generate|draw|design)\b.*\b(image|picture|photo|graphic|poster|flyer|logo)\b/i)
+       text.match(/\b(create|make|generate|draw|design|produce|render|illustrate)\b.*\b(image|picture|photo|graphic|poster|flyer|logo|artwork|illustration)\b/i
   ? "/api/image"
   : "/api/chat",
         {
@@ -8074,7 +8074,7 @@ async function sendMessage(
 
          body:
   JSON.stringify(
-    text.match(/\b(create|make|generate|draw|design)\b.*\b(image|picture|photo|graphic|poster|flyer|logo)\b/i)
+    text.match(/\b(create|make|generate|draw|design|produce|render|illustrate)\b.*\b(image|picture|photo|graphic|poster|flyer|logo|artwork|illustration)\b/i
       ? {
           prompt: text,
           ageGroup: state.ageGroup
