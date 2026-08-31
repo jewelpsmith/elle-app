@@ -205,6 +205,7 @@ Otherwise, make a reasonable draft immediately.
 Be clear and straightforward about your role.
 
 Do not guarantee how outside tools or platforms will interpret or label generated writing.
+
 ==================================================
 ACCURACY
 ==================================================
@@ -216,6 +217,7 @@ Do not act all-knowing or pretend to be certain when you are not.
 If something is unclear, say so plainly.
 
 For important legal, medical, financial, safety, emergency, or other high-stakes decisions, encourage the user to verify important information with an appropriate qualified source when relevant.
+
 Do not pretend to be:
 - a licensed doctor
 - a licensed attorney
@@ -431,7 +433,7 @@ function getAgeContext(ageGroup) {
 AGE CONTEXT
 ==================================================
 
-The user selected the 18+ experience.
+The verified session is using the 18+ experience.
 
 You may provide adult-appropriate discussion when it is otherwise safe and lawful.
 
@@ -446,7 +448,7 @@ Continue following all privacy, accuracy, safety and responsible-use rules.
 AGE CONTEXT
 ==================================================
 
-The user selected the 13-17 experience.
+The verified session is using the 13-17 experience.
 
 Keep your tone smart, respectful, warm and age-appropriate.
 
@@ -586,6 +588,7 @@ Continue helping them directly through Elle.
 /* =========================================================
    LIVE ELLE COLLECTION
    ========================================================= */
+
 function getLeadContext(session, ageGroup) {
   const permissions =
     session?.permissions || {};
@@ -616,7 +619,6 @@ function getLeadContext(session, ageGroup) {
 ==================================================
 LIVE ELLE REQUEST FLOW
 ==================================================
-
 Only begin this process when the user clearly wants Live Elle or human one-on-one support.
 
 The application already knows the member's verified membership email.
@@ -1198,8 +1200,7 @@ async function saveLeadToSheet(lead) {
         `Google Sheet attempt ${attempt} response:`,
         responseText
       );
-
-      let result = null;
+            let result = null;
 
       try {
         result =
@@ -1319,6 +1320,7 @@ async function saveLeadToSheet(lead) {
     )
   );
 }
+
 /* =========================================================
    API HANDLER
    ========================================================= */
@@ -1516,7 +1518,9 @@ export default async function handler(
 
     const {
       messages,
-      ageGroup,
+
+      ageGroup:
+        requestedAgeGroup,
     } =
       req.body || {};
 
@@ -1533,10 +1537,29 @@ export default async function handler(
         });
     }
 
+    /* =====================================================
+       SERVER-TRUSTED AGE
+       ===================================================== */
+
+    const ownerTestMode =
+      session.owner === true &&
+      session.permissions
+        ?.testMode === true;
+
     const safeAgeGroup =
-      ageGroup === "18+"
-        ? "18+"
-        : "13-17";
+      ownerTestMode
+        ? (
+            requestedAgeGroup ===
+            "13-17"
+              ? "13-17"
+              : "18+"
+          )
+        : (
+            session.ageGroup ===
+            "13-17"
+              ? "13-17"
+              : "18+"
+          );
 
     if (
       !process.env
@@ -1899,8 +1922,7 @@ ${getLeadContext(
     ) {
       leadDetected =
         true;
-
-      try {
+            try {
         const parsedLead =
           JSON.parse(
             leadMatch[1]
@@ -2027,6 +2049,7 @@ ${getLeadContext(
 
         bookingMessage =
           "Your Live Elle request is in. Choose an available 30-minute session time. Google Calendar will confirm the appointment and provide cancellation or rescheduling options.";
+
       } catch (error) {
         console.error(
           "Live Elle request save failed:",
@@ -2040,7 +2063,8 @@ ${getLeadContext(
           "I have your details, but I hit a snag sending them to Live Elle. Please try once more.";
       }
     }
-        /* =====================================================
+
+    /* =====================================================
        ABSOLUTE LIVE ELLE PROTECTION
        ===================================================== */
 
@@ -2205,6 +2229,7 @@ Your Live Elle request is in. 💛 Now choose the 30-minute time that works best
             false,
         },
       });
+
   } catch (error) {
     console.error(
       "Elle server error:",
