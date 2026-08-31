@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -17,7 +16,7 @@
 
 <meta
   name="description"
-  content="Elle by AURYNELLE∞ IDEAS. Real talk, good energy, elevated living."
+  content="Elle by AURYNELLE∞ IDEAS. Real talk. Good energy. Elevated living."
 >
 
 <title>
@@ -42,6 +41,10 @@
 
 <style>
 
+/* =========================================================
+   RESET + GLOBAL
+   ========================================================= */
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -56,11 +59,13 @@
   --paper:#fffefd;
 
   --blush:#f5dddd;
-  --rose:#c9788b;
-  --rose-soft:#f9e8ea;
+  --rose:#cf718e;
+  --rose2:#ef9bad;
+  --rose-soft:#f9e8eb;
 
   --plum:#603247;
-  --plum2:#74445c;
+  --plum2:#7d3e5a;
+  --plum3:#321326;
 
   --espresso:#2e211d;
 
@@ -68,6 +73,7 @@
   --muted:#756963;
 
   --gold:#b78a4d;
+  --gold2:#e6bd72;
   --gold-soft:#efd9ad;
 
   --green:#56755d;
@@ -136,8 +142,7 @@ a{
 
 button:hover,
 a:hover{
-  transform:
-    translateY(-1px);
+  transform:translateY(-1px);
 }
 
 button:focus-visible,
@@ -148,7 +153,7 @@ textarea:focus-visible{
 
   outline:
     3px solid
-    rgba(183,138,77,.25);
+    rgba(183,138,77,.27);
 
   outline-offset:3px;
 }
@@ -199,7 +204,6 @@ textarea:focus-visible{
     );
 
   font-weight:600;
-
   line-height:1.02;
 }
 
@@ -216,14 +220,12 @@ textarea:focus-visible{
 .secondary{
 
   display:inline-flex;
-
   align-items:center;
   justify-content:center;
 
   min-height:48px;
 
-  padding:
-    0 21px;
+  padding:0 21px;
 
   border-radius:999px;
 
@@ -231,7 +233,6 @@ textarea:focus-visible{
   font-weight:900;
 
   cursor:pointer;
-
   text-decoration:none;
 }
 
@@ -239,10 +240,9 @@ textarea:focus-visible{
 
   border:0;
 
-  color:white;
+  color:#fff;
 
-  background:
-    var(--plum);
+  background:var(--plum);
 
   box-shadow:
     0 18px 35px -24px
@@ -255,25 +255,23 @@ textarea:focus-visible{
     1px solid
     #dccdc4;
 
-  background:white;
+  background:#fff;
 
   color:var(--plum);
 }
 
 /* =========================================================
-   POWER / MEMBER GATE
+   POWER MEMBER GATE
    ========================================================= */
 
 .member-gate{
 
   position:fixed;
-
   inset:0;
 
   z-index:20000;
 
   display:none;
-
   align-items:center;
   justify-content:center;
 
@@ -289,8 +287,7 @@ textarea:focus-visible{
       rgba(236,219,204,.97) 100%
     );
 
-  backdrop-filter:
-    blur(24px);
+  backdrop-filter:blur(24px);
 }
 
 .member-gate.show{
@@ -345,11 +342,9 @@ textarea:focus-visible{
   width:64px;
   height:64px;
 
-  margin:
-    0 auto 14px;
+  margin:0 auto 14px;
 
   display:grid;
-
   place-items:center;
 
   border-radius:50%;
@@ -445,13 +440,11 @@ textarea:focus-visible{
 
   max-width:430px;
 
-  margin:
-    8px auto 0;
+  margin:8px auto 0;
 
   color:#645954;
 
   font-size:13px;
-
   line-height:1.55;
 }
 
@@ -461,8 +454,7 @@ textarea:focus-visible{
 
   width:150px;
 
-  margin:
-    25px auto 17px;
+  margin:25px auto 17px;
 }
 
 .power-halo{
@@ -476,10 +468,7 @@ textarea:focus-visible{
   top:50%;
 
   transform:
-    translate(
-      -50%,
-      -50%
-    );
+    translate(-50%,-50%);
 
   border-radius:50%;
 
@@ -505,7 +494,6 @@ textarea:focus-visible{
 .power-switch{
 
   position:relative;
-
   z-index:2;
 
   width:126px;
@@ -537,8 +525,7 @@ textarea:focus-visible{
 }
 
 .power-switch:hover{
-  transform:
-    translateY(-2px);
+  transform:translateY(-2px);
 }
 
 .power-switch:disabled{
@@ -581,10 +568,7 @@ textarea:focus-visible{
   top:50%;
 
   transform:
-    translate(
-      -50%,
-      -50%
-    );
+    translate(-50%,-50%);
 
   border-radius:9px;
 
@@ -658,9 +642,7 @@ textarea:focus-visible{
 }
 
 .power-switch.on .switch-toggle{
-
-  transform:
-    translateY(-17px);
+  transform:translateY(-17px);
 }
 
 .power-switch.on + .power-halo,
@@ -669,10 +651,7 @@ textarea:focus-visible{
   opacity:.9;
 
   transform:
-    translate(
-      -50%,
-      -50%
-    )
+    translate(-50%,-50%)
     scale(1.14);
 }
 
@@ -760,15 +739,13 @@ textarea:focus-visible{
 
   max-width:420px;
 
-  margin:
-    6px auto 20px;
+  margin:6px auto 20px;
 
   text-align:center;
 
   color:#796d66;
 
   font-size:12px;
-
   line-height:1.5;
 }
 
@@ -800,8 +777,7 @@ textarea:focus-visible{
   width:100%;
   height:52px;
 
-  padding:
-    0 16px;
+  padding:0 16px;
 
   border:
     1px solid
@@ -878,13 +854,11 @@ textarea:focus-visible{
 
   margin-top:13px;
 
-  padding:
-    12px 14px;
+  padding:12px 14px;
 
   border-radius:13px;
 
   font-size:13px;
-
   line-height:1.5;
 }
 
@@ -949,14 +923,12 @@ textarea:focus-visible{
   color:#655a55;
 
   font-size:13px;
-
   line-height:1.5;
 }
 
 .member-join a{
 
   display:inline-flex;
-
   align-items:center;
   justify-content:center;
 
@@ -964,8 +936,7 @@ textarea:focus-visible{
 
   margin-top:11px;
 
-  padding:
-    0 18px;
+  padding:0 18px;
 
   border-radius:999px;
 
@@ -988,7 +959,6 @@ textarea:focus-visible{
   color:#867b75;
 
   font-size:11px;
-
   line-height:1.5;
 }
 
@@ -998,53 +968,30 @@ textarea:focus-visible{
 
 @keyframes elleFlicker{
 
-  0%{
-    opacity:1;
-  }
-
-  16%{
-    opacity:.76;
-  }
-
-  25%{
-    opacity:1;
-  }
-
-  33%{
-    opacity:.58;
-  }
-
-  43%{
-    opacity:1;
-  }
-
-  52%{
-    opacity:.82;
-  }
-
-  100%{
-    opacity:1;
-  }
+  0%{opacity:1}
+  16%{opacity:.76}
+  25%{opacity:1}
+  33%{opacity:.58}
+  43%{opacity:1}
+  52%{opacity:.82}
+  100%{opacity:1}
 }
 
 @keyframes elleLightUp{
 
   0%{
-
     filter:
       brightness(.72)
       saturate(.8);
   }
 
   40%{
-
     filter:
       brightness(1.12)
       saturate(1.08);
   }
 
   100%{
-
     filter:
       brightness(1)
       saturate(1);
@@ -1076,13 +1023,11 @@ body.elle-powered .footer{
 .age-gate{
 
   position:fixed;
-
   inset:0;
 
   z-index:21000;
 
   display:none;
-
   align-items:center;
   justify-content:center;
 
@@ -1091,8 +1036,7 @@ body.elle-powered .footer{
   background:
     rgba(255,250,246,.97);
 
-  backdrop-filter:
-    blur(24px);
+  backdrop-filter:blur(24px);
 }
 
 .age-gate.show{
@@ -1165,8 +1109,7 @@ body.elle-powered .footer{
 
   max-width:440px;
 
-  margin:
-    13px auto 0;
+  margin:13px auto 0;
 
   color:#655a55;
 
@@ -1276,7 +1219,6 @@ body.elle-powered .footer{
 .topbar{
 
   position:sticky;
-
   top:0;
 
   z-index:1000;
@@ -1288,8 +1230,7 @@ body.elle-powered .footer{
   background:
     rgba(255,250,246,.91);
 
-  backdrop-filter:
-    blur(22px);
+  backdrop-filter:blur(22px);
 }
 
 .topbar-inner{
@@ -1305,7 +1246,6 @@ body.elle-powered .footer{
   margin:auto;
 
   display:flex;
-
   align-items:center;
 
   gap:14px;
@@ -1314,7 +1254,6 @@ body.elle-powered .footer{
 .brand{
 
   display:flex;
-
   align-items:center;
 
   gap:10px;
@@ -1328,7 +1267,6 @@ body.elle-powered .footer{
   height:44px;
 
   display:grid;
-
   place-items:center;
 
   border:
@@ -1378,7 +1316,6 @@ body.elle-powered .footer{
   margin-left:auto;
 
   display:flex;
-
   align-items:center;
 
   gap:2px;
@@ -1386,8 +1323,7 @@ body.elle-powered .footer{
 
 .nav a{
 
-  padding:
-    9px 10px;
+  padding:9px 10px;
 
   border-radius:999px;
 
@@ -1401,7 +1337,7 @@ body.elle-powered .footer{
 
 .nav a:hover{
 
-  background:white;
+  background:#fff;
 
   color:var(--plum);
 }
@@ -1409,7 +1345,6 @@ body.elle-powered .footer{
 .top-actions{
 
   display:flex;
-
   align-items:center;
 
   gap:6px;
@@ -1421,8 +1356,7 @@ body.elle-powered .footer{
 
   min-height:37px;
 
-  padding:
-    0 12px;
+  padding:0 12px;
 
   border:
     1px solid
@@ -1455,7 +1389,7 @@ body.elle-powered .footer{
 }
 
 /* =========================================================
-   OWNER MASTER BAR
+   OWNER PREVIEW BAR
    ========================================================= */
 
 .owner-bar{
@@ -1464,14 +1398,17 @@ body.elle-powered .footer{
 
   border-bottom:
     1px solid
-    #e7d3ac;
+    rgba(208,141,156,.25);
 
   background:
     linear-gradient(
       90deg,
-      #fff6df,
-      #fff9ee
+      #2e1527,
+      #4d1e39,
+      #2e1527
     );
+
+  color:#fff;
 }
 
 .owner-bar.show{
@@ -1489,13 +1426,11 @@ body.elle-powered .footer{
   margin:auto;
 
   display:flex;
-
   align-items:center;
 
   gap:7px;
 
-  padding:
-    9px 0;
+  padding:9px 0;
 
   overflow-x:auto;
 }
@@ -1504,7 +1439,7 @@ body.elle-powered .footer{
 
   white-space:nowrap;
 
-  color:#71572f;
+  color:#f0b3c3;
 
   font-size:11px;
   font-weight:900;
@@ -1512,20 +1447,20 @@ body.elle-powered .footer{
 
 .owner-test{
 
-  min-height:32px;
+  min-height:34px;
 
-  padding:
-    0 11px;
+  padding:0 12px;
 
   border:
     1px solid
-    #e6d6b7;
+    rgba(255,255,255,.13);
 
   border-radius:999px;
 
-  background:#fffaf0;
+  background:
+    rgba(255,255,255,.06);
 
-  color:#6d5935;
+  color:#f7eaf0;
 
   font-size:11px;
   font-weight:900;
@@ -1537,22 +1472,27 @@ body.elle-powered .footer{
 
 .owner-test.active{
 
-  background:#6b5530;
+  border-color:#ec9db2;
+
+  background:
+    rgba(216,97,132,.2);
+
+  box-shadow:
+    0 0 24px
+    rgba(237,120,153,.22);
 
   color:#fff;
-
-  border-color:#6b5530;
 }
 
 .owner-status{
 
   margin-left:auto;
 
+  color:#f4cbd5;
+
   white-space:nowrap;
 
-  color:#71572f;
-
-  font-size:11px;
+  font-size:10px;
   font-weight:800;
 }
 
@@ -1561,9 +1501,7 @@ body.elle-powered .footer{
    ========================================================= */
 
 .hero{
-
-  padding:
-    34px 0 74px;
+  padding:34px 0 74px;
 }
 
 .hero-shell{
@@ -1614,20 +1552,17 @@ body.elle-powered .footer{
 }
 
 .hero-copy{
-
   max-width:600px;
 }
 
 .hero-kicker{
 
   display:inline-flex;
-
   align-items:center;
 
   min-height:35px;
 
-  padding:
-    0 12px;
+  padding:0 12px;
 
   border:
     1px solid
@@ -1663,7 +1598,6 @@ body.elle-powered .footer{
     );
 
   line-height:.95;
-
   font-weight:600;
 
   color:var(--plum);
@@ -1712,7 +1646,6 @@ body.elle-powered .footer{
 .hero-actions{
 
   display:flex;
-
   flex-wrap:wrap;
 
   gap:10px;
@@ -1723,7 +1656,6 @@ body.elle-powered .footer{
 .hero-meta{
 
   display:flex;
-
   flex-wrap:wrap;
 
   gap:10px;
@@ -1734,15 +1666,13 @@ body.elle-powered .footer{
 .hero-meta span{
 
   display:inline-flex;
-
   align-items:center;
 
   gap:7px;
 
   min-height:34px;
 
-  padding:
-    0 12px;
+  padding:0 12px;
 
   border:
     1px solid
@@ -1766,7 +1696,6 @@ body.elle-powered .footer{
   min-height:530px;
 
   display:flex;
-
   align-items:flex-end;
   justify-content:center;
 }
@@ -1810,7 +1739,6 @@ body.elle-powered .footer{
   max-height:590px;
 
   object-fit:contain;
-
   object-position:center bottom;
 
   filter:
@@ -1835,8 +1763,7 @@ body.elle-powered .footer{
       52%
     );
 
-  padding:
-    16px 17px;
+  padding:16px 17px;
 
   border:
     1px solid
@@ -1847,8 +1774,7 @@ body.elle-powered .footer{
   background:
     rgba(255,255,255,.85);
 
-  backdrop-filter:
-    blur(16px);
+  backdrop-filter:blur(16px);
 
   box-shadow:var(--soft);
 }
@@ -1873,7 +1799,6 @@ body.elle-powered .footer{
   color:#6c615c;
 
   font-size:12px;
-
   line-height:1.45;
 }
 
@@ -1946,13 +1871,11 @@ body.elle-powered .footer{
 .ask-mini{
 
   display:flex;
-
   align-items:flex-start;
 
   gap:10px;
 
-  padding:
-    11px 0;
+  padding:11px 0;
 
   border-bottom:
     1px solid
@@ -1968,11 +1891,9 @@ body.elle-powered .footer{
   width:34px;
   height:34px;
 
-  flex:
-    0 0 34px;
+  flex:0 0 34px;
 
   display:grid;
-
   place-items:center;
 
   border-radius:50%;
@@ -2000,7 +1921,6 @@ body.elle-powered .footer{
   color:#71665f;
 
   font-size:12px;
-
   line-height:1.45;
 }
 
@@ -2009,7 +1929,6 @@ body.elle-powered .footer{
   min-width:0;
 
   display:flex;
-
   flex-direction:column;
 
   border:
@@ -2020,7 +1939,7 @@ body.elle-powered .footer{
 
   overflow:hidden;
 
-  background:white;
+  background:#fff;
 
   box-shadow:var(--shadow);
 }
@@ -2028,14 +1947,12 @@ body.elle-powered .footer{
 .chat-head{
 
   display:flex;
-
   align-items:center;
   justify-content:space-between;
 
   gap:12px;
 
-  padding:
-    18px 20px;
+  padding:18px 20px;
 
   border-bottom:
     1px solid
@@ -2052,7 +1969,6 @@ body.elle-powered .footer{
 .chat-head-left{
 
   display:flex;
-
   align-items:center;
 
   gap:11px;
@@ -2065,11 +1981,9 @@ body.elle-powered .footer{
   width:42px;
   height:42px;
 
-  flex:
-    0 0 42px;
+  flex:0 0 42px;
 
   display:grid;
-
   place-items:center;
 
   border-radius:50%;
@@ -2092,7 +2006,6 @@ body.elle-powered .footer{
 }
 
 .chat-head-copy{
-
   min-width:0;
 }
 
@@ -2116,16 +2029,13 @@ body.elle-powered .footer{
   font-size:11px;
 
   white-space:nowrap;
-
   overflow:hidden;
-
   text-overflow:ellipsis;
 }
 
 .chat-status{
 
   display:flex;
-
   align-items:center;
 
   gap:6px;
@@ -2189,8 +2099,7 @@ body.elle-powered .footer{
       640px
     );
 
-  padding:
-    12px 14px;
+  padding:12px 14px;
 
   border-radius:18px;
 
@@ -2211,7 +2120,7 @@ body.elle-powered .footer{
 
   border-bottom-left-radius:6px;
 
-  background:white;
+  background:#fff;
 
   color:#443a35;
 
@@ -2224,7 +2133,7 @@ body.elle-powered .footer{
 
   background:var(--plum);
 
-  color:white;
+  color:#fff;
 }
 
 .bubble-label{
@@ -2237,7 +2146,6 @@ body.elle-powered .footer{
   font-weight:900;
 
   letter-spacing:.12em;
-
   text-transform:uppercase;
 
   color:var(--rose);
@@ -2263,7 +2171,6 @@ body.elle-powered .footer{
   display:block;
 
   width:100%;
-
   height:auto;
 
   max-height:620px;
@@ -2278,7 +2185,6 @@ body.elle-powered .footer{
 .generated-image-actions{
 
   display:flex;
-
   flex-wrap:wrap;
 
   gap:8px;
@@ -2291,12 +2197,10 @@ body.elle-powered .footer{
   min-height:38px;
 
   display:inline-flex;
-
   align-items:center;
   justify-content:center;
 
-  padding:
-    0 13px;
+  padding:0 13px;
 
   border:
     1px solid
@@ -2326,11 +2230,9 @@ body.elle-powered .footer{
 
   width:max-content;
 
-  margin:
-    0 0 14px;
+  margin:0 0 14px;
 
-  padding:
-    11px 14px;
+  padding:11px 14px;
 
   border:
     1px solid
@@ -2377,23 +2279,20 @@ body.elle-powered .footer{
 
     opacity:.3;
 
-    transform:
-      translateY(0);
+    transform:translateY(0);
   }
 
   30%{
 
     opacity:1;
 
-    transform:
-      translateY(-3px);
+    transform:translateY(-3px);
   }
 }
 
 .chip-row{
 
   display:flex;
-
   flex-wrap:wrap;
 
   gap:7px;
@@ -2408,8 +2307,7 @@ body.elle-powered .footer{
 
   min-height:34px;
 
-  padding:
-    0 12px;
+  padding:0 12px;
 
   border:
     1px solid
@@ -2417,7 +2315,7 @@ body.elle-powered .footer{
 
   border-radius:999px;
 
-  background:white;
+  background:#fff;
 
   color:#685852;
 
@@ -2442,7 +2340,7 @@ body.elle-powered .footer{
     1px solid
     #eee2db;
 
-  background:white;
+  background:#fff;
 }
 
 .chat-input{
@@ -2453,8 +2351,7 @@ body.elle-powered .footer{
 
   height:48px;
 
-  padding:
-    0 15px;
+  padding:0 15px;
 
   border:
     1px solid
@@ -2474,11 +2371,9 @@ body.elle-powered .footer{
 .chat-send{
 
   min-width:48px;
-
   height:48px;
 
-  padding:
-    0 17px;
+  padding:0 17px;
 
   border:0;
 
@@ -2486,7 +2381,7 @@ body.elle-powered .footer{
 
   background:var(--plum);
 
-  color:white;
+  color:#fff;
 
   font-weight:900;
 
@@ -2507,9 +2402,7 @@ body.elle-powered .footer{
 .explore-head{
 
   display:flex;
-
   align-items:end;
-
   justify-content:space-between;
 
   gap:20px;
@@ -2537,7 +2430,6 @@ body.elle-powered .footer{
   min-height:510px;
 
   display:flex;
-
   align-items:flex-end;
 
   overflow:hidden;
@@ -2553,10 +2445,28 @@ body.elle-powered .footer{
   box-shadow:var(--shadow);
 }
 
+.explore-card.preview-locked::after{
+
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  z-index:3;
+
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(21,14,13,.08),
+      rgba(21,14,13,.28)
+    );
+}
+
 .explore-art{
 
   position:absolute;
-
   inset:0;
 
   width:100%;
@@ -2568,7 +2478,6 @@ body.elle-powered .footer{
 .explore-shade{
 
   position:absolute;
-
   inset:0;
 
   background:
@@ -2583,8 +2492,7 @@ body.elle-powered .footer{
 .explore-content{
 
   position:relative;
-
-  z-index:2;
+  z-index:4;
 
   width:100%;
 
@@ -2603,7 +2511,7 @@ body.elle-powered .footer{
     "Playfair Display",
     serif;
 
-  color:white;
+  color:#fff;
 
   font-size:
     clamp(
@@ -2632,7 +2540,6 @@ body.elle-powered .footer{
 .explore-actions{
 
   display:flex;
-
   flex-wrap:wrap;
 
   gap:8px;
@@ -2645,12 +2552,10 @@ body.elle-powered .footer{
   min-height:42px;
 
   display:inline-flex;
-
   align-items:center;
   justify-content:center;
 
-  padding:
-    0 15px;
+  padding:0 15px;
 
   border:
     1px solid
@@ -2661,10 +2566,9 @@ body.elle-powered .footer{
   background:
     rgba(255,255,255,.12);
 
-  backdrop-filter:
-    blur(12px);
+  backdrop-filter:blur(12px);
 
-  color:white;
+  color:#fff;
 
   text-decoration:none;
 
@@ -2695,8 +2599,7 @@ body.elle-powered .footer{
   background:
     rgba(30,22,19,.66);
 
-  backdrop-filter:
-    blur(14px);
+  backdrop-filter:blur(14px);
 }
 
 .radio-inline.show{
@@ -2706,7 +2609,6 @@ body.elle-powered .footer{
 .radio-now{
 
   display:flex;
-
   align-items:center;
 
   gap:10px;
@@ -2725,9 +2627,7 @@ body.elle-powered .footer{
   font-size:13px;
 
   white-space:nowrap;
-
   overflow:hidden;
-
   text-overflow:ellipsis;
 }
 
@@ -2758,7 +2658,6 @@ body.elle-powered .footer{
   height:36px;
 
   display:grid;
-
   place-items:center;
 
   border:
@@ -2803,8 +2702,7 @@ body.elle-powered .footer{
 
   min-height:35px;
 
-  padding:
-    0 10px;
+  padding:0 10px;
 
   border:
     1px solid
@@ -2851,7 +2749,6 @@ body.elle-powered .footer{
 .world-live{
 
   display:flex;
-
   flex-wrap:wrap;
 
   gap:8px;
@@ -2863,8 +2760,7 @@ body.elle-powered .footer{
 
   min-width:120px;
 
-  padding:
-    11px 12px;
+  padding:11px 12px;
 
   border:
     1px solid
@@ -2875,15 +2771,14 @@ body.elle-powered .footer{
   background:
     rgba(30,22,19,.54);
 
-  backdrop-filter:
-    blur(12px);
+  backdrop-filter:blur(12px);
 }
 
 .world-stat strong{
 
   display:block;
 
-  color:white;
+  color:#fff;
 
   font-family:
     "Playfair Display",
@@ -2905,7 +2800,6 @@ body.elle-powered .footer{
   font-weight:800;
 
   letter-spacing:.08em;
-
   text-transform:uppercase;
 }
 
@@ -2923,7 +2817,6 @@ body.elle-powered .footer{
 .world-countries{
 
   display:flex;
-
   flex-wrap:wrap;
 
   gap:6px;
@@ -2936,11 +2829,9 @@ body.elle-powered .footer{
   min-height:28px;
 
   display:inline-flex;
-
   align-items:center;
 
-  padding:
-    0 9px;
+  padding:0 9px;
 
   border:
     1px solid
@@ -2967,10 +2858,10 @@ body.elle-powered .footer{
 }
 
 /* =========================================================
-   NEW PENPAL
+   PENPAL MOCKUP STYLE
    ========================================================= */
 
-.penpal-shell{
+.penpal-stage{
 
   position:relative;
 
@@ -2979,140 +2870,178 @@ body.elle-powered .footer{
   display:grid;
 
   grid-template-columns:
-    minmax(0,.88fr)
-    minmax(390px,1.12fr);
+    minmax(320px,.72fr)
+    minmax(0,1.55fr);
 
-  gap:32px;
-
-  align-items:stretch;
-
-  padding:42px;
-
-  border-radius:34px;
+  min-height:760px;
 
   border:
     1px solid
-    #ead4d8;
+    #d8b693;
+
+  border-radius:32px;
+
+  background:#1a0c16;
+
+  box-shadow:
+    0 36px 90px -42px
+    rgba(55,23,38,.65);
+}
+
+.penpal-intro{
+
+  position:relative;
+
+  overflow:hidden;
+
+  padding:
+    42px 30px 32px;
+
+  display:flex;
+  flex-direction:column;
+
+  color:#fff;
 
   background:
 
     radial-gradient(
-      circle at 3% 0%,
-      rgba(255,230,234,.94),
-      transparent 33%
+      circle at 12% 13%,
+      rgba(231,79,125,.27),
+      transparent 24%
     ),
 
     radial-gradient(
-      circle at 100% 100%,
-      rgba(239,216,169,.34),
-      transparent 34%
+      circle at 88% 45%,
+      rgba(156,37,89,.25),
+      transparent 32%
     ),
 
     linear-gradient(
-      135deg,
-      #fff7f8,
-      #f9e5e8 48%,
-      #f4dce3
+      145deg,
+      #170912 0%,
+      #29101f 52%,
+      #130811 100%
     );
-
-  box-shadow:var(--shadow);
 }
 
-.penpal-shell::before{
+.penpal-intro::before{
 
   content:"";
 
   position:absolute;
 
-  width:420px;
-  height:420px;
+  width:380px;
+  height:380px;
 
-  left:-180px;
-  bottom:-230px;
+  left:-210px;
+  top:-100px;
 
   border-radius:50%;
 
   background:
     radial-gradient(
       circle,
-      rgba(177,101,126,.17),
-      transparent 67%
+      rgba(255,100,146,.22),
+      transparent 66%
     );
 
-  pointer-events:none;
+  filter:blur(4px);
 }
 
-.penpal-copy-wrap{
+.penpal-intro::after{
+
+  content:"✦   ·   ✦   ·   ✦";
+
+  position:absolute;
+
+  right:-16px;
+  top:115px;
+
+  transform:rotate(90deg);
+
+  color:
+    rgba(240,174,106,.5);
+
+  letter-spacing:14px;
+
+  font-size:11px;
+}
+
+.penpal-intro-top{
 
   position:relative;
 
   z-index:2;
-
-  display:flex;
-
-  flex-direction:column;
-
-  justify-content:center;
 }
 
-.penpal-badge{
+.penpal-community-mark{
 
   display:inline-flex;
-
   align-items:center;
-  justify-content:center;
 
-  width:max-content;
+  gap:8px;
 
   min-height:33px;
 
-  padding:
-    0 12px;
+  padding:0 12px;
 
   border:
     1px solid
-    rgba(132,74,96,.18);
+    rgba(242,181,105,.3);
 
   border-radius:999px;
 
   background:
-    rgba(255,255,255,.72);
+    rgba(255,255,255,.04);
 
-  color:var(--plum);
+  color:#efd096;
 
   font-size:9px;
   font-weight:900;
 
-  letter-spacing:.13em;
+  letter-spacing:.12em;
 
   text-transform:uppercase;
 }
 
-.penpal-welcome{
+.penpal-community-mark span{
 
-  margin-top:12px;
+  color:#f1bb65;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:17px;
+}
+
+.penpal-you-welcome{
+
+  margin-top:20px;
 
   font-family:
     "Caveat",
     cursive;
 
-  color:var(--rose);
+  color:#f06899;
 
   font-size:
     clamp(
-      28px,
-      4vw,
-      40px
+      34px,
+      5vw,
+      49px
     );
 
   font-weight:700;
+
+  line-height:.9;
 }
 
-.penpal-shell h2{
+.penpal-intro h2{
 
-  margin-top:2px;
+  margin-top:10px;
 
-  color:var(--plum);
+  color:#fff8f3;
 
   font-family:
     "Playfair Display",
@@ -3120,690 +3049,1056 @@ body.elle-powered .footer{
 
   font-size:
     clamp(
-      44px,
-      5vw,
-      66px
+      55px,
+      6vw,
+      78px
     );
 
-  line-height:.98;
+  font-weight:600;
+
+  line-height:.84;
 }
 
-.penpal-shell p{
+.penpal-tagline{
 
-  max-width:550px;
+  margin-top:17px;
 
-  margin-top:15px;
+  color:
+    rgba(255,245,241,.86);
 
-  color:#66565d;
+  font-size:13px;
+
+  line-height:1.55;
+}
+
+.penpal-mini-divider{
+
+  width:120px;
+  height:1px;
+
+  margin:18px 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #e9a259,
+      transparent
+    );
+}
+
+.penpal-mini-divider::after{
+
+  content:"♥";
+
+  position:absolute;
+
+  transform:
+    translate(
+      53px,
+      -9px
+    );
+
+  color:#ef6e91;
+
+  background:#210e19;
+
+  padding:0 7px;
 
   font-size:14px;
-
-  line-height:1.65;
 }
 
-.penpal-features{
+/* =========================================================
+   RULES PANEL LEFT
+   ========================================================= */
 
-  display:grid;
-
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(0,1fr)
-    );
-
-  gap:9px;
-
-  margin-top:21px;
-}
-
-.penpal-feature{
-
-  padding:
-    12px 13px;
-
-  border:
-    1px solid
-    rgba(138,76,100,.12);
-
-  border-radius:16px;
-
-  background:
-    rgba(255,255,255,.68);
-
-  color:#685660;
-
-  font-size:11px;
-
-  line-height:1.45;
-
-  box-shadow:
-    0 12px 30px -26px
-    rgba(74,44,54,.5);
-}
-
-.penpal-feature strong{
-
-  display:block;
-
-  margin-bottom:3px;
-
-  color:var(--plum);
-
-  font-size:11px;
-}
-
-.penpal-actions{
-
-  display:flex;
-
-  flex-wrap:wrap;
-
-  gap:8px;
-
-  margin-top:21px;
-}
-
-.penpal-button{
-
-  min-height:44px;
-
-  display:inline-flex;
-
-  align-items:center;
-  justify-content:center;
-
-  padding:
-    0 16px;
-
-  border:
-    1px solid
-    rgba(96,50,71,.2);
-
-  border-radius:999px;
-
-  color:var(--plum);
-
-  background:
-    rgba(255,255,255,.82);
-
-  font-size:11px;
-  font-weight:900;
-
-  cursor:pointer;
-}
-
-.penpal-button.primary-penpal{
-
-  border-color:var(--plum);
-
-  background:var(--plum);
-
-  color:#fff;
-
-  box-shadow:
-    0 16px 35px -25px
-    rgba(96,50,71,.75);
-}
-
-.penpal-board{
+.penpal-rules-panel{
 
   position:relative;
 
   z-index:2;
 
-  min-height:430px;
+  margin-top:18px;
 
-  padding:22px;
+  padding:18px;
 
   border:
     1px solid
-    rgba(133,75,97,.14);
+    rgba(216,135,112,.34);
 
-  border-radius:28px;
+  border-radius:21px;
 
   background:
-    linear-gradient(
-      160deg,
-      rgba(255,255,255,.95),
-      rgba(255,248,246,.9)
-    );
+    rgba(33,14,27,.74);
 
   box-shadow:
-    0 28px 60px -40px
-    rgba(79,44,55,.45);
+    inset
+    0 1px 0
+    rgba(255,255,255,.03);
 }
 
-.penpal-board-head{
+.penpal-rules-heading{
 
-  display:flex;
+  text-align:center;
 
-  align-items:flex-start;
-  justify-content:space-between;
+  color:#efb36c;
+
+  font-size:10px;
+  font-weight:900;
+
+  letter-spacing:.14em;
+
+  text-transform:uppercase;
+}
+
+.penpal-rule-row{
+
+  display:grid;
+
+  grid-template-columns:
+    31px 1fr;
 
   gap:10px;
+
+  padding:11px 0;
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,.08);
 }
 
-.penpal-board-title strong{
+.penpal-rule-row:last-child{
+  border-bottom:0;
+}
+
+.penpal-rule-icon{
+
+  width:29px;
+  height:29px;
+
+  display:grid;
+  place-items:center;
+
+  color:#f3aa83;
+
+  font-size:16px;
+}
+
+.penpal-rule-copy strong{
 
   display:block;
 
-  color:var(--plum);
+  color:#fff;
 
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:25px;
+  font-size:10px;
 }
 
-.penpal-board-title span{
+.penpal-rule-copy span{
 
   display:block;
 
   margin-top:3px;
 
-  color:#8a747c;
+  color:
+    rgba(255,255,255,.66);
 
-  font-size:10px;
+  font-size:9px;
+
+  line-height:1.45;
 }
 
-.penpal-lock{
+/* =========================================================
+   PENPAL TIMER
+   ========================================================= */
 
-  display:inline-flex;
-
-  align-items:center;
-
-  min-height:29px;
-
-  padding:
-    0 10px;
-
-  border:
-    1px solid
-    rgba(184,137,77,.24);
-
-  border-radius:999px;
-
-  background:#fff8e9;
-
-  color:#9b743e;
-
-  font-size:8px;
-  font-weight:900;
-
-  letter-spacing:.08em;
-
-  text-transform:uppercase;
-
-  white-space:nowrap;
-}
-
-.penpal-samples{
-
-  display:grid;
-
-  gap:11px;
-
-  margin-top:17px;
-}
-
-.penpal-profile{
+.penpal-entry-box{
 
   position:relative;
+  z-index:2;
 
-  display:grid;
-
-  grid-template-columns:
-    46px 1fr;
-
-  gap:12px;
+  margin-top:12px;
 
   padding:15px;
 
   border:
     1px solid
-    #eedee1;
+    rgba(231,113,142,.48);
 
-  border-radius:19px;
+  border-radius:18px;
 
   background:
-    linear-gradient(
-      145deg,
-      #fff,
-      #fff8f9
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(123,39,75,.23),
+      rgba(33,13,27,.82)
     );
 
   box-shadow:
-    0 14px 32px -28px
-    rgba(72,42,52,.5);
+    0 0 32px
+    rgba(219,84,126,.09);
 }
 
-.penpal-avatar{
+.penpal-entry-box p{
 
-  width:46px;
-  height:46px;
+  text-align:center;
+
+  color:#e9c58d;
+
+  font-size:9px;
+
+  line-height:1.5;
+}
+
+.penpal-clock{
+
+  margin-top:4px;
+
+  text-align:center;
+
+  color:#ffb0b6;
+
+  font-family:
+    "Figtree",
+    sans-serif;
+
+  font-size:
+    clamp(
+      45px,
+      6vw,
+      62px
+    );
+
+  font-weight:500;
+
+  letter-spacing:.1em;
+
+  text-shadow:
+    0 0 20px
+    rgba(255,104,128,.42);
+}
+
+.penpal-clock-labels{
+
+  display:flex;
+  justify-content:center;
+
+  gap:44px;
+
+  margin-top:-2px;
+
+  color:#e3b46c;
+
+  font-size:7px;
+  font-weight:900;
+
+  letter-spacing:.09em;
+
+  text-transform:uppercase;
+}
+
+.penpal-agree{
+
+  position:relative;
+  z-index:2;
 
   display:grid;
 
+  grid-template-columns:
+    28px 1fr;
+
+  gap:10px;
+
+  align-items:center;
+
+  margin-top:12px;
+
+  color:#fff;
+
+  font-size:9px;
+
+  cursor:pointer;
+}
+
+.penpal-agree input{
+
+  appearance:none;
+
+  width:26px;
+  height:26px;
+
+  display:grid;
   place-items:center;
 
-  border-radius:50%;
+  border:
+    2px solid
+    #ed729a;
+
+  border-radius:6px;
+
+  background:
+    rgba(255,255,255,.03);
+
+  cursor:pointer;
+
+  box-shadow:
+    0 0 15px
+    rgba(233,94,140,.12);
+}
+
+.penpal-agree input:checked{
+
+  background:#e2548b;
+
+  box-shadow:
+    0 0 18px
+    rgba(241,91,146,.42);
+}
+
+.penpal-agree input:checked::after{
+
+  content:"✓";
+
+  color:#fff;
+
+  font-weight:900;
+
+  font-size:16px;
+}
+
+.penpal-enter-button{
+
+  position:relative;
+  z-index:2;
+
+  width:100%;
+
+  min-height:48px;
+
+  margin-top:12px;
+
+  border:
+    1px solid
+    #e1a355;
+
+  border-radius:999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6f2449,
+      #96345d
+    );
+
+  color:#fff;
+
+  font-size:11px;
+  font-weight:900;
+
+  letter-spacing:.06em;
+
+  text-transform:uppercase;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 0 27px
+    rgba(214,85,125,.19);
+}
+
+.penpal-enter-button:disabled{
+
+  opacity:.35;
+
+  background:
+    rgba(255,255,255,.03);
+
+  color:#d4b4be;
+
+  box-shadow:none;
+
+  cursor:not-allowed;
+
+  transform:none;
+}
+
+.penpal-entry-help{
+
+  position:relative;
+  z-index:2;
+
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:7px;
+
+  margin-top:12px;
+}
+
+.penpal-entry-help button{
+
+  min-height:34px;
+
+  flex:1;
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+
+  border-radius:999px;
+
+  background:
+    rgba(255,255,255,.05);
+
+  color:#f6dfe6;
+
+  font-size:9px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+/* =========================================================
+   PENPAL BOARD RIGHT
+   ========================================================= */
+
+.penpal-board-wrap{
+
+  padding:28px;
 
   background:
     linear-gradient(
       145deg,
-      #f3cfd8,
-      #e7adbd
+      #fff7e9,
+      #f9eddb
     );
+}
 
-  color:#fff;
+.penpal-board-main{
+
+  height:100%;
+
+  padding:24px;
+
+  border:
+    1px solid
+    #ead2b8;
+
+  border-radius:24px;
+
+  background:
+    rgba(255,253,247,.93);
+
+  box-shadow:
+    0 24px 55px -38px
+    rgba(75,42,29,.42);
+}
+
+.penpal-board-head{
+
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+
+  gap:14px;
+}
+
+.penpal-board-title h3{
+
+  color:#43152e;
 
   font-family:
     "Playfair Display",
     serif;
 
-  font-size:19px;
-  font-weight:700;
+  font-size:
+    clamp(
+      36px,
+      4vw,
+      52px
+    );
 
-  box-shadow:
-    0 10px 20px -14px
-    rgba(96,50,71,.55);
+  line-height:1;
 }
 
-.penpal-profile-top{
+.penpal-board-title p{
 
-  display:flex;
+  margin-top:5px;
 
-  align-items:flex-start;
-  justify-content:space-between;
+  color:#775d67;
+
+  font-size:11px;
+}
+
+.penpal-how{
+
+  min-height:39px;
+
+  padding:0 14px;
+
+  border:
+    1px solid
+    #d69a61;
+
+  border-radius:999px;
+
+  background:#fffaf4;
+
+  color:#542238;
+
+  font-size:9px;
+  font-weight:900;
+
+  cursor:pointer;
+
+  white-space:nowrap;
+}
+
+.penpal-benefits{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0,1fr)
+    );
+
+  margin-top:18px;
+
+  border:
+    1px solid
+    #e7cbb0;
+
+  border-radius:16px;
+
+  background:#fff9ef;
+
+  overflow:hidden;
+}
+
+.penpal-benefit{
+
+  display:grid;
+
+  grid-template-columns:
+    35px 1fr;
 
   gap:8px;
+
+  align-items:center;
+
+  padding:12px;
+
+  border-right:
+    1px solid
+    #ead6c1;
 }
 
-.penpal-profile-top strong{
+.penpal-benefit:last-child{
+  border-right:0;
+}
+
+.penpal-benefit-icon{
+
+  width:32px;
+  height:32px;
+
+  display:grid;
+  place-items:center;
+
+  color:#6b2447;
+
+  font-size:19px;
+}
+
+.penpal-benefit strong{
 
   display:block;
 
-  color:var(--plum);
-
-  font-size:13px;
-}
-
-.penpal-profile-top span{
-
-  color:#927c84;
+  color:#56243a;
 
   font-size:9px;
 }
 
-.penpal-profile p{
+.penpal-benefit span{
 
-  margin-top:5px;
+  display:block;
 
-  color:#6f6066;
+  margin-top:2px;
 
-  font-size:11px;
-
-  line-height:1.45;
-}
-
-.penpal-tags{
-
-  display:flex;
-
-  flex-wrap:wrap;
-
-  gap:5px;
-
-  margin-top:8px;
-}
-
-.penpal-tag{
-
-  display:inline-flex;
-
-  align-items:center;
-
-  min-height:24px;
-
-  padding:
-    0 8px;
-
-  border:
-    1px solid
-    #efdfe3;
-
-  border-radius:999px;
-
-  background:#fff;
-
-  color:#7d5d6a;
+  color:#7c6966;
 
   font-size:8px;
-  font-weight:800;
-}
 
-.penpal-waitlist{
-
-  margin-top:14px;
-
-  padding:
-    12px 13px;
-
-  border:
-    1px solid
-    #ead8db;
-
-  border-radius:15px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fff7f7,
-      #fffaf2
-    );
-
-  color:#775d67;
-
-  font-size:10px;
-
-  line-height:1.5;
+  line-height:1.35;
 }
 
 /* =========================================================
-   PENPAL RULES
+   PROFILE CARDS
    ========================================================= */
 
-.penpal-rules-modal{
-
-  position:fixed;
-
-  inset:0;
-
-  z-index:32000;
-
-  display:none;
-
-  align-items:center;
-  justify-content:center;
-
-  padding:18px;
-
-  background:
-    rgba(68,42,51,.73);
-
-  backdrop-filter:
-    blur(18px);
-}
-
-.penpal-rules-modal.show{
-  display:flex;
-}
-
-.penpal-rules-card{
-
-  width:
-    min(
-      680px,
-      100%
-    );
-
-  max-height:
-    calc(100dvh - 36px);
-
-  overflow:auto;
-
-  padding:28px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.75);
-
-  border-radius:29px;
-
-  background:
-
-    radial-gradient(
-      circle at 100% 0%,
-      rgba(249,219,224,.8),
-      transparent 34%
-    ),
-
-    linear-gradient(
-      145deg,
-      #fffdfb,
-      #fff5f6
-    );
-
-  box-shadow:
-    0 45px 110px -48px
-    rgba(25,13,17,.65);
-}
-
-.penpal-rules-mark{
-
-  width:52px;
-  height:52px;
+.penpal-profile-list{
 
   display:grid;
 
-  place-items:center;
+  gap:11px;
 
-  margin:
-    0 auto;
+  margin-top:18px;
+}
+
+.penpal-profile-card{
+
+  display:grid;
+
+  grid-template-columns:
+    190px minmax(0,1fr) 210px 128px;
+
+  gap:0;
+
+  min-height:185px;
+
+  overflow:hidden;
+
+  border:
+    1px solid
+    #ead0b5;
+
+  border-radius:17px;
+
+  background:#fff9ee;
+
+  box-shadow:
+    0 15px 35px -29px
+    rgba(77,39,28,.55);
+}
+
+.penpal-profile-art{
+
+  position:relative;
+
+  min-height:185px;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      #6d392b,
+      #201112
+    );
+}
+
+.penpal-profile-art svg{
+
+  display:block;
+
+  width:100%;
+  height:100%;
+}
+
+.online-badge{
+
+  position:absolute;
+
+  left:8px;
+  bottom:8px;
+
+  min-height:23px;
+
+  display:inline-flex;
+  align-items:center;
+
+  gap:5px;
+
+  padding:0 8px;
+
+  border-radius:999px;
+
+  background:
+    rgba(27,17,12,.75);
+
+  color:#fff;
+
+  font-size:7px;
+  font-weight:800;
+
+  backdrop-filter:blur(8px);
+}
+
+.online-badge::before{
+
+  content:"";
+
+  width:7px;
+  height:7px;
 
   border-radius:50%;
 
-  background:var(--plum);
+  background:#77b64f;
+}
 
-  color:#f1d59e;
+.penpal-profile-bio{
+
+  padding:16px;
+
+  border-right:
+    1px solid
+    #ead8c5;
+}
+
+.penpal-name{
+
+  display:flex;
+  align-items:center;
+
+  gap:7px;
+
+  color:#551c39;
 
   font-family:
     "Playfair Display",
     serif;
 
   font-size:22px;
+  font-weight:700;
 }
 
-.penpal-rules-script{
+.penpal-verified{
+
+  color:#e55286;
+
+  font-family:
+    "Figtree",
+    sans-serif;
+
+  font-size:14px;
+}
+
+.penpal-region{
+
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:7px;
+
+  margin-top:5px;
+
+  color:#705d5c;
+
+  font-size:9px;
+}
+
+.penpal-bio-copy{
+
+  margin-top:9px;
+
+  color:#625353;
+
+  font-size:9px;
+
+  line-height:1.58;
+}
+
+.penpal-tags{
+
+  display:flex;
+  flex-wrap:wrap;
+
+  gap:5px;
 
   margin-top:12px;
-
-  text-align:center;
-
-  font-family:
-    "Caveat",
-    cursive;
-
-  font-size:36px;
-  font-weight:700;
-
-  color:var(--rose);
 }
 
-.penpal-rules-card h2{
+.penpal-tag{
 
-  margin-top:2px;
+  min-height:23px;
 
-  text-align:center;
+  display:inline-flex;
+  align-items:center;
 
-  font-family:
-    "Playfair Display",
-    serif;
+  padding:0 8px;
 
-  color:var(--plum);
-
-  font-size:
-    clamp(
-      34px,
-      7vw,
-      48px
-    );
-}
-
-.penpal-rules-intro{
-
-  max-width:520px;
-
-  margin:
-    10px auto 0;
-
-  text-align:center;
-
-  color:#736269;
-
-  font-size:12px;
-
-  line-height:1.55;
-}
-
-.penpal-rule-grid{
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(0,1fr)
-    );
-
-  gap:9px;
-
-  margin-top:20px;
-}
-
-.penpal-rule{
-
-  padding:13px;
-
-  border:
-    1px solid
-    #eddde1;
-
-  border-radius:15px;
-
-  background:
-    rgba(255,255,255,.8);
-}
-
-.penpal-rule strong{
-
-  display:block;
-
-  color:var(--plum);
-
-  font-size:11px;
-}
-
-.penpal-rule span{
-
-  display:block;
-
-  margin-top:4px;
-
-  color:#75656b;
-
-  font-size:10px;
-
-  line-height:1.45;
-}
-
-.rules-countdown-box{
-
-  margin-top:18px;
-
-  padding:15px;
-
-  border-radius:18px;
-
-  text-align:center;
+  border-radius:999px;
 
   background:
     linear-gradient(
       135deg,
-      #6d3b51,
-      #8b5068
+      #f3dbe7,
+      #ead8f0
+    );
+
+  color:#5a3448;
+
+  font-size:7px;
+  font-weight:800;
+}
+
+.penpal-profile-details{
+
+  padding:17px;
+
+  display:grid;
+
+  align-content:center;
+
+  gap:11px;
+
+  border-right:
+    1px solid
+    #ead8c5;
+}
+
+.penpal-detail-row{
+
+  display:grid;
+
+  grid-template-columns:
+    17px 1fr;
+
+  gap:7px;
+
+  align-items:start;
+
+  color:#625150;
+
+  font-size:8px;
+
+  line-height:1.4;
+}
+
+.penpal-detail-row span:first-child{
+
+  color:#d78b4b;
+
+  font-size:12px;
+}
+
+.penpal-profile-actions{
+
+  padding:16px 13px;
+
+  display:grid;
+
+  align-content:center;
+
+  gap:9px;
+}
+
+.penpal-profile-actions button{
+
+  min-height:40px;
+
+  border-radius:999px;
+
+  font-size:9px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.penpal-view-profile{
+
+  border:0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #581635,
+      #7a2148
     );
 
   color:#fff;
 }
 
-.rules-countdown-box span{
+.penpal-save-profile{
 
-  display:block;
+  border:
+    1px solid
+    #dfa6a4;
 
-  font-size:9px;
-  font-weight:900;
+  background:#fffaf7;
 
-  letter-spacing:.14em;
-
-  text-transform:uppercase;
-
-  color:#f2d9df;
+  color:#6d2445;
 }
 
-.rules-countdown-box strong{
+.penpal-board-bottom{
 
-  display:block;
+  display:grid;
 
-  margin-top:4px;
+  grid-template-columns:
+    minmax(0,1fr)
+    280px;
+
+  gap:12px;
+
+  margin-top:13px;
+}
+
+.penpal-board-notice,
+.penpal-report-card{
+
+  padding:13px;
+
+  border:
+    1px solid
+    #ead1b8;
+
+  border-radius:14px;
+
+  background:#fff9ef;
+}
+
+.penpal-board-notice{
+
+  color:#6e5a58;
+
+  font-size:8px;
+
+  line-height:1.5;
+}
+
+.penpal-report-card{
+
+  display:flex;
+  flex-direction:column;
+
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fff0ee,
+      #ffe8e7
+    );
+}
+
+.penpal-report-card span{
+
+  color:#6e3349;
+
+  font-size:8px;
+}
+
+.penpal-report-card button{
+
+  min-height:34px;
+
+  margin-top:7px;
+
+  padding:0 15px;
+
+  border:0;
+
+  border-radius:999px;
+
+  background:#8a2852;
+
+  color:#fff;
+
+  font-size:8px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+/* =========================================================
+   BOARD LOCK OVERLAY
+   ========================================================= */
+
+.penpal-board-locked{
+
+  position:absolute;
+
+  inset:0;
+
+  z-index:20;
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:25px;
+
+  background:
+    rgba(255,249,239,.83);
+
+  backdrop-filter:
+    blur(5px);
+}
+
+.penpal-board-locked.show{
+  display:flex;
+}
+
+.penpal-board-lock-card{
+
+  width:
+    min(
+      430px,
+      100%
+    );
+
+  padding:25px;
+
+  border:
+    1px solid
+    #e1bd96;
+
+  border-radius:22px;
+
+  text-align:center;
+
+  background:
+    rgba(255,252,246,.97);
+
+  box-shadow:var(--shadow);
+}
+
+.penpal-board-lock-card span{
+
+  display:grid;
+  place-items:center;
+
+  width:48px;
+  height:48px;
+
+  margin:auto;
+
+  border-radius:50%;
+
+  background:#f8e2df;
+
+  color:#752346;
+
+  font-size:23px;
+}
+
+.penpal-board-lock-card h4{
+
+  margin-top:11px;
+
+  color:#5b2540;
 
   font-family:
     "Playfair Display",
     serif;
 
-  font-size:28px;
+  font-size:26px;
 }
 
-.rules-progress{
+.penpal-board-lock-card p{
 
-  height:5px;
+  margin-top:8px;
 
-  margin-top:10px;
-
-  overflow:hidden;
-
-  border-radius:999px;
-
-  background:
-    rgba(255,255,255,.18);
-}
-
-.rules-progress-bar{
-
-  width:100%;
-  height:100%;
-
-  background:#f0d29e;
-
-  transform-origin:left;
-
-  transition:
-    transform 1s linear;
-}
-
-.rules-leave{
-
-  width:100%;
-
-  min-height:42px;
-
-  margin-top:11px;
-
-  border:
-    1px solid
-    #e4d1d5;
-
-  border-radius:999px;
-
-  background:#fff;
-
-  color:var(--plum);
+  color:#765f62;
 
   font-size:11px;
-  font-weight:900;
 
-  cursor:pointer;
+  line-height:1.55;
 }
 
 /* =========================================================
@@ -3841,21 +4136,18 @@ body.elle-powered .footer{
 .live-portrait img{
 
   position:absolute;
-
   inset:0;
 
   width:100%;
   height:100%;
 
   object-fit:cover;
-
   object-position:center;
 }
 
 .live-portrait-shade{
 
   position:absolute;
-
   inset:0;
 
   background:
@@ -3876,8 +4168,7 @@ body.elle-powered .footer{
 
   z-index:2;
 
-  padding:
-    15px 16px;
+  padding:15px 16px;
 
   border:
     1px solid
@@ -3888,10 +4179,9 @@ body.elle-powered .footer{
   background:
     rgba(33,24,21,.55);
 
-  backdrop-filter:
-    blur(14px);
+  backdrop-filter:blur(14px);
 
-  color:white;
+  color:#fff;
 }
 
 .live-portrait-label strong{
@@ -3918,9 +4208,7 @@ body.elle-powered .footer{
 }
 
 .live-copy{
-
-  padding:
-    20px 6px;
+  padding:20px 6px;
 }
 
 .live-copy .title{
@@ -3982,14 +4270,12 @@ body.elle-powered .footer{
   color:#736861;
 
   font-size:10px;
-
   line-height:1.4;
 }
 
 .live-actions{
 
   display:flex;
-
   flex-wrap:wrap;
 
   gap:9px;
@@ -4004,8 +4290,34 @@ body.elle-powered .footer{
   color:#847870;
 
   font-size:10px;
+  line-height:1.5;
+}
+
+.live-preview-lock{
+
+  display:none;
+
+  margin-top:15px;
+
+  padding:13px;
+
+  border:
+    1px solid
+    #eadbd3;
+
+  border-radius:15px;
+
+  background:#fff8f4;
+
+  color:#745e58;
+
+  font-size:11px;
 
   line-height:1.5;
+}
+
+.live-preview-lock.show{
+  display:block;
 }
 
 /* =========================================================
@@ -4042,16 +4354,14 @@ body.elle-powered .footer{
 
   max-width:550px;
 
-  margin:
-    12px auto 0;
+  margin:12px auto 0;
 }
 
 .plan-picker{
 
   max-width:520px;
 
-  margin:
-    24px auto 0;
+  margin:24px auto 0;
 
   text-align:left;
 }
@@ -4061,8 +4371,7 @@ body.elle-powered .footer{
   width:100%;
   height:54px;
 
-  padding:
-    0 15px;
+  padding:0 15px;
 
   border:
     1px solid
@@ -4121,7 +4430,6 @@ body.elle-powered .footer{
   color:#70645e;
 
   font-size:12px;
-
   line-height:1.5;
 }
 
@@ -4182,14 +4490,12 @@ body.elle-powered .footer{
   color:#746962;
 
   font-size:10px;
-
   line-height:1.45;
 }
 
 .footer{
 
-  padding:
-    34px 0 42px;
+  padding:34px 0 42px;
 
   border-top:
     1px solid
@@ -4199,7 +4505,6 @@ body.elle-powered .footer{
 .footer-inner{
 
   display:flex;
-
   align-items:center;
   justify-content:space-between;
 
@@ -4233,7 +4538,6 @@ body.elle-powered .footer{
 .footer-links{
 
   display:flex;
-
   flex-wrap:wrap;
 
   gap:7px;
@@ -4247,12 +4551,10 @@ body.elle-powered .footer{
   min-height:34px;
 
   display:inline-flex;
-
   align-items:center;
   justify-content:center;
 
-  padding:
-    0 11px;
+  padding:0 11px;
 
   border:
     1px solid
@@ -4273,7 +4575,7 @@ body.elle-powered .footer{
 }
 
 /* =========================================================
-   GENERAL MODALS
+   MODALS
    ========================================================= */
 
 .trust-modal,
@@ -4281,13 +4583,11 @@ body.elle-powered .footer{
 .support-modal{
 
   position:fixed;
-
   inset:0;
 
   z-index:30000;
 
   display:none;
-
   align-items:center;
   justify-content:center;
 
@@ -4296,8 +4596,7 @@ body.elle-powered .footer{
   background:
     rgba(29,20,18,.88);
 
-  backdrop-filter:
-    blur(14px);
+  backdrop-filter:blur(14px);
 }
 
 .trust-modal.show,
@@ -4347,7 +4646,6 @@ body.elle-powered .footer{
   color:#655a55;
 
   font-size:13px;
-
   line-height:1.65;
 }
 
@@ -4375,7 +4673,6 @@ body.elle-powered .footer{
   color:#625752;
 
   font-size:11px;
-
   line-height:1.5;
 }
 
@@ -4403,7 +4700,7 @@ body.elle-powered .footer{
 
   background:var(--plum);
 
-  color:white;
+  color:#fff;
 }
 
 .support-close{
@@ -4470,8 +4767,7 @@ body.elle-powered .footer{
 
   min-height:48px;
 
-  padding:
-    0 13px;
+  padding:0 13px;
 }
 
 .support-field textarea{
@@ -4500,7 +4796,6 @@ body.elle-powered .footer{
   color:#785e68;
 
   font-size:10px;
-
   line-height:1.5;
 }
 
@@ -4517,7 +4812,6 @@ body.elle-powered .footer{
   color:#3d6951;
 
   font-size:11px;
-
   line-height:1.5;
 }
 
@@ -4541,7 +4835,6 @@ body.elle-powered .footer{
     calc(100dvh - 36px);
 
   display:flex;
-
   flex-direction:column;
 
   overflow:hidden;
@@ -4566,7 +4859,6 @@ body.elle-powered .footer{
 .image-modal-bar{
 
   display:flex;
-
   justify-content:space-between;
 
   gap:10px;
@@ -4582,12 +4874,10 @@ body.elle-powered .footer{
   min-height:40px;
 
   display:inline-flex;
-
   align-items:center;
   justify-content:center;
 
-  padding:
-    0 14px;
+  padding:0 14px;
 
   border:
     1px solid
@@ -4598,7 +4888,7 @@ body.elle-powered .footer{
   background:
     rgba(255,255,255,.08);
 
-  color:white;
+  color:#fff;
 
   text-decoration:none;
 
@@ -4615,13 +4905,11 @@ body.elle-powered .footer{
 .turntable-takeover{
 
   position:fixed;
-
   inset:0;
 
   z-index:15000;
 
   display:flex;
-
   align-items:center;
   justify-content:center;
 
@@ -4634,8 +4922,7 @@ body.elle-powered .footer{
   background:
     rgba(30,21,18,.78);
 
-  backdrop-filter:
-    blur(18px);
+  backdrop-filter:blur(18px);
 
   transition:
     opacity .2s ease;
@@ -4669,8 +4956,7 @@ body.elle-powered .footer{
 
 .takeover-copy{
 
-  padding:
-    18px 20px 21px;
+  padding:18px 20px 21px;
 
   text-align:center;
 }
@@ -4693,7 +4979,7 @@ body.elle-powered .footer{
 
   margin-top:4px;
 
-  color:white;
+  color:#fff;
 
   font-family:
     "Playfair Display",
@@ -4705,6 +4991,40 @@ body.elle-powered .footer{
 /* =========================================================
    RESPONSIVE
    ========================================================= */
+
+@media (max-width:1120px){
+
+  .penpal-stage{
+    grid-template-columns:1fr;
+  }
+
+  .penpal-intro{
+    min-height:auto;
+  }
+
+  .penpal-profile-card{
+
+    grid-template-columns:
+      150px
+      minmax(0,1fr)
+      190px;
+  }
+
+  .penpal-profile-actions{
+
+    grid-column:
+      1 / -1;
+
+    grid-template-columns:
+      1fr 1fr;
+
+    padding:10px 15px 15px;
+  }
+
+  .penpal-profile-details{
+    border-right:0;
+  }
+}
 
 @media (max-width:1050px){
 
@@ -4723,7 +5043,6 @@ body.elle-powered .footer{
     padding:10px;
 
     flex-direction:column;
-
     align-items:stretch;
 
     border:
@@ -4746,20 +5065,17 @@ body.elle-powered .footer{
 
     width:100%;
 
-    padding:
-      11px 12px;
+    padding:11px 12px;
   }
 
   .menu-toggle{
 
     display:grid;
-
     place-items:center;
   }
 
   .hero-shell,
   .ask-shell,
-  .penpal-shell,
   .live-shell{
 
     grid-template-columns:1fr;
@@ -4774,17 +5090,59 @@ body.elle-powered .footer{
   }
 }
 
+@media (max-width:850px){
+
+  .penpal-benefits{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .penpal-benefit{
+    border-bottom:
+      1px solid
+      #ead6c1;
+  }
+
+  .penpal-profile-card{
+
+    grid-template-columns:
+      130px 1fr;
+  }
+
+  .penpal-profile-details{
+
+    grid-column:
+      1 / -1;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0,1fr)
+      );
+
+    border-top:
+      1px solid
+      #ead8c5;
+
+    border-right:0;
+  }
+
+  .penpal-profile-bio{
+    border-right:0;
+  }
+
+  .penpal-board-bottom{
+    grid-template-columns:1fr;
+  }
+}
+
 @media (max-width:800px){
 
   .section{
-
-    padding:
-      58px 0;
+    padding:58px 0;
   }
 
   .explore-grid,
   .trust-strip{
-
     grid-template-columns:1fr;
   }
 
@@ -4840,15 +5198,11 @@ body.elle-powered .footer{
   }
 
   .power-stage{
-
-    padding:
-      28px 17px 25px;
+    padding:28px 17px 25px;
   }
 
   .member-login{
-
-    padding:
-      21px 18px 25px;
+    padding:21px 18px 25px;
   }
 
   .power-title{
@@ -4866,17 +5220,14 @@ body.elle-powered .footer{
   }
 
   .hero{
-
-    padding:
-      18px 0 48px;
+    padding:18px 0 48px;
   }
 
   .hero-shell{
 
     min-height:auto;
 
-    padding:
-      25px 18px;
+    padding:25px 18px;
 
     gap:18px;
 
@@ -4927,8 +5278,7 @@ body.elle-powered .footer{
 
     height:440px;
 
-    padding:
-      14px 11px;
+    padding:14px 11px;
   }
 
   .bubble{
@@ -4944,14 +5294,11 @@ body.elle-powered .footer{
 
     flex-wrap:nowrap;
 
-    padding:
-      0 11px 11px;
+    padding:0 11px 11px;
   }
 
   .chat-chip{
-
-    flex:
-      0 0 auto;
+    flex:0 0 auto;
   }
 
   .chat-input-wrap{
@@ -4972,56 +5319,72 @@ body.elle-powered .footer{
     border-radius:22px;
   }
 
-  .penpal-shell{
+  .penpal-intro{
 
     padding:
-      27px 18px;
-
-    border-radius:25px;
+      30px 19px 24px;
   }
 
-  .penpal-features{
-    grid-template-columns:1fr;
-  }
-
-  .penpal-board{
-
-    padding:16px;
-
-    border-radius:21px;
-  }
-
-  .penpal-profile{
-
-    grid-template-columns:
-      40px 1fr;
+  .penpal-board-wrap{
 
     padding:12px;
   }
 
-  .penpal-avatar{
+  .penpal-board-main{
 
-    width:40px;
-    height:40px;
+    padding:14px;
 
-    font-size:17px;
+    border-radius:18px;
   }
 
   .penpal-board-head{
 
-    align-items:flex-start;
-
     flex-direction:column;
   }
 
-  .penpal-rule-grid{
+  .penpal-benefits{
     grid-template-columns:1fr;
   }
 
-  .penpal-rules-card{
+  .penpal-benefit{
 
-    padding:
-      23px 17px;
+    border-right:0;
+    border-bottom:
+      1px solid
+      #ead6c1;
+  }
+
+  .penpal-profile-card{
+    grid-template-columns:1fr;
+  }
+
+  .penpal-profile-art{
+    min-height:265px;
+  }
+
+  .penpal-profile-bio{
+
+    border-top:
+      1px solid
+      #ead8c5;
+  }
+
+  .penpal-profile-details{
+
+    grid-column:auto;
+
+    grid-template-columns:1fr;
+
+    border-top:
+      1px solid
+      #ead8c5;
+  }
+
+  .penpal-profile-actions{
+
+    grid-column:auto;
+
+    grid-template-columns:1fr;
   }
 
   .live-portrait{
@@ -5033,9 +5396,7 @@ body.elle-powered .footer{
   }
 
   .membership-shell{
-
-    padding:
-      26px 17px;
+    padding:26px 17px;
   }
 }
 
@@ -5063,17 +5424,6 @@ body.elle-powered .footer{
   .world-stat{
     min-width:100%;
   }
-
-  .penpal-actions{
-
-    display:grid;
-
-    grid-template-columns:1fr;
-  }
-
-  .penpal-button{
-    width:100%;
-  }
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -5093,13 +5443,12 @@ body.elle-powered .footer{
 }
 
 </style>
-
 </head>
 
 <body>
 
 <!-- =======================================================
-     TURN ELLE ON / MEMBER ACCESS
+     TURN ELLE ON
      ======================================================= -->
 
 <div
@@ -5513,7 +5862,7 @@ body.elle-powered .footer{
 </header>
 
 <!-- =======================================================
-     OWNER MASTER BAR
+     OWNER PREVIEW
      ======================================================= -->
 
 <div
@@ -5524,7 +5873,7 @@ body.elle-powered .footer{
   <div class="owner-inner">
 
     <span class="owner-label">
-      Owner Preview:
+      OWNER PREVIEW · Viewing as:
     </span>
 
     <button
@@ -5532,7 +5881,7 @@ body.elle-powered .footer{
       class="owner-test"
       data-tier="spark"
     >
-      Spark
+      ✦ Spark
     </button>
 
     <button
@@ -5540,7 +5889,7 @@ body.elle-powered .footer{
       class="owner-test"
       data-tier="idea-circle"
     >
-      Idea Circle
+      ◯ Idea Circle
     </button>
 
     <button
@@ -5548,7 +5897,7 @@ body.elle-powered .footer{
       class="owner-test"
       data-tier="infinite"
     >
-      Infinite ∞
+      ∞ Infinite ∞
     </button>
 
     <button
@@ -5556,7 +5905,7 @@ body.elle-powered .footer{
       class="owner-test"
       data-tier="elle-next"
     >
-      Elle Next
+      Elle Next 13–17
     </button>
 
     <button
@@ -5564,14 +5913,14 @@ body.elle-powered .footer{
       class="owner-test"
       data-tier="owner"
     >
-      Owner
+      ♛ Owner
     </button>
 
     <span
       class="owner-status"
       id="ownerStatus"
     >
-      Master access
+      Owner
     </span>
 
   </div>
@@ -5583,6 +5932,8 @@ body.elle-powered .footer{
      ======================================================= -->
 
 <main id="home">
+
+<!-- HERO -->
 
 <section class="hero">
 
@@ -5682,9 +6033,7 @@ body.elle-powered .footer{
 
 </section>
 
-<!-- =======================================================
-     ASK ELLE
-     ======================================================= -->
+<!-- ASK ELLE -->
 
 <section
   class="section ask-section"
@@ -5866,9 +6215,7 @@ body.elle-powered .footer{
 
 </section>
 
-<!-- =======================================================
-     EXPLORE
-     ======================================================= -->
+<!-- EXPLORE -->
 
 <section
   class="section"
@@ -5901,7 +6248,7 @@ body.elle-powered .footer{
 
       <article
         class="explore-card"
-        id="radio"
+        id="radioCard"
       >
 
         <img
@@ -5922,7 +6269,7 @@ body.elle-powered .footer{
             Soundtrack the mood.
           </h3>
 
-          <p>
+          <p id="radioAccessCopy">
             Original AURYNELLE music,
             available with Infinite ∞ access.
           </p>
@@ -6096,271 +6443,1304 @@ body.elle-powered .footer{
 
   <div class="page">
 
-    <div class="penpal-shell">
+    <div class="penpal-stage">
 
-      <div class="penpal-copy-wrap">
+      <!-- LEFT -->
 
-        <div class="penpal-badge">
-          INFINITE ∞ COMMUNITY
-        </div>
+      <aside class="penpal-intro">
 
-        <div class="penpal-welcome">
-          You are welcome here.
-        </div>
+        <div class="penpal-intro-top">
 
-        <h2>
-          PenPal Board
-        </h2>
+          <div class="penpal-community-mark">
 
-        <p>
-          A warm little corner for genuine friendship,
-          thoughtful conversation, shared interests,
-          encouragement, and meeting good people without
-          turning it into a dating app.
-        </p>
+            <span>
+              ∞
+            </span>
 
-        <div class="penpal-features">
-
-          <div class="penpal-feature">
-
-            <strong>
-              💌 Real connection
-            </strong>
-
-            Friendship and conversation with intention.
+            Infinite ∞ Community
 
           </div>
 
-          <div class="penpal-feature">
-
-            <strong>
-              ✨ Shared interests
-            </strong>
-
-            Find people who enjoy some of the things you do.
-
+          <div class="penpal-you-welcome">
+            You are<br>welcome here.
           </div>
 
-          <div class="penpal-feature">
+          <h2>
+            PenPal<br>Board
+          </h2>
 
-            <strong>
-              🔒 Privacy minded
-            </strong>
+          <p class="penpal-tagline">
+            Real connections. Kind conversations.
+            Meaningful friendships.
+          </p>
 
-            Broad region only. No public email or exact location.
-
-          </div>
-
-          <div class="penpal-feature">
-
-            <strong>
-              🛡️ Safer community
-            </strong>
-
-            Mutual connections with Block, Report, and End Connection controls.
-
-          </div>
+          <div class="penpal-mini-divider"></div>
 
         </div>
 
-        <div class="penpal-actions">
+        <div class="penpal-rules-panel">
+
+          <div class="penpal-rules-heading">
+            Community Rules + Eligibility
+          </div>
+
+          <div class="penpal-rule-row">
+
+            <div class="penpal-rule-icon">
+              ◇
+            </div>
+
+            <div class="penpal-rule-copy">
+
+              <strong>
+                Adults 18+ only.
+              </strong>
+
+              <span>
+                Adult status and membership eligibility
+                are verified server-side.
+              </span>
+
+            </div>
+
+          </div>
+
+          <div class="penpal-rule-row">
+
+            <div class="penpal-rule-icon">
+              ♥
+            </div>
+
+            <div class="penpal-rule-copy">
+
+              <strong>
+                Be kind, respectful and genuine.
+              </strong>
+
+              <span>
+                No bullying, harassment, hate,
+                threats or repeated unwanted contact.
+              </span>
+
+            </div>
+
+          </div>
+
+          <div class="penpal-rule-row">
+
+            <div class="penpal-rule-icon">
+              ♙
+            </div>
+
+            <div class="penpal-rule-copy">
+
+              <strong>
+                Keep it personal, not private.
+              </strong>
+
+              <span>
+                Do not post passwords, banking information,
+                exact addresses or authentication codes.
+              </span>
+
+            </div>
+
+          </div>
+
+          <div class="penpal-rule-row">
+
+            <div class="penpal-rule-icon">
+              ♡
+            </div>
+
+            <div class="penpal-rule-copy">
+
+              <strong>
+                This is a friendship space.
+              </strong>
+
+              <span>
+                No dating, hookups, sexual solicitation,
+                adult services or unwanted flirting.
+              </span>
+
+            </div>
+
+          </div>
+
+          <div class="penpal-rule-row">
+
+            <div class="penpal-rule-icon">
+              ⚑
+            </div>
+
+            <div class="penpal-rule-copy">
+
+              <strong>
+                Use the safety tools.
+              </strong>
+
+              <span>
+                Block, Report and End Connection
+                are here to protect you.
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="penpal-entry-box">
+
+          <p id="penpalTimerIntro">
+            Press Open PenPal to begin your 30-second review.
+          </p>
+
+          <div
+            class="penpal-clock"
+            id="penpalClock"
+          >
+            00:30
+          </div>
+
+          <div class="penpal-clock-labels">
+
+            <span>
+              Minutes
+            </span>
+
+            <span>
+              Seconds
+            </span>
+
+          </div>
+
+        </div>
+
+        <label class="penpal-agree">
+
+          <input
+            type="checkbox"
+            id="penpalAgree"
+          >
+
+          <span>
+            I have read and agree to the PenPal
+            rules and eligibility requirements above.
+          </span>
+
+        </label>
+
+        <button
+          type="button"
+          class="penpal-enter-button"
+          id="penpalEnterButton"
+          disabled
+        >
+          🔒 Enter PenPal Board
+        </button>
+
+        <div class="penpal-entry-help">
 
           <button
             type="button"
-            class="penpal-button primary-penpal"
-            id="penpalAccess"
+            id="penpalStart"
           >
-            Check PenPal Access
+            Open PenPal
           </button>
 
           <button
             type="button"
-            class="penpal-button"
-            id="penpalLearn"
+            id="penpalHowLeft"
           >
             How PenPal Works
           </button>
 
         </div>
 
-      </div>
+      </aside>
 
-      <div
-        class="penpal-board"
-        id="penpalBoard"
-      >
+      <!-- RIGHT -->
 
-        <div class="penpal-board-head">
+      <div class="penpal-board-wrap">
 
-          <div class="penpal-board-title">
+        <div
+          class="penpal-board-main"
+          id="penpalBoardMain"
+          style="position:relative"
+        >
 
-            <strong>
-              The Board
-            </strong>
+          <div class="penpal-board-head">
 
-            <span>
-              A little preview of the community vibe.
-            </span>
+            <div class="penpal-board-title">
+
+              <h3>
+                The PenPal Board
+              </h3>
+
+              <p>
+                Meet kind souls, share ideas,
+                and build meaningful friendships.
+              </p>
+
+            </div>
+
+            <button
+              type="button"
+              class="penpal-how"
+              id="penpalHow"
+            >
+              How PenPal Works ⓘ
+            </button>
+
+          </div>
+
+          <div class="penpal-benefits">
+
+            <div class="penpal-benefit">
+
+              <div class="penpal-benefit-icon">
+                ◎
+              </div>
+
+              <div>
+
+                <strong>
+                  Broad region only
+                </strong>
+
+                <span>
+                  Exact location is never shown.
+                </span>
+
+              </div>
+
+            </div>
+
+            <div class="penpal-benefit">
+
+              <div class="penpal-benefit-icon">
+                ♡
+              </div>
+
+              <div>
+
+                <strong>
+                  Mutual connections
+                </strong>
+
+                <span>
+                  You both must accept.
+                </span>
+
+              </div>
+
+            </div>
+
+            <div class="penpal-benefit">
+
+              <div class="penpal-benefit-icon">
+                ◇
+              </div>
+
+              <div>
+
+                <strong>
+                  Safety controls
+                </strong>
+
+                <span>
+                  Block, Report and End anytime.
+                </span>
+
+              </div>
+
+            </div>
+
+            <div class="penpal-benefit">
+
+              <div class="penpal-benefit-icon">
+                ♥
+              </div>
+
+              <div>
+
+                <strong>
+                  Be yourself
+                </strong>
+
+                <span>
+                  Real conversations matter.
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="penpal-profile-list">
+
+            <!-- AALIYAH -->
+
+            <article class="penpal-profile-card">
+
+              <div class="penpal-profile-art">
+
+                <svg
+                  viewBox="0 0 200 190"
+                  role="img"
+                  aria-label="Stylized portrait of Aaliyah"
+                  preserveAspectRatio="xMidYMid slice"
+                >
+
+                  <defs>
+
+                    <linearGradient
+                      id="aBg"
+                      x1="0"
+                      y1="0"
+                      x2="1"
+                      y2="1"
+                    >
+
+                      <stop
+                        offset="0%"
+                        stop-color="#995b39"
+                      />
+
+                      <stop
+                        offset="52%"
+                        stop-color="#4c291f"
+                      />
+
+                      <stop
+                        offset="100%"
+                        stop-color="#1c1112"
+                      />
+
+                    </linearGradient>
+
+                    <radialGradient id="aGlow">
+
+                      <stop
+                        offset="0%"
+                        stop-color="#f6b760"
+                        stop-opacity=".7"
+                      />
+
+                      <stop
+                        offset="100%"
+                        stop-color="#f6b760"
+                        stop-opacity="0"
+                      />
+
+                    </radialGradient>
+
+                  </defs>
+
+                  <rect
+                    width="200"
+                    height="190"
+                    fill="url(#aBg)"
+                  />
+
+                  <circle
+                    cx="30"
+                    cy="32"
+                    r="30"
+                    fill="url(#aGlow)"
+                  />
+
+                  <circle
+                    cx="173"
+                    cy="42"
+                    r="42"
+                    fill="url(#aGlow)"
+                    opacity=".5"
+                  />
+
+                  <g
+                    fill="#140c0d"
+                    opacity=".96"
+                  >
+
+                    <circle
+                      cx="89"
+                      cy="60"
+                      r="55"
+                    />
+
+                    <circle
+                      cx="60"
+                      cy="65"
+                      r="42"
+                    />
+
+                    <circle
+                      cx="125"
+                      cy="58"
+                      r="45"
+                    />
+
+                    <circle
+                      cx="48"
+                      cy="92"
+                      r="35"
+                    />
+
+                    <circle
+                      cx="142"
+                      cy="90"
+                      r="35"
+                    />
+
+                  </g>
+
+                  <ellipse
+                    cx="101"
+                    cy="88"
+                    rx="42"
+                    ry="51"
+                    fill="#754129"
+                  />
+
+                  <path
+                    d="M67 76 Q101 39 137 73 Q124 56 100 53 Q79 55 67 76"
+                    fill="#140c0d"
+                  />
+
+                  <ellipse
+                    cx="84"
+                    cy="86"
+                    rx="4"
+                    ry="2.4"
+                    fill="#1e1410"
+                  />
+
+                  <ellipse
+                    cx="118"
+                    cy="86"
+                    rx="4"
+                    ry="2.4"
+                    fill="#1e1410"
+                  />
+
+                  <path
+                    d="M88 107 Q101 115 115 106"
+                    fill="none"
+                    stroke="#d59a80"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+
+                  <path
+                    d="M95 91 Q99 99 95 102"
+                    fill="none"
+                    stroke="#5b2e21"
+                    stroke-width="1.4"
+                  />
+
+                  <circle
+                    cx="64"
+                    cy="92"
+                    r="4"
+                    fill="#e2b062"
+                  />
+
+                  <circle
+                    cx="139"
+                    cy="92"
+                    r="4"
+                    fill="#e2b062"
+                  />
+
+                  <path
+                    d="M44 190 Q52 130 101 128 Q157 130 166 190"
+                    fill="#5d2822"
+                  />
+
+                  <path
+                    d="M67 141 Q100 159 133 140"
+                    fill="none"
+                    stroke="#d5a054"
+                    stroke-width="3"
+                  />
+
+                  <circle
+                    cx="101"
+                    cy="151"
+                    r="3"
+                    fill="#e9c574"
+                  />
+
+                </svg>
+
+                <div class="online-badge">
+                  Online now
+                </div>
+
+              </div>
+
+              <div class="penpal-profile-bio">
+
+                <div class="penpal-name">
+                  Aaliyah
+                  <span class="penpal-verified">
+                    ✿
+                  </span>
+                </div>
+
+                <div class="penpal-region">
+                  <span>Jamaica</span>
+                  <span>•</span>
+                  <span>Caribbean</span>
+                </div>
+
+                <p class="penpal-bio-copy">
+                  Island girl with big dreams and a heart
+                  full of gratitude. I love books, deep
+                  conversations, creativity and golden sunsets.
+                </p>
+
+                <div class="penpal-tags">
+
+                  <span class="penpal-tag">
+                    Books
+                  </span>
+
+                  <span class="penpal-tag">
+                    Creativity
+                  </span>
+
+                  <span class="penpal-tag">
+                    Journaling
+                  </span>
+
+                  <span class="penpal-tag">
+                    Spirituality
+                  </span>
+
+                </div>
+
+              </div>
+
+              <div class="penpal-profile-details">
+
+                <div class="penpal-detail-row">
+
+                  <span>
+                    ◌
+                  </span>
+
+                  <div>
+                    Languages: English, Patois
+                  </div>
+
+                </div>
+
+                <div class="penpal-detail-row">
+
+                  <span>
+                    ☺
+                  </span>
+
+                  <div>
+                    Personality: Empathetic
+                  </div>
+
+                </div>
+
+                <div class="penpal-detail-row">
+
+                  <span>
+                    ♡
+                  </span>
+
+                  <div>
+                    Looking for: Kindred minds
+                  </div>
+
+                </div>
+
+                <div class="penpal-detail-row">
+
+                  <span>
+                    ●
+                  </span>
+
+                  <div>
+                    Active: This week
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="penpal-profile-actions">
+
+                <button
+                  type="button"
+                  class="penpal-view-profile"
+                >
+                  View Profile
+                </button>
+
+                <button
+                  type="button"
+                  class="penpal-save-profile"
+                >
+                  ♡ Save
+                </button>
+
+              </div>
+
+            </article>
+
+            <!-- JASMINE -->
+
+            <article class="penpal-profile-card">
+
+              <div class="penpal-profile-art">
+
+                <svg
+                  viewBox="0 0 200 190"
+                  role="img"
+                  aria-label="Stylized portrait of Jasmine"
+                  preserveAspectRatio="xMidYMid slice"
+                >
+
+                  <defs>
+
+                    <linearGradient
+                      id="jBg"
+                      x1="0"
+                      y1="0"
+                      x2="1"
+                      y2="1"
+                    >
+
+                      <stop
+                        offset="0%"
+                        stop-color="#b16735"
+                      />
+
+                      <stop
+                        offset="52%"
+                        stop-color="#6a3926"
+                      />
+
+                      <stop
+                        offset="100%"
+                        stop-color="#251511"
+                      />
+
+                    </linearGradient>
+
+                    <radialGradient id="jGlow">
+
+                      <stop
+                        offset="0%"
+                        stop-color="#ffd16c"
+                        stop-opacity=".76"
+                      />
+
+                      <stop
+                        offset="100%"
+                        stop-color="#ffd16c"
+                        stop-opacity="0"
+                      />
+
+                    </radialGradient>
+
+                  </defs>
+
+                  <rect
+                    width="200"
+                    height="190"
+                    fill="url(#jBg)"
+                  />
+
+                  <circle
+                    cx="25"
+                    cy="20"
+                    r="30"
+                    fill="url(#jGlow)"
+                  />
+
+                  <circle
+                    cx="170"
+                    cy="33"
+                    r="34"
+                    fill="url(#jGlow)"
+                  />
+
+                  <g fill="#2b1710">
+
+                    <circle
+                      cx="61"
+                      cy="57"
+                      r="30"
+                    />
+
+                    <circle
+                      cx="87"
+                      cy="40"
+                      r="34"
+                    />
+
+                    <circle
+                      cx="118"
+                      cy="42"
+                      r="34"
+                    />
+
+                    <circle
+                      cx="145"
+                      cy="62"
+                      r="31"
+                    />
+
+                    <circle
+                      cx="76"
+                      cy="80"
+                      r="29"
+                    />
+
+                    <circle
+                      cx="131"
+                      cy="79"
+                      r="29"
+                    />
+
+                  </g>
+
+                  <ellipse
+                    cx="103"
+                    cy="91"
+                    rx="40"
+                    ry="48"
+                    fill="#845037"
+                  />
+
+                  <path
+                    d="M67 78 Q102 54 139 77 Q124 58 103 55 Q80 58 67 78"
+                    fill="#2a160f"
+                  />
+
+                  <ellipse
+                    cx="86"
+                    cy="88"
+                    rx="4"
+                    ry="2.4"
+                    fill="#22150f"
+                  />
+
+                  <ellipse
+                    cx="120"
+                    cy="88"
+                    rx="4"
+                    ry="2.4"
+                    fill="#22150f"
+                  />
+
+                  <path
+                    d="M91 108 Q103 115 116 107"
+                    fill="none"
+                    stroke="#dda58f"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+
+                  <circle
+                    cx="65"
+                    cy="95"
+                    r="3.6"
+                    fill="#f0c36e"
+                  />
+
+                  <circle
+                    cx="140"
+                    cy="95"
+                    r="3.6"
+                    fill="#f0c36e"
+                  />
+
+                  <path
+                    d="M42 190 Q58 136 102 132 Q147 137 164 190"
+                    fill="#d5a887"
+                  />
+
+                  <path
+                    d="M79 142 Q102 154 126 142"
+                    fill="none"
+                    stroke="#f1d3ad"
+                    stroke-width="4"
+                  />
+
+                </svg>
+
+                <div class="online-badge">
+                  Online now
+                </div>
+
+              </div>
+
+              <div class="penpal-profile-bio">
+
+                <div class="penpal-name">
+                  Jasmine
+                  <span class="penpal-verified">
+                    ✿
+                  </span>
+                </div>
+
+                <div class="penpal-region">
+                  <span>United States</span>
+                </div>
+
+                <p class="penpal-bio-copy">
+                  Poetry lover. I see beauty in the little
+                  things and believe in healing through
+                  honest conversations and good music.
+                </p>
+
+                <div class="penpal-tags">
+
+                  <span class="penpal-tag">
+                    Poetry
+                  </span>
+
+                  <span class="penpal-tag">
+                    Healing
+                  </span>
+
+                  <span class="penpal-tag">
+                    Travel
+                  </span>
+
+                  <span class="penpal-tag">
+                    Music
+                  </span>
+
+                </div>
+
+              </div>
+
+              <div class="penpal-profile-details">
+
+                <div class="penpal-detail-row">
+
+                  <span>
+                    ◌
+                  </span>
+
+                  <div>
+                    Languages: English
+                  </div>
+
+                </div>
+
+                <div class="penpal-detail-row">
+
+                  <span>
+                    ☺
+                  </span>
+
+                  <div>
+                    Personality: Thoughtful
+                  </div>
+
+                </div>
+
+                <div class="penpal-detail-row">
+
+                  <span>
+                    ♡
+                  </span>
+
+                  <div>
+                    Looking for: Genuine friends
+                  </div>
+
+                </div>
+
+                <div class="penpal-detail-row">
+
+                  <span>
+                    ●
+                  </span>
+
+                  <div>
+                    Active: Online now
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="penpal-profile-actions">
+
+                <button
+                  type="button"
+                  class="penpal-view-profile"
+                >
+                  View Profile
+                </button>
+
+                <button
+                  type="button"
+                  class="penpal-save-profile"
+                >
+                  ♡ Save
+                </button>
+
+              </div>
+
+            </article>
+
+            <!-- NIA -->
+
+            <article class="penpal-profile-card">
+
+              <div class="penpal-profile-art">
+
+                <svg
+                  viewBox="0 0 200 190"
+                  role="img"
+                  aria-label="Stylized portrait of Nia"
+                  preserveAspectRatio="xMidYMid slice"
+                >
+
+                  <defs>
+
+                    <linearGradient
+                      id="nBg"
+                      x1="0"
+                      y1="0"
+                      x2="1"
+                      y2="1"
+                    >
+
+                      <stop
+                        offset="0%"
+                        stop-color="#9b633d"
+                      />
+
+                      <stop
+                        offset="48%"
+                        stop-color="#543324"
+                      />
+
+                      <stop
+                        offset="100%"
+                        stop-color="#17100e"
+                      />
+
+                    </linearGradient>
+
+                    <radialGradient id="nGlow">
+
+                      <stop
+                        offset="0%"
+                        stop-color="#dba95e"
+                        stop-opacity=".67"
+                      />
+
+                      <stop
+                        offset="100%"
+                        stop-color="#dba95e"
+                        stop-opacity="0"
+                      />
+
+                    </radialGradient>
+
+                  </defs>
+
+                  <rect
+                    width="200"
+                    height="190"
+                    fill="url(#nBg)"
+                  />
+
+                  <circle
+                    cx="32"
+                    cy="34"
+                    r="42"
+                    fill="url(#nGlow)"
+                  />
+
+                  <circle
+                    cx="170"
+                    cy="60"
+                    r="45"
+                    fill="url(#nGlow)"
+                    opacity=".45"
+                  />
+
+                  <g fill="#140c0c">
+
+                    <ellipse
+                      cx="100"
+                      cy="54"
+                      rx="55"
+                      ry="44"
+                    />
+
+                    <circle
+                      cx="58"
+                      cy="75"
+                      r="35"
+                    />
+
+                    <circle
+                      cx="144"
+                      cy="74"
+                      r="37"
+                    />
+
+                  </g>
+
+                  <ellipse
+                    cx="101"
+                    cy="91"
+                    rx="40"
+                    ry="49"
+                    fill="#673a27"
+                  />
+
+                  <path
+                    d="M66 79 Q101 49 138 78 Q124 57 101 55 Q80 57 66 79"
+                    fill="#140c0c"
+                  />
+
+                  <ellipse
+                    cx="84"
+                    cy="88"
+                    rx="4"
+                    ry="2.4"
+                    fill="#1a100e"
+                  />
+
+                  <ellipse
+                    cx="119"
+                    cy="88"
+                    rx="4"
+                    ry="2.4"
+                    fill="#1a100e"
+                  />
+
+                  <path
+                    d="M89 108 Q101 117 116 107"
+                    fill="none"
+                    stroke="#cc8976"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+
+                  <circle
+                    cx="64"
+                    cy="94"
+                    r="3.5"
+                    fill="#d8aa5e"
+                  />
+
+                  <circle
+                    cx="140"
+                    cy="94"
+                    r="3.5"
+                    fill="#d8aa5e"
+                  />
+
+                  <path
+                    d="M43 190 Q53 135 101 130 Q154 134 165 190"
+                    fill="#40211d"
+                  />
+
+                  <path
+                    d="M76 140 Q101 155 129 140"
+                    fill="none"
+                    stroke="#c99952"
+                    stroke-width="3"
+                  />
+
+                </svg>
+
+                <div class="online-badge">
+                  Online now
+                </div>
+
+              </div>
+
+              <div class="penpal-profile-bio">
+
+                <div class="penpal-name">
+                  Nia
+                  <span class="penpal-verified">
+                    ✿
+                  </span>
+                </div>
+
+                <div class="penpal-region">
+                  <span>South Africa</span>
+                </div>
+
+                <p class="penpal-bio-copy">
+                  Explorer at heart. I love good music,
+                  adventures, photography, wellness and
+                  people who make life feel lighter.
+                </p>
+
+                <div class="penpal-tags">
+
+                  <span class="penpal-tag">
+                    Music
+                  </span>
+
+                  <span class="penpal-tag">
+                    Adventure
+                  </span>
+
+                  <span class="penpal-tag">
+                    Wellness
+                  </span>
+
+                  <span class="penpal-tag">
+                    Photography
+                  </span>
+
+                </div>
+
+              </div>
+
+              <div class="penpal-profile-details">
+
+                <div class="penpal-detail-row">
+
+                  <span>
+                    ◌
+                  </span>
+
+                  <div>
+                    Languages: English, Zulu
+                  </div>
+
+                </div>
+
+                <div class="penpal-detail-row">
+
+                  <span>
+                    ☺
+                  </span>
+
+                  <div>
+                    Personality: Adventurous
+                  </div>
+
+                </div>
+
+                <div class="penpal-detail-row">
+
+                  <span>
+                    ♡
+                  </span>
+
+                  <div>
+                    Looking for: Positive energy
+                  </div>
+
+                </div>
+
+                <div class="penpal-detail-row">
+
+                  <span>
+                    ●
+                  </span>
+
+                  <div>
+                    Active: This week
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="penpal-profile-actions">
+
+                <button
+                  type="button"
+                  class="penpal-view-profile"
+                >
+                  View Profile
+                </button>
+
+                <button
+                  type="button"
+                  class="penpal-save-profile"
+                >
+                  ♡ Save
+                </button>
+
+              </div>
+
+            </article>
+
+          </div>
+
+          <div class="penpal-board-bottom">
+
+            <div
+              class="penpal-board-notice"
+              id="penpalStatus"
+            >
+              PenPal is built for friendship and genuine connection.
+              Profiles use broad region only, connections require mutual
+              acceptance, and members will have Block, Report,
+              and End Connection safety controls.
+            </div>
+
+            <div class="penpal-report-card">
+
+              <span>
+                Need help or want to report something?
+              </span>
+
+              <button
+                type="button"
+                id="penpalReportButton"
+              >
+                Contact + Report ⚑
+              </button>
+
+            </div>
 
           </div>
 
           <div
-            class="penpal-lock"
-            id="penpalLock"
+            class="penpal-board-locked show"
+            id="penpalBoardLocked"
           >
-            Private member feature
+
+            <div class="penpal-board-lock-card">
+
+              <span id="penpalLockIcon">
+                🔒
+              </span>
+
+              <h4 id="penpalLockTitle">
+                PenPal access
+              </h4>
+
+              <p id="penpalLockMessage">
+                Open PenPal and complete the 30-second
+                community-rules review to continue.
+              </p>
+
+            </div>
+
           </div>
 
-        </div>
-
-        <div class="penpal-samples">
-
-          <article class="penpal-profile">
-
-            <div class="penpal-avatar">
-              M
-            </div>
-
-            <div>
-
-              <div class="penpal-profile-top">
-
-                <strong>
-                  Maya
-                </strong>
-
-                <span>
-                  Caribbean
-                </span>
-
-              </div>
-
-              <p>
-                Creative soul who loves books, ideas,
-                meaningful conversations, and building things
-                that matter.
-              </p>
-
-              <div class="penpal-tags">
-
-                <span class="penpal-tag">
-                  Books
-                </span>
-
-                <span class="penpal-tag">
-                  Creativity
-                </span>
-
-                <span class="penpal-tag">
-                  Business ideas
-                </span>
-
-              </div>
-
-            </div>
-
-          </article>
-
-          <article class="penpal-profile">
-
-            <div class="penpal-avatar">
-              J
-            </div>
-
-            <div>
-
-              <div class="penpal-profile-top">
-
-                <strong>
-                  Jordan
-                </strong>
-
-                <span>
-                  United States
-                </span>
-
-              </div>
-
-              <p>
-                Looking for genuine friendship,
-                accountability, good laughs, and people
-                who enjoy talking about goals and everyday life.
-              </p>
-
-              <div class="penpal-tags">
-
-                <span class="penpal-tag">
-                  Goals
-                </span>
-
-                <span class="penpal-tag">
-                  Career
-                </span>
-
-                <span class="penpal-tag">
-                  Good conversation
-                </span>
-
-              </div>
-
-            </div>
-
-          </article>
-
-          <article class="penpal-profile">
-
-            <div class="penpal-avatar">
-              N
-            </div>
-
-            <div>
-
-              <div class="penpal-profile-top">
-
-                <strong>
-                  Nia
-                </strong>
-
-                <span>
-                  United Kingdom
-                </span>
-
-              </div>
-
-              <p>
-                Music lover, traveler, and big believer
-                in good energy, encouragement, and thoughtful
-                conversation.
-              </p>
-
-              <div class="penpal-tags">
-
-                <span class="penpal-tag">
-                  Music
-                </span>
-
-                <span class="penpal-tag">
-                  Travel
-                </span>
-
-                <span class="penpal-tag">
-                  Wellness
-                </span>
-
-              </div>
-
-            </div>
-
-          </article>
-
-        </div>
-
-        <div
-          class="penpal-waitlist"
-          id="penpalStatus"
-        >
-          Infinite ∞ members can begin the PenPal eligibility pathway.
-          Full connection access is verified securely before matching opens.
         </div>
 
       </div>
@@ -6371,9 +7751,7 @@ body.elle-powered .footer{
 
 </section>
 
-<!-- =======================================================
-     LIVE ELLE
-     ======================================================= -->
+<!-- LIVE ELLE -->
 
 <section
   class="section"
@@ -6424,6 +7802,11 @@ body.elle-powered .footer{
           30-minute time through the booking calendar.
         </p>
 
+        <div
+          class="live-preview-lock"
+          id="livePreviewLock"
+        ></div>
+
         <div class="live-services">
 
           <div class="live-service">
@@ -6433,7 +7816,8 @@ body.elle-powered .footer{
             </strong>
 
             <span>
-              Business, career, ideas, decisions and perspective.
+              Business, career, ideas,
+              decisions and perspective.
             </span>
 
           </div>
@@ -6445,7 +7829,8 @@ body.elle-powered .footer{
             </strong>
 
             <span>
-              Outfits, shopping choices and style support.
+              Outfits, shopping choices
+              and style support.
             </span>
 
           </div>
@@ -6457,7 +7842,8 @@ body.elle-powered .footer{
             </strong>
 
             <span>
-              Encouragement, confidence and celebrating your wins.
+              Encouragement, confidence
+              and celebrating your wins.
             </span>
 
           </div>
@@ -6469,7 +7855,8 @@ body.elle-powered .footer{
             </strong>
 
             <span>
-              Real conversation, listening and human connection.
+              Real conversation,
+              listening and human connection.
             </span>
 
           </div>
@@ -6481,7 +7868,8 @@ body.elle-powered .footer{
             </strong>
 
             <span>
-              Resume help, consulting, strategy and hands-on planning.
+              Resume help, consulting,
+              strategy and hands-on planning.
             </span>
 
           </div>
@@ -6521,9 +7909,7 @@ body.elle-powered .footer{
 
 </section>
 
-<!-- =======================================================
-     MEMBERSHIP
-     ======================================================= -->
+<!-- MEMBERSHIP -->
 
 <section
   class="section"
@@ -6612,9 +7998,7 @@ body.elle-powered .footer{
 
 </section>
 
-<!-- =======================================================
-     TRUST
-     ======================================================= -->
+<!-- TRUST -->
 
 <section
   class="section"
@@ -6731,18 +8115,12 @@ body.elle-powered .footer{
 
 </footer>
 
-<!-- =======================================================
-     AUDIO
-     ======================================================= -->
-
 <audio
   id="radioAudio"
   preload="metadata"
 ></audio>
 
-<!-- =======================================================
-     TURNTABLE TAKEOVER
-     ======================================================= -->
+<!-- TURNTABLE -->
 
 <div
   class="turntable-takeover"
@@ -6773,159 +8151,7 @@ body.elle-powered .footer{
 
 </div>
 
-<!-- =======================================================
-     PENPAL RULES
-     ======================================================= -->
-
-<div
-  class="penpal-rules-modal"
-  id="penpalRulesModal"
-  aria-hidden="true"
->
-
-  <div class="penpal-rules-card">
-
-    <div class="penpal-rules-mark">
-      ∞
-    </div>
-
-    <div class="penpal-rules-script">
-      You are welcome here.
-    </div>
-
-    <h2>
-      Our community promise
-    </h2>
-
-    <p class="penpal-rules-intro">
-      PenPal is meant to feel warm, genuine, and safe.
-      Take this minute to read the community expectations
-      before entering the board.
-    </p>
-
-    <div class="penpal-rule-grid">
-
-      <div class="penpal-rule">
-
-        <strong>
-          💛 Lead with kindness
-        </strong>
-
-        <span>
-          Treat people with respect. Harassment,
-          humiliation, threats, and repeated unwanted
-          contact are not welcome here.
-        </span>
-
-      </div>
-
-      <div class="penpal-rule">
-
-        <strong>
-          ✨ Be real
-        </strong>
-
-        <span>
-          Do not impersonate someone else,
-          manipulate another member, or deliberately
-          misrepresent who you are.
-        </span>
-
-      </div>
-
-      <div class="penpal-rule">
-
-        <strong>
-          💌 Friendship, not dating
-        </strong>
-
-        <span>
-          PenPal is not for dating, hookups,
-          sexual solicitation, adult services,
-          or unwanted flirting.
-        </span>
-
-      </div>
-
-      <div class="penpal-rule">
-
-        <strong>
-          🔒 Protect your privacy
-        </strong>
-
-        <span>
-          Do not post passwords, banking information,
-          government ID numbers, exact home addresses,
-          or private authentication codes.
-        </span>
-
-      </div>
-
-      <div class="penpal-rule">
-
-        <strong>
-          🛡️ Respect boundaries
-        </strong>
-
-        <span>
-          If someone says no, ends a connection,
-          or asks for space, respect it immediately.
-        </span>
-
-      </div>
-
-      <div class="penpal-rule">
-
-        <strong>
-          🚩 Report concerns
-        </strong>
-
-        <span>
-          Use Report if another member becomes disruptive,
-          threatening, sexually inappropriate,
-          deceptive, or unsafe.
-        </span>
-
-      </div>
-
-    </div>
-
-    <div class="rules-countdown-box">
-
-      <span>
-        The board opens after you have had time to read
-      </span>
-
-      <strong id="penpalRulesCountdown">
-        1:00
-      </strong>
-
-      <div class="rules-progress">
-
-        <div
-          class="rules-progress-bar"
-          id="penpalRulesProgress"
-        ></div>
-
-      </div>
-
-    </div>
-
-    <button
-      type="button"
-      class="rules-leave"
-      id="leavePenpalRules"
-    >
-      Leave PenPal
-    </button>
-
-  </div>
-
-</div>
-
-<!-- =======================================================
-     CONTACT + REPORT
-     ======================================================= -->
+<!-- CONTACT REPORT -->
 
 <div
   class="support-modal"
@@ -7016,10 +8242,9 @@ body.elle-powered .footer{
       </div>
 
       <div class="support-note">
-        The secure Google Sheets submission connection
-        is added in the backend report step. For now,
-        this button safely saves your draft on this device
-        so nothing is falsely presented as submitted.
+        Secure Google Sheets delivery is connected in Batch B/backend.
+        This frontend currently saves the report draft on this device
+        instead of pretending it was sent.
       </div>
 
       <div
@@ -7049,9 +8274,7 @@ body.elle-powered .footer{
 
 </div>
 
-<!-- =======================================================
-     IMAGE MODAL
-     ======================================================= -->
+<!-- IMAGE MODAL -->
 
 <div
   class="image-modal"
@@ -7093,9 +8316,7 @@ body.elle-powered .footer{
 
 </div>
 
-<!-- =======================================================
-     TRUST MODAL
-     ======================================================= -->
+<!-- TRUST MODAL -->
 
 <div
   class="trust-modal"
@@ -7158,26 +8379,13 @@ body.elle-powered .footer{
       <div>
 
         <strong>
-          Off-platform connections:
+          Safety tools:
         </strong>
 
-        If a connection moves to email, text, social media,
-        phone, or another service, that conversation is
-        outside Elle’s messaging environment.
-
-      </div>
-
-      <div>
-
-        <strong>
-          Conduct:
-        </strong>
-
-        Confirmed serious harassment, sexual misconduct,
-        threats, exploitation, repeated boundary violations,
-        or attempts to evade previous bans may result
-        in permanent removal from PenPal or Elle.
-
+        Members may Block, Report and End Connection.
+        Serious confirmed harassment, sexual misconduct,
+        threats or exploitation may result in suspension
+        or permanent removal.
       </div>
 
     </div>
@@ -7208,401 +8416,264 @@ const MEMBERSHIP_URL =
    ========================================================= */
 
 const memberGate =
-  document.getElementById(
-    "memberGate"
-  );
+  document.getElementById("memberGate");
 
 const powerSwitch =
-  document.getElementById(
-    "powerSwitch"
-  );
+  document.getElementById("powerSwitch");
 
 const powerSwitchWrap =
-  document.getElementById(
-    "powerSwitchWrap"
-  );
+  document.getElementById("powerSwitchWrap");
 
 const powerStatus =
-  document.getElementById(
-    "powerStatus"
-  );
+  document.getElementById("powerStatus");
 
 const memberEnter =
-  document.getElementById(
-    "memberEnter"
-  );
+  document.getElementById("memberEnter");
 
 const memberLogin =
-  document.getElementById(
-    "memberLogin"
-  );
+  document.getElementById("memberLogin");
 
 const memberEmailStep =
-  document.getElementById(
-    "memberEmailStep"
-  );
+  document.getElementById("memberEmailStep");
 
 const memberCodeStep =
-  document.getElementById(
-    "memberCodeStep"
-  );
+  document.getElementById("memberCodeStep");
 
 const memberEmail =
-  document.getElementById(
-    "memberEmail"
-  );
+  document.getElementById("memberEmail");
 
 const memberCode =
-  document.getElementById(
-    "memberCode"
-  );
+  document.getElementById("memberCode");
 
 const requestCode =
-  document.getElementById(
-    "requestCode"
-  );
+  document.getElementById("requestCode");
 
 const verifyCode =
-  document.getElementById(
-    "verifyCode"
-  );
+  document.getElementById("verifyCode");
 
 const changeEmail =
-  document.getElementById(
-    "changeEmail"
-  );
+  document.getElementById("changeEmail");
 
 const memberMessage =
-  document.getElementById(
-    "memberMessage"
-  );
+  document.getElementById("memberMessage");
 
 const memberJoin =
-  document.getElementById(
-    "memberJoin"
-  );
+  document.getElementById("memberJoin");
 
 const ageGate =
-  document.getElementById(
-    "ageGate"
-  );
+  document.getElementById("ageGate");
 
 const ageTeen =
-  document.getElementById(
-    "ageTeen"
-  );
+  document.getElementById("ageTeen");
 
 const ageAdult =
-  document.getElementById(
-    "ageAdult"
-  );
+  document.getElementById("ageAdult");
 
 const ageUnder =
-  document.getElementById(
-    "ageUnder"
-  );
+  document.getElementById("ageUnder");
 
 const underMessage =
-  document.getElementById(
-    "underMessage"
-  );
+  document.getElementById("underMessage");
 
 const memberTierPill =
-  document.getElementById(
-    "memberTierPill"
-  );
+  document.getElementById("memberTierPill");
 
 const signOut =
-  document.getElementById(
-    "signOut"
-  );
+  document.getElementById("signOut");
 
 const menuToggle =
-  document.getElementById(
-    "menuToggle"
-  );
+  document.getElementById("menuToggle");
 
 const mainNav =
-  document.getElementById(
-    "mainNav"
-  );
+  document.getElementById("mainNav");
 
 const ownerBar =
-  document.getElementById(
-    "ownerBar"
-  );
+  document.getElementById("ownerBar");
 
 const ownerStatus =
-  document.getElementById(
-    "ownerStatus"
-  );
+  document.getElementById("ownerStatus");
 
 const ownerTests =
   [
-    ...document.querySelectorAll(
-      ".owner-test"
-    )
+    ...document.querySelectorAll(".owner-test")
   ];
 
 const heroAsk =
-  document.getElementById(
-    "heroAsk"
-  );
+  document.getElementById("heroAsk");
 
 const heroLiveLearn =
-  document.getElementById(
-    "heroLiveLearn"
-  );
+  document.getElementById("heroLiveLearn");
 
 const chatFeed =
-  document.getElementById(
-    "chatFeed"
-  );
+  document.getElementById("chatFeed");
 
 const chatInput =
-  document.getElementById(
-    "chatInput"
-  );
+  document.getElementById("chatInput");
 
 const chatSend =
-  document.getElementById(
-    "chatSend"
-  );
+  document.getElementById("chatSend");
 
 const typing =
-  document.getElementById(
-    "typing"
-  );
+  document.getElementById("typing");
 
 const chipRow =
-  document.getElementById(
-    "chipRow"
-  );
+  document.getElementById("chipRow");
 
 const chatMemberText =
-  document.getElementById(
-    "chatMemberText"
-  );
+  document.getElementById("chatMemberText");
 
 const imageModal =
-  document.getElementById(
-    "imageModal"
-  );
+  document.getElementById("imageModal");
 
 const imageModalImage =
-  document.getElementById(
-    "imageModalImage"
-  );
+  document.getElementById("imageModalImage");
 
 const imageModalDownload =
-  document.getElementById(
-    "imageModalDownload"
-  );
+  document.getElementById("imageModalDownload");
 
 const imageModalClose =
-  document.getElementById(
-    "imageModalClose"
-  );
+  document.getElementById("imageModalClose");
+
+const radioCard =
+  document.getElementById("radioCard");
+
+const radioAccessCopy =
+  document.getElementById("radioAccessCopy");
 
 const radioToggle =
-  document.getElementById(
-    "radioToggle"
-  );
+  document.getElementById("radioToggle");
 
 const radioInline =
-  document.getElementById(
-    "radioInline"
-  );
+  document.getElementById("radioInline");
 
 const radioAudio =
-  document.getElementById(
-    "radioAudio"
-  );
+  document.getElementById("radioAudio");
 
 const previousTrack =
-  document.getElementById(
-    "previousTrack"
-  );
+  document.getElementById("previousTrack");
 
 const playPause =
-  document.getElementById(
-    "playPause"
-  );
+  document.getElementById("playPause");
 
 const nextTrack =
-  document.getElementById(
-    "nextTrack"
-  );
+  document.getElementById("nextTrack");
 
 const songTitle =
-  document.getElementById(
-    "songTitle"
-  );
+  document.getElementById("songTitle");
 
 const songArtist =
-  document.getElementById(
-    "songArtist"
-  );
+  document.getElementById("songArtist");
 
 const trackList =
-  document.getElementById(
-    "trackList"
-  );
+  document.getElementById("trackList");
 
 const turntableTakeover =
-  document.getElementById(
-    "turntableTakeover"
-  );
+  document.getElementById("turntableTakeover");
 
 const takeoverSong =
-  document.getElementById(
-    "takeoverSong"
-  );
-
-const penpalAccess =
-  document.getElementById(
-    "penpalAccess"
-  );
-
-const penpalLearn =
-  document.getElementById(
-    "penpalLearn"
-  );
-
-const penpalStatus =
-  document.getElementById(
-    "penpalStatus"
-  );
-
-const penpalLock =
-  document.getElementById(
-    "penpalLock"
-  );
-
-const penpalBoard =
-  document.getElementById(
-    "penpalBoard"
-  );
-
-const penpalRulesModal =
-  document.getElementById(
-    "penpalRulesModal"
-  );
-
-const penpalRulesCountdown =
-  document.getElementById(
-    "penpalRulesCountdown"
-  );
-
-const penpalRulesProgress =
-  document.getElementById(
-    "penpalRulesProgress"
-  );
-
-const leavePenpalRules =
-  document.getElementById(
-    "leavePenpalRules"
-  );
+  document.getElementById("takeoverSong");
 
 const liveStart =
-  document.getElementById(
-    "liveStart"
-  );
+  document.getElementById("liveStart");
 
 const askAboutLive =
-  document.getElementById(
-    "askAboutLive"
-  );
+  document.getElementById("askAboutLive");
+
+const livePreviewLock =
+  document.getElementById("livePreviewLock");
+
+const penpalClock =
+  document.getElementById("penpalClock");
+
+const penpalTimerIntro =
+  document.getElementById("penpalTimerIntro");
+
+const penpalAgree =
+  document.getElementById("penpalAgree");
+
+const penpalEnterButton =
+  document.getElementById("penpalEnterButton");
+
+const penpalStart =
+  document.getElementById("penpalStart");
+
+const penpalHow =
+  document.getElementById("penpalHow");
+
+const penpalHowLeft =
+  document.getElementById("penpalHowLeft");
+
+const penpalBoardLocked =
+  document.getElementById("penpalBoardLocked");
+
+const penpalLockIcon =
+  document.getElementById("penpalLockIcon");
+
+const penpalLockTitle =
+  document.getElementById("penpalLockTitle");
+
+const penpalLockMessage =
+  document.getElementById("penpalLockMessage");
+
+const penpalStatus =
+  document.getElementById("penpalStatus");
+
+const penpalReportButton =
+  document.getElementById("penpalReportButton");
 
 const planSelect =
-  document.getElementById(
-    "planSelect"
-  );
+  document.getElementById("planSelect");
 
 const planDetail =
-  document.getElementById(
-    "planDetail"
-  );
+  document.getElementById("planDetail");
 
 const planTitle =
-  document.getElementById(
-    "planTitle"
-  );
+  document.getElementById("planTitle");
 
 const planDescription =
-  document.getElementById(
-    "planDescription"
-  );
+  document.getElementById("planDescription");
 
 const planButton =
-  document.getElementById(
-    "planButton"
-  );
+  document.getElementById("planButton");
 
 const openTrust =
-  document.getElementById(
-    "openTrust"
-  );
+  document.getElementById("openTrust");
 
 const trustTop =
-  document.getElementById(
-    "trustTop"
-  );
+  document.getElementById("trustTop");
 
 const trustModal =
-  document.getElementById(
-    "trustModal"
-  );
+  document.getElementById("trustModal");
 
 const closeTrust =
-  document.getElementById(
-    "closeTrust"
-  );
+  document.getElementById("closeTrust");
 
 const openSupport =
-  document.getElementById(
-    "openSupport"
-  );
+  document.getElementById("openSupport");
 
 const supportModal =
-  document.getElementById(
-    "supportModal"
-  );
+  document.getElementById("supportModal");
 
 const closeSupport =
-  document.getElementById(
-    "closeSupport"
-  );
+  document.getElementById("closeSupport");
 
 const supportCategory =
-  document.getElementById(
-    "supportCategory"
-  );
+  document.getElementById("supportCategory");
 
 const reportedMemberField =
-  document.getElementById(
-    "reportedMemberField"
-  );
+  document.getElementById("reportedMemberField");
 
 const reportedMember =
-  document.getElementById(
-    "reportedMember"
-  );
+  document.getElementById("reportedMember");
 
 const supportDetails =
-  document.getElementById(
-    "supportDetails"
-  );
+  document.getElementById("supportDetails");
 
 const supportMessage =
-  document.getElementById(
-    "supportMessage"
-  );
+  document.getElementById("supportMessage");
 
 const saveSupportDraft =
-  document.getElementById(
-    "saveSupportDraft"
-  );
+  document.getElementById("saveSupportDraft");
 
 /* =========================================================
    STATE
@@ -7611,51 +8682,44 @@ const saveSupportDraft =
 const state = {
 
   ageGroup:
-    localStorage.getItem(
-      "elleAgeGroup"
-    ) || "",
+    localStorage.getItem("elleAgeGroup") || "",
 
   sessionToken:
-    localStorage.getItem(
-      "elleSessionToken"
-    ) || "",
+    localStorage.getItem("elleSessionToken") || "",
 
   member:{},
 
   permissions:{},
 
   owner:
-    localStorage.getItem(
-      "elleOwner"
-    ) === "true",
+    localStorage.getItem("elleOwner") === "true",
 
   ownerTestTier:
-    localStorage.getItem(
-      "elleOwnerTestTier"
-    ) || "owner",
+    localStorage.getItem("elleOwnerTestTier") || "owner",
 
   history:[],
 
   worldSessionId:
-    localStorage.getItem(
-      "elleWorldSession"
-    ) || "",
+    localStorage.getItem("elleWorldSession") || "",
 
   trackIndex:
     Number(
-      localStorage.getItem(
-        "elleRadioTrack"
-      ) || 0
+      localStorage.getItem("elleRadioTrack") || 0
     ),
 
   playing:false,
 
   takeoverTimer:null,
 
-  penpalRulesTimer:null,
+  penpalTimer:null,
 
-  penpalRulesRemaining:60
+  penpalSeconds:30,
 
+  penpalTimerComplete:false,
+
+  penpalAgreement:false,
+
+  penpalBoardOpened:false
 };
 
 /* =========================================================
@@ -7706,6 +8770,7 @@ function setBusy(
   if(
     !button
   ){
+
     return;
   }
 
@@ -7744,7 +8809,7 @@ function setBusy(
 }
 
 /* =========================================================
-   POWER GATE
+   POWER
    ========================================================= */
 
 function resetPowerSwitch(){
@@ -7935,6 +9000,7 @@ powerSwitch.addEventListener(
     if(
       state.sessionToken
     ){
+
       return;
     }
 
@@ -7979,7 +9045,7 @@ memberEnter.addEventListener(
 );
 
 /* =========================================================
-   MEMBER LOGIN
+   LOGIN
    ========================================================= */
 
 function setMemberMessage(
@@ -8100,8 +9166,7 @@ requestCode.addEventListener(
           "/api/request-access-code",
           {
 
-            method:
-              "POST",
+            method:"POST",
 
             headers:{
               "Content-Type":
@@ -8182,7 +9247,8 @@ verifyCode.addEventListener(
         );
 
     if(
-      code.length !== 6
+      code.length !==
+      6
     ){
 
       setMemberMessage(
@@ -8210,8 +9276,7 @@ verifyCode.addEventListener(
           "/api/verify-access-code",
           {
 
-            method:
-              "POST",
+            method:"POST",
 
             headers:{
               "Content-Type":
@@ -8235,6 +9300,17 @@ verifyCode.addEventListener(
 
         throw new Error(
           data?.error ||
+          "That access code could not be verified."
+        );
+      }
+
+      if(
+        data?.verified ===
+        false
+      ){
+
+        throw new Error(
+          data?.reason ||
           "That access code could not be verified."
         );
       }
@@ -8400,7 +9476,7 @@ changeEmail.addEventListener(
 );
 
 /* =========================================================
-   AGE
+   AGE FALLBACK
    ========================================================= */
 
 function showAgeGate(){
@@ -8485,7 +9561,7 @@ ageUnder.addEventListener(
 );
 
 /* =========================================================
-   SESSION
+   SESSION RESTORE
    ========================================================= */
 
 async function restoreSession(){
@@ -8504,16 +9580,14 @@ async function restoreSession(){
         "/api/session-check",
         {
 
-          method:
-            "GET",
+          method:"GET",
 
           headers:{
             "Authorization":
               `Bearer ${state.sessionToken}`
           },
 
-          cache:
-            "no-store"
+          cache:"no-store"
         }
       );
 
@@ -8613,89 +9687,168 @@ async function restoreSession(){
 }
 
 /* =========================================================
-   OWNER MASTER ACCESS
+   TIER DEFINITIONS FOR TRUE OWNER PREVIEW
    ========================================================= */
 
-function ownerPermissions(){
+const TIER_PREVIEWS = {
 
-  /*
-    IMPORTANT:
+  spark:{
 
-    Owner permissions NEVER shrink
-    when previewing a tier.
+    tierKey:"spark",
 
-    The tier selector changes the
-    preview context only.
+    tierName:"The Spark",
 
-    Verified server owner status
-    remains the authority.
-  */
+    ageGroup:"18+",
 
-  return {
+    permissions:{
 
-    elleChat:true,
+      elleChat:true,
 
-    expandedPerks:true,
+      expandedPerks:false,
 
-    elleRadio:true,
+      elleRadio:false,
 
-    liveElle:true,
+      liveElle:false,
 
-    liveVideo:true,
+      liveVideo:false
+    }
+  },
 
-    ownerMode:true,
+  "idea-circle":{
 
-    testMode:true
-  };
-}
+    tierKey:"idea-circle",
 
-function visiblePermissions(){
+    tierName:"The Idea Circle",
 
-  if(
-    state.owner
-  ){
+    ageGroup:"18+",
 
-    return ownerPermissions();
+    permissions:{
+
+      elleChat:true,
+
+      expandedPerks:true,
+
+      elleRadio:false,
+
+      liveElle:false,
+
+      liveVideo:false
+    }
+  },
+
+  infinite:{
+
+    tierKey:"infinite",
+
+    tierName:"The Infinite ∞",
+
+    ageGroup:"18+",
+
+    permissions:{
+
+      elleChat:true,
+
+      expandedPerks:true,
+
+      elleRadio:true,
+
+      liveElle:true,
+
+      liveVideo:true
+    }
+  },
+
+  "elle-next":{
+
+    tierKey:"elle-next",
+
+    tierName:"Elle Next",
+
+    ageGroup:"13-17",
+
+    permissions:{
+
+      elleChat:true,
+
+      expandedPerks:true,
+
+      elleRadio:false,
+
+      liveElle:false,
+
+      liveVideo:false
+    }
+  },
+
+  owner:{
+
+    tierKey:"owner",
+
+    tierName:"Owner",
+
+    ageGroup:"18+",
+
+    permissions:{
+
+      elleChat:true,
+
+      expandedPerks:true,
+
+      elleRadio:true,
+
+      liveElle:true,
+
+      liveVideo:true
+    }
   }
+};
 
-  return state.permissions || {};
-}
+/* =========================================================
+   EFFECTIVE FRONTEND EXPERIENCE
+   ========================================================= */
 
-function previewTierName(){
-
-  switch(
-    state.ownerTestTier
-  ){
-
-    case "spark":
-      return "The Spark";
-
-    case "idea-circle":
-      return "The Idea Circle";
-
-    case "infinite":
-      return "The Infinite ∞";
-
-    case "elle-next":
-      return "Elle Next";
-
-    default:
-      return "Owner";
-  }
-}
-
-function visibleAgeGroup(){
+function activePreview(){
 
   if(
     state.owner
   ){
 
     return (
-      state.ownerTestTier ===
-      "elle-next"
-        ? "13-17"
-        : "18+"
+      TIER_PREVIEWS[
+        state.ownerTestTier
+      ] ||
+      TIER_PREVIEWS.owner
     );
+  }
+
+  return null;
+}
+
+function visiblePermissions(){
+
+  const preview =
+    activePreview();
+
+  if(
+    preview
+  ){
+
+    return preview.permissions;
+  }
+
+  return state.permissions || {};
+}
+
+function visibleAgeGroup(){
+
+  const preview =
+    activePreview();
+
+  if(
+    preview
+  ){
+
+    return preview.ageGroup;
   }
 
   return (
@@ -8708,11 +9861,14 @@ function visibleAgeGroup(){
 
 function visibleTierKey(){
 
+  const preview =
+    activePreview();
+
   if(
-    state.owner
+    preview
   ){
 
-    return state.ownerTestTier;
+    return preview.tierKey;
   }
 
   return String(
@@ -8725,11 +9881,14 @@ function visibleTierKey(){
 
 function visibleTierName(){
 
+  const preview =
+    activePreview();
+
   if(
-    state.owner
+    preview
   ){
 
-    return previewTierName();
+    return preview.tierName;
   }
 
   return (
@@ -8738,8 +9897,17 @@ function visibleTierName(){
   );
 }
 
+function ownerIsInFullOwnerMode(){
+
+  return (
+    state.owner === true &&
+    state.ownerTestTier ===
+    "owner"
+  );
+}
+
 /* =========================================================
-   APPLY ACCESS
+   APPLY TRUE PREVIEW ACCESS
    ========================================================= */
 
 function applyAccess(){
@@ -8753,48 +9921,15 @@ function applyAccess(){
   const tierKey =
     visibleTierKey();
 
-  if(
-    state.owner
-  ){
+  const tierName =
+    visibleTierName();
 
-    memberTierPill.textContent =
-      state.ownerTestTier ===
-      "owner"
-        ? "Owner"
-        : `Owner · ${previewTierName()}`;
-
-    chatMemberText.textContent =
-      state.ownerTestTier ===
-      "owner"
-        ? "Owner master access"
-        : `Owner preview · ${previewTierName()}`;
-
-  }else{
-
-    memberTierPill.textContent =
-      visibleTierName();
-
-    chatMemberText.textContent =
-      state.member?.tierName
-        ? `${state.member.tierName} member`
-        : "Your AI guide";
-  }
+  /* OWNER BAR */
 
   ownerBar.classList.toggle(
     "show",
     state.owner === true
   );
-
-  if(
-    state.owner
-  ){
-
-    ownerStatus.textContent =
-      state.ownerTestTier ===
-      "owner"
-        ? "Master access · everything unlocked"
-        : `Master access · previewing ${previewTierName()}`;
-  }
 
   ownerTests.forEach(
     button => {
@@ -8807,14 +9942,52 @@ function applyAccess(){
     }
   );
 
-  /*
-    OWNER KEEPS RADIO ACCESS
-    EVEN DURING LOWER TIER PREVIEW.
-  */
+  if(
+    state.owner
+  ){
+
+    ownerStatus.textContent =
+      state.ownerTestTier ===
+      "owner"
+        ? "Full owner access"
+        : `Exact frontend preview · ${tierName}`;
+
+    memberTierPill.textContent =
+      state.ownerTestTier ===
+      "owner"
+        ? "Owner"
+        : tierName;
+
+    chatMemberText.textContent =
+      state.ownerTestTier ===
+      "owner"
+        ? "Owner access"
+        : `${tierName} member preview`;
+
+  }else{
+
+    memberTierPill.textContent =
+      tierName;
+
+    chatMemberText.textContent =
+      state.member?.tierName
+        ? `${state.member.tierName} member`
+        : "Your AI guide";
+  }
+
+  /* RADIO */
+
+  const hasRadio =
+    permissions.elleRadio ===
+    true;
+
+  radioCard.classList.toggle(
+    "preview-locked",
+    !hasRadio
+  );
 
   if(
-    permissions.elleRadio !==
-    true
+    !hasRadio
   ){
 
     pauseRadio();
@@ -8824,9 +9997,21 @@ function applyAccess(){
     );
 
     radioToggle.textContent =
-      "Infinite ∞ Access";
+      tierKey ===
+      "elle-next"
+        ? "Not Included in Elle Next"
+        : "Infinite ∞ Access";
+
+    radioAccessCopy.textContent =
+      tierKey ===
+      "elle-next"
+        ? "Elle Radio is not included in the Elle Next teen experience."
+        : "Elle Radio is available with The Infinite ∞ membership.";
 
   }else{
+
+    radioAccessCopy.textContent =
+      "Original AURYNELLE music, available with your current access.";
 
     radioToggle.textContent =
       radioInline.classList.contains(
@@ -8836,42 +10021,94 @@ function applyAccess(){
         : "Open Radio";
   }
 
-  /*
-    PENPAL FRONTEND DISPLAY
-  */
+  /* LIVE ELLE */
+
+  const hasLiveElle =
+    permissions.liveElle ===
+    true &&
+    ageGroup ===
+    "18+";
 
   if(
-    state.owner
+    hasLiveElle
   ){
 
-    penpalAccess.textContent =
-      "Open PenPal Board";
+    liveStart.disabled =
+      false;
 
-    penpalLock.textContent =
-      "Owner master access";
+    liveStart.textContent =
+      "Talk to Live Elle";
+
+    livePreviewLock.classList.remove(
+      "show"
+    );
+
+    livePreviewLock.textContent =
+      "";
+
+  }else{
+
+    liveStart.disabled =
+      false;
+
+    liveStart.textContent =
+      ageGroup ===
+      "13-17"
+        ? "Live Elle is 18+"
+        : "Infinite ∞ Access";
+
+    livePreviewLock.classList.add(
+      "show"
+    );
+
+    livePreviewLock.textContent =
+      ageGroup ===
+      "13-17"
+        ? "Live Elle one-on-one human sessions are not part of the Elle Next 13–17 experience."
+        : "Live Elle is included with The Infinite ∞ membership.";
+  }
+
+  /* PENPAL */
+
+  resetPenpalEntry(
+    false
+  );
+
+  if(
+    ownerIsInFullOwnerMode()
+  ){
+
+    penpalStart.textContent =
+      "Open PenPal";
+
+    showPenpalLock(
+      "♛",
+      "Owner PenPal access",
+      "Owner mode can preview PenPal without the normal membership waiting period. The 30-second community-rules review still appears every time."
+    );
 
     penpalStatus.textContent =
-      state.ownerTestTier ===
-      "elle-next"
-        ? "Owner previewing Elle Next. Master owner access remains active. PenPal can still be opened for testing."
-        : "Owner master access is active. The normal PenPal waiting period is bypassed for owner testing.";
+      "Owner mode is active. The frontend PenPal wait requirement is bypassed for owner testing.";
 
     return;
   }
-
-  penpalLock.textContent =
-    "Private member feature";
 
   if(
     ageGroup !==
     "18+"
   ){
 
-    penpalAccess.textContent =
+    penpalStart.textContent =
       "PenPal is 18+";
 
+    showPenpalLock(
+      "🔒",
+      "PenPal is for adults 18+",
+      "Elle Next members do not have PenPal access. The rest of Elle remains available through the teen experience."
+    );
+
     penpalStatus.textContent =
-      "PenPal is an adult 18+ feature. Elle Next members do not have PenPal access.";
+      "PenPal is not included in Elle Next.";
 
     return;
   }
@@ -8881,24 +10118,36 @@ function applyAccess(){
     "infinite"
   ){
 
-    penpalAccess.textContent =
-      "Check PenPal Access";
+    penpalStart.textContent =
+      "Infinite ∞ Access";
+
+    showPenpalLock(
+      "∞",
+      "Infinite ∞ member feature",
+      "PenPal is reserved for eligible Infinite ∞ members. Upgrade to Infinite to begin the PenPal pathway."
+    );
 
     penpalStatus.textContent =
-      "PenPal is reserved for Infinite ∞ members who meet the full eligibility requirements.";
+      "PenPal requires The Infinite ∞ membership and additional eligibility verification.";
 
     return;
   }
 
-  penpalAccess.textContent =
-    "Enter PenPal";
+  penpalStart.textContent =
+    "Open PenPal";
+
+  showPenpalLock(
+    "🔒",
+    "Complete the community review",
+    "Open PenPal and complete the required 30-second rules review. Secure membership-duration eligibility will be enforced by the backend in Batch B."
+  );
 
   penpalStatus.textContent =
-    "Infinite ∞ access detected. Full PenPal eligibility will be verified securely before connection tools open.";
+    "Infinite ∞ access detected. Full membership-duration eligibility will be securely verified before live PenPal connections open.";
 }
 
 /* =========================================================
-   OWNER PREVIEW
+   OWNER TIER SWITCHING
    ========================================================= */
 
 ownerTests.forEach(
@@ -8927,30 +10176,14 @@ ownerTests.forEach(
           tier
         );
 
-        /*
-          This controls the preview age
-          for owner test requests.
-
-          It does NOT remove owner master
-          permissions.
-        */
-
-        state.ageGroup =
-          tier ===
-          "elle-next"
-            ? "13-17"
-            : "18+";
-
-        localStorage.setItem(
-          "elleAgeGroup",
-          state.ageGroup
-        );
-
         applyAccess();
+
+        greetMember();
 
         if(
           visiblePermissions()
-            .elleRadio === true
+            .elleRadio ===
+          true
         ){
 
           loadTrack(
@@ -8959,15 +10192,13 @@ ownerTests.forEach(
             false
           );
         }
-
-        greetMember();
       }
     );
   }
 );
 
 /* =========================================================
-   MOBILE MENU
+   MOBILE NAV
    ========================================================= */
 
 menuToggle.addEventListener(
@@ -8981,9 +10212,7 @@ menuToggle.addEventListener(
 
     menuToggle.setAttribute(
       "aria-expanded",
-      String(
-        open
-      )
+      String(open)
     );
 
     menuToggle.textContent =
@@ -8994,9 +10223,7 @@ menuToggle.addEventListener(
 );
 
 mainNav
-  .querySelectorAll(
-    "a"
-  )
+  .querySelectorAll("a")
   .forEach(
     link => {
 
@@ -9021,7 +10248,7 @@ mainNav
   );
 
 /* =========================================================
-   CHAT
+   CHAT UI
    ========================================================= */
 
 function scrollChat(){
@@ -9082,9 +10309,7 @@ function addBubble(
     );
 
   copy.textContent =
-    safeText(
-      text
-    );
+    safeText(text);
 
   bubble.appendChild(
     label
@@ -9135,9 +10360,7 @@ function renderChips(
     "";
 
   if(
-    !Array.isArray(
-      chips
-    )
+    !Array.isArray(chips)
   ){
 
     return;
@@ -9182,9 +10405,7 @@ function renderChips(
           "click",
           () => {
 
-            sendMessage(
-              text
-            );
+            sendMessage(text);
           }
         );
 
@@ -9196,7 +10417,7 @@ function renderChips(
 }
 
 /* =========================================================
-   IMAGE REQUEST DETECTION
+   IMAGE DETECTION
    ========================================================= */
 
 function isImageRequest(
@@ -9220,9 +10441,7 @@ function isImageRequest(
     /\b(how\s+(?:do|can|should)\s+i|teach\s+me|show\s+me\s+how|help\s+me\s+(?:draw|paint|sketch|illustrate))\b/i;
 
   if(
-    howTo.test(
-      value
-    )
+    howTo.test(value)
   ){
 
     return false;
@@ -9239,21 +10458,15 @@ function isImageRequest(
 
   return (
     (
-      creationWord.test(
-        value
-      ) &&
-      imageWord.test(
-        value
-      )
+      creationWord.test(value) &&
+      imageWord.test(value)
     ) ||
-    directVisual.test(
-      value
-    )
+    directVisual.test(value)
   );
 }
 
 /* =========================================================
-   GENERATED IMAGE
+   IMAGE MODAL
    ========================================================= */
 
 function openGeneratedImage(
@@ -9263,6 +10476,7 @@ function openGeneratedImage(
   if(
     !src
   ){
+
     return;
   }
 
@@ -9395,9 +10609,7 @@ function addImageBubble(
     "click",
     () => {
 
-      openGeneratedImage(
-        src
-      );
+      openGeneratedImage(src);
     }
   );
 
@@ -9431,9 +10643,7 @@ function addImageBubble(
     "click",
     () => {
 
-      openGeneratedImage(
-        src
-      );
+      openGeneratedImage(src);
     }
   );
 
@@ -9588,7 +10798,7 @@ function addBookingCard(
 }
 
 /* =========================================================
-   ASK ELLE
+   SEND MESSAGE
    ========================================================= */
 
 async function sendMessage(
@@ -9649,9 +10859,7 @@ async function sendMessage(
   chatSend.disabled =
     true;
 
-  renderChips(
-    []
-  );
+  renderChips([]);
 
   addBubble(
     "user",
@@ -9660,11 +10868,9 @@ async function sendMessage(
 
   state.history.push({
 
-    role:
-      "user",
+    role:"user",
 
-    content:
-      text
+    content:text
   });
 
   showTyping();
@@ -9672,9 +10878,7 @@ async function sendMessage(
   try{
 
     const wantsImage =
-      isImageRequest(
-        text
-      );
+      isImageRequest(text);
 
     const endpoint =
       wantsImage
@@ -9685,8 +10889,7 @@ async function sendMessage(
       wantsImage
         ? {
 
-            prompt:
-              text,
+            prompt:text,
 
             ageGroup:
               visibleAgeGroup()
@@ -9699,7 +10902,6 @@ async function sendMessage(
 
             ageGroup:
               visibleAgeGroup()
-
           };
 
     const response =
@@ -9707,8 +10909,7 @@ async function sendMessage(
         endpoint,
         {
 
-          method:
-            "POST",
+          method:"POST",
 
           headers:{
 
@@ -9720,9 +10921,7 @@ async function sendMessage(
           },
 
           body:
-            JSON.stringify(
-              body
-            )
+            JSON.stringify(body)
         }
       );
 
@@ -9739,12 +10938,9 @@ async function sendMessage(
     }
 
     if(
-      response.status ===
-      401 ||
-      response.status ===
-      403 ||
-      data?.membershipRequired ===
-      true
+      response.status === 401 ||
+      response.status === 403 ||
+      data?.membershipRequired === true
     ){
 
       throw new Error(
@@ -9778,8 +10974,7 @@ async function sendMessage(
 
       state.history.push({
 
-        role:
-          "assistant",
+        role:"assistant",
 
         content:
           "I created the image the user requested."
@@ -9805,16 +11000,13 @@ async function sendMessage(
 
     state.history.push({
 
-      role:
-        "assistant",
+      role:"assistant",
 
-      content:
-        reply
+      content:reply
     });
 
     if(
-      data?.bookingRequired ===
-      true &&
+      data?.bookingRequired === true &&
       data?.bookingUrl
     ){
 
@@ -9822,9 +11014,7 @@ async function sendMessage(
         data.bookingUrl
       );
 
-      renderChips(
-        []
-      );
+      renderChips([]);
 
     }else{
 
@@ -9835,8 +11025,7 @@ async function sendMessage(
     }
 
     if(
-      data?.leadError ===
-      true &&
+      data?.leadError === true &&
       data?.leadErrorMessage
     ){
 
@@ -9917,16 +11106,12 @@ chatInput.addEventListener(
 function bringChatIntoView(){
 
   document
-    .getElementById(
-      "ask"
-    )
+    .getElementById("ask")
     .scrollIntoView({
 
-      behavior:
-        "smooth",
+      behavior:"smooth",
 
-      block:
-        "start"
+      block:"start"
     });
 
   setTimeout(
@@ -9948,9 +11133,7 @@ function promptChat(
   setTimeout(
     () => {
 
-      sendMessage(
-        text
-      );
+      sendMessage(text);
 
     },
     500
@@ -9990,7 +11173,8 @@ function greetMember(){
       ? ` ${memberName}`
       : "";
 
-  let greeting;
+  let greeting =
+    "";
 
   if(
     state.owner &&
@@ -9999,7 +11183,14 @@ function greetMember(){
   ){
 
     greeting =
-      `Hey 💛 Owner master access is active. You’re previewing ${previewTierName()} without losing any owner permissions.`;
+      `Owner preview is showing the exact ${visibleTierName()} frontend experience. Your verified owner identity remains intact behind the scenes.`;
+
+  }else if(
+    ownerIsInFullOwnerMode()
+  ){
+
+    greeting =
+      "Hey 💛 Owner mode is active. Everything is available for testing.";
 
   }else if(
     visibleAgeGroup() ===
@@ -10040,27 +11231,6 @@ function startLiveElle(){
 
     showMemberGate(
       "visitor"
-    );
-
-    return;
-  }
-
-  /*
-    OWNER MASTER ACCESS:
-
-    Owner can still open Live Elle
-    while previewing any tier.
-
-    The backend still receives the
-    owner test age context.
-  */
-
-  if(
-    state.owner
-  ){
-
-    promptChat(
-      "I want to talk to Live Elle."
     );
 
     return;
@@ -10111,13 +11281,10 @@ heroLiveLearn.addEventListener(
   () => {
 
     document
-      .getElementById(
-        "live"
-      )
+      .getElementById("live")
       .scrollIntoView({
 
-        behavior:
-          "smooth"
+        behavior:"smooth"
       });
   }
 );
@@ -10133,271 +11300,343 @@ askAboutLive.addEventListener(
 );
 
 /* =========================================================
-   PENPAL RULES
+   PENPAL LOCK HELPERS
    ========================================================= */
 
-function formatRuleTime(
+function showPenpalLock(
+  icon,
+  title,
+  message
+){
+
+  penpalBoardLocked.classList.add(
+    "show"
+  );
+
+  penpalLockIcon.textContent =
+    icon;
+
+  penpalLockTitle.textContent =
+    title;
+
+  penpalLockMessage.textContent =
+    message;
+}
+
+function hidePenpalLock(){
+
+  penpalBoardLocked.classList.remove(
+    "show"
+  );
+}
+
+/* =========================================================
+   PENPAL 30 SECOND REVIEW
+   ========================================================= */
+
+function formatPenpalTime(
   seconds
 ){
 
   const safe =
     Math.max(
       0,
-      Number(
-        seconds ||
-        0
-      )
+      Number(seconds || 0)
     );
 
-  const minutes =
-    Math.floor(
-      safe / 60
-    );
-
-  const remaining =
-    safe % 60;
-
-  return `${minutes}:${String(remaining).padStart(2,"0")}`;
+  return `00:${String(safe).padStart(2,"0")}`;
 }
 
-function closePenpalRules(
-  unlock=false
+function refreshPenpalEnterButton(){
+
+  state.penpalAgreement =
+    penpalAgree.checked ===
+    true;
+
+  const ready =
+    state.penpalTimerComplete === true &&
+    state.penpalAgreement === true;
+
+  penpalEnterButton.disabled =
+    !ready;
+
+  penpalEnterButton.textContent =
+    ready
+      ? "Enter PenPal Board →"
+      : "🔒 Enter PenPal Board";
+}
+
+function resetPenpalEntry(
+  resetCheck=true
 ){
 
   if(
-    state.penpalRulesTimer
+    state.penpalTimer
   ){
 
     clearInterval(
-      state.penpalRulesTimer
+      state.penpalTimer
     );
 
-    state.penpalRulesTimer =
+    state.penpalTimer =
       null;
   }
 
-  penpalRulesModal.classList.remove(
-    "show"
-  );
+  state.penpalSeconds =
+    30;
 
-  penpalRulesModal.setAttribute(
-    "aria-hidden",
-    "true"
-  );
+  state.penpalTimerComplete =
+    false;
 
-  document.body.classList.remove(
-    "locked"
-  );
+  state.penpalBoardOpened =
+    false;
+
+  penpalClock.textContent =
+    "00:30";
+
+  penpalTimerIntro.textContent =
+    "Press Open PenPal to begin your 30-second review.";
 
   if(
-    !unlock
+    resetCheck
+  ){
+
+    penpalAgree.checked =
+      false;
+
+    state.penpalAgreement =
+      false;
+  }
+
+  refreshPenpalEnterButton();
+}
+
+function canStartPenpal(){
+
+  if(
+    !state.sessionToken
+  ){
+
+    showMemberGate(
+      "visitor"
+    );
+
+    return false;
+  }
+
+  if(
+    ownerIsInFullOwnerMode()
+  ){
+
+    return true;
+  }
+
+  if(
+    visibleAgeGroup() !==
+    "18+"
+  ){
+
+    showPenpalLock(
+      "🔒",
+      "PenPal is for adults 18+",
+      "PenPal is not part of the Elle Next experience."
+    );
+
+    return false;
+  }
+
+  if(
+    visibleTierKey() !==
+    "infinite"
+  ){
+
+    showPenpalLock(
+      "∞",
+      "Infinite ∞ member feature",
+      "PenPal is available through the Infinite ∞ eligibility pathway."
+    );
+
+    return false;
+  }
+
+  return true;
+}
+
+function startPenpalReview(){
+
+  if(
+    !canStartPenpal()
   ){
 
     return;
   }
 
-  penpalBoard.scrollIntoView({
-
-    behavior:
-      "smooth",
-
-    block:
-      "center"
-  });
-
-  if(
-    state.owner
-  ){
-
-    penpalLock.textContent =
-      "Owner access open";
-
-    penpalStatus.textContent =
-      "Welcome in, Owner. Master access is active. The normal PenPal waiting period is bypassed for owner testing.";
-
-  }else{
-
-    penpalLock.textContent =
-      "Eligibility check next";
-
-    penpalStatus.textContent =
-      "Welcome in. Your full PenPal eligibility will be verified server-side before live connection and messaging tools are enabled.";
-  }
-}
-
-function startPenpalRules(){
-
-  if(
-    state.penpalRulesTimer
-  ){
-
-    clearInterval(
-      state.penpalRulesTimer
-    );
-  }
-
-  state.penpalRulesRemaining =
-    60;
-
-  penpalRulesCountdown.textContent =
-    "1:00";
-
-  penpalRulesProgress.style.transform =
-    "scaleX(1)";
-
-  penpalRulesModal.classList.add(
-    "show"
+  resetPenpalEntry(
+    true
   );
 
-  penpalRulesModal.setAttribute(
-    "aria-hidden",
-    "false"
+  showPenpalLock(
+    "♡",
+    "Please read the community rules",
+    "The PenPal Board opens after the 30-second review is complete and you tick the agreement box."
   );
 
-  document.body.classList.add(
-    "locked"
-  );
+  penpalTimerIntro.textContent =
+    "Please read the rules carefully. You may enter in:";
 
-  state.penpalRulesTimer =
+  state.penpalTimer =
     setInterval(
       () => {
 
-        state.penpalRulesRemaining -=
+        state.penpalSeconds -=
           1;
 
-        penpalRulesCountdown.textContent =
-          formatRuleTime(
-            state.penpalRulesRemaining
+        penpalClock.textContent =
+          formatPenpalTime(
+            state.penpalSeconds
           );
-
-        const progress =
-          Math.max(
-            0,
-            state.penpalRulesRemaining /
-            60
-          );
-
-        penpalRulesProgress.style.transform =
-          `scaleX(${progress})`;
 
         if(
-          state.penpalRulesRemaining <=
+          state.penpalSeconds <=
           0
         ){
 
-          closePenpalRules(
-            true
+          clearInterval(
+            state.penpalTimer
           );
+
+          state.penpalTimer =
+            null;
+
+          state.penpalTimerComplete =
+            true;
+
+          penpalClock.textContent =
+            "00:00";
+
+          penpalTimerIntro.textContent =
+            "Review complete. Tick the agreement box to enter.";
+
+          refreshPenpalEnterButton();
         }
       },
       1000
     );
 }
 
-leavePenpalRules.addEventListener(
+penpalStart.addEventListener(
+  "click",
+  startPenpalReview
+);
+
+penpalAgree.addEventListener(
+  "change",
+  refreshPenpalEnterButton
+);
+
+penpalEnterButton.addEventListener(
   "click",
   () => {
 
-    closePenpalRules(
-      false
-    );
+    if(
+      penpalEnterButton.disabled
+    ){
+
+      return;
+    }
+
+    if(
+      !state.penpalTimerComplete ||
+      !penpalAgree.checked
+    ){
+
+      return;
+    }
+
+    state.penpalBoardOpened =
+      true;
+
+    hidePenpalLock();
+
+    if(
+      ownerIsInFullOwnerMode()
+    ){
+
+      penpalStatus.textContent =
+        "Welcome in, Owner. Owner mode is previewing PenPal without the normal membership-duration wait.";
+
+    }else{
+
+      penpalStatus.textContent =
+        "Community review complete. Batch B will add the secure server-side 60-day eligibility token before real matching and messaging are enabled.";
+    }
+
+    document
+      .getElementById("penpalBoardMain")
+      .scrollIntoView({
+
+        behavior:"smooth",
+
+        block:"center"
+      });
   }
 );
 
+function explainPenpal(){
+
+  penpalStatus.textContent =
+    "PenPal is an adult friendship community for eligible Infinite ∞ members. Profiles show broad region only, connections require mutual acceptance, and members can Block, Report, or End Connection.";
+}
+
+penpalHow.addEventListener(
+  "click",
+  explainPenpal
+);
+
+penpalHowLeft.addEventListener(
+  "click",
+  explainPenpal
+);
+
 /* =========================================================
-   PENPAL ENTRY
+   PROFILE PREVIEW BUTTONS
    ========================================================= */
 
-penpalAccess.addEventListener(
-  "click",
-  () => {
+document
+  .querySelectorAll(
+    ".penpal-view-profile, .penpal-save-profile"
+  )
+  .forEach(
+    button => {
 
-    if(
-      !state.sessionToken
-    ){
+      button.addEventListener(
+        "click",
+        () => {
 
-      showMemberGate(
-        "visitor"
+          if(
+            !state.penpalBoardOpened
+          ){
+
+            if(
+              canStartPenpal()
+            ){
+
+              penpalStatus.textContent =
+                "Complete the 30-second rules review and agreement before opening profiles.";
+            }
+
+            return;
+          }
+
+          penpalStatus.textContent =
+            "Profile interaction is a visual preview in Batch A. Secure real profiles, saving and mutual connections come with the PenPal backend.";
+        }
       );
-
-      return;
     }
-
-    /*
-      OWNER MASTER ACCESS
-
-      Owner may enter regardless
-      of preview tier.
-
-      The backend owner bypass is
-      added in the secure PenPal
-      backend batch.
-    */
-
-    if(
-      state.owner
-    ){
-
-      startPenpalRules();
-
-      return;
-    }
-
-    const ageGroup =
-      visibleAgeGroup();
-
-    const tierKey =
-      visibleTierKey();
-
-    if(
-      ageGroup !==
-      "18+"
-    ){
-
-      penpalStatus.textContent =
-        "PenPal is currently for adults 18+ only.";
-
-      return;
-    }
-
-    if(
-      tierKey !==
-      "infinite"
-    ){
-
-      penpalStatus.textContent =
-        "PenPal requires The Infinite ∞ membership plus the full PenPal eligibility requirements.";
-
-      return;
-    }
-
-    /*
-      Infinite members may begin
-      the entry flow.
-
-      Actual 60-day eligibility is
-      intentionally NOT trusted to
-      frontend JavaScript.
-
-      The secure backend check is
-      the next PenPal backend step.
-    */
-
-    startPenpalRules();
-  }
-);
-
-penpalLearn.addEventListener(
-  "click",
-  () => {
-
-    penpalStatus.textContent =
-      "PenPal is built for friendship and genuine connection. Profiles use broad location only, connections require mutual acceptance, and members will have Block, Report, and End Connection safety controls.";
-  }
-);
+  );
 
 /* =========================================================
-   ELLE WORLD
+   WORLD
    ========================================================= */
 
 function createWorldSession(){
@@ -10447,27 +11686,17 @@ function renderWorldData(
       : [];
 
   document
-    .getElementById(
-      "worldActiveCount"
-    )
+    .getElementById("worldActiveCount")
     .textContent =
-      String(
-        active
-      );
+      String(active);
 
   document
-    .getElementById(
-      "worldCountryCount"
-    )
+    .getElementById("worldCountryCount")
     .textContent =
-      String(
-        countryCount
-      );
+      String(countryCount);
 
   document
-    .getElementById(
-      "worldLiveText"
-    )
+    .getElementById("worldLiveText")
     .textContent =
       active > 0
         ? `Elle is glowing in ${countryCount || 1} ${countryCount === 1 ? "country" : "countries"} right now ✨`
@@ -10504,14 +11733,7 @@ function renderWorldData(
           );
 
         pill.textContent =
-          `✦ ${
-            country.name ||
-            country.code
-          } · ${
-            count < 5
-              ? "glowing"
-              : `${count} active`
-          }`;
+          `✦ ${country.name || country.code} · ${count < 5 ? "glowing" : `${count} active`}`;
 
         holder.appendChild(
           pill
@@ -10520,9 +11742,7 @@ function renderWorldData(
     );
 
   document
-    .getElementById(
-      "worldError"
-    )
+    .getElementById("worldError")
     .textContent =
       "";
 }
@@ -10538,8 +11758,7 @@ async function sendWorldHeartbeat(){
         "/api/world",
         {
 
-          method:
-            "POST",
+          method:"POST",
 
           headers:{
             "Content-Type":
@@ -10576,9 +11795,7 @@ async function sendWorldHeartbeat(){
   }catch{
 
     document
-      .getElementById(
-        "worldError"
-      )
+      .getElementById("worldError")
       .textContent =
         "Elle World is taking a tiny rest. ✨";
   }
@@ -10592,8 +11809,7 @@ async function refreshWorld(){
       await fetch(
         "/api/world",
         {
-          cache:
-            "no-store"
+          cache:"no-store"
         }
       );
 
@@ -10619,9 +11835,7 @@ async function refreshWorld(){
   }catch{
 
     document
-      .getElementById(
-        "worldError"
-      )
+      .getElementById("worldError")
       .textContent =
         "Elle World is taking a tiny rest. ✨";
   }
@@ -10770,13 +11984,8 @@ function renderPlaylist(){
         "track-number";
 
       number.textContent =
-        String(
-          index + 1
-        )
-          .padStart(
-            2,
-            "0"
-          );
+        String(index + 1)
+          .padStart(2,"0");
 
       const name =
         document.createElement(
@@ -10888,9 +12097,7 @@ function loadTrack(
   }
 
   state.trackIndex =
-    normalizeTrack(
-      index
-    );
+    normalizeTrack(index);
 
   localStorage.setItem(
     "elleRadioTrack",
@@ -11031,6 +12238,15 @@ playPause.addEventListener(
   () => {
 
     if(
+      visiblePermissions()
+        .elleRadio !==
+      true
+    ){
+
+      return;
+    }
+
+    if(
       state.playing
     ){
 
@@ -11091,13 +12307,13 @@ radioAudio.addEventListener(
 
 const PLAN_DATA = {
 
-  "spark":{
+  spark:{
 
     title:
       "The Spark · $3/month",
 
     description:
-      "A simple way into Elle. Includes Ask Elle chat and image generation.",
+      "Ask Elle chat and image generation.",
 
     href:
       MEMBERSHIP_URL
@@ -11115,13 +12331,13 @@ const PLAN_DATA = {
       MEMBERSHIP_URL
   },
 
-  "infinite":{
+  infinite:{
 
     title:
       "The Infinite ∞ · $15/month",
 
     description:
-      "The fullest adult Elle experience, including expanded perks, Elle Radio, Live Elle access, and the pathway to PenPal eligibility.",
+      "The fullest adult Elle experience, including expanded perks, Elle Radio, Live Elle and the PenPal eligibility pathway.",
 
     href:
       MEMBERSHIP_URL
@@ -11133,7 +12349,7 @@ const PLAN_DATA = {
       "Elle Next · $15/month",
 
     description:
-      "The Elle experience for ages 13–17, with Ask Elle and expanded perks in an age-appropriate environment. Live Elle, Elle Radio, and PenPal are not included.",
+      "The Elle experience for ages 13–17, with Ask Elle and expanded age-appropriate perks. Live Elle, Elle Radio and PenPal are not included.",
 
     href:
       MEMBERSHIP_URL
@@ -11176,7 +12392,7 @@ planSelect.addEventListener(
 );
 
 /* =========================================================
-   CONTACT + REPORT
+   SUPPORT
    ========================================================= */
 
 function showSupport(){
@@ -11219,6 +12435,11 @@ function hideSupport(){
 }
 
 openSupport.addEventListener(
+  "click",
+  showSupport
+);
+
+penpalReportButton.addEventListener(
   "click",
   showSupport
 );
@@ -11323,23 +12544,24 @@ saveSupportDraft.addEventListener(
       details,
 
       tier:
-        state.owner
-          ? `Owner · ${previewTierName()}`
-          : visibleTierName(),
+        visibleTierName(),
 
       owner:
-        state.owner === true
+        state.owner === true,
+
+      ownerPreviewTier:
+        state.owner
+          ? state.ownerTestTier
+          : ""
     };
 
     localStorage.setItem(
       "elleSupportDraft",
-      JSON.stringify(
-        draft
-      )
+      JSON.stringify(draft)
     );
 
     supportMessage.textContent =
-      "Report draft saved on this device. The secure Google Sheets send is connected in the backend support step.";
+      "Report draft saved on this device. Secure Google Sheets submission comes with the backend support endpoint.";
 
     supportMessage.classList.add(
       "show"
@@ -11456,6 +12678,8 @@ function clearSavedSession(){
 
   state.history =
     [];
+
+  resetPenpalEntry();
 }
 
 /* =========================================================
@@ -11479,8 +12703,7 @@ signOut.addEventListener(
           "/api/logout",
           {
 
-            method:
-              "POST",
+            method:"POST",
 
             headers:{
               "Authorization":
@@ -11552,14 +12775,6 @@ document.addEventListener(
 
       hideSupport();
     }
-
-    /*
-      PenPal rules intentionally
-      do not close with Escape.
-
-      They either finish the minute
-      or the member chooses Leave PenPal.
-    */
 
     if(
       mainNav.classList.contains(
@@ -11652,7 +12867,7 @@ async function continueStartup(){
 }
 
 /* =========================================================
-   WORLD STARTUP
+   WORLD START
    ========================================================= */
 
 createWorldSession();
@@ -11713,6 +12928,8 @@ function init(){
 
   renderPlaylist();
 
+  resetPenpalEntry();
+
   continueStartup();
 }
 
@@ -11721,5 +12938,4 @@ init();
 </script>
 
 </body>
-
 </html>
