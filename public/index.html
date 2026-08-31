@@ -3688,12 +3688,16 @@ body.elle-powered .footer{
     );
 }
 
-.penpal-profile-art svg{
+.penpal-member-photo{
 
   display:block;
 
   width:100%;
   height:100%;
+
+  object-fit:cover;
+
+  object-position:center 22%;
 }
 
 .online-badge{
@@ -5444,7 +5448,6 @@ body.elle-powered .footer{
 
 </style>
 </head>
-
 <body>
 
 <!-- =======================================================
@@ -6445,8 +6448,6 @@ body.elle-powered .footer{
 
     <div class="penpal-stage">
 
-      <!-- LEFT -->
-
       <aside class="penpal-intro">
 
         <div class="penpal-intro-top">
@@ -6661,8 +6662,6 @@ body.elle-powered .footer{
 
       </aside>
 
-      <!-- RIGHT -->
-
       <div class="penpal-board-wrap">
 
         <div
@@ -6782,200 +6781,15 @@ body.elle-powered .footer{
 
           <div class="penpal-profile-list">
 
-            <!-- AALIYAH -->
-
             <article class="penpal-profile-card">
 
               <div class="penpal-profile-art">
 
-                <svg
-                  viewBox="0 0 200 190"
-                  role="img"
-                  aria-label="Stylized portrait of Aaliyah"
-                  preserveAspectRatio="xMidYMid slice"
+                <img
+                  src="penpal1.png"
+                  alt="Aaliyah"
+                  class="penpal-member-photo"
                 >
-
-                  <defs>
-
-                    <linearGradient
-                      id="aBg"
-                      x1="0"
-                      y1="0"
-                      x2="1"
-                      y2="1"
-                    >
-
-                      <stop
-                        offset="0%"
-                        stop-color="#995b39"
-                      />
-
-                      <stop
-                        offset="52%"
-                        stop-color="#4c291f"
-                      />
-
-                      <stop
-                        offset="100%"
-                        stop-color="#1c1112"
-                      />
-
-                    </linearGradient>
-
-                    <radialGradient id="aGlow">
-
-                      <stop
-                        offset="0%"
-                        stop-color="#f6b760"
-                        stop-opacity=".7"
-                      />
-
-                      <stop
-                        offset="100%"
-                        stop-color="#f6b760"
-                        stop-opacity="0"
-                      />
-
-                    </radialGradient>
-
-                  </defs>
-
-                  <rect
-                    width="200"
-                    height="190"
-                    fill="url(#aBg)"
-                  />
-
-                  <circle
-                    cx="30"
-                    cy="32"
-                    r="30"
-                    fill="url(#aGlow)"
-                  />
-
-                  <circle
-                    cx="173"
-                    cy="42"
-                    r="42"
-                    fill="url(#aGlow)"
-                    opacity=".5"
-                  />
-
-                  <g
-                    fill="#140c0d"
-                    opacity=".96"
-                  >
-
-                    <circle
-                      cx="89"
-                      cy="60"
-                      r="55"
-                    />
-
-                    <circle
-                      cx="60"
-                      cy="65"
-                      r="42"
-                    />
-
-                    <circle
-                      cx="125"
-                      cy="58"
-                      r="45"
-                    />
-
-                    <circle
-                      cx="48"
-                      cy="92"
-                      r="35"
-                    />
-
-                    <circle
-                      cx="142"
-                      cy="90"
-                      r="35"
-                    />
-
-                  </g>
-
-                  <ellipse
-                    cx="101"
-                    cy="88"
-                    rx="42"
-                    ry="51"
-                    fill="#754129"
-                  />
-
-                  <path
-                    d="M67 76 Q101 39 137 73 Q124 56 100 53 Q79 55 67 76"
-                    fill="#140c0d"
-                  />
-
-                  <ellipse
-                    cx="84"
-                    cy="86"
-                    rx="4"
-                    ry="2.4"
-                    fill="#1e1410"
-                  />
-
-                  <ellipse
-                    cx="118"
-                    cy="86"
-                    rx="4"
-                    ry="2.4"
-                    fill="#1e1410"
-                  />
-
-                  <path
-                    d="M88 107 Q101 115 115 106"
-                    fill="none"
-                    stroke="#d59a80"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-
-                  <path
-                    d="M95 91 Q99 99 95 102"
-                    fill="none"
-                    stroke="#5b2e21"
-                    stroke-width="1.4"
-                  />
-
-                  <circle
-                    cx="64"
-                    cy="92"
-                    r="4"
-                    fill="#e2b062"
-                  />
-
-                  <circle
-                    cx="139"
-                    cy="92"
-                    r="4"
-                    fill="#e2b062"
-                  />
-
-                  <path
-                    d="M44 190 Q52 130 101 128 Q157 130 166 190"
-                    fill="#5d2822"
-                  />
-
-                  <path
-                    d="M67 141 Q100 159 133 140"
-                    fill="none"
-                    stroke="#d5a054"
-                    stroke-width="3"
-                  />
-
-                  <circle
-                    cx="101"
-                    cy="151"
-                    r="3"
-                    fill="#e9c574"
-                  />
-
-                </svg>
 
                 <div class="online-badge">
                   Online now
@@ -7030,9 +6844,7 @@ body.elle-powered .footer{
 
                 <div class="penpal-detail-row">
 
-                  <span>
-                    ◌
-                  </span>
+                  <span>◌</span>
 
                   <div>
                     Languages: English, Patois
@@ -7042,9 +6854,7 @@ body.elle-powered .footer{
 
                 <div class="penpal-detail-row">
 
-                  <span>
-                    ☺
-                  </span>
+                  <span>☺</span>
 
                   <div>
                     Personality: Empathetic
@@ -7054,9 +6864,7 @@ body.elle-powered .footer{
 
                 <div class="penpal-detail-row">
 
-                  <span>
-                    ♡
-                  </span>
+                  <span>♡</span>
 
                   <div>
                     Looking for: Kindred minds
@@ -7066,9 +6874,7 @@ body.elle-powered .footer{
 
                 <div class="penpal-detail-row">
 
-                  <span>
-                    ●
-                  </span>
+                  <span>●</span>
 
                   <div>
                     Active: This week
@@ -7098,188 +6904,15 @@ body.elle-powered .footer{
 
             </article>
 
-            <!-- JASMINE -->
-
             <article class="penpal-profile-card">
 
               <div class="penpal-profile-art">
 
-                <svg
-                  viewBox="0 0 200 190"
-                  role="img"
-                  aria-label="Stylized portrait of Jasmine"
-                  preserveAspectRatio="xMidYMid slice"
+                <img
+                  src="penpal2.png"
+                  alt="Jasmine"
+                  class="penpal-member-photo"
                 >
-
-                  <defs>
-
-                    <linearGradient
-                      id="jBg"
-                      x1="0"
-                      y1="0"
-                      x2="1"
-                      y2="1"
-                    >
-
-                      <stop
-                        offset="0%"
-                        stop-color="#b16735"
-                      />
-
-                      <stop
-                        offset="52%"
-                        stop-color="#6a3926"
-                      />
-
-                      <stop
-                        offset="100%"
-                        stop-color="#251511"
-                      />
-
-                    </linearGradient>
-
-                    <radialGradient id="jGlow">
-
-                      <stop
-                        offset="0%"
-                        stop-color="#ffd16c"
-                        stop-opacity=".76"
-                      />
-
-                      <stop
-                        offset="100%"
-                        stop-color="#ffd16c"
-                        stop-opacity="0"
-                      />
-
-                    </radialGradient>
-
-                  </defs>
-
-                  <rect
-                    width="200"
-                    height="190"
-                    fill="url(#jBg)"
-                  />
-
-                  <circle
-                    cx="25"
-                    cy="20"
-                    r="30"
-                    fill="url(#jGlow)"
-                  />
-
-                  <circle
-                    cx="170"
-                    cy="33"
-                    r="34"
-                    fill="url(#jGlow)"
-                  />
-
-                  <g fill="#2b1710">
-
-                    <circle
-                      cx="61"
-                      cy="57"
-                      r="30"
-                    />
-
-                    <circle
-                      cx="87"
-                      cy="40"
-                      r="34"
-                    />
-
-                    <circle
-                      cx="118"
-                      cy="42"
-                      r="34"
-                    />
-
-                    <circle
-                      cx="145"
-                      cy="62"
-                      r="31"
-                    />
-
-                    <circle
-                      cx="76"
-                      cy="80"
-                      r="29"
-                    />
-
-                    <circle
-                      cx="131"
-                      cy="79"
-                      r="29"
-                    />
-
-                  </g>
-
-                  <ellipse
-                    cx="103"
-                    cy="91"
-                    rx="40"
-                    ry="48"
-                    fill="#845037"
-                  />
-
-                  <path
-                    d="M67 78 Q102 54 139 77 Q124 58 103 55 Q80 58 67 78"
-                    fill="#2a160f"
-                  />
-
-                  <ellipse
-                    cx="86"
-                    cy="88"
-                    rx="4"
-                    ry="2.4"
-                    fill="#22150f"
-                  />
-
-                  <ellipse
-                    cx="120"
-                    cy="88"
-                    rx="4"
-                    ry="2.4"
-                    fill="#22150f"
-                  />
-
-                  <path
-                    d="M91 108 Q103 115 116 107"
-                    fill="none"
-                    stroke="#dda58f"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-
-                  <circle
-                    cx="65"
-                    cy="95"
-                    r="3.6"
-                    fill="#f0c36e"
-                  />
-
-                  <circle
-                    cx="140"
-                    cy="95"
-                    r="3.6"
-                    fill="#f0c36e"
-                  />
-
-                  <path
-                    d="M42 190 Q58 136 102 132 Q147 137 164 190"
-                    fill="#d5a887"
-                  />
-
-                  <path
-                    d="M79 142 Q102 154 126 142"
-                    fill="none"
-                    stroke="#f1d3ad"
-                    stroke-width="4"
-                  />
-
-                </svg>
 
                 <div class="online-badge">
                   Online now
@@ -7332,9 +6965,7 @@ body.elle-powered .footer{
 
                 <div class="penpal-detail-row">
 
-                  <span>
-                    ◌
-                  </span>
+                  <span>◌</span>
 
                   <div>
                     Languages: English
@@ -7344,9 +6975,7 @@ body.elle-powered .footer{
 
                 <div class="penpal-detail-row">
 
-                  <span>
-                    ☺
-                  </span>
+                  <span>☺</span>
 
                   <div>
                     Personality: Thoughtful
@@ -7356,9 +6985,7 @@ body.elle-powered .footer{
 
                 <div class="penpal-detail-row">
 
-                  <span>
-                    ♡
-                  </span>
+                  <span>♡</span>
 
                   <div>
                     Looking for: Genuine friends
@@ -7368,9 +6995,7 @@ body.elle-powered .footer{
 
                 <div class="penpal-detail-row">
 
-                  <span>
-                    ●
-                  </span>
+                  <span>●</span>
 
                   <div>
                     Active: Online now
@@ -7400,172 +7025,15 @@ body.elle-powered .footer{
 
             </article>
 
-            <!-- NIA -->
-
             <article class="penpal-profile-card">
 
               <div class="penpal-profile-art">
 
-                <svg
-                  viewBox="0 0 200 190"
-                  role="img"
-                  aria-label="Stylized portrait of Nia"
-                  preserveAspectRatio="xMidYMid slice"
+                <img
+                  src="penpal3.png"
+                  alt="Nia"
+                  class="penpal-member-photo"
                 >
-
-                  <defs>
-
-                    <linearGradient
-                      id="nBg"
-                      x1="0"
-                      y1="0"
-                      x2="1"
-                      y2="1"
-                    >
-
-                      <stop
-                        offset="0%"
-                        stop-color="#9b633d"
-                      />
-
-                      <stop
-                        offset="48%"
-                        stop-color="#543324"
-                      />
-
-                      <stop
-                        offset="100%"
-                        stop-color="#17100e"
-                      />
-
-                    </linearGradient>
-
-                    <radialGradient id="nGlow">
-
-                      <stop
-                        offset="0%"
-                        stop-color="#dba95e"
-                        stop-opacity=".67"
-                      />
-
-                      <stop
-                        offset="100%"
-                        stop-color="#dba95e"
-                        stop-opacity="0"
-                      />
-
-                    </radialGradient>
-
-                  </defs>
-
-                  <rect
-                    width="200"
-                    height="190"
-                    fill="url(#nBg)"
-                  />
-
-                  <circle
-                    cx="32"
-                    cy="34"
-                    r="42"
-                    fill="url(#nGlow)"
-                  />
-
-                  <circle
-                    cx="170"
-                    cy="60"
-                    r="45"
-                    fill="url(#nGlow)"
-                    opacity=".45"
-                  />
-
-                  <g fill="#140c0c">
-
-                    <ellipse
-                      cx="100"
-                      cy="54"
-                      rx="55"
-                      ry="44"
-                    />
-
-                    <circle
-                      cx="58"
-                      cy="75"
-                      r="35"
-                    />
-
-                    <circle
-                      cx="144"
-                      cy="74"
-                      r="37"
-                    />
-
-                  </g>
-
-                  <ellipse
-                    cx="101"
-                    cy="91"
-                    rx="40"
-                    ry="49"
-                    fill="#673a27"
-                  />
-
-                  <path
-                    d="M66 79 Q101 49 138 78 Q124 57 101 55 Q80 57 66 79"
-                    fill="#140c0c"
-                  />
-
-                  <ellipse
-                    cx="84"
-                    cy="88"
-                    rx="4"
-                    ry="2.4"
-                    fill="#1a100e"
-                  />
-
-                  <ellipse
-                    cx="119"
-                    cy="88"
-                    rx="4"
-                    ry="2.4"
-                    fill="#1a100e"
-                  />
-
-                  <path
-                    d="M89 108 Q101 117 116 107"
-                    fill="none"
-                    stroke="#cc8976"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                  />
-
-                  <circle
-                    cx="64"
-                    cy="94"
-                    r="3.5"
-                    fill="#d8aa5e"
-                  />
-
-                  <circle
-                    cx="140"
-                    cy="94"
-                    r="3.5"
-                    fill="#d8aa5e"
-                  />
-
-                  <path
-                    d="M43 190 Q53 135 101 130 Q154 134 165 190"
-                    fill="#40211d"
-                  />
-
-                  <path
-                    d="M76 140 Q101 155 129 140"
-                    fill="none"
-                    stroke="#c99952"
-                    stroke-width="3"
-                  />
-
-                </svg>
 
                 <div class="online-badge">
                   Online now
@@ -7618,9 +7086,7 @@ body.elle-powered .footer{
 
                 <div class="penpal-detail-row">
 
-                  <span>
-                    ◌
-                  </span>
+                  <span>◌</span>
 
                   <div>
                     Languages: English, Zulu
@@ -7630,9 +7096,7 @@ body.elle-powered .footer{
 
                 <div class="penpal-detail-row">
 
-                  <span>
-                    ☺
-                  </span>
+                  <span>☺</span>
 
                   <div>
                     Personality: Adventurous
@@ -7642,9 +7106,7 @@ body.elle-powered .footer{
 
                 <div class="penpal-detail-row">
 
-                  <span>
-                    ♡
-                  </span>
+                  <span>♡</span>
 
                   <div>
                     Looking for: Positive energy
@@ -7654,12 +7116,133 @@ body.elle-powered .footer{
 
                 <div class="penpal-detail-row">
 
-                  <span>
-                    ●
-                  </span>
+                  <span>●</span>
 
                   <div>
                     Active: This week
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="penpal-profile-actions">
+
+                <button
+                  type="button"
+                  class="penpal-view-profile"
+                >
+                  View Profile
+                </button>
+
+                <button
+                  type="button"
+                  class="penpal-save-profile"
+                >
+                  ♡ Save
+                </button>
+
+              </div>
+
+            </article>
+
+            <article class="penpal-profile-card">
+
+              <div class="penpal-profile-art">
+
+                <img
+                  src="penpal4.png"
+                  alt="Amara"
+                  class="penpal-member-photo"
+                >
+
+                <div class="online-badge">
+                  Online now
+                </div>
+
+              </div>
+
+              <div class="penpal-profile-bio">
+
+                <div class="penpal-name">
+                  Amara
+                  <span class="penpal-verified">
+                    ✿
+                  </span>
+                </div>
+
+                <div class="penpal-region">
+                  <span>United Kingdom</span>
+                  <span>•</span>
+                  <span>London</span>
+                </div>
+
+                <p class="penpal-bio-copy">
+                  Style lover, foodie and ambitious soft-life
+                  enthusiast. I love laughter, beautiful places,
+                  honest conversations and women cheering each other on.
+                </p>
+
+                <div class="penpal-tags">
+
+                  <span class="penpal-tag">
+                    Fashion
+                  </span>
+
+                  <span class="penpal-tag">
+                    Food
+                  </span>
+
+                  <span class="penpal-tag">
+                    Travel
+                  </span>
+
+                  <span class="penpal-tag">
+                    Lifestyle
+                  </span>
+
+                </div>
+
+              </div>
+
+              <div class="penpal-profile-details">
+
+                <div class="penpal-detail-row">
+
+                  <span>◌</span>
+
+                  <div>
+                    Languages: English
+                  </div>
+
+                </div>
+
+                <div class="penpal-detail-row">
+
+                  <span>☺</span>
+
+                  <div>
+                    Personality: Warm + outgoing
+                  </div>
+
+                </div>
+
+                <div class="penpal-detail-row">
+
+                  <span>♡</span>
+
+                  <div>
+                    Looking for: Good-energy friendships
+                  </div>
+
+                </div>
+
+                <div class="penpal-detail-row">
+
+                  <span>●</span>
+
+                  <div>
+                    Active: Today
                   </div>
 
                 </div>
@@ -8120,8 +7703,6 @@ body.elle-powered .footer{
   preload="metadata"
 ></audio>
 
-<!-- TURNTABLE -->
-
 <div
   class="turntable-takeover"
   id="turntableTakeover"
@@ -8151,7 +7732,7 @@ body.elle-powered .footer{
 
 </div>
 
-<!-- CONTACT REPORT -->
+<!-- CONTACT + REPORT -->
 
 <div
   class="support-modal"
@@ -8386,6 +7967,7 @@ body.elle-powered .footer{
         Serious confirmed harassment, sexual misconduct,
         threats or exploitation may result in suspension
         or permanent removal.
+
       </div>
 
     </div>
@@ -8401,7 +7983,6 @@ body.elle-powered .footer{
   </div>
 
 </div>
-
 <script>
 
 /* =========================================================
@@ -9924,8 +9505,6 @@ function applyAccess(){
   const tierName =
     visibleTierName();
 
-  /* OWNER BAR */
-
   ownerBar.classList.toggle(
     "show",
     state.owner === true
@@ -9975,8 +9554,6 @@ function applyAccess(){
         : "Your AI guide";
   }
 
-  /* RADIO */
-
   const hasRadio =
     permissions.elleRadio ===
     true;
@@ -10020,8 +9597,6 @@ function applyAccess(){
         ? "Close Radio"
         : "Open Radio";
   }
-
-  /* LIVE ELLE */
 
   const hasLiveElle =
     permissions.liveElle ===
@@ -10067,8 +9642,6 @@ function applyAccess(){
         ? "Live Elle one-on-one human sessions are not part of the Elle Next 13–17 experience."
         : "Live Elle is included with The Infinite ∞ membership.";
   }
-
-  /* PENPAL */
 
   resetPenpalEntry(
     false
@@ -10441,7 +10014,9 @@ function isImageRequest(
     /\b(how\s+(?:do|can|should)\s+i|teach\s+me|show\s+me\s+how|help\s+me\s+(?:draw|paint|sketch|illustrate))\b/i;
 
   if(
-    howTo.test(value)
+    howTo.test(
+      value
+    )
   ){
 
     return false;
@@ -10458,10 +10033,16 @@ function isImageRequest(
 
   return (
     (
-      creationWord.test(value) &&
-      imageWord.test(value)
+      creationWord.test(
+        value
+      ) &&
+      imageWord.test(
+        value
+      )
     ) ||
-    directVisual.test(value)
+    directVisual.test(
+      value
+    )
   );
 }
 
@@ -10609,7 +10190,9 @@ function addImageBubble(
     "click",
     () => {
 
-      openGeneratedImage(src);
+      openGeneratedImage(
+        src
+      );
     }
   );
 
@@ -10643,7 +10226,9 @@ function addImageBubble(
     "click",
     () => {
 
-      openGeneratedImage(src);
+      openGeneratedImage(
+        src
+      );
     }
   );
 
@@ -10878,7 +10463,9 @@ async function sendMessage(
   try{
 
     const wantsImage =
-      isImageRequest(text);
+      isImageRequest(
+        text
+      );
 
     const endpoint =
       wantsImage
@@ -10921,7 +10508,9 @@ async function sendMessage(
           },
 
           body:
-            JSON.stringify(body)
+            JSON.stringify(
+              body
+            )
         }
       );
 
@@ -11106,7 +10695,9 @@ chatInput.addEventListener(
 function bringChatIntoView(){
 
   document
-    .getElementById("ask")
+    .getElementById(
+      "ask"
+    )
     .scrollIntoView({
 
       behavior:"smooth",
@@ -11133,7 +10724,9 @@ function promptChat(
   setTimeout(
     () => {
 
-      sendMessage(text);
+      sendMessage(
+        text
+      );
 
     },
     500
@@ -11281,7 +10874,9 @@ heroLiveLearn.addEventListener(
   () => {
 
     document
-      .getElementById("live")
+      .getElementById(
+        "live"
+      )
       .scrollIntoView({
 
         behavior:"smooth"
@@ -11341,7 +10936,10 @@ function formatPenpalTime(
   const safe =
     Math.max(
       0,
-      Number(seconds || 0)
+      Number(
+        seconds ||
+        0
+      )
     );
 
   return `00:${String(safe).padStart(2,"0")}`;
@@ -11572,7 +11170,9 @@ penpalEnterButton.addEventListener(
     }
 
     document
-      .getElementById("penpalBoardMain")
+      .getElementById(
+        "penpalBoardMain"
+      )
       .scrollIntoView({
 
         behavior:"smooth",
@@ -11686,17 +11286,27 @@ function renderWorldData(
       : [];
 
   document
-    .getElementById("worldActiveCount")
+    .getElementById(
+      "worldActiveCount"
+    )
     .textContent =
-      String(active);
+      String(
+        active
+      );
 
   document
-    .getElementById("worldCountryCount")
+    .getElementById(
+      "worldCountryCount"
+    )
     .textContent =
-      String(countryCount);
+      String(
+        countryCount
+      );
 
   document
-    .getElementById("worldLiveText")
+    .getElementById(
+      "worldLiveText"
+    )
     .textContent =
       active > 0
         ? `Elle is glowing in ${countryCount || 1} ${countryCount === 1 ? "country" : "countries"} right now ✨`
@@ -11742,7 +11352,9 @@ function renderWorldData(
     );
 
   document
-    .getElementById("worldError")
+    .getElementById(
+      "worldError"
+    )
     .textContent =
       "";
 }
@@ -11795,7 +11407,9 @@ async function sendWorldHeartbeat(){
   }catch{
 
     document
-      .getElementById("worldError")
+      .getElementById(
+        "worldError"
+      )
       .textContent =
         "Elle World is taking a tiny rest. ✨";
   }
@@ -11835,7 +11449,9 @@ async function refreshWorld(){
   }catch{
 
     document
-      .getElementById("worldError")
+      .getElementById(
+        "worldError"
+      )
       .textContent =
         "Elle World is taking a tiny rest. ✨";
   }
@@ -11984,8 +11600,13 @@ function renderPlaylist(){
         "track-number";
 
       number.textContent =
-        String(index + 1)
-          .padStart(2,"0");
+        String(
+          index + 1
+        )
+          .padStart(
+            2,
+            "0"
+          );
 
       const name =
         document.createElement(
@@ -12097,7 +11718,9 @@ function loadTrack(
   }
 
   state.trackIndex =
-    normalizeTrack(index);
+    normalizeTrack(
+      index
+    );
 
   localStorage.setItem(
     "elleRadioTrack",
@@ -12557,7 +12180,9 @@ saveSupportDraft.addEventListener(
 
     localStorage.setItem(
       "elleSupportDraft",
-      JSON.stringify(draft)
+      JSON.stringify(
+        draft
+      )
     );
 
     supportMessage.textContent =
