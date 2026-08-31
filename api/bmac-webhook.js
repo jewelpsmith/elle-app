@@ -7,11 +7,11 @@ export const config = {
 };
 
 const TIER_ACCESS = {
-Elle Next": {
+  "Elle Next": {
     key: "elle-next",
     rank: 1,
   },
-  
+
   "The Spark": {
     key: "spark",
     rank: 1,
@@ -55,30 +55,39 @@ function getRedisConfig() {
 }
 
 async function redisCommand(command) {
-  const { url, token } = getRedisConfig();
+  const { url, token } =
+    getRedisConfig();
 
-  const response = await fetch(url, {
-    method: "POST",
+  const response =
+    await fetch(url, {
+      method: "POST",
 
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
+      headers: {
+        Authorization:
+          `Bearer ${token}`,
 
-    body: JSON.stringify(command),
-  });
+        "Content-Type":
+          "application/json",
+      },
 
-  const data = await response.json();
+      body:
+        JSON.stringify(command),
+    });
+
+  const data =
+    await response.json();
 
   if (!response.ok) {
     throw new Error(
       data?.error ||
-        `Redis request failed with status ${response.status}`
+      `Redis request failed with status ${response.status}`
     );
   }
 
   if (data?.error) {
-    throw new Error(data.error);
+    throw new Error(
+      data.error
+    );
   }
 
   return data.result;
@@ -92,39 +101,61 @@ function normalizeEmail(value) {
 
 function getTier(levelName) {
   const cleanName =
-    String(levelName || "").trim();
+    String(
+      levelName || ""
+    ).trim();
 
-  if (TIER_ACCESS[cleanName]) {
+  if (
+    TIER_ACCESS[
+      cleanName
+    ]
+  ) {
     return {
-      name: cleanName,
-      ...TIER_ACCESS[cleanName],
+      name:
+        cleanName,
+
+      ...TIER_ACCESS[
+        cleanName
+      ],
     };
   }
 
   const lower =
     cleanName.toLowerCase();
-if (
-  lower.includes(
-    "elle next"
-  )
-) {
-  return {
-    name:
-      cleanName ||
-      "Elle Next",
 
-    key: "elle-next",
-    rank: 1,
-  };
-}
-  if (lower.includes("infinite")) {
+  if (
+    lower.includes(
+      "elle next"
+    )
+  ) {
+    return {
+      name:
+        cleanName ||
+        "Elle Next",
+
+      key:
+        "elle-next",
+
+      rank:
+        1,
+    };
+  }
+
+  if (
+    lower.includes(
+      "infinite"
+    )
+  ) {
     return {
       name:
         cleanName ||
         "The Infinite ∞",
 
-      key: "infinite",
-      rank: 3,
+      key:
+        "infinite",
+
+      rank:
+        3,
     };
   }
 
@@ -138,19 +169,29 @@ if (
         cleanName ||
         "The Idea Circle",
 
-      key: "idea-circle",
-      rank: 2,
+      key:
+        "idea-circle",
+
+      rank:
+        2,
     };
   }
 
-  if (lower.includes("spark")) {
+  if (
+    lower.includes(
+      "spark"
+    )
+  ) {
     return {
       name:
         cleanName ||
         "The Spark",
 
-      key: "spark",
-      rank: 1,
+      key:
+        "spark",
+
+      rank:
+        1,
     };
   }
 
@@ -159,21 +200,72 @@ if (
       cleanName ||
       "Unknown",
 
-    key: "unknown",
-    rank: 0,
+    key:
+      "unknown",
+
+    rank:
+      0,
+  };
+}
+
+function preservePreviousTier(
+  detectedTier,
+  previous
+) {
+  if (
+    detectedTier?.key &&
+    detectedTier.key !==
+    "unknown"
+  ) {
+    return detectedTier;
+  }
+
+  const previousKey =
+    String(
+      previous?.tierKey ||
+      ""
+    )
+      .trim()
+      .toLowerCase();
+
+  if (
+    !previousKey
+  ) {
+    return detectedTier;
+  }
+
+  return {
+    name:
+      previous?.tierName ||
+      detectedTier?.name ||
+      "Unknown",
+
+    key:
+      previousKey,
+
+    rank:
+      Number(
+        previous?.tierRank ||
+        0
+      ),
   };
 }
 
 function readRawBody(req) {
   return new Promise(
-    (resolve, reject) => {
+    (
+      resolve,
+      reject
+    ) => {
       let data = "";
 
-      req.setEncoding("utf8");
+      req.setEncoding(
+        "utf8"
+      );
 
       req.on(
         "data",
-        (chunk) => {
+        chunk => {
           data += chunk;
         }
       );
@@ -198,9 +290,13 @@ function verifySignature(
   signature
 ) {
   const secret =
-    process.env.BMAC_WEBHOOK_SECRET;
+    process.env
+      .BMAC_WEBHOOK_SECRET;
 
-  if (!secret || !signature) {
+  if (
+    !secret ||
+    !signature
+  ) {
     return false;
   }
 
@@ -210,11 +306,17 @@ function verifySignature(
         "sha256",
         secret
       )
-      .update(rawBody)
-      .digest("hex");
+      .update(
+        rawBody
+      )
+      .digest(
+        "hex"
+      );
 
   const received =
-    String(signature)
+    String(
+      signature
+    )
       .trim()
       .replace(
         /^sha256=/i,
@@ -240,10 +342,11 @@ function verifySignature(
     return false;
   }
 
-  return crypto.timingSafeEqual(
-    expectedBuffer,
-    receivedBuffer
-  );
+  return crypto
+    .timingSafeEqual(
+      expectedBuffer,
+      receivedBuffer
+    );
 }
 
 function toBoolean(value) {
@@ -256,16 +359,91 @@ function toBoolean(value) {
 }
 
 function toUnixSeconds(value) {
-  const number =
+  const numeric =
     Number(value);
 
   if (
-    Number.isFinite(number)
+    Number.isFinite(
+      numeric
+    ) &&
+    numeric > 0
   ) {
-    return number;
+    if (
+      numeric >
+      100000000000
+    ) {
+      return Math.floor(
+        numeric / 1000
+      );
+    }
+
+    return Math.floor(
+      numeric
+    );
   }
 
-  return 0;
+  const parsed =
+    Date.parse(
+      String(
+        value || ""
+      )
+    );
+
+  if (
+    !Number.isFinite(
+      parsed
+    )
+  ) {
+    return 0;
+  }
+
+  return Math.floor(
+    parsed / 1000
+  );
+}
+
+function toEpochMilliseconds(
+  value
+) {
+  const numeric =
+    Number(value);
+
+  if (
+    Number.isFinite(
+      numeric
+    ) &&
+    numeric > 0
+  ) {
+    if (
+      numeric >
+      100000000000
+    ) {
+      return Math.floor(
+        numeric
+      );
+    }
+
+    return Math.floor(
+      numeric * 1000
+    );
+  }
+
+  const parsed =
+    Date.parse(
+      String(
+        value || ""
+      )
+    );
+
+  if (
+    !Number.isFinite(
+      parsed
+    )
+  ) {
+    return 0;
+  }
+
+  return parsed;
 }
 
 function shouldHaveAccess(
@@ -274,7 +452,8 @@ function shouldHaveAccess(
 ) {
   const now =
     Math.floor(
-      Date.now() / 1000
+      Date.now() /
+      1000
     );
 
   const periodEnd =
@@ -295,11 +474,15 @@ function shouldHaveAccess(
   ) {
     const status =
       String(
-        data.status || ""
-      ).toLowerCase();
+        data.status ||
+        ""
+      )
+        .trim()
+        .toLowerCase();
 
     return (
-      status === "active" &&
+      status ===
+        "active" &&
       !toBoolean(
         data.paused
       )
@@ -314,7 +497,8 @@ function shouldHaveAccess(
       toBoolean(
         data.cancel_at_period_end
       ) &&
-      periodEnd > now
+      periodEnd >
+        now
     ) {
       return true;
     }
@@ -327,25 +511,30 @@ function shouldHaveAccess(
     "membership.paused"
   ) {
     return (
-      periodEnd > now
+      periodEnd >
+      now
     );
   }
 
   return false;
 }
 
-function getEventType(event) {
+function getEventType(
+  event
+) {
   return String(
     event?.type ||
-      event?.event ||
-      event?.event_type ||
-      ""
+    event?.event ||
+    event?.event_type ||
+    ""
   )
     .trim()
     .toLowerCase();
 }
 
-function getEventData(event) {
+function getEventData(
+  event
+) {
   return (
     event?.data ||
     event?.object ||
@@ -354,21 +543,25 @@ function getEventData(event) {
   );
 }
 
-function getMemberEmail(data) {
+function getMemberEmail(
+  data
+) {
   return normalizeEmail(
     data.supporter_email ||
-      data.email ||
-      data.payer_email ||
-      data.member_email
+    data.email ||
+    data.payer_email ||
+    data.member_email
   );
 }
 
-function getMemberName(data) {
+function getMemberName(
+  data
+) {
   return String(
     data.supporter_name ||
-      data.name ||
-      data.member_name ||
-      ""
+    data.name ||
+    data.member_name ||
+    ""
   ).trim();
 }
 
@@ -377,11 +570,87 @@ function getMembershipLevelName(
 ) {
   return String(
     data.membership_level_name ||
-      data.membership_name ||
-      data.level_name ||
-      data.tier_name ||
-      ""
+    data.membership_name ||
+    data.level_name ||
+    data.tier_name ||
+    ""
   ).trim();
+}
+
+async function readExistingMember(
+  email
+) {
+  const rawMember =
+    await redisCommand([
+      "GET",
+      `elle:member:${email}`,
+    ]);
+
+  if (
+    !rawMember
+  ) {
+    return null;
+  }
+
+  try {
+    return (
+      typeof rawMember ===
+      "string"
+        ? JSON.parse(
+            rawMember
+          )
+        : rawMember
+    );
+
+  } catch {
+    return null;
+  }
+}
+
+function getContinuousInfiniteSince({
+  previous,
+  tier,
+  accessActive,
+  currentPeriodStart,
+}) {
+  if (
+    tier.key !==
+      "infinite" ||
+    accessActive !==
+      true
+  ) {
+    return null;
+  }
+
+  const previousSince =
+    Number(
+      previous
+        ?.continuousInfiniteSince ||
+      0
+    );
+
+  if (
+    previous?.tierKey ===
+      "infinite" &&
+    previous?.accessActive ===
+      true &&
+    previousSince > 0
+  ) {
+    return previousSince;
+  }
+
+  const periodStart =
+    toEpochMilliseconds(
+      currentPeriodStart
+    );
+
+  if (
+    periodStart > 0
+  ) {
+    return periodStart;
+  }
+
+  return Date.now();
 }
 
 export default async function handler(
@@ -389,19 +658,25 @@ export default async function handler(
   res
 ) {
   if (
-    req.method !== "POST"
+    req.method !==
+    "POST"
   ) {
     return res
       .status(405)
       .json({
-        success: false,
-        error: "POST only",
+        success:
+          false,
+
+        error:
+          "POST only",
       });
   }
 
   try {
     const rawBody =
-      await readRawBody(req);
+      await readRawBody(
+        req
+      );
 
     const signature =
       req.headers[
@@ -421,7 +696,9 @@ export default async function handler(
       return res
         .status(401)
         .json({
-          success: false,
+          success:
+            false,
+
           error:
             "Invalid webhook signature",
         });
@@ -431,18 +708,26 @@ export default async function handler(
 
     try {
       event =
-        JSON.parse(rawBody);
+        JSON.parse(
+          rawBody
+        );
+
     } catch {
       return res
         .status(400)
         .json({
-          success: false,
-          error: "Invalid JSON",
+          success:
+            false,
+
+          error:
+            "Invalid JSON",
         });
     }
 
     const eventType =
-      getEventType(event);
+      getEventType(
+        event
+      );
 
     console.log(
       "Buy Me a Coffee event:",
@@ -465,19 +750,29 @@ export default async function handler(
       return res
         .status(200)
         .json({
-          success: true,
-          ignored: true,
+          success:
+            true,
+
+          ignored:
+            true,
+
           eventType,
         });
     }
 
     const data =
-      getEventData(event);
+      getEventData(
+        event
+      );
 
     const email =
-      getMemberEmail(data);
+      getMemberEmail(
+        data
+      );
 
-    if (!email) {
+    if (
+      !email
+    ) {
       console.log(
         "Membership event had no email."
       );
@@ -485,45 +780,100 @@ export default async function handler(
       return res
         .status(200)
         .json({
-          success: true,
-          ignored: true,
+          success:
+            true,
+
+          ignored:
+            true,
+
           reason:
             "No member email",
         });
     }
 
-    const tier =
+    const previous =
+      await readExistingMember(
+        email
+      );
+
+    const detectedTier =
       getTier(
         getMembershipLevelName(
           data
         )
       );
 
+    const tier =
+      preservePreviousTier(
+        detectedTier,
+        previous
+      );
+
+    const currentPeriodStart =
+      data.current_period_start ??
+      previous?.currentPeriodStart ??
+      null;
+
+    const currentPeriodEnd =
+      data.current_period_end ??
+      previous?.currentPeriodEnd ??
+      null;
+
+    const accessData = {
+      ...data,
+
+      current_period_start:
+        currentPeriodStart,
+
+      current_period_end:
+        currentPeriodEnd,
+
+      status:
+        data.status ??
+        previous?.membershipStatus ??
+        "",
+    };
+
     const accessActive =
       shouldHaveAccess(
         eventType,
-        data
+        accessData
       );
+
+    const continuousInfiniteSince =
+      getContinuousInfiniteSince({
+        previous,
+        tier,
+        accessActive,
+        currentPeriodStart,
+      });
 
     const memberRecord = {
       email,
 
       name:
-        getMemberName(data),
+        getMemberName(
+          data
+        ) ||
+        previous?.name ||
+        "",
 
       supporterId:
         data.supporter_id ||
         data.supporter?.id ||
+        previous?.supporterId ||
         null,
 
       membershipId:
         data.id ||
         data.membership_id ||
+        previous?.membershipId ||
         null,
 
       membershipLevelId:
         data.membership_level_id ||
         data.level_id ||
+        previous?.membershipLevelId ||
         null,
 
       tierName:
@@ -537,28 +887,42 @@ export default async function handler(
 
       membershipStatus:
         String(
-          data.status || ""
+          data.status ??
+          previous
+            ?.membershipStatus ??
+          ""
         ),
 
       accessActive,
 
       cancelAtPeriodEnd:
-        toBoolean(
-          data.cancel_at_period_end
-        ),
+        data.cancel_at_period_end !==
+        undefined
+          ? toBoolean(
+              data
+                .cancel_at_period_end
+            )
+          : Boolean(
+              previous
+                ?.cancelAtPeriodEnd
+            ),
 
       paused:
-        toBoolean(
-          data.paused
-        ),
+        data.paused !==
+        undefined
+          ? toBoolean(
+              data.paused
+            )
+          : Boolean(
+              previous
+                ?.paused
+            ),
 
-      currentPeriodStart:
-        data.current_period_start ||
-        null,
+      currentPeriodStart,
 
-      currentPeriodEnd:
-        data.current_period_end ||
-        null,
+      currentPeriodEnd,
+
+      continuousInfiniteSince,
 
       eventType,
 
@@ -568,35 +932,32 @@ export default async function handler(
         null,
 
       liveMode:
-        event.live_mode === true,
+        event.live_mode ===
+        true,
 
       updatedAt:
         Date.now(),
     };
 
-    /*
-      Save the membership record
-      by customer email.
-    */
-
     await redisCommand([
       "SET",
+
       `elle:member:${email}`,
+
       JSON.stringify(
         memberRecord
       ),
     ]);
 
-    /*
-      Optional supporter ID lookup.
-    */
-
     if (
-      memberRecord.supporterId
+      memberRecord
+        .supporterId
     ) {
       await redisCommand([
         "SET",
+
         `elle:member-id:${memberRecord.supporterId}`,
+
         email,
       ]);
     }
@@ -605,28 +966,39 @@ export default async function handler(
       "Elle membership saved:",
       {
         email,
+
         tier:
           tier.key,
+
         accessActive,
+
         eventType,
+
+        continuousInfiniteSince,
       }
     );
 
     return res
       .status(200)
       .json({
-        success: true,
+        success:
+          true,
 
         received:
           eventType,
 
         member: {
           email,
+
           tier:
             tier.key,
+
           accessActive,
+
+          continuousInfiniteSince,
         },
       });
+
   } catch (error) {
     console.error(
       "Buy Me a Coffee webhook error:",
@@ -636,7 +1008,9 @@ export default async function handler(
     return res
       .status(500)
       .json({
-        success: false,
+        success:
+          false,
+
         error:
           "Webhook processing failed",
       });
