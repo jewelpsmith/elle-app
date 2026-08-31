@@ -9,36 +9,23 @@ import {
 
 import {
   createHash,
+  randomBytes,
 } from "node:crypto";
 
 
 /* =========================================================
-   PENPAL PROFILE SETTINGS
+   SETTINGS
    ========================================================= */
 
-const BIO_MAX_LENGTH =
-  300;
+const BIO_MAX_LENGTH = 300;
+const DISPLAY_NAME_MAX_LENGTH = 40;
+const REGION_MAX_LENGTH = 80;
+const PERSONALITY_MAX_LENGTH = 80;
+const LOOKING_FOR_MAX_LENGTH = 120;
 
-const DISPLAY_NAME_MAX_LENGTH =
-  40;
-
-const REGION_MAX_LENGTH =
-  80;
-
-const PERSONALITY_MAX_LENGTH =
-  80;
-
-const LOOKING_FOR_MAX_LENGTH =
-  120;
-
-const MAX_INTERESTS =
-  6;
-
-const MAX_LANGUAGES =
-  4;
-
-const LIST_ITEM_MAX_LENGTH =
-  32;
+const MAX_INTERESTS = 6;
+const MAX_LANGUAGES = 4;
+const LIST_ITEM_MAX_LENGTH = 32;
 
 const PHOTO_MAX_BYTES =
   5 * 1024 * 1024;
@@ -48,6 +35,100 @@ const ALLOWED_PHOTO_TYPES = [
   "image/png",
   "image/webp",
 ];
+
+const MESSAGE_MAX_LENGTH = 1200;
+
+const MAX_MESSAGES_PER_THREAD = 250;
+
+const MAX_PROFILE_INDEX = 1000;
+
+const SHOWCASE_PROFILES = {
+  aaliyah: {
+    profileId:"showcase-aaliyah",
+    showcaseKey:"aaliyah",
+    displayName:"Aaliyah",
+    broadRegion:"Jamaica · Caribbean",
+    bio:"Island girl with big dreams and a heart full of gratitude. I love books, deep conversations, creativity and golden sunsets.",
+    interests:[
+      "Books",
+      "Creativity",
+      "Journaling",
+      "Spirituality",
+    ],
+    languages:[
+      "English",
+      "Patois",
+    ],
+    personality:"Empathetic",
+    lookingFor:"Kindred minds",
+    openToConnect:true,
+    showcase:true,
+  },
+
+  jasmine: {
+    profileId:"showcase-jasmine",
+    showcaseKey:"jasmine",
+    displayName:"Jasmine",
+    broadRegion:"United States",
+    bio:"Poetry lover. I see beauty in the little things and believe in healing through honest conversations and good music.",
+    interests:[
+      "Poetry",
+      "Healing",
+      "Travel",
+      "Music",
+    ],
+    languages:[
+      "English",
+    ],
+    personality:"Thoughtful",
+    lookingFor:"Genuine friends",
+    openToConnect:true,
+    showcase:true,
+  },
+
+  nia: {
+    profileId:"showcase-nia",
+    showcaseKey:"nia",
+    displayName:"Nia",
+    broadRegion:"South Africa",
+    bio:"Explorer at heart. I love good music, adventures, photography, wellness and people who make life feel lighter.",
+    interests:[
+      "Music",
+      "Adventure",
+      "Wellness",
+      "Photography",
+    ],
+    languages:[
+      "English",
+      "Zulu",
+    ],
+    personality:"Adventurous",
+    lookingFor:"Positive energy",
+    openToConnect:true,
+    showcase:true,
+  },
+
+  amara: {
+    profileId:"showcase-amara",
+    showcaseKey:"amara",
+    displayName:"Amara",
+    broadRegion:"United Kingdom · London",
+    bio:"Style lover, foodie and ambitious soft-life enthusiast. I love laughter, beautiful places, honest conversations and women cheering each other on.",
+    interests:[
+      "Fashion",
+      "Food",
+      "Travel",
+      "Lifestyle",
+    ],
+    languages:[
+      "English",
+    ],
+    personality:"Warm + outgoing",
+    lookingFor:"Good-energy friendships",
+    openToConnect:true,
+    showcase:true,
+  },
+};
 
 
 /* =========================================================
@@ -136,6 +217,16 @@ function hashValue(value) {
 }
 
 
+function randomId(
+  prefix=""
+) {
+
+  return (
+    `${prefix}${randomBytes(18).toString("hex")}`
+  );
+}
+
+
 function cleanToken(value) {
 
   const token =
@@ -168,14 +259,10 @@ function toMilliseconds(value) {
   }
 
   const numeric =
-    Number(
-      value
-    );
+    Number(value);
 
   if (
-    Number.isFinite(
-      numeric
-    ) &&
+    Number.isFinite(numeric) &&
     numeric > 0
   ) {
 
@@ -196,20 +283,14 @@ function toMilliseconds(value) {
 
   const parsed =
     Date.parse(
-      String(
-        value
-      )
+      String(value)
     );
 
-  if (
-    Number.isFinite(
-      parsed
-    )
-  ) {
-    return parsed;
-  }
-
-  return 0;
+  return (
+    Number.isFinite(parsed)
+      ? parsed
+      : 0
+  );
 }
 
 
@@ -227,10 +308,6 @@ function noStore(res) {
 }
 
 
-/* =========================================================
-   RESPONSE HELPERS
-   ========================================================= */
-
 function sendError(
   res,
   status,
@@ -239,9 +316,7 @@ function sendError(
 ) {
 
   return res
-    .status(
-      status
-    )
+    .status(status)
     .json({
       success:false,
       code,
@@ -276,18 +351,10 @@ function containsPrivateContactInfo(
     /(?:\+?\d[\d\s().-]{7,}\d)/;
 
   return (
-    email.test(
-      text
-    ) ||
-    url.test(
-      text
-    ) ||
-    social.test(
-      text
-    ) ||
-    phone.test(
-      text
-    )
+    email.test(text) ||
+    url.test(text) ||
+    social.test(text) ||
+    phone.test(text)
   );
 }
 
@@ -331,9 +398,7 @@ function normalizeList(
 ) {
 
   const incoming =
-    Array.isArray(
-      value
-    )
+    Array.isArray(value)
       ? value
       : [];
 
@@ -364,9 +429,7 @@ function normalizeList(
       continue;
     }
 
-    output.push(
-      item
-    );
+    output.push(item);
 
     if (
       output.length >=
@@ -380,8 +443,50 @@ function normalizeList(
 }
 
 
+function safeMessage(value) {
+
+  const text =
+    cleanText(
+      value,
+      MESSAGE_MAX_LENGTH
+    );
+
+  if (!text) {
+
+    const error =
+      new Error(
+        "Write a message first."
+      );
+
+    error.code =
+      "MESSAGE_REQUIRED";
+
+    throw error;
+  }
+
+  if (
+    containsPrivateContactInfo(
+      text
+    )
+  ) {
+
+    const error =
+      new Error(
+        "For safety, PenPal messages cannot include phone numbers, email addresses, social handles, or links."
+      );
+
+    error.code =
+      "PRIVATE_CONTACT_INFO";
+
+    throw error;
+  }
+
+  return text;
+}
+
+
 /* =========================================================
-   REDIS RECORD HELPERS
+   REDIS KEYS
    ========================================================= */
 
 function profileKey(email) {
@@ -392,29 +497,170 @@ function profileKey(email) {
 }
 
 
+function profileIdKey(profileId) {
+
+  return (
+    `elle:penpal-profile-id:${String(profileId || "").trim()}`
+  );
+}
+
+
+function connectionKey(connectionId) {
+
+  return (
+    `elle:penpal-connection:${connectionId}`
+  );
+}
+
+
+function memberConnectionsKey(email) {
+
+  return (
+    `elle:penpal-connections:${hashValue(normalizeEmail(email)).slice(0,24)}`
+  );
+}
+
+
+function messagesKey(connectionId) {
+
+  return (
+    `elle:penpal-messages:${connectionId}`
+  );
+}
+
+
+function blockKey(
+  blockerEmail,
+  targetIdentity
+) {
+
+  return (
+    `elle:penpal-block:${hashValue(normalizeEmail(blockerEmail)).slice(0,24)}:${hashValue(targetIdentity).slice(0,24)}`
+  );
+}
+
+
+function reportKey(reportId) {
+
+  return (
+    `elle:penpal-report:${reportId}`
+  );
+}
+
+
+/* =========================================================
+   JSON STORAGE HELPERS
+   ========================================================= */
+
+async function getJson(key) {
+
+  const raw =
+    await redisCommand([
+      "GET",
+      key,
+    ]);
+
+  return parseJson(raw);
+}
+
+
+async function setJson(
+  key,
+  value
+) {
+
+  await redisCommand([
+    "SET",
+    key,
+    JSON.stringify(value),
+  ]);
+}
+
+
+async function getJsonArray(key) {
+
+  const value =
+    await getJson(key);
+
+  return (
+    Array.isArray(value)
+      ? value
+      : []
+  );
+}
+
+
+async function addUniqueToArray(
+  key,
+  value,
+  max=1000
+) {
+
+  const current =
+    await getJsonArray(key);
+
+  const next = [
+    value,
+    ...current.filter(
+      item =>
+        item !== value
+    ),
+  ].slice(
+    0,
+    max
+  );
+
+  await setJson(
+    key,
+    next
+  );
+
+  return next;
+}
+
+
+async function removeFromArray(
+  key,
+  value
+) {
+
+  const current =
+    await getJsonArray(key);
+
+  const next =
+    current.filter(
+      item =>
+        item !== value
+    );
+
+  await setJson(
+    key,
+    next
+  );
+
+  return next;
+}
+
+
+/* =========================================================
+   PROFILE STORAGE
+   ========================================================= */
+
 async function getProfileRecord(
   email
 ) {
 
   const cleanEmail =
-    normalizeEmail(
-      email
-    );
+    normalizeEmail(email);
 
   if (!cleanEmail) {
     return null;
   }
 
-  const raw =
-    await redisCommand([
-      "GET",
-      profileKey(
-        cleanEmail
-      ),
-    ]);
-
-  return parseJson(
-    raw
+  return await getJson(
+    profileKey(
+      cleanEmail
+    )
   );
 }
 
@@ -425,9 +671,7 @@ async function saveProfileRecord(
 ) {
 
   const cleanEmail =
-    normalizeEmail(
-      email
-    );
+    normalizeEmail(email);
 
   if (!cleanEmail) {
 
@@ -436,15 +680,75 @@ async function saveProfileRecord(
     );
   }
 
-  await redisCommand([
-    "SET",
-    profileKey(
+  await setJson(
+    profileKey(cleanEmail),
+    record
+  );
+
+  if (
+    record?.profileId
+  ) {
+
+    await redisCommand([
+      "SET",
+      profileIdKey(
+        record.profileId
+      ),
+      cleanEmail,
+    ]);
+
+    await addUniqueToArray(
+      "elle:penpal-profile-index",
+      record.profileId,
+      MAX_PROFILE_INDEX
+    );
+  }
+}
+
+
+async function getProfileById(
+  profileId
+) {
+
+  const cleanId =
+    String(
+      profileId || ""
+    ).trim();
+
+  if (!cleanId) {
+    return null;
+  }
+
+  const email =
+    await redisCommand([
+      "GET",
+      profileIdKey(
+        cleanId
+      ),
+    ]);
+
+  const cleanEmail =
+    normalizeEmail(email);
+
+  if (!cleanEmail) {
+    return null;
+  }
+
+  const profile =
+    await getProfileRecord(
       cleanEmail
-    ),
-    JSON.stringify(
-      record
-    ),
-  ]);
+    );
+
+  if (!profile) {
+    return null;
+  }
+
+  return {
+    email:
+      cleanEmail,
+
+    profile,
+  };
 }
 
 
@@ -461,8 +765,7 @@ async function deleteProfileBlob(
       profile?.photoUrl ||
       profile?.photoStorageKey ||
       ""
-    )
-      .trim();
+    ).trim();
 
   if (!blobTarget) {
     return;
@@ -708,15 +1011,9 @@ async function requirePenpalAccess({
       clean
     );
 
-  const raw =
-    await redisCommand([
-      "GET",
-      `elle:penpal-access:${tokenHash}`,
-    ]);
-
   const record =
-    parseJson(
-      raw
+    await getJson(
+      `elle:penpal-access:${tokenHash}`
     );
 
   if (!record) {
@@ -806,6 +1103,7 @@ async function requirePenpalAccess({
 
     return {
       valid:false,
+
       code:
         membership.code ||
         "PENPAL_ACCESS_DENIED",
@@ -819,6 +1117,7 @@ async function requirePenpalAccess({
   return {
     valid:true,
     record,
+
     ownerBypass:
       membership.ownerBypass ===
       true,
@@ -973,7 +1272,6 @@ function publicProfile(
     );
 
   return {
-
     profileId:
       profile.profileId,
 
@@ -1011,16 +1309,6 @@ function publicProfile(
     photoAvailable:
       approvedPhoto,
 
-    /*
-      The raw private Blob URL is intentionally
-      not exposed here.
-
-      Approved private photos will be delivered
-      through the authenticated PenPal photo
-      endpoint rather than exposing storage
-      credentials or relying on a public URL.
-    */
-
     photoUrl:
       null,
 
@@ -1052,6 +1340,9 @@ function publicProfile(
     profileComplete:
       completion.complete,
 
+    complete:
+      completion.complete,
+
     canContact:
       completion.complete,
 
@@ -1070,6 +1361,23 @@ function publicProfile(
 }
 
 
+function publicShowcaseProfile(
+  profile
+) {
+
+  return {
+    ...profile,
+
+    profileComplete:true,
+    complete:true,
+    canContact:true,
+    photoAvailable:true,
+    photoStatus:"approved",
+    photoChoice:"real-photo",
+  };
+}
+
+
 /* =========================================================
    EMPTY PROFILE
    ========================================================= */
@@ -1083,7 +1391,6 @@ function newProfile(
       .toISOString();
 
   return {
-
     profileId:
       hashValue(
         normalizeEmail(
@@ -1183,9 +1490,7 @@ async function handleGet(
       );
 
     return res
-      .status(
-        200
-      )
+      .status(200)
       .json({
         success:true,
         exists:false,
@@ -1197,12 +1502,11 @@ async function handleGet(
   }
 
   return res
-    .status(
-      200
-    )
+    .status(200)
     .json({
       success:true,
       exists:true,
+
       profile:
         publicProfile(
           existing
@@ -1301,12 +1605,7 @@ async function handleSave(
     );
   }
 
-  const openToConnect =
-    req.body?.openToConnect ===
-    true;
-
   const updated = {
-
     ...base,
 
     email:
@@ -1315,20 +1614,16 @@ async function handleSave(
       ),
 
     displayName,
-
     broadRegion,
-
     bio,
-
     interests,
-
     languages,
-
     personality,
-
     lookingFor,
 
-    openToConnect,
+    openToConnect:
+      req.body?.openToConnect ===
+      true,
 
     updatedAt:
       new Date()
@@ -1346,9 +1641,7 @@ async function handleSave(
   );
 
   return res
-    .status(
-      200
-    )
+    .status(200)
     .json({
       success:true,
 
@@ -1365,6 +1658,9 @@ async function handleSave(
 
       missing:
         completion.missing,
+
+      checks:
+        completion.checks,
     });
 }
 
@@ -1434,13 +1730,6 @@ async function handlePhotoChoice(
 
   } else {
 
-    /*
-      If the member already has a valid
-      uploaded photo, do not erase it just
-      because they selected "real photo"
-      again.
-    */
-
     profile.photoChoice =
       "real-photo";
 
@@ -1468,9 +1757,7 @@ async function handlePhotoChoice(
   );
 
   return res
-    .status(
-      200
-    )
+    .status(200)
     .json({
       success:true,
 
@@ -1483,8 +1770,7 @@ async function handlePhotoChoice(
       maxPhotoBytes:
         PHOTO_MAX_BYTES,
 
-      maxPhotoMB:
-        5,
+      maxPhotoMB:5,
 
       allowedPhotoTypes:
         ALLOWED_PHOTO_TYPES,
@@ -1613,7 +1899,6 @@ async function handleOwnerPhotoReview(
       now;
   }
 
-
   if (
     decision ===
     "reject"
@@ -1654,7 +1939,6 @@ async function handleOwnerPhotoReview(
       null;
   }
 
-
   if (
     decision ===
     "flag-ai"
@@ -1692,9 +1976,7 @@ async function handleOwnerPhotoReview(
   );
 
   return res
-    .status(
-      200
-    )
+    .status(200)
     .json({
       success:true,
 
@@ -1704,6 +1986,1721 @@ async function handleOwnerPhotoReview(
         publicProfile(
           profile
         ),
+    });
+}
+
+
+/* =========================================================
+   BOARD DIRECTORY
+   ========================================================= */
+
+async function handleBoardList(
+  session,
+  res
+) {
+
+  const ownEmail =
+    normalizeEmail(
+      session.email
+    );
+
+  const ids =
+    await getJsonArray(
+      "elle:penpal-profile-index"
+    );
+
+  const profiles = [];
+
+  for (
+    const profileId of
+    ids.slice(0,150)
+  ) {
+
+    const result =
+      await getProfileById(
+        profileId
+      );
+
+    if (
+      !result ||
+      result.email ===
+        ownEmail
+    ) {
+      continue;
+    }
+
+    const completion =
+      getCompletion(
+        result.profile
+      );
+
+    if (
+      !completion.complete ||
+      result.profile.openToConnect !==
+        true
+    ) {
+      continue;
+    }
+
+    profiles.push(
+      publicProfile(
+        result.profile
+      )
+    );
+
+    if (
+      profiles.length >=
+      50
+    ) {
+      break;
+    }
+  }
+
+  return res
+    .status(200)
+    .json({
+      success:true,
+
+      showcaseProfiles:
+        Object.values(
+          SHOWCASE_PROFILES
+        ).map(
+          publicShowcaseProfile
+        ),
+
+      profiles,
+    });
+}
+
+
+/* =========================================================
+   CONNECTION HELPERS
+   ========================================================= */
+
+async function requireCompleteOwnProfile(
+  session
+) {
+
+  const profile =
+    await getProfileRecord(
+      session.email
+    );
+
+  if (!profile) {
+
+    return {
+      valid:false,
+      code:"PROFILE_REQUIRED",
+      reason:
+        "Create your PenPal profile first.",
+    };
+  }
+
+  const completion =
+    getCompletion(
+      profile
+    );
+
+  if (
+    !completion.complete
+  ) {
+
+    return {
+      valid:false,
+      code:"PROFILE_INCOMPLETE",
+      reason:
+        "Complete your PenPal profile before connecting.",
+      missing:
+        completion.missing,
+    };
+  }
+
+  return {
+    valid:true,
+    profile,
+  };
+}
+
+
+function connectionIdentityForMember(
+  profileId
+) {
+
+  return (
+    `member:${profileId}`
+  );
+}
+
+
+function connectionIdentityForShowcase(
+  key
+) {
+
+  return (
+    `showcase:${key}`
+  );
+}
+
+
+async function isBlocked(
+  blockerEmail,
+  targetIdentity
+) {
+
+  const value =
+    await redisCommand([
+      "GET",
+      blockKey(
+        blockerEmail,
+        targetIdentity
+      ),
+    ]);
+
+  return (
+    String(value || "") ===
+    "1"
+  );
+}
+
+
+async function saveConnection(
+  record
+) {
+
+  await setJson(
+    connectionKey(
+      record.connectionId
+    ),
+    record
+  );
+
+  if (
+    record.memberAEmail
+  ) {
+
+    await addUniqueToArray(
+      memberConnectionsKey(
+        record.memberAEmail
+      ),
+      record.connectionId,
+      500
+    );
+  }
+
+  if (
+    record.memberBEmail
+  ) {
+
+    await addUniqueToArray(
+      memberConnectionsKey(
+        record.memberBEmail
+      ),
+      record.connectionId,
+      500
+    );
+  }
+
+  if (
+    record.showcaseKey
+  ) {
+
+    await addUniqueToArray(
+      `elle:penpal-showcase-connections:${record.showcaseKey}`,
+      record.connectionId,
+      500
+    );
+  }
+}
+
+
+function publicConnectionFor(
+  record,
+  sessionEmail,
+  sessionOwner=false
+) {
+
+  const cleanEmail =
+    normalizeEmail(
+      sessionEmail
+    );
+
+  const isA =
+    normalizeEmail(
+      record.memberAEmail
+    ) ===
+      cleanEmail;
+
+  const isB =
+    normalizeEmail(
+      record.memberBEmail
+    ) ===
+      cleanEmail;
+
+  let other = null;
+
+  if (
+    record.showcaseKey
+  ) {
+
+    other =
+      publicShowcaseProfile(
+        SHOWCASE_PROFILES[
+          record.showcaseKey
+        ]
+      );
+
+  } else if (isA) {
+
+    other =
+      record.memberBPublic ||
+      null;
+
+  } else if (isB) {
+
+    other =
+      record.memberAPublic ||
+      null;
+
+  } else if (
+    sessionOwner
+  ) {
+
+    other =
+      record.memberAPublic ||
+      record.memberBPublic ||
+      null;
+  }
+
+  return {
+    connectionId:
+      record.connectionId,
+
+    status:
+      record.status,
+
+    createdAt:
+      record.createdAt,
+
+    updatedAt:
+      record.updatedAt,
+
+    requestedByMe:
+      normalizeEmail(
+        record.requestedByEmail
+      ) ===
+        cleanEmail,
+
+    showcaseKey:
+      record.showcaseKey ||
+      null,
+
+    otherProfile:
+      other,
+
+    lastMessageAt:
+      record.lastMessageAt ||
+      null,
+
+    ended:
+      record.status ===
+      "ended",
+
+    blocked:
+      record.status ===
+      "blocked",
+  };
+}
+
+
+async function requireConnectionParticipant(
+  connectionId,
+  session
+) {
+
+  const record =
+    await getJson(
+      connectionKey(
+        connectionId
+      )
+    );
+
+  if (!record) {
+
+    return {
+      valid:false,
+      code:"CONNECTION_NOT_FOUND",
+      reason:
+        "That PenPal connection was not found.",
+    };
+  }
+
+  const email =
+    normalizeEmail(
+      session.email
+    );
+
+  const participant =
+    normalizeEmail(
+      record.memberAEmail
+    ) ===
+      email ||
+    normalizeEmail(
+      record.memberBEmail
+    ) ===
+      email;
+
+  if (
+    !participant &&
+    session.owner !==
+      true
+  ) {
+
+    return {
+      valid:false,
+      code:"CONNECTION_FORBIDDEN",
+      reason:
+        "You do not have access to that connection.",
+    };
+  }
+
+  return {
+    valid:true,
+    record,
+  };
+}
+
+
+/* =========================================================
+   CREATE CONNECTION REQUEST
+   ========================================================= */
+
+async function handleCreateConnection(
+  req,
+  session,
+  res
+) {
+
+  const own =
+    await requireCompleteOwnProfile(
+      session
+    );
+
+  if (
+    !own.valid
+  ) {
+
+    return sendError(
+      res,
+      400,
+      own.code,
+      own.reason
+    );
+  }
+
+  const showcaseKey =
+    String(
+      req.body?.showcaseKey ||
+      ""
+    )
+      .trim()
+      .toLowerCase();
+
+  const targetProfileId =
+    String(
+      req.body?.targetProfileId ||
+      ""
+    ).trim();
+
+  const now =
+    new Date()
+      .toISOString();
+
+  const connectionId =
+    randomId(
+      "pc_"
+    );
+
+  if (
+    showcaseKey
+  ) {
+
+    const showcase =
+      SHOWCASE_PROFILES[
+        showcaseKey
+      ];
+
+    if (!showcase) {
+
+      return sendError(
+        res,
+        404,
+        "SHOWCASE_NOT_FOUND",
+        "That PenPal profile was not found."
+      );
+    }
+
+    const blocked =
+      await isBlocked(
+        session.email,
+        connectionIdentityForShowcase(
+          showcaseKey
+        )
+      );
+
+    if (blocked) {
+
+      return sendError(
+        res,
+        403,
+        "PROFILE_BLOCKED",
+        "You blocked this PenPal profile."
+      );
+    }
+
+    const record = {
+      connectionId,
+
+      type:
+        "showcase",
+
+      showcaseKey,
+
+      memberAEmail:
+        normalizeEmail(
+          session.email
+        ),
+
+      memberBEmail:
+        null,
+
+      memberAPublic:
+        publicProfile(
+          own.profile
+        ),
+
+      memberBPublic:
+        null,
+
+      requestedByEmail:
+        normalizeEmail(
+          session.email
+        ),
+
+      status:
+        "accepted",
+
+      createdAt:
+        now,
+
+      updatedAt:
+        now,
+
+      lastMessageAt:
+        null,
+    };
+
+    await saveConnection(
+      record
+    );
+
+    return res
+      .status(200)
+      .json({
+        success:true,
+        connected:true,
+
+        connection:
+          publicConnectionFor(
+            record,
+            session.email,
+            session.owner === true
+          ),
+      });
+  }
+
+  if (!targetProfileId) {
+
+    return sendError(
+      res,
+      400,
+      "TARGET_REQUIRED",
+      "Choose a PenPal profile to connect with."
+    );
+  }
+
+  if (
+    targetProfileId ===
+    own.profile.profileId
+  ) {
+
+    return sendError(
+      res,
+      400,
+      "SELF_CONNECTION",
+      "You cannot connect with your own profile."
+    );
+  }
+
+  const target =
+    await getProfileById(
+      targetProfileId
+    );
+
+  if (!target) {
+
+    return sendError(
+      res,
+      404,
+      "PROFILE_NOT_FOUND",
+      "That PenPal profile was not found."
+    );
+  }
+
+  const targetCompletion =
+    getCompletion(
+      target.profile
+    );
+
+  if (
+    !targetCompletion.complete ||
+    target.profile.openToConnect !==
+      true
+  ) {
+
+    return sendError(
+      res,
+      400,
+      "PROFILE_NOT_OPEN",
+      "That member is not currently open to new connections."
+    );
+  }
+
+  const blockedByMe =
+    await isBlocked(
+      session.email,
+      connectionIdentityForMember(
+        targetProfileId
+      )
+    );
+
+  const blockedByThem =
+    await isBlocked(
+      target.email,
+      connectionIdentityForMember(
+        own.profile.profileId
+      )
+    );
+
+  if (
+    blockedByMe ||
+    blockedByThem
+  ) {
+
+    return sendError(
+      res,
+      403,
+      "CONNECTION_BLOCKED",
+      "This connection is unavailable."
+    );
+  }
+
+  const record = {
+    connectionId,
+
+    type:
+      "member",
+
+    showcaseKey:
+      null,
+
+    memberAEmail:
+      normalizeEmail(
+        session.email
+      ),
+
+    memberBEmail:
+      normalizeEmail(
+        target.email
+      ),
+
+    memberAPublic:
+      publicProfile(
+        own.profile
+      ),
+
+    memberBPublic:
+      publicProfile(
+        target.profile
+      ),
+
+    requestedByEmail:
+      normalizeEmail(
+        session.email
+      ),
+
+    status:
+      "pending",
+
+    createdAt:
+      now,
+
+    updatedAt:
+      now,
+
+    lastMessageAt:
+      null,
+  };
+
+  await saveConnection(
+    record
+  );
+
+  return res
+    .status(200)
+    .json({
+      success:true,
+      requested:true,
+
+      connection:
+        publicConnectionFor(
+          record,
+          session.email,
+          session.owner === true
+        ),
+    });
+}
+
+
+/* =========================================================
+   LIST CONNECTIONS
+   ========================================================= */
+
+async function handleListConnections(
+  session,
+  res
+) {
+
+  const ids =
+    await getJsonArray(
+      memberConnectionsKey(
+        session.email
+      )
+    );
+
+  const connections = [];
+
+  for (
+    const id of
+    ids.slice(0,100)
+  ) {
+
+    const record =
+      await getJson(
+        connectionKey(id)
+      );
+
+    if (!record) {
+      continue;
+    }
+
+    connections.push(
+      publicConnectionFor(
+        record,
+        session.email,
+        session.owner === true
+      )
+    );
+  }
+
+  connections.sort(
+    (a,b) =>
+      Date.parse(
+        b.lastMessageAt ||
+        b.updatedAt ||
+        0
+      ) -
+      Date.parse(
+        a.lastMessageAt ||
+        a.updatedAt ||
+        0
+      )
+  );
+
+  return res
+    .status(200)
+    .json({
+      success:true,
+      connections,
+    });
+}
+
+
+/* =========================================================
+   RESPOND TO CONNECTION
+   ========================================================= */
+
+async function handleRespondConnection(
+  req,
+  session,
+  res
+) {
+
+  const connectionId =
+    String(
+      req.body?.connectionId ||
+      ""
+    ).trim();
+
+  const decision =
+    String(
+      req.body?.decision ||
+      ""
+    )
+      .trim()
+      .toLowerCase();
+
+  if (
+    ![
+      "accept",
+      "decline",
+    ].includes(
+      decision
+    )
+  ) {
+
+    return sendError(
+      res,
+      400,
+      "INVALID_DECISION",
+      "Choose accept or decline."
+    );
+  }
+
+  const access =
+    await requireConnectionParticipant(
+      connectionId,
+      session
+    );
+
+  if (!access.valid) {
+
+    return sendError(
+      res,
+      403,
+      access.code,
+      access.reason
+    );
+  }
+
+  const record =
+    access.record;
+
+  if (
+    record.status !==
+    "pending"
+  ) {
+
+    return sendError(
+      res,
+      400,
+      "NOT_PENDING",
+      "That connection request is no longer pending."
+    );
+  }
+
+  if (
+    normalizeEmail(
+      record.requestedByEmail
+    ) ===
+      normalizeEmail(
+        session.email
+      )
+  ) {
+
+    return sendError(
+      res,
+      403,
+      "REQUESTER_CANNOT_RESPOND",
+      "The receiving member must respond to this request."
+    );
+  }
+
+  record.status =
+    decision ===
+    "accept"
+      ? "accepted"
+      : "declined";
+
+  record.updatedAt =
+    new Date()
+      .toISOString();
+
+  await saveConnection(
+    record
+  );
+
+  return res
+    .status(200)
+    .json({
+      success:true,
+
+      connection:
+        publicConnectionFor(
+          record,
+          session.email,
+          session.owner === true
+        ),
+    });
+}
+
+
+/* =========================================================
+   MESSAGE STORAGE
+   ========================================================= */
+
+async function getMessages(
+  connectionId
+) {
+
+  return await getJsonArray(
+    messagesKey(
+      connectionId
+    )
+  );
+}
+
+
+async function appendMessage(
+  connectionId,
+  message
+) {
+
+  const current =
+    await getMessages(
+      connectionId
+    );
+
+  const next = [
+    ...current,
+    message,
+  ].slice(
+    -MAX_MESSAGES_PER_THREAD
+  );
+
+  await setJson(
+    messagesKey(
+      connectionId
+    ),
+    next
+  );
+}
+
+
+/* =========================================================
+   LIST MESSAGES
+   ========================================================= */
+
+async function handleListMessages(
+  req,
+  session,
+  res
+) {
+
+  const connectionId =
+    String(
+      req.body?.connectionId ||
+      ""
+    ).trim();
+
+  const access =
+    await requireConnectionParticipant(
+      connectionId,
+      session
+    );
+
+  if (!access.valid) {
+
+    return sendError(
+      res,
+      403,
+      access.code,
+      access.reason
+    );
+  }
+
+  const messages =
+    await getMessages(
+      connectionId
+    );
+
+  return res
+    .status(200)
+    .json({
+      success:true,
+      connectionId,
+      messages,
+    });
+}
+
+
+/* =========================================================
+   SEND MESSAGE
+   ========================================================= */
+
+async function handleSendMessage(
+  req,
+  session,
+  res
+) {
+
+  const connectionId =
+    String(
+      req.body?.connectionId ||
+      ""
+    ).trim();
+
+  const access =
+    await requireConnectionParticipant(
+      connectionId,
+      session
+    );
+
+  if (!access.valid) {
+
+    return sendError(
+      res,
+      403,
+      access.code,
+      access.reason
+    );
+  }
+
+  const record =
+    access.record;
+
+  if (
+    record.status !==
+    "accepted"
+  ) {
+
+    return sendError(
+      res,
+      400,
+      "CONNECTION_NOT_ACTIVE",
+      "Messages are available only in active connections."
+    );
+  }
+
+  const own =
+    await requireCompleteOwnProfile(
+      session
+    );
+
+  if (
+    !own.valid &&
+    session.owner !==
+      true
+  ) {
+
+    return sendError(
+      res,
+      400,
+      own.code,
+      own.reason
+    );
+  }
+
+  let text;
+
+  try {
+
+    text =
+      safeMessage(
+        req.body?.message
+      );
+
+  } catch (error) {
+
+    return sendError(
+      res,
+      400,
+      error?.code ||
+      "INVALID_MESSAGE",
+      error?.message ||
+      "That message cannot be sent."
+    );
+  }
+
+  const now =
+    new Date()
+      .toISOString();
+
+  const message = {
+    messageId:
+      randomId(
+        "pm_"
+      ),
+
+    connectionId,
+
+    senderType:
+      "member",
+
+    senderProfileId:
+      own?.profile?.profileId ||
+      null,
+
+    senderDisplayName:
+      own?.profile?.displayName ||
+      "Member",
+
+    showcaseKey:
+      null,
+
+    message:
+      text,
+
+    createdAt:
+      now,
+  };
+
+  await appendMessage(
+    connectionId,
+    message
+  );
+
+  record.lastMessageAt =
+    now;
+
+  record.updatedAt =
+    now;
+
+  await saveConnection(
+    record
+  );
+
+  return res
+    .status(200)
+    .json({
+      success:true,
+      message,
+    });
+}
+
+
+/* =========================================================
+   OWNER SEND AS SHOWCASE PROFILE
+   ========================================================= */
+
+async function handleOwnerShowcaseMessage(
+  req,
+  session,
+  res
+) {
+
+  if (
+    session.owner !==
+    true
+  ) {
+
+    return sendError(
+      res,
+      403,
+      "OWNER_REQUIRED",
+      "Owner access is required."
+    );
+  }
+
+  const connectionId =
+    String(
+      req.body?.connectionId ||
+      ""
+    ).trim();
+
+  const showcaseKey =
+    String(
+      req.body?.showcaseKey ||
+      ""
+    )
+      .trim()
+      .toLowerCase();
+
+  const showcase =
+    SHOWCASE_PROFILES[
+      showcaseKey
+    ];
+
+  if (!showcase) {
+
+    return sendError(
+      res,
+      404,
+      "SHOWCASE_NOT_FOUND",
+      "That showcase profile was not found."
+    );
+  }
+
+  const record =
+    await getJson(
+      connectionKey(
+        connectionId
+      )
+    );
+
+  if (
+    !record ||
+    record.showcaseKey !==
+      showcaseKey
+  ) {
+
+    return sendError(
+      res,
+      404,
+      "CONNECTION_NOT_FOUND",
+      "That showcase connection was not found."
+    );
+  }
+
+  if (
+    record.status !==
+    "accepted"
+  ) {
+
+    return sendError(
+      res,
+      400,
+      "CONNECTION_NOT_ACTIVE",
+      "That connection is not active."
+    );
+  }
+
+  let text;
+
+  try {
+
+    text =
+      safeMessage(
+        req.body?.message
+      );
+
+  } catch (error) {
+
+    return sendError(
+      res,
+      400,
+      error?.code ||
+      "INVALID_MESSAGE",
+      error?.message ||
+      "That message cannot be sent."
+    );
+  }
+
+  const now =
+    new Date()
+      .toISOString();
+
+  const message = {
+    messageId:
+      randomId(
+        "pm_"
+      ),
+
+    connectionId,
+
+    senderType:
+      "showcase",
+
+    senderProfileId:
+      showcase.profileId,
+
+    senderDisplayName:
+      showcase.displayName,
+
+    showcaseKey,
+
+    message:
+      text,
+
+    createdAt:
+      now,
+  };
+
+  await appendMessage(
+    connectionId,
+    message
+  );
+
+  record.lastMessageAt =
+    now;
+
+  record.updatedAt =
+    now;
+
+  await saveConnection(
+    record
+  );
+
+  return res
+    .status(200)
+    .json({
+      success:true,
+      message,
+    });
+}
+
+
+/* =========================================================
+   OWNER SHOWCASE INBOX
+   ========================================================= */
+
+async function handleOwnerShowcaseInbox(
+  req,
+  session,
+  res
+) {
+
+  if (
+    session.owner !==
+    true
+  ) {
+
+    return sendError(
+      res,
+      403,
+      "OWNER_REQUIRED",
+      "Owner access is required."
+    );
+  }
+
+  const showcaseKey =
+    String(
+      req.body?.showcaseKey ||
+      ""
+    )
+      .trim()
+      .toLowerCase();
+
+  if (
+    !SHOWCASE_PROFILES[
+      showcaseKey
+    ]
+  ) {
+
+    return sendError(
+      res,
+      404,
+      "SHOWCASE_NOT_FOUND",
+      "That showcase profile was not found."
+    );
+  }
+
+  const ids =
+    await getJsonArray(
+      `elle:penpal-showcase-connections:${showcaseKey}`
+    );
+
+  const connections = [];
+
+  for (
+    const id of
+    ids.slice(0,100)
+  ) {
+
+    const record =
+      await getJson(
+        connectionKey(
+          id
+        )
+      );
+
+    if (!record) {
+      continue;
+    }
+
+    connections.push({
+      connectionId:
+        record.connectionId,
+
+      status:
+        record.status,
+
+      memberProfile:
+        record.memberAPublic ||
+        record.memberBPublic ||
+        null,
+
+      showcaseKey,
+
+      createdAt:
+        record.createdAt,
+
+      updatedAt:
+        record.updatedAt,
+
+      lastMessageAt:
+        record.lastMessageAt ||
+        null,
+    });
+  }
+
+  return res
+    .status(200)
+    .json({
+      success:true,
+      showcaseKey,
+      connections,
+    });
+}
+
+
+/* =========================================================
+   END CONNECTION
+   ========================================================= */
+
+async function handleEndConnection(
+  req,
+  session,
+  res
+) {
+
+  const connectionId =
+    String(
+      req.body?.connectionId ||
+      ""
+    ).trim();
+
+  const access =
+    await requireConnectionParticipant(
+      connectionId,
+      session
+    );
+
+  if (!access.valid) {
+
+    return sendError(
+      res,
+      403,
+      access.code,
+      access.reason
+    );
+  }
+
+  const record =
+    access.record;
+
+  record.status =
+    "ended";
+
+  record.endedAt =
+    new Date()
+      .toISOString();
+
+  record.endedByEmailHash =
+    hashValue(
+      normalizeEmail(
+        session.email
+      )
+    ).slice(
+      0,
+      24
+    );
+
+  record.updatedAt =
+    record.endedAt;
+
+  await saveConnection(
+    record
+  );
+
+  return res
+    .status(200)
+    .json({
+      success:true,
+      ended:true,
+    });
+}
+
+
+/* =========================================================
+   BLOCK
+   ========================================================= */
+
+async function handleBlock(
+  req,
+  session,
+  res
+) {
+
+  const connectionId =
+    String(
+      req.body?.connectionId ||
+      ""
+    ).trim();
+
+  const access =
+    await requireConnectionParticipant(
+      connectionId,
+      session
+    );
+
+  if (!access.valid) {
+
+    return sendError(
+      res,
+      403,
+      access.code,
+      access.reason
+    );
+  }
+
+  const record =
+    access.record;
+
+  const me =
+    normalizeEmail(
+      session.email
+    );
+
+  let targetIdentity = "";
+
+  if (
+    record.showcaseKey
+  ) {
+
+    targetIdentity =
+      connectionIdentityForShowcase(
+        record.showcaseKey
+      );
+
+  } else {
+
+    const otherProfile =
+      normalizeEmail(
+        record.memberAEmail
+      ) ===
+        me
+        ? record.memberBPublic
+        : record.memberAPublic;
+
+    targetIdentity =
+      connectionIdentityForMember(
+        otherProfile?.profileId ||
+        ""
+      );
+  }
+
+  await redisCommand([
+    "SET",
+    blockKey(
+      me,
+      targetIdentity
+    ),
+    "1",
+  ]);
+
+  record.status =
+    "blocked";
+
+  record.blockedAt =
+    new Date()
+      .toISOString();
+
+  record.updatedAt =
+    record.blockedAt;
+
+  await saveConnection(
+    record
+  );
+
+  return res
+    .status(200)
+    .json({
+      success:true,
+      blocked:true,
+    });
+}
+
+
+/* =========================================================
+   REPORT
+   ========================================================= */
+
+async function handleReport(
+  req,
+  session,
+  res
+) {
+
+  const connectionId =
+    String(
+      req.body?.connectionId ||
+      ""
+    ).trim();
+
+  const category =
+    cleanText(
+      req.body?.category ||
+      "penpal-safety",
+      80
+    );
+
+  const details =
+    cleanText(
+      req.body?.details,
+      2000
+    );
+
+  if (!details) {
+
+    return sendError(
+      res,
+      400,
+      "REPORT_DETAILS_REQUIRED",
+      "Tell us what happened."
+    );
+  }
+
+  let connection =
+    null;
+
+  if (
+    connectionId
+  ) {
+
+    const access =
+      await requireConnectionParticipant(
+        connectionId,
+        session
+      );
+
+    if (!access.valid) {
+
+      return sendError(
+        res,
+        403,
+        access.code,
+        access.reason
+      );
+    }
+
+    connection =
+      access.record;
+  }
+
+  const reportId =
+    randomId(
+      "pr_"
+    );
+
+  const report = {
+    reportId,
+
+    connectionId:
+      connectionId ||
+      null,
+
+    category,
+
+    details,
+
+    reporterEmailHash:
+      hashValue(
+        normalizeEmail(
+          session.email
+        )
+      ),
+
+    showcaseKey:
+      connection?.showcaseKey ||
+      null,
+
+    status:
+      "open",
+
+    createdAt:
+      new Date()
+        .toISOString(),
+  };
+
+  await setJson(
+    reportKey(
+      reportId
+    ),
+    report
+  );
+
+  await addUniqueToArray(
+    "elle:penpal-report-index",
+    reportId,
+    2000
+  );
+
+  return res
+    .status(200)
+    .json({
+      success:true,
+      reported:true,
+      reportId,
+    });
+}
+
+
+/* =========================================================
+   OWNER REPORT LIST
+   ========================================================= */
+
+async function handleOwnerReports(
+  session,
+  res
+) {
+
+  if (
+    session.owner !==
+    true
+  ) {
+
+    return sendError(
+      res,
+      403,
+      "OWNER_REQUIRED",
+      "Owner access is required."
+    );
+  }
+
+  const ids =
+    await getJsonArray(
+      "elle:penpal-report-index"
+    );
+
+  const reports = [];
+
+  for (
+    const id of
+    ids.slice(0,200)
+  ) {
+
+    const report =
+      await getJson(
+        reportKey(
+          id
+        )
+      );
+
+    if (
+      report
+    ) {
+
+      reports.push(
+        report
+      );
+    }
+  }
+
+  return res
+    .status(200)
+    .json({
+      success:true,
+      reports,
     });
 }
 
@@ -1727,6 +3724,23 @@ async function handleDelete(
     await deleteProfileBlob(
       profile
     );
+
+    if (
+      profile.profileId
+    ) {
+
+      await redisCommand([
+        "DEL",
+        profileIdKey(
+          profile.profileId
+        ),
+      ]);
+
+      await removeFromArray(
+        "elle:penpal-profile-index",
+        profile.profileId
+      );
+    }
   }
 
   await redisCommand([
@@ -1737,13 +3751,69 @@ async function handleDelete(
   ]);
 
   return res
-    .status(
-      200
-    )
+    .status(200)
     .json({
       success:true,
       deleted:true,
     });
+}
+
+
+/* =========================================================
+   ACTION → REQUIRED SCOPE
+   ========================================================= */
+
+function requiredScopeForAction(
+  action
+) {
+
+  if (
+    [
+      "get",
+      "save",
+      "photo-choice",
+      "delete",
+    ].includes(action)
+  ) {
+    return "profile";
+  }
+
+  if (
+    action ===
+    "board-list"
+  ) {
+    return "board";
+  }
+
+  if (
+    [
+      "create-connection",
+      "respond-connection",
+      "end-connection",
+      "block",
+    ].includes(action)
+  ) {
+    return "connect";
+  }
+
+  if (
+    [
+      "list-connections",
+      "list-messages",
+      "send-message",
+    ].includes(action)
+  ) {
+    return "messaging";
+  }
+
+  if (
+    action ===
+    "report"
+  ) {
+    return "report";
+  }
+
+  return "profile";
 }
 
 
@@ -1801,12 +3871,7 @@ export default async function handler(
       );
 
 
-    /*
-      Owner review uses the verified
-      server-side owner session and does
-      not require entering PenPal as the
-      member being reviewed.
-    */
+    /* OWNER-ONLY ACTIONS */
 
     if (
       action ===
@@ -1820,19 +3885,58 @@ export default async function handler(
       );
     }
 
+    if (
+      action ===
+      "owner-showcase-message"
+    ) {
+
+      return await handleOwnerShowcaseMessage(
+        req,
+        session,
+        res
+      );
+    }
+
+    if (
+      action ===
+      "owner-showcase-inbox"
+    ) {
+
+      return await handleOwnerShowcaseInbox(
+        req,
+        session,
+        res
+      );
+    }
+
+    if (
+      action ===
+      "owner-reports"
+    ) {
+
+      return await handleOwnerReports(
+        session,
+        res
+      );
+    }
+
+
+    /* SECURE PENPAL TOKEN */
+
+    const scope =
+      requiredScopeForAction(
+        action
+      );
 
     const access =
       await requirePenpalAccess({
-
         session,
 
         accessToken:
           req.body?.accessToken,
 
-        scope:
-          "profile",
+        scope,
       });
-
 
     if (
       !access.valid
@@ -1855,6 +3959,8 @@ export default async function handler(
     }
 
 
+    /* PROFILE */
+
     if (
       action ===
       "get"
@@ -1865,7 +3971,6 @@ export default async function handler(
         res
       );
     }
-
 
     if (
       action ===
@@ -1879,7 +3984,6 @@ export default async function handler(
       );
     }
 
-
     if (
       action ===
       "photo-choice"
@@ -1891,7 +3995,6 @@ export default async function handler(
         res
       );
     }
-
 
     if (
       action ===
@@ -1905,13 +4008,130 @@ export default async function handler(
     }
 
 
+    /* BOARD */
+
+    if (
+      action ===
+      "board-list"
+    ) {
+
+      return await handleBoardList(
+        session,
+        res
+      );
+    }
+
+
+    /* CONNECTIONS */
+
+    if (
+      action ===
+      "create-connection"
+    ) {
+
+      return await handleCreateConnection(
+        req,
+        session,
+        res
+      );
+    }
+
+    if (
+      action ===
+      "list-connections"
+    ) {
+
+      return await handleListConnections(
+        session,
+        res
+      );
+    }
+
+    if (
+      action ===
+      "respond-connection"
+    ) {
+
+      return await handleRespondConnection(
+        req,
+        session,
+        res
+      );
+    }
+
+    if (
+      action ===
+      "end-connection"
+    ) {
+
+      return await handleEndConnection(
+        req,
+        session,
+        res
+      );
+    }
+
+    if (
+      action ===
+      "block"
+    ) {
+
+      return await handleBlock(
+        req,
+        session,
+        res
+      );
+    }
+
+
+    /* MESSAGING */
+
+    if (
+      action ===
+      "list-messages"
+    ) {
+
+      return await handleListMessages(
+        req,
+        session,
+        res
+      );
+    }
+
+    if (
+      action ===
+      "send-message"
+    ) {
+
+      return await handleSendMessage(
+        req,
+        session,
+        res
+      );
+    }
+
+
+    /* REPORT */
+
+    if (
+      action ===
+      "report"
+    ) {
+
+      return await handleReport(
+        req,
+        session,
+        res
+      );
+    }
+
+
     return sendError(
       res,
       400,
       "UNKNOWN_ACTION",
-      "Unknown PenPal profile action."
+      "Unknown PenPal action."
     );
-
 
   } catch (error) {
 
@@ -1924,7 +4144,7 @@ export default async function handler(
       res,
       500,
       "PENPAL_PROFILE_ERROR",
-      "PenPal profile could not be processed right now."
+      "PenPal could not be processed right now."
     );
   }
 }
