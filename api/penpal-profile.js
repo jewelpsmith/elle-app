@@ -4,8 +4,13 @@ import {
 } from "./session-check.js";
 
 import {
+  del,
+} from "@vercel/blob";
+
+import {
   createHash,
 } from "node:crypto";
+
 
 /* =========================================================
    PENPAL PROFILE SETTINGS
@@ -44,6 +49,7 @@ const ALLOWED_PHOTO_TYPES = [
   "image/webp",
 ];
 
+
 /* =========================================================
    BASIC HELPERS
    ========================================================= */
@@ -57,6 +63,7 @@ function normalizeEmail(value) {
     .toLowerCase();
 }
 
+
 function normalizeAction(value) {
 
   return String(
@@ -65,6 +72,7 @@ function normalizeAction(value) {
     .trim()
     .toLowerCase();
 }
+
 
 function cleanText(
   value,
@@ -84,6 +92,7 @@ function cleanText(
       maxLength
     );
 }
+
 
 function parseJson(value) {
 
@@ -110,6 +119,7 @@ function parseJson(value) {
   }
 }
 
+
 function hashValue(value) {
 
   return createHash(
@@ -124,6 +134,7 @@ function hashValue(value) {
       "hex"
     );
 }
+
 
 function cleanToken(value) {
 
@@ -144,6 +155,7 @@ function cleanToken(value) {
 
   return token;
 }
+
 
 function toMilliseconds(value) {
 
@@ -200,6 +212,7 @@ function toMilliseconds(value) {
   return 0;
 }
 
+
 function noStore(res) {
 
   res.setHeader(
@@ -212,6 +225,7 @@ function noStore(res) {
     "no-cache"
   );
 }
+
 
 /* =========================================================
    RESPONSE HELPERS
@@ -234,6 +248,7 @@ function sendError(
       error,
     });
 }
+
 
 /* =========================================================
    CONTENT SAFETY
@@ -276,6 +291,7 @@ function containsPrivateContactInfo(
   );
 }
 
+
 function safePublicText(
   value,
   maxLength,
@@ -307,6 +323,7 @@ function safePublicText(
 
   return text;
 }
+
 
 function normalizeList(
   value,
@@ -362,6 +379,7 @@ function normalizeList(
   return output;
 }
 
+
 /* =========================================================
    REDIS RECORD HELPERS
    ========================================================= */
@@ -372,6 +390,7 @@ function profileKey(email) {
     `elle:penpal-profile:${normalizeEmail(email)}`
   );
 }
+
 
 async function getProfileRecord(
   email
@@ -398,6 +417,7 @@ async function getProfileRecord(
     raw
   );
 }
+
 
 async function saveProfileRecord(
   email,
@@ -426,6 +446,79 @@ async function saveProfileRecord(
     ),
   ]);
 }
+
+
+/* =========================================================
+   PRIVATE BLOB CLEANUP
+   ========================================================= */
+
+async function deleteProfileBlob(
+  profile
+) {
+
+  const blobTarget =
+    String(
+      profile?.photoUrl ||
+      profile?.photoStorageKey ||
+      ""
+    )
+      .trim();
+
+  if (!blobTarget) {
+    return;
+  }
+
+  try {
+
+    await del(
+      blobTarget
+    );
+
+  } catch (error) {
+
+    console.error(
+      "PenPal photo cleanup error:",
+      error
+    );
+  }
+}
+
+
+function clearPhotoFields(
+  profile
+) {
+
+  profile.photoUrl =
+    null;
+
+  profile.photoStorageKey =
+    null;
+
+  profile.photoContentType =
+    null;
+
+  profile.photoMimeType =
+    null;
+
+  profile.photoBytes =
+    0;
+
+  profile.photoUploadedAt =
+    null;
+
+  profile.photoReviewedAt =
+    null;
+
+  profile.photoAiFlagged =
+    false;
+
+  profile.photoAiReviewReason =
+    null;
+
+  profile.photoReviewNote =
+    null;
+}
+
 
 /* =========================================================
    CURRENT MEMBERSHIP CHECK
@@ -573,6 +666,7 @@ async function verifyCurrentMembership(
   };
 }
 
+
 /* =========================================================
    PENPAL ACCESS TOKEN
    ========================================================= */
@@ -586,6 +680,7 @@ function sessionHash(
     ""
   );
 }
+
 
 async function requirePenpalAccess({
   session,
@@ -730,6 +825,7 @@ async function requirePenpalAccess({
   };
 }
 
+
 /* =========================================================
    PROFILE COMPLETENESS
    ========================================================= */
@@ -754,10 +850,12 @@ function getPhotoReady(profile) {
     profile.photoStatus ===
       "approved" &&
     Boolean(
-      profile.photoUrl
+      profile.photoUrl &&
+      profile.photoStorageKey
     )
   );
 }
+
 
 function getCompletion(profile) {
 
@@ -844,6 +942,11 @@ function getCompletion(profile) {
   };
 }
 
+
+/* =========================================================
+   SAFE PROFILE RESPONSE
+   ========================================================= */
+
 function publicProfile(
   profile
 ) {
@@ -855,6 +958,18 @@ function publicProfile(
   const completion =
     getCompletion(
       profile
+    );
+
+  const approvedPhoto =
+    (
+      profile.photoChoice ===
+        "real-photo" &&
+      profile.photoStatus ===
+        "approved" &&
+      Boolean(
+        profile.photoUrl &&
+        profile.photoStorageKey
+      )
     );
 
   return {
@@ -893,14 +1008,46 @@ function publicProfile(
     photoStatus:
       profile.photoStatus,
 
+    photoAvailable:
+      approvedPhoto,
+
+    /*
+      The raw private Blob URL is intentionally
+      not exposed here.
+
+      Approved private photos will be delivered
+      through the authenticated PenPal photo
+      endpoint rather than exposing storage
+      credentials or relying on a public URL.
+    */
+
     photoUrl:
-      profile.photoStatus ===
-        "approved"
+      null,
+
+    photoAiFlagged:
+      profile.photoAiFlagged ===
+      true,
+
+    photoAiReviewReason:
+      profile.photoAiFlagged ===
+        true
         ? (
-            profile.photoUrl ||
+            profile.photoAiReviewReason ||
             null
           )
         : null,
+
+    photoReviewNote:
+      profile.photoReviewNote ||
+      null,
+
+    photoUploadedAt:
+      profile.photoUploadedAt ||
+      null,
+
+    photoReviewedAt:
+      profile.photoReviewedAt ||
+      null,
 
     profileComplete:
       completion.complete,
@@ -911,6 +1058,9 @@ function publicProfile(
     missing:
       completion.missing,
 
+    checks:
+      completion.checks,
+
     createdAt:
       profile.createdAt,
 
@@ -918,6 +1068,7 @@ function publicProfile(
       profile.updatedAt,
   };
 }
+
 
 /* =========================================================
    EMPTY PROFILE
@@ -971,19 +1122,35 @@ function newProfile(
     photoStatus:
       "none",
 
-    photoUrl:null,
+    photoUrl:
+      null,
 
-    photoStorageKey:null,
+    photoStorageKey:
+      null,
 
-    photoMimeType:null,
+    photoContentType:
+      null,
 
-    photoBytes:0,
+    photoMimeType:
+      null,
 
-    photoAiFlagged:false,
+    photoBytes:
+      0,
 
-    photoAiReviewReason:null,
+    photoUploadedAt:
+      null,
 
-    photoReviewNote:null,
+    photoReviewedAt:
+      null,
+
+    photoAiFlagged:
+      false,
+
+    photoAiReviewReason:
+      null,
+
+    photoReviewNote:
+      null,
 
     createdAt:
       now,
@@ -992,6 +1159,7 @@ function newProfile(
       now,
   };
 }
+
 
 /* =========================================================
    GET PROFILE
@@ -1015,7 +1183,9 @@ async function handleGet(
       );
 
     return res
-      .status(200)
+      .status(
+        200
+      )
       .json({
         success:true,
         exists:false,
@@ -1027,7 +1197,9 @@ async function handleGet(
   }
 
   return res
-    .status(200)
+    .status(
+      200
+    )
     .json({
       success:true,
       exists:true,
@@ -1037,6 +1209,7 @@ async function handleGet(
         ),
     });
 }
+
 
 /* =========================================================
    SAVE PROFILE
@@ -1128,19 +1301,6 @@ async function handleSave(
     );
   }
 
-  if (
-    bio.length >
-    BIO_MAX_LENGTH
-  ) {
-
-    return sendError(
-      res,
-      400,
-      "BIO_TOO_LONG",
-      `Your bio can be up to ${BIO_MAX_LENGTH} characters.`
-    );
-  }
-
   const openToConnect =
     req.body?.openToConnect ===
     true;
@@ -1186,7 +1346,9 @@ async function handleSave(
   );
 
   return res
-    .status(200)
+    .status(
+      200
+    )
     .json({
       success:true,
 
@@ -1205,6 +1367,7 @@ async function handleSave(
         completion.missing,
     });
 }
+
 
 /* =========================================================
    PHOTO CHOICE
@@ -1255,70 +1418,44 @@ async function handlePhotoChoice(
     "none"
   ) {
 
+    await deleteProfileBlob(
+      profile
+    );
+
     profile.photoChoice =
       "none";
 
     profile.photoStatus =
       "none";
 
-    profile.photoUrl =
-      null;
-
-    profile.photoStorageKey =
-      null;
-
-    profile.photoMimeType =
-      null;
-
-    profile.photoBytes =
-      0;
-
-    profile.photoAiFlagged =
-      false;
-
-    profile.photoAiReviewReason =
-      null;
-
-    profile.photoReviewNote =
-      null;
+    clearPhotoFields(
+      profile
+    );
 
   } else {
 
     /*
-      Actual binary upload will be
-      handled by the dedicated photo
-      endpoint/storage layer.
-
-      The browser cannot mark its own
-      photo approved.
+      If the member already has a valid
+      uploaded photo, do not erase it just
+      because they selected "real photo"
+      again.
     */
 
     profile.photoChoice =
       "real-photo";
 
-    profile.photoStatus =
-      "awaiting-upload";
+    if (
+      !profile.photoUrl ||
+      !profile.photoStorageKey
+    ) {
 
-    profile.photoUrl =
-      null;
+      profile.photoStatus =
+        "awaiting-upload";
 
-    profile.photoStorageKey =
-      null;
-
-    profile.photoMimeType =
-      null;
-
-    profile.photoBytes =
-      0;
-
-    profile.photoAiFlagged =
-      false;
-
-    profile.photoAiReviewReason =
-      null;
-
-    profile.photoReviewNote =
-      null;
+      clearPhotoFields(
+        profile
+      );
+    }
   }
 
   profile.updatedAt =
@@ -1331,7 +1468,9 @@ async function handlePhotoChoice(
   );
 
   return res
-    .status(200)
+    .status(
+      200
+    )
     .json({
       success:true,
 
@@ -1356,6 +1495,7 @@ async function handlePhotoChoice(
         ),
     });
 }
+
 
 /* =========================================================
    OWNER PHOTO REVIEW
@@ -1437,22 +1577,28 @@ async function handleOwnerPhotoReview(
   }
 
   if (
+    profile.photoChoice !==
+      "real-photo" ||
+    !profile.photoUrl ||
+    !profile.photoStorageKey
+  ) {
+
+    return sendError(
+      res,
+      400,
+      "PHOTO_NOT_UPLOADED",
+      "There is no uploaded profile photo to review."
+    );
+  }
+
+  const now =
+    new Date()
+      .toISOString();
+
+  if (
     decision ===
     "approve"
   ) {
-
-    if (
-      !profile.photoUrl ||
-      !profile.photoStorageKey
-    ) {
-
-      return sendError(
-        res,
-        400,
-        "PHOTO_NOT_UPLOADED",
-        "There is no uploaded photo to approve."
-      );
-    }
 
     profile.photoStatus =
       "approved";
@@ -1462,16 +1608,52 @@ async function handleOwnerPhotoReview(
 
     profile.photoAiReviewReason =
       null;
+
+    profile.photoReviewedAt =
+      now;
   }
+
 
   if (
     decision ===
     "reject"
   ) {
 
+    await deleteProfileBlob(
+      profile
+    );
+
     profile.photoStatus =
       "rejected";
+
+    profile.photoAiFlagged =
+      false;
+
+    profile.photoAiReviewReason =
+      null;
+
+    profile.photoReviewedAt =
+      now;
+
+    profile.photoUrl =
+      null;
+
+    profile.photoStorageKey =
+      null;
+
+    profile.photoContentType =
+      null;
+
+    profile.photoMimeType =
+      null;
+
+    profile.photoBytes =
+      0;
+
+    profile.photoUploadedAt =
+      null;
   }
+
 
   if (
     decision ===
@@ -1490,6 +1672,9 @@ async function handleOwnerPhotoReview(
         "Image requires review for possible AI generation.",
         240
       );
+
+    profile.photoReviewedAt =
+      now;
   }
 
   profile.photoReviewNote =
@@ -1499,8 +1684,7 @@ async function handleOwnerPhotoReview(
     );
 
   profile.updatedAt =
-    new Date()
-      .toISOString();
+    now;
 
   await saveProfileRecord(
     memberEmail,
@@ -1508,7 +1692,9 @@ async function handleOwnerPhotoReview(
   );
 
   return res
-    .status(200)
+    .status(
+      200
+    )
     .json({
       success:true,
 
@@ -1521,6 +1707,7 @@ async function handleOwnerPhotoReview(
     });
 }
 
+
 /* =========================================================
    DELETE PROFILE
    ========================================================= */
@@ -1530,6 +1717,18 @@ async function handleDelete(
   res
 ) {
 
+  const profile =
+    await getProfileRecord(
+      session.email
+    );
+
+  if (profile) {
+
+    await deleteProfileBlob(
+      profile
+    );
+  }
+
   await redisCommand([
     "DEL",
     profileKey(
@@ -1538,12 +1737,15 @@ async function handleDelete(
   ]);
 
   return res
-    .status(200)
+    .status(
+      200
+    )
     .json({
       success:true,
       deleted:true,
     });
 }
+
 
 /* =========================================================
    MAIN HANDLER
@@ -1562,6 +1764,11 @@ export default async function handler(
     req.method !==
     "POST"
   ) {
+
+    res.setHeader(
+      "Allow",
+      "POST"
+    );
 
     return sendError(
       res,
@@ -1593,14 +1800,12 @@ export default async function handler(
         req.body?.action
       );
 
-    /*
-      Owner photo review is the one
-      profile action that does not
-      require entering PenPal as the
-      member being reviewed.
 
-      It still requires the verified
-      server-side owner session.
+    /*
+      Owner review uses the verified
+      server-side owner session and does
+      not require entering PenPal as the
+      member being reviewed.
     */
 
     if (
@@ -1615,8 +1820,10 @@ export default async function handler(
       );
     }
 
+
     const access =
       await requirePenpalAccess({
+
         session,
 
         accessToken:
@@ -1626,12 +1833,14 @@ export default async function handler(
           "profile",
       });
 
+
     if (
       !access.valid
     ) {
 
       return sendError(
         res,
+
         access.code ===
           "SCOPE_NOT_ALLOWED"
           ? 403
@@ -1645,6 +1854,7 @@ export default async function handler(
       );
     }
 
+
     if (
       action ===
       "get"
@@ -1655,6 +1865,7 @@ export default async function handler(
         res
       );
     }
+
 
     if (
       action ===
@@ -1668,6 +1879,7 @@ export default async function handler(
       );
     }
 
+
     if (
       action ===
       "photo-choice"
@@ -1680,6 +1892,7 @@ export default async function handler(
       );
     }
 
+
     if (
       action ===
       "delete"
@@ -1691,12 +1904,14 @@ export default async function handler(
       );
     }
 
+
     return sendError(
       res,
       400,
       "UNKNOWN_ACTION",
       "Unknown PenPal profile action."
     );
+
 
   } catch (error) {
 
