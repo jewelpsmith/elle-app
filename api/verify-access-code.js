@@ -22,20 +22,27 @@ function getRedisConfig() {
 }
 
 async function redisCommand(command) {
-  const { url, token } = getRedisConfig();
+  const { url, token } =
+    getRedisConfig();
 
-  const response = await fetch(url, {
-    method: "POST",
+  const response =
+    await fetch(url, {
+      method: "POST",
 
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
+      headers: {
+        Authorization:
+          `Bearer ${token}`,
 
-    body: JSON.stringify(command),
-  });
+        "Content-Type":
+          "application/json",
+      },
 
-  const data = await response.json();
+      body:
+        JSON.stringify(command),
+    });
+
+  const data =
+    await response.json();
 
   if (!response.ok) {
     throw new Error(
@@ -45,7 +52,9 @@ async function redisCommand(command) {
   }
 
   if (data?.error) {
-    throw new Error(data.error);
+    throw new Error(
+      data.error
+    );
   }
 
   return data.result;
@@ -81,7 +90,10 @@ function isOwner(email) {
   );
 }
 
-function getPermissions(member, owner) {
+function getPermissions(
+  member,
+  owner
+) {
   if (owner) {
     return {
       elleChat: true,
@@ -98,17 +110,19 @@ function getPermissions(member, owner) {
     String(
       member?.tierKey || ""
     ).toLowerCase();
-if (tier === "elle-next") {
-  return {
-    elleChat: true,
-    expandedPerks: true,
-    elleRadio: false,
-    liveElle: false,
-    liveVideo: false,
-    ownerMode: false,
-    testMode: false,
-  };
-}
+
+  if (tier === "elle-next") {
+    return {
+      elleChat: true,
+      expandedPerks: true,
+      elleRadio: false,
+      liveElle: false,
+      liveVideo: false,
+      ownerMode: false,
+      testMode: false,
+    };
+  }
+
   if (tier === "infinite") {
     return {
       elleChat: true,
@@ -121,7 +135,9 @@ if (tier === "elle-next") {
     };
   }
 
-  if (tier === "idea-circle") {
+  if (
+    tier === "idea-circle"
+  ) {
     return {
       elleChat: true,
       expandedPerks: true,
@@ -156,12 +172,48 @@ if (tier === "elle-next") {
   };
 }
 
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({
-      success: false,
-      error: "POST only",
-    });
+function getServerAgeGroup(
+  member,
+  owner
+) {
+  /*
+    Age is determined by the
+    verified membership tier.
+
+    Never trust an ageGroup value
+    sent from the browser for
+    normal member access.
+  */
+
+  if (owner) {
+    return "18+";
+  }
+
+  const tier =
+    String(
+      member?.tierKey || ""
+    ).toLowerCase();
+
+  if (tier === "elle-next") {
+    return "13-17";
+  }
+
+  return "18+";
+}
+
+export default async function handler(
+  req,
+  res
+) {
+  if (
+    req.method !== "POST"
+  ) {
+    return res
+      .status(405)
+      .json({
+        success: false,
+        error: "POST only",
+      });
   }
 
   try {
@@ -176,18 +228,27 @@ export default async function handler(req, res) {
       );
 
     if (!email) {
-      return res.status(400).json({
-        success: false,
-        error: "Email required",
-      });
+      return res
+        .status(400)
+        .json({
+          success: false,
+          error:
+            "Email required",
+        });
     }
 
-    if (!/^[0-9]{6}$/.test(code)) {
-      return res.status(400).json({
-        success: false,
-        error:
-          "Enter the six-digit code",
-      });
+    if (
+      !/^[0-9]{6}$/.test(
+        code
+      )
+    ) {
+      return res
+        .status(400)
+        .json({
+          success: false,
+          error:
+            "Enter the six-digit code",
+        });
     }
 
     const owner =
@@ -206,20 +267,25 @@ export default async function handler(req, res) {
       ]);
 
     if (!rawCode) {
-      return res.status(200).json({
-        success: true,
-        verified: false,
-        reason:
-          "Code expired or not found",
-      });
+      return res
+        .status(200)
+        .json({
+          success: true,
+          verified: false,
+          reason:
+            "Code expired or not found",
+        });
     }
 
     let codeRecord;
 
     try {
       codeRecord =
-        typeof rawCode === "string"
-          ? JSON.parse(rawCode)
+        typeof rawCode ===
+        "string"
+          ? JSON.parse(
+              rawCode
+            )
           : rawCode;
     } catch {
       throw new Error(
@@ -229,7 +295,8 @@ export default async function handler(req, res) {
 
     const attempts =
       Number(
-        codeRecord?.attempts || 0
+        codeRecord?.attempts ||
+        0
       );
 
     if (attempts >= 5) {
@@ -238,40 +305,50 @@ export default async function handler(req, res) {
         `elle:access-code:${email}`,
       ]);
 
-      return res.status(200).json({
-        success: true,
-        verified: false,
-        reason:
-          "Too many attempts. Request a new code.",
-      });
+      return res
+        .status(200)
+        .json({
+          success: true,
+          verified: false,
+          reason:
+            "Too many attempts. Request a new code.",
+        });
     }
 
     if (
-      String(codeRecord?.code) !==
-      code
+      String(
+        codeRecord?.code
+      ) !== code
     ) {
       await redisCommand([
         "SET",
         `elle:access-code:${email}`,
+
         JSON.stringify({
           ...codeRecord,
+
           attempts:
             attempts + 1,
         }),
+
         "KEEPTTL",
       ]);
 
-      return res.status(200).json({
-        success: true,
-        verified: false,
-        reason:
-          "That code is not correct",
-        attemptsRemaining:
-          Math.max(
-            0,
-            4 - attempts
-          ),
-      });
+      return res
+        .status(200)
+        .json({
+          success: true,
+          verified: false,
+
+          reason:
+            "That code is not correct",
+
+          attemptsRemaining:
+            Math.max(
+              0,
+              4 - attempts
+            ),
+        });
     }
 
     /*
@@ -286,9 +363,15 @@ export default async function handler(req, res) {
       member = {
         name: "Owner",
         email,
-        tierName: "Owner Access",
-        tierKey: "owner",
-        accessActive: true,
+
+        tierName:
+          "Owner Access",
+
+        tierKey:
+          "owner",
+
+        accessActive:
+          true,
       };
     } else {
       const rawMember =
@@ -298,18 +381,24 @@ export default async function handler(req, res) {
         ]);
 
       if (!rawMember) {
-        return res.status(200).json({
-          success: true,
-          verified: false,
-          reason:
-            "Membership not found",
-        });
+        return res
+          .status(200)
+          .json({
+            success: true,
+            verified: false,
+
+            reason:
+              "Membership not found",
+          });
       }
 
       try {
         member =
-          typeof rawMember === "string"
-            ? JSON.parse(rawMember)
+          typeof rawMember ===
+          "string"
+            ? JSON.parse(
+                rawMember
+              )
             : rawMember;
       } catch {
         throw new Error(
@@ -318,14 +407,18 @@ export default async function handler(req, res) {
       }
 
       if (
-        member?.accessActive !== true
+        member?.accessActive !==
+        true
       ) {
-        return res.status(200).json({
-          success: true,
-          verified: false,
-          reason:
-            "Membership is not active",
-        });
+        return res
+          .status(200)
+          .json({
+            success: true,
+            verified: false,
+
+            reason:
+              "Membership is not active",
+          });
       }
     }
 
@@ -347,6 +440,21 @@ export default async function handler(req, res) {
         owner
       );
 
+    /*
+      IMPORTANT:
+      Age is now bound to the
+      verified membership session.
+
+      Elle Next = 13-17
+      Adult tiers = 18+
+    */
+
+    const ageGroup =
+      getServerAgeGroup(
+        member,
+        owner
+      );
+
     const sessionRecord = {
       email,
 
@@ -357,7 +465,10 @@ export default async function handler(req, res) {
         member?.tierName || "",
 
       tierKey:
-        member?.tierKey || "unknown",
+        member?.tierKey ||
+        "unknown",
+
+      ageGroup,
 
       owner,
 
@@ -369,44 +480,60 @@ export default async function handler(req, res) {
 
     await redisCommand([
       "SET",
+
       `elle:session:${sessionToken}`,
+
       JSON.stringify(
         sessionRecord
       ),
+
       "EX",
+
       sessionSeconds,
     ]);
+
+    /*
+      Access codes are one-time.
+    */
 
     await redisCommand([
       "DEL",
       `elle:access-code:${email}`,
     ]);
 
-    return res.status(200).json({
-      success: true,
-      verified: true,
-      owner,
+    return res
+      .status(200)
+      .json({
+        success: true,
+        verified: true,
 
-      sessionToken,
+        owner,
 
-      sessionExpiresInSeconds:
-        sessionSeconds,
+        ageGroup,
 
-      member: {
-        name:
-          member?.name || "",
+        sessionToken,
 
-        email,
+        sessionExpiresInSeconds:
+          sessionSeconds,
 
-        tierName:
-          member?.tierName || "",
+        member: {
+          name:
+            member?.name || "",
 
-        tierKey:
-          member?.tierKey || "unknown",
-      },
+          email,
 
-      permissions,
-    });
+          tierName:
+            member?.tierName || "",
+
+          tierKey:
+            member?.tierKey ||
+            "unknown",
+
+          ageGroup,
+        },
+
+        permissions,
+      });
 
   } catch (error) {
     console.error(
@@ -414,10 +541,13 @@ export default async function handler(req, res) {
       error
     );
 
-    return res.status(500).json({
-      success: false,
-      error:
-        "Could not verify access code",
-    });
+    return res
+      .status(500)
+      .json({
+        success: false,
+
+        error:
+          "Could not verify access code",
+      });
   }
 }
