@@ -2,15 +2,36 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#2e211d">
-<meta name="description" content="Elle by AURYNELLE∞ IDEAS. Real talk, good energy, elevated living.">
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1,viewport-fit=cover"
+>
+<meta
+  name="theme-color"
+  content="#2e211d"
+>
+<meta
+  name="description"
+  content="Elle by AURYNELLE∞ IDEAS. Real talk, good energy, elevated living."
+>
+
 <title>Elle · AURYNELLE∞ IDEAS</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  rel="preconnect"
+  href="https://fonts.googleapis.com"
+>
 
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Figtree:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin
+>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Figtree:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap"
+  rel="stylesheet"
+>
 
 <style>
 
@@ -128,7 +149,8 @@ textarea:focus-visible{
 }
 
 .section{
-  padding:76px 0;
+  padding:
+    76px 0;
 }
 
 .eyebrow{
@@ -166,30 +188,6 @@ textarea:focus-visible{
   font-size:15px;
 }
 
-.pill{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-
-  min-height:38px;
-
-  padding:0 13px;
-
-  border:
-    1px solid
-    var(--line);
-
-  border-radius:999px;
-
-  background:
-    rgba(255,255,255,.85);
-
-  font-size:12px;
-  font-weight:800;
-
-  color:var(--plum);
-}
-
 .primary,
 .secondary{
   display:inline-flex;
@@ -198,7 +196,8 @@ textarea:focus-visible{
 
   min-height:48px;
 
-  padding:0 21px;
+  padding:
+    0 21px;
 
   border-radius:999px;
 
@@ -234,10 +233,9 @@ textarea:focus-visible{
 }
 
 /* =========================================================
-   AGE + MEMBER GATES
+   POWER / MEMBER GATE
    ========================================================= */
 
-.age-gate,
 .member-gate{
   position:fixed;
   inset:0;
@@ -250,23 +248,28 @@ textarea:focus-visible{
 
   padding:20px;
 
+  overflow:auto;
+
   background:
-    rgba(255,250,246,.96);
+    radial-gradient(
+      circle at 50% 28%,
+      rgba(255,255,255,.98),
+      rgba(249,238,226,.97) 48%,
+      rgba(236,219,204,.97) 100%
+    );
 
   backdrop-filter:
     blur(24px);
 }
 
-.age-gate.show,
 .member-gate.show{
   display:flex;
 }
 
-.age-card,
-.member-card{
+.power-card{
   width:
     min(
-      560px,
+      590px,
       100%
     );
 
@@ -277,21 +280,31 @@ textarea:focus-visible{
 
   border:
     1px solid
-    rgba(255,255,255,.9);
+    rgba(255,255,255,.92);
 
-  border-radius:30px;
+  border-radius:32px;
 
-  background:#fff;
+  background:
+    rgba(255,253,249,.96);
 
   box-shadow:
-    0 40px 100px -52px
-    rgba(55,34,31,.62);
+    0 45px 110px -55px
+    rgba(49,29,25,.68);
 }
 
-.age-card{
-  padding:34px;
+.power-stage{
+  padding:
+    34px 28px 30px;
 
   text-align:center;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255,255,255,.98),
+      rgba(255,246,238,.94) 52%,
+      rgba(248,229,228,.86) 100%
+    );
 }
 
 .gate-mark{
@@ -324,16 +337,715 @@ textarea:focus-visible{
     serif;
 
   font-size:28px;
+
+  box-shadow:
+    0 16px 35px -20px
+    rgba(80,45,59,.7);
 }
 
 .gate-kicker{
-  font-size:11px;
+  font-size:10px;
   font-weight:900;
 
-  letter-spacing:.17em;
+  letter-spacing:.18em;
   text-transform:uppercase;
 
   color:var(--gold);
+}
+
+.power-title{
+  margin-top:7px;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:
+    clamp(
+      48px,
+      10vw,
+      68px
+    );
+
+  font-weight:600;
+
+  line-height:.95;
+
+  color:var(--plum);
+}
+
+.power-tagline{
+  margin-top:8px;
+
+  color:#71625c;
+
+  font-size:13px;
+  font-weight:700;
+}
+
+.power-script{
+  margin-top:12px;
+
+  font-family:
+    "Caveat",
+    cursive;
+
+  font-size:
+    clamp(
+      32px,
+      7vw,
+      42px
+    );
+
+  font-weight:700;
+
+  color:var(--rose);
+}
+
+.power-copy{
+  max-width:430px;
+
+  margin:
+    8px auto 0;
+
+  color:#645954;
+
+  font-size:13px;
+  line-height:1.55;
+}
+
+.power-switch-wrap{
+  position:relative;
+
+  width:
+    150px;
+
+  margin:
+    25px auto 17px;
+}
+
+.power-halo{
+  position:absolute;
+
+  width:190px;
+  height:190px;
+
+  left:50%;
+  top:50%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  border-radius:50%;
+
+  opacity:.18;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255,219,145,.85),
+      rgba(255,221,157,.28) 42%,
+      transparent 70%
+    );
+
+  filter:
+    blur(12px);
+
+  pointer-events:none;
+
+  transition:
+    opacity .45s ease,
+    transform .45s ease;
+}
+
+.power-switch{
+  position:relative;
+  z-index:2;
+
+  width:126px;
+  height:172px;
+
+  border:
+    1px solid
+    #d9c6ab;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #fffdf7,
+      #eee3d5
+    );
+
+  box-shadow:
+    0 22px 40px -25px
+    rgba(55,36,28,.65),
+    inset
+    0 1px 0
+    rgba(255,255,255,.95);
+
+  cursor:pointer;
+
+  color:var(--espresso);
+}
+
+.power-switch:hover{
+  transform:
+    translateY(-2px);
+}
+
+.power-switch:disabled{
+  cursor:default;
+}
+
+.switch-label{
+  position:absolute;
+
+  left:0;
+  right:0;
+
+  text-align:center;
+
+  font-size:8px;
+  font-weight:900;
+
+  letter-spacing:.15em;
+
+  color:#8c765d;
+}
+
+.switch-label.on{
+  top:13px;
+}
+
+.switch-label.off{
+  bottom:13px;
+}
+
+.switch-slot{
+  position:absolute;
+
+  width:52px;
+  height:93px;
+
+  left:50%;
+  top:50%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  border-radius:9px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #d7c5ad,
+      #f5ecdf
+    );
+
+  box-shadow:
+    inset
+    0 7px 12px
+    rgba(90,63,42,.18),
+    inset
+    0 -5px 10px
+    rgba(255,255,255,.7);
+}
+
+.switch-toggle{
+  position:absolute;
+
+  width:42px;
+  height:63px;
+
+  left:5px;
+  top:25px;
+
+  border-radius:6px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffdf7,
+      #d9c9b7
+    );
+
+  box-shadow:
+    0 8px 12px
+    rgba(57,40,31,.22);
+
+  transform:
+    translateY(12px);
+
+  transform-origin:
+    center;
+
+  transition:
+    transform .42s
+    cubic-bezier(.22,.9,.3,1);
+}
+
+.switch-infinity{
+  position:absolute;
+
+  left:0;
+  right:0;
+  top:22px;
+
+  text-align:center;
+
+  color:#b58a4f;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:21px;
+  font-weight:700;
+}
+
+.power-switch.on .switch-toggle{
+  transform:
+    translateY(-17px);
+}
+
+.power-switch.on + .power-halo,
+.power-switch-wrap.on .power-halo{
+  opacity:.9;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    )
+    scale(1.14);
+}
+
+.power-switch.on{
+  box-shadow:
+    0 0 50px
+    rgba(255,204,116,.4),
+    0 24px 45px -24px
+    rgba(55,36,28,.6),
+    inset
+    0 1px 0
+    rgba(255,255,255,.95);
+}
+
+.power-status{
+  min-height:22px;
+
+  color:#8a7258;
+
+  font-size:9px;
+  font-weight:900;
+
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.power-status.on{
+  color:#a7793d;
+}
+
+.member-enter{
+  margin-top:9px;
+
+  border:0;
+
+  background:none;
+
+  color:var(--plum);
+
+  font-size:12px;
+  font-weight:900;
+
+  cursor:pointer;
+
+  text-decoration:underline;
+
+  text-underline-offset:3px;
+}
+
+.member-login{
+  display:none;
+
+  padding:
+    23px 28px 28px;
+
+  border-top:
+    1px solid
+    var(--line);
+
+  background:#fff;
+}
+
+.member-login.show{
+  display:block;
+}
+
+.login-title{
+  text-align:center;
+
+  color:var(--plum);
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:27px;
+}
+
+.login-copy{
+  max-width:420px;
+
+  margin:
+    6px auto 20px;
+
+  text-align:center;
+
+  color:#796d66;
+
+  font-size:12px;
+  line-height:1.5;
+}
+
+.member-step{
+  display:none;
+}
+
+.member-step.show{
+  display:block;
+}
+
+.field-label{
+  display:block;
+
+  margin-bottom:8px;
+
+  font-size:11px;
+  font-weight:900;
+
+  letter-spacing:.08em;
+  text-transform:uppercase;
+
+  color:var(--plum);
+}
+
+.member-input{
+  width:100%;
+  height:52px;
+
+  padding:
+    0 16px;
+
+  border:
+    1px solid
+    #ded1ca;
+
+  border-radius:15px;
+
+  background:#fffdfc;
+
+  color:var(--ink);
+
+  outline:0;
+}
+
+.code-input{
+  text-align:center;
+
+  font-size:22px;
+  font-weight:900;
+
+  letter-spacing:.2em;
+}
+
+.member-action{
+  width:100%;
+  min-height:49px;
+
+  margin-top:11px;
+
+  border:0;
+
+  border-radius:999px;
+
+  background:var(--plum);
+
+  color:#fff;
+
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.member-action:disabled{
+  opacity:.55;
+
+  cursor:wait;
+}
+
+.member-secondary{
+  width:100%;
+
+  margin-top:12px;
+
+  border:0;
+
+  background:none;
+
+  color:var(--plum);
+
+  font-size:12px;
+  font-weight:800;
+
+  cursor:pointer;
+}
+
+.member-message{
+  display:none;
+
+  margin-top:13px;
+
+  padding:
+    12px 14px;
+
+  border-radius:13px;
+
+  font-size:13px;
+  line-height:1.5;
+}
+
+.member-message.show{
+  display:block;
+}
+
+.member-message.error{
+  background:#fff0f2;
+
+  color:#734b56;
+}
+
+.member-message.ok{
+  background:#eff9f3;
+
+  color:#376a50;
+}
+
+.member-join{
+  display:none;
+
+  margin-top:14px;
+
+  padding:17px;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius:18px;
+
+  text-align:center;
+
+  background:#fff9fb;
+}
+
+.member-join.show{
+  display:block;
+}
+
+.member-join strong{
+  display:block;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:20px;
+
+  color:var(--plum);
+}
+
+.member-join p{
+  margin-top:6px;
+
+  color:#655a55;
+
+  font-size:13px;
+  line-height:1.5;
+}
+
+.member-join a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  min-height:42px;
+
+  margin-top:11px;
+
+  padding:
+    0 18px;
+
+  border-radius:999px;
+
+  background:var(--plum);
+
+  color:#fff;
+
+  text-decoration:none;
+
+  font-size:12px;
+  font-weight:900;
+}
+
+.member-foot{
+  margin-top:16px;
+
+  text-align:center;
+
+  color:#867b75;
+
+  font-size:11px;
+  line-height:1.5;
+}
+
+/* =========================================================
+   POWER ANIMATION
+   ========================================================= */
+
+@keyframes elleFlicker{
+
+  0%{
+    opacity:1;
+  }
+
+  16%{
+    opacity:.76;
+  }
+
+  25%{
+    opacity:1;
+  }
+
+  33%{
+    opacity:.58;
+  }
+
+  43%{
+    opacity:1;
+  }
+
+  52%{
+    opacity:.82;
+  }
+
+  100%{
+    opacity:1;
+  }
+
+}
+
+@keyframes elleLightUp{
+
+  0%{
+    filter:
+      brightness(.72)
+      saturate(.8);
+  }
+
+  40%{
+    filter:
+      brightness(1.12)
+      saturate(1.08);
+  }
+
+  100%{
+    filter:
+      brightness(1)
+      saturate(1);
+  }
+
+}
+
+.member-gate.flicker{
+  animation:
+    elleFlicker
+    .68s
+    ease;
+}
+
+body.elle-powered .topbar,
+body.elle-powered main,
+body.elle-powered .footer{
+  animation:
+    elleLightUp
+    1.15s
+    ease both;
+}
+
+/* =========================================================
+   AGE FALLBACK
+   ========================================================= */
+
+.age-gate{
+  position:fixed;
+  inset:0;
+
+  z-index:21000;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:
+    rgba(255,250,246,.97);
+
+  backdrop-filter:
+    blur(24px);
+}
+
+.age-gate.show{
+  display:flex;
+}
+
+.age-card{
+  width:
+    min(
+      560px,
+      100%
+    );
+
+  max-height:
+    calc(100dvh - 30px);
+
+  overflow:auto;
+
+  padding:34px;
+
+  text-align:center;
+
+  border:
+    1px solid
+    rgba(255,255,255,.9);
+
+  border-radius:30px;
+
+  background:#fff;
+
+  box-shadow:
+    0 40px 100px -52px
+    rgba(55,34,31,.62);
 }
 
 .gate-title{
@@ -463,224 +1175,6 @@ textarea:focus-visible{
 
 .under-message.show{
   display:block;
-}
-
-.member-head{
-  padding:
-    31px 30px 23px;
-
-  text-align:center;
-
-  background:
-    linear-gradient(
-      145deg,
-      #fffaf6,
-      #fff0f1
-    );
-}
-
-.member-body{
-  padding:
-    25px 30px 30px;
-}
-
-.member-step{
-  display:none;
-}
-
-.member-step.show{
-  display:block;
-}
-
-.field-label{
-  display:block;
-
-  margin-bottom:8px;
-
-  font-size:11px;
-  font-weight:900;
-
-  letter-spacing:.08em;
-  text-transform:uppercase;
-
-  color:var(--plum);
-}
-
-.member-input{
-  width:100%;
-  height:52px;
-
-  padding:
-    0 16px;
-
-  border:
-    1px solid
-    #ded1ca;
-
-  border-radius:15px;
-
-  background:#fffdfc;
-
-  color:var(--ink);
-
-  outline:0;
-}
-
-.code-input{
-  text-align:center;
-
-  font-size:22px;
-  font-weight:900;
-
-  letter-spacing:.2em;
-}
-
-.member-action{
-  width:100%;
-  min-height:49px;
-
-  margin-top:11px;
-
-  border:0;
-
-  border-radius:999px;
-
-  background:var(--plum);
-
-  color:#fff;
-
-  font-weight:900;
-
-  cursor:pointer;
-}
-
-.member-action:disabled{
-  opacity:.55;
-
-  cursor:wait;
-}
-
-.member-secondary{
-  width:100%;
-
-  margin-top:12px;
-
-  border:0;
-
-  background:none;
-
-  color:var(--plum);
-
-  font-weight:800;
-
-  cursor:pointer;
-}
-
-.member-message{
-  display:none;
-
-  margin-top:13px;
-
-  padding:
-    12px 14px;
-
-  border-radius:13px;
-
-  font-size:13px;
-  line-height:1.5;
-}
-
-.member-message.show{
-  display:block;
-}
-
-.member-message.error{
-  background:#fff0f2;
-
-  color:#734b56;
-}
-
-.member-message.ok{
-  background:#eff9f3;
-
-  color:#376a50;
-}
-
-.member-join{
-  display:none;
-
-  margin-top:14px;
-
-  padding:17px;
-
-  border:
-    1px solid
-    var(--line);
-
-  border-radius:18px;
-
-  text-align:center;
-
-  background:#fff9fb;
-}
-
-.member-join.show{
-  display:block;
-}
-
-.member-join strong{
-  display:block;
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:20px;
-
-  color:var(--plum);
-}
-
-.member-join p{
-  margin-top:6px;
-
-  color:#655a55;
-
-  font-size:13px;
-  line-height:1.5;
-}
-
-.member-join a{
-  display:inline-flex;
-  align-items:center;
-
-  min-height:42px;
-
-  margin-top:11px;
-
-  padding:
-    0 18px;
-
-  border-radius:999px;
-
-  background:var(--plum);
-
-  color:#fff;
-
-  text-decoration:none;
-
-  font-size:12px;
-  font-weight:900;
-}
-
-.member-foot{
-  margin-top:16px;
-
-  text-align:center;
-
-  color:#867b75;
-
-  font-size:12px;
-  line-height:1.5;
 }
 
 /* =========================================================
@@ -939,6 +1433,7 @@ textarea:focus-visible{
   font-size:11px;
   font-weight:800;
 }
+
 /* =========================================================
    HERO
    ========================================================= */
@@ -1154,7 +1649,8 @@ textarea:focus-visible{
       transparent 72%
     );
 
-  filter:blur(3px);
+  filter:
+    blur(3px);
 }
 
 .hero-portrait{
@@ -1319,7 +1815,8 @@ textarea:focus-visible{
   width:34px;
   height:34px;
 
-  flex:0 0 34px;
+  flex:
+    0 0 34px;
 
   display:grid;
   place-items:center;
@@ -1327,8 +1824,6 @@ textarea:focus-visible{
   border-radius:50%;
 
   background:#fff;
-
-  color:var(--rose);
 
   box-shadow:var(--soft);
 }
@@ -1406,7 +1901,8 @@ textarea:focus-visible{
   width:42px;
   height:42px;
 
-  flex:0 0 42px;
+  flex:
+    0 0 42px;
 
   display:grid;
   place-items:center;
@@ -1684,6 +2180,7 @@ textarea:focus-visible{
 }
 
 @keyframes typingPulse{
+
   0%,
   60%,
   100%{
@@ -1695,6 +2192,7 @@ textarea:focus-visible{
     opacity:1;
     transform:translateY(-3px);
   }
+
 }
 
 .chip-row{
@@ -1799,116 +2297,7 @@ textarea:focus-visible{
 }
 
 /* =========================================================
-   IMAGE LIGHTBOX
-   ========================================================= */
-
-.image-modal{
-  position:fixed;
-  inset:0;
-
-  z-index:30000;
-
-  display:none;
-  align-items:center;
-  justify-content:center;
-
-  padding:18px;
-
-  background:
-    rgba(29,20,18,.9);
-
-  backdrop-filter:
-    blur(12px);
-}
-
-.image-modal.show{
-  display:flex;
-}
-
-.image-modal-card{
-  position:relative;
-
-  width:
-    min(
-      1000px,
-      100%
-    );
-
-  max-height:
-    calc(100dvh - 36px);
-
-  display:flex;
-  flex-direction:column;
-
-  overflow:hidden;
-
-  border-radius:24px;
-
-  background:#171210;
-
-  box-shadow:
-    0 40px 100px
-    rgba(0,0,0,.45);
-}
-
-.image-modal-image{
-  display:block;
-
-  width:100%;
-
-  max-height:
-    calc(100dvh - 110px);
-
-  object-fit:contain;
-
-  background:#171210;
-}
-
-.image-modal-bar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  gap:10px;
-
-  padding:
-    12px;
-
-  background:#231a17;
-}
-
-.image-modal-close,
-.image-modal-download{
-  min-height:40px;
-
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:
-    0 14px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.14);
-
-  border-radius:999px;
-
-  background:
-    rgba(255,255,255,.08);
-
-  color:#fff;
-
-  text-decoration:none;
-
-  font-size:12px;
-  font-weight:900;
-
-  cursor:pointer;
-}
-
-/* =========================================================
-   EXPLORE: RADIO + WORLD
+   EXPLORE
    ========================================================= */
 
 .explore-head{
@@ -2065,6 +2454,10 @@ textarea:focus-visible{
   cursor:pointer;
 }
 
+/* =========================================================
+   RADIO
+   ========================================================= */
+
 .radio-inline{
   display:none;
 
@@ -2217,6 +2610,10 @@ textarea:focus-visible{
   font-size:9px;
 }
 
+/* =========================================================
+   WORLD
+   ========================================================= */
+
 .world-live{
   display:flex;
   flex-wrap:wrap;
@@ -2324,98 +2721,6 @@ textarea:focus-visible{
 }
 
 /* =========================================================
-   TURN TABLE TAKEOVER
-   ========================================================= */
-
-.turntable-takeover{
-  position:fixed;
-  inset:0;
-
-  z-index:15000;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:20px;
-
-  pointer-events:none;
-
-  opacity:0;
-
-  background:
-    rgba(30,21,18,.78);
-
-  backdrop-filter:
-    blur(18px);
-
-  transition:
-    opacity .2s ease;
-}
-
-.turntable-takeover.show{
-  opacity:1;
-}
-
-.takeover-card{
-  width:
-    min(
-      560px,
-      100%
-    );
-
-  overflow:hidden;
-
-  border-radius:28px;
-
-  background:#211715;
-
-  box-shadow:
-    0 36px 100px
-    rgba(0,0,0,.46);
-}
-
-.takeover-card img{
-  display:block;
-
-  width:100%;
-  height:auto;
-}
-
-.takeover-copy{
-  padding:
-    18px 20px 21px;
-
-  text-align:center;
-}
-
-.takeover-copy span{
-  display:block;
-
-  color:#d6bd97;
-
-  font-size:9px;
-  font-weight:900;
-
-  letter-spacing:.16em;
-  text-transform:uppercase;
-}
-
-.takeover-copy strong{
-  display:block;
-
-  margin-top:4px;
-
-  color:white;
-
-  font-family:
-    "Playfair Display",
-    serif;
-
-  font-size:24px;
-}
-
-/* =========================================================
    PENPAL
    ========================================================= */
 
@@ -2451,27 +2756,6 @@ textarea:focus-visible{
     );
 
   box-shadow:var(--shadow);
-}
-
-.penpal-shell::before{
-  content:"";
-
-  position:absolute;
-
-  width:400px;
-  height:400px;
-
-  border-radius:50%;
-
-  right:-160px;
-  top:-160px;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(221,179,120,.28),
-      transparent 70%
-    );
 }
 
 .penpal-copy-wrap{
@@ -2592,8 +2876,6 @@ textarea:focus-visible{
 
   background:
     rgba(255,255,255,.09);
-
-  text-decoration:none;
 
   font-size:11px;
   font-weight:900;
@@ -2767,8 +3049,7 @@ textarea:focus-visible{
 
   border-radius:30px;
 
-  background:
-    #30231f;
+  background:#30231f;
 
   box-shadow:var(--shadow);
 }
@@ -3170,14 +3451,15 @@ textarea:focus-visible{
 }
 
 /* =========================================================
-   TRUST MODAL
+   MODALS
    ========================================================= */
 
-.trust-modal{
+.trust-modal,
+.image-modal{
   position:fixed;
   inset:0;
 
-  z-index:22000;
+  z-index:30000;
 
   display:none;
   align-items:center;
@@ -3186,13 +3468,14 @@ textarea:focus-visible{
   padding:18px;
 
   background:
-    rgba(37,26,23,.72);
+    rgba(29,20,18,.88);
 
   backdrop-filter:
-    blur(16px);
+    blur(14px);
 }
 
-.trust-modal.show{
+.trust-modal.show,
+.image-modal.show{
   display:flex;
 }
 
@@ -3214,10 +3497,6 @@ textarea:focus-visible{
   border-radius:26px;
 
   background:#fff;
-
-  box-shadow:
-    0 40px 100px -42px
-    rgba(0,0,0,.54);
 }
 
 .trust-card h2{
@@ -3284,6 +3563,164 @@ textarea:focus-visible{
   cursor:pointer;
 }
 
+.image-modal-card{
+  width:
+    min(
+      1000px,
+      100%
+    );
+
+  max-height:
+    calc(100dvh - 36px);
+
+  display:flex;
+  flex-direction:column;
+
+  overflow:hidden;
+
+  border-radius:24px;
+
+  background:#171210;
+}
+
+.image-modal-image{
+  display:block;
+
+  width:100%;
+
+  max-height:
+    calc(100dvh - 110px);
+
+  object-fit:contain;
+}
+
+.image-modal-bar{
+  display:flex;
+  justify-content:space-between;
+
+  gap:10px;
+
+  padding:12px;
+
+  background:#231a17;
+}
+
+.image-modal-close,
+.image-modal-download{
+  min-height:40px;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:
+    0 14px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.14);
+
+  border-radius:999px;
+
+  background:
+    rgba(255,255,255,.08);
+
+  color:white;
+
+  text-decoration:none;
+
+  font-size:12px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+/* =========================================================
+   TURNTABLE TAKEOVER
+   ========================================================= */
+
+.turntable-takeover{
+  position:fixed;
+  inset:0;
+
+  z-index:15000;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  pointer-events:none;
+
+  opacity:0;
+
+  background:
+    rgba(30,21,18,.78);
+
+  backdrop-filter:
+    blur(18px);
+
+  transition:
+    opacity .2s ease;
+}
+
+.turntable-takeover.show{
+  opacity:1;
+}
+
+.takeover-card{
+  width:
+    min(
+      560px,
+      100%
+    );
+
+  overflow:hidden;
+
+  border-radius:28px;
+
+  background:#211715;
+}
+
+.takeover-card img{
+  display:block;
+
+  width:100%;
+}
+
+.takeover-copy{
+  padding:
+    18px 20px 21px;
+
+  text-align:center;
+}
+
+.takeover-copy span{
+  display:block;
+
+  color:#d6bd97;
+
+  font-size:9px;
+  font-weight:900;
+
+  letter-spacing:.16em;
+}
+
+.takeover-copy strong{
+  display:block;
+
+  margin-top:4px;
+
+  color:white;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:24px;
+}
+
 /* =========================================================
    RESPONSIVE
    ========================================================= */
@@ -3334,41 +3771,19 @@ textarea:focus-visible{
     place-items:center;
   }
 
-  .hero-shell{
-    grid-template-columns:1fr;
-
-    padding:
-      36px;
-  }
-
-  .hero-copy{
-    max-width:720px;
-  }
-
-  .hero-visual{
-    min-height:440px;
-  }
-
-  .hero-portrait{
-    max-height:500px;
-  }
-
+  .hero-shell,
   .ask-shell,
   .penpal-shell,
   .live-shell{
     grid-template-columns:1fr;
   }
 
-  .ask-intro{
-    padding:25px;
+  .hero-shell{
+    padding:36px;
   }
 
-  .penpal-board{
-    min-height:auto;
-  }
-
-  .live-portrait{
-    min-height:520px;
+  .hero-visual{
+    min-height:440px;
   }
 
 }
@@ -3380,14 +3795,7 @@ textarea:focus-visible{
       58px 0;
   }
 
-  .explore-grid{
-    grid-template-columns:1fr;
-  }
-
-  .explore-card{
-    min-height:470px;
-  }
-
+  .explore-grid,
   .trust-strip{
     grid-template-columns:1fr;
   }
@@ -3396,10 +3804,6 @@ textarea:focus-visible{
     align-items:flex-start;
 
     flex-direction:column;
-  }
-
-  .footer-links{
-    justify-content:flex-start;
   }
 
   .top-actions .member-pill{
@@ -3440,38 +3844,23 @@ textarea:focus-visible{
     display:none;
   }
 
-  .top-button{
-    min-height:34px;
-
+  .power-stage{
     padding:
-      0 10px;
-
-    font-size:9px;
+      28px 17px 25px;
   }
 
-  .menu-toggle{
-    width:36px;
-    min-height:34px;
-  }
-
-  .owner-inner{
-    width:
-      calc(100% - 18px);
-  }
-
-  .age-card{
+  .member-login{
     padding:
-      25px 18px;
+      21px 18px 25px;
   }
 
-  .member-head{
-    padding:
-      25px 18px 19px;
-  }
-
-  .member-body{
-    padding:
-      20px 18px 24px;
+  .power-title{
+    font-size:
+      clamp(
+        48px,
+        17vw,
+        64px
+      );
   }
 
   .age-options{
@@ -3512,57 +3901,22 @@ textarea:focus-visible{
       );
   }
 
-  .hero-copy p{
-    font-size:15px;
-  }
-
-  .hero-actions{
+  .hero-actions,
+  .live-actions{
     display:grid;
 
     grid-template-columns:1fr;
   }
 
   .hero-actions .primary,
-  .hero-actions .secondary{
+  .hero-actions .secondary,
+  .live-actions .primary,
+  .live-actions .secondary{
     width:100%;
   }
 
   .hero-visual{
     min-height:350px;
-  }
-
-  .hero-note{
-    right:0;
-    bottom:2%;
-
-    width:
-      min(
-        210px,
-        62%
-      );
-
-    padding:
-      12px;
-  }
-
-  .ask-shell{
-    gap:14px;
-  }
-
-  .ask-intro{
-    padding:
-      21px 18px;
-
-    border-radius:22px;
-  }
-
-  .chat-card{
-    border-radius:22px;
-  }
-
-  .chat-head{
-    padding:
-      13px;
   }
 
   .chat-feed{
@@ -3575,60 +3929,31 @@ textarea:focus-visible{
   .bubble{
     max-width:88%;
 
-    padding:
-      11px 12px;
-
     font-size:13px;
   }
 
-  .generated-image{
-    max-height:460px;
-  }
-
-  .generated-image-actions{
-    display:grid;
-
-    grid-template-columns:
-      1fr 1fr;
-  }
-
-  .image-action{
-    width:100%;
-  }
-
   .chip-row{
-    padding:
-      0 11px 11px;
-
     overflow-x:auto;
 
     flex-wrap:nowrap;
+
+    padding:
+      0 11px 11px;
   }
 
   .chat-chip{
-    flex:0 0 auto;
+    flex:
+      0 0 auto;
   }
 
   .chat-input-wrap{
     grid-template-columns:1fr;
 
-    padding:
-      10px;
-  }
-
-  .chat-input{
-    height:46px;
+    padding:10px;
   }
 
   .chat-send{
     width:100%;
-    height:44px;
-  }
-
-  .explore-head{
-    align-items:flex-start;
-
-    flex-direction:column;
   }
 
   .explore-card{
@@ -3637,99 +3962,27 @@ textarea:focus-visible{
     border-radius:22px;
   }
 
-  .explore-content{
-    padding:
-      20px 17px;
-  }
-
-  .explore-content h3{
-    font-size:37px;
-  }
-
-  .world-stat{
-    min-width:
-      calc(50% - 4px);
-  }
-
   .penpal-shell{
     padding:
       27px 18px;
-
-    gap:22px;
-
-    border-radius:24px;
-  }
-
-  .penpal-shell h2{
-    font-size:
-      clamp(
-        40px,
-        13vw,
-        54px
-      );
-  }
-
-  .penpal-board{
-    padding:
-      16px;
-
-    border-radius:20px;
   }
 
   .live-portrait{
     min-height:430px;
-
-    border-radius:22px;
   }
 
   .live-services{
     grid-template-columns:1fr;
   }
 
-  .live-actions{
-    display:grid;
-
-    grid-template-columns:1fr;
-  }
-
-  .live-actions .primary,
-  .live-actions .secondary{
-    width:100%;
-  }
-
   .membership-shell{
     padding:
       26px 17px;
-
-    border-radius:22px;
-  }
-
-  .footer{
-    padding:
-      25px 0 32px;
-  }
-
-  .footer-links{
-    width:100%;
-  }
-
-  .footer-links button,
-  .footer-links a{
-    flex:1 1 auto;
   }
 
 }
 
 @media (max-width:420px){
-
-  .top-actions{
-    gap:4px;
-  }
-
-  #signOut{
-    padding:
-      0 8px;
-  }
 
   .hero-note{
     position:relative;
@@ -3748,23 +4001,11 @@ textarea:focus-visible{
     min-height:auto;
   }
 
-  .hero-portrait{
-    width:100%;
-  }
-
-  .generated-image-actions{
-    grid-template-columns:1fr;
-  }
-
   .world-stat{
     min-width:100%;
   }
 
 }
-
-/* =========================================================
-   HTML STARTS HERE
-   ========================================================= */
 
 </style>
 </head>
@@ -3772,85 +4013,7 @@ textarea:focus-visible{
 <body>
 
 <!-- =======================================================
-     AGE GATE
-     ======================================================= -->
-
-<div
-  class="age-gate"
-  id="ageGate"
-  aria-hidden="true"
->
-  <div class="age-card">
-
-    <div class="gate-mark">
-      E
-    </div>
-
-    <div class="gate-kicker">
-      AURYNELLE∞ IDEAS
-    </div>
-
-    <h1 class="gate-title">
-      Welcome to Elle
-    </h1>
-
-    <div class="gate-script">
-      choose your experience
-    </div>
-
-    <p class="gate-copy">
-      Select the age experience that applies to you.
-      Membership access is verified separately.
-    </p>
-
-    <div class="age-options">
-
-      <button
-        type="button"
-        class="age-option"
-        id="ageTeen"
-      >
-        <span>✨</span>
-        <strong>13–17</strong>
-        <small>
-          Elle Next teen experience
-        </small>
-      </button>
-
-      <button
-        type="button"
-        class="age-option"
-        id="ageAdult"
-      >
-        <span>💛</span>
-        <strong>18+</strong>
-        <small>
-          Adult Elle experience
-        </small>
-      </button>
-
-    </div>
-
-    <button
-      type="button"
-      class="age-under"
-      id="ageUnder"
-    >
-      I’m under 13
-    </button>
-
-    <div
-      class="under-message"
-      id="underMessage"
-    >
-      Elle is currently designed for people ages 13 and older.
-    </div>
-
-  </div>
-</div>
-
-<!-- =======================================================
-     MEMBER GATE
+     TURN ELLE ON / MEMBER ACCESS
      ======================================================= -->
 
 <div
@@ -3858,29 +4021,104 @@ textarea:focus-visible{
   id="memberGate"
   aria-hidden="true"
 >
-  <div class="member-card">
 
-    <div class="member-head">
+  <div class="power-card">
+
+    <div class="power-stage">
 
       <div class="gate-mark">
         ∞
       </div>
 
       <div class="gate-kicker">
-        MEMBER ACCESS
+        AURYNELLE∞ IDEAS
       </div>
 
-      <h2 class="gate-title">
-        Come on in
-      </h2>
+      <h1 class="power-title">
+        ELLE
+      </h1>
 
-      <div class="gate-script">
-        your Elle space is waiting
+      <div class="power-tagline">
+        Real talk. Good energy. Elevated living.
       </div>
+
+      <div class="power-script">
+        Turn Elle on.
+      </div>
+
+      <p class="power-copy">
+        Flip the switch and unlock everything Elle has for you.
+        Don’t have an account? Flip the switch to join.
+      </p>
+
+      <div
+        class="power-switch-wrap"
+        id="powerSwitchWrap"
+      >
+
+        <button
+          type="button"
+          class="power-switch"
+          id="powerSwitch"
+          aria-label="Turn Elle on"
+          aria-pressed="false"
+        >
+
+          <span class="switch-label on">
+            ON
+          </span>
+
+          <span class="switch-slot">
+
+            <span class="switch-toggle">
+
+              <span class="switch-infinity">
+                ∞
+              </span>
+
+            </span>
+
+          </span>
+
+          <span class="switch-label off">
+            OFF
+          </span>
+
+        </button>
+
+        <div class="power-halo"></div>
+
+      </div>
+
+      <div
+        class="power-status"
+        id="powerStatus"
+      >
+        Elle is off
+      </div>
+
+      <button
+        type="button"
+        class="member-enter"
+        id="memberEnter"
+      >
+        Already a member? Enter Elle
+      </button>
 
     </div>
 
-    <div class="member-body">
+    <div
+      class="member-login"
+      id="memberLogin"
+    >
+
+      <h2 class="login-title">
+        Member Access
+      </h2>
+
+      <p class="login-copy">
+        Enter the email connected to your Elle membership.
+      </p>
 
       <div
         class="member-step show"
@@ -3961,6 +4199,7 @@ textarea:focus-visible{
         class="member-join"
         id="memberJoin"
       >
+
         <strong>
           Need membership?
         </strong>
@@ -3977,15 +4216,106 @@ textarea:focus-visible{
         >
           View Membership
         </a>
+
       </div>
 
       <p class="member-foot">
-        Access codes are one-time codes sent to the email connected to your membership.
+        Access codes are one-time codes sent to the email
+        connected to your membership.
       </p>
 
     </div>
 
   </div>
+
+</div>
+
+<!-- =======================================================
+     AGE FALLBACK
+     ======================================================= -->
+
+<div
+  class="age-gate"
+  id="ageGate"
+  aria-hidden="true"
+>
+
+  <div class="age-card">
+
+    <div class="gate-mark">
+      E
+    </div>
+
+    <div class="gate-kicker">
+      AURYNELLE∞ IDEAS
+    </div>
+
+    <h1 class="gate-title">
+      Welcome to Elle
+    </h1>
+
+    <div class="gate-script">
+      choose your experience
+    </div>
+
+    <p class="gate-copy">
+      Select the age experience that applies to you.
+      Membership access is verified separately.
+    </p>
+
+    <div class="age-options">
+
+      <button
+        type="button"
+        class="age-option"
+        id="ageTeen"
+      >
+        <span>✨</span>
+
+        <strong>
+          13–17
+        </strong>
+
+        <small>
+          Elle Next teen experience
+        </small>
+      </button>
+
+      <button
+        type="button"
+        class="age-option"
+        id="ageAdult"
+      >
+        <span>💛</span>
+
+        <strong>
+          18+
+        </strong>
+
+        <small>
+          Adult Elle experience
+        </small>
+      </button>
+
+    </div>
+
+    <button
+      type="button"
+      class="age-under"
+      id="ageUnder"
+    >
+      I’m under 13
+    </button>
+
+    <div
+      class="under-message"
+      id="underMessage"
+    >
+      Elle is currently designed for people ages 13 and older.
+    </div>
+
+  </div>
+
 </div>
 
 <!-- =======================================================
@@ -4007,12 +4337,15 @@ textarea:focus-visible{
       </div>
 
       <div class="brand-copy">
+
         <strong>
           AURYNELLE∞ IDEAS
         </strong>
+
         <span>
           ELLE
         </span>
+
       </div>
 
     </a>
@@ -4022,6 +4355,7 @@ textarea:focus-visible{
       id="mainNav"
       aria-label="Main navigation"
     >
+
       <a href="#ask">
         Ask Elle
       </a>
@@ -4048,6 +4382,7 @@ textarea:focus-visible{
       >
         Trust
       </a>
+
     </nav>
 
     <div class="top-actions">
@@ -4084,7 +4419,7 @@ textarea:focus-visible{
 </header>
 
 <!-- =======================================================
-     OWNER BAR
+     OWNER TEST BAR
      ======================================================= -->
 
 <div
@@ -4155,6 +4490,8 @@ textarea:focus-visible{
 
 <main id="home">
 
+<!-- HERO -->
+
 <section class="hero">
 
   <div class="page">
@@ -4169,6 +4506,7 @@ textarea:focus-visible{
 
         <h1>
           Meet Elle.
+
           <span>
             Real talk. Good energy. Elevated living.
           </span>
@@ -4250,9 +4588,7 @@ textarea:focus-visible{
 
 </section>
 
-<!-- =======================================================
-     ASK ELLE
-     ======================================================= -->
+<!-- ASK ELLE -->
 
 <section
   class="section ask-section"
@@ -4274,9 +4610,8 @@ textarea:focus-visible{
         </h2>
 
         <p class="copy">
-          Elle is the centerpiece. Ask for advice,
-          explanations, ideas, drafts, plans, decisions,
-          or an image you want created.
+          Ask for advice, explanations, ideas, drafts,
+          plans, decisions, or an image you want created.
         </p>
 
         <div class="ask-mini-list">
@@ -4288,12 +4623,15 @@ textarea:focus-visible{
             </div>
 
             <div>
+
               <strong>
                 Get clear
               </strong>
+
               <span>
                 Work through ideas and decisions.
               </span>
+
             </div>
 
           </div>
@@ -4305,12 +4643,15 @@ textarea:focus-visible{
             </div>
 
             <div>
+
               <strong>
                 Create
               </strong>
+
               <span>
                 Draft, rewrite, brainstorm and plan.
               </span>
+
             </div>
 
           </div>
@@ -4322,12 +4663,15 @@ textarea:focus-visible{
             </div>
 
             <div>
+
               <strong>
                 Make images
               </strong>
+
               <span>
                 Generate, expand and download your image.
               </span>
+
             </div>
 
           </div>
@@ -4343,26 +4687,34 @@ textarea:focus-visible{
           <div class="chat-head-left">
 
             <div class="chat-avatar">
+
               <img
-                src="elle.png"
-                alt=""
+                src="new elle.png"
+                alt="Elle"
               >
+
             </div>
 
             <div class="chat-head-copy">
+
               <strong>
                 Elle
               </strong>
+
               <span id="chatMemberText">
                 Your AI guide
               </span>
+
             </div>
 
           </div>
 
           <div class="chat-status">
+
             <span class="status-dot"></span>
+
             Ready
+
           </div>
 
         </div>
@@ -4416,9 +4768,7 @@ textarea:focus-visible{
 
 </section>
 
-<!-- =======================================================
-     EXPLORE
-     ======================================================= -->
+<!-- EXPLORE -->
 
 <section
   class="section"
@@ -4430,6 +4780,7 @@ textarea:focus-visible{
     <div class="explore-head">
 
       <div>
+
         <div class="eyebrow">
           EXPLORE
         </div>
@@ -4437,11 +4788,11 @@ textarea:focus-visible{
         <h2 class="title">
           A little more Elle.
         </h2>
+
       </div>
 
       <p class="copy">
         Music for the mood. A live glimpse of the Elle world.
-        Two beautiful extras, without taking over the whole page.
       </p>
 
     </div>
@@ -4474,7 +4825,8 @@ textarea:focus-visible{
           </h3>
 
           <p>
-            Original AURYNELLE music, available with Infinite ∞ access.
+            Original AURYNELLE music,
+            available with Infinite ∞ access.
           </p>
 
           <div class="explore-actions">
@@ -4497,6 +4849,7 @@ textarea:focus-visible{
             <div class="radio-now">
 
               <div class="radio-song-copy">
+
                 <strong id="songTitle">
                   Crown Back On
                 </strong>
@@ -4504,6 +4857,7 @@ textarea:focus-visible{
                 <span id="songArtist">
                   AURYNELLE
                 </span>
+
               </div>
 
               <div class="radio-controls">
@@ -4576,27 +4930,34 @@ textarea:focus-visible{
           </h3>
 
           <p>
-            A live little window into where Elle is being used around the world.
+            A live little window into where Elle
+            is being used around the world.
           </p>
 
           <div class="world-live">
 
             <div class="world-stat">
+
               <strong id="worldActiveCount">
                 0
               </strong>
+
               <span>
                 Active now
               </span>
+
             </div>
 
             <div class="world-stat">
+
               <strong id="worldCountryCount">
                 0
               </strong>
+
               <span>
                 Countries
               </span>
+
             </div>
 
           </div>
@@ -4627,9 +4988,8 @@ textarea:focus-visible{
   </div>
 
 </section>
-<!-- =======================================================
-     PENPAL
-     ======================================================= -->
+
+<!-- PENPAL -->
 
 <section
   class="section"
@@ -4651,40 +5011,44 @@ textarea:focus-visible{
         </h2>
 
         <p>
-          A slower, more intentional way to connect with other
-          eligible Infinite ∞ members. PenPal is built for
-          friendship and genuine human connection, not dating
-          or hookups.
+          A slower, more intentional way to connect with
+          other eligible Infinite ∞ members. PenPal is built
+          for friendship and genuine human connection,
+          not dating or hookups.
         </p>
 
         <div class="penpal-points">
 
           <div class="penpal-point">
+
             <span>✦</span>
+
             <span>
               Available to adults 18+ with active Infinite ∞ access.
             </span>
+
           </div>
 
           <div class="penpal-point">
+
             <span>✦</span>
+
             <span>
-              Requires two continuous months of active Infinite ∞ membership.
+              Requires two continuous months of active
+              Infinite ∞ membership.
             </span>
+
           </div>
 
           <div class="penpal-point">
-            <span>✦</span>
-            <span>
-              Connections will use mutual requests and safety controls.
-            </span>
-          </div>
 
-          <div class="penpal-point">
             <span>✦</span>
+
             <span>
-              Harassment, sexual solicitation, threats, stalking, and repeated unwanted contact are not allowed.
+              Connections use mutual acceptance
+              and safety controls.
             </span>
+
           </div>
 
         </div>
@@ -4730,6 +5094,7 @@ textarea:focus-visible{
           <article class="penpal-note-card">
 
             <div class="penpal-note-top">
+
               <strong>
                 Maya
               </strong>
@@ -4737,10 +5102,13 @@ textarea:focus-visible{
               <span>
                 Caribbean
               </span>
+
             </div>
 
             <p>
-              Creative, curious, and always down for a good conversation about ideas, books, and building something meaningful.
+              Creative, curious, and always down for a good
+              conversation about ideas, books, and building
+              something meaningful.
             </p>
 
           </article>
@@ -4748,6 +5116,7 @@ textarea:focus-visible{
           <article class="penpal-note-card">
 
             <div class="penpal-note-top">
+
               <strong>
                 Jordan
               </strong>
@@ -4755,10 +5124,13 @@ textarea:focus-visible{
               <span>
                 United States
               </span>
+
             </div>
 
             <p>
-              Looking for genuine friendship, accountability, and people who like talking about goals, work, and everyday life.
+              Looking for genuine friendship, accountability,
+              and people who like talking about goals,
+              work, and everyday life.
             </p>
 
           </article>
@@ -4766,6 +5138,7 @@ textarea:focus-visible{
           <article class="penpal-note-card">
 
             <div class="penpal-note-top">
+
               <strong>
                 Nia
               </strong>
@@ -4773,10 +5146,12 @@ textarea:focus-visible{
               <span>
                 United Kingdom
               </span>
+
             </div>
 
             <p>
-              Music lover, traveler, and big believer in good energy and thoughtful conversation.
+              Music lover, traveler, and big believer
+              in good energy and thoughtful conversation.
             </p>
 
           </article>
@@ -4787,7 +5162,7 @@ textarea:focus-visible{
           class="penpal-waitlist"
           id="penpalStatus"
         >
-          PenPal connections are being introduced carefully. Eligible Infinite ∞ members will see access here as the connection tools open.
+          PenPal connections are being introduced carefully.
         </div>
 
       </div>
@@ -4798,9 +5173,7 @@ textarea:focus-visible{
 
 </section>
 
-<!-- =======================================================
-     LIVE ELLE
-     ======================================================= -->
+<!-- LIVE ELLE -->
 
 <section
   class="section"
@@ -4854,48 +5227,63 @@ textarea:focus-visible{
         <div class="live-services">
 
           <div class="live-service">
+
             <strong>
               Pick My Brain
             </strong>
+
             <span>
               Business, career, ideas, decisions and perspective.
             </span>
+
           </div>
 
           <div class="live-service">
+
             <strong>
               Shopping Buddy
             </strong>
+
             <span>
               Outfits, shopping choices and style support.
             </span>
+
           </div>
 
           <div class="live-service">
+
             <strong>
               Hype Session
             </strong>
+
             <span>
               Encouragement, confidence and celebrating your wins.
             </span>
+
           </div>
 
           <div class="live-service">
+
             <strong>
               Someone to Talk To
             </strong>
+
             <span>
               Real conversation, listening and human connection.
             </span>
+
           </div>
 
           <div class="live-service">
+
             <strong>
               Work With Me
             </strong>
+
             <span>
               Resume help, consulting, strategy and hands-on planning.
             </span>
+
           </div>
 
         </div>
@@ -4921,7 +5309,8 @@ textarea:focus-visible{
         </div>
 
         <p class="live-note">
-          Live Elle one-on-one sessions are currently available for adults 18+ only. Appointment availability is controlled by the booking calendar.
+          Live Elle one-on-one sessions are currently
+          available for adults 18+ only.
         </p>
 
       </div>
@@ -4932,9 +5321,7 @@ textarea:focus-visible{
 
 </section>
 
-<!-- =======================================================
-     MEMBERSHIP
-     ======================================================= -->
+<!-- MEMBERSHIP -->
 
 <section
   class="section"
@@ -4954,7 +5341,8 @@ textarea:focus-visible{
       </h2>
 
       <p class="copy">
-        Keep it simple. Pick the plan that fits what you want from Elle.
+        Keep it simple. Pick the plan that fits
+        what you want from Elle.
       </p>
 
       <div class="plan-picker">
@@ -4970,6 +5358,7 @@ textarea:focus-visible{
           class="plan-select"
           id="planSelect"
         >
+
           <option value="">
             Choose your plan
           </option>
@@ -4997,13 +5386,9 @@ textarea:focus-visible{
           id="planDetail"
         >
 
-          <strong
-            id="planTitle"
-          ></strong>
+          <strong id="planTitle"></strong>
 
-          <p
-            id="planDescription"
-          ></p>
+          <p id="planDescription"></p>
 
           <a
             class="primary"
@@ -5025,9 +5410,7 @@ textarea:focus-visible{
 
 </section>
 
-<!-- =======================================================
-     TRUST
-     ======================================================= -->
+<!-- TRUST -->
 
 <section
   class="section"
@@ -5045,7 +5428,9 @@ textarea:focus-visible{
         </strong>
 
         <span>
-          Elle does not need your passwords, banking credentials, exact home address, or other highly sensitive information to help you.
+          Elle does not need your passwords,
+          banking credentials, exact home address,
+          or other highly sensitive information.
         </span>
 
       </div>
@@ -5057,7 +5442,8 @@ textarea:focus-visible{
         </strong>
 
         <span>
-          Membership and age experiences are enforced server-side for protected Elle features.
+          Membership and age experiences are enforced
+          server-side for protected Elle features.
         </span>
 
       </div>
@@ -5069,7 +5455,8 @@ textarea:focus-visible{
         </strong>
 
         <span>
-          Elle is designed to genuinely help before suggesting paid human support.
+          Elle is designed to genuinely help before
+          suggesting paid human support.
         </span>
 
       </div>
@@ -5134,7 +5521,7 @@ textarea:focus-visible{
 </footer>
 
 <!-- =======================================================
-     AUDIO
+     RADIO AUDIO
      ======================================================= -->
 
 <audio
@@ -5165,9 +5552,7 @@ textarea:focus-visible{
         NOW PLAYING
       </span>
 
-      <strong
-        id="takeoverSong"
-      >
+      <strong id="takeoverSong">
         Elle Radio
       </strong>
 
@@ -5178,7 +5563,7 @@ textarea:focus-visible{
 </div>
 
 <!-- =======================================================
-     IMAGE LIGHTBOX
+     IMAGE MODAL
      ======================================================= -->
 
 <div
@@ -5238,11 +5623,11 @@ textarea:focus-visible{
     </h2>
 
     <p>
-      Elle is an AI guide. It can help with ideas, planning,
-      writing, decisions and everyday questions, but it can
-      make mistakes. Important medical, legal, financial,
-      safety and emergency decisions should be verified with
-      an appropriate qualified source.
+      Elle is an AI guide. It can help with ideas,
+      planning, writing, decisions and everyday questions,
+      but it can make mistakes. Important medical, legal,
+      financial, safety and emergency decisions should
+      be verified with an appropriate qualified source.
     </p>
 
     <div class="trust-list">
@@ -5257,30 +5642,30 @@ textarea:focus-visible{
       <div>
         <strong>Live Elle:</strong>
         A Live Elle request is not a confirmed appointment.
-        The appointment is confirmed only after you choose an
-        available time and Google Calendar confirms it.
+        The appointment is confirmed only after you choose
+        an available time and Google Calendar confirms it.
       </div>
 
       <div>
         <strong>PenPal:</strong>
         PenPal is intended for friendship and genuine human
-        connection. It is not a dating, hookup, sexual-content,
-        or adult-services platform.
+        connection. It is not a dating, hookup,
+        sexual-content, or adult-services platform.
       </div>
 
       <div>
         <strong>Off-platform connections:</strong>
         If a connection moves to email, text, social media,
-        phone, or another service, that conversation is outside
-        Elle’s messaging environment and cannot be monitored by Elle.
+        phone, or another service, that conversation is
+        outside Elle’s messaging environment.
       </div>
 
       <div>
         <strong>Conduct:</strong>
-        Confirmed serious harassment, sexual misconduct, threats,
-        exploitation, repeated boundary violations, or attempts to
-        evade previous bans may result in permanent removal from
-        PenPal or Elle.
+        Confirmed serious harassment, sexual misconduct,
+        threats, exploitation, repeated boundary violations,
+        or attempts to evade previous bans may result
+        in permanent removal from PenPal or Elle.
       </div>
 
     </div>
@@ -5297,44 +5682,47 @@ textarea:focus-visible{
 
 </div>
 
-<!-- =======================================================
-     JAVASCRIPT
-     ======================================================= -->
-
 <script>
+
+/* =========================================================
+   CONSTANTS
+   ========================================================= */
+
+const MEMBERSHIP_URL =
+  "https://buymeacoffee.com/aurynelle/membership";
 
 /* =========================================================
    ELEMENTS
    ========================================================= */
 
-const ageGate =
-  document.getElementById(
-    "ageGate"
-  );
-
-const ageTeen =
-  document.getElementById(
-    "ageTeen"
-  );
-
-const ageAdult =
-  document.getElementById(
-    "ageAdult"
-  );
-
-const ageUnder =
-  document.getElementById(
-    "ageUnder"
-  );
-
-const underMessage =
-  document.getElementById(
-    "underMessage"
-  );
-
 const memberGate =
   document.getElementById(
     "memberGate"
+  );
+
+const powerSwitch =
+  document.getElementById(
+    "powerSwitch"
+  );
+
+const powerSwitchWrap =
+  document.getElementById(
+    "powerSwitchWrap"
+  );
+
+const powerStatus =
+  document.getElementById(
+    "powerStatus"
+  );
+
+const memberEnter =
+  document.getElementById(
+    "memberEnter"
+  );
+
+const memberLogin =
+  document.getElementById(
+    "memberLogin"
   );
 
 const memberEmailStep =
@@ -5380,6 +5768,31 @@ const memberMessage =
 const memberJoin =
   document.getElementById(
     "memberJoin"
+  );
+
+const ageGate =
+  document.getElementById(
+    "ageGate"
+  );
+
+const ageTeen =
+  document.getElementById(
+    "ageTeen"
+  );
+
+const ageAdult =
+  document.getElementById(
+    "ageAdult"
+  );
+
+const ageUnder =
+  document.getElementById(
+    "ageUnder"
+  );
+
+const underMessage =
+  document.getElementById(
+    "underMessage"
   );
 
 const memberTierPill =
@@ -5620,11 +6033,9 @@ const state = {
       "elleSessionToken"
     ) || "",
 
-  member:
-    {},
+  member:{},
 
-  permissions:
-    {},
+  permissions:{},
 
   owner:
     localStorage.getItem(
@@ -5636,8 +6047,7 @@ const state = {
       "elleOwnerTestTier"
     ) || "owner",
 
-  history:
-    [],
+  history:[],
 
   worldSessionId:
     localStorage.getItem(
@@ -5651,11 +6061,10 @@ const state = {
       ) || 0
     ),
 
-  playing:
-    false,
+  playing:false,
 
-  takeoverTimer:
-    null
+  takeoverTimer:null
+
 };
 
 /* =========================================================
@@ -5684,66 +6093,35 @@ function cleanEmail(
 
 }
 
-function setMemberMessage(
-  message,
-  type=""
+function wait(
+  milliseconds
 ){
 
-  memberMessage.textContent =
-    message || "";
+  return new Promise(
+    resolve => {
 
-  memberMessage.className =
-    "member-message";
-
-  if(
-    message
-  ){
-
-    memberMessage
-      .classList
-      .add(
-        "show"
+      setTimeout(
+        resolve,
+        milliseconds
       );
 
-  }
-
-  if(
-    type
-  ){
-
-    memberMessage
-      .classList
-      .add(
-        type
-      );
-
-  }
-
-}
-
-function showMemberJoin(
-  show
-){
-
-  memberJoin
-    .classList
-    .toggle(
-      "show",
-      show === true
-    );
+    }
+  );
 
 }
 
 function setBusy(
   button,
   busy,
-  busyText
+  busyText=""
 ){
 
   if(
     !button
   ){
+
     return;
+
   }
 
   if(
@@ -5751,13 +6129,11 @@ function setBusy(
   ){
 
     if(
-      !button.dataset
-        .originalText
+      !button.dataset.originalText
     ){
 
-      button.dataset
-        .originalText =
-          button.textContent;
+      button.dataset.originalText =
+        button.textContent;
 
     }
 
@@ -5774,13 +6150,11 @@ function setBusy(
       false;
 
     if(
-      button.dataset
-        .originalText
+      button.dataset.originalText
     ){
 
       button.textContent =
-        button.dataset
-          .originalText;
+        button.dataset.originalText;
 
     }
 
@@ -5789,66 +6163,309 @@ function setBusy(
 }
 
 /* =========================================================
-   MEMBER GATE
+   POWER GATE
    ========================================================= */
 
-function showMemberGate(){
+function resetPowerSwitch(){
 
-  memberGate
-    .classList
-    .add(
+  powerSwitch.disabled =
+    false;
+
+  powerSwitch.classList.remove(
+    "on"
+  );
+
+  powerSwitchWrap.classList.remove(
+    "on"
+  );
+
+  powerSwitch.setAttribute(
+    "aria-pressed",
+    "false"
+  );
+
+  powerStatus.textContent =
+    "Elle is off";
+
+  powerStatus.classList.remove(
+    "on"
+  );
+
+}
+
+function setPowerOn(){
+
+  powerSwitch.classList.add(
+    "on"
+  );
+
+  powerSwitchWrap.classList.add(
+    "on"
+  );
+
+  powerSwitch.setAttribute(
+    "aria-pressed",
+    "true"
+  );
+
+  powerStatus.textContent =
+    "Elle is on";
+
+  powerStatus.classList.add(
+    "on"
+  );
+
+}
+
+function showMemberGate(
+  mode="visitor"
+){
+
+  memberGate.classList.add(
+    "show"
+  );
+
+  memberGate.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.classList.add(
+    "locked"
+  );
+
+  if(
+    mode === "visitor"
+  ){
+
+    resetPowerSwitch();
+
+    memberLogin.classList.remove(
       "show"
     );
 
-  memberGate
-    .setAttribute(
-      "aria-hidden",
-      "false"
+    memberEnter.classList.remove(
+      "hidden"
     );
 
-  document.body
-    .classList
-    .add(
-      "locked"
+  }
+
+  if(
+    mode === "login"
+  ){
+
+    resetPowerSwitch();
+
+    memberLogin.classList.add(
+      "show"
     );
+
+    memberEnter.classList.add(
+      "hidden"
+    );
+
+  }
+
+  if(
+    mode === "member"
+  ){
+
+    memberLogin.classList.remove(
+      "show"
+    );
+
+    memberEnter.classList.add(
+      "hidden"
+    );
+
+  }
 
 }
 
 function hideMemberGate(){
 
-  memberGate
-    .classList
-    .remove(
+  memberGate.classList.remove(
+    "show"
+  );
+
+  memberGate.classList.remove(
+    "flicker"
+  );
+
+  memberGate.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.classList.remove(
+    "locked"
+  );
+
+}
+
+async function powerOnMember(
+  fast=false
+){
+
+  showMemberGate(
+    "member"
+  );
+
+  powerSwitch.disabled =
+    true;
+
+  powerStatus.textContent =
+    fast
+      ? "Welcome back"
+      : "Access verified";
+
+  await wait(
+    fast
+      ? 90
+      : 180
+  );
+
+  memberGate.classList.add(
+    "flicker"
+  );
+
+  setPowerOn();
+
+  document.body.classList.remove(
+    "elle-powered"
+  );
+
+  void
+    document.body.offsetWidth;
+
+  document.body.classList.add(
+    "elle-powered"
+  );
+
+  await wait(
+    fast
+      ? 650
+      : 1050
+  );
+
+  hideMemberGate();
+
+  powerSwitch.disabled =
+    false;
+
+}
+
+powerSwitch.addEventListener(
+  "click",
+  async () => {
+
+    if(
+      state.sessionToken
+    ){
+
+      return;
+
+    }
+
+    powerSwitch.disabled =
+      true;
+
+    memberGate.classList.add(
+      "flicker"
+    );
+
+    setPowerOn();
+
+    powerStatus.textContent =
+      "Opening membership";
+
+    await wait(
+      650
+    );
+
+    window.location.href =
+      MEMBERSHIP_URL;
+
+  }
+);
+
+memberEnter.addEventListener(
+  "click",
+  () => {
+
+    showMemberGate(
+      "login"
+    );
+
+    setTimeout(
+      () => {
+
+        memberEmail.focus();
+
+      },
+      120
+    );
+
+  }
+);
+
+/* =========================================================
+   MEMBER LOGIN
+   ========================================================= */
+
+function setMemberMessage(
+  message,
+  type=""
+){
+
+  memberMessage.textContent =
+    message || "";
+
+  memberMessage.className =
+    "member-message";
+
+  if(
+    message
+  ){
+
+    memberMessage.classList.add(
       "show"
     );
 
-  memberGate
-    .setAttribute(
-      "aria-hidden",
-      "true"
+  }
+
+  if(
+    type
+  ){
+
+    memberMessage.classList.add(
+      type
     );
 
-  document.body
-    .classList
-    .remove(
-      "locked"
-    );
+  }
+
+}
+
+function showMemberJoin(
+  show
+){
+
+  memberJoin.classList.toggle(
+    "show",
+    show === true
+  );
 
 }
 
 function resetMemberGate(){
 
-  memberEmailStep
-    .classList
-    .add(
-      "show"
-    );
+  memberEmailStep.classList.add(
+    "show"
+  );
 
-  memberCodeStep
-    .classList
-    .remove(
-      "show"
-    );
+  memberCodeStep.classList.remove(
+    "show"
+  );
 
   memberCode.value =
     "";
@@ -5865,90 +6482,17 @@ function resetMemberGate(){
 
 function showCodeStep(){
 
-  memberEmailStep
-    .classList
-    .remove(
-      "show"
-    );
+  memberEmailStep.classList.remove(
+    "show"
+  );
 
-  memberCodeStep
-    .classList
-    .add(
-      "show"
-    );
+  memberCodeStep.classList.add(
+    "show"
+  );
 
   memberCode.focus();
 
 }
-
-/* =========================================================
-   AGE GATE
-   ========================================================= */
-
-function chooseAge(
-  ageGroup
-){
-
-  state.ageGroup =
-    ageGroup;
-
-  localStorage.setItem(
-    "elleAgeGroup",
-    ageGroup
-  );
-
-  ageGate
-    .classList
-    .remove(
-      "show"
-    );
-
-  ageGate
-    .setAttribute(
-      "aria-hidden",
-      "true"
-    );
-
-  document.body
-    .classList
-    .remove(
-      "locked"
-    );
-
-  continueStartup();
-
-}
-
-ageTeen.addEventListener(
-  "click",
-  () => chooseAge(
-    "13-17"
-  )
-);
-
-ageAdult.addEventListener(
-  "click",
-  () => chooseAge(
-    "18+"
-  )
-);
-
-ageUnder.addEventListener(
-  "click",
-  () => {
-
-    underMessage
-      .classList
-      .add(
-        "show"
-      );
-
-  }
-);
-
-/* =========================================================
-   REQUEST ACCESS CODE
-   ========================================================= */
 
 requestCode.addEventListener(
   "click",
@@ -6034,12 +6578,9 @@ requestCode.addEventListener(
 
     }catch(error){
 
-      const message =
-        error?.message ||
-        "Elle could not send an access code.";
-
       setMemberMessage(
-        message,
+        error?.message ||
+        "Elle could not send an access code.",
         "error"
       );
 
@@ -6058,10 +6599,6 @@ requestCode.addEventListener(
 
   }
 );
-
-/* =========================================================
-   VERIFY ACCESS CODE
-   ========================================================= */
 
 verifyCode.addEventListener(
   "click",
@@ -6171,14 +6708,12 @@ verifyCode.addEventListener(
 
       state.permissions =
         data?.permissions ||
-        data?.member
-          ?.permissions ||
+        data?.member?.permissions ||
         {};
 
       state.owner =
         data?.owner === true ||
-        data?.member
-          ?.owner === true;
+        data?.member?.owner === true;
 
       if(
         data?.ageGroup
@@ -6220,11 +6755,21 @@ verifyCode.addEventListener(
         )
       );
 
-      hideMemberGate();
-
       applyAccess();
 
       greetMember();
+
+      await powerOnMember(
+        false
+      );
+
+      if(
+        !state.ageGroup
+      ){
+
+        showAgeGate();
+
+      }
 
     }catch(error){
 
@@ -6272,8 +6817,7 @@ memberCode.addEventListener(
   event => {
 
     if(
-      event.key ===
-      "Enter"
+      event.key === "Enter"
     ){
 
       verifyCode.click();
@@ -6288,8 +6832,7 @@ memberEmail.addEventListener(
   event => {
 
     if(
-      event.key ===
-      "Enter"
+      event.key === "Enter"
     ){
 
       requestCode.click();
@@ -6311,7 +6854,98 @@ changeEmail.addEventListener(
 );
 
 /* =========================================================
-   SESSION CHECK
+   AGE FALLBACK
+   ========================================================= */
+
+function showAgeGate(){
+
+  ageGate.classList.add(
+    "show"
+  );
+
+  ageGate.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.classList.add(
+    "locked"
+  );
+
+}
+
+function hideAgeGate(){
+
+  ageGate.classList.remove(
+    "show"
+  );
+
+  ageGate.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.classList.remove(
+    "locked"
+  );
+
+}
+
+function chooseAge(
+  ageGroup
+){
+
+  state.ageGroup =
+    ageGroup;
+
+  localStorage.setItem(
+    "elleAgeGroup",
+    ageGroup
+  );
+
+  hideAgeGate();
+
+  applyAccess();
+
+  greetMember();
+
+}
+
+ageTeen.addEventListener(
+  "click",
+  () => {
+
+    chooseAge(
+      "13-17"
+    );
+
+  }
+);
+
+ageAdult.addEventListener(
+  "click",
+  () => {
+
+    chooseAge(
+      "18+"
+    );
+
+  }
+);
+
+ageUnder.addEventListener(
+  "click",
+  () => {
+
+    underMessage.classList.add(
+      "show"
+    );
+
+  }
+);
+
+/* =========================================================
+   SESSION RESTORE
    ========================================================= */
 
 async function restoreSession(){
@@ -6366,6 +7000,7 @@ async function restoreSession(){
       token;
 
     state.member = {
+
       name:
         data?.memberName ||
         data?.name ||
@@ -6382,6 +7017,7 @@ async function restoreSession(){
       email:
         data?.email ||
         ""
+
     };
 
     state.permissions =
@@ -6442,8 +7078,9 @@ async function restoreSession(){
   }
 
 }
-  /* =========================================================
-   ACCESS PERMISSIONS
+
+/* =========================================================
+   PERMISSIONS
    ========================================================= */
 
 function ownerPermissions(){
@@ -6521,10 +7158,7 @@ function visiblePermissions(){
 
   }
 
-  return (
-    state.permissions ||
-    {}
-  );
+  return state.permissions || {};
 
 }
 
@@ -6607,10 +7241,6 @@ function visibleTierName(){
 
 }
 
-/* =========================================================
-   APPLY ACCESS
-   ========================================================= */
-
 function applyAccess(){
 
   const permissions =
@@ -6634,12 +7264,10 @@ function applyAccess(){
             : "Your AI guide"
         );
 
-  ownerBar
-    .classList
-    .toggle(
-      "show",
-      state.owner === true
-    );
+  ownerBar.classList.toggle(
+    "show",
+    state.owner === true
+  );
 
   if(
     state.owner
@@ -6665,13 +7293,8 @@ function applyAccess(){
     }
   );
 
-  /*
-    RADIO
-  */
-
   if(
-    permissions.elleRadio !==
-    true
+    permissions.elleRadio !== true
   ){
 
     pauseRadio();
@@ -6694,14 +7317,6 @@ function applyAccess(){
 
   }
 
-  /*
-    PENPAL PREVIEW
-
-    Real PenPal connection access
-    will be verified by the PenPal
-    backend before connections open.
-  */
-
   if(
     ageGroup !== "18+"
   ){
@@ -6720,7 +7335,7 @@ function applyAccess(){
   }else{
 
     penpalStatus.textContent =
-      "Infinite ∞ access detected. Full PenPal eligibility will also require two continuous months of active Infinite ∞ membership and verified PenPal access.";
+      "Infinite ∞ access detected. Full PenPal eligibility also requires two continuous months of active Infinite ∞ membership and verified PenPal access.";
 
   }
 
@@ -6805,7 +7420,9 @@ menuToggle.addEventListener(
 
     menuToggle.setAttribute(
       "aria-expanded",
-      String(open)
+      String(
+        open
+      )
     );
 
     menuToggle.textContent =
@@ -6932,10 +7549,6 @@ function addBubble(
 
 }
 
-/* =========================================================
-   TYPING
-   ========================================================= */
-
 function showTyping(){
 
   typing.classList.add(
@@ -6957,10 +7570,6 @@ function hideTyping(){
   );
 
 }
-
-/* =========================================================
-   CHAT CHIPS
-   ========================================================= */
 
 function renderChips(
   chips=[]
@@ -7037,6 +7646,7 @@ function renderChips(
 
 /* =========================================================
    IMAGE REQUEST DETECTION
+   FIX #2
    ========================================================= */
 
 function isImageRequest(
@@ -7047,19 +7657,48 @@ function isImageRequest(
     String(
       text ||
       ""
-    );
+    ).trim();
+
+  if(
+    !value
+  ){
+
+    return false;
+
+  }
+
+  const howTo =
+    /\b(how\s+(?:do|can|should)\s+i|teach\s+me|show\s+me\s+how|help\s+me\s+(?:draw|paint|sketch|illustrate))\b/i;
+
+  if(
+    howTo.test(
+      value
+    )
+  ){
+
+    return false;
+
+  }
 
   const creationWord =
-    /\b(create|make|generate|draw|design|produce|render|illustrate|paint)\b/i;
+    /\b(create|make|generate|draw|design|produce|render|illustrate|paint|sketch)\b/i;
 
   const imageWord =
-    /\b(image|picture|photo|graphic|poster|flyer|logo|artwork|illustration|portrait)\b/i;
+    /\b(image|picture|pic|photo|graphic|poster|flyer|logo|artwork|illustration|portrait|drawing|sketch)\b/i;
+
+  const directVisual =
+    /\b(draw|sketch|illustrate|paint)\b\s+(?:me\s+)?(?:an?\s+|the\s+)?[\s\S]+/i;
 
   return (
-    creationWord.test(
-      value
-    ) &&
-    imageWord.test(
+    (
+      creationWord.test(
+        value
+      ) &&
+      imageWord.test(
+        value
+      )
+    ) ||
+    directVisual.test(
       value
     )
   );
@@ -7067,7 +7706,7 @@ function isImageRequest(
 }
 
 /* =========================================================
-   GENERATED IMAGE MODAL
+   GENERATED IMAGE
    ========================================================= */
 
 function openGeneratedImage(
@@ -7144,10 +7783,6 @@ imageModal.addEventListener(
   }
 );
 
-/* =========================================================
-   GENERATED IMAGE BUBBLE
-   ========================================================= */
-
 function addImageBubble(
   src,
   prompt=""
@@ -7205,12 +7840,8 @@ function addImageBubble(
     "generated-image";
 
   /*
-    IMPORTANT:
-    /api/image already returns
-    the complete data URI.
-
-    Do not add another
-    data:image/png;base64 prefix.
+    /api/image already returns the complete
+    data URI or image URL.
   */
 
   image.src =
@@ -7444,7 +8075,9 @@ async function sendMessage(
     !state.sessionToken
   ){
 
-    showMemberGate();
+    showMemberGate(
+      "visitor"
+    );
 
     return;
 
@@ -7454,8 +8087,7 @@ async function sendMessage(
     visiblePermissions();
 
   if(
-    permissions.elleChat !==
-    true
+    permissions.elleChat !== true
   ){
 
     addBubble(
@@ -7498,11 +8130,13 @@ async function sendMessage(
   );
 
   state.history.push({
+
     role:
       "user",
 
     content:
       text
+
   });
 
   showTyping();
@@ -7522,26 +8156,22 @@ async function sendMessage(
     const body =
       wantsImage
         ? {
+
             prompt:
               text,
 
-            /*
-              Backend ignores this
-              for normal members.
-
-              It is used only for
-              verified owner test mode.
-            */
-
             ageGroup:
               visibleAgeGroup()
+
           }
         : {
+
             messages:
               state.history,
 
             ageGroup:
               visibleAgeGroup()
+
           };
 
     const response =
@@ -7553,11 +8183,13 @@ async function sendMessage(
             "POST",
 
           headers:{
+
             "Content-Type":
               "application/json",
 
             "Authorization":
               `Bearer ${state.sessionToken}`
+
           },
 
           body:
@@ -7584,8 +8216,7 @@ async function sendMessage(
     if(
       response.status === 401 ||
       response.status === 403 ||
-      data?.membershipRequired ===
-        true
+      data?.membershipRequired === true
     ){
 
       throw new Error(
@@ -7607,13 +8238,8 @@ async function sendMessage(
 
     hideTyping();
 
-    /*
-      IMAGE RESPONSE
-    */
-
     if(
-      data?.type ===
-        "image" &&
+      data?.type === "image" &&
       data?.image
     ){
 
@@ -7624,11 +8250,13 @@ async function sendMessage(
       );
 
       state.history.push({
+
         role:
           "assistant",
 
         content:
           "I created the image the user requested."
+
       });
 
       renderChips([
@@ -7641,13 +8269,8 @@ async function sendMessage(
 
     }
 
-    /*
-      NORMAL CHAT RESPONSE
-    */
-
     const reply =
-      data?.content?.[0]
-        ?.text ||
+      data?.content?.[0]?.text ||
       "I’m here, love. Try that again.";
 
     addBubble(
@@ -7656,20 +8279,17 @@ async function sendMessage(
     );
 
     state.history.push({
+
       role:
         "assistant",
 
       content:
         reply
+
     });
 
-    /*
-      LIVE ELLE BOOKING
-    */
-
     if(
-      data?.bookingRequired ===
-        true &&
+      data?.bookingRequired === true &&
       data?.bookingUrl
     ){
 
@@ -7691,8 +8311,7 @@ async function sendMessage(
     }
 
     if(
-      data?.leadError ===
-        true &&
+      data?.leadError === true &&
       data?.leadErrorMessage
     ){
 
@@ -7720,19 +8339,17 @@ async function sendMessage(
       clearSavedSession();
 
       setTimeout(
-        showMemberGate,
+        () => {
+
+          showMemberGate(
+            "visitor"
+          );
+
+        },
         500
       );
 
     }else{
-
-      /*
-        Keep this generic on purpose.
-
-        The backend already handles
-        rate limits and temporary errors
-        without breaking the buttons.
-      */
 
       addBubble(
         "elle",
@@ -7752,10 +8369,6 @@ async function sendMessage(
 
 }
 
-/* =========================================================
-   CHAT EVENTS
-   ========================================================= */
-
 chatSend.addEventListener(
   "click",
   () => {
@@ -7770,8 +8383,7 @@ chatInput.addEventListener(
   event => {
 
     if(
-      event.key ===
-      "Enter"
+      event.key === "Enter"
     ){
 
       event.preventDefault();
@@ -7790,11 +8402,13 @@ function bringChatIntoView(){
       "ask"
     )
     .scrollIntoView({
+
       behavior:
         "smooth",
 
       block:
         "start"
+
     });
 
   setTimeout(
@@ -7833,7 +8447,7 @@ heroAsk.addEventListener(
 );
 
 /* =========================================================
-   GREETING
+   MEMBER GREETING
    ========================================================= */
 
 function greetMember(){
@@ -7901,7 +8515,9 @@ function startLiveElle(){
     !state.sessionToken
   ){
 
-    showMemberGate();
+    showMemberGate(
+      "visitor"
+    );
 
     return;
 
@@ -7914,8 +8530,7 @@ function startLiveElle(){
     visibleAgeGroup();
 
   if(
-    ageGroup !==
-    "18+"
+    ageGroup !== "18+"
   ){
 
     promptChat(
@@ -7927,8 +8542,7 @@ function startLiveElle(){
   }
 
   if(
-    permissions.liveElle !==
-    true
+    permissions.liveElle !== true
   ){
 
     promptChat(
@@ -7959,8 +8573,10 @@ heroLiveLearn.addEventListener(
         "live"
       )
       .scrollIntoView({
+
         behavior:
           "smooth"
+
       });
 
   }
@@ -7978,7 +8594,7 @@ askAboutLive.addEventListener(
 );
 
 /* =========================================================
-   PENPAL PREVIEW
+   PENPAL
    ========================================================= */
 
 penpalAccess.addEventListener(
@@ -7989,7 +8605,9 @@ penpalAccess.addEventListener(
       !state.sessionToken
     ){
 
-      showMemberGate();
+      showMemberGate(
+        "visitor"
+      );
 
       return;
 
@@ -8002,8 +8620,7 @@ penpalAccess.addEventListener(
       visibleTierKey();
 
     if(
-      ageGroup !==
-      "18+"
+      ageGroup !== "18+"
     ){
 
       penpalStatus.textContent =
@@ -8036,11 +8653,12 @@ penpalLearn.addEventListener(
   () => {
 
     penpalStatus.textContent =
-      "PenPal is designed for friendship and genuine connection. Profiles use broad location only. Connections require mutual acceptance, with Block, Report, and End Connection safety controls planned before live matching opens.";
+      "PenPal is designed for friendship and genuine connection. Profiles use broad location only. Connections require mutual acceptance, with Block, Report, and End Connection safety controls.";
 
   }
 );
-  /* =========================================================
+
+/* =========================================================
    ELLE WORLD
    ========================================================= */
 
@@ -8075,12 +8693,14 @@ function renderWorldData(
 
   const active =
     Number(
-      live?.totalActive || 0
+      live?.totalActive ||
+      0
     );
 
   const countryCount =
     Number(
-      live?.countryCount || 0
+      live?.countryCount ||
+      0
     );
 
   const countries =
@@ -8143,7 +8763,8 @@ function renderWorldData(
 
         const count =
           Number(
-            country.active || 0
+            country.active ||
+            0
           );
 
         pill.textContent =
@@ -8288,157 +8909,87 @@ async function refreshWorld(){
 const ELLE_PLAYLIST = [
 
   {
-    title:
-      "Crown Back On",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/elle-song-1.mp3"
+    title:"Crown Back On",
+    artist:"AURYNELLE",
+    file:"audio/elle-song-1.mp3"
   },
 
   {
-    title:
-      "Stand Firm",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/Stand Firm.mp3"
+    title:"Stand Firm",
+    artist:"AURYNELLE",
+    file:"audio/Stand Firm.mp3"
   },
 
   {
-    title:
-      "Walk in Light",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/Walk in Light.mp3"
+    title:"Walk in Light",
+    artist:"AURYNELLE",
+    file:"audio/Walk in Light.mp3"
   },
 
   {
-    title:
-      "I Choose Me Too",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/I Choose Me Too.mp3"
+    title:"I Choose Me Too",
+    artist:"AURYNELLE",
+    file:"audio/I Choose Me Too.mp3"
   },
 
   {
-    title:
-      "After Midnight",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/After Midnight.mp3"
+    title:"After Midnight",
+    artist:"AURYNELLE",
+    file:"audio/After Midnight.mp3"
   },
 
   {
-    title:
-      "Built to Rise",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/Built to Rise.mp3"
+    title:"Built to Rise",
+    artist:"AURYNELLE",
+    file:"audio/Built to Rise.mp3"
   },
 
   {
-    title:
-      "Mirror Said Yes",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/Mirror Said Yes.mp3"
+    title:"Mirror Said Yes",
+    artist:"AURYNELLE",
+    file:"audio/Mirror Said Yes.mp3"
   },
 
   {
-    title:
-      "Own Your Light",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/Own Your Light.mp3"
+    title:"Own Your Light",
+    artist:"AURYNELLE",
+    file:"audio/Own Your Light.mp3"
   },
 
   {
-    title:
-      "Pressure Made Me",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/Pressure Made Me.mp3"
+    title:"Pressure Made Me",
+    artist:"AURYNELLE",
+    file:"audio/Pressure Made Me.mp3"
   },
 
   {
-    title:
-      "Pretty on Purpose",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/Pretty on Purpose.mp3"
+    title:"Pretty on Purpose",
+    artist:"AURYNELLE",
+    file:"audio/Pretty on Purpose.mp3"
   },
 
   {
-    title:
-      "Stay a Little Longer",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/Stay a Little Longer.mp3"
+    title:"Stay a Little Longer",
+    artist:"AURYNELLE",
+    file:"audio/Stay a Little Longer.mp3"
   },
 
   {
-    title:
-      "Still Got Tomorrow",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/Still Got Tomorrow.mp3"
+    title:"Still Got Tomorrow",
+    artist:"AURYNELLE",
+    file:"audio/Still Got Tomorrow.mp3"
   },
 
   {
-    title:
-      "Take Your Space",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/Take Your Space.mp3"
+    title:"Take Your Space",
+    artist:"AURYNELLE",
+    file:"audio/Take Your Space.mp3"
   },
 
   {
-    title:
-      "You Are Still Here",
-
-    artist:
-      "AURYNELLE",
-
-    file:
-      "audio/You Are Still Here.mp3"
+    title:"You Are Still Here",
+    artist:"AURYNELLE",
+    file:"audio/You Are Still Here.mp3"
   }
 
 ];
@@ -8499,11 +9050,10 @@ function renderPlaylist(){
       number.textContent =
         String(
           index + 1
-        )
-          .padStart(
-            2,
-            "0"
-          );
+        ).padStart(
+          2,
+          "0"
+        );
 
       const name =
         document.createElement(
@@ -8527,8 +9077,7 @@ function renderPlaylist(){
 
           if(
             visiblePermissions()
-              .elleRadio !==
-            true
+              .elleRadio !== true
           ){
 
             return;
@@ -8570,43 +9119,34 @@ function showTurntableTakeover(
   takeoverSong.textContent =
     title;
 
-  turntableTakeover
-    .classList
-    .remove(
-      "show"
-    );
+  turntableTakeover.classList.remove(
+    "show"
+  );
 
   void
-    turntableTakeover
-      .offsetWidth;
+    turntableTakeover.offsetWidth;
 
-  turntableTakeover
-    .classList
-    .add(
-      "show"
-    );
+  turntableTakeover.classList.add(
+    "show"
+  );
 
-  turntableTakeover
-    .setAttribute(
-      "aria-hidden",
-      "false"
-    );
+  turntableTakeover.setAttribute(
+    "aria-hidden",
+    "false"
+  );
 
   state.takeoverTimer =
     setTimeout(
       () => {
 
-        turntableTakeover
-          .classList
-          .remove(
-            "show"
-          );
+        turntableTakeover.classList.remove(
+          "show"
+        );
 
-        turntableTakeover
-          .setAttribute(
-            "aria-hidden",
-            "true"
-          );
+        turntableTakeover.setAttribute(
+          "aria-hidden",
+          "true"
+        );
 
       },
       3000
@@ -8622,8 +9162,7 @@ function loadTrack(
 
   if(
     visiblePermissions()
-      .elleRadio !==
-    true
+      .elleRadio !== true
   ){
 
     return;
@@ -8682,8 +9221,7 @@ async function playRadio(){
 
   if(
     visiblePermissions()
-      .elleRadio !==
-    true
+      .elleRadio !== true
   ){
 
     return;
@@ -8742,8 +9280,7 @@ radioToggle.addEventListener(
 
     if(
       visiblePermissions()
-        .elleRadio !==
-      true
+        .elleRadio !== true
     ){
 
       promptChat(
@@ -8755,11 +9292,9 @@ radioToggle.addEventListener(
     }
 
     const open =
-      radioInline
-        .classList
-        .toggle(
-          "show"
-        );
+      radioInline.classList.toggle(
+        "show"
+      );
 
     radioToggle.textContent =
       open
@@ -8785,16 +9320,6 @@ radioToggle.addEventListener(
 playPause.addEventListener(
   "click",
   () => {
-
-    if(
-      visiblePermissions()
-        .elleRadio !==
-      true
-    ){
-
-      return;
-
-    }
 
     if(
       state.playing
@@ -8863,6 +9388,7 @@ radioAudio.addEventListener(
 const PLAN_DATA = {
 
   "spark":{
+
     title:
       "The Spark · $3/month",
 
@@ -8870,10 +9396,12 @@ const PLAN_DATA = {
       "A simple way into Elle. Includes Ask Elle chat and image generation.",
 
     href:
-      "https://buymeacoffee.com/aurynelle/membership"
+      MEMBERSHIP_URL
+
   },
 
   "idea-circle":{
+
     title:
       "The Idea Circle · $7/month",
 
@@ -8881,10 +9409,12 @@ const PLAN_DATA = {
       "Ask Elle plus expanded member perks for people who want more room to explore ideas and get support.",
 
     href:
-      "https://buymeacoffee.com/aurynelle/membership"
+      MEMBERSHIP_URL
+
   },
 
   "infinite":{
+
     title:
       "The Infinite ∞ · $15/month",
 
@@ -8892,10 +9422,12 @@ const PLAN_DATA = {
       "The fullest adult Elle experience, including expanded perks, Elle Radio, Live Elle access, and the pathway to PenPal eligibility.",
 
     href:
-      "https://buymeacoffee.com/aurynelle/membership"
+      MEMBERSHIP_URL
+
   },
 
   "elle-next":{
+
     title:
       "Elle Next · $15/month",
 
@@ -8903,7 +9435,8 @@ const PLAN_DATA = {
       "The Elle experience for ages 13–17, with Ask Elle and expanded perks in an age-appropriate environment. Live Elle, Elle Radio, and PenPal are not included.",
 
     href:
-      "https://buymeacoffee.com/aurynelle/membership"
+      MEMBERSHIP_URL
+
   }
 
 };
@@ -8912,23 +9445,18 @@ planSelect.addEventListener(
   "change",
   () => {
 
-    const key =
-      planSelect.value;
-
     const plan =
       PLAN_DATA[
-        key
+        planSelect.value
       ];
 
     if(
       !plan
     ){
 
-      planDetail
-        .classList
-        .remove(
-          "show"
-        );
+      planDetail.classList.remove(
+        "show"
+      );
 
       return;
 
@@ -8943,11 +9471,9 @@ planSelect.addEventListener(
     planButton.href =
       plan.href;
 
-    planDetail
-      .classList
-      .add(
-        "show"
-      );
+    planDetail.classList.add(
+      "show"
+    );
 
   }
 );
@@ -8958,45 +9484,35 @@ planSelect.addEventListener(
 
 function showTrust(){
 
-  trustModal
-    .classList
-    .add(
-      "show"
-    );
+  trustModal.classList.add(
+    "show"
+  );
 
-  trustModal
-    .setAttribute(
-      "aria-hidden",
-      "false"
-    );
+  trustModal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
 
-  document.body
-    .classList
-    .add(
-      "locked"
-    );
+  document.body.classList.add(
+    "locked"
+  );
 
 }
 
 function hideTrust(){
 
-  trustModal
-    .classList
-    .remove(
-      "show"
-    );
+  trustModal.classList.remove(
+    "show"
+  );
 
-  trustModal
-    .setAttribute(
-      "aria-hidden",
-      "true"
-    );
+  trustModal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
 
-  document.body
-    .classList
-    .remove(
-      "locked"
-    );
+  document.body.classList.remove(
+    "locked"
+  );
 
 }
 
@@ -9038,75 +9554,6 @@ trustModal.addEventListener(
 );
 
 /* =========================================================
-   KEYBOARD MODAL CLOSE
-   ========================================================= */
-
-document.addEventListener(
-  "keydown",
-  event => {
-
-    if(
-      event.key !==
-      "Escape"
-    ){
-
-      return;
-
-    }
-
-    if(
-      imageModal
-        .classList
-        .contains(
-          "show"
-        )
-    ){
-
-      closeGeneratedImage();
-
-    }
-
-    if(
-      trustModal
-        .classList
-        .contains(
-          "show"
-        )
-    ){
-
-      hideTrust();
-
-    }
-
-    if(
-      mainNav
-        .classList
-        .contains(
-          "show"
-        )
-    ){
-
-      mainNav
-        .classList
-        .remove(
-          "show"
-        );
-
-      menuToggle
-        .setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
-      menuToggle.textContent =
-        "☰";
-
-    }
-
-  }
-);
-
-/* =========================================================
    CLEAR SESSION
    ========================================================= */
 
@@ -9122,10 +9569,9 @@ function clearSavedSession(){
     .forEach(
       key => {
 
-        localStorage
-          .removeItem(
-            key
-          );
+        localStorage.removeItem(
+          key
+        );
 
       }
     );
@@ -9199,7 +9645,69 @@ signOut.addEventListener(
 
     resetMemberGate();
 
-    showMemberGate();
+    showMemberGate(
+      "visitor"
+    );
+
+  }
+);
+
+/* =========================================================
+   KEYBOARD CLOSE
+   ========================================================= */
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    if(
+      event.key !==
+      "Escape"
+    ){
+
+      return;
+
+    }
+
+    if(
+      imageModal.classList.contains(
+        "show"
+      )
+    ){
+
+      closeGeneratedImage();
+
+    }
+
+    if(
+      trustModal.classList.contains(
+        "show"
+      )
+    ){
+
+      hideTrust();
+
+    }
+
+    if(
+      mainNav.classList.contains(
+        "show"
+      )
+    ){
+
+      mainNav.classList.remove(
+        "show"
+      );
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      menuToggle.textContent =
+        "☰";
+
+    }
 
   }
 );
@@ -9211,46 +9719,28 @@ signOut.addEventListener(
 async function continueStartup(){
 
   if(
-    !state.ageGroup
-  ){
-
-    ageGate
-      .classList
-      .add(
-        "show"
-      );
-
-    ageGate
-      .setAttribute(
-        "aria-hidden",
-        "false"
-      );
-
-    document.body
-      .classList
-      .add(
-        "locked"
-      );
-
-    return;
-
-  }
-
-  document.body
-    .classList
-    .remove(
-      "locked"
-    );
-
-  if(
     !state.sessionToken
   ){
 
-    showMemberGate();
+    showMemberGate(
+      "visitor"
+    );
 
     return;
 
   }
+
+  /*
+    A returning member sees the switch
+    while the server verifies the session.
+  */
+
+  showMemberGate(
+    "member"
+  );
+
+  powerStatus.textContent =
+    "Checking your membership";
 
   const restored =
     await restoreSession();
@@ -9261,13 +9751,13 @@ async function continueStartup(){
 
     resetMemberGate();
 
-    showMemberGate();
+    showMemberGate(
+      "visitor"
+    );
 
     return;
 
   }
-
-  hideMemberGate();
 
   applyAccess();
 
@@ -9283,6 +9773,18 @@ async function continueStartup(){
       false,
       false
     );
+
+  }
+
+  await powerOnMember(
+    true
+  );
+
+  if(
+    !state.ageGroup
+  ){
+
+    showAgeGate();
 
   }
 
@@ -9355,32 +9857,6 @@ document.addEventListener(
 function init(){
 
   renderPlaylist();
-
-  if(
-    !state.ageGroup
-  ){
-
-    ageGate
-      .classList
-      .add(
-        "show"
-      );
-
-    ageGate
-      .setAttribute(
-        "aria-hidden",
-        "false"
-      );
-
-    document.body
-      .classList
-      .add(
-        "locked"
-      );
-
-    return;
-
-  }
 
   continueStartup();
 
