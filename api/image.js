@@ -6,7 +6,6 @@ import { requireElleSession } from "./session-check.js";
    ========================================================= */
 
 function getRedisConfig() {
-
   const url =
     process.env.KV_REST_API_URL ||
     process.env.STORAGE_KV_REST_API_URL;
@@ -24,12 +23,14 @@ function getRedisConfig() {
   return {
     url:
       url.replace(/\/+$/, ""),
+
     token,
   };
 }
 
-async function redisCommand(command) {
-
+async function redisCommand(
+  command
+) {
   const { url, token } =
     getRedisConfig();
 
@@ -37,7 +38,8 @@ async function redisCommand(command) {
     await fetch(
       url,
       {
-        method: "POST",
+        method:
+          "POST",
 
         headers: {
           Authorization:
@@ -70,13 +72,17 @@ async function redisCommand(command) {
   return data.result;
 }
 
+/* =========================================================
+   CLEAN INPUT
+   ========================================================= */
+
 function cleanString(
   value,
   maxLength = 1200
 ) {
-
   if (
-    typeof value !== "string"
+    typeof value !==
+    "string"
   ) {
     return "";
   }
@@ -89,10 +95,13 @@ function cleanString(
     );
 }
 
+/* =========================================================
+   RATE-LIMIT ID
+   ========================================================= */
+
 function getRateLimitIdentifier(
   session
 ) {
-
   const raw =
     String(
       session?.email ||
@@ -114,10 +123,13 @@ function getRateLimitIdentifier(
     .slice(0, 32);
 }
 
+/* =========================================================
+   IMAGE RATE LIMIT
+   ========================================================= */
+
 async function checkImageRateLimit(
   session
 ) {
-
   const identifier =
     getRateLimitIdentifier(
       session
@@ -125,8 +137,11 @@ async function checkImageRateLimit(
 
   if (!identifier) {
     return {
-      allowed: false,
-      retryAfter: 3600,
+      allowed:
+        false,
+
+      retryAfter:
+        3600,
     };
   }
 
@@ -135,6 +150,10 @@ async function checkImageRateLimit(
 
   const dayKey =
     `elle:image:day:${identifier}`;
+
+  /*
+    HOURLY LIMIT
+  */
 
   const hourCount =
     Number(
@@ -147,25 +166,33 @@ async function checkImageRateLimit(
   if (
     hourCount === 1
   ) {
-
     await redisCommand([
       "EXPIRE",
       hourKey,
       3600,
     ]);
-
   }
+
+  /*
+    Current limit:
+    4 images per hour.
+  */
 
   if (
     hourCount > 4
   ) {
-
     return {
-      allowed: false,
-      retryAfter: 3600,
-    };
+      allowed:
+        false,
 
+      retryAfter:
+        3600,
+    };
   }
+
+  /*
+    DAILY LIMIT
+  */
 
   const dayCount =
     Number(
@@ -178,37 +205,116 @@ async function checkImageRateLimit(
   if (
     dayCount === 1
   ) {
-
     await redisCommand([
       "EXPIRE",
       dayKey,
       86400,
     ]);
-
   }
+
+  /*
+    Current limit:
+    20 images per day.
+  */
 
   if (
     dayCount > 20
   ) {
-
     return {
-      allowed: false,
-      retryAfter: 86400,
-    };
+      allowed:
+        false,
 
+      retryAfter:
+        86400,
+    };
   }
 
   return {
-    allowed: true,
-    retryAfter: 0,
+    allowed:
+      true,
+
+    retryAfter:
+      0,
   };
 }
+
+/* =========================================================
+   SERVER-TRUSTED AGE
+   ========================================================= */
+
+function getSafeAgeGroup(
+  session,
+  requestedAgeGroup
+) {
+  /*
+    OWNER TEST MODE
+
+    Only the verified owner
+    may intentionally simulate
+    either age experience.
+  */
+
+  const ownerTestMode =
+    session?.owner === true &&
+    session?.permissions
+      ?.testMode === true;
+
+  if (ownerTestMode) {
+    return (
+      requestedAgeGroup ===
+      "13-17"
+        ? "13-17"
+        : "18+"
+    );
+  }
+
+  /*
+    NORMAL MEMBERS
+
+    Never trust ageGroup from
+    the browser.
+
+    Elle Next is always teen.
+
+    Checking tierKey here also
+    protects older sessions that
+    may have been created before
+    ageGroup was stored directly
+    in the session.
+  */
+
+  const tierKey =
+    String(
+      session?.tierKey || ""
+    )
+      .trim()
+      .toLowerCase();
+
+  if (
+    tierKey ===
+    "elle-next"
+  ) {
+    return "13-17";
+  }
+
+  if (
+    session?.ageGroup ===
+    "13-17"
+  ) {
+    return "13-17";
+  }
+
+  return "18+";
+}
+
+/* =========================================================
+   IMAGE PROMPT
+   ========================================================= */
 
 function buildImagePrompt(
   prompt,
   ageGroup
 ) {
-
   const base =
     cleanString(
       prompt,
@@ -216,9 +322,9 @@ function buildImagePrompt(
     );
 
   if (
-    ageGroup === "13-17"
+    ageGroup ===
+    "13-17"
   ) {
-
     return `
 Create an age-appropriate,
 non-sexual image suitable
@@ -232,31 +338,35 @@ content.
 User request:
 ${base}
 `.trim();
-
   }
 
   return base;
 }
 
+/* =========================================================
+   API HANDLER
+   ========================================================= */
+
 export default async function handler(
   req,
   res
 ) {
-
   if (
-    req.method !== "POST"
+    req.method !==
+    "POST"
   ) {
-
     return res
       .status(405)
       .json({
         error:
           "POST only",
       });
-
   }
 
   try {
+    /* =====================================================
+       VERIFIED MEMBERSHIP SESSION
+       ===================================================== */
 
     const session =
       await requireElleSession(
@@ -264,7 +374,6 @@ export default async function handler(
       );
 
     if (!session) {
-
       return res
         .status(401)
         .json({
@@ -274,14 +383,26 @@ export default async function handler(
           membershipRequired:
             true,
         });
-
     }
+
+    /*
+      Image generation currently
+      follows Elle Chat access.
+
+      Spark
+      Idea Circle
+      Infinite
+      Elle Next
+      Owner
+
+      may generate images when
+      elleChat permission is active.
+    */
 
     if (
       session.permissions
         ?.elleChat !== true
     ) {
-
       return res
         .status(403)
         .json({
@@ -291,8 +412,11 @@ export default async function handler(
           membershipRequired:
             true,
         });
-
     }
+
+    /* =====================================================
+       EMERGENCY IMAGE SWITCH
+       ===================================================== */
 
     const imageEnabled =
       String(
@@ -304,9 +428,9 @@ export default async function handler(
         .toLowerCase();
 
     if (
-      imageEnabled !== "true"
+      imageEnabled !==
+      "true"
     ) {
-
       return res
         .status(503)
         .json({
@@ -316,14 +440,16 @@ export default async function handler(
           imageDisabled:
             true,
         });
-
     }
+
+    /* =====================================================
+       OPENAI CONFIGURATION
+       ===================================================== */
 
     if (
       !process.env
         .OPENAI_API_KEY
     ) {
-
       console.error(
         "OPENAI_API_KEY is missing."
       );
@@ -334,8 +460,11 @@ export default async function handler(
           error:
             "Elle image generation is not configured yet.",
         });
-
     }
+
+    /* =====================================================
+       USER PROMPT
+       ===================================================== */
 
     const prompt =
       cleanString(
@@ -344,33 +473,36 @@ export default async function handler(
       );
 
     if (!prompt) {
-
       return res
         .status(400)
         .json({
           error:
             "Tell Elle what image you want to create.",
         });
-
     }
 
+    /* =====================================================
+       SERVER-TRUSTED AGE
+       ===================================================== */
+
     const ageGroup =
-      req.body?.ageGroup ===
-        "18+"
-        ? "18+"
-        : "13-17";
+      getSafeAgeGroup(
+        session,
+        req.body?.ageGroup
+      );
+
+    /* =====================================================
+       RATE LIMIT
+       ===================================================== */
 
     let rateLimit;
 
     try {
-
       rateLimit =
         await checkImageRateLimit(
           session
         );
-
     } catch (error) {
-
       console.error(
         "Elle image rate-limit check failed:",
         error
@@ -385,13 +517,11 @@ export default async function handler(
           temporaryError:
             true,
         });
-
     }
 
     if (
       !rateLimit.allowed
     ) {
-
       res.setHeader(
         "Retry-After",
         String(
@@ -411,8 +541,11 @@ export default async function handler(
           retryAfter:
             rateLimit.retryAfter,
         });
-
     }
+
+    /* =====================================================
+       BUILD FINAL IMAGE PROMPT
+       ===================================================== */
 
     const imagePrompt =
       buildImagePrompt(
@@ -420,10 +553,13 @@ export default async function handler(
         ageGroup
       );
 
+    /* =====================================================
+       OPENAI IMAGE GENERATION
+       ===================================================== */
+
     let openaiResponse;
 
     try {
-
       openaiResponse =
         await fetch(
           "https://api.openai.com/v1/images/generations",
@@ -452,9 +588,7 @@ export default async function handler(
               }),
           }
         );
-
     } catch (error) {
-
       console.error(
         "OpenAI image network error:",
         error
@@ -469,19 +603,19 @@ export default async function handler(
           temporaryError:
             true,
         });
-
     }
+
+    /* =====================================================
+       READ OPENAI RESPONSE
+       ===================================================== */
 
     let data;
 
     try {
-
       data =
         await openaiResponse
           .json();
-
     } catch (error) {
-
       console.error(
         "OpenAI image API returned invalid JSON:",
         error
@@ -493,13 +627,15 @@ export default async function handler(
           error:
             "Elle could not create that image right now.",
         });
-
     }
+
+    /* =====================================================
+       OPENAI ERROR HANDLING
+       ===================================================== */
 
     if (
       !openaiResponse.ok
     ) {
-
       console.error(
         "OpenAI image API error:",
         openaiResponse.status,
@@ -507,11 +643,16 @@ export default async function handler(
       );
 
       const retryable =
-        openaiResponse.status === 429 ||
-        openaiResponse.status === 500 ||
-        openaiResponse.status === 502 ||
-        openaiResponse.status === 503 ||
-        openaiResponse.status === 504;
+        openaiResponse.status ===
+          429 ||
+        openaiResponse.status ===
+          500 ||
+        openaiResponse.status ===
+          502 ||
+        openaiResponse.status ===
+          503 ||
+        openaiResponse.status ===
+          504;
 
       return res
         .status(
@@ -528,8 +669,11 @@ export default async function handler(
           temporaryError:
             retryable,
         });
-
     }
+
+    /* =====================================================
+       IMAGE DATA
+       ===================================================== */
 
     const imageBase64 =
       data?.data?.[0]
@@ -545,7 +689,6 @@ export default async function handler(
       !imageBase64 &&
       !imageUrl
     ) {
-
       console.error(
         "OpenAI image response did not include image data.",
         data
@@ -557,8 +700,11 @@ export default async function handler(
           error:
             "Elle created an image response but could not display it. Please try again.",
         });
-
     }
+
+    /* =====================================================
+       SUCCESS
+       ===================================================== */
 
     return res
       .status(200)
@@ -567,6 +713,17 @@ export default async function handler(
           "image",
 
         prompt,
+
+        /*
+          IMPORTANT:
+
+          The frontend should use
+          data.image directly.
+
+          Do NOT add another
+          data:image/png;base64,
+          prefix in index.html.
+        */
 
         image:
           imageBase64
@@ -577,7 +734,6 @@ export default async function handler(
       });
 
   } catch (error) {
-
     console.error(
       "Elle image server error:",
       error
@@ -589,7 +745,5 @@ export default async function handler(
         error:
           "Elle hit an image-generation hiccup.",
       });
-
   }
-
 }
