@@ -1,21 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta
   name="viewport"
   content="width=device-width,initial-scale=1,viewport-fit=cover"
 >
+
 <meta
   name="theme-color"
   content="#2e211d"
 >
+
 <meta
   name="description"
   content="Elle by AURYNELLE∞ IDEAS. Real talk, good energy, elevated living."
 >
 
-<title>Elle · AURYNELLE∞ IDEAS</title>
+<title>
+  Elle · AURYNELLE∞ IDEAS
+</title>
 
 <link
   rel="preconnect"
@@ -42,6 +49,7 @@
 }
 
 :root{
+
   --ivory:#fffaf5;
   --cream:#f8efe5;
   --cream2:#f4e8dc;
@@ -49,12 +57,19 @@
 
   --blush:#f5dddd;
   --rose:#c9788b;
+  --rose-soft:#f9e8ea;
+
   --plum:#603247;
+  --plum2:#74445c;
+
   --espresso:#2e211d;
 
   --ink:#382f2c;
   --muted:#756963;
+
   --gold:#b78a4d;
+  --gold-soft:#efd9ad;
+
   --green:#56755d;
 
   --line:#e9ddd2;
@@ -73,7 +88,9 @@ html{
 }
 
 body{
+
   min-height:100dvh;
+
   overflow-x:hidden;
 
   color:var(--ink);
@@ -108,6 +125,7 @@ textarea{
 
 button,
 a{
+
   transition:
     transform .18s ease,
     box-shadow .18s ease,
@@ -127,6 +145,7 @@ a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible{
+
   outline:
     3px solid
     rgba(183,138,77,.25);
@@ -139,6 +158,7 @@ textarea:focus-visible{
 }
 
 .page{
+
   width:
     min(
       1180px,
@@ -149,11 +169,11 @@ textarea:focus-visible{
 }
 
 .section{
-  padding:
-    76px 0;
+  padding:76px 0;
 }
 
 .eyebrow{
+
   font-size:11px;
   font-weight:900;
 
@@ -164,6 +184,7 @@ textarea:focus-visible{
 }
 
 .title{
+
   font-family:
     "Playfair Display",
     serif;
@@ -178,19 +199,24 @@ textarea:focus-visible{
     );
 
   font-weight:600;
+
   line-height:1.02;
 }
 
 .copy{
+
   color:#625752;
 
   line-height:1.65;
+
   font-size:15px;
 }
 
 .primary,
 .secondary{
+
   display:inline-flex;
+
   align-items:center;
   justify-content:center;
 
@@ -210,6 +236,7 @@ textarea:focus-visible{
 }
 
 .primary{
+
   border:0;
 
   color:white;
@@ -223,6 +250,7 @@ textarea:focus-visible{
 }
 
 .secondary{
+
   border:
     1px solid
     #dccdc4;
@@ -237,12 +265,15 @@ textarea:focus-visible{
    ========================================================= */
 
 .member-gate{
+
   position:fixed;
+
   inset:0;
 
   z-index:20000;
 
   display:none;
+
   align-items:center;
   justify-content:center;
 
@@ -267,6 +298,7 @@ textarea:focus-visible{
 }
 
 .power-card{
+
   width:
     min(
       590px,
@@ -293,6 +325,7 @@ textarea:focus-visible{
 }
 
 .power-stage{
+
   padding:
     34px 28px 30px;
 
@@ -308,6 +341,7 @@ textarea:focus-visible{
 }
 
 .gate-mark{
+
   width:64px;
   height:64px;
 
@@ -315,6 +349,7 @@ textarea:focus-visible{
     0 auto 14px;
 
   display:grid;
+
   place-items:center;
 
   border-radius:50%;
@@ -344,6 +379,7 @@ textarea:focus-visible{
 }
 
 .gate-kicker{
+
   font-size:10px;
   font-weight:900;
 
@@ -354,6 +390,7 @@ textarea:focus-visible{
 }
 
 .power-title{
+
   margin-top:7px;
 
   font-family:
@@ -375,6 +412,7 @@ textarea:focus-visible{
 }
 
 .power-tagline{
+
   margin-top:8px;
 
   color:#71625c;
@@ -384,6 +422,7 @@ textarea:focus-visible{
 }
 
 .power-script{
+
   margin-top:12px;
 
   font-family:
@@ -403,6 +442,7 @@ textarea:focus-visible{
 }
 
 .power-copy{
+
   max-width:430px;
 
   margin:
@@ -411,20 +451,22 @@ textarea:focus-visible{
   color:#645954;
 
   font-size:13px;
+
   line-height:1.55;
 }
 
 .power-switch-wrap{
+
   position:relative;
 
-  width:
-    150px;
+  width:150px;
 
   margin:
     25px auto 17px;
 }
 
 .power-halo{
+
   position:absolute;
 
   width:190px;
@@ -451,8 +493,7 @@ textarea:focus-visible{
       transparent 70%
     );
 
-  filter:
-    blur(12px);
+  filter:blur(12px);
 
   pointer-events:none;
 
@@ -462,7 +503,9 @@ textarea:focus-visible{
 }
 
 .power-switch{
+
   position:relative;
+
   z-index:2;
 
   width:126px;
@@ -503,6 +546,7 @@ textarea:focus-visible{
 }
 
 .switch-label{
+
   position:absolute;
 
   left:0;
@@ -527,6 +571,7 @@ textarea:focus-visible{
 }
 
 .switch-slot{
+
   position:absolute;
 
   width:52px;
@@ -560,6 +605,7 @@ textarea:focus-visible{
 }
 
 .switch-toggle{
+
   position:absolute;
 
   width:42px;
@@ -584,8 +630,7 @@ textarea:focus-visible{
   transform:
     translateY(12px);
 
-  transform-origin:
-    center;
+  transform-origin:center;
 
   transition:
     transform .42s
@@ -593,6 +638,7 @@ textarea:focus-visible{
 }
 
 .switch-infinity{
+
   position:absolute;
 
   left:0;
@@ -612,12 +658,14 @@ textarea:focus-visible{
 }
 
 .power-switch.on .switch-toggle{
+
   transform:
     translateY(-17px);
 }
 
 .power-switch.on + .power-halo,
 .power-switch-wrap.on .power-halo{
+
   opacity:.9;
 
   transform:
@@ -629,6 +677,7 @@ textarea:focus-visible{
 }
 
 .power-switch.on{
+
   box-shadow:
     0 0 50px
     rgba(255,204,116,.4),
@@ -640,6 +689,7 @@ textarea:focus-visible{
 }
 
 .power-status{
+
   min-height:22px;
 
   color:#8a7258;
@@ -656,6 +706,7 @@ textarea:focus-visible{
 }
 
 .member-enter{
+
   margin-top:9px;
 
   border:0;
@@ -675,6 +726,7 @@ textarea:focus-visible{
 }
 
 .member-login{
+
   display:none;
 
   padding:
@@ -692,6 +744,7 @@ textarea:focus-visible{
 }
 
 .login-title{
+
   text-align:center;
 
   color:var(--plum);
@@ -704,6 +757,7 @@ textarea:focus-visible{
 }
 
 .login-copy{
+
   max-width:420px;
 
   margin:
@@ -714,6 +768,7 @@ textarea:focus-visible{
   color:#796d66;
 
   font-size:12px;
+
   line-height:1.5;
 }
 
@@ -726,6 +781,7 @@ textarea:focus-visible{
 }
 
 .field-label{
+
   display:block;
 
   margin-bottom:8px;
@@ -740,6 +796,7 @@ textarea:focus-visible{
 }
 
 .member-input{
+
   width:100%;
   height:52px;
 
@@ -760,6 +817,7 @@ textarea:focus-visible{
 }
 
 .code-input{
+
   text-align:center;
 
   font-size:22px;
@@ -769,7 +827,9 @@ textarea:focus-visible{
 }
 
 .member-action{
+
   width:100%;
+
   min-height:49px;
 
   margin-top:11px;
@@ -788,12 +848,14 @@ textarea:focus-visible{
 }
 
 .member-action:disabled{
+
   opacity:.55;
 
   cursor:wait;
 }
 
 .member-secondary{
+
   width:100%;
 
   margin-top:12px;
@@ -811,6 +873,7 @@ textarea:focus-visible{
 }
 
 .member-message{
+
   display:none;
 
   margin-top:13px;
@@ -821,6 +884,7 @@ textarea:focus-visible{
   border-radius:13px;
 
   font-size:13px;
+
   line-height:1.5;
 }
 
@@ -829,18 +893,21 @@ textarea:focus-visible{
 }
 
 .member-message.error{
+
   background:#fff0f2;
 
   color:#734b56;
 }
 
 .member-message.ok{
+
   background:#eff9f3;
 
   color:#376a50;
 }
 
 .member-join{
+
   display:none;
 
   margin-top:14px;
@@ -863,6 +930,7 @@ textarea:focus-visible{
 }
 
 .member-join strong{
+
   display:block;
 
   font-family:
@@ -875,16 +943,20 @@ textarea:focus-visible{
 }
 
 .member-join p{
+
   margin-top:6px;
 
   color:#655a55;
 
   font-size:13px;
+
   line-height:1.5;
 }
 
 .member-join a{
+
   display:inline-flex;
+
   align-items:center;
   justify-content:center;
 
@@ -908,6 +980,7 @@ textarea:focus-visible{
 }
 
 .member-foot{
+
   margin-top:16px;
 
   text-align:center;
@@ -915,6 +988,7 @@ textarea:focus-visible{
   color:#867b75;
 
   font-size:11px;
+
   line-height:1.5;
 }
 
@@ -951,32 +1025,34 @@ textarea:focus-visible{
   100%{
     opacity:1;
   }
-
 }
 
 @keyframes elleLightUp{
 
   0%{
+
     filter:
       brightness(.72)
       saturate(.8);
   }
 
   40%{
+
     filter:
       brightness(1.12)
       saturate(1.08);
   }
 
   100%{
+
     filter:
       brightness(1)
       saturate(1);
   }
-
 }
 
 .member-gate.flicker{
+
   animation:
     elleFlicker
     .68s
@@ -986,6 +1062,7 @@ textarea:focus-visible{
 body.elle-powered .topbar,
 body.elle-powered main,
 body.elle-powered .footer{
+
   animation:
     elleLightUp
     1.15s
@@ -997,12 +1074,15 @@ body.elle-powered .footer{
    ========================================================= */
 
 .age-gate{
+
   position:fixed;
+
   inset:0;
 
   z-index:21000;
 
   display:none;
+
   align-items:center;
   justify-content:center;
 
@@ -1020,6 +1100,7 @@ body.elle-powered .footer{
 }
 
 .age-card{
+
   width:
     min(
       560px,
@@ -1049,6 +1130,7 @@ body.elle-powered .footer{
 }
 
 .gate-title{
+
   margin-top:8px;
 
   font-family:
@@ -1066,6 +1148,7 @@ body.elle-powered .footer{
 }
 
 .gate-script{
+
   margin-top:2px;
 
   font-family:
@@ -1079,6 +1162,7 @@ body.elle-powered .footer{
 }
 
 .gate-copy{
+
   max-width:440px;
 
   margin:
@@ -1087,10 +1171,12 @@ body.elle-powered .footer{
   color:#655a55;
 
   line-height:1.6;
+
   font-size:14px;
 }
 
 .age-options{
+
   display:grid;
 
   grid-template-columns:
@@ -1102,6 +1188,7 @@ body.elle-powered .footer{
 }
 
 .age-option{
+
   min-height:105px;
 
   padding:16px;
@@ -1120,12 +1207,14 @@ body.elle-powered .footer{
 }
 
 .age-option span{
+
   display:block;
 
   font-size:24px;
 }
 
 .age-option strong{
+
   display:block;
 
   margin-top:6px;
@@ -1134,6 +1223,7 @@ body.elle-powered .footer{
 }
 
 .age-option small{
+
   display:block;
 
   margin-top:4px;
@@ -1144,6 +1234,7 @@ body.elle-powered .footer{
 }
 
 .age-under{
+
   margin-top:16px;
 
   border:0;
@@ -1158,6 +1249,7 @@ body.elle-powered .footer{
 }
 
 .under-message{
+
   display:none;
 
   margin-top:12px;
@@ -1182,7 +1274,9 @@ body.elle-powered .footer{
    ========================================================= */
 
 .topbar{
+
   position:sticky;
+
   top:0;
 
   z-index:1000;
@@ -1199,6 +1293,7 @@ body.elle-powered .footer{
 }
 
 .topbar-inner{
+
   width:
     min(
       1180px,
@@ -1210,13 +1305,16 @@ body.elle-powered .footer{
   margin:auto;
 
   display:flex;
+
   align-items:center;
 
   gap:14px;
 }
 
 .brand{
+
   display:flex;
+
   align-items:center;
 
   gap:10px;
@@ -1225,10 +1323,12 @@ body.elle-powered .footer{
 }
 
 .brand-mark{
+
   width:44px;
   height:44px;
 
   display:grid;
+
   place-items:center;
 
   border:
@@ -1251,6 +1351,7 @@ body.elle-powered .footer{
 }
 
 .brand-copy strong{
+
   display:block;
 
   color:var(--plum);
@@ -1259,6 +1360,7 @@ body.elle-powered .footer{
 }
 
 .brand-copy span{
+
   display:block;
 
   margin-top:2px;
@@ -1272,15 +1374,18 @@ body.elle-powered .footer{
 }
 
 .nav{
+
   margin-left:auto;
 
   display:flex;
+
   align-items:center;
 
   gap:2px;
 }
 
 .nav a{
+
   padding:
     9px 10px;
 
@@ -1295,13 +1400,16 @@ body.elle-powered .footer{
 }
 
 .nav a:hover{
+
   background:white;
 
   color:var(--plum);
 }
 
 .top-actions{
+
   display:flex;
+
   align-items:center;
 
   gap:6px;
@@ -1310,6 +1418,7 @@ body.elle-powered .footer{
 .member-pill,
 .top-button,
 .menu-toggle{
+
   min-height:37px;
 
   padding:
@@ -1335,6 +1444,7 @@ body.elle-powered .footer{
 }
 
 .menu-toggle{
+
   display:none;
 
   width:40px;
@@ -1345,17 +1455,23 @@ body.elle-powered .footer{
 }
 
 /* =========================================================
-   OWNER TEST BAR
+   OWNER MASTER BAR
    ========================================================= */
 
 .owner-bar{
+
   display:none;
 
   border-bottom:
     1px solid
-    #e8dccb;
+    #e7d3ac;
 
-  background:#fff4dc;
+  background:
+    linear-gradient(
+      90deg,
+      #fff6df,
+      #fff9ee
+    );
 }
 
 .owner-bar.show{
@@ -1363,6 +1479,7 @@ body.elle-powered .footer{
 }
 
 .owner-inner{
+
   width:
     min(
       1180px,
@@ -1372,6 +1489,7 @@ body.elle-powered .footer{
   margin:auto;
 
   display:flex;
+
   align-items:center;
 
   gap:7px;
@@ -1383,6 +1501,7 @@ body.elle-powered .footer{
 }
 
 .owner-label{
+
   white-space:nowrap;
 
   color:#71572f;
@@ -1392,6 +1511,7 @@ body.elle-powered .footer{
 }
 
 .owner-test{
+
   min-height:32px;
 
   padding:
@@ -1416,6 +1536,7 @@ body.elle-powered .footer{
 }
 
 .owner-test.active{
+
   background:#6b5530;
 
   color:#fff;
@@ -1424,6 +1545,7 @@ body.elle-powered .footer{
 }
 
 .owner-status{
+
   margin-left:auto;
 
   white-space:nowrap;
@@ -1439,11 +1561,13 @@ body.elle-powered .footer{
    ========================================================= */
 
 .hero{
+
   padding:
     34px 0 74px;
 }
 
 .hero-shell{
+
   display:grid;
 
   grid-template-columns:
@@ -1456,8 +1580,7 @@ body.elle-powered .footer{
 
   min-height:620px;
 
-  padding:
-    46px;
+  padding:46px;
 
   border:
     1px solid
@@ -1468,16 +1591,19 @@ body.elle-powered .footer{
   overflow:hidden;
 
   background:
+
     radial-gradient(
       circle at 82% 18%,
       rgba(247,221,221,.65),
       transparent 30%
     ),
+
     radial-gradient(
       circle at 12% 4%,
       rgba(244,232,220,.75),
       transparent 28%
     ),
+
     linear-gradient(
       145deg,
       #fffdf9,
@@ -1488,11 +1614,14 @@ body.elle-powered .footer{
 }
 
 .hero-copy{
+
   max-width:600px;
 }
 
 .hero-kicker{
+
   display:inline-flex;
+
   align-items:center;
 
   min-height:35px;
@@ -1519,6 +1648,7 @@ body.elle-powered .footer{
 }
 
 .hero h1{
+
   margin-top:18px;
 
   font-family:
@@ -1533,12 +1663,14 @@ body.elle-powered .footer{
     );
 
   line-height:.95;
+
   font-weight:600;
 
   color:var(--plum);
 }
 
 .hero h1 span{
+
   display:block;
 
   margin-top:6px;
@@ -1560,6 +1692,7 @@ body.elle-powered .footer{
 }
 
 .hero-copy p{
+
   max-width:570px;
 
   margin-top:22px;
@@ -1577,7 +1710,9 @@ body.elle-powered .footer{
 }
 
 .hero-actions{
+
   display:flex;
+
   flex-wrap:wrap;
 
   gap:10px;
@@ -1586,7 +1721,9 @@ body.elle-powered .footer{
 }
 
 .hero-meta{
+
   display:flex;
+
   flex-wrap:wrap;
 
   gap:10px;
@@ -1595,7 +1732,9 @@ body.elle-powered .footer{
 }
 
 .hero-meta span{
+
   display:inline-flex;
+
   align-items:center;
 
   gap:7px;
@@ -1621,19 +1760,23 @@ body.elle-powered .footer{
 }
 
 .hero-visual{
+
   position:relative;
 
   min-height:530px;
 
   display:flex;
+
   align-items:flex-end;
   justify-content:center;
 }
 
 .hero-glow{
+
   position:absolute;
 
   width:82%;
+
   aspect-ratio:1;
 
   top:3%;
@@ -1649,11 +1792,11 @@ body.elle-powered .footer{
       transparent 72%
     );
 
-  filter:
-    blur(3px);
+  filter:blur(3px);
 }
 
 .hero-portrait{
+
   position:relative;
 
   z-index:2;
@@ -1678,6 +1821,7 @@ body.elle-powered .footer{
 }
 
 .hero-note{
+
   position:absolute;
 
   z-index:4;
@@ -1710,6 +1854,7 @@ body.elle-powered .footer{
 }
 
 .hero-note strong{
+
   display:block;
 
   color:var(--plum);
@@ -1722,11 +1867,13 @@ body.elle-powered .footer{
 }
 
 .hero-note p{
+
   margin-top:5px;
 
   color:#6c615c;
 
   font-size:12px;
+
   line-height:1.45;
 }
 
@@ -1739,6 +1886,7 @@ body.elle-powered .footer{
 }
 
 .ask-shell{
+
   display:grid;
 
   grid-template-columns:
@@ -1751,8 +1899,8 @@ body.elle-powered .footer{
 }
 
 .ask-intro{
-  padding:
-    30px;
+
+  padding:30px;
 
   border:
     1px solid
@@ -1771,6 +1919,7 @@ body.elle-powered .footer{
 }
 
 .ask-intro .title{
+
   margin-top:7px;
 
   font-size:
@@ -1786,6 +1935,7 @@ body.elle-powered .footer{
 }
 
 .ask-mini-list{
+
   display:grid;
 
   gap:10px;
@@ -1794,7 +1944,9 @@ body.elle-powered .footer{
 }
 
 .ask-mini{
+
   display:flex;
+
   align-items:flex-start;
 
   gap:10px;
@@ -1812,6 +1964,7 @@ body.elle-powered .footer{
 }
 
 .ask-mini-icon{
+
   width:34px;
   height:34px;
 
@@ -1819,6 +1972,7 @@ body.elle-powered .footer{
     0 0 34px;
 
   display:grid;
+
   place-items:center;
 
   border-radius:50%;
@@ -1829,6 +1983,7 @@ body.elle-powered .footer{
 }
 
 .ask-mini strong{
+
   display:block;
 
   color:var(--plum);
@@ -1837,6 +1992,7 @@ body.elle-powered .footer{
 }
 
 .ask-mini span{
+
   display:block;
 
   margin-top:2px;
@@ -1844,13 +2000,16 @@ body.elle-powered .footer{
   color:#71665f;
 
   font-size:12px;
+
   line-height:1.45;
 }
 
 .chat-card{
+
   min-width:0;
 
   display:flex;
+
   flex-direction:column;
 
   border:
@@ -1867,7 +2026,9 @@ body.elle-powered .footer{
 }
 
 .chat-head{
+
   display:flex;
+
   align-items:center;
   justify-content:space-between;
 
@@ -1889,7 +2050,9 @@ body.elle-powered .footer{
 }
 
 .chat-head-left{
+
   display:flex;
+
   align-items:center;
 
   gap:11px;
@@ -1898,6 +2061,7 @@ body.elle-powered .footer{
 }
 
 .chat-avatar{
+
   width:42px;
   height:42px;
 
@@ -1905,6 +2069,7 @@ body.elle-powered .footer{
     0 0 42px;
 
   display:grid;
+
   place-items:center;
 
   border-radius:50%;
@@ -1919,6 +2084,7 @@ body.elle-powered .footer{
 }
 
 .chat-avatar img{
+
   width:100%;
   height:100%;
 
@@ -1926,10 +2092,12 @@ body.elle-powered .footer{
 }
 
 .chat-head-copy{
+
   min-width:0;
 }
 
 .chat-head-copy strong{
+
   display:block;
 
   color:var(--plum);
@@ -1938,6 +2106,7 @@ body.elle-powered .footer{
 }
 
 .chat-head-copy span{
+
   display:block;
 
   margin-top:2px;
@@ -1947,12 +2116,16 @@ body.elle-powered .footer{
   font-size:11px;
 
   white-space:nowrap;
+
   overflow:hidden;
+
   text-overflow:ellipsis;
 }
 
 .chat-status{
+
   display:flex;
+
   align-items:center;
 
   gap:6px;
@@ -1966,6 +2139,7 @@ body.elle-powered .footer{
 }
 
 .status-dot{
+
   width:8px;
   height:8px;
 
@@ -1979,12 +2153,12 @@ body.elle-powered .footer{
 }
 
 .chat-feed{
+
   height:520px;
 
   overflow-y:auto;
 
-  padding:
-    20px;
+  padding:20px;
 
   background:
     linear-gradient(
@@ -1997,6 +2171,7 @@ body.elle-powered .footer{
 }
 
 .message-row{
+
   display:flex;
 
   margin-bottom:14px;
@@ -2007,6 +2182,7 @@ body.elle-powered .footer{
 }
 
 .bubble{
+
   max-width:
     min(
       78%,
@@ -2023,10 +2199,12 @@ body.elle-powered .footer{
   font-size:14px;
 
   white-space:pre-wrap;
+
   overflow-wrap:anywhere;
 }
 
 .bubble-elle{
+
   border:
     1px solid
     #eadfd8;
@@ -2041,6 +2219,7 @@ body.elle-powered .footer{
 }
 
 .bubble-user{
+
   border-bottom-right-radius:6px;
 
   background:var(--plum);
@@ -2049,6 +2228,7 @@ body.elle-powered .footer{
 }
 
 .bubble-label{
+
   display:block;
 
   margin-bottom:5px;
@@ -2057,6 +2237,7 @@ body.elle-powered .footer{
   font-weight:900;
 
   letter-spacing:.12em;
+
   text-transform:uppercase;
 
   color:var(--rose);
@@ -2067,6 +2248,7 @@ body.elle-powered .footer{
 }
 
 .generated-image-wrap{
+
   margin-top:10px;
 
   overflow:hidden;
@@ -2077,9 +2259,11 @@ body.elle-powered .footer{
 }
 
 .generated-image{
+
   display:block;
 
   width:100%;
+
   height:auto;
 
   max-height:620px;
@@ -2092,7 +2276,9 @@ body.elle-powered .footer{
 }
 
 .generated-image-actions{
+
   display:flex;
+
   flex-wrap:wrap;
 
   gap:8px;
@@ -2101,9 +2287,11 @@ body.elle-powered .footer{
 }
 
 .image-action{
+
   min-height:38px;
 
   display:inline-flex;
+
   align-items:center;
   justify-content:center;
 
@@ -2129,6 +2317,7 @@ body.elle-powered .footer{
 }
 
 .typing{
+
   display:none;
 
   align-items:center;
@@ -2158,6 +2347,7 @@ body.elle-powered .footer{
 }
 
 .typing span{
+
   width:6px;
   height:6px;
 
@@ -2184,19 +2374,26 @@ body.elle-powered .footer{
   0%,
   60%,
   100%{
+
     opacity:.3;
-    transform:translateY(0);
+
+    transform:
+      translateY(0);
   }
 
   30%{
-    opacity:1;
-    transform:translateY(-3px);
-  }
 
+    opacity:1;
+
+    transform:
+      translateY(-3px);
+  }
 }
 
 .chip-row{
+
   display:flex;
+
   flex-wrap:wrap;
 
   gap:7px;
@@ -2208,6 +2405,7 @@ body.elle-powered .footer{
 }
 
 .chat-chip{
+
   min-height:34px;
 
   padding:
@@ -2230,6 +2428,7 @@ body.elle-powered .footer{
 }
 
 .chat-input-wrap{
+
   display:grid;
 
   grid-template-columns:
@@ -2237,8 +2436,7 @@ body.elle-powered .footer{
 
   gap:9px;
 
-  padding:
-    14px;
+  padding:14px;
 
   border-top:
     1px solid
@@ -2248,8 +2446,11 @@ body.elle-powered .footer{
 }
 
 .chat-input{
+
   width:100%;
+
   min-width:0;
+
   height:48px;
 
   padding:
@@ -2271,7 +2472,9 @@ body.elle-powered .footer{
 }
 
 .chat-send{
+
   min-width:48px;
+
   height:48px;
 
   padding:
@@ -2291,6 +2494,7 @@ body.elle-powered .footer{
 }
 
 .chat-send:disabled{
+
   opacity:.5;
 
   cursor:wait;
@@ -2301,8 +2505,11 @@ body.elle-powered .footer{
    ========================================================= */
 
 .explore-head{
+
   display:flex;
+
   align-items:end;
+
   justify-content:space-between;
 
   gap:20px;
@@ -2311,6 +2518,7 @@ body.elle-powered .footer{
 }
 
 .explore-grid{
+
   display:grid;
 
   grid-template-columns:
@@ -2323,11 +2531,13 @@ body.elle-powered .footer{
 }
 
 .explore-card{
+
   position:relative;
 
   min-height:510px;
 
   display:flex;
+
   align-items:flex-end;
 
   overflow:hidden;
@@ -2344,7 +2554,9 @@ body.elle-powered .footer{
 }
 
 .explore-art{
+
   position:absolute;
+
   inset:0;
 
   width:100%;
@@ -2354,7 +2566,9 @@ body.elle-powered .footer{
 }
 
 .explore-shade{
+
   position:absolute;
+
   inset:0;
 
   background:
@@ -2367,14 +2581,14 @@ body.elle-powered .footer{
 }
 
 .explore-content{
+
   position:relative;
 
   z-index:2;
 
   width:100%;
 
-  padding:
-    27px;
+  padding:27px;
 }
 
 .explore-content .eyebrow{
@@ -2382,6 +2596,7 @@ body.elle-powered .footer{
 }
 
 .explore-content h3{
+
   margin-top:7px;
 
   font-family:
@@ -2401,6 +2616,7 @@ body.elle-powered .footer{
 }
 
 .explore-content p{
+
   max-width:470px;
 
   margin-top:10px;
@@ -2414,7 +2630,9 @@ body.elle-powered .footer{
 }
 
 .explore-actions{
+
   display:flex;
+
   flex-wrap:wrap;
 
   gap:8px;
@@ -2423,9 +2641,11 @@ body.elle-powered .footer{
 }
 
 .explore-button{
+
   min-height:42px;
 
   display:inline-flex;
+
   align-items:center;
   justify-content:center;
 
@@ -2459,6 +2679,7 @@ body.elle-powered .footer{
    ========================================================= */
 
 .radio-inline{
+
   display:none;
 
   margin-top:16px;
@@ -2483,7 +2704,9 @@ body.elle-powered .footer{
 }
 
 .radio-now{
+
   display:flex;
+
   align-items:center;
 
   gap:10px;
@@ -2494,6 +2717,7 @@ body.elle-powered .footer{
 }
 
 .radio-song-copy strong{
+
   display:block;
 
   color:#fff;
@@ -2501,11 +2725,14 @@ body.elle-powered .footer{
   font-size:13px;
 
   white-space:nowrap;
+
   overflow:hidden;
+
   text-overflow:ellipsis;
 }
 
 .radio-song-copy span{
+
   display:block;
 
   margin-top:2px;
@@ -2517,6 +2744,7 @@ body.elle-powered .footer{
 }
 
 .radio-controls{
+
   margin-left:auto;
 
   display:flex;
@@ -2525,10 +2753,12 @@ body.elle-powered .footer{
 }
 
 .radio-control{
+
   width:36px;
   height:36px;
 
   display:grid;
+
   place-items:center;
 
   border:
@@ -2546,6 +2776,7 @@ body.elle-powered .footer{
 }
 
 .track-list{
+
   max-height:190px;
 
   margin-top:12px;
@@ -2558,6 +2789,7 @@ body.elle-powered .footer{
 }
 
 .track{
+
   width:100%;
 
   display:grid;
@@ -2594,6 +2826,7 @@ body.elle-powered .footer{
 }
 
 .track.active{
+
   border-color:
     rgba(239,214,168,.5);
 
@@ -2604,6 +2837,7 @@ body.elle-powered .footer{
 }
 
 .track-number{
+
   color:
     rgba(255,255,255,.48);
 
@@ -2615,7 +2849,9 @@ body.elle-powered .footer{
    ========================================================= */
 
 .world-live{
+
   display:flex;
+
   flex-wrap:wrap;
 
   gap:8px;
@@ -2624,6 +2860,7 @@ body.elle-powered .footer{
 }
 
 .world-stat{
+
   min-width:120px;
 
   padding:
@@ -2643,6 +2880,7 @@ body.elle-powered .footer{
 }
 
 .world-stat strong{
+
   display:block;
 
   color:white;
@@ -2655,6 +2893,7 @@ body.elle-powered .footer{
 }
 
 .world-stat span{
+
   display:block;
 
   margin-top:2px;
@@ -2666,10 +2905,12 @@ body.elle-powered .footer{
   font-weight:800;
 
   letter-spacing:.08em;
+
   text-transform:uppercase;
 }
 
 .world-live-text{
+
   margin-top:11px;
 
   color:
@@ -2680,7 +2921,9 @@ body.elle-powered .footer{
 }
 
 .world-countries{
+
   display:flex;
+
   flex-wrap:wrap;
 
   gap:6px;
@@ -2689,9 +2932,11 @@ body.elle-powered .footer{
 }
 
 .world-country{
+
   min-height:28px;
 
   display:inline-flex;
+
   align-items:center;
 
   padding:
@@ -2713,6 +2958,7 @@ body.elle-powered .footer{
 }
 
 .world-error{
+
   margin-top:8px;
 
   color:#f5d7cc;
@@ -2721,10 +2967,11 @@ body.elle-powered .footer{
 }
 
 /* =========================================================
-   PENPAL
+   NEW PENPAL
    ========================================================= */
 
 .penpal-shell{
+
   position:relative;
 
   overflow:hidden;
@@ -2732,41 +2979,90 @@ body.elle-powered .footer{
   display:grid;
 
   grid-template-columns:
-    minmax(0,.9fr)
-    minmax(360px,1.1fr);
+    minmax(0,.88fr)
+    minmax(390px,1.12fr);
 
   gap:32px;
 
-  align-items:center;
+  align-items:stretch;
 
-  padding:
-    42px;
+  padding:42px;
 
-  border-radius:32px;
+  border-radius:34px;
 
   border:
     1px solid
-    #ddd1c5;
+    #ead4d8;
 
   background:
+
+    radial-gradient(
+      circle at 3% 0%,
+      rgba(255,230,234,.94),
+      transparent 33%
+    ),
+
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(239,216,169,.34),
+      transparent 34%
+    ),
+
     linear-gradient(
       135deg,
-      #2f2521,
-      #4b3730
+      #fff7f8,
+      #f9e5e8 48%,
+      #f4dce3
     );
 
   box-shadow:var(--shadow);
 }
 
+.penpal-shell::before{
+
+  content:"";
+
+  position:absolute;
+
+  width:420px;
+  height:420px;
+
+  left:-180px;
+  bottom:-230px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(177,101,126,.17),
+      transparent 67%
+    );
+
+  pointer-events:none;
+}
+
 .penpal-copy-wrap{
+
   position:relative;
+
   z-index:2;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
 }
 
 .penpal-badge{
+
   display:inline-flex;
+
   align-items:center;
   justify-content:center;
+
+  width:max-content;
 
   min-height:33px;
 
@@ -2775,26 +3071,48 @@ body.elle-powered .footer{
 
   border:
     1px solid
-    rgba(231,207,170,.34);
+    rgba(132,74,96,.18);
 
   border-radius:999px;
 
   background:
-    rgba(255,255,255,.06);
+    rgba(255,255,255,.72);
 
-  color:#e8c995;
+  color:var(--plum);
 
   font-size:9px;
   font-weight:900;
 
   letter-spacing:.13em;
+
   text-transform:uppercase;
 }
 
-.penpal-shell h2{
-  margin-top:15px;
+.penpal-welcome{
 
-  color:#fff;
+  margin-top:12px;
+
+  font-family:
+    "Caveat",
+    cursive;
+
+  color:var(--rose);
+
+  font-size:
+    clamp(
+      28px,
+      4vw,
+      40px
+    );
+
+  font-weight:700;
+}
+
+.penpal-shell h2{
+
+  margin-top:2px;
+
+  color:var(--plum);
 
   font-family:
     "Playfair Display",
@@ -2802,80 +3120,111 @@ body.elle-powered .footer{
 
   font-size:
     clamp(
-      42px,
+      44px,
       5vw,
-      62px
+      66px
     );
 
-  line-height:1;
+  line-height:.98;
 }
 
 .penpal-shell p{
+
   max-width:550px;
 
   margin-top:15px;
 
-  color:
-    rgba(255,255,255,.78);
+  color:#66565d;
 
   font-size:14px;
+
   line-height:1.65;
 }
 
-.penpal-points{
+.penpal-features{
+
   display:grid;
 
-  gap:8px;
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0,1fr)
+    );
 
-  margin-top:19px;
+  gap:9px;
+
+  margin-top:21px;
 }
 
-.penpal-point{
-  display:flex;
-  align-items:flex-start;
+.penpal-feature{
 
-  gap:8px;
+  padding:
+    12px 13px;
 
-  color:
-    rgba(255,255,255,.78);
+  border:
+    1px solid
+    rgba(138,76,100,.12);
 
-  font-size:12px;
-  line-height:1.5;
+  border-radius:16px;
+
+  background:
+    rgba(255,255,255,.68);
+
+  color:#685660;
+
+  font-size:11px;
+
+  line-height:1.45;
+
+  box-shadow:
+    0 12px 30px -26px
+    rgba(74,44,54,.5);
 }
 
-.penpal-point span:first-child{
-  color:#e0b978;
+.penpal-feature strong{
+
+  display:block;
+
+  margin-bottom:3px;
+
+  color:var(--plum);
+
+  font-size:11px;
 }
 
 .penpal-actions{
+
   display:flex;
+
   flex-wrap:wrap;
 
   gap:8px;
 
-  margin-top:20px;
+  margin-top:21px;
 }
 
 .penpal-button{
-  min-height:43px;
+
+  min-height:44px;
 
   display:inline-flex;
+
   align-items:center;
   justify-content:center;
 
   padding:
-    0 15px;
+    0 16px;
 
   border:
     1px solid
-    rgba(255,255,255,.20);
+    rgba(96,50,71,.2);
 
   border-radius:999px;
 
-  color:white;
+  color:var(--plum);
 
   background:
-    rgba(255,255,255,.09);
+    rgba(255,255,255,.82);
 
   font-size:11px;
   font-weight:900;
@@ -2883,52 +3232,85 @@ body.elle-powered .footer{
   cursor:pointer;
 }
 
+.penpal-button.primary-penpal{
+
+  border-color:var(--plum);
+
+  background:var(--plum);
+
+  color:#fff;
+
+  box-shadow:
+    0 16px 35px -25px
+    rgba(96,50,71,.75);
+}
+
 .penpal-board{
+
   position:relative;
+
   z-index:2;
 
-  min-height:390px;
+  min-height:430px;
 
-  padding:
-    22px;
+  padding:22px;
 
   border:
     1px solid
-    rgba(255,255,255,.16);
+    rgba(133,75,97,.14);
 
-  border-radius:26px;
+  border-radius:28px;
 
   background:
     linear-gradient(
-      155deg,
-      rgba(255,255,255,.12),
-      rgba(255,255,255,.05)
+      160deg,
+      rgba(255,255,255,.95),
+      rgba(255,248,246,.9)
     );
 
-  backdrop-filter:
-    blur(16px);
+  box-shadow:
+    0 28px 60px -40px
+    rgba(79,44,55,.45);
 }
 
 .penpal-board-head{
+
   display:flex;
-  align-items:center;
+
+  align-items:flex-start;
   justify-content:space-between;
 
   gap:10px;
 }
 
-.penpal-board-head strong{
-  color:#fff;
+.penpal-board-title strong{
+
+  display:block;
+
+  color:var(--plum);
 
   font-family:
     "Playfair Display",
     serif;
 
-  font-size:22px;
+  font-size:25px;
+}
+
+.penpal-board-title span{
+
+  display:block;
+
+  margin-top:3px;
+
+  color:#8a747c;
+
+  font-size:10px;
 }
 
 .penpal-lock{
+
   display:inline-flex;
+
   align-items:center;
 
   min-height:29px;
@@ -2938,90 +3320,490 @@ body.elle-powered .footer{
 
   border:
     1px solid
-    rgba(230,199,145,.28);
+    rgba(184,137,77,.24);
 
   border-radius:999px;
 
-  background:
-    rgba(230,199,145,.09);
+  background:#fff8e9;
 
-  color:#e5c590;
+  color:#9b743e;
 
   font-size:8px;
   font-weight:900;
 
-  letter-spacing:.10em;
+  letter-spacing:.08em;
+
   text-transform:uppercase;
+
+  white-space:nowrap;
 }
 
 .penpal-samples{
+
   display:grid;
 
-  gap:10px;
+  gap:11px;
 
-  margin-top:16px;
+  margin-top:17px;
 }
 
-.penpal-note-card{
-  padding:
-    14px;
+.penpal-profile{
+
+  position:relative;
+
+  display:grid;
+
+  grid-template-columns:
+    46px 1fr;
+
+  gap:12px;
+
+  padding:15px;
 
   border:
     1px solid
-    rgba(255,255,255,.12);
+    #eedee1;
 
-  border-radius:16px;
+  border-radius:19px;
 
   background:
-    rgba(255,255,255,.07);
+    linear-gradient(
+      145deg,
+      #fff,
+      #fff8f9
+    );
+
+  box-shadow:
+    0 14px 32px -28px
+    rgba(72,42,52,.5);
 }
 
-.penpal-note-top{
+.penpal-avatar{
+
+  width:46px;
+  height:46px;
+
+  display:grid;
+
+  place-items:center;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f3cfd8,
+      #e7adbd
+    );
+
+  color:#fff;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:19px;
+  font-weight:700;
+
+  box-shadow:
+    0 10px 20px -14px
+    rgba(96,50,71,.55);
+}
+
+.penpal-profile-top{
+
   display:flex;
-  align-items:center;
+
+  align-items:flex-start;
   justify-content:space-between;
 
   gap:8px;
 }
 
-.penpal-note-top strong{
-  color:#fff;
+.penpal-profile-top strong{
 
-  font-size:12px;
+  display:block;
+
+  color:var(--plum);
+
+  font-size:13px;
 }
 
-.penpal-note-top span{
-  color:
-    rgba(255,255,255,.48);
+.penpal-profile-top span{
+
+  color:#927c84;
 
   font-size:9px;
 }
 
-.penpal-note-card p{
-  margin-top:6px;
+.penpal-profile p{
 
-  color:
-    rgba(255,255,255,.69);
+  margin-top:5px;
+
+  color:#6f6066;
 
   font-size:11px;
+
   line-height:1.45;
 }
 
-.penpal-waitlist{
-  margin-top:13px;
+.penpal-tags{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:5px;
+
+  margin-top:8px;
+}
+
+.penpal-tag{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  min-height:24px;
 
   padding:
-    12px;
+    0 8px;
+
+  border:
+    1px solid
+    #efdfe3;
+
+  border-radius:999px;
+
+  background:#fff;
+
+  color:#7d5d6a;
+
+  font-size:8px;
+  font-weight:800;
+}
+
+.penpal-waitlist{
+
+  margin-top:14px;
+
+  padding:
+    12px 13px;
+
+  border:
+    1px solid
+    #ead8db;
 
   border-radius:15px;
 
   background:
-    rgba(225,185,119,.09);
+    linear-gradient(
+      135deg,
+      #fff7f7,
+      #fffaf2
+    );
 
-  color:#e5c99f;
+  color:#775d67;
 
   font-size:10px;
+
   line-height:1.5;
+}
+
+/* =========================================================
+   PENPAL RULES
+   ========================================================= */
+
+.penpal-rules-modal{
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:32000;
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:18px;
+
+  background:
+    rgba(68,42,51,.73);
+
+  backdrop-filter:
+    blur(18px);
+}
+
+.penpal-rules-modal.show{
+  display:flex;
+}
+
+.penpal-rules-card{
+
+  width:
+    min(
+      680px,
+      100%
+    );
+
+  max-height:
+    calc(100dvh - 36px);
+
+  overflow:auto;
+
+  padding:28px;
+
+  border:
+    1px solid
+    rgba(255,255,255,.75);
+
+  border-radius:29px;
+
+  background:
+
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(249,219,224,.8),
+      transparent 34%
+    ),
+
+    linear-gradient(
+      145deg,
+      #fffdfb,
+      #fff5f6
+    );
+
+  box-shadow:
+    0 45px 110px -48px
+    rgba(25,13,17,.65);
+}
+
+.penpal-rules-mark{
+
+  width:52px;
+  height:52px;
+
+  display:grid;
+
+  place-items:center;
+
+  margin:
+    0 auto;
+
+  border-radius:50%;
+
+  background:var(--plum);
+
+  color:#f1d59e;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:22px;
+}
+
+.penpal-rules-script{
+
+  margin-top:12px;
+
+  text-align:center;
+
+  font-family:
+    "Caveat",
+    cursive;
+
+  font-size:36px;
+  font-weight:700;
+
+  color:var(--rose);
+}
+
+.penpal-rules-card h2{
+
+  margin-top:2px;
+
+  text-align:center;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  color:var(--plum);
+
+  font-size:
+    clamp(
+      34px,
+      7vw,
+      48px
+    );
+}
+
+.penpal-rules-intro{
+
+  max-width:520px;
+
+  margin:
+    10px auto 0;
+
+  text-align:center;
+
+  color:#736269;
+
+  font-size:12px;
+
+  line-height:1.55;
+}
+
+.penpal-rule-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0,1fr)
+    );
+
+  gap:9px;
+
+  margin-top:20px;
+}
+
+.penpal-rule{
+
+  padding:13px;
+
+  border:
+    1px solid
+    #eddde1;
+
+  border-radius:15px;
+
+  background:
+    rgba(255,255,255,.8);
+}
+
+.penpal-rule strong{
+
+  display:block;
+
+  color:var(--plum);
+
+  font-size:11px;
+}
+
+.penpal-rule span{
+
+  display:block;
+
+  margin-top:4px;
+
+  color:#75656b;
+
+  font-size:10px;
+
+  line-height:1.45;
+}
+
+.rules-countdown-box{
+
+  margin-top:18px;
+
+  padding:15px;
+
+  border-radius:18px;
+
+  text-align:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #6d3b51,
+      #8b5068
+    );
+
+  color:#fff;
+}
+
+.rules-countdown-box span{
+
+  display:block;
+
+  font-size:9px;
+  font-weight:900;
+
+  letter-spacing:.14em;
+
+  text-transform:uppercase;
+
+  color:#f2d9df;
+}
+
+.rules-countdown-box strong{
+
+  display:block;
+
+  margin-top:4px;
+
+  font-family:
+    "Playfair Display",
+    serif;
+
+  font-size:28px;
+}
+
+.rules-progress{
+
+  height:5px;
+
+  margin-top:10px;
+
+  overflow:hidden;
+
+  border-radius:999px;
+
+  background:
+    rgba(255,255,255,.18);
+}
+
+.rules-progress-bar{
+
+  width:100%;
+  height:100%;
+
+  background:#f0d29e;
+
+  transform-origin:left;
+
+  transition:
+    transform 1s linear;
+}
+
+.rules-leave{
+
+  width:100%;
+
+  min-height:42px;
+
+  margin-top:11px;
+
+  border:
+    1px solid
+    #e4d1d5;
+
+  border-radius:999px;
+
+  background:#fff;
+
+  color:var(--plum);
+
+  font-size:11px;
+  font-weight:900;
+
+  cursor:pointer;
 }
 
 /* =========================================================
@@ -3029,6 +3811,7 @@ body.elle-powered .footer{
    ========================================================= */
 
 .live-shell{
+
   display:grid;
 
   grid-template-columns:
@@ -3041,6 +3824,7 @@ body.elle-powered .footer{
 }
 
 .live-portrait{
+
   position:relative;
 
   min-height:500px;
@@ -3055,18 +3839,23 @@ body.elle-powered .footer{
 }
 
 .live-portrait img{
+
   position:absolute;
+
   inset:0;
 
   width:100%;
   height:100%;
 
   object-fit:cover;
+
   object-position:center;
 }
 
 .live-portrait-shade{
+
   position:absolute;
+
   inset:0;
 
   background:
@@ -3078,6 +3867,7 @@ body.elle-powered .footer{
 }
 
 .live-portrait-label{
+
   position:absolute;
 
   left:22px;
@@ -3105,6 +3895,7 @@ body.elle-powered .footer{
 }
 
 .live-portrait-label strong{
+
   display:block;
 
   font-family:
@@ -3115,6 +3906,7 @@ body.elle-powered .footer{
 }
 
 .live-portrait-label span{
+
   display:block;
 
   margin-top:3px;
@@ -3126,6 +3918,7 @@ body.elle-powered .footer{
 }
 
 .live-copy{
+
   padding:
     20px 6px;
 }
@@ -3135,12 +3928,14 @@ body.elle-powered .footer{
 }
 
 .live-copy .copy{
+
   max-width:570px;
 
   margin-top:14px;
 }
 
 .live-services{
+
   display:grid;
 
   grid-template-columns:
@@ -3155,8 +3950,8 @@ body.elle-powered .footer{
 }
 
 .live-service{
-  padding:
-    13px;
+
+  padding:13px;
 
   border:
     1px solid
@@ -3170,6 +3965,7 @@ body.elle-powered .footer{
 }
 
 .live-service strong{
+
   display:block;
 
   color:var(--plum);
@@ -3178,6 +3974,7 @@ body.elle-powered .footer{
 }
 
 .live-service span{
+
   display:block;
 
   margin-top:4px;
@@ -3185,11 +3982,14 @@ body.elle-powered .footer{
   color:#736861;
 
   font-size:10px;
+
   line-height:1.4;
 }
 
 .live-actions{
+
   display:flex;
+
   flex-wrap:wrap;
 
   gap:9px;
@@ -3198,11 +3998,13 @@ body.elle-powered .footer{
 }
 
 .live-note{
+
   margin-top:12px;
 
   color:#847870;
 
   font-size:10px;
+
   line-height:1.5;
 }
 
@@ -3211,12 +4013,12 @@ body.elle-powered .footer{
    ========================================================= */
 
 .membership-shell{
+
   max-width:760px;
 
   margin:auto;
 
-  padding:
-    35px;
+  padding:35px;
 
   border:
     1px solid
@@ -3237,6 +4039,7 @@ body.elle-powered .footer{
 }
 
 .membership-shell .copy{
+
   max-width:550px;
 
   margin:
@@ -3244,6 +4047,7 @@ body.elle-powered .footer{
 }
 
 .plan-picker{
+
   max-width:520px;
 
   margin:
@@ -3253,6 +4057,7 @@ body.elle-powered .footer{
 }
 
 .plan-select{
+
   width:100%;
   height:54px;
 
@@ -3275,12 +4080,12 @@ body.elle-powered .footer{
 }
 
 .plan-detail{
+
   display:none;
 
   margin-top:12px;
 
-  padding:
-    16px;
+  padding:16px;
 
   border:
     1px solid
@@ -3297,6 +4102,7 @@ body.elle-powered .footer{
 }
 
 .plan-detail strong{
+
   display:block;
 
   color:var(--plum);
@@ -3309,15 +4115,18 @@ body.elle-powered .footer{
 }
 
 .plan-detail p{
+
   margin-top:6px;
 
   color:#70645e;
 
   font-size:12px;
+
   line-height:1.5;
 }
 
 .plan-detail .primary{
+
   width:100%;
 
   margin-top:13px;
@@ -3328,6 +4137,7 @@ body.elle-powered .footer{
    ========================================================= */
 
 .trust-strip{
+
   display:grid;
 
   grid-template-columns:
@@ -3340,8 +4150,8 @@ body.elle-powered .footer{
 }
 
 .trust-item{
-  padding:
-    18px;
+
+  padding:18px;
 
   border:
     1px solid
@@ -3355,6 +4165,7 @@ body.elle-powered .footer{
 }
 
 .trust-item strong{
+
   display:block;
 
   color:var(--plum);
@@ -3363,6 +4174,7 @@ body.elle-powered .footer{
 }
 
 .trust-item span{
+
   display:block;
 
   margin-top:4px;
@@ -3370,10 +4182,12 @@ body.elle-powered .footer{
   color:#746962;
 
   font-size:10px;
+
   line-height:1.45;
 }
 
 .footer{
+
   padding:
     34px 0 42px;
 
@@ -3383,7 +4197,9 @@ body.elle-powered .footer{
 }
 
 .footer-inner{
+
   display:flex;
+
   align-items:center;
   justify-content:space-between;
 
@@ -3391,6 +4207,7 @@ body.elle-powered .footer{
 }
 
 .footer-brand strong{
+
   display:block;
 
   color:var(--plum);
@@ -3403,6 +4220,7 @@ body.elle-powered .footer{
 }
 
 .footer-brand span{
+
   display:block;
 
   margin-top:3px;
@@ -3413,7 +4231,9 @@ body.elle-powered .footer{
 }
 
 .footer-links{
+
   display:flex;
+
   flex-wrap:wrap;
 
   gap:7px;
@@ -3423,9 +4243,11 @@ body.elle-powered .footer{
 
 .footer-links button,
 .footer-links a{
+
   min-height:34px;
 
   display:inline-flex;
+
   align-items:center;
   justify-content:center;
 
@@ -3451,17 +4273,21 @@ body.elle-powered .footer{
 }
 
 /* =========================================================
-   MODALS
+   GENERAL MODALS
    ========================================================= */
 
 .trust-modal,
-.image-modal{
+.image-modal,
+.support-modal{
+
   position:fixed;
+
   inset:0;
 
   z-index:30000;
 
   display:none;
+
   align-items:center;
   justify-content:center;
 
@@ -3475,11 +4301,14 @@ body.elle-powered .footer{
 }
 
 .trust-modal.show,
-.image-modal.show{
+.image-modal.show,
+.support-modal.show{
   display:flex;
 }
 
-.trust-card{
+.trust-card,
+.support-card{
+
   width:
     min(
       620px,
@@ -3491,15 +4320,16 @@ body.elle-powered .footer{
 
   overflow:auto;
 
-  padding:
-    28px;
+  padding:28px;
 
   border-radius:26px;
 
   background:#fff;
 }
 
-.trust-card h2{
+.trust-card h2,
+.support-card h2{
+
   color:var(--plum);
 
   font-family:
@@ -3509,16 +4339,20 @@ body.elle-powered .footer{
   font-size:34px;
 }
 
-.trust-card p{
+.trust-card p,
+.support-card > p{
+
   margin-top:12px;
 
   color:#655a55;
 
   font-size:13px;
+
   line-height:1.65;
 }
 
 .trust-list{
+
   display:grid;
 
   gap:9px;
@@ -3527,8 +4361,8 @@ body.elle-powered .footer{
 }
 
 .trust-list div{
-  padding:
-    12px;
+
+  padding:12px;
 
   border:
     1px solid
@@ -3541,29 +4375,162 @@ body.elle-powered .footer{
   color:#625752;
 
   font-size:11px;
+
   line-height:1.5;
 }
 
-.trust-close{
+.trust-close,
+.support-close,
+.support-save{
+
   width:100%;
+
   min-height:45px;
 
-  margin-top:18px;
-
-  border:0;
+  margin-top:12px;
 
   border-radius:999px;
-
-  background:var(--plum);
-
-  color:white;
 
   font-weight:900;
 
   cursor:pointer;
 }
 
+.trust-close,
+.support-save{
+
+  border:0;
+
+  background:var(--plum);
+
+  color:white;
+}
+
+.support-close{
+
+  border:
+    1px solid
+    var(--line);
+
+  background:#fff;
+
+  color:var(--plum);
+}
+
+/* =========================================================
+   SUPPORT FORM
+   ========================================================= */
+
+.support-form{
+
+  display:grid;
+
+  gap:13px;
+
+  margin-top:20px;
+}
+
+.support-field label{
+
+  display:block;
+
+  margin-bottom:6px;
+
+  color:var(--plum);
+
+  font-size:10px;
+  font-weight:900;
+
+  letter-spacing:.08em;
+
+  text-transform:uppercase;
+}
+
+.support-field select,
+.support-field input,
+.support-field textarea{
+
+  width:100%;
+
+  border:
+    1px solid
+    #ddd0c9;
+
+  border-radius:14px;
+
+  background:#fffdfa;
+
+  color:var(--ink);
+
+  outline:0;
+}
+
+.support-field select,
+.support-field input{
+
+  min-height:48px;
+
+  padding:
+    0 13px;
+}
+
+.support-field textarea{
+
+  min-height:135px;
+
+  resize:vertical;
+
+  padding:13px;
+
+  line-height:1.5;
+}
+
+.support-note{
+
+  padding:11px 12px;
+
+  border:
+    1px solid
+    #ead9dd;
+
+  border-radius:13px;
+
+  background:#fff8fa;
+
+  color:#785e68;
+
+  font-size:10px;
+
+  line-height:1.5;
+}
+
+.support-message{
+
+  display:none;
+
+  padding:11px 12px;
+
+  border-radius:13px;
+
+  background:#eef8f2;
+
+  color:#3d6951;
+
+  font-size:11px;
+
+  line-height:1.5;
+}
+
+.support-message.show{
+  display:block;
+}
+
+/* =========================================================
+   IMAGE MODAL
+   ========================================================= */
+
 .image-modal-card{
+
   width:
     min(
       1000px,
@@ -3574,6 +4541,7 @@ body.elle-powered .footer{
     calc(100dvh - 36px);
 
   display:flex;
+
   flex-direction:column;
 
   overflow:hidden;
@@ -3584,6 +4552,7 @@ body.elle-powered .footer{
 }
 
 .image-modal-image{
+
   display:block;
 
   width:100%;
@@ -3595,7 +4564,9 @@ body.elle-powered .footer{
 }
 
 .image-modal-bar{
+
   display:flex;
+
   justify-content:space-between;
 
   gap:10px;
@@ -3607,9 +4578,11 @@ body.elle-powered .footer{
 
 .image-modal-close,
 .image-modal-download{
+
   min-height:40px;
 
   display:inline-flex;
+
   align-items:center;
   justify-content:center;
 
@@ -3640,12 +4613,15 @@ body.elle-powered .footer{
    ========================================================= */
 
 .turntable-takeover{
+
   position:fixed;
+
   inset:0;
 
   z-index:15000;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
@@ -3670,6 +4646,7 @@ body.elle-powered .footer{
 }
 
 .takeover-card{
+
   width:
     min(
       560px,
@@ -3684,12 +4661,14 @@ body.elle-powered .footer{
 }
 
 .takeover-card img{
+
   display:block;
 
   width:100%;
 }
 
 .takeover-copy{
+
   padding:
     18px 20px 21px;
 
@@ -3697,6 +4676,7 @@ body.elle-powered .footer{
 }
 
 .takeover-copy span{
+
   display:block;
 
   color:#d6bd97;
@@ -3708,6 +4688,7 @@ body.elle-powered .footer{
 }
 
 .takeover-copy strong{
+
   display:block;
 
   margin-top:4px;
@@ -3728,6 +4709,7 @@ body.elle-powered .footer{
 @media (max-width:1050px){
 
   .nav{
+
     display:none;
 
     position:absolute;
@@ -3741,6 +4723,7 @@ body.elle-powered .footer{
     padding:10px;
 
     flex-direction:column;
+
     align-items:stretch;
 
     border:
@@ -3760,6 +4743,7 @@ body.elle-powered .footer{
   }
 
   .nav a{
+
     width:100%;
 
     padding:
@@ -3767,7 +4751,9 @@ body.elle-powered .footer{
   }
 
   .menu-toggle{
+
     display:grid;
+
     place-items:center;
   }
 
@@ -3775,6 +4761,7 @@ body.elle-powered .footer{
   .ask-shell,
   .penpal-shell,
   .live-shell{
+
     grid-template-columns:1fr;
   }
 
@@ -3785,22 +4772,24 @@ body.elle-powered .footer{
   .hero-visual{
     min-height:440px;
   }
-
 }
 
 @media (max-width:800px){
 
   .section{
+
     padding:
       58px 0;
   }
 
   .explore-grid,
   .trust-strip{
+
     grid-template-columns:1fr;
   }
 
   .footer-inner{
+
     align-items:flex-start;
 
     flex-direction:column;
@@ -3810,11 +4799,15 @@ body.elle-powered .footer{
     display:none;
   }
 
+  .owner-status{
+    display:none;
+  }
 }
 
 @media (max-width:640px){
 
   .page{
+
     width:
       min(
         100% - 20px,
@@ -3823,6 +4816,7 @@ body.elle-powered .footer{
   }
 
   .topbar-inner{
+
     width:
       calc(100% - 18px);
 
@@ -3830,6 +4824,7 @@ body.elle-powered .footer{
   }
 
   .brand-mark{
+
     width:38px;
     height:38px;
 
@@ -3845,16 +4840,19 @@ body.elle-powered .footer{
   }
 
   .power-stage{
+
     padding:
       28px 17px 25px;
   }
 
   .member-login{
+
     padding:
       21px 18px 25px;
   }
 
   .power-title{
+
     font-size:
       clamp(
         48px,
@@ -3868,11 +4866,13 @@ body.elle-powered .footer{
   }
 
   .hero{
+
     padding:
       18px 0 48px;
   }
 
   .hero-shell{
+
     min-height:auto;
 
     padding:
@@ -3884,6 +4884,7 @@ body.elle-powered .footer{
   }
 
   .hero h1{
+
     font-size:
       clamp(
         48px,
@@ -3893,6 +4894,7 @@ body.elle-powered .footer{
   }
 
   .hero h1 span{
+
     font-size:
       clamp(
         30px,
@@ -3903,6 +4905,7 @@ body.elle-powered .footer{
 
   .hero-actions,
   .live-actions{
+
     display:grid;
 
     grid-template-columns:1fr;
@@ -3912,6 +4915,7 @@ body.elle-powered .footer{
   .hero-actions .secondary,
   .live-actions .primary,
   .live-actions .secondary{
+
     width:100%;
   }
 
@@ -3920,6 +4924,7 @@ body.elle-powered .footer{
   }
 
   .chat-feed{
+
     height:440px;
 
     padding:
@@ -3927,12 +4932,14 @@ body.elle-powered .footer{
   }
 
   .bubble{
+
     max-width:88%;
 
     font-size:13px;
   }
 
   .chip-row{
+
     overflow-x:auto;
 
     flex-wrap:nowrap;
@@ -3942,11 +4949,13 @@ body.elle-powered .footer{
   }
 
   .chat-chip{
+
     flex:
       0 0 auto;
   }
 
   .chat-input-wrap{
+
     grid-template-columns:1fr;
 
     padding:10px;
@@ -3957,14 +4966,62 @@ body.elle-powered .footer{
   }
 
   .explore-card{
+
     min-height:430px;
 
     border-radius:22px;
   }
 
   .penpal-shell{
+
     padding:
       27px 18px;
+
+    border-radius:25px;
+  }
+
+  .penpal-features{
+    grid-template-columns:1fr;
+  }
+
+  .penpal-board{
+
+    padding:16px;
+
+    border-radius:21px;
+  }
+
+  .penpal-profile{
+
+    grid-template-columns:
+      40px 1fr;
+
+    padding:12px;
+  }
+
+  .penpal-avatar{
+
+    width:40px;
+    height:40px;
+
+    font-size:17px;
+  }
+
+  .penpal-board-head{
+
+    align-items:flex-start;
+
+    flex-direction:column;
+  }
+
+  .penpal-rule-grid{
+    grid-template-columns:1fr;
+  }
+
+  .penpal-rules-card{
+
+    padding:
+      23px 17px;
   }
 
   .live-portrait{
@@ -3976,15 +5033,16 @@ body.elle-powered .footer{
   }
 
   .membership-shell{
+
     padding:
       26px 17px;
   }
-
 }
 
 @media (max-width:420px){
 
   .hero-note{
+
     position:relative;
 
     right:auto;
@@ -3996,6 +5054,7 @@ body.elle-powered .footer{
   }
 
   .hero-visual{
+
     display:block;
 
     min-height:auto;
@@ -4005,9 +5064,36 @@ body.elle-powered .footer{
     min-width:100%;
   }
 
+  .penpal-actions{
+
+    display:grid;
+
+    grid-template-columns:1fr;
+  }
+
+  .penpal-button{
+    width:100%;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+
+    scroll-behavior:auto !important;
+
+    animation-duration:.01ms !important;
+
+    animation-iteration-count:1 !important;
+
+    transition-duration:.01ms !important;
+  }
 }
 
 </style>
+
 </head>
 
 <body>
@@ -4270,7 +5356,10 @@ body.elle-powered .footer{
         class="age-option"
         id="ageTeen"
       >
-        <span>✨</span>
+
+        <span>
+          ✨
+        </span>
 
         <strong>
           13–17
@@ -4279,6 +5368,7 @@ body.elle-powered .footer{
         <small>
           Elle Next teen experience
         </small>
+
       </button>
 
       <button
@@ -4286,7 +5376,10 @@ body.elle-powered .footer{
         class="age-option"
         id="ageAdult"
       >
-        <span>💛</span>
+
+        <span>
+          💛
+        </span>
 
         <strong>
           18+
@@ -4295,6 +5388,7 @@ body.elle-powered .footer{
         <small>
           Adult Elle experience
         </small>
+
       </button>
 
     </div>
@@ -4419,7 +5513,7 @@ body.elle-powered .footer{
 </header>
 
 <!-- =======================================================
-     OWNER TEST BAR
+     OWNER MASTER BAR
      ======================================================= -->
 
 <div
@@ -4430,7 +5524,7 @@ body.elle-powered .footer{
   <div class="owner-inner">
 
     <span class="owner-label">
-      Owner Test:
+      Owner Preview:
     </span>
 
     <button
@@ -4477,7 +5571,7 @@ body.elle-powered .footer{
       class="owner-status"
       id="ownerStatus"
     >
-      Owner access
+      Master access
     </span>
 
   </div>
@@ -4489,8 +5583,6 @@ body.elle-powered .footer{
      ======================================================= -->
 
 <main id="home">
-
-<!-- HERO -->
 
 <section class="hero">
 
@@ -4505,11 +5597,13 @@ body.elle-powered .footer{
         </div>
 
         <h1>
+
           Meet Elle.
 
           <span>
             Real talk. Good energy. Elevated living.
           </span>
+
         </h1>
 
         <p>
@@ -4588,7 +5682,9 @@ body.elle-powered .footer{
 
 </section>
 
-<!-- ASK ELLE -->
+<!-- =======================================================
+     ASK ELLE
+     ======================================================= -->
 
 <section
   class="section ask-section"
@@ -4730,9 +5826,11 @@ body.elle-powered .footer{
           id="typing"
           aria-label="Elle is thinking"
         >
+
           <span></span>
           <span></span>
           <span></span>
+
         </div>
 
         <div
@@ -4768,7 +5866,9 @@ body.elle-powered .footer{
 
 </section>
 
-<!-- EXPLORE -->
+<!-- =======================================================
+     EXPLORE
+     ======================================================= -->
 
 <section
   class="section"
@@ -4798,8 +5898,6 @@ body.elle-powered .footer{
     </div>
 
     <div class="explore-grid">
-
-      <!-- RADIO -->
 
       <article
         class="explore-card"
@@ -4904,8 +6002,6 @@ body.elle-powered .footer{
 
       </article>
 
-      <!-- WORLD -->
-
       <article
         class="explore-card"
         id="world"
@@ -4989,7 +6085,9 @@ body.elle-powered .footer{
 
 </section>
 
-<!-- PENPAL -->
+<!-- =======================================================
+     PENPAL
+     ======================================================= -->
 
 <section
   class="section"
@@ -5003,7 +6101,11 @@ body.elle-powered .footer{
       <div class="penpal-copy-wrap">
 
         <div class="penpal-badge">
-          INFINITE ∞ ONLY
+          INFINITE ∞ COMMUNITY
+        </div>
+
+        <div class="penpal-welcome">
+          You are welcome here.
         </div>
 
         <h2>
@@ -5011,43 +6113,51 @@ body.elle-powered .footer{
         </h2>
 
         <p>
-          A slower, more intentional way to connect with
-          other eligible Infinite ∞ members. PenPal is built
-          for friendship and genuine human connection,
-          not dating or hookups.
+          A warm little corner for genuine friendship,
+          thoughtful conversation, shared interests,
+          encouragement, and meeting good people without
+          turning it into a dating app.
         </p>
 
-        <div class="penpal-points">
+        <div class="penpal-features">
 
-          <div class="penpal-point">
+          <div class="penpal-feature">
 
-            <span>✦</span>
+            <strong>
+              💌 Real connection
+            </strong>
 
-            <span>
-              Available to adults 18+ with active Infinite ∞ access.
-            </span>
-
-          </div>
-
-          <div class="penpal-point">
-
-            <span>✦</span>
-
-            <span>
-              Requires two continuous months of active
-              Infinite ∞ membership.
-            </span>
+            Friendship and conversation with intention.
 
           </div>
 
-          <div class="penpal-point">
+          <div class="penpal-feature">
 
-            <span>✦</span>
+            <strong>
+              ✨ Shared interests
+            </strong>
 
-            <span>
-              Connections use mutual acceptance
-              and safety controls.
-            </span>
+            Find people who enjoy some of the things you do.
+
+          </div>
+
+          <div class="penpal-feature">
+
+            <strong>
+              🔒 Privacy minded
+            </strong>
+
+            Broad region only. No public email or exact location.
+
+          </div>
+
+          <div class="penpal-feature">
+
+            <strong>
+              🛡️ Safer community
+            </strong>
+
+            Mutual connections with Block, Report, and End Connection controls.
 
           </div>
 
@@ -5057,7 +6167,7 @@ body.elle-powered .footer{
 
           <button
             type="button"
-            class="penpal-button"
+            class="penpal-button primary-penpal"
             id="penpalAccess"
           >
             Check PenPal Access
@@ -5075,15 +6185,29 @@ body.elle-powered .footer{
 
       </div>
 
-      <div class="penpal-board">
+      <div
+        class="penpal-board"
+        id="penpalBoard"
+      >
 
         <div class="penpal-board-head">
 
-          <strong>
-            The Board
-          </strong>
+          <div class="penpal-board-title">
 
-          <div class="penpal-lock">
+            <strong>
+              The Board
+            </strong>
+
+            <span>
+              A little preview of the community vibe.
+            </span>
+
+          </div>
+
+          <div
+            class="penpal-lock"
+            id="penpalLock"
+          >
             Private member feature
           </div>
 
@@ -5091,68 +6215,141 @@ body.elle-powered .footer{
 
         <div class="penpal-samples">
 
-          <article class="penpal-note-card">
+          <article class="penpal-profile">
 
-            <div class="penpal-note-top">
-
-              <strong>
-                Maya
-              </strong>
-
-              <span>
-                Caribbean
-              </span>
-
+            <div class="penpal-avatar">
+              M
             </div>
 
-            <p>
-              Creative, curious, and always down for a good
-              conversation about ideas, books, and building
-              something meaningful.
-            </p>
+            <div>
+
+              <div class="penpal-profile-top">
+
+                <strong>
+                  Maya
+                </strong>
+
+                <span>
+                  Caribbean
+                </span>
+
+              </div>
+
+              <p>
+                Creative soul who loves books, ideas,
+                meaningful conversations, and building things
+                that matter.
+              </p>
+
+              <div class="penpal-tags">
+
+                <span class="penpal-tag">
+                  Books
+                </span>
+
+                <span class="penpal-tag">
+                  Creativity
+                </span>
+
+                <span class="penpal-tag">
+                  Business ideas
+                </span>
+
+              </div>
+
+            </div>
 
           </article>
 
-          <article class="penpal-note-card">
+          <article class="penpal-profile">
 
-            <div class="penpal-note-top">
-
-              <strong>
-                Jordan
-              </strong>
-
-              <span>
-                United States
-              </span>
-
+            <div class="penpal-avatar">
+              J
             </div>
 
-            <p>
-              Looking for genuine friendship, accountability,
-              and people who like talking about goals,
-              work, and everyday life.
-            </p>
+            <div>
+
+              <div class="penpal-profile-top">
+
+                <strong>
+                  Jordan
+                </strong>
+
+                <span>
+                  United States
+                </span>
+
+              </div>
+
+              <p>
+                Looking for genuine friendship,
+                accountability, good laughs, and people
+                who enjoy talking about goals and everyday life.
+              </p>
+
+              <div class="penpal-tags">
+
+                <span class="penpal-tag">
+                  Goals
+                </span>
+
+                <span class="penpal-tag">
+                  Career
+                </span>
+
+                <span class="penpal-tag">
+                  Good conversation
+                </span>
+
+              </div>
+
+            </div>
 
           </article>
 
-          <article class="penpal-note-card">
+          <article class="penpal-profile">
 
-            <div class="penpal-note-top">
-
-              <strong>
-                Nia
-              </strong>
-
-              <span>
-                United Kingdom
-              </span>
-
+            <div class="penpal-avatar">
+              N
             </div>
 
-            <p>
-              Music lover, traveler, and big believer
-              in good energy and thoughtful conversation.
-            </p>
+            <div>
+
+              <div class="penpal-profile-top">
+
+                <strong>
+                  Nia
+                </strong>
+
+                <span>
+                  United Kingdom
+                </span>
+
+              </div>
+
+              <p>
+                Music lover, traveler, and big believer
+                in good energy, encouragement, and thoughtful
+                conversation.
+              </p>
+
+              <div class="penpal-tags">
+
+                <span class="penpal-tag">
+                  Music
+                </span>
+
+                <span class="penpal-tag">
+                  Travel
+                </span>
+
+                <span class="penpal-tag">
+                  Wellness
+                </span>
+
+              </div>
+
+            </div>
 
           </article>
 
@@ -5162,7 +6359,8 @@ body.elle-powered .footer{
           class="penpal-waitlist"
           id="penpalStatus"
         >
-          PenPal connections are being introduced carefully.
+          Infinite ∞ members can begin the PenPal eligibility pathway.
+          Full connection access is verified securely before matching opens.
         </div>
 
       </div>
@@ -5173,7 +6371,9 @@ body.elle-powered .footer{
 
 </section>
 
-<!-- LIVE ELLE -->
+<!-- =======================================================
+     LIVE ELLE
+     ======================================================= -->
 
 <section
   class="section"
@@ -5321,7 +6521,9 @@ body.elle-powered .footer{
 
 </section>
 
-<!-- MEMBERSHIP -->
+<!-- =======================================================
+     MEMBERSHIP
+     ======================================================= -->
 
 <section
   class="section"
@@ -5364,19 +6566,19 @@ body.elle-powered .footer{
           </option>
 
           <option value="spark">
-            The Spark — $3/month
+            The Spark · $3/month
           </option>
 
           <option value="idea-circle">
-            The Idea Circle — $7/month
+            The Idea Circle · $7/month
           </option>
 
           <option value="infinite">
-            The Infinite ∞ — $15/month
+            The Infinite ∞ · $15/month
           </option>
 
           <option value="elle-next">
-            Elle Next — $15/month · ages 13–17
+            Elle Next · $15/month · ages 13–17
           </option>
 
         </select>
@@ -5410,7 +6612,9 @@ body.elle-powered .footer{
 
 </section>
 
-<!-- TRUST -->
+<!-- =======================================================
+     TRUST
+     ======================================================= -->
 
 <section
   class="section"
@@ -5495,6 +6699,13 @@ body.elle-powered .footer{
 
         <button
           type="button"
+          id="openSupport"
+        >
+          Contact + Report
+        </button>
+
+        <button
+          type="button"
           id="openTrust"
         >
           Trust + Safety
@@ -5521,7 +6732,7 @@ body.elle-powered .footer{
 </footer>
 
 <!-- =======================================================
-     RADIO AUDIO
+     AUDIO
      ======================================================= -->
 
 <audio
@@ -5555,6 +6766,282 @@ body.elle-powered .footer{
       <strong id="takeoverSong">
         Elle Radio
       </strong>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =======================================================
+     PENPAL RULES
+     ======================================================= -->
+
+<div
+  class="penpal-rules-modal"
+  id="penpalRulesModal"
+  aria-hidden="true"
+>
+
+  <div class="penpal-rules-card">
+
+    <div class="penpal-rules-mark">
+      ∞
+    </div>
+
+    <div class="penpal-rules-script">
+      You are welcome here.
+    </div>
+
+    <h2>
+      Our community promise
+    </h2>
+
+    <p class="penpal-rules-intro">
+      PenPal is meant to feel warm, genuine, and safe.
+      Take this minute to read the community expectations
+      before entering the board.
+    </p>
+
+    <div class="penpal-rule-grid">
+
+      <div class="penpal-rule">
+
+        <strong>
+          💛 Lead with kindness
+        </strong>
+
+        <span>
+          Treat people with respect. Harassment,
+          humiliation, threats, and repeated unwanted
+          contact are not welcome here.
+        </span>
+
+      </div>
+
+      <div class="penpal-rule">
+
+        <strong>
+          ✨ Be real
+        </strong>
+
+        <span>
+          Do not impersonate someone else,
+          manipulate another member, or deliberately
+          misrepresent who you are.
+        </span>
+
+      </div>
+
+      <div class="penpal-rule">
+
+        <strong>
+          💌 Friendship, not dating
+        </strong>
+
+        <span>
+          PenPal is not for dating, hookups,
+          sexual solicitation, adult services,
+          or unwanted flirting.
+        </span>
+
+      </div>
+
+      <div class="penpal-rule">
+
+        <strong>
+          🔒 Protect your privacy
+        </strong>
+
+        <span>
+          Do not post passwords, banking information,
+          government ID numbers, exact home addresses,
+          or private authentication codes.
+        </span>
+
+      </div>
+
+      <div class="penpal-rule">
+
+        <strong>
+          🛡️ Respect boundaries
+        </strong>
+
+        <span>
+          If someone says no, ends a connection,
+          or asks for space, respect it immediately.
+        </span>
+
+      </div>
+
+      <div class="penpal-rule">
+
+        <strong>
+          🚩 Report concerns
+        </strong>
+
+        <span>
+          Use Report if another member becomes disruptive,
+          threatening, sexually inappropriate,
+          deceptive, or unsafe.
+        </span>
+
+      </div>
+
+    </div>
+
+    <div class="rules-countdown-box">
+
+      <span>
+        The board opens after you have had time to read
+      </span>
+
+      <strong id="penpalRulesCountdown">
+        1:00
+      </strong>
+
+      <div class="rules-progress">
+
+        <div
+          class="rules-progress-bar"
+          id="penpalRulesProgress"
+        ></div>
+
+      </div>
+
+    </div>
+
+    <button
+      type="button"
+      class="rules-leave"
+      id="leavePenpalRules"
+    >
+      Leave PenPal
+    </button>
+
+  </div>
+
+</div>
+
+<!-- =======================================================
+     CONTACT + REPORT
+     ======================================================= -->
+
+<div
+  class="support-modal"
+  id="supportModal"
+  aria-hidden="true"
+>
+
+  <div class="support-card">
+
+    <h2>
+      Contact + Report
+    </h2>
+
+    <p>
+      Tell Elle what happened. You can report a community
+      concern, a disruptive member, something broken,
+      a membership issue, or another support need.
+    </p>
+
+    <div class="support-form">
+
+      <div class="support-field">
+
+        <label for="supportCategory">
+          What do you need help with?
+        </label>
+
+        <select id="supportCategory">
+
+          <option value="">
+            Choose a category
+          </option>
+
+          <option value="member-report">
+            Report a disruptive member
+          </option>
+
+          <option value="penpal-safety">
+            PenPal safety concern
+          </option>
+
+          <option value="outage">
+            Something is broken / outage
+          </option>
+
+          <option value="billing">
+            Billing or membership issue
+          </option>
+
+          <option value="other">
+            Other support
+          </option>
+
+        </select>
+
+      </div>
+
+      <div
+        class="support-field hidden"
+        id="reportedMemberField"
+      >
+
+        <label for="reportedMember">
+          Member display name
+        </label>
+
+        <input
+          id="reportedMember"
+          type="text"
+          maxlength="80"
+          placeholder="Who are you reporting?"
+        >
+
+      </div>
+
+      <div class="support-field">
+
+        <label for="supportDetails">
+          Tell us what happened
+        </label>
+
+        <textarea
+          id="supportDetails"
+          maxlength="3000"
+          placeholder="Share the details that would help us understand what happened."
+        ></textarea>
+
+      </div>
+
+      <div class="support-note">
+        The secure Google Sheets submission connection
+        is added in the backend report step. For now,
+        this button safely saves your draft on this device
+        so nothing is falsely presented as submitted.
+      </div>
+
+      <div
+        class="support-message"
+        id="supportMessage"
+      ></div>
+
+      <button
+        type="button"
+        class="support-save"
+        id="saveSupportDraft"
+      >
+        Save Report Draft
+      </button>
+
+      <button
+        type="button"
+        class="support-close"
+        id="closeSupport"
+      >
+        Close
+      </button>
 
     </div>
 
@@ -5633,39 +7120,64 @@ body.elle-powered .footer{
     <div class="trust-list">
 
       <div>
-        <strong>Privacy:</strong>
+
+        <strong>
+          Privacy:
+        </strong>
+
         Do not share passwords, one-time authentication codes,
         banking credentials, government identification numbers,
         or an exact home address with Elle.
+
       </div>
 
       <div>
-        <strong>Live Elle:</strong>
+
+        <strong>
+          Live Elle:
+        </strong>
+
         A Live Elle request is not a confirmed appointment.
         The appointment is confirmed only after you choose
         an available time and Google Calendar confirms it.
+
       </div>
 
       <div>
-        <strong>PenPal:</strong>
+
+        <strong>
+          PenPal:
+        </strong>
+
         PenPal is intended for friendship and genuine human
         connection. It is not a dating, hookup,
         sexual-content, or adult-services platform.
+
       </div>
 
       <div>
-        <strong>Off-platform connections:</strong>
+
+        <strong>
+          Off-platform connections:
+        </strong>
+
         If a connection moves to email, text, social media,
         phone, or another service, that conversation is
         outside Elle’s messaging environment.
+
       </div>
 
       <div>
-        <strong>Conduct:</strong>
+
+        <strong>
+          Conduct:
+        </strong>
+
         Confirmed serious harassment, sexual misconduct,
         threats, exploitation, repeated boundary violations,
         or attempts to evade previous bans may result
         in permanent removal from PenPal or Elle.
+
       </div>
 
     </div>
@@ -5962,6 +7474,36 @@ const penpalStatus =
     "penpalStatus"
   );
 
+const penpalLock =
+  document.getElementById(
+    "penpalLock"
+  );
+
+const penpalBoard =
+  document.getElementById(
+    "penpalBoard"
+  );
+
+const penpalRulesModal =
+  document.getElementById(
+    "penpalRulesModal"
+  );
+
+const penpalRulesCountdown =
+  document.getElementById(
+    "penpalRulesCountdown"
+  );
+
+const penpalRulesProgress =
+  document.getElementById(
+    "penpalRulesProgress"
+  );
+
+const leavePenpalRules =
+  document.getElementById(
+    "leavePenpalRules"
+  );
+
 const liveStart =
   document.getElementById(
     "liveStart"
@@ -6017,6 +7559,51 @@ const closeTrust =
     "closeTrust"
   );
 
+const openSupport =
+  document.getElementById(
+    "openSupport"
+  );
+
+const supportModal =
+  document.getElementById(
+    "supportModal"
+  );
+
+const closeSupport =
+  document.getElementById(
+    "closeSupport"
+  );
+
+const supportCategory =
+  document.getElementById(
+    "supportCategory"
+  );
+
+const reportedMemberField =
+  document.getElementById(
+    "reportedMemberField"
+  );
+
+const reportedMember =
+  document.getElementById(
+    "reportedMember"
+  );
+
+const supportDetails =
+  document.getElementById(
+    "supportDetails"
+  );
+
+const supportMessage =
+  document.getElementById(
+    "supportMessage"
+  );
+
+const saveSupportDraft =
+  document.getElementById(
+    "saveSupportDraft"
+  );
+
 /* =========================================================
    STATE
    ========================================================= */
@@ -6063,7 +7650,11 @@ const state = {
 
   playing:false,
 
-  takeoverTimer:null
+  takeoverTimer:null,
+
+  penpalRulesTimer:null,
+
+  penpalRulesRemaining:60
 
 };
 
@@ -6078,7 +7669,6 @@ function safeText(
   return String(
     value ?? ""
   );
-
 }
 
 function cleanEmail(
@@ -6090,7 +7680,6 @@ function cleanEmail(
   )
     .trim()
     .toLowerCase();
-
 }
 
 function wait(
@@ -6104,10 +7693,8 @@ function wait(
         resolve,
         milliseconds
       );
-
     }
   );
-
 }
 
 function setBusy(
@@ -6119,9 +7706,7 @@ function setBusy(
   if(
     !button
   ){
-
     return;
-
   }
 
   if(
@@ -6134,7 +7719,6 @@ function setBusy(
 
       button.dataset.originalText =
         button.textContent;
-
     }
 
     button.disabled =
@@ -6155,11 +7739,8 @@ function setBusy(
 
       button.textContent =
         button.dataset.originalText;
-
     }
-
   }
-
 }
 
 /* =========================================================
@@ -6190,7 +7771,6 @@ function resetPowerSwitch(){
   powerStatus.classList.remove(
     "on"
   );
-
 }
 
 function setPowerOn(){
@@ -6214,7 +7794,6 @@ function setPowerOn(){
   powerStatus.classList.add(
     "on"
   );
-
 }
 
 function showMemberGate(
@@ -6247,7 +7826,6 @@ function showMemberGate(
     memberEnter.classList.remove(
       "hidden"
     );
-
   }
 
   if(
@@ -6263,7 +7841,6 @@ function showMemberGate(
     memberEnter.classList.add(
       "hidden"
     );
-
   }
 
   if(
@@ -6277,9 +7854,7 @@ function showMemberGate(
     memberEnter.classList.add(
       "hidden"
     );
-
   }
-
 }
 
 function hideMemberGate(){
@@ -6300,7 +7875,6 @@ function hideMemberGate(){
   document.body.classList.remove(
     "locked"
   );
-
 }
 
 async function powerOnMember(
@@ -6352,7 +7926,6 @@ async function powerOnMember(
 
   powerSwitch.disabled =
     false;
-
 }
 
 powerSwitch.addEventListener(
@@ -6362,9 +7935,7 @@ powerSwitch.addEventListener(
     if(
       state.sessionToken
     ){
-
       return;
-
     }
 
     powerSwitch.disabled =
@@ -6385,7 +7956,6 @@ powerSwitch.addEventListener(
 
     window.location.href =
       MEMBERSHIP_URL;
-
   }
 );
 
@@ -6405,7 +7975,6 @@ memberEnter.addEventListener(
       },
       120
     );
-
   }
 );
 
@@ -6431,7 +8000,6 @@ function setMemberMessage(
     memberMessage.classList.add(
       "show"
     );
-
   }
 
   if(
@@ -6441,9 +8009,7 @@ function setMemberMessage(
     memberMessage.classList.add(
       type
     );
-
   }
-
 }
 
 function showMemberJoin(
@@ -6454,7 +8020,6 @@ function showMemberJoin(
     "show",
     show === true
   );
-
 }
 
 function resetMemberGate(){
@@ -6477,7 +8042,6 @@ function resetMemberGate(){
   showMemberJoin(
     false
   );
-
 }
 
 function showCodeStep(){
@@ -6491,7 +8055,6 @@ function showCodeStep(){
   );
 
   memberCode.focus();
-
 }
 
 requestCode.addEventListener(
@@ -6514,7 +8077,6 @@ requestCode.addEventListener(
       );
 
       return;
-
     }
 
     setBusy(
@@ -6550,7 +8112,6 @@ requestCode.addEventListener(
               JSON.stringify({
                 email
               })
-
           }
         );
 
@@ -6565,7 +8126,6 @@ requestCode.addEventListener(
           data?.error ||
           "Elle could not send an access code."
         );
-
       }
 
       setMemberMessage(
@@ -6594,9 +8154,7 @@ requestCode.addEventListener(
         requestCode,
         false
       );
-
     }
-
   }
 );
 
@@ -6633,7 +8191,6 @@ verifyCode.addEventListener(
       );
 
       return;
-
     }
 
     setBusy(
@@ -6666,7 +8223,6 @@ verifyCode.addEventListener(
                 email,
                 code
               })
-
           }
         );
 
@@ -6681,7 +8237,6 @@ verifyCode.addEventListener(
           data?.error ||
           "That access code could not be verified."
         );
-
       }
 
       const token =
@@ -6696,7 +8251,6 @@ verifyCode.addEventListener(
         throw new Error(
           "Elle verified the membership but did not receive a session token."
         );
-
       }
 
       state.sessionToken =
@@ -6726,7 +8280,6 @@ verifyCode.addEventListener(
           "elleAgeGroup",
           state.ageGroup
         );
-
       }
 
       localStorage.setItem(
@@ -6768,7 +8321,6 @@ verifyCode.addEventListener(
       ){
 
         showAgeGate();
-
       }
 
     }catch(error){
@@ -6785,9 +8337,7 @@ verifyCode.addEventListener(
         verifyCode,
         false
       );
-
     }
-
   }
 );
 
@@ -6808,7 +8358,6 @@ memberCode.addEventListener(
           0,
           6
         );
-
   }
 );
 
@@ -6817,13 +8366,12 @@ memberCode.addEventListener(
   event => {
 
     if(
-      event.key === "Enter"
+      event.key ===
+      "Enter"
     ){
 
       verifyCode.click();
-
     }
-
   }
 );
 
@@ -6832,13 +8380,12 @@ memberEmail.addEventListener(
   event => {
 
     if(
-      event.key === "Enter"
+      event.key ===
+      "Enter"
     ){
 
       requestCode.click();
-
     }
-
   }
 );
 
@@ -6849,12 +8396,11 @@ changeEmail.addEventListener(
     resetMemberGate();
 
     memberEmail.focus();
-
   }
 );
 
 /* =========================================================
-   AGE FALLBACK
+   AGE
    ========================================================= */
 
 function showAgeGate(){
@@ -6871,7 +8417,6 @@ function showAgeGate(){
   document.body.classList.add(
     "locked"
   );
-
 }
 
 function hideAgeGate(){
@@ -6888,7 +8433,6 @@ function hideAgeGate(){
   document.body.classList.remove(
     "locked"
   );
-
 }
 
 function chooseAge(
@@ -6908,7 +8452,6 @@ function chooseAge(
   applyAccess();
 
   greetMember();
-
 }
 
 ageTeen.addEventListener(
@@ -6918,7 +8461,6 @@ ageTeen.addEventListener(
     chooseAge(
       "13-17"
     );
-
   }
 );
 
@@ -6929,7 +8471,6 @@ ageAdult.addEventListener(
     chooseAge(
       "18+"
     );
-
   }
 );
 
@@ -6940,12 +8481,11 @@ ageUnder.addEventListener(
     underMessage.classList.add(
       "show"
     );
-
   }
 );
 
 /* =========================================================
-   SESSION RESTORE
+   SESSION
    ========================================================= */
 
 async function restoreSession(){
@@ -6955,7 +8495,6 @@ async function restoreSession(){
   ){
 
     return false;
-
   }
 
   try{
@@ -6975,7 +8514,6 @@ async function restoreSession(){
 
           cache:
             "no-store"
-
         }
       );
 
@@ -6986,7 +8524,6 @@ async function restoreSession(){
       throw new Error(
         "Session expired."
       );
-
     }
 
     const data =
@@ -7017,7 +8554,6 @@ async function restoreSession(){
       email:
         data?.email ||
         ""
-
     };
 
     state.permissions =
@@ -7038,7 +8574,6 @@ async function restoreSession(){
         "elleAgeGroup",
         state.ageGroup
       );
-
     }
 
     localStorage.setItem(
@@ -7074,78 +8609,44 @@ async function restoreSession(){
     clearSavedSession();
 
     return false;
-
   }
-
 }
 
 /* =========================================================
-   PERMISSIONS
+   OWNER MASTER ACCESS
    ========================================================= */
 
 function ownerPermissions(){
 
-  switch(
-    state.ownerTestTier
-  ){
+  /*
+    IMPORTANT:
 
-    case "spark":
+    Owner permissions NEVER shrink
+    when previewing a tier.
 
-      return {
-        elleChat:true,
-        expandedPerks:false,
-        elleRadio:false,
-        liveElle:false,
-        liveVideo:false,
-        testMode:true
-      };
+    The tier selector changes the
+    preview context only.
 
-    case "idea-circle":
+    Verified server owner status
+    remains the authority.
+  */
 
-      return {
-        elleChat:true,
-        expandedPerks:true,
-        elleRadio:false,
-        liveElle:false,
-        liveVideo:false,
-        testMode:true
-      };
+  return {
 
-    case "infinite":
+    elleChat:true,
 
-      return {
-        elleChat:true,
-        expandedPerks:true,
-        elleRadio:true,
-        liveElle:true,
-        liveVideo:true,
-        testMode:true
-      };
+    expandedPerks:true,
 
-    case "elle-next":
+    elleRadio:true,
 
-      return {
-        elleChat:true,
-        expandedPerks:true,
-        elleRadio:false,
-        liveElle:false,
-        liveVideo:false,
-        testMode:true
-      };
+    liveElle:true,
 
-    default:
+    liveVideo:true,
 
-      return {
-        elleChat:true,
-        expandedPerks:true,
-        elleRadio:true,
-        liveElle:true,
-        liveVideo:true,
-        testMode:true
-      };
+    ownerMode:true,
 
-  }
-
+    testMode:true
+  };
 }
 
 function visiblePermissions(){
@@ -7155,11 +8656,32 @@ function visiblePermissions(){
   ){
 
     return ownerPermissions();
-
   }
 
   return state.permissions || {};
+}
 
+function previewTierName(){
+
+  switch(
+    state.ownerTestTier
+  ){
+
+    case "spark":
+      return "The Spark";
+
+    case "idea-circle":
+      return "The Idea Circle";
+
+    case "infinite":
+      return "The Infinite ∞";
+
+    case "elle-next":
+      return "Elle Next";
+
+    default:
+      return "Owner";
+  }
 }
 
 function visibleAgeGroup(){
@@ -7174,7 +8696,6 @@ function visibleAgeGroup(){
         ? "13-17"
         : "18+"
     );
-
   }
 
   return (
@@ -7183,7 +8704,6 @@ function visibleAgeGroup(){
       ? "13-17"
       : "18+"
   );
-
 }
 
 function visibleTierKey(){
@@ -7193,7 +8713,6 @@ function visibleTierKey(){
   ){
 
     return state.ownerTestTier;
-
   }
 
   return String(
@@ -7202,7 +8721,6 @@ function visibleTierKey(){
   )
     .trim()
     .toLowerCase();
-
 }
 
 function visibleTierName(){
@@ -7211,35 +8729,18 @@ function visibleTierName(){
     state.owner
   ){
 
-    switch(
-      state.ownerTestTier
-    ){
-
-      case "spark":
-        return "The Spark";
-
-      case "idea-circle":
-        return "The Idea Circle";
-
-      case "infinite":
-        return "The Infinite ∞";
-
-      case "elle-next":
-        return "Elle Next";
-
-      default:
-        return "Owner";
-
-    }
-
+    return previewTierName();
   }
 
   return (
     state.member?.tierName ||
     "Member"
   );
-
 }
+
+/* =========================================================
+   APPLY ACCESS
+   ========================================================= */
 
 function applyAccess(){
 
@@ -7252,17 +8753,32 @@ function applyAccess(){
   const tierKey =
     visibleTierKey();
 
-  memberTierPill.textContent =
-    visibleTierName();
-
-  chatMemberText.textContent =
+  if(
     state.owner
-      ? `Owner testing · ${visibleTierName()}`
-      : (
-          state.member?.tierName
-            ? `${state.member.tierName} member`
-            : "Your AI guide"
-        );
+  ){
+
+    memberTierPill.textContent =
+      state.ownerTestTier ===
+      "owner"
+        ? "Owner"
+        : `Owner · ${previewTierName()}`;
+
+    chatMemberText.textContent =
+      state.ownerTestTier ===
+      "owner"
+        ? "Owner master access"
+        : `Owner preview · ${previewTierName()}`;
+
+  }else{
+
+    memberTierPill.textContent =
+      visibleTierName();
+
+    chatMemberText.textContent =
+      state.member?.tierName
+        ? `${state.member.tierName} member`
+        : "Your AI guide";
+  }
 
   ownerBar.classList.toggle(
     "show",
@@ -7275,10 +8791,9 @@ function applyAccess(){
 
     ownerStatus.textContent =
       state.ownerTestTier ===
-      "elle-next"
-        ? "Testing Elle Next · 13–17"
-        : `Testing ${visibleTierName()} · 18+`;
-
+      "owner"
+        ? "Master access · everything unlocked"
+        : `Master access · previewing ${previewTierName()}`;
   }
 
   ownerTests.forEach(
@@ -7289,12 +8804,17 @@ function applyAccess(){
         button.dataset.tier ===
         state.ownerTestTier
       );
-
     }
   );
 
+  /*
+    OWNER KEEPS RADIO ACCESS
+    EVEN DURING LOWER TIER PREVIEW.
+  */
+
   if(
-    permissions.elleRadio !== true
+    permissions.elleRadio !==
+    true
   ){
 
     pauseRadio();
@@ -7314,35 +8834,71 @@ function applyAccess(){
       )
         ? "Close Radio"
         : "Open Radio";
-
   }
 
+  /*
+    PENPAL FRONTEND DISPLAY
+  */
+
   if(
-    ageGroup !== "18+"
+    state.owner
   ){
+
+    penpalAccess.textContent =
+      "Open PenPal Board";
+
+    penpalLock.textContent =
+      "Owner master access";
+
+    penpalStatus.textContent =
+      state.ownerTestTier ===
+      "elle-next"
+        ? "Owner previewing Elle Next. Master owner access remains active. PenPal can still be opened for testing."
+        : "Owner master access is active. The normal PenPal waiting period is bypassed for owner testing.";
+
+    return;
+  }
+
+  penpalLock.textContent =
+    "Private member feature";
+
+  if(
+    ageGroup !==
+    "18+"
+  ){
+
+    penpalAccess.textContent =
+      "PenPal is 18+";
 
     penpalStatus.textContent =
       "PenPal is an adult 18+ feature. Elle Next members do not have PenPal access.";
 
-  }else if(
-    tierKey !== "infinite" &&
-    !state.owner
-  ){
-
-    penpalStatus.textContent =
-      "PenPal is reserved for Infinite ∞ members with two continuous months of active membership.";
-
-  }else{
-
-    penpalStatus.textContent =
-      "Infinite ∞ access detected. Full PenPal eligibility also requires two continuous months of active Infinite ∞ membership and verified PenPal access.";
-
+    return;
   }
 
+  if(
+    tierKey !==
+    "infinite"
+  ){
+
+    penpalAccess.textContent =
+      "Check PenPal Access";
+
+    penpalStatus.textContent =
+      "PenPal is reserved for Infinite ∞ members who meet the full eligibility requirements.";
+
+    return;
+  }
+
+  penpalAccess.textContent =
+    "Enter PenPal";
+
+  penpalStatus.textContent =
+    "Infinite ∞ access detected. Full PenPal eligibility will be verified securely before connection tools open.";
 }
 
 /* =========================================================
-   OWNER TESTING
+   OWNER PREVIEW
    ========================================================= */
 
 ownerTests.forEach(
@@ -7357,7 +8913,6 @@ ownerTests.forEach(
         ){
 
           return;
-
         }
 
         const tier =
@@ -7372,8 +8927,17 @@ ownerTests.forEach(
           tier
         );
 
+        /*
+          This controls the preview age
+          for owner test requests.
+
+          It does NOT remove owner master
+          permissions.
+        */
+
         state.ageGroup =
-          tier === "elle-next"
+          tier ===
+          "elle-next"
             ? "13-17"
             : "18+";
 
@@ -7394,14 +8958,11 @@ ownerTests.forEach(
             false,
             false
           );
-
         }
 
         greetMember();
-
       }
     );
-
   }
 );
 
@@ -7429,7 +8990,6 @@ menuToggle.addEventListener(
       open
         ? "×"
         : "☰";
-
   }
 );
 
@@ -7455,15 +9015,13 @@ mainNav
 
           menuToggle.textContent =
             "☰";
-
         }
       );
-
     }
   );
 
 /* =========================================================
-   CHAT RENDERING
+   CHAT
    ========================================================= */
 
 function scrollChat(){
@@ -7473,10 +9031,8 @@ function scrollChat(){
 
       chatFeed.scrollTop =
         chatFeed.scrollHeight;
-
     }
   );
-
 }
 
 function addBubble(
@@ -7490,7 +9046,8 @@ function addBubble(
     );
 
   row.className =
-    role === "user"
+    role ===
+    "user"
       ? "message-row user"
       : "message-row";
 
@@ -7500,7 +9057,8 @@ function addBubble(
     );
 
   bubble.className =
-    role === "user"
+    role ===
+    "user"
       ? "bubble bubble-user"
       : "bubble bubble-elle";
 
@@ -7513,7 +9071,8 @@ function addBubble(
     "bubble-label";
 
   label.textContent =
-    role === "user"
+    role ===
+    "user"
       ? "YOU"
       : "ELLE";
 
@@ -7546,7 +9105,6 @@ function addBubble(
   scrollChat();
 
   return bubble;
-
 }
 
 function showTyping(){
@@ -7560,7 +9118,6 @@ function showTyping(){
   );
 
   scrollChat();
-
 }
 
 function hideTyping(){
@@ -7568,7 +9125,6 @@ function hideTyping(){
   typing.classList.remove(
     "show"
   );
-
 }
 
 function renderChips(
@@ -7585,7 +9141,6 @@ function renderChips(
   ){
 
     return;
-
   }
 
   chips
@@ -7607,7 +9162,6 @@ function renderChips(
         ){
 
           return;
-
         }
 
         const button =
@@ -7631,22 +9185,18 @@ function renderChips(
             sendMessage(
               text
             );
-
           }
         );
 
         chipRow.appendChild(
           button
         );
-
       }
     );
-
 }
 
 /* =========================================================
    IMAGE REQUEST DETECTION
-   FIX #2
    ========================================================= */
 
 function isImageRequest(
@@ -7664,7 +9214,6 @@ function isImageRequest(
   ){
 
     return false;
-
   }
 
   const howTo =
@@ -7677,7 +9226,6 @@ function isImageRequest(
   ){
 
     return false;
-
   }
 
   const creationWord =
@@ -7702,7 +9250,6 @@ function isImageRequest(
       value
     )
   );
-
 }
 
 /* =========================================================
@@ -7716,9 +9263,7 @@ function openGeneratedImage(
   if(
     !src
   ){
-
     return;
-
   }
 
   imageModalImage.src =
@@ -7739,7 +9284,6 @@ function openGeneratedImage(
   document.body.classList.add(
     "locked"
   );
-
 }
 
 function closeGeneratedImage(){
@@ -7759,7 +9303,6 @@ function closeGeneratedImage(){
 
   imageModalImage.src =
     "";
-
 }
 
 imageModalClose.addEventListener(
@@ -7777,9 +9320,7 @@ imageModal.addEventListener(
     ){
 
       closeGeneratedImage();
-
     }
-
   }
 );
 
@@ -7839,11 +9380,6 @@ function addImageBubble(
   image.className =
     "generated-image";
 
-  /*
-    /api/image already returns the complete
-    data URI or image URL.
-  */
-
   image.src =
     src;
 
@@ -7862,7 +9398,6 @@ function addImageBubble(
       openGeneratedImage(
         src
       );
-
     }
   );
 
@@ -7899,7 +9434,6 @@ function addImageBubble(
       openGeneratedImage(
         src
       );
-
     }
   );
 
@@ -7953,7 +9487,6 @@ function addImageBubble(
   );
 
   scrollChat();
-
 }
 
 /* =========================================================
@@ -8052,7 +9585,6 @@ function addBookingCard(
   );
 
   scrollChat();
-
 }
 
 /* =========================================================
@@ -8068,7 +9600,6 @@ async function sendMessage(
   ){
 
     return;
-
   }
 
   if(
@@ -8080,14 +9611,14 @@ async function sendMessage(
     );
 
     return;
-
   }
 
   const permissions =
     visiblePermissions();
 
   if(
-    permissions.elleChat !== true
+    permissions.elleChat !==
+    true
   ){
 
     addBubble(
@@ -8096,7 +9627,6 @@ async function sendMessage(
     );
 
     return;
-
   }
 
   const text =
@@ -8111,7 +9641,6 @@ async function sendMessage(
   ){
 
     return;
-
   }
 
   chatInput.value =
@@ -8136,7 +9665,6 @@ async function sendMessage(
 
     content:
       text
-
   });
 
   showTyping();
@@ -8189,14 +9717,12 @@ async function sendMessage(
 
             "Authorization":
               `Bearer ${state.sessionToken}`
-
           },
 
           body:
             JSON.stringify(
               body
             )
-
         }
       );
 
@@ -8210,19 +9736,20 @@ async function sendMessage(
     }catch{
 
       data = {};
-
     }
 
     if(
-      response.status === 401 ||
-      response.status === 403 ||
-      data?.membershipRequired === true
+      response.status ===
+      401 ||
+      response.status ===
+      403 ||
+      data?.membershipRequired ===
+      true
     ){
 
       throw new Error(
         "SESSION_REQUIRED"
       );
-
     }
 
     if(
@@ -8233,13 +9760,13 @@ async function sendMessage(
         data?.error ||
         "Elle could not answer right now."
       );
-
     }
 
     hideTyping();
 
     if(
-      data?.type === "image" &&
+      data?.type ===
+      "image" &&
       data?.image
     ){
 
@@ -8256,7 +9783,6 @@ async function sendMessage(
 
         content:
           "I created the image the user requested."
-
       });
 
       renderChips([
@@ -8266,7 +9792,6 @@ async function sendMessage(
       ]);
 
       return;
-
     }
 
     const reply =
@@ -8285,11 +9810,11 @@ async function sendMessage(
 
       content:
         reply
-
     });
 
     if(
-      data?.bookingRequired === true &&
+      data?.bookingRequired ===
+      true &&
       data?.bookingUrl
     ){
 
@@ -8307,11 +9832,11 @@ async function sendMessage(
         data?.chips ||
         []
       );
-
     }
 
     if(
-      data?.leadError === true &&
+      data?.leadError ===
+      true &&
       data?.leadErrorMessage
     ){
 
@@ -8319,7 +9844,6 @@ async function sendMessage(
         "elle",
         data.leadErrorMessage
       );
-
     }
 
   }catch(error){
@@ -8355,7 +9879,6 @@ async function sendMessage(
         "elle",
         "I hit a little hiccup. Try me again in a moment, love."
       );
-
     }
 
   }finally{
@@ -8364,9 +9887,7 @@ async function sendMessage(
       false;
 
     chatInput.focus();
-
   }
-
 }
 
 chatSend.addEventListener(
@@ -8374,7 +9895,6 @@ chatSend.addEventListener(
   () => {
 
     sendMessage();
-
   }
 );
 
@@ -8383,15 +9903,14 @@ chatInput.addEventListener(
   event => {
 
     if(
-      event.key === "Enter"
+      event.key ===
+      "Enter"
     ){
 
       event.preventDefault();
 
       sendMessage();
-
     }
-
   }
 );
 
@@ -8408,7 +9927,6 @@ function bringChatIntoView(){
 
       block:
         "start"
-
     });
 
   setTimeout(
@@ -8419,7 +9937,6 @@ function bringChatIntoView(){
     },
     450
   );
-
 }
 
 function promptChat(
@@ -8438,7 +9955,6 @@ function promptChat(
     },
     500
   );
-
 }
 
 heroAsk.addEventListener(
@@ -8447,7 +9963,7 @@ heroAsk.addEventListener(
 );
 
 /* =========================================================
-   MEMBER GREETING
+   GREETING
    ========================================================= */
 
 function greetMember(){
@@ -8470,13 +9986,22 @@ function greetMember(){
   const name =
     memberName &&
     memberName.toLowerCase() !==
-      "owner"
+    "owner"
       ? ` ${memberName}`
       : "";
 
   let greeting;
 
   if(
+    state.owner &&
+    state.ownerTestTier !==
+    "owner"
+  ){
+
+    greeting =
+      `Hey 💛 Owner master access is active. You’re previewing ${previewTierName()} without losing any owner permissions.`;
+
+  }else if(
     visibleAgeGroup() ===
     "13-17"
   ){
@@ -8488,7 +10013,6 @@ function greetMember(){
 
     greeting =
       `Hey${name} 💛 I’m Elle. Bring me the question, idea, decision, or messy middle.`;
-
   }
 
   addBubble(
@@ -8502,7 +10026,6 @@ function greetMember(){
     "I need ideas",
     "Create an image"
   ]);
-
 }
 
 /* =========================================================
@@ -8520,7 +10043,27 @@ function startLiveElle(){
     );
 
     return;
+  }
 
+  /*
+    OWNER MASTER ACCESS:
+
+    Owner can still open Live Elle
+    while previewing any tier.
+
+    The backend still receives the
+    owner test age context.
+  */
+
+  if(
+    state.owner
+  ){
+
+    promptChat(
+      "I want to talk to Live Elle."
+    );
+
+    return;
   }
 
   const permissions =
@@ -8530,7 +10073,8 @@ function startLiveElle(){
     visibleAgeGroup();
 
   if(
-    ageGroup !== "18+"
+    ageGroup !==
+    "18+"
   ){
 
     promptChat(
@@ -8538,11 +10082,11 @@ function startLiveElle(){
     );
 
     return;
-
   }
 
   if(
-    permissions.liveElle !== true
+    permissions.liveElle !==
+    true
   ){
 
     promptChat(
@@ -8550,13 +10094,11 @@ function startLiveElle(){
     );
 
     return;
-
   }
 
   promptChat(
     "I want to talk to Live Elle."
   );
-
 }
 
 liveStart.addEventListener(
@@ -8576,9 +10118,7 @@ heroLiveLearn.addEventListener(
 
         behavior:
           "smooth"
-
       });
-
   }
 );
 
@@ -8589,12 +10129,183 @@ askAboutLive.addEventListener(
     promptChat(
       "Explain how Live Elle works, including the 30-minute request and booking process."
     );
-
   }
 );
 
 /* =========================================================
-   PENPAL
+   PENPAL RULES
+   ========================================================= */
+
+function formatRuleTime(
+  seconds
+){
+
+  const safe =
+    Math.max(
+      0,
+      Number(
+        seconds ||
+        0
+      )
+    );
+
+  const minutes =
+    Math.floor(
+      safe / 60
+    );
+
+  const remaining =
+    safe % 60;
+
+  return `${minutes}:${String(remaining).padStart(2,"0")}`;
+}
+
+function closePenpalRules(
+  unlock=false
+){
+
+  if(
+    state.penpalRulesTimer
+  ){
+
+    clearInterval(
+      state.penpalRulesTimer
+    );
+
+    state.penpalRulesTimer =
+      null;
+  }
+
+  penpalRulesModal.classList.remove(
+    "show"
+  );
+
+  penpalRulesModal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.classList.remove(
+    "locked"
+  );
+
+  if(
+    !unlock
+  ){
+
+    return;
+  }
+
+  penpalBoard.scrollIntoView({
+
+    behavior:
+      "smooth",
+
+    block:
+      "center"
+  });
+
+  if(
+    state.owner
+  ){
+
+    penpalLock.textContent =
+      "Owner access open";
+
+    penpalStatus.textContent =
+      "Welcome in, Owner. Master access is active. The normal PenPal waiting period is bypassed for owner testing.";
+
+  }else{
+
+    penpalLock.textContent =
+      "Eligibility check next";
+
+    penpalStatus.textContent =
+      "Welcome in. Your full PenPal eligibility will be verified server-side before live connection and messaging tools are enabled.";
+  }
+}
+
+function startPenpalRules(){
+
+  if(
+    state.penpalRulesTimer
+  ){
+
+    clearInterval(
+      state.penpalRulesTimer
+    );
+  }
+
+  state.penpalRulesRemaining =
+    60;
+
+  penpalRulesCountdown.textContent =
+    "1:00";
+
+  penpalRulesProgress.style.transform =
+    "scaleX(1)";
+
+  penpalRulesModal.classList.add(
+    "show"
+  );
+
+  penpalRulesModal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.classList.add(
+    "locked"
+  );
+
+  state.penpalRulesTimer =
+    setInterval(
+      () => {
+
+        state.penpalRulesRemaining -=
+          1;
+
+        penpalRulesCountdown.textContent =
+          formatRuleTime(
+            state.penpalRulesRemaining
+          );
+
+        const progress =
+          Math.max(
+            0,
+            state.penpalRulesRemaining /
+            60
+          );
+
+        penpalRulesProgress.style.transform =
+          `scaleX(${progress})`;
+
+        if(
+          state.penpalRulesRemaining <=
+          0
+        ){
+
+          closePenpalRules(
+            true
+          );
+        }
+      },
+      1000
+    );
+}
+
+leavePenpalRules.addEventListener(
+  "click",
+  () => {
+
+    closePenpalRules(
+      false
+    );
+  }
+);
+
+/* =========================================================
+   PENPAL ENTRY
    ========================================================= */
 
 penpalAccess.addEventListener(
@@ -8610,7 +10321,26 @@ penpalAccess.addEventListener(
       );
 
       return;
+    }
 
+    /*
+      OWNER MASTER ACCESS
+
+      Owner may enter regardless
+      of preview tier.
+
+      The backend owner bypass is
+      added in the secure PenPal
+      backend batch.
+    */
+
+    if(
+      state.owner
+    ){
+
+      startPenpalRules();
+
+      return;
     }
 
     const ageGroup =
@@ -8620,31 +10350,40 @@ penpalAccess.addEventListener(
       visibleTierKey();
 
     if(
-      ageGroup !== "18+"
+      ageGroup !==
+      "18+"
     ){
 
       penpalStatus.textContent =
         "PenPal is currently for adults 18+ only.";
 
       return;
-
     }
 
     if(
-      tierKey !== "infinite" &&
-      !state.owner
+      tierKey !==
+      "infinite"
     ){
 
       penpalStatus.textContent =
-        "PenPal requires The Infinite ∞ membership plus two continuous active months.";
+        "PenPal requires The Infinite ∞ membership plus the full PenPal eligibility requirements.";
 
       return;
-
     }
 
-    penpalStatus.textContent =
-      "Your tier is eligible for the PenPal pathway. Full access will verify two continuous active months and your PenPal email token before connections are enabled.";
+    /*
+      Infinite members may begin
+      the entry flow.
 
+      Actual 60-day eligibility is
+      intentionally NOT trusted to
+      frontend JavaScript.
+
+      The secure backend check is
+      the next PenPal backend step.
+    */
+
+    startPenpalRules();
   }
 );
 
@@ -8653,8 +10392,7 @@ penpalLearn.addEventListener(
   () => {
 
     penpalStatus.textContent =
-      "PenPal is designed for friendship and genuine connection. Profiles use broad location only. Connections require mutual acceptance, with Block, Report, and End Connection safety controls.";
-
+      "PenPal is built for friendship and genuine connection. Profiles use broad location only, connections require mutual acceptance, and members will have Block, Report, and End Connection safety controls.";
   }
 );
 
@@ -8669,7 +10407,6 @@ function createWorldSession(){
   ){
 
     return;
-
   }
 
   state.worldSessionId =
@@ -8684,7 +10421,6 @@ function createWorldSession(){
     "elleWorldSession",
     state.worldSessionId
   );
-
 }
 
 function renderWorldData(
@@ -8780,7 +10516,6 @@ function renderWorldData(
         holder.appendChild(
           pill
         );
-
       }
     );
 
@@ -8790,7 +10525,6 @@ function renderWorldData(
     )
     .textContent =
       "";
-
 }
 
 async function sendWorldHeartbeat(){
@@ -8817,7 +10551,6 @@ async function sendWorldHeartbeat(){
               sessionId:
                 state.worldSessionId
             })
-
         }
       );
 
@@ -8826,7 +10559,6 @@ async function sendWorldHeartbeat(){
     ){
 
       return;
-
     }
 
     const data =
@@ -8839,7 +10571,6 @@ async function sendWorldHeartbeat(){
       renderWorldData(
         data.live
       );
-
     }
 
   }catch{
@@ -8850,9 +10581,7 @@ async function sendWorldHeartbeat(){
       )
       .textContent =
         "Elle World is taking a tiny rest. ✨";
-
   }
-
 }
 
 async function refreshWorld(){
@@ -8873,7 +10602,6 @@ async function refreshWorld(){
     ){
 
       return;
-
     }
 
     const data =
@@ -8886,7 +10614,6 @@ async function refreshWorld(){
       renderWorldData(
         data.live
       );
-
     }
 
   }catch{
@@ -8897,13 +10624,11 @@ async function refreshWorld(){
       )
       .textContent =
         "Elle World is taking a tiny rest. ✨";
-
   }
-
 }
 
 /* =========================================================
-   ELLE RADIO
+   RADIO
    ========================================================= */
 
 const ELLE_PLAYLIST = [
@@ -8991,7 +10716,6 @@ const ELLE_PLAYLIST = [
     artist:"AURYNELLE",
     file:"audio/You Are Still Here.mp3"
   }
-
 ];
 
 function normalizeTrack(
@@ -9003,7 +10727,6 @@ function normalizeTrack(
     ELLE_PLAYLIST.length
   ) %
   ELLE_PLAYLIST.length;
-
 }
 
 function renderPlaylist(){
@@ -9036,7 +10759,6 @@ function renderPlaylist(){
         button.classList.add(
           "active"
         );
-
       }
 
       const number =
@@ -9050,10 +10772,11 @@ function renderPlaylist(){
       number.textContent =
         String(
           index + 1
-        ).padStart(
-          2,
-          "0"
-        );
+        )
+          .padStart(
+            2,
+            "0"
+          );
 
       const name =
         document.createElement(
@@ -9077,11 +10800,11 @@ function renderPlaylist(){
 
           if(
             visiblePermissions()
-              .elleRadio !== true
+              .elleRadio !==
+            true
           ){
 
             return;
-
           }
 
           loadTrack(
@@ -9089,17 +10812,14 @@ function renderPlaylist(){
             true,
             true
           );
-
         }
       );
 
       trackList.appendChild(
         button
       );
-
     }
   );
-
 }
 
 function showTurntableTakeover(
@@ -9113,7 +10833,6 @@ function showTurntableTakeover(
     clearTimeout(
       state.takeoverTimer
     );
-
   }
 
   takeoverSong.textContent =
@@ -9151,7 +10870,6 @@ function showTurntableTakeover(
       },
       3000
     );
-
 }
 
 function loadTrack(
@@ -9162,11 +10880,11 @@ function loadTrack(
 
   if(
     visiblePermissions()
-      .elleRadio !== true
+      .elleRadio !==
+    true
   ){
 
     return;
-
   }
 
   state.trackIndex =
@@ -9204,7 +10922,6 @@ function loadTrack(
     showTurntableTakeover(
       track.title
     );
-
   }
 
   if(
@@ -9212,20 +10929,18 @@ function loadTrack(
   ){
 
     playRadio();
-
   }
-
 }
 
 async function playRadio(){
 
   if(
     visiblePermissions()
-      .elleRadio !== true
+      .elleRadio !==
+    true
   ){
 
     return;
-
   }
 
   if(
@@ -9237,7 +10952,6 @@ async function playRadio(){
       false,
       false
     );
-
   }
 
   try{
@@ -9257,9 +10971,7 @@ async function playRadio(){
 
     playPause.textContent =
       "▶";
-
   }
-
 }
 
 function pauseRadio(){
@@ -9271,7 +10983,6 @@ function pauseRadio(){
 
   playPause.textContent =
     "▶";
-
 }
 
 radioToggle.addEventListener(
@@ -9280,7 +10991,8 @@ radioToggle.addEventListener(
 
     if(
       visiblePermissions()
-        .elleRadio !== true
+        .elleRadio !==
+      true
     ){
 
       promptChat(
@@ -9288,7 +11000,6 @@ radioToggle.addEventListener(
       );
 
       return;
-
     }
 
     const open =
@@ -9311,9 +11022,7 @@ radioToggle.addEventListener(
         false,
         false
       );
-
     }
-
   }
 );
 
@@ -9336,9 +11045,7 @@ playPause.addEventListener(
       );
 
       playRadio();
-
     }
-
   }
 );
 
@@ -9351,7 +11058,6 @@ previousTrack.addEventListener(
       true,
       true
     );
-
   }
 );
 
@@ -9364,7 +11070,6 @@ nextTrack.addEventListener(
       true,
       true
     );
-
   }
 );
 
@@ -9377,12 +11082,11 @@ radioAudio.addEventListener(
       true,
       true
     );
-
   }
 );
 
 /* =========================================================
-   MEMBERSHIP DROPDOWN
+   MEMBERSHIP
    ========================================================= */
 
 const PLAN_DATA = {
@@ -9397,7 +11101,6 @@ const PLAN_DATA = {
 
     href:
       MEMBERSHIP_URL
-
   },
 
   "idea-circle":{
@@ -9410,7 +11113,6 @@ const PLAN_DATA = {
 
     href:
       MEMBERSHIP_URL
-
   },
 
   "infinite":{
@@ -9423,7 +11125,6 @@ const PLAN_DATA = {
 
     href:
       MEMBERSHIP_URL
-
   },
 
   "elle-next":{
@@ -9436,9 +11137,7 @@ const PLAN_DATA = {
 
     href:
       MEMBERSHIP_URL
-
   }
-
 };
 
 planSelect.addEventListener(
@@ -9459,7 +11158,6 @@ planSelect.addEventListener(
       );
 
       return;
-
     }
 
     planTitle.textContent =
@@ -9474,7 +11172,178 @@ planSelect.addEventListener(
     planDetail.classList.add(
       "show"
     );
+  }
+);
 
+/* =========================================================
+   CONTACT + REPORT
+   ========================================================= */
+
+function showSupport(){
+
+  supportMessage.textContent =
+    "";
+
+  supportMessage.classList.remove(
+    "show"
+  );
+
+  supportModal.classList.add(
+    "show"
+  );
+
+  supportModal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.classList.add(
+    "locked"
+  );
+}
+
+function hideSupport(){
+
+  supportModal.classList.remove(
+    "show"
+  );
+
+  supportModal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.classList.remove(
+    "locked"
+  );
+}
+
+openSupport.addEventListener(
+  "click",
+  showSupport
+);
+
+closeSupport.addEventListener(
+  "click",
+  hideSupport
+);
+
+supportModal.addEventListener(
+  "click",
+  event => {
+
+    if(
+      event.target ===
+      supportModal
+    ){
+
+      hideSupport();
+    }
+  }
+);
+
+supportCategory.addEventListener(
+  "change",
+  () => {
+
+    const category =
+      supportCategory.value;
+
+    const needsMember =
+      category ===
+      "member-report" ||
+      category ===
+      "penpal-safety";
+
+    reportedMemberField.classList.toggle(
+      "hidden",
+      !needsMember
+    );
+  }
+);
+
+saveSupportDraft.addEventListener(
+  "click",
+  () => {
+
+    const category =
+      String(
+        supportCategory.value ||
+        ""
+      ).trim();
+
+    const details =
+      String(
+        supportDetails.value ||
+        ""
+      ).trim();
+
+    if(
+      !category
+    ){
+
+      supportMessage.textContent =
+        "Choose what you need help with first.";
+
+      supportMessage.classList.add(
+        "show"
+      );
+
+      return;
+    }
+
+    if(
+      details.length <
+      10
+    ){
+
+      supportMessage.textContent =
+        "Add a little more detail so the report is useful.";
+
+      supportMessage.classList.add(
+        "show"
+      );
+
+      return;
+    }
+
+    const draft = {
+
+      createdAt:
+        new Date().toISOString(),
+
+      category,
+
+      reportedMember:
+        String(
+          reportedMember.value ||
+          ""
+        ).trim(),
+
+      details,
+
+      tier:
+        state.owner
+          ? `Owner · ${previewTierName()}`
+          : visibleTierName(),
+
+      owner:
+        state.owner === true
+    };
+
+    localStorage.setItem(
+      "elleSupportDraft",
+      JSON.stringify(
+        draft
+      )
+    );
+
+    supportMessage.textContent =
+      "Report draft saved on this device. The secure Google Sheets send is connected in the backend support step.";
+
+    supportMessage.classList.add(
+      "show"
+    );
   }
 );
 
@@ -9496,7 +11365,6 @@ function showTrust(){
   document.body.classList.add(
     "locked"
   );
-
 }
 
 function hideTrust(){
@@ -9513,7 +11381,6 @@ function hideTrust(){
   document.body.classList.remove(
     "locked"
   );
-
 }
 
 openTrust.addEventListener(
@@ -9528,7 +11395,6 @@ trustTop.addEventListener(
     event.preventDefault();
 
     showTrust();
-
   }
 );
 
@@ -9547,9 +11413,7 @@ trustModal.addEventListener(
     ){
 
       hideTrust();
-
     }
-
   }
 );
 
@@ -9572,7 +11436,6 @@ function clearSavedSession(){
         localStorage.removeItem(
           key
         );
-
       }
     );
 
@@ -9593,7 +11456,6 @@ function clearSavedSession(){
 
   state.history =
     [];
-
 }
 
 /* =========================================================
@@ -9624,7 +11486,6 @@ signOut.addEventListener(
               "Authorization":
                 `Bearer ${token}`
             }
-
           }
         );
 
@@ -9634,9 +11495,7 @@ signOut.addEventListener(
           "Server logout failed:",
           error
         );
-
       }
-
     }
 
     clearSavedSession();
@@ -9648,12 +11507,11 @@ signOut.addEventListener(
     showMemberGate(
       "visitor"
     );
-
   }
 );
 
 /* =========================================================
-   KEYBOARD CLOSE
+   ESCAPE
    ========================================================= */
 
 document.addEventListener(
@@ -9666,7 +11524,6 @@ document.addEventListener(
     ){
 
       return;
-
     }
 
     if(
@@ -9676,7 +11533,6 @@ document.addEventListener(
     ){
 
       closeGeneratedImage();
-
     }
 
     if(
@@ -9686,8 +11542,24 @@ document.addEventListener(
     ){
 
       hideTrust();
-
     }
+
+    if(
+      supportModal.classList.contains(
+        "show"
+      )
+    ){
+
+      hideSupport();
+    }
+
+    /*
+      PenPal rules intentionally
+      do not close with Escape.
+
+      They either finish the minute
+      or the member chooses Leave PenPal.
+    */
 
     if(
       mainNav.classList.contains(
@@ -9706,9 +11578,7 @@ document.addEventListener(
 
       menuToggle.textContent =
         "☰";
-
     }
-
   }
 );
 
@@ -9727,13 +11597,7 @@ async function continueStartup(){
     );
 
     return;
-
   }
-
-  /*
-    A returning member sees the switch
-    while the server verifies the session.
-  */
 
   showMemberGate(
     "member"
@@ -9756,7 +11620,6 @@ async function continueStartup(){
     );
 
     return;
-
   }
 
   applyAccess();
@@ -9765,7 +11628,8 @@ async function continueStartup(){
 
   if(
     visiblePermissions()
-      .elleRadio === true
+      .elleRadio ===
+    true
   ){
 
     loadTrack(
@@ -9773,7 +11637,6 @@ async function continueStartup(){
       false,
       false
     );
-
   }
 
   await powerOnMember(
@@ -9785,9 +11648,7 @@ async function continueStartup(){
   ){
 
     showAgeGate();
-
   }
-
 }
 
 /* =========================================================
@@ -9809,9 +11670,7 @@ setInterval(
     ){
 
       sendWorldHeartbeat();
-
     }
-
   },
   40000
 );
@@ -9825,9 +11684,7 @@ setInterval(
     ){
 
       refreshWorld();
-
     }
-
   },
   15000
 );
@@ -9844,9 +11701,7 @@ document.addEventListener(
       sendWorldHeartbeat();
 
       refreshWorld();
-
     }
-
   }
 );
 
@@ -9859,7 +11714,6 @@ function init(){
   renderPlaylist();
 
   continueStartup();
-
 }
 
 init();
@@ -9867,4 +11721,5 @@ init();
 </script>
 
 </body>
+
 </html>
