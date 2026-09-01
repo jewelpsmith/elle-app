@@ -6920,7 +6920,7 @@ body.elle-focused #live .live-copy .copy{
   margin-top:22px;
 }
 
-.live-room-promise span{
+.live-room-promise button{
   display:flex;
   align-items:center;
   justify-content:center;
@@ -6934,6 +6934,40 @@ body.elle-focused #live .live-copy .copy{
   font-weight:900;
   letter-spacing:.035em;
   text-align:center;
+  font-family:inherit;
+  cursor:pointer;
+  transition:transform .2s ease,border-color .2s ease,background .2s ease;
+}
+
+.live-room-promise button:hover,
+.live-room-promise button:focus-visible,
+.live-room-promise button[aria-expanded="true"]{
+  transform:translateY(-2px);
+  border-color:rgba(117,70,91,.42);
+  background:rgba(255,255,255,.88);
+  outline:none;
+}
+
+.live-promise-detail{
+  display:none;
+  grid-column:1/-1;
+  padding:15px 17px;
+  border:1px solid rgba(117,70,91,.18);
+  border-radius:17px;
+  color:#5f4c52;
+  background:rgba(255,252,248,.88);
+  font-size:12px;
+  line-height:1.6;
+  animation:livePromiseReveal .25s ease both;
+}
+
+.live-promise-detail.show{
+  display:block;
+}
+
+@keyframes livePromiseReveal{
+  from{opacity:0;transform:translateY(-5px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 body.elle-focused #live .live-services{
@@ -7091,7 +7125,7 @@ body.elle-focused #live .live-note{
     grid-template-columns:1fr;
   }
 
-  .live-room-promise span{
+  .live-room-promise button{
     justify-content:flex-start;
     padding-left:15px;
   }
@@ -7195,7 +7229,7 @@ body.elle-focused #live .live-note{
   max-width:560px;
 }
 
-.live-room-arrival-copy .live-room-promise span{
+.live-room-arrival-copy .live-room-promise button{
   border-color:rgba(91,67,57,.13);
   color:#574239;
   background:rgba(255,255,255,.62);
@@ -9668,9 +9702,10 @@ body.elle-focused[data-elle-tier="elle-next"] .tier-door{background:repeating-li
         </p>
 
         <div class="live-room-promise" aria-label="Live Elle experience">
-          <span>✦ Private conversation</span>
-          <span>♡ Human warmth</span>
-          <span>◷ 30 unhurried minutes</span>
+          <button type="button" data-live-promise="private" aria-expanded="false">✦ Private conversation</button>
+          <button type="button" data-live-promise="human" aria-expanded="false">♡ Human warmth</button>
+          <button type="button" data-live-promise="minutes" aria-expanded="false">◷ 30 unhurried minutes</button>
+          <div class="live-promise-detail" id="livePromiseDetail" aria-live="polite"></div>
         </div>
 
       </div>
@@ -14159,6 +14194,42 @@ document
   .forEach(button => {
     button.addEventListener("click", () => {
       openLiveElle(button.dataset.liveServiceChoice || "");
+    });
+  });
+
+const LIVE_PROMISE_DETAILS = {
+  private:
+    "A private one-on-one conversation. The details you share are used only to prepare for and support your visit. Live Elle is supportive guidance, not clinical therapy or emergency care.",
+  human:
+    "You are connecting with a real person for warm, attentive support—not an automated Live Elle chat session.",
+  minutes:
+    "Your booking reserves one 30-minute WhatsApp call or video-call time. Google Calendar sends the confirmed time plus the real Reschedule and Cancel controls."
+};
+
+const livePromiseDetail =
+  byId("livePromiseDetail");
+
+document
+  .querySelectorAll("[data-live-promise]")
+  .forEach(button => {
+    button.addEventListener("click", () => {
+      const wasOpen =
+        button.getAttribute("aria-expanded") === "true";
+
+      document
+        .querySelectorAll("[data-live-promise]")
+        .forEach(item => item.setAttribute("aria-expanded", "false"));
+
+      if(wasOpen){
+        livePromiseDetail.classList.remove("show");
+        livePromiseDetail.textContent = "";
+        return;
+      }
+
+      button.setAttribute("aria-expanded", "true");
+      livePromiseDetail.textContent =
+        LIVE_PROMISE_DETAILS[button.dataset.livePromise] || "";
+      livePromiseDetail.classList.add("show");
     });
   });
   /* =========================================================
