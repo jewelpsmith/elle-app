@@ -12840,31 +12840,129 @@ function looksLikeImageRequest(
   const lower =
     safeText(
       text
-    ).toLowerCase();
+    )
+      .toLowerCase()
+      .replace(
+        /\s+/g,
+        " "
+      )
+      .trim();
+
+  const imageThing =
+    "(?:image|picture|photo|portrait|artwork|graphic|logo|poster|flyer|wallpaper)";
+
+  const imageAction =
+    "(?:create|generate|make|draw|design|illustrate|paint|render)";
+
+  const actionRequest =
+    new RegExp(
+      `\\b${imageAction}\\b[\\s\\S]{0,80}\\b${imageThing}\\b|\\b${imageThing}\\b[\\s\\S]{0,80}\\b${imageAction}\\b`,
+      "i"
+    );
+
+  const naturalRequest =
+    new RegExp(
+      `(?:\\b(?:i want|i need|please|can you|could you|would you|give me|show me)\\b[\\s\\S]{0,80}\\b${imageThing}\\b|\\b${imageThing}\\b\\s+(?:of|for|with|showing|featuring)\\b)`,
+      "i"
+    );
 
   return (
-    lower.includes(
-      "create an image"
+    actionRequest.test(
+      lower
     ) ||
-    lower.includes(
-      "generate an image"
+    naturalRequest.test(
+      lower
     ) ||
-    lower.includes(
-      "make an image"
-    ) ||
-    lower.includes(
-      "draw "
-    ) ||
-    lower.startsWith(
-      "draw "
-    ) ||
-        lower.includes(
-      "create a picture"
-    ) ||
-    lower.includes(
-      "generate a picture"
+    /^(?:draw|illustrate|paint)\b/i.test(
+      lower
     )
   );
+}
+
+function isImageConfirmation(
+  text
+){
+
+  const lower =
+    safeText(
+      text
+    )
+      .toLowerCase()
+      .replace(
+        /[^a-z0-9\s]/g,
+        " "
+      )
+      .replace(
+        /\s+/g,
+        " "
+      )
+      .trim();
+
+  return /^(?:yes|yeah|yep|sure|okay|ok)?\s*(?:please\s+)?(?:generate|create|make|draw)(?:\s+(?:it|that|this|the image|the picture|the photo))?$|^(?:yes|yeah|yep|sure|go ahead|do it|please do)$/i.test(
+    lower
+  );
+}
+
+function mentionsImageThing(
+  text
+){
+
+  return /\b(?:image|picture|photo|portrait|artwork|graphic|logo|poster|flyer|wallpaper)\b/i.test(
+    safeText(
+      text
+    )
+  );
+}
+
+function resolveImagePrompt(
+  message
+){
+
+  if(
+    looksLikeImageRequest(
+      message
+    )
+  ){
+    return message;
+  }
+
+  if(
+    !isImageConfirmation(
+      message
+    )
+  ){
+    return "";
+  }
+
+  const earlierMessages =
+    state.history
+      .slice(
+        0,
+        -1
+      )
+      .slice(
+        -8
+      )
+      .reverse();
+
+  const earlierRequest =
+    earlierMessages.find(
+      item =>
+        item?.role ===
+          "user" &&
+        (
+          looksLikeImageRequest(
+            item?.content
+          ) ||
+          mentionsImageThing(
+            item?.content
+          )
+        )
+    );
+
+  return safeText(
+    earlierRequest?.content
+  ).trim();
 }
 
 /* =========================================================
@@ -13144,10 +13242,13 @@ async function sendChatMessage(){
 
   try{
 
-    if(
-      looksLikeImageRequest(
+    const imagePrompt =
+      resolveImagePrompt(
         message
-      )
+      );
+
+    if(
+      imagePrompt
     ){
 
       if(
@@ -13171,7 +13272,7 @@ async function sendChatMessage(){
 
             body:
               JSON.stringify({
-                prompt:message
+                prompt:imagePrompt
               })
           }
         );
@@ -13201,7 +13302,7 @@ async function sendChatMessage(){
 
       addImageBubble(
         src,
-        message
+        imagePrompt
       );
 
       state.history.push({
