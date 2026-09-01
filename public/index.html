@@ -898,8 +898,7 @@ textarea:focus-visible{
 
   background:#fff9fb;
 }
-
-.member-join.show{
+  .member-join.show{
   display:block;
 }
 
@@ -2247,8 +2246,7 @@ body.elle-powered .footer{
 .typing.show{
   display:flex;
 }
-
-.typing span{
+  .typing span{
 
   width:6px;
   height:6px;
@@ -2798,11 +2796,10 @@ body.elle-powered .footer{
 
   font-size:9px;
   font-weight:800;
-    letter-spacing:.08em;
+  letter-spacing:.08em;
   text-transform:uppercase;
 }
-
-.world-live-text{
+  .world-live-text{
 
   margin-top:11px;
 
@@ -4311,8 +4308,7 @@ body.elle-powered .footer{
     grid-column:auto;
   }
 }
-
-/* =========================================================
+  /* =========================================================
    LIVE ELLE
    ========================================================= */
 
@@ -5592,8 +5588,7 @@ body.elle-powered .footer{
 </style>
 </head>
 <body>
-
-<!-- =======================================================
+  <!-- =======================================================
      TURN ELLE ON
      ======================================================= -->
 
@@ -6198,7 +6193,7 @@ body.elle-powered .footer{
 
         <h2 class="title">
           Bring me the question.
-        </h2>
+                  </h2>
 
         <p class="copy">
           Ask for advice, explanations, ideas, drafts,
@@ -6442,7 +6437,7 @@ body.elle-powered .footer{
               <div class="radio-song-copy">
 
                 <strong id="songTitle">
-                  Crown Back On
+                  Put Your Crown Back On
                 </strong>
 
                 <span id="songArtist">
@@ -6797,8 +6792,7 @@ body.elle-powered .footer{
           </span>
 
         </label>
-
-        <button
+                <button
           type="button"
           class="penpal-enter-button"
           id="penpalEnterButton"
@@ -7798,7 +7792,6 @@ body.elle-powered .footer{
   </div>
 
 </section>
-
 <!-- MEMBERSHIP -->
 
 <section
@@ -8249,9 +8242,9 @@ body.elle-powered .footer{
   </div>
 
 </div>
-<script type="module">
 
-import {
+<script type="module">
+  import {
   upload as uploadBlob
 } from "https://esm.sh/@vercel/blob@2.0.0/client";
 
@@ -8997,8 +8990,7 @@ function showMemberGate(
     );
   }
 }
-
-function hideMemberGate(){
+  function hideMemberGate(){
 
   memberGate.classList.remove(
     "show"
@@ -9522,8 +9514,7 @@ memberCode.addEventListener(
     }
   }
 );
-
-/* =========================================================
+  /* =========================================================
    RESTORE SERVER SESSION
    ========================================================= */
 
@@ -10248,7 +10239,7 @@ function looksLikeImageRequest(
     lower.startsWith(
       "draw "
     ) ||
-    lower.includes(
+        lower.includes(
       "create a picture"
     ) ||
     lower.includes(
@@ -10824,18 +10815,14 @@ askAboutLive.addEventListener(
     );
   }
 );
-
-/* =========================================================
-   CONTINUES IN PART 5
-   ========================================================= */
   /* =========================================================
    ELLE RADIO
    ========================================================= */
 
 const PLAYLIST = [
   {
-    title:"Crown Back On",
-    file:"audio/Crown Back On.mp3"
+    title:"Put Your Crown Back On",
+    file:"audio/Put your crown back on.mp3"
   },
   {
     title:"After Midnight",
@@ -11248,7 +11235,7 @@ function renderWorld(
     );
 
   const countries =
-    Array.isArray(
+        Array.isArray(
       data.countries
     )
       ? data.countries
@@ -11847,8 +11834,7 @@ async function startPenpalReview(){
 
   penpalStatus.textContent =
     "Checking your secure PenPal eligibility...";
-
-  try{
+    try{
 
     const {
       response,
@@ -12852,8 +12838,7 @@ penpalPhotoReal.addEventListener(
     }
   }
 );
-
-/* =========================================================
+  /* =========================================================
    SAVE PROFILE
    ========================================================= */
 
@@ -12937,6 +12922,9 @@ async function saveCurrentPenpalProfile(
 
   try{
 
+    const profilePayload =
+      getProfileFormPayload();
+
     const choice =
       penpalPhotoReal.checked
         ? "real-photo"
@@ -12949,7 +12937,7 @@ async function saveCurrentPenpalProfile(
     const data =
       await penpalProfileApi(
         "save",
-        getProfileFormPayload()
+        profilePayload
       );
 
     const profile =
@@ -13448,8 +13436,7 @@ penpalViewButtons.forEach(
     button.addEventListener(
       "click",
       async () => {
-
-        if(
+                if(
           !state.penpalBoardOpened
         ){
 
@@ -13650,9 +13637,6 @@ penpalContactButtons.forEach(
 );
 
 /* =========================================================
-   CONTINUES IN PART 6
-   ========================================================= */
-  /* =========================================================
    PENPAL MESSENGER UI
    ========================================================= */
 
@@ -14412,8 +14396,7 @@ async function loadPenpalConnections(){
 
   return state.penpalConnections;
 }
-
-/* =========================================================
+  /* =========================================================
    PENPAL MESSAGE RENDER
    ========================================================= */
 
@@ -14603,15 +14586,15 @@ function renderPenpalMessages(){
           "PenPal"
         );
 
-      const name =
+      const messageName =
         document.createElement(
           "span"
         );
 
-      name.className =
+      messageName.className =
         "penpal-message-name";
 
-      name.textContent =
+      messageName.textContent =
         displayName;
 
       const text =
@@ -14638,7 +14621,7 @@ function renderPenpalMessages(){
         );
 
       bubble.append(
-        name,
+        messageName,
         text,
         time
       );
@@ -15279,6 +15262,1338 @@ penpalReportButton.addEventListener(
     supportDetails.focus();
   }
 );
+ /* =========================================================
+   FULL MEMBER PENPAL ENHANCEMENTS
+   ========================================================= */
+
+function installMemberPenpalStyles(){
+
+  if(
+    document.getElementById(
+      "memberPenpalStyles"
+    )
+  ){
+    return;
+  }
+
+  const style =
+    document.createElement(
+      "style"
+    );
+
+  style.id =
+    "memberPenpalStyles";
+
+  style.textContent = `
+
+    .real-member-board{
+      margin-top:28px;
+      padding:22px;
+      border:1px solid #ead8cb;
+      border-radius:24px;
+      background:rgba(255,255,255,.76);
+    }
+
+    .real-member-board-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:16px;
+    }
+
+    .real-member-board-head h3{
+      margin:0;
+      color:#603247;
+      font-family:"Playfair Display",serif;
+      font-size:28px;
+      font-weight:600;
+    }
+
+    .real-member-board-head p{
+      max-width:560px;
+      margin-top:6px;
+      color:#756963;
+      font-size:11px;
+      line-height:1.55;
+    }
+
+    .real-member-refresh{
+      flex:0 0 auto;
+      min-height:38px;
+      padding:0 14px;
+      border:1px solid #ddcdc2;
+      border-radius:999px;
+      background:#fff;
+      color:#603247;
+      font-size:9px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .real-member-grid{
+      display:grid;
+      grid-template-columns:
+        repeat(
+          3,
+          minmax(0,1fr)
+        );
+      gap:12px;
+    }
+
+    .real-member-card{
+      min-width:0;
+      padding:16px;
+      border:1px solid #eadfd6;
+      border-radius:19px;
+      background:#fffdfa;
+      box-shadow:
+        0 14px 30px -26px
+        rgba(57,35,31,.36);
+    }
+
+    .real-member-card h4{
+      margin:0;
+      color:#603247;
+      font-family:"Playfair Display",serif;
+      font-size:21px;
+      font-weight:600;
+    }
+
+    .real-member-region{
+      display:block;
+      margin-top:4px;
+      color:#a07b62;
+      font-size:8px;
+      font-weight:900;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .real-member-bio{
+      margin-top:10px;
+      color:#675b56;
+      font-size:10px;
+      line-height:1.55;
+    }
+
+    .real-member-meta{
+      margin-top:10px;
+      color:#7b6963;
+      font-size:9px;
+      line-height:1.55;
+    }
+
+    .real-member-connect{
+      width:100%;
+      min-height:40px;
+      margin-top:13px;
+      border:0;
+      border-radius:999px;
+      background:#603247;
+      color:#fff;
+      font-size:9px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .real-member-connect:disabled{
+      opacity:.48;
+      cursor:not-allowed;
+    }
+
+    .real-member-empty{
+      grid-column:1/-1;
+      padding:20px;
+      border:1px dashed #dccdc4;
+      border-radius:16px;
+      color:#756963;
+      background:#fffaf6;
+      text-align:center;
+      font-size:10px;
+      line-height:1.6;
+    }
+
+    .penpal-request-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:6px;
+      margin:6px 0 10px;
+    }
+
+    .penpal-request-actions button{
+      min-height:30px;
+      border-radius:999px;
+      font-size:8px;
+      font-weight:900;
+      cursor:pointer;
+    }
+
+    .penpal-request-accept{
+      border:0;
+      background:#e6a66e;
+      color:#2a1020;
+    }
+
+    .penpal-request-decline{
+      border:1px solid rgba(255,255,255,.20);
+      background:rgba(255,255,255,.06);
+      color:#fff;
+    }
+
+    .penpal-request-note{
+      display:block;
+      margin:-2px 0 9px;
+      padding:0 5px;
+      color:rgba(255,255,255,.62);
+      font-size:8px;
+      line-height:1.4;
+    }
+
+    @media(max-width:860px){
+
+      .real-member-grid{
+        grid-template-columns:
+          repeat(
+            2,
+            minmax(0,1fr)
+          );
+      }
+    }
+
+    @media(max-width:620px){
+
+      .real-member-board{
+        padding:16px;
+      }
+
+      .real-member-board-head{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .real-member-grid{
+        grid-template-columns:1fr;
+      }
+    }
+  `;
+
+  document.head.appendChild(
+    style
+  );
+}
+
+/* =========================================================
+   REAL MEMBER DIRECTORY
+   ========================================================= */
+
+function installRealMemberBoard(){
+
+  if(
+    document.getElementById(
+      "realMemberBoard"
+    )
+  ){
+    return;
+  }
+
+  const section =
+    document.createElement(
+      "section"
+    );
+
+  section.className =
+    "real-member-board";
+
+  section.id =
+    "realMemberBoard";
+
+  section.innerHTML = `
+
+    <div class="real-member-board-head">
+
+      <div>
+
+        <h3>
+          Meet Real PenPal Members
+        </h3>
+
+        <p>
+          Eligible members who completed their profile
+          and chose to be open to respectful friendship
+          connections appear here.
+        </p>
+
+      </div>
+
+      <button
+        type="button"
+        class="real-member-refresh"
+        id="realMemberRefresh"
+      >
+        Refresh Members
+      </button>
+
+    </div>
+
+    <div
+      class="real-member-grid"
+      id="realMemberGrid"
+    >
+
+      <div class="real-member-empty">
+        Securely enter PenPal to load available members.
+      </div>
+
+    </div>
+  `;
+
+  const parent =
+    penpalBoardLocked
+      ?.parentElement ||
+    penpalMemberProfile
+      ?.parentElement;
+
+  if(
+    !parent
+  ){
+    return;
+  }
+
+  if(
+    penpalBoardLocked &&
+    penpalBoardLocked.parentElement ===
+      parent
+  ){
+
+    parent.insertBefore(
+      section,
+      penpalBoardLocked
+    );
+
+  }else{
+
+    parent.appendChild(
+      section
+    );
+  }
+
+  document
+    .getElementById(
+      "realMemberRefresh"
+    )
+    ?.addEventListener(
+      "click",
+      loadRealMemberBoard
+    );
+}
+
+function renderRealMemberBoard(
+  profiles=[]
+){
+
+  installRealMemberBoard();
+
+  const grid =
+    document.getElementById(
+      "realMemberGrid"
+    );
+
+  if(
+    !grid
+  ){
+    return;
+  }
+
+  grid.innerHTML =
+    "";
+
+  if(
+    !Array.isArray(
+      profiles
+    ) ||
+    profiles.length ===
+      0
+  ){
+
+    const empty =
+      document.createElement(
+        "div"
+      );
+
+    empty.className =
+      "real-member-empty";
+
+    empty.textContent =
+      "No other eligible members are open to new connections right now. Check back later. 💛";
+
+    grid.appendChild(
+      empty
+    );
+
+    return;
+  }
+
+  profiles.forEach(
+    profile => {
+
+      const card =
+        document.createElement(
+          "article"
+        );
+
+      card.className =
+        "real-member-card";
+
+      const name =
+        document.createElement(
+          "h4"
+        );
+
+      name.textContent =
+        profile?.displayName ||
+        "PenPal Member";
+
+      const region =
+        document.createElement(
+          "span"
+        );
+
+      region.className =
+        "real-member-region";
+
+      region.textContent =
+        profile?.broadRegion ||
+        "Broad region not listed";
+
+      const bio =
+        document.createElement(
+          "p"
+        );
+
+      bio.className =
+        "real-member-bio";
+
+      bio.textContent =
+        profile?.bio ||
+        "";
+
+      const meta =
+        document.createElement(
+          "div"
+        );
+
+      meta.className =
+        "real-member-meta";
+
+      const interests =
+        Array.isArray(
+          profile?.interests
+        )
+          ? profile.interests.join(
+              ", "
+            )
+          : "";
+
+      const languages =
+        Array.isArray(
+          profile?.languages
+        )
+          ? profile.languages.join(
+              ", "
+            )
+          : "";
+
+      meta.textContent =
+        [
+          profile?.personality
+            ? `Personality: ${profile.personality}`
+            : "",
+
+          interests
+            ? `Interests: ${interests}`
+            : "",
+
+          languages
+            ? `Languages: ${languages}`
+            : "",
+
+          profile?.lookingFor
+            ? `Looking for: ${profile.lookingFor}`
+            : ""
+        ]
+          .filter(Boolean)
+          .join(" · ");
+
+      const connect =
+        document.createElement(
+          "button"
+        );
+
+      connect.type =
+        "button";
+
+      connect.className =
+        "real-member-connect";
+
+      connect.textContent =
+        state.penpalProfileComplete
+          ? "Connect"
+          : "Complete Your Profile First";
+
+      connect.disabled =
+        state.penpalProfileComplete !==
+        true;
+
+      connect.addEventListener(
+        "click",
+        async () => {
+
+          if(
+            connect.disabled
+          ){
+            return;
+          }
+
+          setBusy(
+            connect,
+            true,
+            "Connecting..."
+          );
+
+          try{
+
+            const connection =
+              await createRealMemberConnection(
+                profile.profileId
+              );
+
+            if(
+              !connection
+            ){
+              return;
+            }
+
+            if(
+              connection.status ===
+              "accepted"
+            ){
+
+              penpalStatus.textContent =
+                `Your connection with ${profile.displayName || "this member"} is active.`;
+
+            }else{
+
+              penpalStatus.textContent =
+                `Connection request sent to ${profile.displayName || "this member"}. They can accept or decline it.`;
+            }
+
+            await openPenpalMessenger(
+              connection
+            );
+
+          }catch(error){
+
+            penpalStatus.textContent =
+              error?.message ||
+              "That PenPal connection could not be opened.";
+
+          }finally{
+
+            setBusy(
+              connect,
+              false
+            );
+          }
+        }
+      );
+
+      card.append(
+        name,
+        region,
+        bio,
+        meta,
+        connect
+      );
+
+      grid.appendChild(
+        card
+      );
+    }
+  );
+}
+
+async function loadRealMemberBoard(){
+
+  if(
+    !state.penpalBoardOpened ||
+    !state.penpalAccessToken
+  ){
+
+    renderRealMemberBoard(
+      []
+    );
+
+    return [];
+  }
+
+  const valid =
+    await validatePenpalAccess(
+      "board"
+    );
+
+  if(
+    !valid
+  ){
+    return [];
+  }
+
+  try{
+
+    const data =
+      await penpalProfileApi(
+        "board-list"
+      );
+
+    const profiles =
+      Array.isArray(
+        data?.profiles
+      )
+        ? data.profiles
+        : [];
+
+    renderRealMemberBoard(
+      profiles
+    );
+
+    return profiles;
+
+  }catch(error){
+
+    const grid =
+      document.getElementById(
+        "realMemberGrid"
+      );
+
+    if(
+      grid
+    ){
+
+      grid.innerHTML =
+        "";
+
+      const empty =
+        document.createElement(
+          "div"
+        );
+
+      empty.className =
+        "real-member-empty";
+
+      empty.textContent =
+        error?.message ||
+        "The PenPal member board could not be loaded.";
+
+      grid.appendChild(
+        empty
+      );
+    }
+
+    return [];
+  }
+}
+
+/* =========================================================
+   REAL MEMBER CONNECTION
+   ========================================================= */
+
+async function createRealMemberConnection(
+  targetProfileId
+){
+
+  const valid =
+    await validatePenpalAccess(
+      "connect"
+    );
+
+  if(
+    !valid
+  ){
+    return null;
+  }
+
+  await loadPenpalProfile();
+
+  if(
+    !state.penpalProfileComplete
+  ){
+
+    penpalProfileEditor.classList.add(
+      "show"
+    );
+
+    penpalStatus.textContent =
+      "Finish your own PenPal profile before connecting.";
+
+    return null;
+  }
+
+  const connections =
+    await loadPenpalConnections();
+
+  const reusable =
+    connections.find(
+      connection =>
+        connection?.otherProfile
+          ?.profileId ===
+          targetProfileId &&
+        ![
+          "ended",
+          "blocked",
+          "declined"
+        ].includes(
+          connection.status
+        )
+    );
+
+  if(
+    reusable
+  ){
+
+    state.penpalActiveConnection =
+      reusable;
+
+    return reusable;
+  }
+
+  const data =
+    await penpalProfileApi(
+      "create-connection",
+      {
+        targetProfileId
+      }
+    );
+
+  const connection =
+    data?.connection ||
+    null;
+
+  if(
+    connection
+  ){
+
+    state.penpalActiveConnection =
+      connection;
+  }
+
+  return connection;
+}
+
+/* =========================================================
+   SAFE SHOWCASE REUSE
+   ========================================================= */
+
+async function openReusableShowcaseConnection(
+  showcaseKey
+){
+
+  const valid =
+    await validatePenpalAccess(
+      "connect"
+    );
+
+  if(
+    !valid
+  ){
+    return null;
+  }
+
+  await loadPenpalProfile();
+
+  if(
+    !state.penpalProfileComplete
+  ){
+
+    penpalProfileEditor.classList.add(
+      "show"
+    );
+
+    penpalStatus.textContent =
+      "Finish your own PenPal profile before Contact unlocks.";
+
+    updateContactButtons();
+
+    return null;
+  }
+
+  const connections =
+    await loadPenpalConnections();
+
+  const reusable =
+    connections.find(
+      connection =>
+        connection.showcaseKey ===
+          showcaseKey &&
+        ![
+          "ended",
+          "blocked",
+          "declined"
+        ].includes(
+          connection.status
+        )
+    );
+
+  if(
+    reusable
+  ){
+
+    state.penpalActiveConnection =
+      reusable;
+
+    return reusable;
+  }
+
+  const data =
+    await penpalProfileApi(
+      "create-connection",
+      {
+        showcaseKey
+      }
+    );
+
+  const connection =
+    data?.connection ||
+    null;
+
+  if(
+    connection
+  ){
+
+    state.penpalActiveConnection =
+      connection;
+  }
+
+  return connection;
+}
+
+function installShowcaseConnectionReuse(){
+
+  penpalContactButtons.forEach(
+    button => {
+
+      if(
+        button.dataset
+          .reuseInstalled ===
+          "true"
+      ){
+        return;
+      }
+
+      button.dataset
+        .reuseInstalled =
+        "true";
+
+      button.addEventListener(
+        "click",
+        event => {
+
+          /*
+            Capture phase stops the older
+            showcase click handler from
+            creating duplicate connections.
+          */
+
+          event.preventDefault();
+
+          event.stopImmediatePropagation();
+
+          if(
+            button.disabled
+          ){
+
+            if(
+              !state.penpalProfileComplete
+            ){
+
+              penpalProfileEditor.classList.add(
+                "show"
+              );
+
+              penpalStatus.textContent =
+                "Finish your PenPal profile first.";
+            }
+
+            return;
+          }
+
+          const key =
+            button.dataset.profile ||
+            "";
+
+          const name =
+            SHOWCASE_NAMES[
+              key
+            ] ||
+            "this member";
+
+          void (
+            async () => {
+
+              setBusy(
+                button,
+                true,
+                "Connecting..."
+              );
+
+              try{
+
+                const connection =
+                  await openReusableShowcaseConnection(
+                    key
+                  );
+
+                if(
+                  !connection
+                ){
+                  return;
+                }
+
+                penpalStatus.textContent =
+                  `You’re connected with ${name}. Opening your private PenPal conversation...`;
+
+                await openPenpalMessenger(
+                  connection
+                );
+
+              }catch(error){
+
+                penpalStatus.textContent =
+                  error?.message ||
+                  `Elle could not open the connection with ${name}.`;
+
+              }finally{
+
+                setBusy(
+                  button,
+                  false
+                );
+
+                updateContactButtons();
+              }
+            }
+          )();
+        },
+        true
+      );
+    }
+  );
+}
+
+/* =========================================================
+   ACCEPT / DECLINE REAL MEMBER REQUESTS
+   ========================================================= */
+
+async function respondToRealMemberRequest(
+  connection,
+  decision
+){
+
+  if(
+    !connection?.connectionId
+  ){
+    return null;
+  }
+
+  const valid =
+    await validatePenpalAccess(
+      "connect"
+    );
+
+  if(
+    !valid
+  ){
+    return null;
+  }
+
+  const data =
+    await penpalProfileApi(
+      "respond-connection",
+      {
+        connectionId:
+          connection.connectionId,
+
+        decision
+      }
+    );
+
+  await loadPenpalConnections();
+
+  const updated =
+    state.penpalConnections.find(
+      item =>
+        item.connectionId ===
+        connection.connectionId
+    ) ||
+    data?.connection ||
+    null;
+
+  if(
+    decision ===
+      "accept"
+  ){
+
+    state.penpalActiveConnection =
+      updated;
+
+    penpalStatus.textContent =
+      `Connection accepted with ${connectionName(updated)}. You can message each other now. 💛`;
+
+  }else{
+
+    if(
+      state.penpalActiveConnection
+        ?.connectionId ===
+        connection.connectionId
+    ){
+
+      state.penpalActiveConnection =
+        null;
+    }
+
+    penpalStatus.textContent =
+      "Connection request declined.";
+  }
+
+  return updated;
+}
+
+/* =========================================================
+   ADD REQUEST CONTROLS WITHOUT REDECLARING THREAD RENDERER
+   ========================================================= */
+
+function decoratePenpalRequestThreads(){
+
+  const wrap =
+    messengerEl(
+      "penpalThreadItems"
+    );
+
+  if(
+    !wrap
+  ){
+    return;
+  }
+
+  const threadButtons =
+    Array.from(
+      wrap.querySelectorAll(
+        ".penpal-thread-item"
+      )
+    );
+
+  threadButtons.forEach(
+    (
+      button,
+      index
+    ) => {
+
+      if(
+        button.dataset
+          .requestDecorated ===
+          "true"
+      ){
+        return;
+      }
+
+      const connection =
+        state.penpalConnections[
+          index
+        ];
+
+      if(
+        !connection
+      ){
+        return;
+      }
+
+      button.dataset
+        .requestDecorated =
+        "true";
+
+      if(
+        connection.status !==
+          "pending"
+      ){
+        return;
+      }
+
+      if(
+        connection.requestedByMe ===
+          true
+      ){
+
+        const note =
+          document.createElement(
+            "span"
+          );
+
+        note.className =
+          "penpal-request-note";
+
+        note.textContent =
+          "Waiting for the other member to accept or decline.";
+
+        button.insertAdjacentElement(
+          "afterend",
+          note
+        );
+
+        return;
+      }
+
+      const actions =
+        document.createElement(
+          "div"
+        );
+
+      actions.className =
+        "penpal-request-actions";
+
+      const accept =
+        document.createElement(
+          "button"
+        );
+
+      accept.type =
+        "button";
+
+      accept.className =
+        "penpal-request-accept";
+
+      accept.textContent =
+        "Accept";
+
+      const decline =
+        document.createElement(
+          "button"
+        );
+
+      decline.type =
+        "button";
+
+      decline.className =
+        "penpal-request-decline";
+
+      decline.textContent =
+        "Decline";
+
+      accept.addEventListener(
+        "click",
+        async event => {
+
+          event.preventDefault();
+
+          event.stopPropagation();
+
+          setBusy(
+            accept,
+            true,
+            "Accepting..."
+          );
+
+          try{
+
+            const updated =
+              await respondToRealMemberRequest(
+                connection,
+                "accept"
+              );
+
+            if(
+              updated
+            ){
+
+              await openPenpalMessenger(
+                updated
+              );
+            }
+
+          }catch(error){
+
+            window.alert(
+              error?.message ||
+              "That connection request could not be accepted."
+            );
+
+          }finally{
+
+            setBusy(
+              accept,
+              false
+            );
+          }
+        }
+      );
+
+      decline.addEventListener(
+        "click",
+        async event => {
+
+          event.preventDefault();
+
+          event.stopPropagation();
+
+          if(
+            !window.confirm(
+              "Decline this PenPal connection request?"
+            )
+          ){
+            return;
+          }
+
+          setBusy(
+            decline,
+            true,
+            "Declining..."
+          );
+
+          try{
+
+            await respondToRealMemberRequest(
+              connection,
+              "decline"
+            );
+
+          }catch(error){
+
+            window.alert(
+              error?.message ||
+              "That connection request could not be declined."
+            );
+
+          }finally{
+
+            setBusy(
+              decline,
+              false
+            );
+          }
+        }
+      );
+
+      actions.append(
+        accept,
+        decline
+      );
+
+      button.insertAdjacentElement(
+        "afterend",
+        actions
+      );
+    }
+  );
+}
+
+function installPenpalThreadObserver(){
+
+  installPenpalMessenger();
+
+  const wrap =
+    messengerEl(
+      "penpalThreadItems"
+    );
+
+  if(
+    !wrap ||
+    wrap.dataset
+      .requestObserverInstalled ===
+      "true"
+  ){
+    return;
+  }
+
+  wrap.dataset
+    .requestObserverInstalled =
+    "true";
+
+  const observer =
+    new MutationObserver(
+      () => {
+
+        decoratePenpalRequestThreads();
+      }
+    );
+
+  observer.observe(
+    wrap,
+    {
+      childList:true
+    }
+  );
+
+  decoratePenpalRequestThreads();
+}
+
+/* =========================================================
+   REFRESH MEMBER DATA AFTER PENPAL ENTRY
+   ========================================================= */
+
+penpalEnterButton.addEventListener(
+  "click",
+  async () => {
+
+    for(
+      let attempt = 0;
+      attempt < 24;
+      attempt += 1
+    ){
+
+      if(
+        state.penpalBoardOpened &&
+        state.penpalAccessToken
+      ){
+
+        await loadRealMemberBoard();
+
+        await loadPenpalConnections();
+
+        decoratePenpalRequestThreads();
+
+        break;
+      }
+
+      await wait(
+        250
+      );
+    }
+  }
+);
+
+/* =========================================================
+   REFRESH MEMBER DATA AFTER PROFILE SAVE
+   ========================================================= */
+
+penpalSaveProfile.addEventListener(
+  "click",
+  async () => {
+
+    await wait(
+      650
+    );
+
+    if(
+      state.penpalBoardOpened &&
+      state.penpalAccessToken
+    ){
+
+      await loadRealMemberBoard();
+
+      await loadPenpalConnections();
+
+      decoratePenpalRequestThreads();
+    }
+  }
+);
 
 /* =========================================================
    MEMBERSHIP PICKER
@@ -15716,6 +17031,10 @@ setInterval(
 
       closePenpalMessenger();
 
+      renderRealMemberBoard(
+        []
+      );
+
       showPenpalLock(
         "🔒",
         "PenPal session expired",
@@ -15737,6 +17056,14 @@ setInterval(
 async function startElle(){
 
   installPenpalMessenger();
+
+  installMemberPenpalStyles();
+
+  installRealMemberBoard();
+
+  installPenpalThreadObserver();
+
+  installShowcaseConnectionReuse();
 
   renderChips();
 
