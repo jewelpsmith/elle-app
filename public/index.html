@@ -12279,15 +12279,43 @@ function visiblePermissions(){
   const preview =
     activePreview();
 
-  if(
-    preview
-  ){
-
-    return preview.permissions;
-  }
-
-  return state.permissions ||
+  const raw =
+    preview?.permissions ||
+    state.permissions ||
     {};
+
+  const tierKey =
+    safeText(
+      preview
+        ? state.ownerTestTier
+        : state.member?.tierKey ||
+          state.member?.tier
+    ).toLowerCase();
+
+  const liveVideo =
+    raw.liveVideo === true ||
+    raw.video === true;
+
+  return {
+    ...raw,
+    chat:
+      raw.chat === true ||
+      raw.elleChat === true,
+    image:
+      raw.image === true ||
+      raw.elleChat === true,
+    radio:
+      raw.radio === true ||
+      raw.elleRadio === true,
+    liveElle:
+      raw.liveElle === true,
+    liveVideo,
+    video:liveVideo,
+    penpal:
+      raw.penpal === true ||
+      raw.ownerMode === true ||
+      tierKey === "infinite"
+  };
 }
 
 function visibleAgeGroup(){
