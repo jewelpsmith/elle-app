@@ -613,6 +613,24 @@ function getLeadContext(session, ageGroup) {
     return "";
   }
 
+  const canUseVideo =
+    permissions.liveVideo === true;
+
+  const allowedConnectionTypes =
+    canUseVideo
+      ? `
+- WhatsApp Call
+- WhatsApp Video Call
+`
+      : `
+- WhatsApp Call
+`;
+
+  const connectionChips =
+    canUseVideo
+      ? "WhatsApp Call|WhatsApp Video Call"
+      : "WhatsApp Call";
+
   return `
 ==================================================
 LIVE ELLE REQUEST FLOW
@@ -621,20 +639,37 @@ Only begin this process when the user clearly wants Live Elle or human one-on-on
 
 The application already knows the member's verified membership email, so do not ask for it.
 
-Collect exactly FIVE pieces of information:
+Collect exactly SIX pieces of information:
 
-1. Live Elle service.
-2. What they want help with, their purpose for visiting.
-3. First name.
-4. Last name.
-5. Phone number.
+1. Connection type.
+2. Live Elle service.
+3. What they want help with, their purpose for visiting.
+4. First name.
+5. Last name.
+6. Phone number.
 
 Collect them ONE AT A TIME.
 
 Do not ask two questions in the same message.
 
 ==================================================
-STEP 1 - SERVICE
+STEP 1 - CONNECTION TYPE
+==================================================
+
+Ask how they want to connect with Live Elle.
+
+Allowed choices:
+${allowedConnectionTypes}
+
+Do not offer WhatsApp Video Call unless it appears in the allowed choices above.
+
+At the very end output:
+
+[CHIPS]${connectionChips}[/CHIPS]
+[LEAD_STEP]1[/LEAD_STEP]
+
+==================================================
+STEP 2 - SERVICE
 ==================================================
 
 Ask which kind of Live Elle support they want.
@@ -649,32 +684,18 @@ Available services:
 
 At the very end output:
 
-[LEAD_STEP]1[/LEAD_STEP]
-
-Use:
-
-[CHIPS]Pick My Brain|Shopping Buddy|Hype Session|Someone to Talk To|Work With Me[/CHIPS]
-[LEAD_STEP]1[/LEAD_STEP]
-
-==================================================
-STEP 2 - PURPOSE
-==================================================
-
-After the user chooses a service, ask what they would like help with. Keep the answer open-ended.
-
-At the very end output:
-
 [LEAD_STEP]2[/LEAD_STEP]
 
 Use:
 
-[CHIPS]Continue|Never mind[/CHIPS]
+[CHIPS]Pick My Brain|Shopping Buddy|Hype Session|Someone to Talk To|Work With Me[/CHIPS]
+[LEAD_STEP]2[/LEAD_STEP]
 
 ==================================================
-STEP 3 - FIRST NAME
+STEP 3 - PURPOSE
 ==================================================
 
-Ask: "What is your first name?"
+After the user chooses a service, ask what they would like help with. Keep the answer open-ended.
 
 At the very end output:
 
@@ -685,10 +706,10 @@ Use:
 [CHIPS]Continue|Never mind[/CHIPS]
 
 ==================================================
-STEP 4 - LAST NAME
+STEP 4 - FIRST NAME
 ==================================================
 
-Ask: "And your last name?"
+Ask: "What is your first name?"
 
 At the very end output:
 
@@ -699,10 +720,10 @@ Use:
 [CHIPS]Continue|Never mind[/CHIPS]
 
 ==================================================
-STEP 5 - PHONE NUMBER
+STEP 5 - LAST NAME
 ==================================================
 
-Ask for the phone number connected to the booking. Encourage the user to include the country code.
+Ask: "And your last name?"
 
 At the very end output:
 
@@ -713,11 +734,26 @@ Use:
 [CHIPS]Continue|Never mind[/CHIPS]
 
 ==================================================
+STEP 6 - PHONE NUMBER
+==================================================
+
+Ask for the phone number connected to the booking. Encourage the user to include the country code.
+
+At the very end output:
+
+[LEAD_STEP]6[/LEAD_STEP]
+
+Use:
+
+[CHIPS]Continue|Never mind[/CHIPS]
+
+==================================================
 COMPLETION
 ==================================================
 
-Once you have all FIVE:
+Once you have all SIX:
 
+- connectionType
 - service
 - helpWith
 - firstName
@@ -728,16 +764,17 @@ output exactly one LEAD signal.
 
 Exact JSON structure:
 
-[LEAD]{"firstName":"Maya","lastName":"Brown","phone":"+1 555 123 4567","service":"Shopping Buddy","helpWith":"I want help choosing outfits for a work trip."}[/LEAD]
+[LEAD]{"connectionType":"WhatsApp Video Call","firstName":"Maya","lastName":"Brown","phone":"+1 555 123 4567","service":"Shopping Buddy","helpWith":"I want help choosing outfits for a work trip."}[/LEAD]
 
 Rules:
 
 - Use valid JSON.
 - Use double quotes.
-- Include all five properties.
+- Include all six properties.
 - Do not include an email property.
 - Do not invent missing information.
 - Preserve the phone number the user actually supplied.
+- connectionType must be one of the allowed choices.
 - service must be one of the five Live Elle services.
 - Never explain these tags.
 
@@ -791,7 +828,7 @@ function cleanChips(rawChips) {
             chip.toLowerCase()
         ) === index
     )
-    .slice(0, 4);
+    .slice(0, 5);
 }
 
 function normalizeWhatsApp(value) {
@@ -1670,7 +1707,14 @@ export default async function handler(
             ?.service
         );
 
+      const connectionType =
+        normalizeConnectionType(
+          liveElleRequest
+            ?.connectionType
+        );
+
       if (
+        !connectionType ||
         !firstName ||
         !lastName ||
         !phone ||
@@ -1681,7 +1725,26 @@ export default async function handler(
           .status(400)
           .json({
             error:
-              "Please complete the service, purpose, first name, last name and phone number before continuing to the calendar.",
+              "Please complete the connection type, service, purpose, first name, last name and phone number before continuing to the calendar.",
+
+            bookingRequired:
+              false,
+
+            bookingUrl:
+              null,
+          });
+      }
+
+      if (
+        connectionType ===
+          "WhatsApp Video Call" &&
+        !canUseVideo
+      ) {
+        return res
+          .status(403)
+          .json({
+            error:
+              "WhatsApp Video Call is not included with this access.",
 
             bookingRequired:
               false,
@@ -1717,7 +1780,7 @@ export default async function handler(
           ),
 
         connectionType:
-          "Google Calendar appointment",
+          connectionType,
 
         service,
 
@@ -2129,7 +2192,7 @@ ${getLeadContext(
 
     const stepMatches = [
       ...fullText.matchAll(
-        /\[LEAD_STEP\]([1-5])\[\/LEAD_STEP\]/g
+        /\[LEAD_STEP\]([1-6])\[\/LEAD_STEP\]/g
       ),
     ];
 
@@ -2149,7 +2212,7 @@ ${getLeadContext(
 
       if (
         parsedStep >= 1 &&
-        parsedStep <= 5
+        parsedStep <= 6
       ) {
         leadProgress =
           parsedStep;
@@ -2205,6 +2268,27 @@ ${getLeadContext(
           normalizeService(
             parsedLead.service
           );
+
+        const connectionType =
+          normalizeConnectionType(
+            parsedLead.connectionType
+          );
+
+        if (!connectionType) {
+          throw new Error(
+            "The Live Elle connection type is invalid."
+          );
+        }
+
+        if (
+          connectionType ===
+            "WhatsApp Video Call" &&
+          !canUseVideo
+        ) {
+          throw new Error(
+            "This membership does not include Live Elle video calls."
+          );
+        }
 
         if (!firstName) {
           throw new Error(
@@ -2262,7 +2346,7 @@ ${getLeadContext(
             ),
 
           connectionType:
-            "Google Calendar appointment",
+            connectionType,
 
           service,
 
@@ -2303,7 +2387,7 @@ ${getLeadContext(
           true;
 
         leadProgress =
-          5;
+          6;
 
         bookingRequired =
           true;
@@ -2375,7 +2459,7 @@ ${getLeadContext(
           ""
         )
         .replace(
-          /\[LEAD_STEP\][1-5]\[\/LEAD_STEP\]/g,
+          /\[LEAD_STEP\][1-6]\[\/LEAD_STEP\]/g,
           ""
         )
         .replace(
