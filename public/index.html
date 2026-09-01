@@ -6261,6 +6261,244 @@ body.elle-powered .footer{
   }
 }
 
+/* =========================================================
+   FOCUSED SIGNED-IN EXPERIENCE
+   ========================================================= */
+
+body.elle-focused .topbar{
+  position:sticky;
+  top:0;
+  z-index:1200;
+  background:rgba(255,251,246,.96);
+  backdrop-filter:blur(18px);
+}
+
+body.elle-focused .nav a{
+  min-height:39px;
+  display:inline-flex;
+  align-items:center;
+  padding:0 11px;
+  border-radius:999px;
+}
+
+body.elle-focused .nav a[aria-current="page"]{
+  color:#fff;
+  background:var(--plum);
+}
+
+body.elle-focused .app-view{
+  display:none;
+}
+
+body.elle-focused .app-view.app-view-active{
+  display:block;
+}
+
+body.elle-focused main{
+  min-height:calc(100dvh - 78px);
+}
+
+body.elle-focused .hero,
+body.elle-focused .section{
+  padding:34px 0 48px;
+}
+
+body.elle-focused .hero-shell{
+  min-height:560px;
+}
+
+body.elle-focused .ask-shell{
+  max-width:1050px;
+  margin:0 auto;
+}
+
+body.elle-focused #trust{
+  display:none;
+}
+
+body.elle-focused .footer{
+  padding-top:18px;
+}
+
+body.elle-focused #penpal .page,
+body.elle-focused #live .page{
+  max-width:1320px;
+}
+
+body.elle-focused .penpal-stage{
+  grid-template-columns:minmax(270px,.55fr) minmax(0,1.45fr);
+  align-items:start;
+}
+
+body.elle-focused .penpal-rules-panel{
+  max-height:330px;
+  overflow-y:auto;
+  scrollbar-width:thin;
+}
+
+body.elle-focused .penpal-benefits{
+  display:none;
+}
+
+body.elle-focused .penpal-profile-list{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+
+body.elle-focused .penpal-profile-card{
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+}
+
+body.elle-focused .penpal-profile-card[hidden]{
+  display:none;
+}
+
+body.elle-focused .penpal-profile-art{
+  min-height:245px;
+  height:245px;
+}
+
+body.elle-focused .penpal-profile-bio{
+  border-right:0;
+}
+
+body.elle-focused .penpal-profile-details{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  padding:14px 16px;
+  border-top:1px solid #ead8c5;
+  border-right:0;
+}
+
+body.elle-focused .penpal-profile-actions{
+  grid-template-columns:1fr 1fr;
+  margin-top:auto;
+  padding-top:12px;
+}
+
+.penpal-pagination,
+.real-member-pagination{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-top:16px;
+}
+
+.penpal-pagination button,
+.real-member-pagination button{
+  width:42px;
+  height:42px;
+  border:1px solid #ddc9bd;
+  border-radius:50%;
+  color:#642b47;
+  background:#fff;
+  cursor:pointer;
+  font-weight:900;
+}
+
+.penpal-pagination button.active,
+.real-member-pagination button.active{
+  border-color:var(--plum);
+  color:#fff;
+  background:var(--plum);
+}
+
+.penpal-pagination-copy,
+.real-member-pagination-copy{
+  margin-top:8px;
+  color:#85736f;
+  font-size:10px;
+  text-align:center;
+}
+
+.penpal-contact-profile[aria-disabled="true"]{
+  opacity:.68;
+  background:#8e7882;
+}
+
+.live-booking-panel{
+  display:none;
+  margin-top:20px;
+  padding:19px;
+  border:1px solid #d9b995;
+  border-radius:18px;
+  background:linear-gradient(145deg,#fffaf0,#f7e8df);
+}
+
+.live-booking-panel.show{
+  display:block;
+}
+
+.live-booking-panel strong{
+  display:block;
+  color:#5b2340;
+  font-family:"Playfair Display",serif;
+  font-size:23px;
+}
+
+.live-booking-panel p{
+  margin-top:7px;
+  color:#6e5d60;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.live-booking-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:13px;
+}
+
+.live-booking-manage{
+  margin-top:11px;
+  padding-top:11px;
+  border-top:1px solid #e6d4c5;
+  color:#7b696b;
+  font-size:10px;
+  line-height:1.55;
+}
+
+@media (max-width:1050px){
+  body.elle-focused .nav a{
+    width:100%;
+    justify-content:flex-start;
+  }
+
+  body.elle-focused .penpal-stage{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:720px){
+  body.elle-focused .hero,
+  body.elle-focused .section{
+    padding:24px 0 36px;
+  }
+
+  body.elle-focused .hero-shell{
+    min-height:auto;
+  }
+
+  body.elle-focused .penpal-profile-list{
+    grid-template-columns:1fr;
+  }
+
+  body.elle-focused .penpal-profile-art{
+    height:300px;
+  }
+
+  body.elle-focused .penpal-profile-details{
+    grid-template-columns:1fr;
+  }
+
+  body.elle-focused .penpal-rules-panel{
+    max-height:250px;
+  }
+}
+
 @media (prefers-reduced-motion:reduce){
 
   *,
@@ -6655,23 +6893,31 @@ body.elle-powered .footer{
       aria-label="Main navigation"
     >
 
-      <a href="#ask">
+      <a
+        href="#home"
+        data-app-link="home"
+        aria-current="page"
+      >
+        Home
+      </a>
+
+      <a href="#ask" data-app-link="ask">
         Ask Elle
       </a>
 
-      <a href="#explore">
+      <a href="#explore" data-app-link="explore">
         Explore
       </a>
 
-      <a href="#penpal">
+      <a href="#penpal" data-app-link="penpal">
         PenPal
       </a>
 
-      <a href="#live">
+      <a href="#live" data-app-link="live">
         Live Elle
       </a>
 
-      <a href="#membership">
+      <a href="#membership" data-app-link="membership">
         Membership
       </a>
 
@@ -8356,6 +8602,18 @@ body.elle-powered .footer{
 
           </div>
 
+          <div
+            class="penpal-pagination"
+            id="penpalShowcasePagination"
+            aria-label="Showcase profile pages"
+          ></div>
+
+          <div
+            class="penpal-pagination-copy"
+            id="penpalShowcasePageCopy"
+            aria-live="polite"
+          ></div>
+
           <div class="penpal-board-bottom">
 
             <div
@@ -8519,6 +8777,42 @@ body.elle-powered .footer{
           >
             Ask Elle About It
           </button>
+
+        </div>
+
+        <div
+          class="live-booking-panel"
+          id="liveBookingPanel"
+        >
+
+          <strong>
+            Choose your 30-minute time
+          </strong>
+
+          <p>
+            Your Live Elle request is ready for scheduling.
+            The appointment is confirmed only after you choose
+            a time and Google Calendar confirms it.
+          </p>
+
+          <div class="live-booking-actions">
+
+            <a
+              class="primary"
+              id="liveBookingLink"
+              href="https://calendar.app.google/ev2shsUdMNdtbjqU6"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open Booking Calendar
+            </a>
+
+          </div>
+
+          <div class="live-booking-manage">
+            After booking, Google sends the confirmation with
+            the real Reschedule and Cancel controls for that appointment.
+          </div>
 
         </div>
 
@@ -8724,7 +9018,7 @@ body.elle-powered .footer{
           Support Elle
         </a>
 
-        <a href="#home">
+        <a href="#home" data-app-link="home">
           Back to top
         </a>
 
@@ -9225,6 +9519,12 @@ const askAboutLive =
 const livePreviewLock =
   byId("livePreviewLock");
 
+const liveBookingPanel =
+  byId("liveBookingPanel");
+
+const liveBookingLink =
+  byId("liveBookingLink");
+
 const planSelect =
   byId("planSelect");
 
@@ -9404,6 +9704,12 @@ const penpalMyProfileSummary =
 const penpalViewMyProfile =
   byId("penpalViewMyProfile");
 
+const penpalShowcasePagination =
+  byId("penpalShowcasePagination");
+
+const penpalShowcasePageCopy =
+  byId("penpalShowcasePageCopy");
+
 const penpalContactButtons = [
   ...document.querySelectorAll(
     ".penpal-contact-profile"
@@ -9451,6 +9757,9 @@ const state = {
 
   chatBusy:
     false,
+
+  appView:
+    "home",
 
   trackIndex:
     Number(
@@ -9508,7 +9817,16 @@ const state = {
     [],
 
   penpalMessengerReady:
-    false
+    false,
+
+  penpalShowcasePage:
+    0,
+
+  realMemberProfiles:
+    [],
+
+  realMemberPage:
+    0
 };
 
 /* =========================================================
@@ -9711,6 +10029,160 @@ function cleanCommaList(
     );
 
   return output;
+}
+
+/* =========================================================
+   FOCUSED APP NAVIGATION
+   ========================================================= */
+
+const APP_VIEW_SELECTORS = {
+  home:".hero",
+  ask:"#ask",
+  explore:"#explore",
+  penpal:"#penpal",
+  live:"#live",
+  membership:"#membership"
+};
+
+function showAppView(
+  requestedView="home",
+  scroll=true
+){
+
+  const view =
+    APP_VIEW_SELECTORS[
+      requestedView
+    ]
+      ? requestedView
+      : "home";
+
+  state.appView =
+    view;
+
+  Object.entries(
+    APP_VIEW_SELECTORS
+  ).forEach(
+    ([name,selector]) => {
+
+      document
+        .querySelector(
+          selector
+        )
+        ?.classList.toggle(
+          "app-view-active",
+          name === view
+        );
+    }
+  );
+
+  document
+    .querySelectorAll(
+      "[data-app-link]"
+    )
+    .forEach(
+      link => {
+
+        if(
+          link.dataset.appLink ===
+            view
+        ){
+
+          link.setAttribute(
+            "aria-current",
+            "page"
+          );
+
+        }else{
+
+          link.removeAttribute(
+            "aria-current"
+          );
+        }
+      }
+    );
+
+  mainNav.classList.remove(
+    "show"
+  );
+
+  menuToggle.setAttribute(
+    "aria-expanded",
+    "false"
+  );
+
+  if(
+    scroll
+  ){
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+  }
+}
+
+function installFocusedNavigation(){
+
+  Object.values(
+    APP_VIEW_SELECTORS
+  ).forEach(
+    selector => {
+
+      document
+        .querySelector(
+          selector
+        )
+        ?.classList.add(
+          "app-view"
+        );
+    }
+  );
+
+  document.body.classList.add(
+    "elle-focused"
+  );
+
+  document
+    .querySelectorAll(
+      "[data-app-link]"
+    )
+    .forEach(
+      link => {
+
+        link.addEventListener(
+          "click",
+          event => {
+
+            event.preventDefault();
+
+            showAppView(
+              link.dataset.appLink
+            );
+          }
+        );
+      }
+    );
+
+  document
+    .querySelector(
+      ".brand"
+    )
+    ?.addEventListener(
+      "click",
+      event => {
+
+        event.preventDefault();
+
+        showAppView(
+          "home"
+        );
+      }
+    );
+
+  showAppView(
+    "home",
+    false
+  );
 }
 
 /* =========================================================
@@ -10979,6 +11451,36 @@ function addBubble(
   return bubble;
 }
 
+function showLiveBookingPanel(
+  url=LIVE_ELLE_URL
+){
+
+  const safeUrl =
+    safeText(
+      url
+    ).trim();
+
+  if(
+    !safeUrl.startsWith(
+      "https://calendar.app.google/"
+    )
+  ){
+    return;
+  }
+
+  liveBookingLink.href =
+    safeUrl;
+
+  liveBookingPanel.classList.add(
+    "show"
+  );
+
+  localStorage.setItem(
+    "elleLiveBookingReady",
+    safeUrl
+  );
+}
+
 function addBookingAction(
   url
 ){
@@ -10993,6 +11495,10 @@ function addBookingAction(
   ){
     return;
   }
+
+  showLiveBookingPanel(
+    safeUrl
+  );
 
   const bubble =
     addBubble(
@@ -11623,6 +12129,10 @@ heroAsk.addEventListener(
   "click",
   () => {
 
+    showAppView(
+      "ask"
+    );
+
     document
       .getElementById(
         "ask"
@@ -11665,6 +12175,10 @@ function greetMember(){
 
 function openLiveElle(){
 
+  showAppView(
+    "live"
+  );
+
   const permissions =
     visiblePermissions();
 
@@ -11695,6 +12209,10 @@ function openLiveElle(){
 
     return;
   }
+
+  showAppView(
+    "ask"
+  );
 
   document
     .getElementById(
@@ -11729,6 +12247,10 @@ heroLiveLearn.addEventListener(
 askAboutLive.addEventListener(
   "click",
   () => {
+
+    showAppView(
+      "ask"
+    );
 
     document
       .getElementById(
@@ -12451,13 +12973,151 @@ function updateContactButtons(){
   penpalContactButtons.forEach(
     button => {
 
-      button.disabled =
-        !(
+      const ready =
+        Boolean(
           activeAccess &&
           state.penpalProfileComplete ===
             true
         );
+
+      button.disabled =
+        false;
+
+      button.dataset.contactReady =
+        ready
+          ? "true"
+          : "false";
+
+      button.setAttribute(
+        "aria-disabled",
+        String(
+          !ready
+        )
+      );
+
+      button.textContent =
+        ready
+          ? "Connect"
+          : (
+              activeAccess
+                ? "Complete Profile to Connect"
+                : "Enter PenPal to Connect"
+            );
     }
+  );
+}
+
+function renderShowcasePage(
+  requestedPage=0
+){
+
+  const cards = [
+    ...document.querySelectorAll(
+      ".penpal-profile-list .penpal-profile-card"
+    )
+  ];
+
+  const pageSize =
+    2;
+
+  const totalPages =
+    Math.max(
+      1,
+      Math.ceil(
+        cards.length /
+          pageSize
+      )
+    );
+
+  const page =
+    Math.min(
+      Math.max(
+        0,
+        requestedPage
+      ),
+      totalPages - 1
+    );
+
+  state.penpalShowcasePage =
+    page;
+
+  cards.forEach(
+    (card,index) => {
+
+      card.hidden =
+        index <
+          page * pageSize ||
+        index >=
+          (page + 1) * pageSize;
+    }
+  );
+
+  penpalShowcasePagination.innerHTML =
+    "";
+
+  for(
+    let index = 0;
+    index < totalPages;
+    index += 1
+  ){
+
+    const button =
+      document.createElement(
+        "button"
+      );
+
+    button.type =
+      "button";
+
+    button.textContent =
+      String(
+        index + 1
+      );
+
+    button.classList.toggle(
+      "active",
+      index === page
+    );
+
+    button.setAttribute(
+      "aria-label",
+      `Show profiles ${index * pageSize + 1}–${Math.min((index + 1) * pageSize,cards.length)}`
+    );
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        renderShowcasePage(
+          index
+        );
+      }
+    );
+
+    penpalShowcasePagination.appendChild(
+      button
+    );
+  }
+
+  const first =
+    cards.length
+      ? page * pageSize + 1
+      : 0;
+
+  const last =
+    Math.min(
+      (page + 1) * pageSize,
+      cards.length
+    );
+
+  penpalShowcasePageCopy.textContent =
+    `Profiles ${first}–${last} of ${cards.length}`;
+}
+
+function installShowcasePagination(){
+
+  renderShowcasePage(
+    state.penpalShowcasePage
   );
 }
 
@@ -14867,10 +15527,19 @@ penpalContactButtons.forEach(
       async () => {
 
         if(
-          button.disabled
+          button.dataset
+            .contactReady !==
+            "true"
         ){
 
           if(
+            !state.penpalBoardOpened
+          ){
+
+            penpalStatus.textContent =
+              "Open PenPal and complete the secure rules review first.";
+
+          }else if(
             !state.penpalProfileComplete
           ){
 
@@ -16646,7 +17315,7 @@ function installMemberPenpalStyles(){
       display:grid;
       grid-template-columns:
         repeat(
-          3,
+          2,
           minmax(0,1fr)
         );
       gap:12px;
@@ -16857,6 +17526,18 @@ function installRealMemberBoard(){
       </div>
 
     </div>
+
+    <div
+      class="real-member-pagination"
+      id="realMemberPagination"
+      aria-label="Real member profile pages"
+    ></div>
+
+    <div
+      class="real-member-pagination-copy"
+      id="realMemberPaginationCopy"
+      aria-live="polite"
+    ></div>
   `;
 
   const parent =
@@ -16900,7 +17581,8 @@ function installRealMemberBoard(){
 }
 
 function renderRealMemberBoard(
-  profiles=[]
+  profiles=[],
+  requestedPage=0
 ){
 
   installRealMemberBoard();
@@ -16916,8 +17598,63 @@ function renderRealMemberBoard(
     return;
   }
 
+  const pagination =
+    document.getElementById(
+      "realMemberPagination"
+    );
+
+  const paginationCopy =
+    document.getElementById(
+      "realMemberPaginationCopy"
+    );
+
+  state.realMemberProfiles =
+    Array.isArray(
+      profiles
+    )
+      ? profiles
+      : [];
+
+  const pageSize =
+    2;
+
+  const totalPages =
+    Math.max(
+      1,
+      Math.ceil(
+        state.realMemberProfiles.length /
+          pageSize
+      )
+    );
+
+  const page =
+    Math.min(
+      Math.max(
+        0,
+        requestedPage
+      ),
+      totalPages - 1
+    );
+
+  state.realMemberPage =
+    page;
+
   grid.innerHTML =
     "";
+
+  if(
+    pagination
+  ){
+    pagination.innerHTML =
+      "";
+  }
+
+  if(
+    paginationCopy
+  ){
+    paginationCopy.textContent =
+      "";
+  }
 
   if(
     !Array.isArray(
@@ -16945,7 +17682,13 @@ function renderRealMemberBoard(
     return;
   }
 
-  profiles.forEach(
+  const visibleProfiles =
+    state.realMemberProfiles.slice(
+      page * pageSize,
+      (page + 1) * pageSize
+    );
+
+  visibleProfiles.forEach(
     profile => {
 
       const card =
@@ -17085,16 +17828,32 @@ function renderRealMemberBoard(
           : "Complete Your Profile First";
 
       connect.disabled =
-        state.penpalProfileComplete !==
-        true;
+        false;
+
+      connect.setAttribute(
+        "aria-disabled",
+        String(
+          state.penpalProfileComplete !==
+            true
+        )
+      );
 
       connect.addEventListener(
         "click",
         async () => {
 
           if(
-            connect.disabled
+            state.penpalProfileComplete !==
+              true
           ){
+
+            penpalProfileEditor.classList.add(
+              "show"
+            );
+
+            penpalStatus.textContent =
+              "Complete your PenPal profile before sending a connection request.";
+
             return;
           }
 
@@ -17169,6 +17928,71 @@ function renderRealMemberBoard(
       );
     }
   );
+
+  if(
+    pagination &&
+    totalPages > 1
+  ){
+
+    for(
+      let index = 0;
+      index < totalPages;
+      index += 1
+    ){
+
+      const button =
+        document.createElement(
+          "button"
+        );
+
+      button.type =
+        "button";
+
+      button.textContent =
+        String(
+          index + 1
+        );
+
+      button.classList.toggle(
+        "active",
+        index === page
+      );
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          renderRealMemberBoard(
+            state.realMemberProfiles,
+            index
+          );
+        }
+      );
+
+      pagination.appendChild(
+        button
+      );
+    }
+  }
+
+  if(
+    paginationCopy
+  ){
+
+    const first =
+      state.realMemberProfiles.length
+        ? page * pageSize + 1
+        : 0;
+
+    const last =
+      Math.min(
+        (page + 1) * pageSize,
+        state.realMemberProfiles.length
+      );
+
+    paginationCopy.textContent =
+      `Profiles ${first}–${last} of ${state.realMemberProfiles.length}`;
+  }
 }
 
 async function loadRealMemberBoard(){
@@ -17456,10 +18280,19 @@ function installShowcaseConnectionReuse(){
           event.stopImmediatePropagation();
 
           if(
-            button.disabled
+            button.dataset
+              .contactReady !==
+              "true"
           ){
 
             if(
+              !state.penpalBoardOpened
+            ){
+
+              penpalStatus.textContent =
+                "Open PenPal and complete the secure rules review first.";
+
+            }else if(
               !state.penpalProfileComplete
             ){
 
@@ -18403,6 +19236,10 @@ setInterval(
 
 async function startElle(){
 
+  installFocusedNavigation();
+
+  installShowcasePagination();
+
   installPenpalMessenger();
 
   installMemberPenpalStyles();
@@ -18416,6 +19253,20 @@ async function startElle(){
   renderChips();
 
   renderTrackList();
+
+  const savedBookingUrl =
+    localStorage.getItem(
+      "elleLiveBookingReady"
+    );
+
+  if(
+    savedBookingUrl
+  ){
+
+    showLiveBookingPanel(
+      savedBookingUrl
+    );
+  }
 
   loadTrack(
     state.trackIndex,
