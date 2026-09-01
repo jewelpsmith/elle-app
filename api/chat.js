@@ -1701,6 +1701,11 @@ export default async function handler(
           1000
         );
 
+      const purposeWords =
+        helpWith
+          .split(/\s+/)
+          .filter(Boolean);
+
       const service =
         normalizeService(
           liveElleRequest
@@ -1718,14 +1723,15 @@ export default async function handler(
         !firstName ||
         !lastName ||
         !phone ||
-        !helpWith ||
+        helpWith.length < 15 ||
+        purposeWords.length < 3 ||
         !service
       ) {
         return res
           .status(400)
           .json({
             error:
-              "Please complete the connection type, service, purpose, first name, last name and phone number before continuing to the calendar.",
+              "Please complete every field and share at least a short sentence about the purpose of your visit before continuing to the calendar.",
 
             bookingRequired:
               false,
@@ -2308,9 +2314,15 @@ ${getLeadContext(
           );
         }
 
-        if (!helpWith) {
+        if (
+          helpWith.length < 15 ||
+          helpWith
+            .split(/\s+/)
+            .filter(Boolean)
+            .length < 3
+        ) {
           throw new Error(
-            "The Live Elle request is missing the purpose of the visit."
+            "Please share at least a short sentence about the purpose of the visit."
           );
         }
 
