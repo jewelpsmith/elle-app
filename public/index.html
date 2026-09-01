@@ -5569,6 +5569,242 @@ body.elle-powered .footer{
   }
 }
 
+/* =========================================================
+   CALMER LAYOUT + SMOOTH INTERACTIONS
+   ========================================================= */
+
+.power-switch{
+  transition:
+    transform .42s cubic-bezier(.22,.9,.3,1),
+    box-shadow .55s ease,
+    background .55s ease,
+    border-color .55s ease;
+}
+
+.switch-slot,
+.switch-infinity{
+  transition:
+    background .5s ease,
+    color .5s ease,
+    box-shadow .5s ease;
+}
+
+.power-switch.on .switch-slot{
+  background:linear-gradient(180deg,#e6c98e,#fff4dc);
+  box-shadow:
+    inset 0 6px 12px rgba(113,73,24,.16),
+    inset 0 -5px 10px rgba(255,255,255,.82);
+}
+
+.power-switch.on .switch-infinity{
+  color:#8b5b20;
+}
+
+.member-login{
+  display:block;
+  max-height:0;
+  overflow:hidden;
+  padding:0 28px;
+  opacity:0;
+  border-top-color:transparent;
+  transform:translateY(-8px);
+  transition:
+    max-height .52s cubic-bezier(.22,.9,.3,1),
+    padding .45s ease,
+    opacity .35s ease,
+    transform .45s ease,
+    border-color .35s ease;
+}
+
+.member-login.show{
+  display:block;
+  max-height:720px;
+  padding:23px 28px 28px;
+  opacity:1;
+  border-top-color:var(--line);
+  transform:translateY(0);
+}
+
+.penpal-my-profile-preview{
+  display:none;
+  margin-top:15px;
+  padding:15px;
+  border:1px solid #d8b693;
+  border-radius:15px;
+  background:#fff9ee;
+}
+
+.penpal-my-profile-preview.show{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
+}
+
+.penpal-my-profile-preview strong{
+  display:block;
+  color:#551c39;
+  font-family:"Playfair Display",serif;
+  font-size:20px;
+}
+
+.penpal-my-profile-preview p{
+  margin-top:4px;
+  color:#705d5c;
+  font-size:9px;
+  line-height:1.5;
+}
+
+.penpal-profile-modal{
+  position:fixed;
+  inset:0;
+  z-index:24000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background:rgba(28,12,22,.72);
+  backdrop-filter:blur(12px);
+}
+
+.penpal-profile-modal.show{
+  display:flex;
+}
+
+.penpal-profile-modal-card{
+  position:relative;
+  width:min(560px,100%);
+  max-height:calc(100dvh - 36px);
+  overflow:auto;
+  padding:26px;
+  border:1px solid #e3c5aa;
+  border-radius:24px;
+  background:linear-gradient(145deg,#fffdf8,#fff4e8);
+  box-shadow:0 34px 90px -35px rgba(33,12,23,.8);
+}
+
+.penpal-profile-modal-close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:38px;
+  height:38px;
+  border:1px solid #e4cbb7;
+  border-radius:50%;
+  background:#fff;
+  color:#5b1737;
+  cursor:pointer;
+}
+
+.penpal-profile-modal-name{
+  padding-right:45px;
+  color:#551c39;
+  font-family:"Playfair Display",serif;
+  font-size:34px;
+}
+
+.penpal-profile-modal-region{
+  margin-top:5px;
+  color:#8a6f67;
+  font-size:10px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.penpal-profile-modal-bio{
+  margin-top:18px;
+  color:#5f4e4d;
+  font-size:13px;
+  line-height:1.65;
+}
+
+.penpal-profile-modal-details{
+  display:grid;
+  gap:9px;
+  margin-top:18px;
+  padding:15px;
+  border-radius:15px;
+  background:#fff;
+  color:#604f4e;
+  font-size:11px;
+  line-height:1.5;
+}
+
+.real-member-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:14px;
+}
+
+.real-member-actions button{
+  min-height:38px;
+  flex:1;
+  padding:0 14px;
+  border-radius:999px;
+  font-size:9px;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.real-member-view{
+  border:1px solid #d8b693;
+  background:#fffaf4;
+  color:#5b1737;
+}
+
+@media (max-width:640px){
+  .section{
+    padding:46px 0;
+  }
+
+  .hero-meta,
+  .penpal-benefits{
+    display:none;
+  }
+
+  .hero-shell{
+    padding:22px 17px;
+  }
+
+  .penpal-stage{
+    min-height:auto;
+  }
+
+  .penpal-rules-panel{
+    margin-top:13px;
+    padding:13px;
+  }
+
+  .penpal-rule-row{
+    padding:8px 0;
+  }
+
+  .live-portrait{
+    min-height:360px;
+  }
+
+  .live-service{
+    padding:11px 12px;
+  }
+
+  .member-login,
+  .member-login.show{
+    padding-left:18px;
+    padding-right:18px;
+  }
+
+  .penpal-my-profile-preview.show{
+    grid-template-columns:1fr;
+  }
+
+  .penpal-profile-modal-card{
+    padding:22px 18px;
+    border-radius:20px;
+  }
+}
+
 @media (prefers-reduced-motion:reduce){
 
   *,
@@ -7236,6 +7472,33 @@ body.elle-powered .footer{
 
             </div>
 
+            <div
+              class="penpal-my-profile-preview"
+              id="penpalMyProfilePreview"
+            >
+
+              <div>
+
+                <strong id="penpalMyProfileName">
+                  Your profile
+                </strong>
+
+                <p id="penpalMyProfileSummary">
+                  Save a complete profile to appear to other eligible members.
+                </p>
+
+              </div>
+
+              <button
+                type="button"
+                class="penpal-editor-button secondary"
+                id="penpalViewMyProfile"
+              >
+                View My Profile
+              </button>
+
+            </div>
+
           </section>
 
           <div class="penpal-profile-list">
@@ -8644,6 +8907,18 @@ const penpalProfileMessage =
 const penpalProfileChecklist =
   byId("penpalProfileChecklist");
 
+const penpalMyProfilePreview =
+  byId("penpalMyProfilePreview");
+
+const penpalMyProfileName =
+  byId("penpalMyProfileName");
+
+const penpalMyProfileSummary =
+  byId("penpalMyProfileSummary");
+
+const penpalViewMyProfile =
+  byId("penpalViewMyProfile");
+
 const penpalContactButtons = [
   ...document.querySelectorAll(
     ".penpal-contact-profile"
@@ -9956,7 +10231,14 @@ function applyAccess(){
       "18+";
 
   liveStart.disabled =
-    !liveAllowed;
+    false;
+
+  liveStart.setAttribute(
+    "aria-disabled",
+    String(
+      !liveAllowed
+    )
+  );
 
   livePreviewLock.classList.toggle(
     "show",
@@ -10148,6 +10430,61 @@ function addBubble(
   return bubble;
 }
 
+function addBookingAction(
+  url
+){
+
+  const safeUrl =
+    safeText(url).trim();
+
+  if(
+    !safeUrl.startsWith(
+      "https://calendar.app.google/"
+    )
+  ){
+    return;
+  }
+
+  const bubble =
+    addBubble(
+      "Your request is saved. The appointment is not confirmed until you choose and confirm an available time in Google Calendar.",
+      "elle"
+    );
+
+  const button =
+    document.createElement(
+      "button"
+    );
+
+  button.type =
+    "button";
+
+  button.className =
+    "primary";
+
+  button.style.marginTop =
+    "12px";
+
+  button.textContent =
+    "Choose My 30-Minute Time";
+
+  button.addEventListener(
+    "click",
+    () => {
+
+      window.open(
+        safeUrl,
+        "_blank",
+        "noopener,noreferrer"
+      );
+    }
+  );
+
+  bubble.appendChild(
+    button
+  );
+}
+
 function showTyping(
   visible
 ){
@@ -10166,15 +10503,23 @@ function showTyping(
   }
 }
 
-function renderChips(){
+function renderChips(
+  suppliedChips=null
+){
 
-  const chips = [
-    "Help me think this through",
-    "Give me ideas",
-    "Rewrite this for me",
-    "Help me make a plan",
-    "Create an image"
-  ];
+  const chips =
+    Array.isArray(
+      suppliedChips
+    ) &&
+    suppliedChips.length
+      ? suppliedChips
+      : [
+          "Help me think this through",
+          "Give me ideas",
+          "Rewrite this for me",
+          "Help me make a plan",
+          "Create an image"
+        ];
 
   chipRow.innerHTML =
     "";
@@ -10203,7 +10548,7 @@ function renderChips(){
           chatInput.value =
             text;
 
-          chatInput.focus();
+          sendChatMessage();
         }
       );
 
@@ -10602,13 +10947,14 @@ async function sendChatMessage(){
           headers:
             authHeaders(),
 
-          body:
-            JSON.stringify({
-              message,
-              history:
+            body:
+              JSON.stringify({
+              messages:
                 state.history.slice(
                   -12
-                )
+                ),
+              ageGroup:
+                visibleAgeGroup()
             })
         }
       );
@@ -10622,6 +10968,13 @@ async function sendChatMessage(){
       data?.reply ||
       data?.message ||
       data?.text ||
+      data?.content
+        ?.find(
+          block =>
+            block?.type ===
+              "text"
+        )
+        ?.text ||
       "I’m here. Try asking that one more time.";
 
     showTyping(
@@ -10637,6 +10990,21 @@ async function sendChatMessage(){
       role:"assistant",
       content:reply
     });
+
+    renderChips(
+      data?.chips
+    );
+
+    if(
+      data?.bookingRequired ===
+        true &&
+      data?.bookingUrl
+    ){
+
+      addBookingAction(
+        data.bookingUrl
+      );
+    }
 
   }catch(error){
 
@@ -10764,13 +11132,34 @@ function openLiveElle(){
         ? "Live Elle is not available in the Elle Next teen experience."
         : "Live Elle is available with eligible adult Infinite ∞ access.";
 
+    document
+      .getElementById(
+        "live"
+      )
+      .scrollIntoView({
+        behavior:"smooth"
+      });
+
     return;
   }
 
-  window.open(
-    LIVE_ELLE_URL,
-    "_blank",
-    "noopener,noreferrer"
+  document
+    .getElementById(
+      "ask"
+    )
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+  setTimeout(
+    () => {
+
+      chatInput.value =
+        "I want to book a Live Elle session.";
+
+      sendChatMessage();
+    },
+    420
   );
 }
 
@@ -10781,16 +11170,7 @@ liveStart.addEventListener(
 
 heroLiveLearn.addEventListener(
   "click",
-  () => {
-
-    document
-      .getElementById(
-        "live"
-      )
-      .scrollIntoView({
-        behavior:"smooth"
-      });
-  }
+  openLiveElle
 );
 
 askAboutLive.addEventListener(
@@ -12514,6 +12894,297 @@ function renderProfileChecklist(
    APPLY PROFILE
    ========================================================= */
 
+function ensurePenpalProfileModal(){
+
+  let modal =
+    byId("penpalProfileModal");
+
+  if(
+    modal
+  ){
+    return modal;
+  }
+
+  modal =
+    document.createElement(
+      "div"
+    );
+
+  modal.className =
+    "penpal-profile-modal";
+
+  modal.id =
+    "penpalProfileModal";
+
+  modal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  modal.innerHTML = `
+    <article
+      class="penpal-profile-modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="penpalProfileModalName"
+    >
+      <button
+        type="button"
+        class="penpal-profile-modal-close"
+        aria-label="Close profile"
+      >×</button>
+      <h3
+        class="penpal-profile-modal-name"
+        id="penpalProfileModalName"
+      ></h3>
+      <div
+        class="penpal-profile-modal-region"
+        id="penpalProfileModalRegion"
+      ></div>
+      <p
+        class="penpal-profile-modal-bio"
+        id="penpalProfileModalBio"
+      ></p>
+      <div
+        class="penpal-profile-modal-details"
+        id="penpalProfileModalDetails"
+      ></div>
+    </article>
+  `;
+
+  const close =
+    () => {
+
+      modal.classList.remove(
+        "show"
+      );
+
+      modal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+      document.body.classList.remove(
+        "locked"
+      );
+    };
+
+  modal
+    .querySelector(
+      ".penpal-profile-modal-close"
+    )
+    ?.addEventListener(
+      "click",
+      close
+    );
+
+  modal.addEventListener(
+    "click",
+    event => {
+
+      if(
+        event.target ===
+          modal
+      ){
+        close();
+      }
+    }
+  );
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if(
+        event.key ===
+          "Escape" &&
+        modal.classList.contains(
+          "show"
+        )
+      ){
+        close();
+      }
+    }
+  );
+
+  document.body.appendChild(
+    modal
+  );
+
+  return modal;
+}
+
+function openPenpalProfile(
+  profile={}
+){
+
+  const modal =
+    ensurePenpalProfileModal();
+
+  const setText =
+    (
+      id,
+      value
+    ) => {
+
+      const element =
+        byId(id);
+
+      if(
+        element
+      ){
+        element.textContent =
+          safeText(value);
+      }
+    };
+
+  setText(
+    "penpalProfileModalName",
+    profile.displayName ||
+      "PenPal Member"
+  );
+
+  setText(
+    "penpalProfileModalRegion",
+    profile.broadRegion ||
+      "Broad region not listed"
+  );
+
+  setText(
+    "penpalProfileModalBio",
+    profile.bio ||
+      "This member has not added a bio yet."
+  );
+
+  const details =
+    byId(
+      "penpalProfileModalDetails"
+    );
+
+  if(
+    details
+  ){
+
+    details.innerHTML =
+      "";
+
+    const rows = [
+      [
+        "Interests",
+        Array.isArray(
+          profile.interests
+        )
+          ? profile.interests.join(
+              ", "
+            )
+          : profile.interests
+      ],
+      [
+        "Languages",
+        Array.isArray(
+          profile.languages
+        )
+          ? profile.languages.join(
+              ", "
+            )
+          : profile.languages
+      ],
+      [
+        "Personality",
+        profile.personality
+      ],
+      [
+        "Looking for",
+        profile.lookingFor
+      ]
+    ];
+
+    rows.forEach(
+      ([label,value]) => {
+
+        if(
+          !safeText(value).trim()
+        ){
+          return;
+        }
+
+        const row =
+          document.createElement(
+            "div"
+          );
+
+        const strong =
+          document.createElement(
+            "strong"
+          );
+
+        strong.textContent =
+          `${label}: `;
+
+        row.append(
+          strong,
+          document.createTextNode(
+            safeText(value)
+          )
+        );
+
+        details.appendChild(
+          row
+        );
+      }
+    );
+  }
+
+  modal.classList.add(
+    "show"
+  );
+
+  modal.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
+  document.body.classList.add(
+    "locked"
+  );
+
+  modal
+    .querySelector(
+      ".penpal-profile-modal-close"
+    )
+    ?.focus();
+}
+
+function renderMyPenpalProfile(
+  profile,
+  exists
+){
+
+  penpalMyProfilePreview.classList.toggle(
+    "show",
+    exists ===
+      true
+  );
+
+  if(
+    exists !==
+      true
+  ){
+    return;
+  }
+
+  penpalMyProfileName.textContent =
+    profile?.displayName ||
+    "Your profile";
+
+  penpalMyProfileSummary.textContent =
+    state.penpalProfileComplete &&
+    profile?.openToConnect ===
+      true
+      ? "Saved and visible to other eligible PenPal members."
+      : "Saved privately. Finish the checklist and choose Open to Connect to appear to other eligible members.";
+}
+
 function applyPenpalProfile(
   profile,
   exists=true
@@ -12626,8 +13297,24 @@ function applyPenpalProfile(
     safe
   );
 
+  renderMyPenpalProfile(
+    safe,
+    exists
+  );
+
   updateContactButtons();
 }
+
+penpalViewMyProfile.addEventListener(
+  "click",
+  () => {
+
+    openPenpalProfile(
+      state.penpalProfile ||
+      {}
+    );
+  }
+);
 
 /* =========================================================
    LOAD PROFILE
@@ -13476,9 +14163,80 @@ penpalViewButtons.forEach(
           card
         ){
 
-          card.scrollIntoView({
-            behavior:"smooth",
-            block:"center"
+          const detailText =
+            [
+              ...card.querySelectorAll(
+                ".penpal-detail-row div"
+              )
+            ]
+              .map(
+                element =>
+                  safeText(
+                    element.textContent
+                  ).trim()
+              );
+
+          const detailValue =
+            label => {
+
+              const match =
+                detailText.find(
+                  value =>
+                    value.toLowerCase()
+                      .startsWith(
+                        `${label.toLowerCase()}:`
+                      )
+                );
+
+              return match
+                ? match.slice(
+                    match.indexOf(":") + 1
+                  ).trim()
+                : "";
+            };
+
+          openPenpalProfile({
+            displayName:name,
+            broadRegion:
+              safeText(
+                card.querySelector(
+                  ".penpal-region"
+                )?.textContent
+              )
+                .replace(
+                  /\s+/g,
+                  " "
+                )
+                .trim(),
+            bio:
+              safeText(
+                card.querySelector(
+                  ".penpal-bio-copy"
+                )?.textContent
+              ).trim(),
+            interests:
+              [
+                ...card.querySelectorAll(
+                  ".penpal-tag"
+                )
+              ].map(
+                tag =>
+                  safeText(
+                    tag.textContent
+                  ).trim()
+              ),
+            languages:
+              detailValue(
+                "Languages"
+              ),
+            personality:
+              detailValue(
+                "Personality"
+              ),
+            lookingFor:
+              detailValue(
+                "Looking for"
+              )
           });
         }
 
@@ -15725,6 +16483,38 @@ function renderRealMemberBoard(
           .filter(Boolean)
           .join(" · ");
 
+      const actions =
+        document.createElement(
+          "div"
+        );
+
+      actions.className =
+        "real-member-actions";
+
+      const view =
+        document.createElement(
+          "button"
+        );
+
+      view.type =
+        "button";
+
+      view.className =
+        "real-member-view";
+
+      view.textContent =
+        "View Profile";
+
+      view.addEventListener(
+        "click",
+        () => {
+
+          openPenpalProfile(
+            profile
+          );
+        }
+      );
+
       const connect =
         document.createElement(
           "button"
@@ -15808,12 +16598,17 @@ function renderRealMemberBoard(
         }
       );
 
+      actions.append(
+        view,
+        connect
+      );
+
       card.append(
         name,
         region,
         bio,
         meta,
-        connect
+        actions
       );
 
       grid.appendChild(
