@@ -4525,6 +4525,71 @@ body.elle-powered .footer{
   display:block;
 }
 
+.live-shell.live-access-locked{
+  position:relative;
+}
+
+.live-shell.live-access-locked .live-portrait,
+.live-shell.live-access-locked .live-copy > :not(.live-preview-lock){
+  filter:blur(8px);
+  opacity:.46;
+  pointer-events:none;
+  user-select:none;
+}
+
+.live-shell.live-access-locked .live-preview-lock{
+  position:relative;
+  z-index:8;
+  padding:26px;
+  border:2px solid #a95e78;
+  border-radius:22px;
+  background:linear-gradient(145deg,#fff8ed,#f7dfe6);
+  box-shadow:0 24px 55px -30px rgba(84,33,59,.7);
+  color:#54213b;
+  font-size:15px;
+}
+
+.live-preview-lock strong{
+  display:block;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(28px,4vw,42px);
+  line-height:1.06;
+}
+
+.live-preview-lock p{
+  margin-top:10px;
+  line-height:1.6;
+}
+
+.live-preview-lock button{
+  min-height:46px;
+  margin-top:16px;
+  padding:0 19px;
+  border:0;
+  border-radius:999px;
+  background:var(--plum);
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.live-service{
+  width:100%;
+  text-align:left;
+  color:inherit;
+  font:inherit;
+  cursor:pointer;
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;
+}
+
+.live-service:hover,
+.live-service:focus-visible{
+  transform:translateY(-3px);
+  border-color:#c99058;
+  box-shadow:0 22px 42px -30px rgba(84,33,59,.65);
+  outline:none;
+}
+
 /* =========================================================
    MEMBERSHIP
    ========================================================= */
@@ -9612,7 +9677,7 @@ body.elle-focused[data-elle-tier="elle-next"] .tier-door{background:repeating-li
 
     </div>
 
-    <div class="live-shell">
+    <div class="live-shell" id="liveShell">
 
       <div class="live-portrait">
 
@@ -9661,35 +9726,35 @@ body.elle-focused[data-elle-tier="elle-next"] .tier-door{background:repeating-li
 
         <div class="live-services">
 
-          <div class="live-service">
+          <button type="button" class="live-service" data-live-service-choice="Pick My Brain">
             <span class="live-service-icon">✦</span>
             <strong>Pick My Brain</strong>
             <span>Business, career, ideas, decisions and perspective.</span>
-          </div>
+          </button>
 
-          <div class="live-service">
+          <button type="button" class="live-service" data-live-service-choice="Shopping Buddy">
             <span class="live-service-icon">◇</span>
             <strong>Shopping Buddy</strong>
             <span>Outfits, shopping choices and style support.</span>
-          </div>
+          </button>
 
-          <div class="live-service">
+          <button type="button" class="live-service" data-live-service-choice="Hype Session">
             <span class="live-service-icon">☀</span>
             <strong>Hype Session</strong>
             <span>Encouragement, confidence and celebrating your wins.</span>
-          </div>
+          </button>
 
-          <div class="live-service">
+          <button type="button" class="live-service" data-live-service-choice="Someone to Talk To">
             <span class="live-service-icon">♡</span>
             <strong>Someone to Talk To</strong>
             <span>Real conversation, listening and human connection.</span>
-          </div>
+          </button>
 
-          <div class="live-service">
+          <button type="button" class="live-service" data-live-service-choice="Work With Me">
             <span class="live-service-icon">↗</span>
             <strong>Work With Me</strong>
             <span>Resume help, consulting, strategy and hands-on planning.</span>
-          </div>
+          </button>
 
         </div>
 
@@ -9704,15 +9769,7 @@ body.elle-focused[data-elle-tier="elle-next"] .tier-door{background:repeating-li
             class="primary"
             id="liveStart"
           >
-            Talk to Live Elle
-          </button>
-
-          <button
-            type="button"
-            class="secondary"
-            id="askAboutLive"
-          >
-            Ask Elle About It
+            Begin Private Intake
           </button>
 
         </div>
@@ -10461,11 +10518,11 @@ const worldError =
 const liveStart =
   byId("liveStart");
 
-const askAboutLive =
-  byId("askAboutLive");
-
 const livePreviewLock =
   byId("livePreviewLock");
+
+const liveShell =
+  byId("liveShell");
 
 const liveBookingPanel =
   byId("liveBookingPanel");
@@ -12475,7 +12532,7 @@ function applyAccess(){
       "18+";
 
   liveStart.disabled =
-    false;
+    !liveAllowed;
 
   liveStart.setAttribute(
     "aria-disabled",
@@ -12489,15 +12546,45 @@ function applyAccess(){
     !liveAllowed
   );
 
-  livePreviewLock.textContent =
+  liveShell.classList.toggle(
+    "live-access-locked",
     !liveAllowed
-      ? (
-          ageGroup ===
-            "13-17"
-            ? "Live Elle is not included in the Elle Next teen experience."
-            : "Live Elle is included with eligible adult Infinite ∞ access."
-        )
-      : "";
+  );
+
+  liveBookingPanel.classList.toggle(
+    "show",
+    liveAllowed &&
+      liveBookingPanel.dataset.intakeComplete === "true"
+  );
+
+  if(!liveAllowed){
+    liveBookingPanel.dataset.intakeComplete = "false";
+  }
+
+  if(liveAllowed){
+    livePreviewLock.innerHTML = "";
+  }else if(ageGroup === "13-17"){
+    livePreviewLock.innerHTML = `
+      <strong>STOP — Adults 18+ only.</strong>
+      <p>
+        Live Elle is not available inside the Elle Next experience.
+        This private adult space and all booking controls are locked.
+      </p>
+    `;
+  }else{
+    livePreviewLock.innerHTML = `
+      <strong>A beautiful room is waiting.</strong>
+      <p>
+        Live Elle, Elle Radio, PenPal and the complete adult virtual
+        experience unlock with Infinite ∞ membership.
+      </p>
+      <button type="button" data-live-upgrade>Explore Infinite ∞</button>
+    `;
+
+    livePreviewLock
+      .querySelector("[data-live-upgrade]")
+      ?.addEventListener("click", () => showAppView("membership"));
+  }
 
   /* PENPAL */
 
@@ -12700,10 +12787,8 @@ function showLiveBookingPanel(
     "show"
   );
 
-  localStorage.setItem(
-    "elleLiveBookingReady",
-    safeUrl
-  );
+  liveBookingPanel.dataset.intakeComplete =
+    "true";
 }
 
 function addBookingAction(
@@ -13499,7 +13584,9 @@ function greetMember(){
    LIVE ELLE
    ========================================================= */
 
-function startLiveElleIntake(){
+function startLiveElleIntake(
+  preselectedService=""
+){
 
   const existing =
     document.getElementById(
@@ -13539,7 +13626,9 @@ function startLiveElleIntake(){
 
   const draft = {
     connectionType:"",
-    service:"",
+    service:services.includes(preselectedService)
+      ? preselectedService
+      : "",
     helpWith:"",
     firstName:
       state.member?.firstName ||
@@ -13836,11 +13925,17 @@ function startLiveElleIntake(){
                 "#liveHelpWith"
               ).value.trim();
 
+            const purposeWords =
+              draft.helpWith
+                .split(/\s+/)
+                .filter(Boolean);
+
             if(
-              !draft.helpWith
+              draft.helpWith.length < 15 ||
+              purposeWords.length < 3
             ){
               error.textContent =
-                "Please tell Live Elle what you would like help with.";
+                "Please share at least a short sentence about what you would like help with.";
               return;
             }
           }
@@ -13987,7 +14082,9 @@ function startLiveElleIntake(){
   render();
 }
 
-function openLiveElle(){
+function openLiveElle(
+  requestedService=""
+){
 
   showAppView(
     "live"
@@ -14039,7 +14136,11 @@ function openLiveElle(){
   setTimeout(
     () => {
 
-      startLiveElleIntake();
+      startLiveElleIntake(
+        typeof requestedService === "string"
+          ? requestedService
+          : ""
+      );
     },
     420
   );
@@ -14047,40 +14148,21 @@ function openLiveElle(){
 
 liveStart.addEventListener(
   "click",
-  openLiveElle
+  () => openLiveElle()
 );
 
 heroLiveLearn.addEventListener(
   "click",
-  openLiveElle
+  () => openLiveElle()
 );
 
-askAboutLive.addEventListener(
-  "click",
-  () => {
-
-    showAppView(
-      "ask"
-    );
-
-    document
-      .getElementById(
-        "ask"
-      )
-      .scrollIntoView({
-        behavior:"smooth"
-      });
-
-    chatInput.value =
-      "Tell me about Live Elle and when I should use it.";
-
-    setTimeout(
-      () =>
-        chatInput.focus(),
-      450
-    );
-  }
-);
+document
+  .querySelectorAll("[data-live-service-choice]")
+  .forEach(button => {
+    button.addEventListener("click", () => {
+      openLiveElle(button.dataset.liveServiceChoice || "");
+    });
+  });
   /* =========================================================
    ELLE RADIO
    ========================================================= */
@@ -21067,19 +21149,16 @@ async function startElle(){
 
   renderTrackList();
 
-  const savedBookingUrl =
-    localStorage.getItem(
-      "elleLiveBookingReady"
-    );
+  localStorage.removeItem(
+    "elleLiveBookingReady"
+  );
 
-  if(
-    savedBookingUrl
-  ){
+  liveBookingPanel.classList.remove(
+    "show"
+  );
 
-    showLiveBookingPanel(
-      savedBookingUrl
-    );
-  }
+  liveBookingPanel.dataset.intakeComplete =
+    "false";
 
   loadTrack(
     state.trackIndex,
