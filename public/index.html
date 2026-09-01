@@ -5951,6 +5951,24 @@ body.elle-powered .footer{
   box-shadow:0 0 95px rgba(230,186,117,.24);
 }
 
+.entry-control:has(.member-login.show){
+  justify-content:flex-start;
+  padding-top:26px;
+  padding-bottom:26px;
+}
+
+.entry-control:has(.member-login.show) .member-enter{
+  display:none;
+}
+
+.entry-control:has(.member-login.show) .entry-prompt{
+  font-size:23px;
+}
+
+.entry-control:has(.member-login.show) .entry-subprompt{
+  margin-top:6px;
+}
+
 .power-switch-wrap{
   z-index:1;
   width:100%;
@@ -6100,7 +6118,7 @@ body.elle-powered .footer{
 
 .member-login.show{
   max-height:640px;
-  padding-top:24px;
+  padding-top:16px;
   border:0;
   transform:translateY(0);
 }
@@ -6113,6 +6131,10 @@ body.elle-powered .footer{
 .login-copy,
 .member-foot{
   color:rgba(255,255,255,.65);
+}
+
+.member-login .login-copy{
+  margin-bottom:14px;
 }
 
 .field-label{
