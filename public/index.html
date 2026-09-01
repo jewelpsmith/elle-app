@@ -6691,6 +6691,366 @@ body.elle-focused .bubble-elle{
   font-size:11px;
 }
 
+/* =========================================================
+   LIVE ELLE SANCTUARY
+   ========================================================= */
+
+body.elle-focused #live{
+  position:relative;
+  overflow:hidden;
+  min-height:calc(100dvh - 72px);
+  padding:34px 0 54px;
+  background:
+    radial-gradient(circle at 8% 14%,rgba(239,190,207,.50),transparent 30%),
+    radial-gradient(circle at 92% 12%,rgba(234,197,131,.34),transparent 28%),
+    radial-gradient(circle at 78% 88%,rgba(170,101,132,.20),transparent 32%),
+    linear-gradient(145deg,#fffaf4 0%,#f8e7e7 48%,#f4eee6 100%);
+}
+
+body.elle-focused #live::before,
+body.elle-focused #live::after{
+  content:"";
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  filter:blur(2px);
+}
+
+body.elle-focused #live::before{
+  width:340px;
+  height:340px;
+  top:-190px;
+  left:38%;
+  border:1px solid rgba(190,142,82,.20);
+  box-shadow:
+    0 0 0 55px rgba(255,255,255,.12),
+    0 0 0 110px rgba(255,238,213,.08);
+}
+
+body.elle-focused #live::after{
+  width:220px;
+  height:220px;
+  right:-100px;
+  bottom:-100px;
+  background:rgba(105,44,76,.08);
+  box-shadow:0 0 100px rgba(105,44,76,.12);
+}
+
+body.elle-focused #live > .page{
+  position:relative;
+  z-index:1;
+}
+
+body.elle-focused #live .live-shell{
+  position:relative;
+  grid-template-columns:minmax(330px,.88fr) minmax(0,1.12fr);
+  gap:0;
+  align-items:stretch;
+  overflow:hidden;
+  padding:12px;
+  border:1px solid rgba(255,255,255,.78);
+  border-radius:38px;
+  background:rgba(255,252,248,.72);
+  box-shadow:
+    0 40px 100px -52px rgba(69,25,48,.55),
+    inset 0 1px 0 rgba(255,255,255,.92);
+  backdrop-filter:blur(22px);
+}
+
+body.elle-focused #live .live-portrait{
+  min-height:690px;
+  border-radius:29px;
+  box-shadow:0 30px 70px -35px rgba(55,25,39,.75);
+}
+
+body.elle-focused #live .live-portrait::before{
+  content:"";
+  position:absolute;
+  z-index:2;
+  inset:18px;
+  border:1px solid rgba(255,238,205,.26);
+  border-radius:22px;
+  pointer-events:none;
+}
+
+body.elle-focused #live .live-portrait img{
+  transform:scale(1.015);
+  filter:saturate(.88) contrast(.96) brightness(1.03);
+}
+
+body.elle-focused #live .live-portrait-shade{
+  background:
+    radial-gradient(circle at 50% 28%,rgba(255,221,186,.16),transparent 31%),
+    linear-gradient(180deg,rgba(75,32,52,.04) 25%,rgba(48,21,34,.84) 100%);
+}
+
+body.elle-focused #live .live-portrait-label{
+  left:34px;
+  right:34px;
+  bottom:34px;
+  padding:20px 21px;
+  border-color:rgba(255,236,204,.26);
+  background:rgba(55,27,41,.50);
+  box-shadow:0 20px 45px -30px rgba(0,0,0,.75);
+  backdrop-filter:blur(16px);
+}
+
+body.elle-focused #live .live-portrait-label strong{
+  color:#fff8ee;
+  font-size:28px;
+}
+
+body.elle-focused #live .live-portrait-label span{
+  color:rgba(255,248,238,.76);
+  font-size:11px;
+  line-height:1.5;
+}
+
+body.elle-focused #live .live-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:48px 44px 42px;
+}
+
+.live-room-kicker{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#9a6579;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.live-room-kicker::before{
+  content:"";
+  width:31px;
+  height:1px;
+  background:linear-gradient(90deg,#bd8d53,#ddbbc8);
+}
+
+body.elle-focused #live .live-copy .title{
+  max-width:620px;
+  margin-top:16px;
+  color:#57213e;
+  font-size:clamp(44px,5.2vw,73px);
+  line-height:.96;
+  letter-spacing:-.035em;
+}
+
+body.elle-focused #live .live-copy .copy{
+  max-width:610px;
+  margin-top:20px;
+  color:#67565d;
+  font-size:14px;
+  line-height:1.75;
+}
+
+.live-room-promise{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+  margin-top:22px;
+}
+
+.live-room-promise span{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  padding:8px 10px;
+  border:1px solid rgba(166,111,132,.18);
+  border-radius:999px;
+  color:#75465b;
+  background:rgba(255,255,255,.58);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.035em;
+  text-align:center;
+}
+
+body.elle-focused #live .live-services{
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:9px;
+  margin-top:25px;
+}
+
+body.elle-focused #live .live-service{
+  position:relative;
+  grid-column:span 2;
+  min-height:116px;
+  padding:17px 15px 15px;
+  overflow:hidden;
+  border-color:rgba(151,100,119,.17);
+  border-radius:20px;
+  background:linear-gradient(145deg,rgba(255,255,255,.88),rgba(255,247,242,.65));
+  box-shadow:0 18px 38px -32px rgba(75,29,52,.65);
+  transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease;
+}
+
+body.elle-focused #live .live-service:nth-child(4),
+body.elle-focused #live .live-service:nth-child(5){
+  grid-column:span 3;
+}
+
+body.elle-focused #live .live-service:hover{
+  transform:translateY(-3px);
+  border-color:rgba(151,100,119,.34);
+  box-shadow:0 24px 44px -30px rgba(75,29,52,.58);
+}
+
+.live-service-icon{
+  display:grid;
+  place-items:center;
+  width:31px;
+  height:31px;
+  margin-bottom:11px;
+  border-radius:12px;
+  color:#71344f;
+  background:linear-gradient(145deg,#f8dce5,#f6e8cf);
+  font-size:15px;
+}
+
+body.elle-focused #live .live-service strong{
+  color:#602844;
+  font-family:"Playfair Display",serif;
+  font-size:14px;
+}
+
+body.elle-focused #live .live-service span:not(.live-service-icon){
+  color:#796970;
+  font-size:9px;
+  line-height:1.5;
+}
+
+.live-room-quote{
+  position:relative;
+  margin-top:20px;
+  padding:15px 18px 15px 43px;
+  border-left:2px solid #d3a468;
+  border-radius:0 16px 16px 0;
+  color:#6b4053;
+  background:rgba(255,255,255,.42);
+  font-family:"Caveat",cursive;
+  font-size:23px;
+  line-height:1.25;
+}
+
+.live-room-quote::before{
+  content:"“";
+  position:absolute;
+  left:15px;
+  top:7px;
+  color:#c38a54;
+  font-family:"Playfair Display",serif;
+  font-size:38px;
+}
+
+body.elle-focused #live .live-actions{
+  align-items:center;
+  margin-top:22px;
+}
+
+body.elle-focused #live .live-actions .primary{
+  min-height:52px;
+  padding:0 24px;
+  box-shadow:0 16px 34px -18px rgba(89,32,61,.75);
+}
+
+body.elle-focused #live .live-actions .secondary{
+  min-height:52px;
+  background:rgba(255,255,255,.62);
+}
+
+body.elle-focused #live .live-booking-panel{
+  padding:22px;
+  border-color:rgba(202,151,87,.42);
+  background:
+    radial-gradient(circle at 90% 10%,rgba(255,255,255,.82),transparent 34%),
+    linear-gradient(145deg,#fff9ec,#f3dfe3);
+  box-shadow:0 23px 50px -36px rgba(82,32,56,.65);
+}
+
+body.elle-focused #live .live-note{
+  max-width:560px;
+  margin-top:14px;
+  color:#8a747c;
+}
+
+@media (max-width:1050px){
+  body.elle-focused #live .live-shell{
+    grid-template-columns:1fr;
+  }
+
+  body.elle-focused #live .live-portrait{
+    min-height:560px;
+  }
+}
+
+@media (max-width:700px){
+  body.elle-focused #live{
+    padding:18px 0 34px;
+  }
+
+  body.elle-focused #live .live-shell{
+    padding:8px;
+    border-radius:29px;
+  }
+
+  body.elle-focused #live .live-portrait{
+    min-height:430px;
+    border-radius:23px;
+  }
+
+  body.elle-focused #live .live-portrait-label{
+    left:22px;
+    right:22px;
+    bottom:22px;
+  }
+
+  body.elle-focused #live .live-copy{
+    padding:34px 18px 28px;
+  }
+
+  body.elle-focused #live .live-copy .title{
+    font-size:clamp(45px,14vw,61px);
+  }
+
+  body.elle-focused #live .live-copy .copy{
+    font-size:13px;
+  }
+
+  .live-room-promise{
+    grid-template-columns:1fr;
+  }
+
+  .live-room-promise span{
+    justify-content:flex-start;
+    padding-left:15px;
+  }
+
+  body.elle-focused #live .live-services{
+    grid-template-columns:1fr;
+  }
+
+  body.elle-focused #live .live-service,
+  body.elle-focused #live .live-service:nth-child(4),
+  body.elle-focused #live .live-service:nth-child(5){
+    grid-column:auto;
+    min-height:auto;
+  }
+
+  body.elle-focused #live .live-actions{
+    display:grid;
+  }
+
+  body.elle-focused #live .live-actions button{
+    width:100%;
+  }
+}
+
 @media (max-width:620px){
   .experience-access-banner{
     padding:19px;
@@ -8969,20 +9329,26 @@ body.elle-focused .bubble-elle{
 
       <div class="live-copy">
 
-        <div class="eyebrow">
-          LIVE ELLE
+        <div class="live-room-kicker">
+          Your private room
         </div>
 
         <h2 class="title">
-          Sometimes you want a real person.
+          Step into a softer place.
         </h2>
 
         <p class="copy">
-          Live Elle is the human side of the experience.
-          When your membership includes it, you can request
-          a one-on-one session and then choose an available
-          30-minute time through the booking calendar.
+          Come exactly as you are. Live Elle is warm, private
+          one-on-one human support for the moment you need to
+          talk, think, decide, create or simply feel heard.
+          There is no perfect way to begin—we will meet you there.
         </p>
+
+        <div class="live-room-promise" aria-label="Live Elle experience">
+          <span>✦ Private conversation</span>
+          <span>♡ Human warmth</span>
+          <span>◷ 30 unhurried minutes</span>
+        </div>
 
         <div
           class="live-preview-lock"
@@ -8992,30 +9358,39 @@ body.elle-focused .bubble-elle{
         <div class="live-services">
 
           <div class="live-service">
+            <span class="live-service-icon">✦</span>
             <strong>Pick My Brain</strong>
             <span>Business, career, ideas, decisions and perspective.</span>
           </div>
 
           <div class="live-service">
+            <span class="live-service-icon">◇</span>
             <strong>Shopping Buddy</strong>
             <span>Outfits, shopping choices and style support.</span>
           </div>
 
           <div class="live-service">
+            <span class="live-service-icon">☀</span>
             <strong>Hype Session</strong>
             <span>Encouragement, confidence and celebrating your wins.</span>
           </div>
 
           <div class="live-service">
+            <span class="live-service-icon">♡</span>
             <strong>Someone to Talk To</strong>
             <span>Real conversation, listening and human connection.</span>
           </div>
 
           <div class="live-service">
+            <span class="live-service-icon">↗</span>
             <strong>Work With Me</strong>
             <span>Resume help, consulting, strategy and hands-on planning.</span>
           </div>
 
+        </div>
+
+        <div class="live-room-quote">
+          You do not have to carry the whole moment by yourself.
         </div>
 
         <div class="live-actions">
@@ -9076,7 +9451,9 @@ body.elle-focused .bubble-elle{
 
         <p class="live-note">
           Live Elle one-on-one sessions are currently
-          available for adults 18+ only.
+          available for adults 18+ only. Live Elle offers supportive
+          conversation and practical guidance; it is not clinical therapy
+          or emergency care.
         </p>
 
       </div>
