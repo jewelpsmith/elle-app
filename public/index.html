@@ -7279,6 +7279,42 @@ body.elle-focused #live .live-copy .title{
   }
 }
 
+/* =========================================================
+   TIER ROOMS
+   ========================================================= */
+
+body.elle-focused .hero-shell{position:relative;isolation:isolate;background:#f3e8df}
+.hero-tier-room{position:absolute;z-index:-3;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.88) brightness(.94);transition:opacity .4s ease}
+body.elle-focused .hero-shell::after{content:"";position:absolute;z-index:-2;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(255,252,247,.94) 0%,rgba(255,252,247,.78) 43%,rgba(255,252,247,.16) 69%,rgba(44,24,32,.10) 100%),linear-gradient(180deg,rgba(255,255,255,.05),rgba(48,25,34,.12))}
+body.elle-focused .hero-copy{position:relative;z-index:4;padding:28px;border:1px solid rgba(255,255,255,.74);border-radius:27px;background:rgba(255,252,248,.73);box-shadow:0 28px 70px -46px rgba(48,25,34,.70);backdrop-filter:blur(15px)}
+body.elle-focused .hero-visual{z-index:4;min-height:520px;overflow:hidden;border:1px solid rgba(255,255,255,.68);border-radius:29px;background:rgba(255,255,255,.20);box-shadow:0 32px 75px -42px rgba(44,20,31,.78);backdrop-filter:blur(10px)}
+body.elle-focused .hero-glow{display:none}
+body.elle-focused .hero-portrait{position:absolute;inset:0;width:100%;height:100%;max-height:none;object-fit:cover;object-position:center;filter:saturate(.94) contrast(.98);transition:opacity .35s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+body.elle-focused[data-elle-tier="spark"] .hero-portrait,
+body.elle-focused[data-elle-tier="idea-circle"] .hero-portrait{object-position:center 22%}
+body.elle-focused[data-elle-tier="elle-next"] .hero-portrait{object-position:center 18%}
+body.elle-focused .hero-note{left:18px;right:18px;bottom:18px;width:auto;background:rgba(45,23,34,.68);color:#fff;backdrop-filter:blur(13px)}
+body.elle-focused .hero-note strong,
+body.elle-focused .hero-note p{color:#fff}
+
+.tier-door{position:absolute;z-index:30;top:0;bottom:0;width:50.15%;pointer-events:none;background:repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 2px,rgba(0,0,0,.035) 2px 5px),linear-gradient(145deg,#33231f,#181516);box-shadow:inset 0 0 0 1px rgba(228,191,132,.24),0 0 50px rgba(20,10,15,.52)}
+.tier-door::before{content:"";position:absolute;inset:4% 5%;border:1px solid rgba(222,181,118,.28);box-shadow:inset 0 0 0 12px rgba(255,255,255,.012),inset 0 0 70px rgba(0,0,0,.20)}
+.tier-door::after{content:"";position:absolute;top:43%;width:7px;height:82px;border:1px solid rgba(255,221,164,.55);border-radius:999px;background:linear-gradient(90deg,#7d512d,#dfb873,#6f4829);box-shadow:0 7px 18px rgba(15,8,10,.48)}
+.tier-door-left{left:0}
+.tier-door-left::after{right:25px}
+.tier-door-right{right:0}
+.tier-door-right::after{left:25px}
+.hero-shell.tier-room-opening .tier-door-left{animation:liveDoorLeft 1.45s .10s cubic-bezier(.65,0,.22,1) forwards}
+.hero-shell.tier-room-opening .tier-door-right{animation:liveDoorRight 1.45s .10s cubic-bezier(.65,0,.22,1) forwards}
+body.elle-focused[data-elle-tier="elle-next"] .tier-door{background:repeating-linear-gradient(90deg,rgba(255,255,255,.10) 0 2px,transparent 2px 7px),linear-gradient(145deg,#e66f72,#2ea9a8)}
+
+@media (max-width:720px){
+  body.elle-focused .hero-shell{gap:18px;padding:14px}
+  body.elle-focused .hero-shell::after{background:linear-gradient(180deg,rgba(255,252,247,.94) 0%,rgba(255,252,247,.72) 55%,rgba(45,24,33,.20) 100%)}
+  body.elle-focused .hero-copy{padding:22px 18px}
+  body.elle-focused .hero-visual{min-height:440px}
+}
+
 @media (max-width:620px){
   .experience-access-banner{
     padding:19px;
@@ -7884,10 +7920,20 @@ body.elle-focused #live .live-copy .title{
 
     <div class="hero-shell">
 
+      <img
+        class="hero-tier-room"
+        id="heroTierRoom"
+        src="tier-spark-room.webp"
+        alt="The Spark room"
+      >
+
+      <div class="tier-door tier-door-left" aria-hidden="true"></div>
+      <div class="tier-door tier-door-right" aria-hidden="true"></div>
+
       <div class="hero-copy">
 
-        <div class="hero-kicker">
-          YOUR AI GUIDE
+        <div class="hero-kicker" id="heroTierKicker">
+          THE SPARK · YOUR ELLE ROOM
         </div>
 
         <h1>
@@ -7950,8 +7996,9 @@ body.elle-focused #live .live-copy .title{
 
         <img
           class="hero-portrait"
-          src="new elle.png"
-          alt="Elle"
+          id="heroTierPortrait"
+          src="tier-spark-elle.webp"
+          alt="The Spark Elle"
         >
 
         <div class="hero-note">
@@ -10318,6 +10365,15 @@ const heroAsk =
 const heroLiveLearn =
   byId("heroLiveLearn");
 
+const heroTierRoom =
+  byId("heroTierRoom");
+
+const heroTierPortrait =
+  byId("heroTierPortrait");
+
+const heroTierKicker =
+  byId("heroTierKicker");
+
 const chatFeed =
   byId("chatFeed");
 
@@ -11413,6 +11469,11 @@ async function powerOnMember(
   }
 
   hideMemberGate();
+
+  setTimeout(
+    replayTierDoors,
+    120
+  );
 }
 
 powerSwitch.addEventListener(
@@ -12195,6 +12256,130 @@ function visibleTierName(){
   );
 }
 
+const TIER_EXPERIENCES = {
+  spark:{
+    room:"tier-spark-room.webp",
+    portrait:"tier-spark-elle.webp",
+    kicker:"THE SPARK · YOUR ELLE ROOM",
+    alt:"The Spark Elle in her bright welcome room"
+  },
+  "idea-circle":{
+    room:"tier-idea-room.webp",
+    portrait:"tier-idea-elle.webp",
+    kicker:"IDEA CIRCLE · YOUR CREATIVE ROOM",
+    alt:"Idea Circle Elle in her creative studio"
+  },
+  infinite:{
+    room:"tier-infinite-room.webp",
+    portrait:"tier-infinite-elle.webp",
+    kicker:"INFINITE ∞ · YOUR FULL ELLE SUITE",
+    alt:"Infinite Elle in her elevated full-access suite"
+  },
+  "elle-next":{
+    room:"tier-next-room.webp",
+    portrait:"tier-next-elle.webp",
+    kicker:"ELLE NEXT · YOUR CREATIVE ROOM · 13–17",
+    alt:"Elle Next teen guide in her age-appropriate creative room"
+  },
+  owner:{
+    room:"tier-infinite-room.webp",
+    portrait:"new elle.png",
+    kicker:"OWNER · THE COMPLETE ELLE EXPERIENCE",
+    alt:"Owner Elle in the complete private experience"
+  }
+};
+
+function normalizedVisibleTierKey(){
+  const raw =
+    safeText(
+      visibleTierKey() ||
+      visibleTierName()
+    )
+      .toLowerCase();
+
+  if(
+    raw.includes("next") ||
+    visibleAgeGroup() === "13-17"
+  ){
+    return "elle-next";
+  }
+
+  if(raw.includes("idea")){
+    return "idea-circle";
+  }
+
+  if(raw.includes("infinite")){
+    return "infinite";
+  }
+
+  if(raw.includes("spark")){
+    return "spark";
+  }
+
+  if(
+    state.owner === true &&
+    state.ownerTestTier === "owner"
+  ){
+    return "owner";
+  }
+
+  return "spark";
+}
+
+function replayTierDoors(){
+  const shell =
+    document.querySelector(
+      ".hero-shell"
+    );
+
+  if(!shell){
+    return;
+  }
+
+  shell.classList.remove(
+    "tier-room-opening"
+  );
+
+  void shell.offsetWidth;
+
+  shell.classList.add(
+    "tier-room-opening"
+  );
+}
+
+function renderTierExperience(
+  replay=true
+){
+  const key =
+    normalizedVisibleTierKey();
+
+  const experience =
+    TIER_EXPERIENCES[key] ||
+    TIER_EXPERIENCES.spark;
+
+  document.body.dataset.elleTier =
+    key;
+
+  heroTierRoom.src =
+    experience.room;
+
+  heroTierRoom.alt =
+    `${visibleTierName()} room`;
+
+  heroTierPortrait.src =
+    experience.portrait;
+
+  heroTierPortrait.alt =
+    experience.alt;
+
+  heroTierKicker.textContent =
+    experience.kicker;
+
+  if(replay){
+    replayTierDoors();
+  }
+}
+
 function ownerIsInFullOwnerMode(){
 
   return (
@@ -12216,6 +12401,8 @@ function applyAccess(){
 
   const ageGroup =
     visibleAgeGroup();
+
+  renderTierExperience();
 
   memberTierPill.textContent =
     visibleTierName();
