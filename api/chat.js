@@ -739,6 +739,8 @@ The application will confirm successful submission only after the backend saves 
 
 After a successful save, the application will direct the customer to the real Live Elle booking calendar.
 
+Never say the calendar "appeared," "opened," or is "live" yourself. The application—not you—renders the real booking link only after a confirmed save.
+
 Do not ask the customer to choose a time yourself.
 Do not invent appointment times.
 `;
@@ -1593,6 +1595,39 @@ export default async function handler(
       session.permissions
         ?.liveVideo === true;
 
+    const latestUserMessage =
+      [...messages]
+        .reverse()
+        .find(
+          (message) =>
+            message?.role ===
+              "user"
+        )
+        ?.content ||
+      "";
+
+    const bookingFollowupRequested =
+      /(booking|calendar|choose\s+(?:my\s+)?time|time\s+slot)/i
+        .test(
+          cleanString(
+            latestUserMessage,
+            500
+          )
+        );
+
+    const previouslySavedLiveElleRequest =
+      messages.some(
+        (message) =>
+          message?.role ===
+            "assistant" &&
+          cleanString(
+            message?.content,
+            2000
+          ).includes(
+            "Your Live Elle request is in."
+          )
+      );
+
     /* =====================================================
        SYSTEM PROMPT
        ===================================================== */
@@ -1816,12 +1851,19 @@ ${getLeadContext(
       null;
 
     let bookingRequired =
-      false;
+      canUseLiveElle &&
+      bookingFollowupRequested &&
+      previouslySavedLiveElleRequest;
 
-    let bookingUrl = null;
+    let bookingUrl =
+      bookingRequired
+        ? LIVE_ELLE_BOOKING_URL
+        : null;
 
     let bookingMessage =
-      null;
+      bookingRequired
+        ? "Choose an available 30-minute session time. Google Calendar will confirm the appointment."
+        : null;
 
     /* =====================================================
        CHIPS
