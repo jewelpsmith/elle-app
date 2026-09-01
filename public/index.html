@@ -6461,6 +6461,259 @@ body.elle-focused .penpal-profile-actions{
   line-height:1.55;
 }
 
+.experience-access-banner{
+  display:none;
+  margin:0 auto 22px;
+  padding:24px;
+  border:2px solid #c99058;
+  border-radius:22px;
+  color:#54213b;
+  background:linear-gradient(145deg,#fff4dc,#f8dfe4);
+  box-shadow:0 20px 45px -30px rgba(84,33,59,.55);
+}
+
+.experience-access-banner.show{
+  display:block;
+}
+
+.experience-access-banner.teen{
+  border-color:#a95e78;
+  background:linear-gradient(145deg,#fff0f4,#f5e0e7);
+}
+
+.experience-access-banner strong{
+  display:block;
+  font-family:"Playfair Display",serif;
+  font-size:clamp(25px,4vw,36px);
+  line-height:1.08;
+}
+
+.experience-access-banner p{
+  max-width:780px;
+  margin-top:9px;
+  color:#684f58;
+  font-size:15px;
+  line-height:1.6;
+}
+
+.experience-access-banner a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  margin-top:14px;
+  padding:0 18px;
+  border-radius:999px;
+  color:#fff;
+  background:var(--plum);
+  font-size:12px;
+  font-weight:900;
+  text-decoration:none;
+}
+
+body.elle-focused #ask{
+  background:
+    radial-gradient(circle at 12% 12%,rgba(245,214,222,.55),transparent 28%),
+    radial-gradient(circle at 88% 82%,rgba(232,202,151,.28),transparent 30%),
+    linear-gradient(180deg,#fffaf5,#f9eee8);
+}
+
+body.elle-focused .ask-intro{
+  align-items:center;
+  border-color:#ead6cf;
+  background:
+    radial-gradient(circle at 90% 10%,rgba(255,255,255,.9),transparent 34%),
+    linear-gradient(145deg,#fffaf7,#f4e2e4);
+}
+
+body.elle-focused .ask-intro .title{
+  color:#5d2441;
+}
+
+.ask-welcome-note{
+  grid-column:1/-1;
+  padding:14px 16px;
+  border:1px solid rgba(179,115,139,.24);
+  border-radius:15px;
+  color:#6e4256;
+  background:rgba(255,255,255,.68);
+  font-family:"Caveat",cursive;
+  font-size:23px;
+  line-height:1.3;
+}
+
+body.elle-focused .chat-card{
+  border-color:#ead7cf;
+  background:rgba(255,253,250,.96);
+  box-shadow:0 28px 70px -45px rgba(85,36,61,.45);
+}
+
+body.elle-focused .chat-feed{
+  background:
+    linear-gradient(rgba(255,253,250,.93),rgba(255,250,247,.93)),
+    radial-gradient(circle at 50% 20%,#f3dfe6,transparent 45%);
+}
+
+body.elle-focused .bubble-elle{
+  border-color:#ead7cf;
+  background:#fffdfb;
+}
+
+.live-intake-card{
+  width:min(100%,620px);
+  max-width:620px;
+  padding:20px;
+}
+
+.live-intake-head{
+  margin-bottom:15px;
+}
+
+.live-intake-head strong{
+  display:block;
+  color:#5c2340;
+  font-family:"Playfair Display",serif;
+  font-size:25px;
+}
+
+.live-intake-head span{
+  display:block;
+  margin-top:5px;
+  color:#7d686f;
+  font-size:11px;
+  line-height:1.5;
+}
+
+.live-intake-progress{
+  display:flex;
+  gap:6px;
+  margin-bottom:17px;
+}
+
+.live-intake-progress span{
+  height:5px;
+  flex:1;
+  border-radius:999px;
+  background:#eadfd9;
+}
+
+.live-intake-progress span.active{
+  background:#b96c88;
+}
+
+.live-intake-question{
+  margin:0 0 12px;
+  color:#5a3143;
+  font-size:15px;
+  font-weight:900;
+}
+
+.live-intake-services{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+}
+
+.live-intake-services button{
+  min-height:45px;
+  padding:8px 12px;
+  border:1px solid #dfcec6;
+  border-radius:13px;
+  color:#66384d;
+  background:#fffaf6;
+  cursor:pointer;
+  text-align:left;
+  font-size:11px;
+  font-weight:800;
+}
+
+.live-intake-services button.selected{
+  border-color:#7a3152;
+  color:#fff;
+  background:#6d304d;
+}
+
+.live-intake-field{
+  display:grid;
+  gap:7px;
+  margin-top:10px;
+}
+
+.live-intake-field label{
+  color:#674051;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+
+.live-intake-field input,
+.live-intake-field textarea{
+  width:100%;
+  min-height:48px;
+  padding:11px 13px;
+  border:1px solid #ddcec6;
+  border-radius:13px;
+  color:#4f4145;
+  background:#fff;
+  outline:0;
+  font:inherit;
+}
+
+.live-intake-field textarea{
+  min-height:95px;
+  resize:vertical;
+}
+
+.live-intake-field input:focus,
+.live-intake-field textarea:focus{
+  border-color:#ad6b84;
+  box-shadow:0 0 0 3px rgba(173,107,132,.12);
+}
+
+.live-intake-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.live-intake-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  margin-top:16px;
+}
+
+.live-intake-error{
+  min-height:18px;
+  margin-top:10px;
+  color:#8d3848;
+  font-size:11px;
+}
+
+@media (max-width:620px){
+  .experience-access-banner{
+    padding:19px;
+  }
+
+  .experience-access-banner p{
+    font-size:14px;
+  }
+
+  .live-intake-services,
+  .live-intake-grid{
+    grid-template-columns:1fr;
+  }
+
+  .live-intake-actions{
+    flex-direction:column-reverse;
+  }
+
+  .live-intake-actions button{
+    width:100%;
+  }
+}
+
 @media (max-width:1050px){
   body.elle-focused .nav a{
     width:100%;
@@ -7153,13 +7406,18 @@ body.elle-focused .penpal-profile-actions{
         </div>
 
         <h2 class="title">
-          Bring me the question.
+          Come as you are.
                   </h2>
 
         <p class="copy">
-          Ask for advice, explanations, ideas, drafts,
-          plans, decisions, or an image you want created.
+          Take a breath. You do not need perfect words here.
+          Bring the question, the feeling, the idea or the messy middle,
+          and Elle will help you find your next gentle step.
         </p>
+
+        <div class="ask-welcome-note">
+          You are allowed to pause, think, create and begin again. 💛
+        </div>
 
         <div class="ask-mini-list">
 
@@ -7260,7 +7518,7 @@ body.elle-focused .penpal-profile-actions{
 
             <span class="status-dot"></span>
 
-            Ready
+            A gentle space
 
           </div>
 
@@ -10185,6 +10443,150 @@ function installFocusedNavigation(){
   );
 }
 
+const ACCESS_BANNER_CONFIG = [
+  {
+    sectionId:"explore",
+    permission:"radio",
+    feature:"Elle Radio"
+  },
+  {
+    sectionId:"penpal",
+    permission:"penpal",
+    feature:"PenPal"
+  },
+  {
+    sectionId:"live",
+    permission:"liveElle",
+    feature:"Live Elle"
+  }
+];
+
+function installAccessBanners(){
+
+  ACCESS_BANNER_CONFIG.forEach(
+    config => {
+
+      const page =
+        document.querySelector(
+          `#${config.sectionId} > .page`
+        );
+
+      if(
+        !page ||
+        document.getElementById(
+          `${config.sectionId}AccessBanner`
+        )
+      ){
+        return;
+      }
+
+      const banner =
+        document.createElement(
+          "div"
+        );
+
+      banner.className =
+        "experience-access-banner";
+
+      banner.id =
+        `${config.sectionId}AccessBanner`;
+
+      page.prepend(
+        banner
+      );
+    }
+  );
+}
+
+function renderAccessBanners(){
+
+  const permissions =
+    visiblePermissions();
+
+  const ageGroup =
+    visibleAgeGroup();
+
+  ACCESS_BANNER_CONFIG.forEach(
+    config => {
+
+      const banner =
+        document.getElementById(
+          `${config.sectionId}AccessBanner`
+        );
+
+      if(
+        !banner
+      ){
+        return;
+      }
+
+      const allowed =
+        permissions[
+          config.permission
+        ] === true &&
+        ageGroup === "18+";
+
+      banner.classList.toggle(
+        "show",
+        !allowed
+      );
+
+      banner.classList.toggle(
+        "teen",
+        ageGroup === "13-17"
+      );
+
+      if(
+        allowed
+      ){
+
+        banner.innerHTML =
+          "";
+
+        return;
+      }
+
+      if(
+        ageGroup === "13-17"
+      ){
+
+        banner.innerHTML = `
+          <strong>${config.feature} is an adults 18+ experience.</strong>
+          <p>
+            You are viewing Elle Next for ages 13–17. This area is intentionally unavailable in the teen experience. Your Elle chat and age-appropriate features remain ready for you.
+          </p>
+        `;
+
+        return;
+      }
+
+      banner.innerHTML = `
+        <strong>Unlock the full Elle experience with Infinite ∞.</strong>
+        <p>
+          Upgrade to Infinite ∞ for Elle Radio, Live Elle human support, PenPal community access and the complete adult virtual experience.
+        </p>
+        <a href="#membership">Explore Infinite ∞</a>
+      `;
+
+      banner
+        .querySelector(
+          "a"
+        )
+        ?.addEventListener(
+          "click",
+          event => {
+
+            event.preventDefault();
+
+            showAppView(
+              "membership"
+            );
+          }
+        );
+    }
+  );
+}
+
 /* =========================================================
    MEMBER GATE
    ========================================================= */
@@ -11303,6 +11705,8 @@ function applyAccess(){
   }
 
   updateContactButtons();
+
+  renderAccessBanners();
 }
 
 ownerTests.forEach(
@@ -12161,8 +12565,8 @@ function greetMember(){
 
   addBubble(
     name
-      ? `Hey ${name} 💛 What are we working on today?`
-      : "Hey 💛 What are we working on today?",
+      ? `Welcome back, ${name}. Take a breath—you can bring me whatever is on your mind. 💛`
+      : "Welcome. Take a breath—you can bring me whatever is on your mind. 💛",
     "elle"
   );
 
@@ -12172,6 +12576,424 @@ function greetMember(){
 /* =========================================================
    LIVE ELLE
    ========================================================= */
+
+function startLiveElleIntake(){
+
+  const existing =
+    document.getElementById(
+      "liveElleIntake"
+    );
+
+  if(
+    existing
+  ){
+
+    existing.scrollIntoView({
+      behavior:"smooth",
+      block:"center"
+    });
+
+    return;
+  }
+
+  const services = [
+    "Pick My Brain",
+    "Shopping Buddy",
+    "Hype Session",
+    "Someone to Talk To",
+    "Work With Me"
+  ];
+
+  const draft = {
+    service:"",
+    helpWith:"",
+    firstName:
+      state.member?.firstName ||
+      "",
+    lastName:
+      state.member?.lastName ||
+      "",
+    phone:""
+  };
+
+  let step = 1;
+
+  const row =
+    document.createElement(
+      "div"
+    );
+
+  row.className =
+    "message-row elle";
+
+  row.id =
+    "liveElleIntake";
+
+  const card =
+    document.createElement(
+      "div"
+    );
+
+  card.className =
+    "bubble bubble-elle live-intake-card";
+
+  row.appendChild(
+    card
+  );
+
+  chatFeed.appendChild(
+    row
+  );
+
+  function render(){
+
+    const progress = `
+      <div class="live-intake-progress" aria-label="Step ${step} of 3">
+        <span class="${step >= 1 ? "active" : ""}"></span>
+        <span class="${step >= 2 ? "active" : ""}"></span>
+        <span class="${step >= 3 ? "active" : ""}"></span>
+      </div>
+    `;
+
+    if(
+      step === 1
+    ){
+
+      card.innerHTML = `
+        <div class="live-intake-head">
+          <strong>Let’s make space for you.</strong>
+          <span>Live Elle is private one-on-one human support for adults 18+. Sessions are 30 minutes.</span>
+        </div>
+        ${progress}
+        <p class="live-intake-question">What brings you here today?</p>
+        <div class="live-intake-services">
+          ${services.map(service => `
+            <button type="button" data-live-service="${service}">${service}</button>
+          `).join("")}
+        </div>
+        <div class="live-intake-error" aria-live="polite"></div>
+        <div class="live-intake-actions">
+          <button type="button" class="primary" data-live-next>Continue</button>
+        </div>
+      `;
+
+      card
+        .querySelectorAll(
+          "[data-live-service]"
+        )
+        .forEach(button => {
+
+          button.classList.toggle(
+            "selected",
+            button.dataset.liveService ===
+              draft.service
+          );
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              draft.service =
+                button.dataset.liveService;
+
+              render();
+            }
+          );
+        });
+    }
+
+    if(
+      step === 2
+    ){
+
+      card.innerHTML = `
+        <div class="live-intake-head">
+          <strong>You don’t have to explain it perfectly.</strong>
+          <span>A few honest words are enough to help Live Elle prepare for your visit.</span>
+        </div>
+        ${progress}
+        <p class="live-intake-question">What would you like help with?</p>
+        <div class="live-intake-field">
+          <label for="liveHelpWith">Purpose of your visit</label>
+          <textarea id="liveHelpWith" maxlength="1000" placeholder="Tell Live Elle what is on your mind…"></textarea>
+        </div>
+        <div class="live-intake-error" aria-live="polite"></div>
+        <div class="live-intake-actions">
+          <button type="button" class="ghost" data-live-back>Back</button>
+          <button type="button" class="primary" data-live-next>Continue</button>
+        </div>
+      `;
+
+      card.querySelector(
+        "#liveHelpWith"
+      ).value = draft.helpWith;
+    }
+
+    if(
+      step === 3
+    ){
+
+      card.innerHTML = `
+        <div class="live-intake-head">
+          <strong>One last step before choosing your time.</strong>
+          <span>Your verified membership email will be used with this request. You are not booked until Google Calendar confirms your time.</span>
+        </div>
+        ${progress}
+        <div class="live-intake-grid">
+          <div class="live-intake-field">
+            <label for="liveFirstName">First name</label>
+            <input id="liveFirstName" autocomplete="given-name" maxlength="60">
+          </div>
+          <div class="live-intake-field">
+            <label for="liveLastName">Last name</label>
+            <input id="liveLastName" autocomplete="family-name" maxlength="60">
+          </div>
+        </div>
+        <div class="live-intake-field">
+          <label for="livePhone">Phone number</label>
+          <input id="livePhone" type="tel" autocomplete="tel" maxlength="30" placeholder="Include country code if outside the U.S.">
+        </div>
+        <div class="live-intake-error" aria-live="polite"></div>
+        <div class="live-intake-actions">
+          <button type="button" class="ghost" data-live-back>Back</button>
+          <button type="button" class="primary" data-live-submit>Save Request & Choose My Time</button>
+        </div>
+      `;
+
+      card.querySelector(
+        "#liveFirstName"
+      ).value = draft.firstName;
+
+      card.querySelector(
+        "#liveLastName"
+      ).value = draft.lastName;
+
+      card.querySelector(
+        "#livePhone"
+      ).value = draft.phone;
+    }
+
+    const error =
+      card.querySelector(
+        ".live-intake-error"
+      );
+
+    card
+      .querySelector(
+        "[data-live-back]"
+      )
+      ?.addEventListener(
+        "click",
+        () => {
+
+          if(
+            step === 2
+          ){
+            draft.helpWith =
+              card.querySelector(
+                "#liveHelpWith"
+              ).value.trim();
+          }
+
+          if(
+            step === 3
+          ){
+            draft.firstName =
+              card.querySelector(
+                "#liveFirstName"
+              ).value.trim();
+
+            draft.lastName =
+              card.querySelector(
+                "#liveLastName"
+              ).value.trim();
+
+            draft.phone =
+              card.querySelector(
+                "#livePhone"
+              ).value.trim();
+          }
+
+          step -= 1;
+          render();
+        }
+      );
+
+    card
+      .querySelector(
+        "[data-live-next]"
+      )
+      ?.addEventListener(
+        "click",
+        () => {
+
+          if(
+            step === 1 &&
+            !draft.service
+          ){
+            error.textContent =
+              "Please choose the kind of support you want.";
+            return;
+          }
+
+          if(
+            step === 2
+          ){
+            draft.helpWith =
+              card.querySelector(
+                "#liveHelpWith"
+              ).value.trim();
+
+            if(
+              !draft.helpWith
+            ){
+              error.textContent =
+                "Please tell Live Elle what you would like help with.";
+              return;
+            }
+          }
+
+          step += 1;
+          render();
+        }
+      );
+
+    card
+      .querySelector(
+        "[data-live-submit]"
+      )
+      ?.addEventListener(
+        "click",
+        async event => {
+
+          const submit =
+            event.currentTarget;
+
+          draft.firstName =
+            card.querySelector(
+              "#liveFirstName"
+            ).value.trim();
+
+          draft.lastName =
+            card.querySelector(
+              "#liveLastName"
+            ).value.trim();
+
+          draft.phone =
+            card.querySelector(
+              "#livePhone"
+            ).value.trim();
+
+          if(
+            !draft.firstName ||
+            !draft.lastName ||
+            !draft.phone
+          ){
+            error.textContent =
+              "Please enter your first name, last name and phone number.";
+            return;
+          }
+
+          const calendarWindow =
+            window.open(
+              "about:blank",
+              "_blank"
+            );
+
+          submit.disabled = true;
+          submit.textContent =
+            "Preparing Calendar…";
+
+          error.textContent =
+            "Saving your request securely…";
+
+          try{
+
+            const response =
+              await fetch(
+                "/api/chat",
+                {
+                  method:"POST",
+                  headers:authHeaders(),
+                  body:JSON.stringify({
+                    action:"create-live-elle-request",
+                    liveElleRequest:draft,
+                    messages:[],
+                    ageGroup:visibleAgeGroup()
+                  })
+                }
+              );
+
+            const data =
+              await readJsonResponse(
+                response
+              );
+
+            if(
+              !response.ok
+            ){
+              throw new Error(
+                data.error ||
+                "I could not prepare the calendar. Please try again."
+              );
+            }
+
+            const bookingUrl =
+              safeText(
+                data.bookingUrl
+              ).trim();
+
+            if(
+              !bookingUrl.startsWith(
+                "https://calendar.app.google/"
+              )
+            ){
+              throw new Error(
+                "The booking calendar link is unavailable."
+              );
+            }
+
+            row.remove();
+
+            addBookingAction(
+              bookingUrl
+            );
+
+            if(
+              calendarWindow
+            ){
+              calendarWindow.opener = null;
+              calendarWindow.location.href =
+                bookingUrl;
+            }else{
+              window.location.assign(
+                bookingUrl
+              );
+            }
+          }catch(errorObject){
+
+            if(
+              calendarWindow
+            ){
+              calendarWindow.close();
+            }
+
+            error.textContent =
+              errorObject.message;
+
+            submit.disabled = false;
+            submit.textContent =
+              "Save Request & Choose My Time";
+          }
+        }
+      );
+
+    chatFeed.scrollTop =
+      chatFeed.scrollHeight;
+  }
+
+  render();
+}
 
 function openLiveElle(){
 
@@ -12225,10 +13047,7 @@ function openLiveElle(){
   setTimeout(
     () => {
 
-      chatInput.value =
-        "I want to book a Live Elle session.";
-
-      sendChatMessage();
+      startLiveElleIntake();
     },
     420
   );
@@ -19237,6 +20056,8 @@ setInterval(
 async function startElle(){
 
   installFocusedNavigation();
+
+  installAccessBanners();
 
   installShowcasePagination();
 
