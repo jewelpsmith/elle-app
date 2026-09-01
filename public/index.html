@@ -13526,7 +13526,19 @@ function startLiveElleIntake(){
     "Work With Me"
   ];
 
+  const connectionTypes =
+    visiblePermissions()
+      .liveVideo === true
+      ? [
+          "WhatsApp Call",
+          "WhatsApp Video Call"
+        ]
+      : [
+          "WhatsApp Call"
+        ];
+
   const draft = {
+    connectionType:"",
     service:"",
     helpWith:"",
     firstName:
@@ -13570,10 +13582,11 @@ function startLiveElleIntake(){
   function render(){
 
     const progress = `
-      <div class="live-intake-progress" aria-label="Step ${step} of 3">
+      <div class="live-intake-progress" aria-label="Step ${step} of 4">
         <span class="${step >= 1 ? "active" : ""}"></span>
         <span class="${step >= 2 ? "active" : ""}"></span>
         <span class="${step >= 3 ? "active" : ""}"></span>
+        <span class="${step >= 4 ? "active" : ""}"></span>
       </div>
     `;
 
@@ -13587,6 +13600,53 @@ function startLiveElleIntake(){
           <span>Live Elle is private one-on-one human support for adults 18+. Sessions are 30 minutes.</span>
         </div>
         ${progress}
+        <p class="live-intake-question">How would you like to connect?</p>
+        <div class="live-intake-services">
+          ${connectionTypes.map(connectionType => `
+            <button type="button" data-live-connection="${connectionType}">${connectionType}</button>
+          `).join("")}
+        </div>
+        <div class="live-intake-error" aria-live="polite"></div>
+        <div class="live-intake-actions">
+          <button type="button" class="primary" data-live-next>Continue</button>
+        </div>
+      `;
+
+      card
+        .querySelectorAll(
+          "[data-live-connection]"
+        )
+        .forEach(button => {
+
+          button.classList.toggle(
+            "selected",
+            button.dataset.liveConnection ===
+              draft.connectionType
+          );
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              draft.connectionType =
+                button.dataset.liveConnection;
+
+              render();
+            }
+          );
+        });
+    }
+
+    if(
+      step === 2
+    ){
+
+      card.innerHTML = `
+        <div class="live-intake-head">
+          <strong>What kind of support feels right?</strong>
+          <span>Choose the Live Elle experience that best fits this moment.</span>
+        </div>
+        ${progress}
         <p class="live-intake-question">What brings you here today?</p>
         <div class="live-intake-services">
           ${services.map(service => `
@@ -13595,6 +13655,7 @@ function startLiveElleIntake(){
         </div>
         <div class="live-intake-error" aria-live="polite"></div>
         <div class="live-intake-actions">
+          <button type="button" class="ghost" data-live-back>Back</button>
           <button type="button" class="primary" data-live-next>Continue</button>
         </div>
       `;
@@ -13625,7 +13686,7 @@ function startLiveElleIntake(){
     }
 
     if(
-      step === 2
+      step === 3
     ){
 
       card.innerHTML = `
@@ -13652,7 +13713,7 @@ function startLiveElleIntake(){
     }
 
     if(
-      step === 3
+      step === 4
     ){
 
       card.innerHTML = `
@@ -13709,7 +13770,7 @@ function startLiveElleIntake(){
         () => {
 
           if(
-            step === 2
+            step === 3
           ){
             draft.helpWith =
               card.querySelector(
@@ -13718,7 +13779,7 @@ function startLiveElleIntake(){
           }
 
           if(
-            step === 3
+            step === 4
           ){
             draft.firstName =
               card.querySelector(
@@ -13751,6 +13812,15 @@ function startLiveElleIntake(){
 
           if(
             step === 1 &&
+            !draft.connectionType
+          ){
+            error.textContent =
+              "Please choose WhatsApp Call or WhatsApp Video Call.";
+            return;
+          }
+
+          if(
+            step === 2 &&
             !draft.service
           ){
             error.textContent =
@@ -13759,7 +13829,7 @@ function startLiveElleIntake(){
           }
 
           if(
-            step === 2
+            step === 3
           ){
             draft.helpWith =
               card.querySelector(
