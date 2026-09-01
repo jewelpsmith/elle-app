@@ -5805,6 +5805,440 @@ body.elle-powered .footer{
   }
 }
 
+/* =========================================================
+   CLEAN ENTRY EXPERIENCE
+   ========================================================= */
+
+.member-gate{
+  padding:28px;
+  background:
+    radial-gradient(circle at 14% 14%,rgba(214,153,178,.25),transparent 30%),
+    radial-gradient(circle at 86% 82%,rgba(200,154,85,.18),transparent 35%),
+    linear-gradient(145deg,#fffaf4 0%,#f7ebe8 52%,#f9f3e9 100%);
+}
+
+.power-card{
+  width:min(1080px,100%);
+  min-height:min(620px,calc(100dvh - 56px));
+  display:grid;
+  grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);
+  overflow:hidden;
+  border:1px solid rgba(109,48,77,.13);
+  border-radius:34px;
+  background:rgba(255,253,249,.88);
+  box-shadow:0 32px 90px rgba(79,30,56,.14);
+  backdrop-filter:blur(22px);
+}
+
+.power-stage{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  justify-content:space-between;
+  padding:42px 46px;
+  text-align:left;
+  background:transparent;
+}
+
+.entry-brand{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  color:#4f1e38;
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.03em;
+}
+
+.entry-brand .gate-mark{
+  width:45px;
+  height:45px;
+  margin:0;
+  border-color:rgba(200,154,85,.66);
+  color:#c89a55;
+  background:rgba(255,255,255,.68);
+  box-shadow:none;
+  font-size:27px;
+}
+
+.entry-brand .gate-kicker{
+  color:#4f1e38;
+  font-size:14px;
+  letter-spacing:.03em;
+  text-transform:none;
+}
+
+.entry-copy{
+  max-width:530px;
+  padding:56px 0 42px;
+}
+
+.power-script{
+  margin:0 0 18px;
+  color:#c96f91;
+  font-family:inherit;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+}
+
+.power-title{
+  margin:0;
+  color:#4f1e38;
+  font-size:clamp(58px,7vw,92px);
+  line-height:.92;
+  letter-spacing:-.055em;
+}
+
+.power-tagline{
+  margin-top:28px;
+  color:#6d304d;
+  font-size:clamp(18px,2vw,24px);
+  font-weight:800;
+}
+
+.power-copy{
+  max-width:440px;
+  margin:14px 0 0;
+  color:#75676b;
+  font-size:16px;
+  line-height:1.7;
+}
+
+.entry-trust{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  color:#75676b;
+  font-size:12px;
+}
+
+.entry-trust span::before{
+  content:"•";
+  margin-right:7px;
+  color:#c89a55;
+}
+
+.entry-control{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:42px;
+  overflow:auto;
+  background:linear-gradient(180deg,rgba(109,48,77,.97),rgba(79,30,56,.99));
+}
+
+.entry-control::before{
+  content:"";
+  position:absolute;
+  width:290px;
+  height:290px;
+  border-radius:50%;
+  background:rgba(213,170,106,.08);
+  transform:scale(.82);
+  transition:
+    transform .85s cubic-bezier(.22,1,.36,1),
+    background .85s ease,
+    box-shadow .85s ease;
+}
+
+.entry-control:has(.power-switch.on)::before{
+  transform:scale(1.12);
+  background:rgba(230,186,117,.18);
+  box-shadow:0 0 95px rgba(230,186,117,.24);
+}
+
+.power-switch-wrap{
+  z-index:1;
+  width:100%;
+  margin:0;
+  text-align:center;
+}
+
+.power-switch{
+  width:126px;
+  height:68px;
+  margin:8px auto 22px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;
+  background:rgba(26,10,19,.42);
+  box-shadow:inset 0 5px 16px rgba(0,0,0,.25),0 12px 30px rgba(0,0,0,.18);
+  transition:
+    background .7s ease,
+    border-color .7s ease,
+    box-shadow .7s ease,
+    transform .2s ease;
+}
+
+.power-switch:hover{
+  transform:none;
+}
+
+.power-switch:active{
+  transform:scale(.97);
+}
+
+.power-switch:focus-visible{
+  outline:3px solid #f2cf99;
+  outline-offset:5px;
+}
+
+.switch-label{
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+}
+
+.switch-slot{
+  position:absolute;
+  inset:0;
+  width:auto;
+  height:auto;
+  transform:none;
+  border-radius:inherit;
+  background:transparent;
+  box-shadow:none;
+}
+
+.switch-toggle{
+  top:6px;
+  left:6px;
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  color:rgba(79,30,56,.78);
+  background:linear-gradient(145deg,#fffdf8,#eadfce);
+  box-shadow:0 7px 18px rgba(0,0,0,.24);
+  transform:none;
+  transition:
+    transform .78s cubic-bezier(.22,1,.36,1),
+    color .6s ease,
+    background .6s ease,
+    box-shadow .7s ease;
+}
+
+.switch-infinity{
+  top:13px;
+  color:inherit;
+  font-size:23px;
+}
+
+.power-switch.on{
+  border-color:rgba(241,204,145,.7);
+  background:rgba(200,154,85,.38);
+  box-shadow:inset 0 3px 12px rgba(81,41,12,.22),0 0 34px rgba(230,186,117,.28);
+}
+
+.power-switch.on .switch-toggle{
+  transform:translateX(58px) rotate(180deg);
+  color:#4f1e38;
+  background:linear-gradient(145deg,#fff7e8,#e9ba72);
+  box-shadow:0 8px 24px rgba(229,182,108,.42);
+}
+
+.power-switch.on .switch-slot{
+  background:transparent;
+  box-shadow:none;
+}
+
+.power-halo{
+  display:none;
+}
+
+.power-status{
+  min-height:42px;
+  color:rgba(255,255,255,.72);
+  font-size:13px;
+  letter-spacing:.16em;
+}
+
+.power-status.on{
+  color:#f5d6a2;
+}
+
+.entry-prompt{
+  margin:0;
+  color:#fffaf5;
+  font-family:"Playfair Display",serif;
+  font-size:27px;
+}
+
+.entry-subprompt{
+  max-width:310px;
+  margin:10px auto 0;
+  color:rgba(255,255,255,.64);
+  font-size:14px;
+  line-height:1.55;
+}
+
+.member-enter{
+  margin-top:17px;
+  color:rgba(255,255,255,.68);
+  font-size:12px;
+}
+
+.member-login{
+  z-index:1;
+  width:min(100%,330px);
+  max-height:0;
+  padding:0;
+  border:0;
+  color:#fff;
+  background:transparent;
+  transform:translateY(14px);
+  transition:
+    max-height .75s cubic-bezier(.22,1,.36,1),
+    padding .55s ease,
+    opacity .48s ease .08s,
+    transform .65s ease .08s;
+}
+
+.member-login.show{
+  max-height:640px;
+  padding-top:24px;
+  border:0;
+  transform:translateY(0);
+}
+
+.login-title{
+  color:#fffaf5;
+  font-size:25px;
+}
+
+.login-copy,
+.member-foot{
+  color:rgba(255,255,255,.65);
+}
+
+.field-label{
+  color:rgba(255,255,255,.76);
+}
+
+.member-input{
+  border-color:rgba(255,255,255,.20);
+  color:#fff;
+  background:rgba(255,255,255,.09);
+}
+
+.member-input::placeholder{
+  color:rgba(255,255,255,.42);
+}
+
+.member-input:focus{
+  border-color:#e8bd7d;
+  background:rgba(255,255,255,.13);
+}
+
+.member-action{
+  border-radius:14px;
+  color:#4f1e38;
+  background:#f1c982;
+}
+
+.member-secondary{
+  color:#f5d6a2;
+}
+
+.member-join{
+  border-color:rgba(255,255,255,.18);
+  background:rgba(255,255,255,.08);
+}
+
+.member-join strong,
+.member-join p{
+  color:#fff;
+}
+
+.member-message.error{
+  background:rgba(255,229,235,.92);
+}
+
+.member-message.ok{
+  background:rgba(230,249,237,.92);
+}
+
+/* Ask Elle gets one clear focus instead of competing panels. */
+.ask-shell{
+  grid-template-columns:1fr;
+  gap:14px;
+}
+
+.ask-intro{
+  display:grid;
+  grid-template-columns:minmax(220px,.6fr) minmax(0,1fr);
+  align-items:end;
+  gap:34px;
+  padding:24px 28px;
+}
+
+.ask-intro .copy{
+  margin:0;
+}
+
+.ask-mini-list{
+  display:none;
+}
+
+.chat-feed{
+  min-height:440px;
+}
+
+@media (max-width:760px){
+  .member-gate{
+    padding:12px;
+  }
+
+  .power-card{
+    min-height:calc(100dvh - 24px);
+    grid-template-columns:1fr;
+    border-radius:27px;
+  }
+
+  .power-stage{
+    min-height:330px;
+    padding:25px 25px 20px;
+  }
+
+  .entry-copy{
+    padding:40px 0 26px;
+  }
+
+  .power-title{
+    font-size:clamp(52px,17vw,72px);
+  }
+
+  .power-copy{
+    font-size:14px;
+  }
+
+  .entry-trust{
+    display:none;
+  }
+
+  .entry-control{
+    min-height:390px;
+    padding:30px 24px;
+  }
+
+  .ask-intro{
+    display:block;
+    padding:21px;
+  }
+
+  .ask-intro .copy{
+    margin-top:10px;
+  }
+
+  .chat-feed{
+    min-height:390px;
+  }
+}
+
 @media (prefers-reduced-motion:reduce){
 
   *,
@@ -5838,86 +6272,107 @@ body.elle-powered .footer{
 
     <div class="power-stage">
 
-      <div class="gate-mark">
-        ∞
+      <div class="entry-brand">
+
+        <div class="gate-mark">
+          E
+        </div>
+
+        <div class="gate-kicker">
+          AURYNELLE∞ IDEAS
+        </div>
+
       </div>
 
-      <div class="gate-kicker">
-        AURYNELLE∞ IDEAS
+      <div class="entry-copy">
+
+        <div class="power-script">
+          Your space to reset and rise
+        </div>
+
+        <h1 class="power-title">
+          Turn Elle on.
+        </h1>
+
+        <div class="power-tagline">
+          Real talk. Good energy. Elevated living.
+        </div>
+
+        <p class="power-copy">
+          A calmer way into advice, ideas, community and
+          one-on-one support—guided by what you need today.
+        </p>
+
       </div>
 
-      <h1 class="power-title">
-        ELLE
-      </h1>
-
-      <div class="power-tagline">
-        Real talk. Good energy. Elevated living.
+      <div class="entry-trust">
+        <span>Private by design</span>
+        <span>Age-aware access</span>
+        <span>Made for mobile</span>
       </div>
 
-      <div class="power-script">
-        Turn Elle on.
-      </div>
+    </div>
 
-      <p class="power-copy">
-        Flip the switch and unlock everything Elle has for you.
-        Don’t have an account? Flip the switch to join.
-      </p>
+    <div class="entry-control">
 
       <div
         class="power-switch-wrap"
         id="powerSwitchWrap"
       >
 
+        <div
+          class="power-status"
+          id="powerStatus"
+          aria-live="polite"
+        >
+          Elle is resting
+        </div>
+
         <button
           type="button"
           class="power-switch"
           id="powerSwitch"
+          role="switch"
           aria-label="Turn Elle on"
+          aria-checked="false"
           aria-pressed="false"
         >
 
-          <span class="switch-label on">
-            ON
-          </span>
+          <span class="switch-label on">ON</span>
 
           <span class="switch-slot">
 
             <span class="switch-toggle">
 
-              <span class="switch-infinity">
-                ∞
-              </span>
+              <span class="switch-infinity">∞</span>
 
             </span>
 
           </span>
 
-          <span class="switch-label off">
-            OFF
-          </span>
+          <span class="switch-label off">OFF</span>
 
         </button>
 
         <div class="power-halo"></div>
 
+        <p class="entry-prompt" id="entryPrompt">
+          Tap to begin
+        </p>
+
+        <p class="entry-subprompt" id="entrySubprompt">
+          Your welcome unfolds here—no extra page, no clutter.
+        </p>
+
+        <button
+          type="button"
+          class="member-enter"
+          id="memberEnter"
+        >
+          Already a member? Enter Elle
+        </button>
+
       </div>
-
-      <div
-        class="power-status"
-        id="powerStatus"
-      >
-        Elle is off
-      </div>
-
-      <button
-        type="button"
-        class="member-enter"
-        id="memberEnter"
-      >
-        Already a member? Enter Elle
-      </button>
-
-    </div>
 
     <div
       class="member-login"
@@ -6035,6 +6490,8 @@ body.elle-powered .footer{
         Access codes are one-time codes sent to the email
         connected to your membership.
       </p>
+
+    </div>
 
     </div>
 
@@ -8569,6 +9026,12 @@ const powerSwitchWrap =
 const powerStatus =
   byId("powerStatus");
 
+const entryPrompt =
+  byId("entryPrompt");
+
+const entrySubprompt =
+  byId("entrySubprompt");
+
 const memberEnter =
   byId("memberEnter");
 
@@ -9296,6 +9759,11 @@ function resetMemberGate(){
     "false"
   );
 
+  powerSwitch.setAttribute(
+    "aria-checked",
+    "false"
+  );
+
   powerSwitch.disabled =
     false;
 
@@ -9304,7 +9772,13 @@ function resetMemberGate(){
   );
 
   powerStatus.textContent =
-    "Elle is off";
+    "Elle is resting";
+
+  entryPrompt.textContent =
+    "Tap to begin";
+
+  entrySubprompt.textContent =
+    "Your welcome unfolds here—no extra page, no clutter.";
 
   memberLogin.classList.remove(
     "show"
@@ -9365,12 +9839,23 @@ async function powerOnMember(
     "true"
   );
 
+  powerSwitch.setAttribute(
+    "aria-checked",
+    "true"
+  );
+
   powerStatus.classList.add(
     "on"
   );
 
   powerStatus.textContent =
     "Elle is on";
+
+  entryPrompt.textContent =
+    "Welcome back, love.";
+
+  entrySubprompt.textContent =
+    "Elle is ready for you.";
 
   memberGate.classList.add(
     "flicker"
@@ -9428,12 +9913,23 @@ powerSwitch.addEventListener(
       "true"
     );
 
+    powerSwitch.setAttribute(
+      "aria-checked",
+      "true"
+    );
+
     powerStatus.classList.add(
       "on"
     );
 
     powerStatus.textContent =
       "Elle is ready";
+
+    entryPrompt.textContent =
+      "Welcome back, love.";
+
+    entrySubprompt.textContent =
+      "Enter your email and Elle will take it from here.";
 
     memberLogin.classList.add(
       "show"
@@ -9446,6 +9942,37 @@ powerSwitch.addEventListener(
 memberEnter.addEventListener(
   "click",
   () => {
+
+    powerSwitch.classList.add(
+      "on"
+    );
+
+    powerSwitchWrap.classList.add(
+      "on"
+    );
+
+    powerSwitch.setAttribute(
+      "aria-pressed",
+      "true"
+    );
+
+    powerSwitch.setAttribute(
+      "aria-checked",
+      "true"
+    );
+
+    powerStatus.classList.add(
+      "on"
+    );
+
+    powerStatus.textContent =
+      "Elle is ready";
+
+    entryPrompt.textContent =
+      "Welcome back, love.";
+
+    entrySubprompt.textContent =
+      "Enter your email and Elle will take it from here.";
 
     memberLogin.classList.add(
       "show"
@@ -10453,32 +10980,26 @@ function addBookingAction(
 
   const button =
     document.createElement(
-      "button"
+      "a"
     );
-
-  button.type =
-    "button";
 
   button.className =
     "primary";
+
+  button.href =
+    safeUrl;
+
+  button.target =
+    "_blank";
+
+  button.rel =
+    "noopener noreferrer";
 
   button.style.marginTop =
     "12px";
 
   button.textContent =
     "Choose My 30-Minute Time";
-
-  button.addEventListener(
-    "click",
-    () => {
-
-      window.open(
-        safeUrl,
-        "_blank",
-        "noopener,noreferrer"
-      );
-    }
-  );
 
   bubble.appendChild(
     button
@@ -10995,14 +11516,24 @@ async function sendChatMessage(){
       data?.chips
     );
 
-    if(
+    const bookingRequired =
       data?.bookingRequired ===
-        true &&
-      data?.bookingUrl
+        true ||
+      data?.booking?.required ===
+        true;
+
+    const bookingUrl =
+      data?.bookingUrl ||
+      data?.booking?.url ||
+      "";
+
+    if(
+      bookingRequired &&
+      bookingUrl
     ){
 
       addBookingAction(
-        data.bookingUrl
+        bookingUrl
       );
     }
 
