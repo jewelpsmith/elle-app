@@ -1523,6 +1523,10 @@ export default async function handler(
     const {
       messages,
 
+      action,
+
+      liveElleRequest,
+
       ageGroup:
         requestedAgeGroup,
     } =
@@ -1594,6 +1598,195 @@ export default async function handler(
       canUseLiveElle &&
       session.permissions
         ?.liveVideo === true;
+
+    /* =====================================================
+       DETERMINISTIC LIVE ELLE INTAKE
+       ===================================================== */
+
+    if (
+      action ===
+        "create-live-elle-request"
+    ) {
+
+      if (!canUseLiveElle) {
+        return res
+          .status(403)
+          .json({
+            error:
+              safeAgeGroup === "13-17"
+                ? "Live Elle is not available in the Elle Next teen experience."
+                : "Live Elle requires eligible adult Infinite ∞ access.",
+
+            bookingRequired:
+              false,
+
+            bookingUrl:
+              null,
+          });
+      }
+
+      const firstName =
+        cleanString(
+          liveElleRequest
+            ?.firstName,
+          60
+        );
+
+      const lastName =
+        cleanString(
+          liveElleRequest
+            ?.lastName,
+          60
+        );
+
+      const phone =
+        normalizeWhatsApp(
+          liveElleRequest
+            ?.phone
+        );
+
+      const helpWith =
+        cleanString(
+          liveElleRequest
+            ?.helpWith,
+          1000
+        );
+
+      const service =
+        normalizeService(
+          liveElleRequest
+            ?.service
+        );
+
+      if (
+        !firstName ||
+        !lastName ||
+        !phone ||
+        !helpWith ||
+        !service
+      ) {
+        return res
+          .status(400)
+          .json({
+            error:
+              "Please complete the service, purpose, first name, last name and phone number before continuing to the calendar.",
+
+            bookingRequired:
+              false,
+
+            bookingUrl:
+              null,
+          });
+      }
+
+      const leadId =
+        generateLiveElleLeadId();
+
+      const lead = {
+        leadId,
+
+        firstName,
+
+        lastName,
+
+        name:
+          `${firstName} ${lastName}`
+            .trim(),
+
+        phone,
+
+        whatsapp:
+          phone,
+
+        email:
+          cleanString(
+            session.email,
+            200
+          ),
+
+        connectionType:
+          "Google Calendar appointment",
+
+        service,
+
+        helpWith,
+      };
+
+      if (!lead.email) {
+        return res
+          .status(400)
+          .json({
+            error:
+              "Your verified membership email is missing. Please sign in again.",
+
+            bookingRequired:
+              false,
+
+            bookingUrl:
+              null,
+          });
+      }
+
+      const sheetResult =
+        await saveLeadToSheet(
+          lead
+        );
+
+      const confirmedLeadId =
+        cleanString(
+          sheetResult?.leadId,
+          100
+        );
+
+      if (
+        !confirmedLeadId ||
+        confirmedLeadId !==
+          leadId
+      ) {
+        throw new Error(
+          "Live Elle request saved without the expected Lead ID."
+        );
+      }
+
+      return res
+        .status(200)
+        .json({
+          reply:
+            "Your Live Elle request is saved. Google Calendar is ready for you to choose an available 30-minute time. You are not booked until Google Calendar confirms your selection.",
+
+          leadCaptured:
+            true,
+
+          leadId:
+            confirmedLeadId,
+
+          bookingRequired:
+            true,
+
+          bookingUrl:
+            LIVE_ELLE_BOOKING_URL,
+
+          booking: {
+            required:
+              true,
+
+            url:
+              LIVE_ELLE_BOOKING_URL,
+
+            leadId:
+              confirmedLeadId,
+
+            durationMinutes:
+              30,
+
+            status:
+              "awaiting_customer_booking",
+
+            calendarConfirmed:
+              false,
+          },
+        });
+    }
 
     const latestUserMessage =
       [...messages]
