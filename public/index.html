@@ -6315,7 +6315,70 @@ body.elle-powered .footer{
 
 @media (max-width:760px){
   .member-gate{
-    padding:12px;
+    align-items:flex-start;
+    justify-content:flex-start;
+
+    height:100dvh;
+    min-height:100svh;
+
+    padding:
+      max(10px,env(safe-area-inset-top))
+      10px
+      max(24px,env(safe-area-inset-bottom));
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    scroll-padding-bottom:42dvh;
+
+    overscroll-behavior:contain;
+    touch-action:pan-y;
+
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .power-card{
+    width:100%;
+
+    min-height:0;
+    max-height:none;
+    height:auto;
+
+    overflow:visible;
+
+    grid-template-columns:1fr;
+
+    border-radius:27px;
+  }
+
+  .power-stage{
+    min-height:300px;
+    padding:25px 25px 20px;
+  }
+
+  .entry-control{
+    min-height:360px;
+    padding:30px 24px;
+
+    overflow:visible;
+  }
+
+  .entry-control:has(.member-login.show){
+    min-height:0;
+    padding-bottom:
+      max(36px,env(safe-area-inset-bottom));
+  }
+
+  .member-login{
+    max-width:100%;
+  }
+
+  .member-login.show{
+    max-height:none;
+  }
+
+  .member-input{
+    font-size:16px;
   }
 
   .power-card{
